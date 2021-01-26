@@ -31,6 +31,15 @@ public class Player : MonoBehaviour
 
     playerState currentState;
 
+    [Tooltip("The gravity for the player. This determines how fast the player will fall after jumping.")]
+    [SerializeField]
+    private float gravityScale;
+    [Tooltip("The velocity that will be applied when the player jumps. Higher # = higher jump height.")]
+    [SerializeField]
+    private float jumpHeight;
+
+
+
     private void Awake()
     {
         currentState = playerState.idle;
@@ -79,6 +88,17 @@ public class Player : MonoBehaviour
 
         return initialPos;
     }
+
+
+    public float getGravity()
+    {
+        return gravityScale;
+    }
+    public float getJumpHeight()
+    {
+        return jumpHeight;
+    }
+
 
     private void OnTriggerEnter2D(Collider2D other)
     {

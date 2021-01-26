@@ -15,18 +15,13 @@ public class Level_Manager : MonoBehaviour
     Animator playerAnimator;
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
-    Vector3 realPos;
+
+    [SerializeField]
+    float gravityScale;
+    [SerializeField]
+    float jumpHeight;
 
     bool jumpComplete;
-
-    //How fast the jumps will be. 50 = pretty fast.
-    [Tooltip("How fast you'll jump. 50 = pretty fast... 1= slow af, play around with it")]
-    public float jumpRate;
-
-    [Tooltip("How fast you'll land. Lower number = more floaty")]
-    public float landRate;
-
-    public float jumpHeight;
 
     int currentPlayerHealth;
     public TextMeshProUGUI healthText;
@@ -61,7 +56,7 @@ public class Level_Manager : MonoBehaviour
 
     private void Start()
     {
-        jumpComplete = false;
+
 
         // currentPlayerHealth = thePlayer.getCurrentHealth();
 
@@ -72,7 +67,13 @@ public class Level_Manager : MonoBehaviour
            // healthText.text = "Health: " + currentPlayerHealth;
         }
         playerInitialPos = thePlayer.getInitialPos();
-        realPos = playerInitialPos;
+
+        gravityScale = thePlayer.getGravity();
+        playerRigid2D.gravityScale = gravityScale;
+        jumpHeight = thePlayer.getJumpHeight();
+
+        
+
     }
 
     private void Update()
@@ -103,9 +104,8 @@ public class Level_Manager : MonoBehaviour
     //Jump.
     public void Jump()
     {
-        float jumpVelocity = 3.5f;
-
-        playerRigid2D.velocity = Vector2.up * jumpVelocity;
+        //Jump height is based off of the value we set for player jump height.
+        playerRigid2D.velocity = Vector2.up * jumpHeight;
 
         //player.transform.position = currentPos;
 
@@ -125,46 +125,7 @@ public class Level_Manager : MonoBehaviour
        // duckButton.interactable = false;
     }
 
-    /*
-    IEnumerator jumpUp(Vector3 newPos)
-    {
-
-        float i = 0.0f;
-        float rate = 0.0f;
-
-        rate = (1.0f / 10.0f) * jumpRate;
-        while (i < 1.0f && player.transform.position != newPos)
-        {
-            i += Time.deltaTime * rate;
-            player.transform.position = Vector2.Lerp(player.transform.position, newPos, (i));
-            yield return null;
-        }
-
-        jumpComplete = true;
-
-        // StartCoroutine(land());
-
-    }
-
-    IEnumerator land()
-    {
-        float i = 0.0f;
-        float rate = 0.0f;
-
-        rate = (1.0f / 10.0f) * landRate;
-        while (i < 1.0f && player.transform.position != realPos)
-        {
-            i += Time.deltaTime * rate;
-            player.transform.position = Vector2.Lerp(player.transform.position, realPos, (i));
-            yield return null;
-        }
-
-        jumpComplete = false;
-        thePlayer.setState(Player.playerState.idle);
-        jumpButton.interactable = true;
-        // duckButton.interactable = true;
-    }
-    */
+   
     public void duck()
     {
         // Debug.Log("Calling duck");
@@ -178,12 +139,6 @@ public class Level_Manager : MonoBehaviour
     public void getUpReg()
     {
         thePlayer.setState(Player.playerState.idle);
-        playerAnimator.SetBool("IsCrouching", false);
-        duckButton.interactable = true;
-    }
-    IEnumerator getUp()
-    {
-        yield return new WaitForSeconds(0.5f);
         playerAnimator.SetBool("IsCrouching", false);
         duckButton.interactable = true;
     }
@@ -247,7 +202,7 @@ public class Level_Manager : MonoBehaviour
                         else
                         {
                             //Prolly have some variable to dictate this.
-                            playerRigid2D.gravityScale = 1f;
+                            playerRigid2D.gravityScale = gravityScale;
                             thePlayer.setState(Player.playerState.idle);
 
                         }

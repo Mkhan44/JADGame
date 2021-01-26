@@ -48,7 +48,6 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                     if (levelMan.jumpButton.interactable != false)
                     {
                         //Assign if needed.
-                        float rate = levelMan.jumpHeight;
                         levelMan.Jump();
                     }
                 }
@@ -89,7 +88,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                         if (levelMan.jumpButton.interactable != false)
                         {
                             //Assign if needed.
-                            float rate = levelMan.jumpHeight;
+                          
                             levelMan.Jump();
                         }
                         break;

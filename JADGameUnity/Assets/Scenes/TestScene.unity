@@ -785,6 +785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levMan: {fileID: 1302531493}
+  gravityScale: 1.2
+  jumpHeight: 3.6
 --- !u!1 &1201911227
 GameObject:
   m_ObjectHideFlags: 0
@@ -883,8 +885,7 @@ MonoBehaviour:
   player: {fileID: 977138399}
   jumpButton: {fileID: 1673177705}
   duckButton: {fileID: 0}
-  jumpRate: 0
-  landRate: 0
+  gravityScale: 0
   jumpHeight: 0
   healthText: {fileID: 0}
   obstacles: []
