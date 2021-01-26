@@ -49,7 +49,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                     {
                         //Assign if needed.
                         float rate = levelMan.jumpHeight;
-                        levelMan.Jump(rate);
+                        levelMan.Jump();
                     }
                 }
                 //    Debug.Log("up arrow key is held down");
@@ -90,7 +90,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                         {
                             //Assign if needed.
                             float rate = levelMan.jumpHeight;
-                            levelMan.Jump(rate);
+                            levelMan.Jump();
                         }
                         break;
                     }

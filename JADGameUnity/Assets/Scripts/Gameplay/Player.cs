@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
         idle,
         jumping,
         ducking,
+        hanging,
         burning,
         frozen,
         dead

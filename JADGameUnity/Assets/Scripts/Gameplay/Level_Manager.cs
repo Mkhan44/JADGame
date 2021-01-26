@@ -13,7 +13,7 @@ public class Level_Manager : MonoBehaviour
     List<GameObject> powerUps;
     Player thePlayer;
     Animator playerAnimator;
-    Rigidbody2D playerRigid;
+    Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
     Vector3 realPos;
 
@@ -52,9 +52,9 @@ public class Level_Manager : MonoBehaviour
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
-        playerAnimator = player.GetComponent<Animator>();
+      //  playerAnimator = player.GetComponent<Animator>();
 
-        playerRigid = player.GetComponent<Rigidbody2D>();
+        playerRigid2D = player.GetComponent<Rigidbody2D>();
 
         Input.multiTouchEnabled = false;
     }
@@ -69,7 +69,7 @@ public class Level_Manager : MonoBehaviour
         {
             //Default = 3.
             currentPlayerHealth = 3;
-            healthText.text = "Health: " + currentPlayerHealth;
+           // healthText.text = "Health: " + currentPlayerHealth;
         }
         playerInitialPos = thePlayer.getInitialPos();
         realPos = playerInitialPos;
@@ -78,8 +78,10 @@ public class Level_Manager : MonoBehaviour
     private void Update()
     {
         //Does stuff according to player's current state.
-        checkState();
 
+        
+        checkState();
+        /*
         elapsedTime += Time.deltaTime;
         fullTime += Time.deltaTime;
 
@@ -95,19 +97,19 @@ public class Level_Manager : MonoBehaviour
                 Debug.Log("GETTING FASTER!");
                 increaseSpawnThreshold += 1;
             }
-        }
+        */  
     }
 
     //Jump.
-    public void Jump(float yIncrease)
+    public void Jump()
     {
+        float jumpVelocity = 3.5f;
 
-        Vector3 currentPos = player.transform.position;
-        currentPos.y += yIncrease;
+        playerRigid2D.velocity = Vector2.up * jumpVelocity;
 
         //player.transform.position = currentPos;
 
-        StartCoroutine(jumpUp(currentPos));
+        //  StartCoroutine(jumpUp(currentPos));
         jumpButton.interactable = false;
         thePlayer.setState(Player.playerState.jumping);
         //  duckButton.interactable = false;
@@ -115,6 +117,15 @@ public class Level_Manager : MonoBehaviour
 
     }
 
+    //Player is hanging from the top.
+    public void Hang()
+    {
+        playerRigid2D.gravityScale = 0f;
+       // jumpButton.interactable = false;
+       // duckButton.interactable = false;
+    }
+
+    /*
     IEnumerator jumpUp(Vector3 newPos)
     {
 
@@ -153,7 +164,7 @@ public class Level_Manager : MonoBehaviour
         jumpButton.interactable = true;
         // duckButton.interactable = true;
     }
-
+    */
     public void duck()
     {
         // Debug.Log("Calling duck");
@@ -181,11 +192,9 @@ public class Level_Manager : MonoBehaviour
     //Stuff happening in UPDATE//
     void checkState()
     {
-
-
         if (player.activeInHierarchy)
         {
-            checkMeter();
+            //checkMeter();
             switch (thePlayer.GetState())
             {
                 case Player.playerState.ducking:
@@ -197,8 +206,8 @@ public class Level_Manager : MonoBehaviour
                         {
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
-                            StartCoroutine(iceMeter.fillConstant());
-                            StartCoroutine(heatMeter.decreaseConstant());
+                         //   StartCoroutine(iceMeter.fillConstant());
+                         //   StartCoroutine(heatMeter.decreaseConstant());
                         }
                         else
                         {
@@ -208,20 +217,41 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.jumping:
                     {
+                        //They hold the button here so hang.
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
                             //Hanging feature if we decide to implement it. Otherwise just count this as spam jumping maybe?
-                            StartCoroutine(heatMeter.fillConstant());
-                            StartCoroutine(iceMeter.decreaseConstant());
+                            
+                           thePlayer.setState(Player.playerState.hanging);
+                           
+                        }
+                        //Not holding so don't hang.
+                        else
+                        {
+                            if(player.transform.position.y <= 0.1)
+                            {
+                                thePlayer.setState(Player.playerState.idle);
+                                jumpButton.interactable = true;
+                            }
+                        }
+                        break;
+                    }
+                case Player.playerState.hanging:
+                    {
+                        // StartCoroutine(heatMeter.fillConstant());
+                        // StartCoroutine(iceMeter.decreaseConstant());
+                        if (Input.GetMouseButton(0) || Input.GetKey("up"))
+                        {
+                            Hang();
                         }
                         else
                         {
-                            if (jumpComplete)
-                            {
-                                StartCoroutine(land());
-                            }
+                            //Prolly have some variable to dictate this.
+                            playerRigid2D.gravityScale = 1f;
+                            thePlayer.setState(Player.playerState.idle);
 
                         }
+                        
                         break;
                     }
                 case Player.playerState.dead:
@@ -261,6 +291,10 @@ public class Level_Manager : MonoBehaviour
                 default:
                     {
                         thePlayer.setState(Player.playerState.idle);
+                        if (player.transform.position.y <= 0.1)
+                        {
+                            jumpButton.interactable = true;
+                        }
                         break;
                     }
             }
@@ -269,7 +303,7 @@ public class Level_Manager : MonoBehaviour
 
         if (currentPlayerHealth > 0)
         {
-            healthText.text = "Health: " + currentPlayerHealth;
+           // healthText.text = "Health: " + currentPlayerHealth;
         }
     }
 
