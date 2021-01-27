@@ -70,8 +70,8 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
     public void OnPointerDown(PointerEventData eventData)
     {
 
-        //Player.playerState checkState;
-        //checkState = levelMan.player.GetComponent<Player>().GetState();
+        Player.playerState checkState;
+        checkState = levelMan.player.GetComponent<Player>().GetState();
 
         if (levelMan.player.activeInHierarchy || !levelMan.meterFilled)
         {
@@ -79,16 +79,17 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
             {
                 case buttonType.duck:
                     {
-                        //Assign if needed.
-                        levelMan.duck();
+                        if(levelMan.duckButton.interactable != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
+                        {
+                            levelMan.duck(); 
+                        }
                         break;
+
                     }
                 case buttonType.jump:
                     {
-                        if (levelMan.jumpButton.interactable != false)
+                        if (levelMan.jumpButton.interactable != false && checkState != Player.playerState.ducking && checkState != Player.playerState.hanging)
                         {
-                            //Assign if needed.
-                          
                             levelMan.Jump();
                         }
                         break;

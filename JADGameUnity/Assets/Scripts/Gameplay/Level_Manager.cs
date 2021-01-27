@@ -35,6 +35,7 @@ public class Level_Manager : MonoBehaviour
 
     float fullTime;
 
+
     public float spawnTime;
     public float increaseSpawnThreshold;
 
@@ -47,7 +48,7 @@ public class Level_Manager : MonoBehaviour
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
-      //  playerAnimator = player.GetComponent<Animator>();
+        playerAnimator = player.GetComponent<Animator>();
 
         playerRigid2D = player.GetComponent<Rigidbody2D>();
 
@@ -82,13 +83,13 @@ public class Level_Manager : MonoBehaviour
 
         
         checkState();
-        /*
+        
         elapsedTime += Time.deltaTime;
         fullTime += Time.deltaTime;
 
         if (elapsedTime >= spawnTime && player.activeInHierarchy)
         {
-            //spawnObstacles();
+            spawnObstacles();
             elapsedTime = 0f;
             if (fullTime >= increaseSpawnThreshold && spawnTime >= 1)
             {
@@ -98,7 +99,7 @@ public class Level_Manager : MonoBehaviour
                 Debug.Log("GETTING FASTER!");
                 increaseSpawnThreshold += 1;
             }
-        */  
+        }  
     }
 
     //Jump.
@@ -112,7 +113,7 @@ public class Level_Manager : MonoBehaviour
         //  StartCoroutine(jumpUp(currentPos));
         jumpButton.interactable = false;
         thePlayer.setState(Player.playerState.jumping);
-        //  duckButton.interactable = false;
+        duckButton.interactable = false;
 
 
     }
@@ -121,8 +122,8 @@ public class Level_Manager : MonoBehaviour
     public void Hang()
     {
         playerRigid2D.gravityScale = 0f;
-       // jumpButton.interactable = false;
-       // duckButton.interactable = false;
+        jumpButton.interactable = false;
+        duckButton.interactable = false;
     }
 
    
@@ -133,6 +134,7 @@ public class Level_Manager : MonoBehaviour
 
         playerAnimator.SetBool("IsCrouching", true);
         duckButton.interactable = false;
+        jumpButton.interactable = false;
         // StartCoroutine(getUp());
     }
 
@@ -249,6 +251,7 @@ public class Level_Manager : MonoBehaviour
                         if (player.transform.position.y <= 0.1)
                         {
                             jumpButton.interactable = true;
+                            duckButton.interactable = true;
                         }
                         break;
                     }
@@ -314,7 +317,7 @@ public class Level_Manager : MonoBehaviour
         {
             thePlayer.setState(Player.playerState.dead);
             //  player.SetActive(false);
-            healthText.text = "Health: 0";
+           // healthText.text = "Health: 0";
             //Gameover but allow ad to be played for revive.
         }
     }
