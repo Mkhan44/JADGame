@@ -1,8 +1,10 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-
 
 //Use to house the variables related to the player.
 public class Player : MonoBehaviour
@@ -33,10 +35,18 @@ public class Player : MonoBehaviour
 
     [Tooltip("The gravity for the player. This determines how fast the player will fall after jumping.")]
     [SerializeField]
-    private float gravityScale;
+    float gravityScale;
     [Tooltip("The velocity that will be applied when the player jumps. Higher # = higher jump height.")]
     [SerializeField]
-    private float jumpHeight;
+    float jumpHeight;
+    [Tooltip("Amount that the heat meter will fill. Will be changed via items and external factors.")]
+    [SerializeField]
+    float heatMeterFillVal;
+    [Tooltip("Amount that the ice meter will fill. Will be changed via items and external factors.")]
+    [SerializeField]
+    float iceMeterFillVal;
+
+
 
 
 
@@ -99,6 +109,15 @@ public class Player : MonoBehaviour
         return jumpHeight;
     }
 
+    public float getHeatMeterFill()
+    {
+        return heatMeterFillVal;
+    }
+
+    public float getIceMeterFill()
+    {
+        return iceMeterFillVal;
+    }
 
     private void OnTriggerEnter2D(Collider2D other)
     {

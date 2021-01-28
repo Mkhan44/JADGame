@@ -1,3 +1,7 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,8 +20,10 @@ public class Level_Manager : MonoBehaviour
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
 
+    [Tooltip("The gravity for the player. Obtained via Player script.")]
     [SerializeField]
     float gravityScale;
+    [Tooltip("The velocity that will be applied when the player jumps. Obtained via Player script.")]
     [SerializeField]
     float jumpHeight;
 
@@ -57,8 +63,6 @@ public class Level_Manager : MonoBehaviour
 
     private void Start()
     {
-
-
         // currentPlayerHealth = thePlayer.getCurrentHealth();
 
         if (currentPlayerHealth == 0)
@@ -73,7 +77,7 @@ public class Level_Manager : MonoBehaviour
         playerRigid2D.gravityScale = gravityScale;
         jumpHeight = thePlayer.getJumpHeight();
 
-        
+        setMeterRates();
 
     }
 
@@ -151,7 +155,7 @@ public class Level_Manager : MonoBehaviour
     {
         if (player.activeInHierarchy)
         {
-            //checkMeter();
+            checkMeter();
             switch (thePlayer.GetState())
             {
                 case Player.playerState.ducking:
@@ -163,8 +167,8 @@ public class Level_Manager : MonoBehaviour
                         {
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
-                         //   StartCoroutine(iceMeter.fillConstant());
-                         //   StartCoroutine(heatMeter.decreaseConstant());
+                            StartCoroutine(iceMeter.fillConstant());
+                            StartCoroutine(heatMeter.decreaseConstant());
                         }
                         else
                         {
@@ -195,8 +199,8 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        // StartCoroutine(heatMeter.fillConstant());
-                        // StartCoroutine(iceMeter.decreaseConstant());
+                           StartCoroutine(heatMeter.fillConstant());
+                           StartCoroutine(iceMeter.decreaseConstant());
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
                             Hang();
@@ -221,7 +225,12 @@ public class Level_Manager : MonoBehaviour
                 case Player.playerState.burning:
                     {
                         Debug.Log("Player is burning!");
-                        StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                        //Only call this once.
+                        if(heatMeter.getMeterVal() == 100f)
+                        {
+                            StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                        }
+                        //Call the burningJump function.
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (heatMeter.getMeterVal() <= 0)
@@ -235,7 +244,11 @@ public class Level_Manager : MonoBehaviour
                     {
 
                         Debug.Log("Player is frozen!");
-                        StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                        //Only call this once.
+                        if (iceMeter.getMeterVal() == 100f)
+                        {
+                            StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                        }
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (heatMeter.getMeterVal() <= 0)
@@ -273,7 +286,7 @@ public class Level_Manager : MonoBehaviour
         //if(thePlayer.GetState() != Player.playerState.burning || thePlayer.GetState() != Player.playerState.frozen)
         if (!meterFilled)
         {
-            if (heatMeter.getMeterVal() >= 1f)
+            if (heatMeter.getMeterVal() >= 100f)
             {
                 thePlayer.setState(Player.playerState.burning);
                 meterFilled = true;
@@ -281,7 +294,7 @@ public class Level_Manager : MonoBehaviour
                 //Call a function that starts decreasing the meter gradually.
                 //Make button to spam for getting out of heat mode available.
             }
-            if (iceMeter.getMeterVal() >= 1f)
+            if (iceMeter.getMeterVal() >= 100f)
             {
                 thePlayer.setState(Player.playerState.frozen);
                 meterFilled = true;
@@ -296,7 +309,13 @@ public class Level_Manager : MonoBehaviour
     //Stuff happening in UPDATE//
 
 
-    //Player gameplay related functions//
+    /*Player gameplay related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
 
     //We need a damage value, type of element, and then we need to gather all currently spawned 'obstacles' and get rid of them.
     //Also need to put a slight delay, have player begin blinking as well.
@@ -315,14 +334,21 @@ public class Level_Manager : MonoBehaviour
         currentPlayerHealth -= 1;
         if (currentPlayerHealth <= 0)
         {
-            thePlayer.setState(Player.playerState.dead);
+           // thePlayer.setState(Player.playerState.dead);
             //  player.SetActive(false);
            // healthText.text = "Health: 0";
             //Gameover but allow ad to be played for revive.
         }
     }
 
-    //If jumping/holding up, meter rises at a fixed rate while ice meter drops.
+    //We'll need this to send values over to the different meters based on what the Player's current fill rate is.
+    public void setMeterRates()
+    {
+        iceMeter.setIce(thePlayer.getIceMeterFill());
+        heatMeter.setHeat(thePlayer.getHeatMeterFill());
+    }
+
+    //If jumping/holding up, heat meter rises at a fixed rate while ice meter drops.
     public void temperatureMetersManager(Obstacle_Behaviour.ElementType element)
     {
         if (!meterFilled)
@@ -343,13 +369,27 @@ public class Level_Manager : MonoBehaviour
     }
 
 
-    //Player gameplay related functions//
+    /*Player gameplay related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
 
 
-    //Obstacle related functions//
+    /*Obstacle  related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
 
     //Spawn a random item from the list. We'll probably have sub-functions that check what to spawn based on difficulty/how long player has survived.
     //Need to ensure that even if items are spawning fast, that they are still far apart enough that the player can jump and duck to avoid them with good timing.
+    
+    //One thing that we will need to do with this is have seperate lists to pull from depending on the time period we're currently in.
     void spawnObstacles()
     {
         int randNum;
@@ -367,5 +407,12 @@ public class Level_Manager : MonoBehaviour
 
     }
 
-    //Obstacle related functions//
+
+    /*Obstacle  related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
 }
