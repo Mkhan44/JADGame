@@ -10,15 +10,19 @@ using TMPro;
 using Random = UnityEngine.Random;
 public class Level_Manager : MonoBehaviour
 {
+    [Header("Player related")]
+
     public GameObject player;
     public Button jumpButton;
     public Button duckButton;
-
     List<GameObject> powerUps;
     Player thePlayer;
     Animator playerAnimator;
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
+    bool onGround;
+    int currentPlayerHealth;
+    public TextMeshProUGUI healthText;
 
     [Tooltip("The gravity for the player. Obtained via Player script.")]
     [SerializeField]
@@ -27,11 +31,13 @@ public class Level_Manager : MonoBehaviour
     [SerializeField]
     float jumpHeight;
 
-    bool jumpComplete;
+    [Header("Burning values")]
+    [Tooltip("Jump height to be used when player is burning.")]
+    public float burningJumpHeight;
+    [Tooltip("Gravity to be used when player is burning.")]
+    public float burningGravity;
 
-    int currentPlayerHealth;
-    public TextMeshProUGUI healthText;
-
+    [Header("Enemies/Spawns")]
     //Obstacles coming towards the player.
     public List<GameObject> obstacles;
 
@@ -40,11 +46,10 @@ public class Level_Manager : MonoBehaviour
     float elapsedTime;
 
     float fullTime;
-
-
     public float spawnTime;
     public float increaseSpawnThreshold;
 
+    [Header("Meters")]
 
     //Meters
     public Temperature_Manager heatMeter;
@@ -153,9 +158,9 @@ public class Level_Manager : MonoBehaviour
     public void burningJump()
     {
         //We may want to randomize the jump height/gravity to make it seem crazier.
-        playerRigid2D.velocity = Vector2.up * jumpHeight;
+        playerRigid2D.velocity = Vector2.up * burningJumpHeight;
 
-        playerRigid2D.gravityScale = gravityScale;
+        //playerRigid2D.gravityScale = gravityScale;
     }
 
     //Wait period between jumps.
@@ -164,7 +169,7 @@ public class Level_Manager : MonoBehaviour
         while (heatMeter.getMeterVal() > 0)
         {
             yield return new WaitForSeconds(0.1f);
-            if(player.transform.position.y <= 0.1)
+            if(onGround)
             {
                 burningJump();
             }
@@ -212,7 +217,7 @@ public class Level_Manager : MonoBehaviour
                         //Not holding so don't hang.
                         else
                         {
-                            if(player.transform.position.y <= 0.1)
+                            if(onGround)
                             {
                                 thePlayer.setState(Player.playerState.idle);
                                 jumpButton.interactable = true;
@@ -222,8 +227,8 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                           StartCoroutine(heatMeter.fillConstant());
-                           StartCoroutine(iceMeter.decreaseConstant());
+                        StartCoroutine(heatMeter.fillConstant());
+                        StartCoroutine(iceMeter.decreaseConstant());
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
                             Hang();
@@ -251,6 +256,7 @@ public class Level_Manager : MonoBehaviour
                         //Only call this once.
                         if(heatMeter.getMeterVal() == 100f)
                         {
+                            playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
                             StartCoroutine(burningJumpWait());
                         }
@@ -259,6 +265,7 @@ public class Level_Manager : MonoBehaviour
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (heatMeter.getMeterVal() <= 0)
                         {
+                            playerRigid2D.gravityScale = gravityScale;
                             thePlayer.setState(Player.playerState.idle);
                             meterFilled = false;
                         }
@@ -285,7 +292,7 @@ public class Level_Manager : MonoBehaviour
                 default:
                     {
                         thePlayer.setState(Player.playerState.idle);
-                        if (player.transform.position.y <= 0.1)
+                        if (onGround)
                         {
                             jumpButton.interactable = true;
                             duckButton.interactable = true;
@@ -330,6 +337,12 @@ public class Level_Manager : MonoBehaviour
 
     }
 
+    //Called from player script to check if player is grounded.
+    public void checkGrounded(bool yesOrNah)
+    {
+        onGround = yesOrNah;
+    }
+
     //Stuff happening in UPDATE//
 
 
@@ -358,7 +371,17 @@ public class Level_Manager : MonoBehaviour
         currentPlayerHealth -= 1;
         if (currentPlayerHealth <= 0)
         {
-           // thePlayer.setState(Player.playerState.dead);
+            meterFilled = false;
+            //In this if/elseif , make sure that when we add particle effects that you disable those. Also, get rid of the unfreeze/unheat buttons.
+            if(thePlayer.GetState() == Player.playerState.burning)
+            {
+                heatMeter.setMeterValExternally(0.0f);
+            }
+            else if(thePlayer.GetState() == Player.playerState.frozen)
+            {
+                iceMeter.setMeterValExternally(0.0f);
+            }
+            thePlayer.setState(Player.playerState.dead);
             //  player.SetActive(false);
            // healthText.text = "Health: 0";
             //Gameover but allow ad to be played for revive.

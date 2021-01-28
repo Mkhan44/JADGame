@@ -374,7 +374,7 @@ GameObject:
   - component: {fileID: 349627938}
   m_Layer: 0
   m_Name: Bottom_Plat_test
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1266,7 +1266,7 @@ MonoBehaviour:
   levMan: {fileID: 1302531493}
   gravityScale: 1.2
   jumpHeight: 4
-  heatMeterFillVal: 0.2
+  heatMeterFillVal: 1
   iceMeterFillVal: 0.2
 --- !u!95 &977138405
 Animator:
@@ -1571,9 +1571,11 @@ MonoBehaviour:
   player: {fileID: 977138399}
   jumpButton: {fileID: 1673177705}
   duckButton: {fileID: 673098687}
+  healthText: {fileID: 0}
   gravityScale: 0
   jumpHeight: 0
-  healthText: {fileID: 0}
+  burningJumpHeight: 7
+  burningGravity: 3.5
   obstacles:
   - {fileID: 6716103093585239697, guid: 8aae1455e8bd9fe4d8f58c24838cd0a9, type: 3}
   spawnTime: 5
@@ -1683,6 +1685,7 @@ GameObject:
   - component: {fileID: 1518683965}
   - component: {fileID: 1518683964}
   - component: {fileID: 1518683963}
+  - component: {fileID: 1518683968}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -1788,6 +1791,20 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!114 &1518683968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518683962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac1af383c63b6b54385f34898f6a6e95, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resoX: 0
+  resoY: 0
 --- !u!1 &1529179485
 GameObject:
   m_ObjectHideFlags: 0

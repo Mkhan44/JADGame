@@ -46,6 +46,8 @@ public class Player : MonoBehaviour
     [SerializeField]
     float iceMeterFillVal;
 
+    bool onGround;
+
 
 
 
@@ -119,6 +121,12 @@ public class Player : MonoBehaviour
         return iceMeterFillVal;
     }
 
+        /*
+      **********************************************************************
+      *Collisions
+      **********************************************************************
+      */
+
     private void OnTriggerEnter2D(Collider2D other)
     {
         //Debug.Log("We collided with something");
@@ -146,5 +154,39 @@ public class Player : MonoBehaviour
             }
             levMan.Damage();
         }
+
+  
     }
+
+ 
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            onGround = true;
+         //   Debug.Log("Hey, we are touching the ground!");
+            CheckGroundPlayer();
+        }
+    }
+
+    private void OnCollisionExit2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Ground")
+        {
+            onGround = false;
+           // Debug.Log("We are not touching the ground!");
+            CheckGroundPlayer();
+        }
+    }
+
+    private void CheckGroundPlayer()
+    {
+        levMan.checkGrounded(onGround);
+    }
+
+    /*
+    **********************************************************************
+    *Collisions
+    **********************************************************************
+    */
 }
