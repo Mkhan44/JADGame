@@ -149,6 +149,29 @@ public class Level_Manager : MonoBehaviour
         duckButton.interactable = true;
     }
 
+    //Jump function that will be called when player is burning.
+    public void burningJump()
+    {
+        //We may want to randomize the jump height/gravity to make it seem crazier.
+        playerRigid2D.velocity = Vector2.up * jumpHeight;
+
+        playerRigid2D.gravityScale = gravityScale;
+    }
+
+    //Wait period between jumps.
+    public IEnumerator burningJumpWait()
+    {
+        while (heatMeter.getMeterVal() > 0)
+        {
+            yield return new WaitForSeconds(0.1f);
+            if(player.transform.position.y <= 0.1)
+            {
+                burningJump();
+            }
+            yield return null;
+        }
+        
+    }
 
     //Stuff happening in UPDATE//
     void checkState()
@@ -229,6 +252,7 @@ public class Level_Manager : MonoBehaviour
                         if(heatMeter.getMeterVal() == 100f)
                         {
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                            StartCoroutine(burningJumpWait());
                         }
                         //Call the burningJump function.
 
