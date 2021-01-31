@@ -103,6 +103,16 @@ public class Temperature_Manager : MonoBehaviour
       
     }
 
+    public void decreaseMeter(float amount)
+    {
+        currentMeterVal -= amount;
+        if (currentMeterVal <= 0f)
+        {
+            currentMeterVal = 0f;
+        }
+        theMeter.value = currentMeterVal;
+    }
+
     //Depending on the type of bar...We need to call this and fill the corresponding bar with each passing second by a set amount.
     public IEnumerator fillConstant()
     {

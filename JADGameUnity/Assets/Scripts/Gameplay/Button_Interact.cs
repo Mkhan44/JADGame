@@ -98,6 +98,17 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                         }
                         break;
                     }
+                    //Could make decreaseMeter values different based on modifiers if we want.
+                case buttonType.coolDown:
+                    {
+                        levelMan.heatMeter.decreaseMeter(5.0f);
+                        break;
+                    }
+                case buttonType.heatUp:
+                    {
+                        levelMan.iceMeter.decreaseMeter(5.0f);
+                        break;
+                    }
                 default:
                     {
                         break;

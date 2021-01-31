@@ -6,6 +6,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 using TMPro;
 using Random = UnityEngine.Random;
 public class Level_Manager : MonoBehaviour
@@ -15,6 +16,8 @@ public class Level_Manager : MonoBehaviour
     public GameObject player;
     public Button jumpButton;
     public Button duckButton;
+    public Button coolDownButton;
+    public Button heatUpButton;
     List<GameObject> powerUps;
     Player thePlayer;
     Animator playerAnimator;
@@ -42,7 +45,7 @@ public class Level_Manager : MonoBehaviour
     public List<GameObject> obstacles;
 
     //Time
-
+    [Header("Time related variables")]
     float elapsedTime;
 
     float fullTime;
@@ -56,6 +59,10 @@ public class Level_Manager : MonoBehaviour
     public Temperature_Manager iceMeter;
     public bool meterFilled;
 
+    [Header("GameOver/Retry stuff")]
+    //Game over/Retry
+    //Debug for now.
+    public Button retryButton;
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
@@ -74,7 +81,7 @@ public class Level_Manager : MonoBehaviour
         {
             //Default = 3.
             currentPlayerHealth = 3;
-           // healthText.text = "Health: " + currentPlayerHealth;
+            healthText.text = "Health: " + currentPlayerHealth;
         }
         playerInitialPos = thePlayer.getInitialPos();
 
@@ -82,6 +89,10 @@ public class Level_Manager : MonoBehaviour
         playerRigid2D.gravityScale = gravityScale;
         jumpHeight = thePlayer.getJumpHeight();
 
+        heatUpButton.gameObject.SetActive(false);
+        coolDownButton.gameObject.SetActive(false);
+
+        retryButton.gameObject.SetActive(false);
         setMeterRates();
 
     }
@@ -175,6 +186,8 @@ public class Level_Manager : MonoBehaviour
     //Wait period between jumps.
     public IEnumerator burningJumpWait()
     {
+        jumpButton.interactable = false;
+        duckButton.interactable = false;
         while (heatMeter.getMeterVal() > 0)
         {
             yield return new WaitForSeconds(0.1f);
@@ -195,6 +208,7 @@ public class Level_Manager : MonoBehaviour
         if (player.activeInHierarchy)
         {
             checkMeter();
+           // Debug.Log(thePlayer.GetState());
             switch (thePlayer.GetState())
             {
                 case Player.playerState.ducking:
@@ -269,6 +283,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                            coolDownButton.gameObject.SetActive(true);
                             StartCoroutine(burningJumpWait());
                         }
                         //Call the burningJump function.
@@ -290,6 +305,7 @@ public class Level_Manager : MonoBehaviour
                         if (iceMeter.getMeterVal() == 100f)
                         {
                             frozenDuck();
+                            heatUpButton.gameObject.SetActive(true);
                             StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
                         }
 
@@ -302,9 +318,12 @@ public class Level_Manager : MonoBehaviour
                         }
                         break;
                     }
+                    //Idle state.
                 default:
                     {
                         thePlayer.setState(Player.playerState.idle);
+                        heatUpButton.gameObject.SetActive(false);
+                        coolDownButton.gameObject.SetActive(false);
                         if (onGround)
                         {
                             jumpButton.interactable = true;
@@ -318,7 +337,13 @@ public class Level_Manager : MonoBehaviour
 
         if (currentPlayerHealth > 0)
         {
-           // healthText.text = "Health: " + currentPlayerHealth;
+           healthText.text = "Health: " + currentPlayerHealth;
+        }
+
+        //Debug, may need to take this out later.
+        if (currentPlayerHealth <= 0 && thePlayer.GetState() != Player.playerState.dead)
+        {
+            GameOver();
         }
     }
 
@@ -373,7 +398,7 @@ public class Level_Manager : MonoBehaviour
     public void Damage()
     {
         //Create a list of the obstacles that are currently spawned:
-        //Since palyer took damage, destroy all.
+        //Since player took damage, destroy all.
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
@@ -384,19 +409,7 @@ public class Level_Manager : MonoBehaviour
         currentPlayerHealth -= 1;
         if (currentPlayerHealth <= 0)
         {
-            meterFilled = false;
-            //In this if/elseif , make sure that when we add particle effects that you disable those. Also, get rid of the unfreeze/unheat buttons.
-            if(thePlayer.GetState() == Player.playerState.burning)
-            {
-                heatMeter.setMeterValExternally(0.0f);
-            }
-            else if(thePlayer.GetState() == Player.playerState.frozen)
-            {
-                iceMeter.setMeterValExternally(0.0f);
-            }
-            thePlayer.setState(Player.playerState.dead);
-            //  player.SetActive(false);
-           // healthText.text = "Health: 0";
+            GameOver();
             //Gameover but allow ad to be played for revive.
         }
     }
@@ -409,6 +422,7 @@ public class Level_Manager : MonoBehaviour
     }
 
     //If jumping/holding up, heat meter rises at a fixed rate while ice meter drops.
+    //Might wanna add a value for each obstacle based on their 'meter increase value'. That way harder obstacles increase it by more later on etc.
     public void temperatureMetersManager(Obstacle_Behaviour.ElementType element)
     {
         if (!meterFilled)
@@ -417,7 +431,6 @@ public class Level_Manager : MonoBehaviour
             //NEED TO MAKE A FORMULA FOR FILLING!!!!
             if (element == Obstacle_Behaviour.ElementType.fire)
             {
-
                 heatMeter.fillMeter(20.0f);
             }
             else if (element == Obstacle_Behaviour.ElementType.ice)
@@ -426,6 +439,38 @@ public class Level_Manager : MonoBehaviour
             }
         }
 
+    }
+
+    //Player is dead.
+    //Probably will load a panel in with some stats and ask if they want to retry (Watch ad) or go back to menu/share.
+    //Seperate function for 'retry' will be implemented.
+    void GameOver()
+    {
+        meterFilled = false;
+        //In this if/elseif , make sure that when we add particle effects that you disable those. Also, get rid of the unfreeze/unheat buttons.
+        if (thePlayer.GetState() == Player.playerState.burning)
+        {
+            heatMeter.setMeterValExternally(0.0f);
+        }
+        else if (thePlayer.GetState() == Player.playerState.frozen)
+        {
+            iceMeter.setMeterValExternally(0.0f);
+        }
+        heatUpButton.gameObject.SetActive(false);
+        coolDownButton.gameObject.SetActive(false);
+        jumpButton.interactable = false;
+        duckButton.interactable = false;
+        thePlayer.setState(Player.playerState.dead);
+        //  player.SetActive(false);
+        healthText.text = "Health: 0";
+        retryButton.gameObject.SetActive(true);
+    }
+
+    public void restartScene()
+    {
+        //Gonna need to change this later and have the scene number 
+        //FOR DEBUG.
+        SceneManager.LoadScene(0);
     }
 
 
