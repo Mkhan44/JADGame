@@ -1266,7 +1266,7 @@ MonoBehaviour:
   levMan: {fileID: 1302531493}
   gravityScale: 1.2
   jumpHeight: 4
-  heatMeterFillVal: 1
+  heatMeterFillVal: 0.2
   iceMeterFillVal: 0.2
 --- !u!95 &977138405
 Animator:

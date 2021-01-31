@@ -154,6 +154,15 @@ public class Level_Manager : MonoBehaviour
         duckButton.interactable = true;
     }
 
+    public void frozenDuck()
+    {
+        //Add some type of particle effect to simulate frozen player.
+        playerAnimator.SetBool("IsCrouching", true);
+        duckButton.interactable = false;
+        jumpButton.interactable = false;
+       // Debug.Log("We called frozenDuck()!");
+    }
+
     //Jump function that will be called when player is burning.
     public void burningJump()
     {
@@ -177,6 +186,8 @@ public class Level_Manager : MonoBehaviour
         }
         
     }
+
+
 
     //Stuff happening in UPDATE//
     void checkState()
@@ -278,13 +289,15 @@ public class Level_Manager : MonoBehaviour
                         //Only call this once.
                         if (iceMeter.getMeterVal() == 100f)
                         {
+                            frozenDuck();
                             StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
                         }
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
-                        if (heatMeter.getMeterVal() <= 0)
+                        if (iceMeter.getMeterVal() <= 0)
                         {
                             thePlayer.setState(Player.playerState.idle);
+                            playerAnimator.SetBool("IsCrouching", false);
                             meterFilled = false;
                         }
                         break;
