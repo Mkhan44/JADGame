@@ -21,15 +21,23 @@ public class IOS_Safezone : MonoBehaviour
     [SerializeField]
     private bool isStage;
 
+    public Camera mainCam;
+
     private void Start()
     {
+        if (isIphone)
+        {
+            mainCam.orthographicSize = 6f;
+        }
         parentRectTransform = this.GetComponentInParent<RectTransform>();
+       
     }
 
     private void Update()
     {
         if (isIphone)
         {
+            
             if (!isStage)
             {
                 if (lastSafeArea != Screen.safeArea)

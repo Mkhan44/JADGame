@@ -185,7 +185,7 @@ public class Temperature_Manager : MonoBehaviour
         while(filledMeter && currentMeterVal > 0)
         {
             yield return new WaitForSeconds(0.1f);
-            currentMeterVal -= 0.5f;
+            currentMeterVal -= 0.3f;
             if (currentMeterVal <= 0.0f)
             {
                 currentMeterVal = 0.0f;
