@@ -48,10 +48,6 @@ public class Level_Manager : MonoBehaviour
     [Header("Time related variables")]
     float elapsedTime;
 
-    float fullTime;
-    public float spawnTime;
-    public float increaseSpawnThreshold;
-
     [Header("Meters")]
 
     //Meters
@@ -100,26 +96,8 @@ public class Level_Manager : MonoBehaviour
     private void Update()
     {
         //Does stuff according to player's current state.
-
-        
         checkState();
-        
-        elapsedTime += Time.deltaTime;
-        fullTime += Time.deltaTime;
 
-        if (elapsedTime >= spawnTime && player.activeInHierarchy)
-        {
-            spawnObstacles();
-            elapsedTime = 0f;
-            if (fullTime >= increaseSpawnThreshold && spawnTime >= 1)
-            {
-                spawnTime -= 0.1f;
-
-                //Increase threshold by a set amount maybe?
-                Debug.Log("GETTING FASTER!");
-                increaseSpawnThreshold += 1;
-            }
-        }  
     }
 
     //Jump.
@@ -495,6 +473,11 @@ public class Level_Manager : MonoBehaviour
     //Need to ensure that even if items are spawning fast, that they are still far apart enough that the player can jump and duck to avoid them with good timing.
     
     //One thing that we will need to do with this is have seperate lists to pull from depending on the time period we're currently in.
+
+    void timeCount()
+    {
+        elapsedTime += Time.deltaTime;
+    }
     void spawnObstacles()
     {
         int randNum;
