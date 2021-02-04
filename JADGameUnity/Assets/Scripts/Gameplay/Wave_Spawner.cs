@@ -14,6 +14,16 @@ public class Wave_Spawner : MonoBehaviour
         timeSwap
     }
 
+    public enum spawnPointNum
+    {
+        spawnPoint1,
+        spawnPoint2,
+        spawnPoint3,
+        random
+    }
+
+
+    
     [Tooltip("The type of wave. We spawn on chests on bonus, portals on timeWarp")]
     typeOfWave waveType;
 
@@ -29,8 +39,14 @@ public class Wave_Spawner : MonoBehaviour
     public float timeBetweenWaves;
 
     bool waveComplete;
-
+    [Tooltip("Enemies we'll be using. This list will be swapped out based on the time period we're in.")]
     public List<GameObject> enemies;
+    [Tooltip("Spawnpoints for enemies/items. We'll use these to determine where things spawn. Should be Gameobjects with 'spawnPoint' tag.")]
+    public List<GameObject> spawnPoints;
+
+    [SerializeField]
+    [Tooltip("The current spawnpoint of the enemy.")]
+    spawnPointNum currentSpawn;
 
     [Tooltip("How many enemies we want to spawn during this wave.")]
     public int enemyCount;
@@ -92,6 +108,7 @@ public class Wave_Spawner : MonoBehaviour
         //We'll need to make maxNum change depending on the wave number we're on. [i.e. Harder enemies only appear on wave 5+, etc.]
         int maxNum = (enemies.Count);
 
+        Transform enemySpawnPlacement;
 
         waveComplete = false;
 
@@ -102,9 +119,49 @@ public class Wave_Spawner : MonoBehaviour
             {
                 //In this case the range can be 0 , or the exact count because randomize needs to be 1 above whatever you want. EX: List has 2 items, count = 2, but only 2 index...So 2 won't ever be called.
                 randNum = Random.Range(minNum, maxNum);
+                //Get spawnpoint based on enemy's script, spawn them there.
+                currentSpawn = enemies[randNum].GetComponent<Obstacle_Behaviour>().spawnPoint;
+
+                //Add to this switch statement if we add more spawn points. May want to revise this to make it easier for futureproofing.
+                switch(currentSpawn)
+                {
+                    case spawnPointNum.spawnPoint1:
+                        {
+                            //First spawn point.
+                            enemySpawnPlacement = spawnPoints[0].transform;
+                            break;
+                        }
+                    case spawnPointNum.spawnPoint2:
+                        {
+                            //Second spawn point.
+                            enemySpawnPlacement = spawnPoints[1].transform;
+                            break;
+                        }
+                    case spawnPointNum.spawnPoint3:
+                        {
+                            //Third spawn point.
+                            enemySpawnPlacement = spawnPoints[2].transform;
+                            break;
+                        }
+                    case spawnPointNum.random:
+                        {
+                            int randomSpawn;
+                            randomSpawn = Random.Range(0, spawnPoints.Count);
+                            enemySpawnPlacement = spawnPoints[randomSpawn].transform;
+                            break;
+                        }
+                     default:
+                        {
+                            //Just use the first one if we don't have anything assigned for some reason.
+                            enemySpawnPlacement = spawnPoints[0].transform;
+                            break;
+                        }
+                       
+                }
+
 
                 Debug.Log("We picked enemy number: " + randNum.ToString());
-                GameObject enemyClone = Instantiate(enemies[randNum]);
+                GameObject enemyClone = Instantiate(enemies[randNum], enemySpawnPlacement);
 
                 yield return new WaitForSeconds(spawnRate);
             }

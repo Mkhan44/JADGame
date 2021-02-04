@@ -392,6 +392,14 @@ public class Level_Manager : MonoBehaviour
         }
     }
 
+    public void collectCoin()
+    {
+        //Have player collect a coin and add it to a counter that we need to save.
+
+        Debug.Log("Collected a coin!");
+
+    }
+
     //We'll need this to send values over to the different meters based on what the Player's current fill rate is.
     public void setMeterRates()
     {

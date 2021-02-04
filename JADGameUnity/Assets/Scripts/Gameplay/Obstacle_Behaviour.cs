@@ -12,12 +12,17 @@ public class Obstacle_Behaviour : MonoBehaviour
     Vector2 endPos;
     float accum = 0f;
 
+    //We will have spawn points set up in the Wave_Spawner script.
+    [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
+    public Wave_Spawner.spawnPointNum spawnPoint;
     public enum ElementType
     {
         neutral,
         fire,
         ice
     }
+
+    public bool isCoin;
 
     [SerializeField]
     ElementType objectElement;

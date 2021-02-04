@@ -127,15 +127,15 @@ public class Player : MonoBehaviour
       **********************************************************************
       */
 
-    private void OnTriggerEnter2D(Collider2D other)
+    private void OnTriggerEnter2D(Collider2D theTrigger)
     {
         //Debug.Log("We collided with something");
         //If the tag is 'obstacle'  , check if we're invincible, if not then go to hurt mode and call damage from levelmanager.
-        if (other.gameObject.tag == "Obstacle")
+        if (theTrigger.gameObject.tag == "Obstacle")
         {
             // Debug.Log("Obstacle touched player!");
-            Debug.Log("The element of this obstacle is: " + other.gameObject.GetComponent<Obstacle_Behaviour>().getElement());
-            switch (other.gameObject.GetComponent<Obstacle_Behaviour>().getElement())
+            Debug.Log("The element of this obstacle is: " + theTrigger.gameObject.GetComponent<Obstacle_Behaviour>().getElement());
+            switch (theTrigger.gameObject.GetComponent<Obstacle_Behaviour>().getElement())
             {
                 case Obstacle_Behaviour.ElementType.fire:
                     {
@@ -153,6 +153,12 @@ public class Player : MonoBehaviour
                     }
             }
             levMan.Damage();
+        }
+        else if(theTrigger.gameObject.tag == "Coin")
+        {
+            // Debug.Log("Collected the coin!");
+            levMan.collectCoin();
+            Destroy(theTrigger.gameObject);
         }
 
   
