@@ -10,7 +10,9 @@ public class Obstacle_Behaviour : MonoBehaviour
 {
     Vector2 startPos;
     Vector2 endPos;
-    float accum = 0f;
+    //Speed
+    [Tooltip("Speed of the obstacle moving from right to left.")]
+    public float speed = 0f;
 
     //We will have spawn points set up in the Wave_Spawner script.
     [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
@@ -22,10 +24,20 @@ public class Obstacle_Behaviour : MonoBehaviour
         ice
     }
 
+    //What difficulty of wave can this enemy spawn in on?
+    public enum obstacleDiff
+    {
+        easy,
+        medium,
+        hardPause
+    }
+
     public bool isCoin;
 
     [SerializeField]
     ElementType objectElement;
+
+    public obstacleDiff thisObstacleDiff;
 
     private void Awake()
     {
@@ -41,9 +53,9 @@ public class Obstacle_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        accum += 0.05f * Time.deltaTime;
+        speed += 0.05f * Time.deltaTime;
 
-        this.transform.position = Vector2.Lerp(startPos, endPos, accum);
+        this.transform.position = Vector2.Lerp(startPos, endPos, speed);
 
         if(this.transform.position.x == endPos.x)
         {

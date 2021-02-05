@@ -40,10 +40,6 @@ public class Level_Manager : MonoBehaviour
     [Tooltip("Gravity to be used when player is burning.")]
     public float burningGravity;
 
-    [Header("Enemies/Spawns")]
-    //Obstacles coming towards the player.
-    public List<GameObject> obstacles;
-
     //Time
     [Header("Time related variables")]
     float elapsedTime;
@@ -59,6 +55,25 @@ public class Level_Manager : MonoBehaviour
     //Game over/Retry
     //Debug for now.
     public Button retryButton;
+
+    //Time period related.
+    public enum timePeriod
+    {
+        Prehistoric,
+        iceAge,
+        Future,
+        Test
+    }
+    [Header("Time periods")]
+    [Tooltip("Current time period. This will change throughout gameplay.")]
+    [SerializeField]
+    timePeriod TimePeriod;
+
+    [Header("UI MISC related.")]
+    [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
+    public TextMeshProUGUI coinText;
+
+    int coinsCollected;
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
@@ -89,6 +104,9 @@ public class Level_Manager : MonoBehaviour
         coolDownButton.gameObject.SetActive(false);
 
         retryButton.gameObject.SetActive(false);
+
+        coinsCollected = 0;
+        coinText.text = "Coins: " + coinsCollected.ToString();
         setMeterRates();
 
     }
@@ -97,6 +115,7 @@ public class Level_Manager : MonoBehaviour
     {
         //Does stuff according to player's current state.
         checkState();
+        coinText.text = "Coins: " + coinsCollected.ToString();
 
     }
 
@@ -395,7 +414,7 @@ public class Level_Manager : MonoBehaviour
     public void collectCoin()
     {
         //Have player collect a coin and add it to a counter that we need to save.
-
+        coinsCollected += 1;
         Debug.Log("Collected a coin!");
 
     }
@@ -477,30 +496,9 @@ public class Level_Manager : MonoBehaviour
     //***********************************************************************
     */
 
-    //Spawn a random item from the list. We'll probably have sub-functions that check what to spawn based on difficulty/how long player has survived.
-    //Need to ensure that even if items are spawning fast, that they are still far apart enough that the player can jump and duck to avoid them with good timing.
-    
-    //One thing that we will need to do with this is have seperate lists to pull from depending on the time period we're currently in.
-
     void timeCount()
     {
         elapsedTime += Time.deltaTime;
-    }
-    void spawnObstacles()
-    {
-        int randNum;
-
-        int minNum = 0;
-        int maxNum = (obstacles.Count);
-
-        //In this case the range can be 0 , or the exact count because randomize needs to be 1 above whatever you want. EX: List has 2 items, count = 2, but only 2 index...So 2 won't ever be called.
-        randNum = Random.Range(minNum, maxNum);
-
-        Instantiate(obstacles[randNum]);
-
-        //Between 1-3.
-        // rndSeed = Random.Range(1, 4);
-
     }
 
 
