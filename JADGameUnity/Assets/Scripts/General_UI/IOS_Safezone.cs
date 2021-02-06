@@ -23,11 +23,18 @@ public class IOS_Safezone : MonoBehaviour
 
     public Camera mainCam;
 
+    private void Awake()
+    {
+        if(isIphone)
+        {
+            Application.targetFrameRate = 60;
+        }
+    }
     private void Start()
     {
         if (isIphone)
         {
-            mainCam.orthographicSize = 6f;
+           // mainCam.orthographicSize = 6f;
         }
         parentRectTransform = this.GetComponentInParent<RectTransform>();
        

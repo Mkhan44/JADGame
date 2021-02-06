@@ -243,10 +243,10 @@ public class Wave_Spawner : MonoBehaviour
                 //Reset the list.
                 diffOptions.Clear();
 
-                int spawnCoinRnd = Random.Range(0, 500);
 
                 //Test for spawning in coins.
-                if (spawnCoinRnd >= 0)
+                int spawnCoinRnd = Random.Range(0, 500);
+                if (spawnCoinRnd >= 250)
                 {
                     Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
 

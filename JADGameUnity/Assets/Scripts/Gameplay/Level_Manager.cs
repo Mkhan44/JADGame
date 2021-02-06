@@ -399,13 +399,22 @@ public class Level_Manager : MonoBehaviour
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
+        
+
         for (int i = 0; i < obstacles.Length; i++)
         {
             Destroy(obstacles[i]);
         }
+
+       
         currentPlayerHealth -= 1;
         if (currentPlayerHealth <= 0)
         {
+            GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
+            for (int i = 0; i < coins.Length; i++)
+            {
+                Destroy(coins[i]);
+            }
             GameOver();
             //Gameover but allow ad to be played for revive.
         }
