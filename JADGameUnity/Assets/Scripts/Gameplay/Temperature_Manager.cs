@@ -2,7 +2,7 @@
 //All code is written by me (Above name) unless otherwise stated via comments below.
 //Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
 
-//Attach this cscript to any temperature bar.
+//Attach this script to any temperature bar.
 
 
 using System.Collections;
@@ -38,9 +38,12 @@ public class Temperature_Manager : MonoBehaviour
     //If any modifiers need to be applied to the bar fill rate, they will happen here.
     float modifer;
 
+    Level_Manager levMan;
+
     private void Awake()
     {
-        
+        GameObject tempLevMan = GameObject.Find("Level_Manager");
+        levMan = tempLevMan.GetComponent<Level_Manager>();
     }
     // Start is called before the first frame update
     void Start()
@@ -92,7 +95,23 @@ public class Temperature_Manager : MonoBehaviour
     //If we get hit by an obstacle, fill it by x amount (x being whatever obstacle gives)
     public void fillMeter(float amount)
     {
-       
+        /*
+         * Firevest + handwarmer power up check
+         */
+        if(levMan.getCurrentItem() == Item.itemType.FireVest && typeOfMeter == meterType.heatMeter)
+        {
+          
+            amount = 0;
+            
+        }
+        else if(levMan.getCurrentItem() == Item.itemType.HandWarmers && typeOfMeter == meterType.iceMeter)
+        {
+            amount = 0;
+        }
+        /*
+        * Firevest + handwarmer power up check
+        */
+
         currentMeterVal += amount;
         if(currentMeterVal >= maxMeterVal)
         {

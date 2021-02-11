@@ -19,7 +19,7 @@ public class Level_Manager : MonoBehaviour
     public Button coolDownButton;
     public Button heatUpButton;
     List<GameObject> powerUps;
-    Player thePlayer;
+    public Player thePlayer;
     Animator playerAnimator;
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
@@ -72,8 +72,15 @@ public class Level_Manager : MonoBehaviour
     [Header("UI MISC related.")]
     [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
     public TextMeshProUGUI coinText;
-
     int coinsCollected;
+
+    [Header("Item related.")]
+    public List<Item> itemsThisRun;
+
+    Item.itemType currentItem;
+
+    float useDuration;
+    public TextMeshProUGUI useDurationText;
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
@@ -82,6 +89,8 @@ public class Level_Manager : MonoBehaviour
         playerRigid2D = player.GetComponent<Rigidbody2D>();
 
         Input.multiTouchEnabled = false;
+        currentItem = Item.itemType.none;
+
     }
 
     private void Start()
@@ -107,6 +116,8 @@ public class Level_Manager : MonoBehaviour
 
         coinsCollected = 0;
         coinText.text = "Coins: " + coinsCollected.ToString();
+
+        useDurationText.text = "No item in use.";
         setMeterRates();
 
     }
@@ -217,7 +228,11 @@ public class Level_Manager : MonoBehaviour
                         {
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
-                            StartCoroutine(iceMeter.fillConstant());
+
+                            if (currentItem != Item.itemType.HandWarmers)
+                            {
+                                StartCoroutine(iceMeter.fillConstant());
+                            }
                             StartCoroutine(heatMeter.decreaseConstant());
                         }
                         else
@@ -249,7 +264,10 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        StartCoroutine(heatMeter.fillConstant());
+                        if(currentItem != Item.itemType.FireVest)
+                        {
+                            StartCoroutine(heatMeter.fillConstant());
+                        }
                         StartCoroutine(iceMeter.decreaseConstant());
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
@@ -342,6 +360,18 @@ public class Level_Manager : MonoBehaviour
         {
             GameOver();
         }
+
+        //Debug
+        if(useDuration > 0)
+        {
+            thePlayer.isPoweredUp = true;
+        }
+        else
+        {
+            thePlayer.isPoweredUp = false;
+            currentItem = Item.itemType.none;
+        }
+
     }
 
 
@@ -435,7 +465,6 @@ public class Level_Manager : MonoBehaviour
         heatMeter.setHeat(thePlayer.getHeatMeterFill());
     }
 
-    //If jumping/holding up, heat meter rises at a fixed rate while ice meter drops.
     //Might wanna add a value for each obstacle based on their 'meter increase value'. That way harder obstacles increase it by more later on etc.
     public void temperatureMetersManager(Obstacle_Behaviour.ElementType element)
     {
@@ -455,9 +484,49 @@ public class Level_Manager : MonoBehaviour
 
     }
 
+   //Just setting the Item to not be null here so we know the player is using an Item.
+    public void setCurrentItem(Item.itemType tempPowerUp , float duration)
+    {
+        //If the duration == 0 we know that this is a one time use.
+        if(duration == 0 )
+        {
+            //One time use.
+            useDuration = 0;
+            
+        }
+        else
+        {
+            useDuration = duration;
+            StartCoroutine(durationCount());
+        }
+        Debug.Log("The current item being used is: " + tempPowerUp.ToString());
+        currentItem = tempPowerUp;
+        thePlayer.isPoweredUp = true;
+    }
+
+    //For other scripts accessing what power up we currently have.
+    public Item.itemType getCurrentItem()
+    {
+        return currentItem;
+    }
+
+    public IEnumerator durationCount()
+    {
+        while(useDuration > 0)
+        {
+            useDuration -= Time.deltaTime;
+            useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
+            yield return null;
+        }
+        useDuration = 0;
+        useDurationText.text = "No item in use.";
+        Debug.Log("Finished the duration count!");
+    }
+
     //Player is dead.
     //Probably will load a panel in with some stats and ask if they want to retry (Watch ad) or go back to menu/share.
     //Seperate function for 'retry' will be implemented.
+
     void GameOver()
     {
         meterFilled = false;

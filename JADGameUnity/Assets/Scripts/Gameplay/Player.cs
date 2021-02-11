@@ -26,12 +26,9 @@ public class Player : MonoBehaviour
         dead
     }
 
-    public enum powerUp
-    {
-        //will be filled in later...
-    }
-
     playerState currentState;
+
+    public bool isPoweredUp;
 
     [Tooltip("The gravity for the player. This determines how fast the player will fall after jumping.")]
     [SerializeField]
@@ -48,12 +45,9 @@ public class Player : MonoBehaviour
 
     bool onGround;
 
-
-
-
-
     private void Awake()
     {
+        isPoweredUp = false;
         currentState = playerState.idle;
         initialPos = gameObject.transform.position;
 
