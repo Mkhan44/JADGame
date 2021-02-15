@@ -37,17 +37,21 @@ public class Wave_Spawner : MonoBehaviour
         hardPause
     }
 
+    Level_Manager levMan;
+
     [Tooltip("The difficulty of the wave. Should be changeable on the fly.")]
     waveDiff theWaveDiff;
     
     [Tooltip("The type of wave. We spawn on chests on bonus, portals on timeWarp")]
     typeOfWave waveType;
 
-    [Tooltip("What wave we're on.")]
+    [Tooltip("Display for what wave we're on.")]
     public TextMeshProUGUI waveText;
 
     [SerializeField]
     int waveCount;
+    int wavesSinceBonus;
+    int wavesSinceTimeSwap;
 
     [Tooltip("Rate that enemies will spawn in at. This should decrease with each wave passed.")]
     public float spawnRate;
@@ -70,10 +74,16 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefab of a coin that we will be spawning in.")]
     public GameObject coinPrefab;
 
+    [Tooltip("Prefab treasure chest that will spawn in.")]
+    public GameObject chestPrefab;
+
     public Player thePlayer;
     Player.playerState currentPlayerState;
 
     Coroutine spawnRoutine;
+    Coroutine chestRoutine;
+
+    bool bonusTest;
 
     bool stopCo;
     // Start is called before the first frame update
@@ -83,8 +93,12 @@ public class Wave_Spawner : MonoBehaviour
         waveType = typeOfWave.normal;
         waveComplete = true;
         waveCount = 1;
+        wavesSinceBonus = 0;
+        wavesSinceTimeSwap = 0;
         stopCo = false;
         theWaveDiff = waveDiff.easy;
+        levMan = this.GetComponent<Level_Manager>();
+        bonusTest = false;
     }
 
     // Update is called once per frame
@@ -92,7 +106,18 @@ public class Wave_Spawner : MonoBehaviour
     {
         currentPlayerState = thePlayer.GetState();
 
-        waveText.text = "Wave: " + waveCount.ToString();
+        if(waveType == typeOfWave.normal)
+        {
+            waveText.text = "Wave: " + waveCount.ToString();
+        }
+        else if(waveType == typeOfWave.bonus)
+        {
+            waveText.text = "Wave: Bonus!";
+        }
+        else if(waveType == typeOfWave.timeSwap)
+        {
+            waveText.text = "Wave: Timeswap!";
+        }
 
 
         //Messy...Might want to reorganize.
@@ -139,6 +164,17 @@ public class Wave_Spawner : MonoBehaviour
         //Regular spawn.
         if (theWaveType == typeOfWave.normal)
         {
+            if (waveCount == 3)
+            {
+                theWaveDiff = waveDiff.medium;
+                Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+            }
+            if (waveCount == 5)
+            {
+                theWaveDiff = waveDiff.hardPause;
+                Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+            }
+
             for (int i = 0; i < enemyCount; i++)
             {
                 //In this case the range can be 0 , or the exact count because randomize needs to be 1 above whatever you want. EX: List has 2 items, count = 2, but only 2 index...So 2 won't ever be called.
@@ -261,25 +297,36 @@ public class Wave_Spawner : MonoBehaviour
 
                 yield return new WaitForSeconds(spawnRate);
             }
+
+
+            //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
+            spawnRate -= 0.5f;
+            enemyCount += 2;
+            waveCount += 1;
         }
         else if(theWaveType == typeOfWave.bonus)
         {
             //Insert treasure chest spawn here. Will need some way to calculate the treasure box items as well.
+
+            //Spawn in chests, give player chance to jump or duck, play animation, give item.
+            //Chests depsawn, wave over.
+
+            if (!bonusTest)
+            {
+                bonusTest = true;
+                chestRoutine = StartCoroutine(chestSpawn());
+            }
+        
         }
         else if(theWaveType == typeOfWave.timeSwap)
         {
             //Insert timeportal spawn here. Will need another list of diff time portals.
             
         }
-       
 
-
-        //Need some logic on increasing this stuff.
-        spawnRate -= 0.5f;
-        enemyCount += 2;
-        waveCount += 1;
 
         //Test.
+        /*
         if(waveCount == 3)
         {
             theWaveDiff = waveDiff.medium;
@@ -290,11 +337,48 @@ public class Wave_Spawner : MonoBehaviour
             theWaveDiff = waveDiff.hardPause;
             Debug.Log("The difficulty of the wave is: " + theWaveDiff);
         }
-        yield return new WaitForSeconds(timeBetweenWaves);
+        */
+
+        //Bonus test.
+        if(!bonusTest)
+        {
+            if (waveCount == 1)
+            {
+                wavesSinceBonus++;
+            }
+            wavesSinceBonus++;
+            Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
+            if (wavesSinceBonus == 1)
+            {
+                /*
+                int doWeBonus;
+                doWeBonus = Random.Range(1, 5);
+                if(doWeBonus >= 3)
+                {
+                    Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
+                    wavesSinceBonus = 0;
+                    waveType = typeOfWave.bonus;
+                }
+                */
+                waveType = typeOfWave.bonus;
+
+                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
+                //wavesSinceBonus = 0;
+            }
+        }
+       
+
+     
+        if(waveType == typeOfWave.normal)
+        {
+            yield return new WaitForSeconds(timeBetweenWaves);
+        }
+  
+
         waveComplete = true;
     }
 
-    //Test function for spawning coins.
+    //Test coRoutine for spawning coins.
     public IEnumerator waitSpawn(int rndSpawn)
     {
         yield return new WaitForSeconds(0.5f);
@@ -315,6 +399,55 @@ public class Wave_Spawner : MonoBehaviour
         
     }
 
+    //For bonus wave.
+    public IEnumerator chestSpawn()
+    {
+        yield return new WaitForSeconds(0.2f);
+
+        GameObject chest1 = Instantiate(chestPrefab, spawnPoints[1].transform);
+        GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
+        //Flip chest that's spawning on the top.
+        chest2.GetComponent<SpriteRenderer>().flipY = true;
+        int theSelection = levMan.getChestSelect();
+
+        StartCoroutine(levMan.pickAChest());
+        levMan.duckButton.gameObject.SetActive(false);
+        levMan.jumpButton.gameObject.SetActive(false);
+
+        while (theSelection == 0)
+        {
+            Debug.Log("Waiting for response from the player...");
+            yield return new WaitForSeconds(1.5f);
+            levMan.duckButton.gameObject.SetActive(true);
+            levMan.jumpButton.gameObject.SetActive(true);
+            theSelection = levMan.getChestSelect();
+            yield return null;
+        }
+
+        if(theSelection == 1)
+        {
+            chest1.GetComponent<Animator>().SetBool("Chest_Open", true);
+        }
+        else
+        {
+            chest2.GetComponent<Animator>().SetBool("Chest_Open", true);
+        }
+
+        yield return new WaitForSeconds(2.5f);
+
+        Destroy(chest1);
+        Destroy(chest2);
+
+        //We finished the bonus wave.
+        levMan.duckButton.gameObject.SetActive(true);
+        levMan.jumpButton.gameObject.SetActive(true);
+        waveType = typeOfWave.normal;
+        bonusTest = false;
+        levMan.setChestSelect(0);
+
+
+    }
+
     //TBA.
     //Call this function from LevelManager.
     //When swapping time periods, new lists of enemies will need to be updated.
@@ -327,4 +460,14 @@ public class Wave_Spawner : MonoBehaviour
     {
 
     }
+
+    //Getters/setters
+
+    public typeOfWave getWaveType()
+    {
+        return waveType;
+    }
+
+
+    //Getters/Setters
 }

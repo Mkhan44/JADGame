@@ -29,15 +29,26 @@ public class Obstacle_Behaviour : MonoBehaviour
     {
         easy,
         medium,
-        hardPause
+        hardPause,
+        bonus
     }
 
-    public bool isCoin;
+    //Is this an enemy or something we can collect?
+    public enum typeOfObstacle
+    {
+        obstacle,
+        coin,
+        chest,
+        timePortal
+    }
 
     [SerializeField]
     ElementType objectElement;
 
     public obstacleDiff thisObstacleDiff;
+
+    [SerializeField]
+    typeOfObstacle thisType;
 
     private void Awake()
     {
@@ -53,15 +64,28 @@ public class Obstacle_Behaviour : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speed += 0.05f * Time.deltaTime;
-
-        this.transform.position = Vector2.Lerp(startPos, endPos, speed);
-
-        if(this.transform.position.x == endPos.x)
+        //If it's anything that's not a chest.
+        if(thisType != typeOfObstacle.chest)
         {
-            Destroy(gameObject);
-            return;
+            speed += 0.05f * Time.deltaTime;
+
+            this.transform.position = Vector2.Lerp(startPos, endPos, speed);
+
+            if (this.transform.position.x == endPos.x)
+            {
+                Destroy(gameObject);
+                return;
+            }
         }
+        //If it's a chest.
+        else
+        {
+            endPos = new Vector2((startPos.x - 5), (startPos.y));
+
+            speed += 1.0f * Time.deltaTime;
+            this.transform.position = Vector2.Lerp(startPos, endPos, speed);
+        }
+        
     }
 
     //Get the element from another script if needed.

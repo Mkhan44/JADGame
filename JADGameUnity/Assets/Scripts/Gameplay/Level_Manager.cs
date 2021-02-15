@@ -81,6 +81,10 @@ public class Level_Manager : MonoBehaviour
 
     float useDuration;
     public TextMeshProUGUI useDurationText;
+
+    [Header("Treasure chest related")]
+    [Tooltip("This variable is for checking whether or not player has selected a chest. 1 = top, 2 = bottom")]
+    public int chestSelect;
     private void Awake()
     {
         thePlayer = player.GetComponent<Player>();
@@ -90,6 +94,7 @@ public class Level_Manager : MonoBehaviour
 
         Input.multiTouchEnabled = false;
         currentItem = Item.itemType.none;
+        chestSelect = 0;
 
     }
 
@@ -229,11 +234,15 @@ public class Level_Manager : MonoBehaviour
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
 
-                            if (currentItem != Item.itemType.HandWarmers)
+                            if (currentItem != Item.itemType.HandWarmers && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
                             {
                                 StartCoroutine(iceMeter.fillConstant());
                             }
-                            StartCoroutine(heatMeter.decreaseConstant());
+                            if(this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                            {
+                                StartCoroutine(heatMeter.decreaseConstant());
+                            }
+                            
                         }
                         else
                         {
@@ -264,11 +273,14 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        if(currentItem != Item.itemType.FireVest)
+                        if(currentItem != Item.itemType.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
                         {
                             StartCoroutine(heatMeter.fillConstant());
                         }
-                        StartCoroutine(iceMeter.decreaseConstant());
+                        if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                        {
+                            StartCoroutine(iceMeter.decreaseConstant());
+                        }
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
                             Hang();
@@ -454,7 +466,7 @@ public class Level_Manager : MonoBehaviour
     {
         //Have player collect a coin and add it to a counter that we need to save.
         coinsCollected += 1;
-        Debug.Log("Collected a coin!");
+       // Debug.Log("Collected a coin!");
 
     }
 
@@ -587,4 +599,56 @@ public class Level_Manager : MonoBehaviour
     //***********************************************************************
     //***********************************************************************
     */
+
+    /*Treasure  related functions
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   */
+
+    public int getChestSelect()
+    {
+        return chestSelect;
+    }
+
+    public void setChestSelect(int selectPass)
+    {
+        chestSelect = selectPass;
+    }
+    public IEnumerator pickAChest()
+    {
+       // duckButton.gameObject.SetActive(false);
+       // jumpButton.gameObject.SetActive(false);
+
+        while (chestSelect == 0)
+        {
+            if (thePlayer.GetState() == Player.playerState.hanging)
+            {
+                chestSelect = 2;
+                Debug.Log("You selected chest 2!");
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
+            }
+            else if (thePlayer.GetState() == Player.playerState.ducking)
+            {
+                chestSelect = 1;
+                Debug.Log("You selected chest 1!");
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
+            }
+            yield return null;
+        }
+       
+    }
+
+
+    /*Treasure  related functions
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   */
 }
