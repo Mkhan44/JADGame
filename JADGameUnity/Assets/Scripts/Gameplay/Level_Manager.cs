@@ -462,10 +462,14 @@ public class Level_Manager : MonoBehaviour
         }
     }
 
-    public void collectCoin()
+    public void collectCoin(int amount)
     {
         //Have player collect a coin and add it to a counter that we need to save.
-        coinsCollected += 1;
+        coinsCollected += amount;
+        if(amount > 1)
+        {
+            Debug.Log("You collected: " + amount + " coins!");
+        }
        // Debug.Log("Collected a coin!");
 
     }
@@ -627,14 +631,14 @@ public class Level_Manager : MonoBehaviour
             if (thePlayer.GetState() == Player.playerState.hanging)
             {
                 chestSelect = 2;
-                Debug.Log("You selected chest 2!");
+               // Debug.Log("You selected chest 2!");
                 duckButton.gameObject.SetActive(false);
                 jumpButton.gameObject.SetActive(false);
             }
             else if (thePlayer.GetState() == Player.playerState.ducking)
             {
                 chestSelect = 1;
-                Debug.Log("You selected chest 1!");
+              //  Debug.Log("You selected chest 1!");
                 duckButton.gameObject.SetActive(false);
                 jumpButton.gameObject.SetActive(false);
             }

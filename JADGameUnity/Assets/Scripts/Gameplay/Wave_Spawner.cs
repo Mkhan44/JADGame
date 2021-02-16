@@ -402,7 +402,7 @@ public class Wave_Spawner : MonoBehaviour
     //For bonus wave.
     public IEnumerator chestSpawn()
     {
-        yield return new WaitForSeconds(0.2f);
+       // yield return new WaitForSeconds(0.2f);
 
         GameObject chest1 = Instantiate(chestPrefab, spawnPoints[1].transform);
         GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
@@ -414,12 +414,16 @@ public class Wave_Spawner : MonoBehaviour
         levMan.duckButton.gameObject.SetActive(false);
         levMan.jumpButton.gameObject.SetActive(false);
 
+        yield return new WaitForSeconds(1.5f);
+
+        //Play animation for "Jump or Duck" option, then make the buttons available.
+
+        levMan.duckButton.gameObject.SetActive(true);
+        levMan.jumpButton.gameObject.SetActive(true);
+        Debug.Log("Waiting for response from the player...");
+
         while (theSelection == 0)
         {
-            Debug.Log("Waiting for response from the player...");
-            yield return new WaitForSeconds(1.5f);
-            levMan.duckButton.gameObject.SetActive(true);
-            levMan.jumpButton.gameObject.SetActive(true);
             theSelection = levMan.getChestSelect();
             yield return null;
         }
@@ -433,8 +437,26 @@ public class Wave_Spawner : MonoBehaviour
             chest2.GetComponent<Animator>().SetBool("Chest_Open", true);
         }
 
-        yield return new WaitForSeconds(2.5f);
+        //Basic randomization for prizes. This will have to be changed and have different stipulations based on waves passed, and other stuff etc.
+        int randPrizeNum = 0;
+        randPrizeNum = Random.Range(1, 3);
+        switch(randPrizeNum)
+        {
+            case 1:
+                {
+                    levMan.collectCoin(50);
+                    break;
+                }
+            case 2:
+                {
+                    levMan.collectCoin(20);
+                    break;
+                }
+        }
 
+        yield return new WaitForSeconds(1.0f);
+
+        //Use obejct pooling instead.
         Destroy(chest1);
         Destroy(chest2);
 

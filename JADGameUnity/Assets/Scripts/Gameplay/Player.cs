@@ -151,7 +151,7 @@ public class Player : MonoBehaviour
         else if(theTrigger.gameObject.tag == "Coin")
         {
             // Debug.Log("Collected the coin!");
-            levMan.collectCoin();
+            levMan.collectCoin(1);
             Destroy(theTrigger.gameObject);
         }
 
