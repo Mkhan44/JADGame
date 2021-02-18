@@ -19,7 +19,6 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
 
     public buttonType typeOfButton;
 
-    public Level_Manager levelMan;
     // Start is called before the first frame update
     void Start()
     {
@@ -43,27 +42,27 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
         //Player.playerState checkState;
         //checkState = levelMan.player.GetComponent<Player>().GetState();
 
-        if (levelMan.player.activeInHierarchy || !levelMan.meterFilled)
+        if (Level_Manager.Instance.player.activeInHierarchy || Level_Manager.Instance.meterFilled)
         {
-            if (Input.GetKey("up") && (levelMan.player.GetComponent<Player>().GetState() != Player.playerState.ducking))
+            if (Input.GetKey("up") && (Level_Manager.Instance.player.GetComponent<Player>().GetState() != Player.playerState.ducking))
             {
                 if (typeOfButton == buttonType.jump)
                 {
-                    if (levelMan.jumpButton.interactable != false)
+                    if (Level_Manager.Instance.jumpButton.interactable != false)
                     {
                         //Assign if needed.
-                        levelMan.Jump();
+                        Level_Manager.Instance.Jump();
                     }
                 }
                 //    Debug.Log("up arrow key is held down");
             }
 
-            if (Input.GetKey("down") && (levelMan.player.GetComponent<Player>().GetState() != Player.playerState.jumping))
+            if (Input.GetKey("down") && (Level_Manager.Instance.player.GetComponent<Player>().GetState() != Player.playerState.jumping))
             {
                 if (typeOfButton == buttonType.duck)
                 {
                     //Assign if needed.
-                    levelMan.duck();
+                    Level_Manager.Instance.duck();
                 }
                 //   Debug.Log("down arrow key is held down");
             }
@@ -75,38 +74,38 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
     {
 
         Player.playerState checkState;
-        checkState = levelMan.player.GetComponent<Player>().GetState();
+        checkState = Level_Manager.Instance.player.GetComponent<Player>().GetState();
 
-        if (levelMan.player.activeInHierarchy || !levelMan.meterFilled)
+        if (Level_Manager.Instance.player.activeInHierarchy || !Level_Manager.Instance.meterFilled)
         {
             switch (typeOfButton)
             {
                 case buttonType.duck:
                     {
-                        if(levelMan.duckButton.interactable != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
+                        if(Level_Manager.Instance.duckButton.interactable != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
                         {
-                            levelMan.duck(); 
+                            Level_Manager.Instance.duck(); 
                         }
                         break;
 
                     }
                 case buttonType.jump:
                     {
-                        if (levelMan.jumpButton.interactable != false && checkState != Player.playerState.ducking && checkState != Player.playerState.hanging)
+                        if (Level_Manager.Instance.jumpButton.interactable != false && checkState != Player.playerState.ducking && checkState != Player.playerState.hanging)
                         {
-                            levelMan.Jump();
+                            Level_Manager.Instance.Jump();
                         }
                         break;
                     }
                     //Could make decreaseMeter values different based on modifiers if we want.
                 case buttonType.coolDown:
                     {
-                        levelMan.heatMeter.decreaseMeter(5.0f);
+                        Level_Manager.Instance.heatMeter.decreaseMeter(5.0f);
                         break;
                     }
                 case buttonType.heatUp:
                     {
-                        levelMan.iceMeter.decreaseMeter(5.0f);
+                        Level_Manager.Instance.iceMeter.decreaseMeter(5.0f);
                         break;
                     }
                 default:

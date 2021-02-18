@@ -13,7 +13,6 @@ public class Player : MonoBehaviour
     int maxHealth;
 
     Vector2 initialPos;
-    public Level_Manager levMan;
 
     public enum playerState
     {
@@ -133,12 +132,12 @@ public class Player : MonoBehaviour
             {
                 case Obstacle_Behaviour.ElementType.fire:
                     {
-                        levMan.temperatureMetersManager(Obstacle_Behaviour.ElementType.fire);
+                        Level_Manager.Instance.temperatureMetersManager(Obstacle_Behaviour.ElementType.fire);
                         break;
                     }
                 case Obstacle_Behaviour.ElementType.ice:
                     {
-                        levMan.temperatureMetersManager(Obstacle_Behaviour.ElementType.ice);
+                        Level_Manager.Instance.temperatureMetersManager(Obstacle_Behaviour.ElementType.ice);
                         break;
                     }
                 default:
@@ -146,12 +145,12 @@ public class Player : MonoBehaviour
                         break;
                     }
             }
-            levMan.Damage();
+            Level_Manager.Instance.Damage();
         }
         else if(theTrigger.gameObject.tag == "Coin")
         {
             // Debug.Log("Collected the coin!");
-            levMan.collectCoin(1);
+            Level_Manager.Instance.collectCoin(1);
             Destroy(theTrigger.gameObject);
         }
 
@@ -181,7 +180,8 @@ public class Player : MonoBehaviour
 
     private void CheckGroundPlayer()
     {
-        levMan.checkGrounded(onGround);
+        Level_Manager.Instance.checkGrounded(onGround);
+       // levMan.checkGrounded(onGround);
     }
 
     /*

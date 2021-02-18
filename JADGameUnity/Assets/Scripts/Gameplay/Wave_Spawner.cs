@@ -37,8 +37,6 @@ public class Wave_Spawner : MonoBehaviour
         hardPause
     }
 
-    Level_Manager levMan;
-
     [Tooltip("The difficulty of the wave. Should be changeable on the fly.")]
     waveDiff theWaveDiff;
     
@@ -97,7 +95,7 @@ public class Wave_Spawner : MonoBehaviour
         wavesSinceTimeSwap = 0;
         stopCo = false;
         theWaveDiff = waveDiff.easy;
-        levMan = this.GetComponent<Level_Manager>();
+        Level_Manager.Instance = this.GetComponent<Level_Manager>();
         bonusTest = false;
     }
 
@@ -408,23 +406,23 @@ public class Wave_Spawner : MonoBehaviour
         GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
         //Flip chest that's spawning on the top.
         chest2.GetComponent<SpriteRenderer>().flipY = true;
-        int theSelection = levMan.getChestSelect();
+        int theSelection = Level_Manager.Instance.getChestSelect();
 
-        StartCoroutine(levMan.pickAChest());
-        levMan.duckButton.gameObject.SetActive(false);
-        levMan.jumpButton.gameObject.SetActive(false);
+        StartCoroutine(Level_Manager.Instance.pickAChest());
+        Level_Manager.Instance.duckButton.gameObject.SetActive(false);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
 
         yield return new WaitForSeconds(1.5f);
 
         //Play animation for "Jump or Duck" option, then make the buttons available.
 
-        levMan.duckButton.gameObject.SetActive(true);
-        levMan.jumpButton.gameObject.SetActive(true);
+        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         Debug.Log("Waiting for response from the player...");
 
         while (theSelection == 0)
         {
-            theSelection = levMan.getChestSelect();
+            theSelection = Level_Manager.Instance.getChestSelect();
             yield return null;
         }
 
@@ -444,12 +442,12 @@ public class Wave_Spawner : MonoBehaviour
         {
             case 1:
                 {
-                    levMan.collectCoin(50);
+                    Level_Manager.Instance.collectCoin(50);
                     break;
                 }
             case 2:
                 {
-                    levMan.collectCoin(20);
+                    Level_Manager.Instance.collectCoin(20);
                     break;
                 }
         }
@@ -461,11 +459,11 @@ public class Wave_Spawner : MonoBehaviour
         Destroy(chest2);
 
         //We finished the bonus wave.
-        levMan.duckButton.gameObject.SetActive(true);
-        levMan.jumpButton.gameObject.SetActive(true);
+        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         waveType = typeOfWave.normal;
         bonusTest = false;
-        levMan.setChestSelect(0);
+        Level_Manager.Instance.setChestSelect(0);
 
 
     }

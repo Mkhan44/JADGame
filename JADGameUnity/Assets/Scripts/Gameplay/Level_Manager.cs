@@ -85,8 +85,11 @@ public class Level_Manager : MonoBehaviour
     [Header("Treasure chest related")]
     [Tooltip("This variable is for checking whether or not player has selected a chest. 1 = top, 2 = bottom")]
     public int chestSelect;
+
+    public static Level_Manager Instance;
     private void Awake()
     {
+        Instance = this;
         thePlayer = player.GetComponent<Player>();
         playerAnimator = player.GetComponent<Animator>();
 
@@ -445,6 +448,8 @@ public class Level_Manager : MonoBehaviour
 
         for (int i = 0; i < obstacles.Length; i++)
         {
+            //TURN ON WHEN WE ARE READY TO POOL.
+            //Object_Pooler.Instance.AddToPool(obstacles[i]);
             Destroy(obstacles[i]);
         }
 
@@ -455,6 +460,8 @@ public class Level_Manager : MonoBehaviour
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             for (int i = 0; i < coins.Length; i++)
             {
+                //TURN ON WHEN WE ARE READY TO POOL....Might need to overload with coins?? not sure.
+               // Object_Pooler.Instance.AddToPool(coins[i]);
                 Destroy(coins[i]);
             }
             GameOver();

@@ -27,7 +27,6 @@ public class Item : MonoBehaviour , IPointerDownHandler
     [Tooltip("If the item has a duration till it runs out, edit this value in seconds. Otherwise keep it at 0.")]
     public float itemDuration;
 
-    Level_Manager levelMan;
     private void Awake()
     {
         //There should only be 1 of these.
@@ -35,7 +34,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
 
         if(tempLevMan != null)
         {
-            levelMan = tempLevMan.GetComponent<Level_Manager>();
+            Level_Manager.Instance = tempLevMan.GetComponent<Level_Manager>();
         }
         else
         {
@@ -52,7 +51,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
         //If player is not powered up already, and this object isn't interactable (opactiy not at 100%) we can activate the power up.
         if(!hasBeenUsed)
         {
-            if (!levelMan.thePlayer.isPoweredUp)
+            if (!Level_Manager.Instance.thePlayer.isPoweredUp)
             {
                 if(itemDuration == 0)
                 {
@@ -62,9 +61,9 @@ public class Item : MonoBehaviour , IPointerDownHandler
                     {
                         case itemType.Defroster:
                             {
-                                if (levelMan.thePlayer.GetState() == Player.playerState.frozen && levelMan.thePlayer.GetState() != Player.playerState.dead)
+                                if (Level_Manager.Instance.thePlayer.GetState() == Player.playerState.frozen && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
                                 {
-                                    levelMan.iceMeter.setMeterValExternally(0);
+                                    Level_Manager.Instance.iceMeter.setMeterValExternally(0);
                                     //Item has been used!
                                     disableItem();
                                 }
@@ -82,20 +81,20 @@ public class Item : MonoBehaviour , IPointerDownHandler
                 }
                 else
                 {
-                    if(levelMan.thePlayer.GetState() != Player.playerState.burning && levelMan.thePlayer.GetState() != Player.playerState.frozen && levelMan.thePlayer.GetState() != Player.playerState.dead)
+                    if(Level_Manager.Instance.thePlayer.GetState() != Player.playerState.burning && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.frozen && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
                     {
                         //Go through the check for which item with a duration it is.
                         switch (thisItemType)
                         {
                             case itemType.FireVest:
                                 {
-                                    levelMan.setCurrentItem(thisItemType, itemDuration);
+                                    Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     //  fireVest();
                                     break;
                                 }
                             case itemType.HandWarmers:
                                 {
-                                    levelMan.setCurrentItem(thisItemType, itemDuration);
+                                    Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     break;
                                 }
                             default:

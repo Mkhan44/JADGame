@@ -6,13 +6,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Obstacle_Behaviour : MonoBehaviour
+public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 {
     Vector2 startPos;
     Vector2 endPos;
     //Speed
     [Tooltip("Speed of the obstacle moving from right to left.")]
     public float speed = 0f;
+
+    float ogSpeed;
 
     //We will have spawn points set up in the Wave_Spawner script.
     [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
@@ -52,14 +54,24 @@ public class Obstacle_Behaviour : MonoBehaviour
 
     private void Awake()
     {
-        startPos = this.transform.position;
-        endPos = new Vector2((startPos.x - 50), (startPos.y));
+       
+        ogSpeed = speed;
     }
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        startPos = this.transform.position;
+        endPos = new Vector2((startPos.x - 45), (startPos.y));
     }
+
+    //'start' method whenever this is reused via Pooling.
+    public void OnObjectSpawn()
+    {
+        startPos = this.transform.position;
+        endPos = new Vector2((startPos.x - 45), (startPos.y));
+    }
+  
 
     // Update is called once per frame
     void Update()
@@ -73,7 +85,13 @@ public class Obstacle_Behaviour : MonoBehaviour
 
             if (this.transform.position.x == endPos.x)
             {
-                Destroy(gameObject);
+                //TURN ON WHEN WE ARE READY TO POOL
+
+
+
+
+                //Object_Pooler.Instance.AddToPool(gameObject);
+                 Destroy(gameObject);
                 return;
             }
         }
