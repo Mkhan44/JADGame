@@ -10,7 +10,17 @@ public class Object_Pooler : MonoBehaviour
         //[Tooltip("MAKE SURE THIS TAG == THE NAME OF THE GAMEOBJECT WE ARE USING!")]
        // public string tag;
         public GameObject prefab;
+        [Tooltip("How many of these do we want in the pool? If this is something that spawns quickly, this number should be higher.")]
         public int size;
+    }
+
+    [System.Serializable]
+    public class ListWrapper
+    {
+        [Tooltip("What era is this?")]
+        public string listName;
+
+        public List<Pool> wrappedList;
     }
 
     public static Object_Pooler Instance;
@@ -25,13 +35,20 @@ public class Object_Pooler : MonoBehaviour
 
     public List<Pool> pools;
 
+    public List<ListWrapper> thePools;
+
+    //The current list of prefabs that we're using. We will figure this out based on the time period we're in.
+    List<GameObject> currentList;
+
+
+    /*
     //We want something like this...Need to figure out how to do this more efficiently.
     public List<Pool> prehistoricPools;
     public List<Pool> FeudalJapanPools;
     public List<Pool> WildWestPools;
     public List<Pool> MedPools;
     public List<Pool> FuturePools;
-
+    */
 
 
     public Dictionary<string, Queue<GameObject>> poolDictionary;
@@ -41,22 +58,28 @@ public class Object_Pooler : MonoBehaviour
     {
         poolDictionary = new Dictionary<string, Queue<GameObject>>();
 
-        foreach(Pool pool in pools)
+        for(int i = 0; i < thePools.Count; i++)
         {
-            Queue<GameObject> objectPool = new Queue<GameObject>();
-
-            //Fill out the entire pool by instantiating based on size.
-            for(int i = 0; i < pool.size; i++)
+            foreach (Pool pool in thePools[i].wrappedList)
             {
-                GameObject obj = Instantiate(pool.prefab);
-                obj.SetActive(false);
-                objectPool.Enqueue(obj);
+                Queue<GameObject> objectPool = new Queue<GameObject>();
 
+                //Fill out the entire pool by instantiating based on size.
+                for (int j = 0; j < pool.size; j++)
+                {
+                    GameObject obj = Instantiate(pool.prefab);
+                    obj.SetActive(false);
+                    objectPool.Enqueue(obj);
+
+                }
+
+                //Add the pool of objects to the dictionary.
+                poolDictionary.Add(pool.prefab.name, objectPool);
+               // Debug.Log("Added: " + pool.prefab.name + " To the dictionary!");
             }
-
-            //Add the pool of objects to the dictionary.
-            poolDictionary.Add(pool.prefab.name, objectPool);
         }
+
+        SetTimePeriodList(Level_Manager.Instance.TimePeriod);
 
     }
 
@@ -67,6 +90,8 @@ public class Object_Pooler : MonoBehaviour
         ObjToAdd.SetActive(false);
         string nameToAdd = ObjToAdd.name.Replace("(Clone)", "");
         poolDictionary[nameToAdd].Enqueue(ObjToAdd);
+
+
     }
 
     //Wave spawner will pass in the position and rotation of these objects.
@@ -95,9 +120,108 @@ public class Object_Pooler : MonoBehaviour
         return objectToSpawn;
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetTimePeriodList(Level_Manager.timePeriod TheTimePeriod)
     {
+        //Clear the list so that nothing is conflicting when we re-fill it with new obstacles.
+        currentList = new List<GameObject>();
+        currentList.Clear();
         
+       
+
+        switch(TheTimePeriod)
+        {
+            case Level_Manager.timePeriod.Prehistoric:
+                {
+                    for(int i = 0; i < thePools.Count; i++)
+                    {
+                        if(thePools[i].listName == "PrehistoricPools")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for(int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            case Level_Manager.timePeriod.FeudalJapan:
+                {
+                    for (int i = 0; i < thePools.Count; i++)
+                    {
+                        if (thePools[i].listName == "FeudalJapanPools")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for (int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            break;
+                        }
+                    }
+                    break;
+                }
+
+                //OTHER ERAS TO BE ADDED.
+            default:
+                {
+                    for (int i = 0; i < thePools.Count; i++)
+                    {
+                        if (thePools[i].listName == "PrehistoricPools")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for (int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            break;
+                        }
+                    }
+                    break;
+                }
+               
+        }
     }
+
+    //This function will be used via WaveSpawner to grab the values of Currentlist and make that the current set of prefabs that we are using to spawn in during gameplay.
+    public GameObject GetCurrentlistIndex(int index)
+    {
+        if(index < currentList.Count)
+        {
+            return currentList[index];
+        }
+        else
+        {
+            Debug.LogWarning("Error, index not found in currentList!");
+            return null;
+        }
+    }
+
+    public int GetCurrentListCount()
+    {
+        return currentList.Count;
+    }
+
 }

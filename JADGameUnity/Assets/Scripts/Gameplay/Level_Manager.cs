@@ -60,14 +60,17 @@ public class Level_Manager : MonoBehaviour
     public enum timePeriod
     {
         Prehistoric,
-        iceAge,
+        FeudalJapan,
+        WildWest,
+        Medieval,
         Future,
         Test
     }
+
     [Header("Time periods")]
     [Tooltip("Current time period. This will change throughout gameplay.")]
     [SerializeField]
-    timePeriod TimePeriod;
+    public timePeriod TimePeriod;
 
     [Header("UI MISC related.")]
     [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
@@ -449,8 +452,8 @@ public class Level_Manager : MonoBehaviour
         for (int i = 0; i < obstacles.Length; i++)
         {
             //TURN ON WHEN WE ARE READY TO POOL.
-            //Object_Pooler.Instance.AddToPool(obstacles[i]);
-            Destroy(obstacles[i]);
+            Object_Pooler.Instance.AddToPool(obstacles[i]);
+            //Destroy(obstacles[i]);
         }
 
        

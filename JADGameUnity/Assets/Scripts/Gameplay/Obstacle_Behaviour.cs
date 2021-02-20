@@ -62,14 +62,18 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     void Start()
     {
         startPos = this.transform.position;
-        endPos = new Vector2((startPos.x - 45), (startPos.y));
+       
+        endPos = new Vector2((startPos.x - 20), (startPos.y));
+        Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
 
     //'start' method whenever this is reused via Pooling.
     public void OnObjectSpawn()
     {
+        speed = ogSpeed;
         startPos = this.transform.position;
-        endPos = new Vector2((startPos.x - 45), (startPos.y));
+        endPos = new Vector2((startPos.x - 20), (startPos.y));
+        Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
   
 
@@ -79,19 +83,15 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         //If it's anything that's not a chest.
         if(thisType != typeOfObstacle.chest)
         {
-            speed += 0.05f * Time.deltaTime;
+            speed += 0.15f * Time.deltaTime;
 
             this.transform.position = Vector2.Lerp(startPos, endPos, speed);
 
             if (this.transform.position.x == endPos.x)
             {
                 //TURN ON WHEN WE ARE READY TO POOL
-
-
-
-
-                //Object_Pooler.Instance.AddToPool(gameObject);
-                 Destroy(gameObject);
+                Object_Pooler.Instance.AddToPool(gameObject);
+                //Destroy(gameObject);
                 return;
             }
         }

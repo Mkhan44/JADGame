@@ -87,6 +87,7 @@ public class Wave_Spawner : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+       
         currentPlayerState = thePlayer.GetState();
         waveType = typeOfWave.normal;
         waveComplete = true;
@@ -95,8 +96,11 @@ public class Wave_Spawner : MonoBehaviour
         wavesSinceTimeSwap = 0;
         stopCo = false;
         theWaveDiff = waveDiff.easy;
-        Level_Manager.Instance = this.GetComponent<Level_Manager>();
+       // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         bonusTest = false;
+
+        SetCurrentEnemies();
+
     }
 
     // Update is called once per frame
@@ -277,7 +281,8 @@ public class Wave_Spawner : MonoBehaviour
 
 
                 //Debug.Log("We picked: " + diffOptions[randNum].gameObject.name);
-                GameObject enemyClone = Instantiate(diffOptions[randNum], enemySpawnPlacement);
+                GameObject enemyClone = Object_Pooler.Instance.SpawnFromPool(diffOptions[randNum].name, enemySpawnPlacement.position, enemySpawnPlacement.rotation);
+                // GameObject enemyClone = Instantiate(diffOptions[randNum], enemySpawnPlacement);
                 //Reset the list.
                 diffOptions.Clear();
 
@@ -319,7 +324,9 @@ public class Wave_Spawner : MonoBehaviour
         else if(theWaveType == typeOfWave.timeSwap)
         {
             //Insert timeportal spawn here. Will need another list of diff time portals.
-            
+
+            //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
+            SetCurrentEnemies();
         }
 
 
@@ -486,6 +493,22 @@ public class Wave_Spawner : MonoBehaviour
     public typeOfWave getWaveType()
     {
         return waveType;
+    }
+
+    //Fill in the current enemy list with enemies that are appropriate to the current time period we are in.
+    void SetCurrentEnemies()
+    {
+        enemies.Clear();
+        int tempCount = Object_Pooler.Instance.GetCurrentListCount();
+        for (int i = 0; i < tempCount; i++)
+        {
+            GameObject tempObj = Object_Pooler.Instance.GetCurrentlistIndex(i);
+
+            if (tempObj != null)
+            {
+                enemies.Add(tempObj);
+            }
+        }
     }
 
 

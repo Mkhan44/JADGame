@@ -906,7 +906,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.4
+  m_fontSize: 67.9
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1952,7 +1952,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.25
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2599,7 +2599,7 @@ MonoBehaviour:
   iceMeter: {fileID: 70758965}
   meterFilled: 0
   retryButton: {fileID: 1671991107}
-  TimePeriod: 3
+  TimePeriod: 0
   coinText: {fileID: 1026014328}
   itemsThisRun:
   - {fileID: 1591516015}
@@ -2669,11 +2669,27 @@ MonoBehaviour:
   pools:
   - prefab: {fileID: 6716103093585239697, guid: 8aae1455e8bd9fe4d8f58c24838cd0a9, type: 3}
     size: 10
-  prehistoricPools: []
-  FeudalJapanPools: []
-  WildWestPools: []
-  MedPools: []
-  FuturePools: []
+  thePools:
+  - listName: PrehistoricPools
+    wrappedList:
+    - prefab: {fileID: 6716103093585239697, guid: 8aae1455e8bd9fe4d8f58c24838cd0a9, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 3970ef856c445fc419986cfd9fe8374e, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: b7d2d8bddc508d642bbefc109a7504a7, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 1fd1e5caf562127448434992ab9db974, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f83973e0e7b40a0499058079ad5212ad, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 3deb49501d3b4544dbd9503b88f988d7, type: 3}
+      size: 10
+  - listName: FeudalJapanPools
+    wrappedList: []
+  - listName: Treasure
+    wrappedList:
+    - prefab: {fileID: 6894734349349987309, guid: ca65564f3f33d4a43b29a44e5a39314e, type: 3}
+      size: 100
 --- !u!1 &1308463708
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2782,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 37.35
+  m_fontSize: 67.85
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3865,7 +3881,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.35
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4133,7 +4149,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 47.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
