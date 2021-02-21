@@ -75,11 +75,15 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefab treasure chest that will spawn in.")]
     public GameObject chestPrefab;
 
+    [Tooltip("Prefabs for different time periods.")]
+    public List<GameObject> timePortalPrefabs;
+
     public Player thePlayer;
     Player.playerState currentPlayerState;
 
     Coroutine spawnRoutine;
     Coroutine chestRoutine;
+    Coroutine timeRoutine;
 
     bool bonusTest;
 
@@ -294,7 +298,8 @@ public class Wave_Spawner : MonoBehaviour
                     Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
 
                     spawnCoinRnd = Random.Range(0, 2);
-                    StartCoroutine(waitSpawn(spawnCoinRnd));
+                    int amountofCoinsToSpawn = Random.Range(1, 6);
+                    StartCoroutine(CoinSpawn(spawnCoinRnd, amountofCoinsToSpawn));
                 }
 
 
@@ -325,8 +330,15 @@ public class Wave_Spawner : MonoBehaviour
         {
             //Insert timeportal spawn here. Will need another list of diff time portals.
 
-            //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
-            SetCurrentEnemies();
+            //Test. Numbers will be calculated via RNG in the future.
+
+            if(!bonusTest)
+            {
+                bonusTest = true;
+                timeRoutine = StartCoroutine(SpawnTimePortal(1, 2));
+            }
+            
+
         }
 
 
@@ -344,6 +356,7 @@ public class Wave_Spawner : MonoBehaviour
         }
         */
 
+        /*
         //Bonus test.
         if(!bonusTest)
         {
@@ -355,6 +368,36 @@ public class Wave_Spawner : MonoBehaviour
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
             if (wavesSinceBonus == 1)
             {
+                
+                int doWeBonus;
+                doWeBonus = Random.Range(1, 5);
+                if(doWeBonus >= 3)
+                {
+                    Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
+                    wavesSinceBonus = 0;
+                    waveType = typeOfWave.bonus;
+                }
+                
+                waveType = typeOfWave.bonus;
+
+                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
+                //wavesSinceBonus = 0;
+            }
+        }
+        */
+
+
+        //TimerPortal test.
+        if (!bonusTest)
+        {
+            if (waveCount == 1)
+            {
+                wavesSinceTimeSwap++;
+            }
+            wavesSinceTimeSwap++;
+            Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
+            if (wavesSinceTimeSwap == 1)
+            {
                 /*
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 5);
@@ -365,16 +408,16 @@ public class Wave_Spawner : MonoBehaviour
                     waveType = typeOfWave.bonus;
                 }
                 */
-                waveType = typeOfWave.bonus;
+                waveType = typeOfWave.timeSwap;
 
                 //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
                 //wavesSinceBonus = 0;
             }
         }
-       
 
-     
-        if(waveType == typeOfWave.normal)
+
+
+        if (waveType == typeOfWave.normal)
         {
             yield return new WaitForSeconds(timeBetweenWaves);
         }
@@ -384,19 +427,21 @@ public class Wave_Spawner : MonoBehaviour
     }
 
     //Test coRoutine for spawning coins.
-    public IEnumerator waitSpawn(int rndSpawn)
+    public IEnumerator CoinSpawn(int rndSpawn, int amountToSpawn)
     {
         yield return new WaitForSeconds(0.5f);
 
-        for(int i = 0; i <= 4; i++)
+        //Spawn X amount of coins based on the RNG.
+        Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
+        for(int i = 0; i <= (amountToSpawn-1); i++)
         {
             if(rndSpawn == 0)
             {
-                Instantiate(coinPrefab, spawnPoints[1].transform);
+                Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[1].transform.position,spawnPoints[1].transform.rotation);
             }
             else
             {
-                Instantiate(coinPrefab, spawnPoints[2].transform);
+                Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
             }
             yield return new WaitForSeconds(0.2f);
            
@@ -461,7 +506,6 @@ public class Wave_Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(1.0f);
 
-        //Use obejct pooling instead.
         Destroy(chest1);
         Destroy(chest2);
 
@@ -470,23 +514,84 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         waveType = typeOfWave.normal;
         bonusTest = false;
-        Level_Manager.Instance.setChestSelect(0);
+        Level_Manager.Instance.setTimePortalSelection(0);
+
+        waveComplete = true;
 
 
     }
-
-    //TBA.
-    //Call this function from LevelManager.
-    //When swapping time periods, new lists of enemies will need to be updated.
-    public void changeEnemyList()
+    //Spawn in 2 time era portals at random. Same concept as chest spawn.
+    public IEnumerator SpawnTimePortal(int portalIndex1, int portalIndex2)
     {
-        
-    }
-    //Use this function for when we swap time periods.
-    public void timeSwap()
-    {
+        GameObject portal1 = Instantiate(timePortalPrefabs[portalIndex1], spawnPoints[1].transform);
+        GameObject portal2 = Instantiate(timePortalPrefabs[portalIndex2], spawnPoints[2].transform);
 
+        //Flip chest that's spawning on the top.
+        portal2.GetComponent<SpriteRenderer>().flipY = true;
+        int theSelection = Level_Manager.Instance.getTimePortalSelection();
+
+        StartCoroutine(Level_Manager.Instance.pickAPortal());
+        Level_Manager.Instance.duckButton.gameObject.SetActive(false);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
+
+        yield return new WaitForSeconds(1.5f);
+
+        //Play animation for "Jump or Duck" option, then make the buttons available.
+
+        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
+        Debug.Log("Waiting for response from the player...");
+
+        while (theSelection == 0)
+        {
+            theSelection = Level_Manager.Instance.getTimePortalSelection();
+            yield return null;
+        }
+
+        Level_Manager.timePeriod tempTimePeriod;
+        if (theSelection == 1)
+        {
+            tempTimePeriod = portal1.GetComponent<Obstacle_Behaviour>().theEra;
+         
+        }
+        else
+        {
+            tempTimePeriod = portal2.GetComponent<Obstacle_Behaviour>().theEra;
+        }
+
+        Level_Manager.Instance.setTimePeriod(tempTimePeriod);
+        Object_Pooler.Instance.SetTimePeriodList(Level_Manager.Instance.getTimePeriod());
+        yield return new WaitForSeconds(0.1f);
+        //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
+        SetCurrentEnemies();
+
+
+        /*
+        if (theSelection == 1)
+        {
+            portal1.GetComponent<Animator>().SetBool("Chest_Open", true);
+        }
+        else
+        {
+            portal2.GetComponent<Animator>().SetBool("Chest_Open", true);
+        }
+        */
+
+
+        yield return new WaitForSeconds(1.0f);
+
+        Destroy(portal1);
+        Destroy(portal2);
+
+        //We finished the timeswap  wave.
+        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
+        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
+        waveType = typeOfWave.normal;
+        bonusTest = false;
+        Level_Manager.Instance.setTimePortalSelection(0);
     }
+
+
 
     //Getters/setters
 

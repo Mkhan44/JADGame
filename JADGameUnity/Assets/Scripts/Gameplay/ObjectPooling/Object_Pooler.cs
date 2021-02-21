@@ -38,7 +38,7 @@ public class Object_Pooler : MonoBehaviour
     public List<ListWrapper> thePools;
 
     //The current list of prefabs that we're using. We will figure this out based on the time period we're in.
-    List<GameObject> currentList;
+    List<GameObject> currentList = new List<GameObject>();
 
 
     /*
@@ -79,7 +79,9 @@ public class Object_Pooler : MonoBehaviour
             }
         }
 
-        SetTimePeriodList(Level_Manager.Instance.TimePeriod);
+        //Debug.Log("The current time period is: " + Level_Manager.Instance.getTimePeriod());
+
+        SetTimePeriodList(Level_Manager.Instance.getTimePeriod());
 
     }
 
@@ -123,12 +125,11 @@ public class Object_Pooler : MonoBehaviour
     public void SetTimePeriodList(Level_Manager.timePeriod TheTimePeriod)
     {
         //Clear the list so that nothing is conflicting when we re-fill it with new obstacles.
-        currentList = new List<GameObject>();
         currentList.Clear();
-        
-       
+        currentList = new List<GameObject>();
 
-        switch(TheTimePeriod)
+        Debug.Log(TheTimePeriod);
+        switch (TheTimePeriod)
         {
             case Level_Manager.timePeriod.Prehistoric:
                 {
@@ -145,9 +146,9 @@ public class Object_Pooler : MonoBehaviour
                             }
                             break;
                         }
-                        else
+                        else if (i == thePools.Count)
                         {
-                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + TheTimePeriod);
                             break;
                         }
                     }
@@ -168,18 +169,65 @@ public class Object_Pooler : MonoBehaviour
                             }
                             break;
                         }
-                        else
+                        else if (i == thePools.Count)
                         {
-                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + TheTimePeriod);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            case Level_Manager.timePeriod.WildWest:
+                {
+                    for (int i = 0; i < thePools.Count; i++)
+                    {
+                        if (thePools[i].listName == "WildWestPools")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for (int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else if(i == thePools.Count)
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + TheTimePeriod);
+                            break;
+                        }
+                    }
+                    break;
+                }
+            case Level_Manager.timePeriod.Medieval:
+                {
+                    for (int i = 0; i < thePools.Count; i++)
+                    {
+                        if (thePools[i].listName == "MedievalPools")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for (int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else if (i == thePools.Count)
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + TheTimePeriod);
                             break;
                         }
                     }
                     break;
                 }
 
-                //OTHER ERAS TO BE ADDED.
+            //OTHER ERAS TO BE ADDED.
             default:
                 {
+                    Debug.LogWarning("We got to the default case!!!!");
                     for (int i = 0; i < thePools.Count; i++)
                     {
                         if (thePools[i].listName == "PrehistoricPools")
@@ -193,9 +241,9 @@ public class Object_Pooler : MonoBehaviour
                             }
                             break;
                         }
-                        else
+                        else if (i == thePools.Count)
                         {
-                            Debug.LogWarning("We didn't find the specified set of pools for: " + thePools[i].listName);
+                            Debug.LogWarning("We didn't find the specified set of pools in default");
                             break;
                         }
                     }
@@ -203,6 +251,7 @@ public class Object_Pooler : MonoBehaviour
                 }
                
         }
+        Debug.Log("The current list has been set.");
     }
 
     //This function will be used via WaveSpawner to grab the values of Currentlist and make that the current set of prefabs that we are using to spawn in during gameplay.
@@ -210,7 +259,7 @@ public class Object_Pooler : MonoBehaviour
     {
         if(index < currentList.Count)
         {
-            return currentList[index];
+            return currentList[index].gameObject;
         }
         else
         {

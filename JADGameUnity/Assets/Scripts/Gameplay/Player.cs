@@ -151,7 +151,8 @@ public class Player : MonoBehaviour
         {
             // Debug.Log("Collected the coin!");
             Level_Manager.Instance.collectCoin(1);
-            Destroy(theTrigger.gameObject);
+            Object_Pooler.Instance.AddToPool(theTrigger.gameObject);
+            //Destroy(theTrigger.gameObject);
         }
 
   

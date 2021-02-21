@@ -32,8 +32,10 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         easy,
         medium,
         hardPause,
-        bonus
+        bonus,
+        timeSwap
     }
+
 
     //Is this an enemy or something we can collect?
     public enum typeOfObstacle
@@ -52,6 +54,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [SerializeField]
     typeOfObstacle thisType;
 
+
+    public Level_Manager.timePeriod theEra; 
     private void Awake()
     {
        
@@ -64,7 +68,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         startPos = this.transform.position;
        
         endPos = new Vector2((startPos.x - 20), (startPos.y));
-        Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
+      //  Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
 
     //'start' method whenever this is reused via Pooling.
@@ -73,7 +77,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         speed = ogSpeed;
         startPos = this.transform.position;
         endPos = new Vector2((startPos.x - 20), (startPos.y));
-        Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
+       // Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
   
 
@@ -81,7 +85,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     void Update()
     {
         //If it's anything that's not a chest.
-        if(thisType != typeOfObstacle.chest)
+        if(thisType != typeOfObstacle.chest && thisType != typeOfObstacle.timePortal)
         {
             speed += 0.15f * Time.deltaTime;
 
@@ -95,7 +99,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 return;
             }
         }
-        //If it's a chest.
+        //If it's a chest or time portal.
         else
         {
             endPos = new Vector2((startPos.x - 5), (startPos.y));

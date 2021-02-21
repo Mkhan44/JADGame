@@ -59,18 +59,20 @@ public class Level_Manager : MonoBehaviour
     //Time period related.
     public enum timePeriod
     {
+        None,
         Prehistoric,
         FeudalJapan,
         WildWest,
         Medieval,
         Future,
-        Test
     }
 
     [Header("Time periods")]
     [Tooltip("Current time period. This will change throughout gameplay.")]
     [SerializeField]
     public timePeriod TimePeriod;
+
+    int portalSelect;
 
     [Header("UI MISC related.")]
     [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
@@ -101,6 +103,7 @@ public class Level_Manager : MonoBehaviour
         Input.multiTouchEnabled = false;
         currentItem = Item.itemType.none;
         chestSelect = 0;
+        portalSelect = 0;
 
     }
 
@@ -240,11 +243,11 @@ public class Level_Manager : MonoBehaviour
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
 
-                            if (currentItem != Item.itemType.HandWarmers && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                            if (currentItem != Item.itemType.HandWarmers && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                             {
                                 StartCoroutine(iceMeter.fillConstant());
                             }
-                            if(this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                            if(this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                             {
                                 StartCoroutine(heatMeter.decreaseConstant());
                             }
@@ -279,11 +282,11 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        if(currentItem != Item.itemType.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                        if(currentItem != Item.itemType.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
                             StartCoroutine(heatMeter.fillConstant());
                         }
-                        if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus)
+                        if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
                             StartCoroutine(iceMeter.decreaseConstant());
                         }
@@ -463,9 +466,10 @@ public class Level_Manager : MonoBehaviour
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
             for (int i = 0; i < coins.Length; i++)
             {
-                //TURN ON WHEN WE ARE READY TO POOL....Might need to overload with coins?? not sure.
-               // Object_Pooler.Instance.AddToPool(coins[i]);
-                Destroy(coins[i]);
+                //TURN ON WHEN WE ARE READY TO POOL.
+                Object_Pooler.Instance.AddToPool(coins[i]);
+                // Destroy(coins[i]);
+
             }
             GameOver();
             //Gameover but allow ad to be played for revive.
@@ -665,4 +669,67 @@ public class Level_Manager : MonoBehaviour
    //***********************************************************************
    //***********************************************************************
    */
+
+    /*TimeSwap  related functions
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  */
+
+    public timePeriod getTimePeriod()
+    {
+        return TimePeriod;
+    }
+
+    public void setTimePeriod(timePeriod eraPass) 
+    {
+        TimePeriod = eraPass;
+    }
+
+    public int getTimePortalSelection()
+    {
+        return portalSelect;
+    }
+
+    public void setTimePortalSelection(int selection)
+    {
+        portalSelect = selection;
+    }
+
+    public IEnumerator pickAPortal()
+    {
+        // duckButton.gameObject.SetActive(false);
+        // jumpButton.gameObject.SetActive(false);
+
+        while (chestSelect == 0)
+        {
+            if (thePlayer.GetState() == Player.playerState.hanging)
+            {
+                portalSelect = 2;
+                // Debug.Log("You selected chest 2!");
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
+            }
+            else if (thePlayer.GetState() == Player.playerState.ducking)
+            {
+                portalSelect = 1;
+                //  Debug.Log("You selected chest 1!");
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
+            }
+            yield return null;
+        }
+
+    }
+
+
+    /*TimeSwap  related functions
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  */
 }
