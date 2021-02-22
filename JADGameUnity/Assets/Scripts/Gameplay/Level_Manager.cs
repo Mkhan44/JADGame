@@ -703,7 +703,7 @@ public class Level_Manager : MonoBehaviour
         // duckButton.gameObject.SetActive(false);
         // jumpButton.gameObject.SetActive(false);
 
-        while (chestSelect == 0)
+        while (portalSelect == 0)
         {
             if (thePlayer.GetState() == Player.playerState.hanging)
             {

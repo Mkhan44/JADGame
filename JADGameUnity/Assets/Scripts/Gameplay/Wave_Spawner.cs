@@ -46,6 +46,9 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Display for what wave we're on.")]
     public TextMeshProUGUI waveText;
 
+    [Tooltip("Display the time period we're currently in.")]
+    public TextMeshProUGUI eraText;
+
     [SerializeField]
     int waveCount;
     int wavesSinceBonus;
@@ -85,10 +88,9 @@ public class Wave_Spawner : MonoBehaviour
     Coroutine chestRoutine;
     Coroutine timeRoutine;
 
-    bool bonusTest;
+    bool specialWaveOn;
 
     bool stopCo;
-    // Start is called before the first frame update
     void Start()
     {
        
@@ -101,7 +103,7 @@ public class Wave_Spawner : MonoBehaviour
         stopCo = false;
         theWaveDiff = waveDiff.easy;
        // Level_Manager.Instance = this.GetComponent<Level_Manager>();
-        bonusTest = false;
+        specialWaveOn = false;
 
         SetCurrentEnemies();
 
@@ -125,7 +127,7 @@ public class Wave_Spawner : MonoBehaviour
             waveText.text = "Wave: Timeswap!";
         }
 
-
+        eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
         //Messy...Might want to reorganize.
         if(currentPlayerState == Player.playerState.dead)
         {
@@ -319,9 +321,9 @@ public class Wave_Spawner : MonoBehaviour
             //Spawn in chests, give player chance to jump or duck, play animation, give item.
             //Chests depsawn, wave over.
 
-            if (!bonusTest)
+            if (!specialWaveOn)
             {
-                bonusTest = true;
+                specialWaveOn = true;
                 chestRoutine = StartCoroutine(chestSpawn());
             }
         
@@ -332,10 +334,24 @@ public class Wave_Spawner : MonoBehaviour
 
             //Test. Numbers will be calculated via RNG in the future.
 
-            if(!bonusTest)
+            if(!specialWaveOn)
             {
-                bonusTest = true;
-                timeRoutine = StartCoroutine(SpawnTimePortal(1, 2));
+                specialWaveOn = true;
+                int random1 = Random.Range(0, (timePortalPrefabs.Count));
+                int random2 = Random.Range(0, (timePortalPrefabs.Count));
+               //Make sure both are different.
+                if(random1 == random2)
+                {
+                    if(random2 != 0)
+                    {
+                        random2 -= 1;
+                    }
+                    else if(random2 != timePortalPrefabs.Count)
+                    {
+                        random2 += 1;
+                    }
+                }
+                timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2));
             }
             
 
@@ -358,7 +374,7 @@ public class Wave_Spawner : MonoBehaviour
 
         /*
         //Bonus test.
-        if(!bonusTest)
+        if(!specialWaveOn)
         {
             if (waveCount == 1)
             {
@@ -388,7 +404,7 @@ public class Wave_Spawner : MonoBehaviour
 
 
         //TimerPortal test.
-        if (!bonusTest)
+        if (!specialWaveOn)
         {
             if (waveCount == 1)
             {
@@ -513,8 +529,8 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.duckButton.gameObject.SetActive(true);
         Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         waveType = typeOfWave.normal;
-        bonusTest = false;
-        Level_Manager.Instance.setTimePortalSelection(0);
+        specialWaveOn = false;
+        Level_Manager.Instance.setChestSelect(0);
 
         waveComplete = true;
 
@@ -587,8 +603,10 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.duckButton.gameObject.SetActive(true);
         Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         waveType = typeOfWave.normal;
-        bonusTest = false;
+        specialWaveOn = false;
         Level_Manager.Instance.setTimePortalSelection(0);
+
+        waveComplete = true;
     }
 
 
