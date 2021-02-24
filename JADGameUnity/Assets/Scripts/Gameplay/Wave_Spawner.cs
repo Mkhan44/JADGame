@@ -297,7 +297,7 @@ public class Wave_Spawner : MonoBehaviour
                 int spawnCoinRnd = Random.Range(0, 500);
                 if (spawnCoinRnd >= 250)
                 {
-                    Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
+                    //Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
 
                     spawnCoinRnd = Random.Range(0, 2);
                     int amountofCoinsToSpawn = Random.Range(1, 6);
@@ -372,62 +372,53 @@ public class Wave_Spawner : MonoBehaviour
         }
         */
 
-        /*
+        
         //Bonus test.
-        if(!specialWaveOn)
-        {
-            if (waveCount == 1)
-            {
-                wavesSinceBonus++;
-            }
+        if(!specialWaveOn && waveType != typeOfWave.timeSwap)
+        {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus == 1)
+            if (wavesSinceBonus > 1)
             {
                 
                 int doWeBonus;
-                doWeBonus = Random.Range(1, 5);
-                if(doWeBonus >= 3)
+                doWeBonus = Random.Range(1, 7);
+                if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
                     wavesSinceBonus = 0;
                     waveType = typeOfWave.bonus;
                 }
-                
-                waveType = typeOfWave.bonus;
+
 
                 //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
                 //wavesSinceBonus = 0;
             }
         }
-        */
+        
 
 
         //TimerPortal test.
-        if (!specialWaveOn)
+        if (!specialWaveOn && waveType != typeOfWave.bonus)
         {
-            if (waveCount == 1)
-            {
-                wavesSinceTimeSwap++;
-            }
             wavesSinceTimeSwap++;
             Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
-            if (wavesSinceTimeSwap == 1)
+            if (wavesSinceTimeSwap > 1)
             {
-                /*
-                int doWeBonus;
-                doWeBonus = Random.Range(1, 5);
-                if(doWeBonus >= 3)
+                
+                int doWeTimeSwap;
+                doWeTimeSwap = Random.Range(1, 7);
+                if(doWeTimeSwap >= 2)
                 {
-                    Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
-                    wavesSinceBonus = 0;
-                    waveType = typeOfWave.bonus;
+                    Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
+                    wavesSinceTimeSwap = 0;
+                    waveType = typeOfWave.timeSwap;
                 }
-                */
-                waveType = typeOfWave.timeSwap;
+                
+               
 
-                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
-                //wavesSinceBonus = 0;
+                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE timeswap WILL ONLY COME ONCE!!!
+               // wavesSinceTimeSwap = 0;
             }
         }
 
@@ -435,9 +426,11 @@ public class Wave_Spawner : MonoBehaviour
 
         if (waveType == typeOfWave.normal)
         {
+            Debug.Log("Special wave is: " + specialWaveOn);
             yield return new WaitForSeconds(timeBetweenWaves);
         }
-  
+
+
 
         waveComplete = true;
     }
@@ -448,7 +441,7 @@ public class Wave_Spawner : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         //Spawn X amount of coins based on the RNG.
-        Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
+        //Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
         for(int i = 0; i <= (amountToSpawn-1); i++)
         {
             if(rndSpawn == 0)
@@ -468,7 +461,8 @@ public class Wave_Spawner : MonoBehaviour
     //For bonus wave.
     public IEnumerator chestSpawn()
     {
-       // yield return new WaitForSeconds(0.2f);
+        
+        //yield return new WaitForSeconds(0.2f);
 
         GameObject chest1 = Instantiate(chestPrefab, spawnPoints[1].transform);
         GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
@@ -479,6 +473,8 @@ public class Wave_Spawner : MonoBehaviour
         StartCoroutine(Level_Manager.Instance.pickAChest());
         Level_Manager.Instance.duckButton.gameObject.SetActive(false);
         Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
+
+        Level_Manager.Instance.ResetAnimator();
 
         yield return new WaitForSeconds(1.5f);
 
@@ -550,6 +546,8 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.duckButton.gameObject.SetActive(false);
         Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
 
+        Level_Manager.Instance.ResetAnimator();
+
         yield return new WaitForSeconds(1.5f);
 
         //Play animation for "Jump or Duck" option, then make the buttons available.
@@ -580,18 +578,6 @@ public class Wave_Spawner : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
         SetCurrentEnemies();
-
-
-        /*
-        if (theSelection == 1)
-        {
-            portal1.GetComponent<Animator>().SetBool("Chest_Open", true);
-        }
-        else
-        {
-            portal2.GetComponent<Animator>().SetBool("Chest_Open", true);
-        }
-        */
 
 
         yield return new WaitForSeconds(1.0f);

@@ -2686,6 +2686,12 @@ MonoBehaviour:
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: b7d2d8bddc508d642bbefc109a7504a7, type: 3}
       size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 1fd1e5caf562127448434992ab9db974, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: abaa9c3c88add02499873cbf265b5cb7, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 3deb49501d3b4544dbd9503b88f988d7, type: 3}
+      size: 10
   - listName: WildWestPools
     wrappedList:
     - prefab: {fileID: 6716103093585239697, guid: 44d852c53de5aea4d9756ce6fe89a293, type: 3}
@@ -2693,6 +2699,12 @@ MonoBehaviour:
     - prefab: {fileID: 6716103093585239697, guid: 3970ef856c445fc419986cfd9fe8374e, type: 3}
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: 26846dece253c46408e176fe2b746281, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: dcf76d3bc7413a741a651fb30cea6d0a, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 0023a353fc7278b489f55b5d478210bf, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: ceec371fab02e4342b2c8d32a94ba99d, type: 3}
       size: 10
   - listName: MedievalPools
     wrappedList:
@@ -2702,6 +2714,12 @@ MonoBehaviour:
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: ee55030cda7151340ad6cf707a99d507, type: 3}
       size: 10
+    - prefab: {fileID: 4158279202637467101, guid: a3f3ba7e75740374dab0d3b78af4d0c9, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f405c8e7f2c384f409751573f1f1d242, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 91a71497aa391aa4cab958c40ee7a3b6, type: 3}
+      size: 10
   - listName: FuturePools
     wrappedList:
     - prefab: {fileID: 6716103093585239697, guid: dc08cd91a8dfd744c9a3904886053605, type: 3}
@@ -2710,6 +2728,12 @@ MonoBehaviour:
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: 810b1253f3eed8e42bbf9e3f15291905, type: 3}
       size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 1f8f5b3f63eb72541b5eeec936ce133f, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f83973e0e7b40a0499058079ad5212ad, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 059da1ecf0b59874eae9095580eebecd, type: 3}
+      size: 10
   - listName: FeudalJapanPools
     wrappedList:
     - prefab: {fileID: 6716103093585239697, guid: ca033a0b9af668f4fa6a0047180edbd5, type: 3}
@@ -2717,6 +2741,12 @@ MonoBehaviour:
     - prefab: {fileID: 6716103093585239697, guid: 15f9d61731b47e84b952c4a2fc306723, type: 3}
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: 7233668ac894bc746aee6b7af8c43f76, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 42ebd5da47ef0374499a3e303ce548f4, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 00214eb2e7884ad4a9431eb4711c6783, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 22f55830b10a4c14fa3f3ec5bfb16b31, type: 3}
       size: 10
   - listName: Treasure
     wrappedList:

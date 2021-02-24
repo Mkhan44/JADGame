@@ -313,7 +313,7 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.burning:
                     {
-                        Debug.Log("Player is burning!");
+                       // Debug.Log("Player is burning!");
                         //Only call this once.
                         if(heatMeter.getMeterVal() == 100f)
                         {
@@ -336,7 +336,7 @@ public class Level_Manager : MonoBehaviour
                 case Player.playerState.frozen:
                     {
 
-                        Debug.Log("Player is frozen!");
+                       // Debug.Log("Player is frozen!");
                         //Only call this once.
                         if (iceMeter.getMeterVal() == 100f)
                         {
@@ -553,6 +553,15 @@ public class Level_Manager : MonoBehaviour
         Debug.Log("Finished the duration count!");
     }
 
+    //Use this to force player into Idle for anything that we need to show the player. Gameplay buttons should be disabled elsewhere.
+    public void ResetAnimator()
+    {
+        playerAnimator.SetBool("IsCrouching", false);
+        playerRigid2D.gravityScale = gravityScale;
+        thePlayer.setState(Player.playerState.idle);
+        // playerAnimator.SetBool("IsJumping", false);
+    }
+
     //Player is dead.
     //Probably will load a panel in with some stats and ask if they want to retry (Watch ad) or go back to menu/share.
     //Seperate function for 'retry' will be implemented.
@@ -637,9 +646,9 @@ public class Level_Manager : MonoBehaviour
     }
     public IEnumerator pickAChest()
     {
-       // duckButton.gameObject.SetActive(false);
-       // jumpButton.gameObject.SetActive(false);
-
+        // duckButton.gameObject.SetActive(false);
+        // jumpButton.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.2f);
         while (chestSelect == 0)
         {
             if (thePlayer.GetState() == Player.playerState.hanging)
