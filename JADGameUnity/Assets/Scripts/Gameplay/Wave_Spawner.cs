@@ -91,6 +91,12 @@ public class Wave_Spawner : MonoBehaviour
     bool specialWaveOn;
 
     bool stopCo;
+
+
+    //Variance on waves related things.
+
+    int wavesSinceDifficultyChange;
+
     void Start()
     {
        
@@ -104,7 +110,7 @@ public class Wave_Spawner : MonoBehaviour
         theWaveDiff = waveDiff.easy;
        // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         specialWaveOn = false;
-
+        wavesSinceDifficultyChange = 0;
         SetCurrentEnemies();
 
     }
@@ -172,12 +178,13 @@ public class Wave_Spawner : MonoBehaviour
         //Regular spawn.
         if (theWaveType == typeOfWave.normal)
         {
-            if (waveCount == 3)
+            //Test values for changing difficulty. Will need some formula later on.
+            if (wavesSinceDifficultyChange == 3)
             {
                 theWaveDiff = waveDiff.medium;
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            if (waveCount == 5)
+            if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
@@ -310,9 +317,14 @@ public class Wave_Spawner : MonoBehaviour
 
 
             //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
-            spawnRate -= 0.5f;
+            if(spawnRate > 1.5f)
+            {
+                spawnRate -= 0.5f;
+            }
+            
             enemyCount += 2;
             waveCount += 1;
+            wavesSinceDifficultyChange += 1;
         }
         else if(theWaveType == typeOfWave.bonus)
         {
@@ -357,21 +369,6 @@ public class Wave_Spawner : MonoBehaviour
 
         }
 
-
-        //Test.
-        /*
-        if(waveCount == 3)
-        {
-            theWaveDiff = waveDiff.medium;
-            Debug.Log("The difficulty of the wave is: " + theWaveDiff);
-        }
-        if(waveCount == 5)
-        {
-            theWaveDiff = waveDiff.hardPause;
-            Debug.Log("The difficulty of the wave is: " + theWaveDiff);
-        }
-        */
-
         
         //Bonus test.
         if(!specialWaveOn && waveType != typeOfWave.timeSwap)
@@ -390,9 +387,6 @@ public class Wave_Spawner : MonoBehaviour
                     waveType = typeOfWave.bonus;
                 }
 
-
-                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE BONUS WILL ONLY COME ONCE!!!
-                //wavesSinceBonus = 0;
             }
         }
         
@@ -414,11 +408,7 @@ public class Wave_Spawner : MonoBehaviour
                     wavesSinceTimeSwap = 0;
                     waveType = typeOfWave.timeSwap;
                 }
-                
-               
 
-                //MAKE THIS ACTIVE WHEN WE ARE REALLY TESTING OTHERWISE timeswap WILL ONLY COME ONCE!!!
-               // wavesSinceTimeSwap = 0;
             }
         }
 
@@ -461,8 +451,6 @@ public class Wave_Spawner : MonoBehaviour
     //For bonus wave.
     public IEnumerator chestSpawn()
     {
-        
-        //yield return new WaitForSeconds(0.2f);
 
         GameObject chest1 = Instantiate(chestPrefab, spawnPoints[1].transform);
         GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
@@ -591,6 +579,9 @@ public class Wave_Spawner : MonoBehaviour
         waveType = typeOfWave.normal;
         specialWaveOn = false;
         Level_Manager.Instance.setTimePortalSelection(0);
+        wavesSinceDifficultyChange = 0;
+        theWaveDiff = waveDiff.easy;
+
 
         waveComplete = true;
     }

@@ -475,6 +475,7 @@ RectTransform:
   - {fileID: 1308463709}
   - {fileID: 1671991110}
   - {fileID: 1798884126}
+  - {fileID: 2057302918}
   - {fileID: 1026014327}
   - {fileID: 239041424}
   - {fileID: 409316502}
@@ -534,7 +535,7 @@ RectTransform:
   - {fileID: 910152575}
   - {fileID: 160158094}
   m_Father: {fileID: 221880114}
-  m_RootOrder: 10
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.022222957, y: 0.053630516}
   m_AnchorMax: {x: 0.45777634, y: 0.13456318}
@@ -852,7 +853,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 221880114}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.13456318}
   m_AnchorMax: {x: 0.45777634, y: 0.165}
@@ -1898,7 +1899,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 221880114}
-  m_RootOrder: 9
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4313883, y: 0.8396553}
   m_AnchorMax: {x: 0.7532128, y: 0.8841263}
@@ -2633,6 +2634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   waveText: {fileID: 1798884127}
+  eraText: {fileID: 2057302919}
   waveCount: 0
   spawnRate: 5
   timeBetweenWaves: 3
@@ -2654,10 +2656,10 @@ MonoBehaviour:
   chestPrefab: {fileID: 8492531496662785174, guid: e55a65a7b3dbf7140ac5b3f59516faf4, type: 3}
   timePortalPrefabs:
   - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
-  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
-  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
-  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
-  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
+  - {fileID: 2509886699335351895, guid: b0b697d05fd40fc43a093694d22e7283, type: 3}
+  - {fileID: 2509886699335351895, guid: ed422fb9831629b40a08d6120f658042, type: 3}
+  - {fileID: 2509886699335351895, guid: 2fedfac19fd2617458e55cbe1d65d96e, type: 3}
+  - {fileID: 2509886699335351895, guid: b8cea4818dc5c5046aeaf946203f3a65, type: 3}
   thePlayer: {fileID: 977138404}
 --- !u!114 &1302531496
 MonoBehaviour:
@@ -2680,17 +2682,71 @@ MonoBehaviour:
     wrappedList:
     - prefab: {fileID: 6716103093585239697, guid: 8aae1455e8bd9fe4d8f58c24838cd0a9, type: 3}
       size: 10
-    - prefab: {fileID: 6716103093585239697, guid: 3970ef856c445fc419986cfd9fe8374e, type: 3}
+    - prefab: {fileID: 6716103093585239697, guid: ff90fff2bee88e744a3a685c7e6556d0, type: 3}
       size: 10
     - prefab: {fileID: 6716103093585239697, guid: b7d2d8bddc508d642bbefc109a7504a7, type: 3}
       size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 1fd1e5caf562127448434992ab9db974, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: abaa9c3c88add02499873cbf265b5cb7, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 3deb49501d3b4544dbd9503b88f988d7, type: 3}
+      size: 10
   - listName: WildWestPools
     wrappedList:
-    - prefab: {fileID: 4158279202637467101, guid: 1fd1e5caf562127448434992ab9db974, type: 3}
+    - prefab: {fileID: 6716103093585239697, guid: 44d852c53de5aea4d9756ce6fe89a293, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 3970ef856c445fc419986cfd9fe8374e, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 26846dece253c46408e176fe2b746281, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: dcf76d3bc7413a741a651fb30cea6d0a, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 0023a353fc7278b489f55b5d478210bf, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: ceec371fab02e4342b2c8d32a94ba99d, type: 3}
       size: 10
   - listName: MedievalPools
     wrappedList:
-    - prefab: {fileID: 4158279202637467101, guid: a35ed98fba549b94a937c8c67b1d5fb0, type: 3}
+    - prefab: {fileID: 6716103093585239697, guid: f4bcc13086475644c9a025bf635302fe, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 8f38f78943d059a4bbb32b2597ffd140, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: ee55030cda7151340ad6cf707a99d507, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: a3f3ba7e75740374dab0d3b78af4d0c9, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f405c8e7f2c384f409751573f1f1d242, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 91a71497aa391aa4cab958c40ee7a3b6, type: 3}
+      size: 10
+  - listName: FuturePools
+    wrappedList:
+    - prefab: {fileID: 6716103093585239697, guid: dc08cd91a8dfd744c9a3904886053605, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 34bb51daac8713041aaffe221f86486e, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 810b1253f3eed8e42bbf9e3f15291905, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 1f8f5b3f63eb72541b5eeec936ce133f, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f83973e0e7b40a0499058079ad5212ad, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 059da1ecf0b59874eae9095580eebecd, type: 3}
+      size: 10
+  - listName: FeudalJapanPools
+    wrappedList:
+    - prefab: {fileID: 6716103093585239697, guid: ca033a0b9af668f4fa6a0047180edbd5, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 15f9d61731b47e84b952c4a2fc306723, type: 3}
+      size: 10
+    - prefab: {fileID: 6716103093585239697, guid: 7233668ac894bc746aee6b7af8c43f76, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 42ebd5da47ef0374499a3e303ce548f4, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 00214eb2e7884ad4a9431eb4711c6783, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 22f55830b10a4c14fa3f3ec5bfb16b31, type: 3}
       size: 10
   - listName: Treasure
     wrappedList:
@@ -4070,6 +4126,140 @@ CanvasRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1901874671}
+  m_CullTransparentMesh: 1
+--- !u!1 &2057302917
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2057302918}
+  - component: {fileID: 2057302920}
+  - component: {fileID: 2057302919}
+  m_Layer: 5
+  m_Name: Era_Display
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2057302918
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057302917}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 221880114}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.31275275, y: 0.94368964}
+  m_AnchorMax: {x: 0.86814106, y: 0.99300003}
+  m_AnchoredPosition: {x: -0.099975586, y: 1.8900146}
+  m_SizeDelta: {x: 11.100006, y: 1.6}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2057302919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057302917}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_text: 'Era:'
+  m_isRightToLeft: 0
+  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontSharedMaterials: []
+  m_fontMaterial: {fileID: 0}
+  m_fontMaterials: []
+  m_fontColor32:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontColor: {r: 1, g: 1, b: 1, a: 1}
+  m_enableVertexGradient: 0
+  m_colorMode: 3
+  m_fontColorGradient:
+    topLeft: {r: 1, g: 1, b: 1, a: 1}
+    topRight: {r: 1, g: 1, b: 1, a: 1}
+    bottomLeft: {r: 1, g: 1, b: 1, a: 1}
+    bottomRight: {r: 1, g: 1, b: 1, a: 1}
+  m_fontColorGradientPreset: {fileID: 0}
+  m_spriteAsset: {fileID: 0}
+  m_tintAllSprites: 0
+  m_StyleSheet: {fileID: 0}
+  m_TextStyleHashCode: -1183493901
+  m_overrideHtmlColors: 0
+  m_faceColor:
+    serializedVersion: 2
+    rgba: 4294967295
+  m_fontSize: 72
+  m_fontSizeBase: 36
+  m_fontWeight: 400
+  m_enableAutoSizing: 1
+  m_fontSizeMin: 18
+  m_fontSizeMax: 72
+  m_fontStyle: 0
+  m_HorizontalAlignment: 2
+  m_VerticalAlignment: 256
+  m_textAlignment: 65535
+  m_characterSpacing: 0
+  m_wordSpacing: 0
+  m_lineSpacing: 0
+  m_lineSpacingMax: 0
+  m_paragraphSpacing: 0
+  m_charWidthMaxAdj: 0
+  m_enableWordWrapping: 1
+  m_wordWrappingRatios: 0.4
+  m_overflowMode: 0
+  m_linkedTextComponent: {fileID: 0}
+  parentLinkedComponent: {fileID: 0}
+  m_enableKerning: 1
+  m_enableExtraPadding: 0
+  checkPaddingRequired: 0
+  m_isRichText: 1
+  m_parseCtrlCharacters: 1
+  m_isOrthographic: 1
+  m_isCullingEnabled: 0
+  m_horizontalMapping: 0
+  m_verticalMapping: 0
+  m_uvLineOffset: 0
+  m_geometrySortingOrder: 0
+  m_IsTextObjectScaleStatic: 0
+  m_VertexBufferAutoSizeReduction: 1
+  m_useMaxVisibleDescender: 1
+  m_pageToDisplay: 1
+  m_margin: {x: 0, y: 0, z: 0, w: 0}
+  m_isUsingLegacyAnimationComponent: 0
+  m_isVolumetricText: 0
+  m_hasFontAssetChanged: 0
+  m_baseMaterial: {fileID: 0}
+  m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!222 &2057302920
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2057302917}
   m_CullTransparentMesh: 1
 --- !u!1 &2093914699
 GameObject:
