@@ -585,6 +585,8 @@ public class Level_Manager : MonoBehaviour
         thePlayer.setState(Player.playerState.dead);
         //  player.SetActive(false);
         healthText.text = "Health: 0";
+        Collect_Manager.instance.totalCoins += coinsCollected;
+        SaveCollectables();
         retryButton.gameObject.SetActive(true);
     }
 
@@ -594,6 +596,14 @@ public class Level_Manager : MonoBehaviour
         //FOR DEBUG.
         SceneManager.LoadScene(0);
     }
+
+    //Save
+    void SaveCollectables()
+    {
+        Save_System.SaveCollectables(Collect_Manager.instance);
+    }
+
+    //Save
 
 
     /*Player gameplay related functions

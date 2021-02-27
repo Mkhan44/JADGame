@@ -118,7 +118,7 @@ public class Wave_Spawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        currentPlayerState = thePlayer.GetState();
+      //  currentPlayerState = thePlayer.GetState();
 
         if(waveType == typeOfWave.normal)
         {
@@ -135,7 +135,7 @@ public class Wave_Spawner : MonoBehaviour
 
         eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
         //Messy...Might want to reorganize.
-        if(currentPlayerState == Player.playerState.dead)
+        if(!Level_Manager.Instance.player.activeInHierarchy)
         {
             if(stopCo == false)
             {
