@@ -1,3 +1,9 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
+//Using Brackeys tutorial from YouTube.
+
 //Save system.
 
 using UnityEngine;
