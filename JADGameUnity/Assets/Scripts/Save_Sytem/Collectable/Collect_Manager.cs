@@ -59,9 +59,70 @@ public class Collect_Manager : MonoBehaviour
         if(collect != null)
         {
             totalCoins = collect.totalCoins;
+            numHandWarmers = collect.numHandWarmers;
+            numDefrosters = collect.numDefrosters;
+            numFireVests = collect.numFireVests;
         }
         
 
+    }
+
+    //Add to this function as we add more items into the game.
+    public int numPlayerOwns(string lookingFor)
+    {
+        switch(lookingFor)
+        {
+            case "numHandWarmers":
+                {
+                    return numHandWarmers;
+                    break;
+                }
+            case "numDefrosters":
+                {
+                    return numDefrosters;
+                    break;
+                }
+            case "numFireVests":
+                {
+                    return numFireVests;
+                    break;
+                }
+            default:
+                {
+                    return -1;
+                    break;
+                }
+
+        }
+    }
+
+    //Function for increasing item when it is purchased.
+    public void purchaseItemConfirm(string itemName)
+    {
+        switch (itemName)
+        {
+            case "numHandWarmers":
+                {
+                    numHandWarmers += 1;
+                    break;
+                }
+            case "numDefrosters":
+                {
+                    numDefrosters += 1;
+                    break;
+                }
+            case "numFireVests":
+                {
+                    numFireVests += 1;
+                    break;
+                }
+            default:
+                {
+                    Debug.LogWarning("Couldn't find the string: " + itemName);
+                    break;
+                }
+
+        }
     }
 
     void Start()
