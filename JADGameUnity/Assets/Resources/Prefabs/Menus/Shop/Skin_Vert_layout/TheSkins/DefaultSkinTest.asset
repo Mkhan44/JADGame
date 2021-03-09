@@ -10,11 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
-  m_Name: FireVest
+  m_Name: DefaultSkinTest
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 65df13acd5ced294ba181461f2871ff7, type: 3}
-  theName: Fire Vest
-  description: Heat meter won't rise for 5 seconds!
-  coinPrice: 100
-  gemPrice: 0
-  collectManagerNumString: numFireVests
+  itemImage: {fileID: 21300000, guid: cd0a0f2079a88144abeb5f4ab44cb671, type: 3}
+  theName: Skin 1
+  description: The default skin!
+  coinPrice: 10000
+  gemPrice: 100
+  collectManagerNumString: 
+  skinIndex: 3

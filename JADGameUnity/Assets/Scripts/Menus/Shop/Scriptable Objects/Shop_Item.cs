@@ -12,6 +12,7 @@ using TMPro;
 [CreateAssetMenu]
 public class Shop_Item : ScriptableObject
 {
+    [Header("Items")]
     [Tooltip("The image we will use to show the user what the item looks like.")]
     public Sprite itemImage;
 
@@ -24,9 +25,20 @@ public class Shop_Item : ScriptableObject
     [Tooltip("The price of the item.")]
     public int coinPrice;
 
+    [Tooltip("This string corresponds to the one that is being used in Collect_Manager script to tell how many of the item the player currently has. NEEDS TO MATCH EXACTLY!!!!")]
+    public string collectManagerNumString;
+
+    [Header("Skins")]
     [Tooltip("If it costs gems, the price in gems of the item. Leave this as 0 otherwise.")]
     public int gemPrice;
 
-    [Tooltip("This string corresponds to the one that is being used in Collect_Manager script to tell how many of the item the player currently has. NEEDS TO MATCH EXACTLY!!!!")]
-    public string collectManagerNumString;
+    [Tooltip("If this is a skin, we need a value corresponding to it. THESE MUST BE UNIQUE!!!! Otherwise leave this as 0.")]
+    public int skinIndex;
+
+
+    [Header("Currency")]
+    [Tooltip("For currency only. What is the price in USD going to be? [We should determine this ourselves]")]
+    public float currencyUSD;
+
+    //Might want a way to eliminate stuff we can only buy once like no ads after player has bought it.
 }

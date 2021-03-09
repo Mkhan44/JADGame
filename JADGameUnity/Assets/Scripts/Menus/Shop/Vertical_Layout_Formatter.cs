@@ -1,3 +1,7 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
 //This script populates the shop for the current category. I.E. Items, currency, skins, etc.
 
 using System.Collections;
@@ -40,23 +44,37 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             GameObject tempPurchaseButton = tempSpawn.transform.GetChild(3).gameObject;
             TextMeshProUGUI tempPlayerOwnedText = tempSpawn.transform.GetChild(4).GetComponent<TextMeshProUGUI>();
             tempTextMeshList.Add(tempPlayerOwnedText);
+            Image tempCoinImg = tempSpawn.transform.GetChild(5).GetComponent<Image>();
+            TextMeshProUGUI tempCoinCostText = tempSpawn.transform.GetChild(6).GetComponent<TextMeshProUGUI>();
+            Image tempGemImg = tempSpawn.transform.GetChild(7).GetComponent<Image>();
+            TextMeshProUGUI tempGemCostText = tempSpawn.transform.GetChild(8).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI tempCurrencyCostText = tempSpawn.transform.GetChild(9).GetComponent<TextMeshProUGUI>();
 
             tempImg.sprite = itemsForSale[i].itemImage;
             tempName.text = itemsForSale[i].theName;
             tempDesc.text = itemsForSale[i].description;
+            tempCoinCostText.text = itemsForSale[i].coinPrice.ToString();
+            tempGemCostText.text = itemsForSale[i].gemPrice.ToString();
+
 
             //This part should probably also only be if we're on currency...not sure yet.
             Button tempButtonAddListener = tempPurchaseButton.GetComponent<Button>();
-            int tempNum = i;
-            tempButtonAddListener.onClick.AddListener( () => Menu_Manager.instance.purchaseItemWithCoins(itemsForSale[tempNum].coinPrice, itemsForSale[tempNum].collectManagerNumString));
-            tempButtonAddListener.onClick.AddListener(() => changeText(tempNum));
-
+            
             //Debug.Log("The coin price of this item is: " + itemsForSale[i].coinPrice);
             //Debug.Log("The gem price of this item is: " + itemsForSale[i].gemPrice);
 
-            if (thisTab != WhichTabAreWeOn.Currency)
+            if(thisTab == WhichTabAreWeOn.Items)
             {
-                //Have a switch statement and then based on the currency amount we'll have diff buttons.
+                int tempNum = i;
+                tempButtonAddListener.onClick.AddListener(() => Menu_Manager.instance.purchaseItemWithCoins(itemsForSale[tempNum].coinPrice, itemsForSale[tempNum].collectManagerNumString));
+                tempButtonAddListener.onClick.AddListener(() => changeText(tempNum));
+
+
+                //These fields are not applicable to items.
+                tempGemImg.gameObject.SetActive(false);
+                tempGemCostText.gameObject.SetActive(false);
+                tempCurrencyCostText.gameObject.SetActive(false);
+
                 if (itemsForSale[i].collectManagerNumString != null)
                 {
                     tempPlayerOwnedText.text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[i].collectManagerNumString);
@@ -66,6 +84,23 @@ public class Vertical_Layout_Formatter : MonoBehaviour
                     Debug.LogWarning("String for item " + i + " is null!");
                 }
             }
+            else if(thisTab == WhichTabAreWeOn.Skins)
+            {
+                //Need to add listener to the button for skins.
+
+                tempCurrencyCostText.gameObject.SetActive(false);
+                tempPlayerOwnedText.gameObject.SetActive(false);
+            }
+            else if(thisTab == WhichTabAreWeOn.Currency)
+            {
+                tempGemImg.gameObject.SetActive(false);
+                tempCoinImg.gameObject.SetActive(false);
+                tempCoinCostText.gameObject.SetActive(false);
+                tempGemCostText.gameObject.SetActive(false);
+                tempPlayerOwnedText.gameObject.SetActive(false);
+                tempCurrencyCostText.text = "$" + itemsForSale[i].currencyUSD + " USD"; 
+            }
+
 
             
         }
