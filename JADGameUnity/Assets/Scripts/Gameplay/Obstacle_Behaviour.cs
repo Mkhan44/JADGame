@@ -11,10 +11,12 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     Vector2 startPos;
     Vector2 endPos;
     //Speed
-    [Tooltip("Speed of the obstacle moving from right to left.")]
+    [Tooltip("Speed of the obstacle moving from right to left. KEEP THIS AS 0.")]
     public float speed = 0f;
 
     float ogSpeed;
+    [Tooltip("How fast will this object go? This determines the speed increase rate.")]
+    public float increaseRate;
 
     //We will have spawn points set up in the Wave_Spawner script.
     [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
@@ -87,7 +89,15 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         //If it's anything that's not a chest.
         if(thisType != typeOfObstacle.chest && thisType != typeOfObstacle.timePortal)
         {
-            speed += 0.15f * Time.deltaTime;
+            if(increaseRate != 0f)
+            {
+                speed += increaseRate * Time.deltaTime;
+            }
+            else
+            {
+                speed += 0.15f * Time.deltaTime;
+            }
+           
 
             this.transform.position = Vector2.Lerp(startPos, endPos, speed);
 
