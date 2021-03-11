@@ -461,6 +461,8 @@ public class Level_Manager : MonoBehaviour
 
        
         currentPlayerHealth -= 1;
+
+
         if (currentPlayerHealth <= 0)
         {
             GameObject[] coins = GameObject.FindGameObjectsWithTag("Coin");
