@@ -16,5 +16,7 @@ MonoBehaviour:
   theName: Fire Vest
   description: Heat meter won't rise for 5 seconds!
   coinPrice: 100
+  theItem: 2
   gemPrice: 0
-  collectManagerNumString: numFireVests
+  skinIndex: 0
+  currencyUSD: 0

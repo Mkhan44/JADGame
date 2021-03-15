@@ -16,5 +16,7 @@ MonoBehaviour:
   theName: Defroster
   description: Instantly gets you out of "Frozen" status!
   coinPrice: 100
+  theItem: 1
   gemPrice: 0
-  collectManagerNumString: numDefrosters
+  skinIndex: 0
+  currencyUSD: 0

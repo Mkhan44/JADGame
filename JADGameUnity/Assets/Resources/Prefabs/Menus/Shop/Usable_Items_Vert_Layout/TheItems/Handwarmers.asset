@@ -16,5 +16,7 @@ MonoBehaviour:
   theName: Handwarmers
   description: Ice meter won't rise for 5 seconds!
   coinPrice: 100
+  collectManagerNumString: 
   gemPrice: 0
-  collectManagerNumString: numHandWarmers
+  skinIndex: 0
+  currencyUSD: 0

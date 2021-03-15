@@ -19,16 +19,34 @@ public class Collect_Manager : MonoBehaviour
 
     [Header("Items")]
     //Numbers of each item the player has.
-    public int numHandWarmers;
+    public int handWarmers;
     public int numDefrosters;
     public int numFireVests;
+
+
+    public enum typeOfItem
+    {
+        HandWarmer,
+        Defroster,
+        FireVest
+    }
+
+    public enum skinTypes
+    {
+        male1,
+        female1,
+        sonic,
+        mario,
+        snake
+    }
+
 
     [Header("Skin related")]
     //Index of the current skin that the player had been using during last session.
     public int currentSkin;
 
     //Array storing which skin indexes are unlocked. 0 and 1 (Male and female default) unlocked by default.
-    public int[] skinsUnlocked;
+    public List<int> skinsUnlocked = new List<int>();
 
     [Header("Singleton")]
     public static Collect_Manager instance;
@@ -48,8 +66,11 @@ public class Collect_Manager : MonoBehaviour
         }
         DontDestroyOnLoad(this);
 
+        //Debug.Log(System.Enum.GetValues(typeof(skinTypes)).Length);
+
     }
 
+    //Loading from a file...
     void LoadCollectableData()
     {
         CollectableData collect = Save_System.LoadCollectables();
@@ -59,30 +80,46 @@ public class Collect_Manager : MonoBehaviour
         if(collect != null)
         {
             totalCoins = collect.totalCoins;
-            numHandWarmers = collect.numHandWarmers;
+            handWarmers = collect.handWarmers;
             numDefrosters = collect.numDefrosters;
             numFireVests = collect.numFireVests;
+            currentSkin = collect.currentSkin;
+          
+            for (int i = 0; i < collect.skinsUnlocked.Count; i++)
+            {
+                skinsUnlocked.Add(collect.skinsUnlocked[i]);
+            }
+
+        }
+        else
+        {
+            currentSkin = 1;
+            //Player will have default skin unlocked no matter what. That value = 1.
+            skinsUnlocked.Add(1);
+            skinsUnlocked.Add(3);
+            skinsUnlocked.Add(2);
+            Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
 
     }
 
     //Add to this function as we add more items into the game.
-    public int numPlayerOwns(string lookingFor)
+    public int numPlayerOwns(typeOfItem typePassed)
     {
-        switch(lookingFor)
+        switch(typePassed)
         {
-            case "numHandWarmers":
+            case typeOfItem.HandWarmer:
                 {
-                    return numHandWarmers;
+                    return handWarmers;
                     break;
                 }
-            case "numDefrosters":
+            case typeOfItem.Defroster:
                 {
                     return numDefrosters;
                     break;
                 }
-            case "numFireVests":
+            case typeOfItem.FireVest:
                 {
                     return numFireVests;
                     break;
@@ -96,42 +133,80 @@ public class Collect_Manager : MonoBehaviour
         }
     }
 
-    //Function for increasing item when it is purchased.
-    public void purchaseItemConfirm(string itemName)
+
+    public void setCurrentSkin(skinTypes theSkin)
     {
-        switch (itemName)
+        //Debug.Log(System.Enum.GetValues(typeof(skinTypes)).Length);
+
+        foreach(int i in System.Enum.GetValues(typeof(skinTypes)))
         {
-            case "numHandWarmers":
+            if(theSkin.ToString() == System.Enum.GetName(typeof(skinTypes) , i))
+            {
+                Debug.Log("Current skin number is: " + i + " Which corresponds to: " + theSkin);
+                currentSkin = i;
+                break;
+            }
+        }
+    }
+
+    public int getCurrentSkin()
+    {
+        return currentSkin;
+    }
+
+    //Shop related stuff.
+
+    //Function for increasing item when it is purchased.
+    public void purchaseItemConfirm(typeOfItem typePassed)
+    {
+        switch (typePassed)
+        {
+            case typeOfItem.HandWarmer:
                 {
-                    numHandWarmers += 1;
+                    handWarmers += 1;
                     break;
                 }
-            case "numDefrosters":
+            case typeOfItem.Defroster:
                 {
                     numDefrosters += 1;
                     break;
                 }
-            case "numFireVests":
+            case typeOfItem.FireVest:
                 {
                     numFireVests += 1;
                     break;
                 }
             default:
                 {
-                    Debug.LogWarning("Couldn't find the string: " + itemName);
+                    Debug.LogWarning("Hey! We are in the default switch for purchaseItemConfirm()!");
                     break;
                 }
 
         }
     }
 
-    void Start()
+
+    public void purchaseItemWithCoins(int cost, typeOfItem typePassed)
     {
-        
+        int playerCoins = Collect_Manager.instance.totalCoins;
+
+        if (playerCoins >= cost)
+        {
+            Collect_Manager.instance.totalCoins -= cost;
+            Debug.Log("You just bought: " + typePassed);
+
+            Collect_Manager.instance.purchaseItemConfirm(typePassed);
+
+            //Save the purchase!
+            Save_System.SaveCollectables(Collect_Manager.instance);
+        }
+        else
+        {
+            Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
+        }
+
     }
 
-    void Update()
-    {
-        
-    }
+    //Shop related stuff.
+
 }

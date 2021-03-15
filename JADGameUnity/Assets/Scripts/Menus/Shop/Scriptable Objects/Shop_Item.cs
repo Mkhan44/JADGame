@@ -25,8 +25,8 @@ public class Shop_Item : ScriptableObject
     [Tooltip("The price of the item.")]
     public int coinPrice;
 
-    [Tooltip("This string corresponds to the one that is being used in Collect_Manager script to tell how many of the item the player currently has. NEEDS TO MATCH EXACTLY!!!!")]
-    public string collectManagerNumString;
+    [Tooltip("What item is this?")]
+    public Collect_Manager.typeOfItem theItem;
 
     [Header("Skins")]
     [Tooltip("If it costs gems, the price in gems of the item. Leave this as 0 otherwise.")]

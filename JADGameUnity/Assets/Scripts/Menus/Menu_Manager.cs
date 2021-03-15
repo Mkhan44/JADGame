@@ -37,28 +37,4 @@ public class Menu_Manager : MonoBehaviour
     }
 
 
-    //Shop related stuff.
-
-    public void purchaseItemWithCoins(int cost, string itemNameForCollectable)
-    {
-        int playerCoins = Collect_Manager.instance.totalCoins;
-
-        if(playerCoins >= cost)
-        {
-            Collect_Manager.instance.totalCoins -= cost;
-            Debug.Log("You just bought: " + itemNameForCollectable);
-
-            Collect_Manager.instance.purchaseItemConfirm(itemNameForCollectable);
-
-            //Save the purchase!
-            Save_System.SaveCollectables(Collect_Manager.instance);
-        }
-        else
-        {
-            Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
-        }
-
-    }    
-
-    //Shop related stuff.
 }

@@ -1,3 +1,7 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
 //Stores the save data for collectables in the game (Coins, gems, etc)
 
 using System.Collections;
@@ -11,7 +15,7 @@ public class CollectableData
     public int totalCoins;
     public int totalGems;
     //Numbers of each item the player has.
-    public int numHandWarmers;
+    public int handWarmers;
     public int numDefrosters;
     public int numFireVests;
 
@@ -19,27 +23,28 @@ public class CollectableData
     public int currentSkin;
 
     //Array storing which skin indexes are unlocked. 0 and 1 (Male and female default) unlocked by default.
-    public int[] skinsUnlocked;
+    public List<int> skinsUnlocked = new List<int>();
 
     //Constructor.
     public CollectableData(Collect_Manager collectmanager)
     {
         totalCoins = Collect_Manager.instance.totalCoins;
         totalGems = Collect_Manager.instance.totalGems;
-        numHandWarmers = Collect_Manager.instance.numHandWarmers;
+        handWarmers = Collect_Manager.instance.handWarmers;
         numDefrosters = Collect_Manager.instance.numDefrosters;
         numFireVests = Collect_Manager.instance.numFireVests;
         currentSkin = Collect_Manager.instance.currentSkin;
 
         //Loop through and insert every numbered skin that the player has unlocked.
-        if(Collect_Manager.instance.skinsUnlocked.Length != 0)
+      
+        for (int i = 0; i < Collect_Manager.instance.skinsUnlocked.Count; i++)
         {
-            for (int i = 0; i < Collect_Manager.instance.skinsUnlocked.Length; i++)
-            {
-                skinsUnlocked[i] = Collect_Manager.instance.skinsUnlocked[i];
-            }
+            skinsUnlocked.Add(Collect_Manager.instance.skinsUnlocked[i]);
         }
-       
+
+        skinsUnlocked.Sort();
+
+
     }
 
 }

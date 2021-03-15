@@ -19,6 +19,8 @@ public class Vertical_Layout_Formatter : MonoBehaviour
         Currency
     }
 
+
+
     public WhichTabAreWeOn thisTab;
     [Tooltip("Put in any new items here that will be in the shop. These should be scriptable objects.")]
     //Item should consist of an image of the item, description of the item in text form, and the price...Ex: x100 -coinimage- or x200 -gemimage-
@@ -66,7 +68,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             if(thisTab == WhichTabAreWeOn.Items)
             {
                 int tempNum = i;
-                tempButtonAddListener.onClick.AddListener(() => Menu_Manager.instance.purchaseItemWithCoins(itemsForSale[tempNum].coinPrice, itemsForSale[tempNum].collectManagerNumString));
+                tempButtonAddListener.onClick.AddListener(() => Collect_Manager.instance.purchaseItemWithCoins(itemsForSale[tempNum].coinPrice, itemsForSale[tempNum].theItem));
                 tempButtonAddListener.onClick.AddListener(() => changeText(tempNum));
 
 
@@ -75,14 +77,10 @@ public class Vertical_Layout_Formatter : MonoBehaviour
                 tempGemCostText.gameObject.SetActive(false);
                 tempCurrencyCostText.gameObject.SetActive(false);
 
-                if (itemsForSale[i].collectManagerNumString != null)
-                {
-                    tempPlayerOwnedText.text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[i].collectManagerNumString);
-                }
-                else
-                {
-                    Debug.LogWarning("String for item " + i + " is null!");
-                }
+        
+                tempPlayerOwnedText.text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[i].theItem);
+                
+             
             }
             else if(thisTab == WhichTabAreWeOn.Skins)
             {
@@ -111,7 +109,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     //Update the text when the player buys an item.
     public void changeText(int indexOfItem)
     {
-        tempTextMeshList[indexOfItem].text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[indexOfItem].collectManagerNumString);
+        tempTextMeshList[indexOfItem].text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[indexOfItem].theItem);
     }
 
     public void ScrollToTop()
