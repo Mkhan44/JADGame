@@ -26,6 +26,7 @@ public class Customize_Loadout : MonoBehaviour
     public List<SkinInfo> skinsToPick;
 
     //This will be used at runtime to be modified to fit whatever skins are currently unlocked by the player.
+    [SerializeField]
     List<SkinInfo> modifiedList = new List<SkinInfo>();
 
     public ScrollRect skinScroll;
@@ -38,13 +39,30 @@ public class Customize_Loadout : MonoBehaviour
 
     public Sprite currentSkinHolderSprite;
     public Animator currentSkinHolderAnimator;
+    Coroutine animateRoutine;
+
+    bool enteredOnce;
 
     Collect_Manager.skinTypes currentSkinType;
 
     // Start is called before the first frame update
     void Start()
     {
+        enteredOnce = false;
         initializeSkinCustomization();
+        enteredOnce = true;
+    }
+
+    private void OnEnable()
+    {
+       if(enteredOnce)
+        {
+            resetScrollableArea();
+            StopCoroutine(animateRoutine);
+            animateRoutine = StartCoroutine(animationRandomizer());
+            loadSkins();
+        }
+       
     }
 
     // Update is called once per frame
@@ -53,6 +71,12 @@ public class Customize_Loadout : MonoBehaviour
         
     }
 
+    /*
+     **************************************************************
+     * SKIN RELATED FUNCTIONS
+     ************************************************************** 
+     */
+
     //This function populates the current skin area as well as all skins the player currently has unlocked to select from.
     public void initializeSkinCustomization()
     {
@@ -60,27 +84,15 @@ public class Customize_Loadout : MonoBehaviour
         currentSkinHolderAnimator = currentSkinHolder.GetComponent<Animator>();
         currentSkinHolderSprite = currentSkinHolder.GetComponent<Image>().sprite;
 
-        //We do minus 1 here because the array of SkinInfo starts at 0.
-        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin() - 1);
-    
-        //Populate the skin preview on the top based on what the user has currently equipped.
-        for (int i = 0; i < skinsToPick.Count; i++)
-        {
-            if(currentSkinInt == i)
-            {
-                currentSkinHolderSprite = skinsToPick[i].skinSprite;
-                currentSkinHolderAnimator.runtimeAnimatorController = skinsToPick[i].animationController;
-
-                break;
-            }
-        }
+        //switchCurrentSkin();
 
         loadSkins();
-      
+
+        animateRoutine = StartCoroutine(animationRandomizer());
 
         //currentSkinHolderAnimator.SetBool("IsCrouching", true);
 
-        StartCoroutine(animationRandomizer());
+
 
     }
 
@@ -103,24 +115,73 @@ public class Customize_Loadout : MonoBehaviour
             }
         }
 
-        Debug.Log("The modified list has: " + modifiedList.Count + " elements in it.");
-        Debug.Log("The skinsToPick list has: " + skinsToPick.Count + " elements in it.");
+       // Debug.Log("The modified list has: " + modifiedList.Count + " elements in it.");
+       // Debug.Log("The skinsToPick list has: " + skinsToPick.Count + " elements in it.");
 
 
         //Populate the scrollable area.
-        for (int i = 0; i < modifiedList.Count; i++)
+        for (int k = 0; k < modifiedList.Count; k++)
         {
             GameObject tempObj = Instantiate(skinSelectPrefab);
             tempObj.transform.SetParent(skinScrollableArea.gameObject.transform, false);
 
-            tempObj.GetComponent<Image>().sprite = modifiedList[i].skinIcon;
+            tempObj.GetComponent<Image>().sprite = modifiedList[k].skinIcon;
 
             Button tempButton = tempObj.transform.GetChild(0).GetComponent<Button>();
 
-           // tempButton.onClick.AddListener(() => changeText(tempNum));
+
+            //Need to find a way to add a listener that can call setCurrentSkin with the correct skin index corresponding to that of the skintypes we have.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+           // tempButton.onClick.AddListener(() => setCurrentSkin());
 
         }
+
+        switchCurrentSkin();
+
+        
     }
+
+    //Whenever we re-enter the menu, we want to reset the selectable skins because the player might have bought/unlocked some more.
+    public void resetScrollableArea()
+    {
+        foreach(Transform child in skinScrollableArea.gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    //Sets the skin the Collect_Manager once the user has picked a skin.
+    //This is what will be called when clicking on a portrait/skin in the horizontal scroll group.
+    public void setCurrentSkin(int currentSkin)
+    {
+        //NEED TO SET THE SKIN IN THE COLLECT_MANAGER SO IT SAVES FOR THE PLAYER!!!!
+
+        switchCurrentSkin();
+    }
+
+    public void switchCurrentSkin()
+    {
+        //We do minus 1 here because the array of SkinInfo starts at 0.
+        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin() - 1);
+
+        //Populate the skin preview on the top based on what the user has currently equipped.
+        for (int i = 0; i < skinsToPick.Count; i++)
+        {
+            if (currentSkinInt == i)
+            {
+                currentSkinHolderSprite = skinsToPick[i].skinSprite;
+                currentSkinHolderAnimator.runtimeAnimatorController = skinsToPick[i].animationController;
+
+                break;
+            }
+        }
+
+    }
+
+    /*
+     **************************************************************
+     * SKIN RELATED FUNCTIONS
+     ************************************************************** 
+     */
 
 
     //Play random animations from the skin we have selected indefinitely.

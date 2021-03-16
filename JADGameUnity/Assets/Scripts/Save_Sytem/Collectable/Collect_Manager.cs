@@ -97,7 +97,7 @@ public class Collect_Manager : MonoBehaviour
             //Player will have default skin unlocked no matter what. That value = 1.
             skinsUnlocked.Add(1);
             skinsUnlocked.Add(3);
-            skinsUnlocked.Add(2);
+            //skinsUnlocked.Add(2);
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
