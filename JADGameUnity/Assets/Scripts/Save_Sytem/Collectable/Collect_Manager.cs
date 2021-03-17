@@ -94,10 +94,10 @@ public class Collect_Manager : MonoBehaviour
         else
         {
             currentSkin = 1;
-            //Player will have default skin unlocked no matter what. That value = 1.
+            //Player will have default skin unlocked no matter what. That value = 1. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 2.
+            skinsUnlocked.Add(0);
             skinsUnlocked.Add(1);
-            skinsUnlocked.Add(3);
-            //skinsUnlocked.Add(2);
+            skinsUnlocked.Add(2);
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
@@ -140,7 +140,8 @@ public class Collect_Manager : MonoBehaviour
 
         foreach(int i in System.Enum.GetValues(typeof(skinTypes)))
         {
-            if(theSkin.ToString() == System.Enum.GetName(typeof(skinTypes) , i))
+            //Case the enum to an integer to compare it.
+            if((int)theSkin == i)
             {
                 Debug.Log("Current skin number is: " + i + " Which corresponds to: " + theSkin);
                 currentSkin = i;

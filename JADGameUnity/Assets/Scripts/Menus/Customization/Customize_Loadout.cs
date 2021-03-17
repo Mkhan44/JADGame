@@ -25,10 +25,6 @@ public class Customize_Loadout : MonoBehaviour
     [Tooltip("Ensure this list is in the same order as the information in Collect_Manager script!!!!")]
     public List<SkinInfo> skinsToPick;
 
-    //This will be used at runtime to be modified to fit whatever skins are currently unlocked by the player.
-    [SerializeField]
-    List<SkinInfo> modifiedList = new List<SkinInfo>();
-
     public ScrollRect skinScroll;
 
     //This is a constant.
@@ -43,7 +39,6 @@ public class Customize_Loadout : MonoBehaviour
 
     bool enteredOnce;
 
-    Collect_Manager.skinTypes currentSkinType;
 
     // Start is called before the first frame update
     void Start()
@@ -98,46 +93,30 @@ public class Customize_Loadout : MonoBehaviour
 
     public void loadSkins()
     {
-        modifiedList.Clear();
         for(int i = 0; i < skinsToPick.Count; i++)
         {
-            //Find the skins we have (i.e. skinsUnlocked[0] = default skin) , and only add those skins to the modified list.
-            //Example: We have default (0) , female (1) , supernoob (3) , but not proness (2) ...So add the indexes of 0, 1, and 3 to modified list but get rid of 2.
+            GameObject tempObj = Instantiate(skinSelectPrefab);
+            tempObj.transform.SetParent(skinScrollableArea.gameObject.transform, false);
+            tempObj.GetComponent<Image>().sprite = skinsToPick[i].skinIcon;
+            Button tempButton = tempObj.transform.GetChild(0).GetComponent<Button>();
+            int tempNum = i;
+            tempButton.onClick.AddListener(() => setCurrentSkin(tempNum));
+            tempObj.SetActive(false);
 
-            for(int j = 0; j < Collect_Manager.instance.skinsUnlocked.Count; j++)
+            for (int j = 0; j < Collect_Manager.instance.skinsUnlocked.Count; j++)
             {
-                //Do i +1 here because obviously 0 won't ever be a value that is in skinsUnlocked.
-                if((i+1) == Collect_Manager.instance.skinsUnlocked[j])
+                //Do i +1 here because obviously 0 won't ever be a value (In other words, the value of 0 itself) that is in skinsUnlocked.
+                if ((i) == Collect_Manager.instance.skinsUnlocked[j])
                 {
-                    modifiedList.Add(skinsToPick[i]);
+                    tempObj.SetActive(true);
                     break;
                 }
             }
         }
 
-       // Debug.Log("The modified list has: " + modifiedList.Count + " elements in it.");
        // Debug.Log("The skinsToPick list has: " + skinsToPick.Count + " elements in it.");
 
-
-        //Populate the scrollable area.
-        for (int k = 0; k < modifiedList.Count; k++)
-        {
-            GameObject tempObj = Instantiate(skinSelectPrefab);
-            tempObj.transform.SetParent(skinScrollableArea.gameObject.transform, false);
-
-            tempObj.GetComponent<Image>().sprite = modifiedList[k].skinIcon;
-
-            Button tempButton = tempObj.transform.GetChild(0).GetComponent<Button>();
-
-
-            //Need to find a way to add a listener that can call setCurrentSkin with the correct skin index corresponding to that of the skintypes we have.!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-           // tempButton.onClick.AddListener(() => setCurrentSkin());
-
-        }
-
         switchCurrentSkin();
-
-        
     }
 
     //Whenever we re-enter the menu, we want to reset the selectable skins because the player might have bought/unlocked some more.
@@ -151,10 +130,19 @@ public class Customize_Loadout : MonoBehaviour
 
     //Sets the skin the Collect_Manager once the user has picked a skin.
     //This is what will be called when clicking on a portrait/skin in the horizontal scroll group.
-    public void setCurrentSkin(int currentSkin)
+    public void setCurrentSkin(int currentSkinNum)
     {
         //NEED TO SET THE SKIN IN THE COLLECT_MANAGER SO IT SAVES FOR THE PLAYER!!!!
-
+        foreach (Collect_Manager.skinTypes theType in System.Enum.GetValues(typeof(Collect_Manager.skinTypes)))
+        {
+            if((int)theType == currentSkinNum)
+            {
+                Collect_Manager.instance.setCurrentSkin(theType);
+                Debug.Log("Switching skin to: " + theType);
+                break;
+            }
+        }
+       
         switchCurrentSkin();
     }
 
@@ -177,13 +165,6 @@ public class Customize_Loadout : MonoBehaviour
 
     }
 
-    /*
-     **************************************************************
-     * SKIN RELATED FUNCTIONS
-     ************************************************************** 
-     */
-
-
     //Play random animations from the skin we have selected indefinitely.
     public IEnumerator animationRandomizer()
     {
@@ -191,7 +172,7 @@ public class Customize_Loadout : MonoBehaviour
 
         while (true)
         {
-            if(whichAniToPlay == 1)
+            if (whichAniToPlay == 1)
             {
                 whichAniToPlay = 2;
                 currentSkinHolderAnimator.SetBool("IsCrouching", true);
@@ -206,4 +187,13 @@ public class Customize_Loadout : MonoBehaviour
         }
 
     }
+
+    /*
+     **************************************************************
+     * SKIN RELATED FUNCTIONS
+     ************************************************************** 
+     */
+
+
+
 }
