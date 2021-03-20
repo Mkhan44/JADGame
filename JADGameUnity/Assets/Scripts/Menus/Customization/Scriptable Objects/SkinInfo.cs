@@ -8,7 +8,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Animations;
 
 [CreateAssetMenu]
 public class SkinInfo : ScriptableObject
@@ -17,7 +16,7 @@ public class SkinInfo : ScriptableObject
     public Sprite skinSprite;
 
     [Tooltip("There should be an animator controller that this skin will be using. This is for the preview.")]
-    public AnimatorController animationController;
+    public RuntimeAnimatorController animationController;
 
     public Collect_Manager.skinTypes thisSkinType;
 

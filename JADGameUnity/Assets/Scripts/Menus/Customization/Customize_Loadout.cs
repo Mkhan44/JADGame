@@ -10,7 +10,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEditor.Animations;
 
 public class Customize_Loadout : MonoBehaviour
 {
@@ -33,7 +32,7 @@ public class Customize_Loadout : MonoBehaviour
     //We'll be using this to parent the prefabs.
     public HorizontalLayoutGroup skinScrollableArea;
 
-    public Sprite currentSkinHolderSprite;
+    public Image currentSkinHolderImage;
     public Animator currentSkinHolderAnimator;
     Coroutine animateRoutine;
 
@@ -65,6 +64,7 @@ public class Customize_Loadout : MonoBehaviour
     {
         
     }
+    #region SKIN RELATED
 
     /*
      **************************************************************
@@ -77,13 +77,13 @@ public class Customize_Loadout : MonoBehaviour
     {
         
         currentSkinHolderAnimator = currentSkinHolder.GetComponent<Animator>();
-        currentSkinHolderSprite = currentSkinHolder.GetComponent<Image>().sprite;
+        currentSkinHolderImage = currentSkinHolder.GetComponent<Image>();
 
         //switchCurrentSkin();
 
         loadSkins();
 
-        animateRoutine = StartCoroutine(animationRandomizer());
+       // animateRoutine = StartCoroutine(animationRandomizer());
 
         //currentSkinHolderAnimator.SetBool("IsCrouching", true);
 
@@ -132,7 +132,12 @@ public class Customize_Loadout : MonoBehaviour
     //This is what will be called when clicking on a portrait/skin in the horizontal scroll group.
     public void setCurrentSkin(int currentSkinNum)
     {
-        //NEED TO SET THE SKIN IN THE COLLECT_MANAGER SO IT SAVES FOR THE PLAYER!!!!
+        if(currentSkinNum == Collect_Manager.instance.getCurrentSkin())
+        {
+            Debug.Log("hey, we are already wearing this skin!");
+            return;
+        }
+
         foreach (Collect_Manager.skinTypes theType in System.Enum.GetValues(typeof(Collect_Manager.skinTypes)))
         {
             if((int)theType == currentSkinNum)
@@ -148,20 +153,27 @@ public class Customize_Loadout : MonoBehaviour
 
     public void switchCurrentSkin()
     {
-        //We do minus 1 here because the array of SkinInfo starts at 0.
-        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin() - 1);
+        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
 
         //Populate the skin preview on the top based on what the user has currently equipped.
         for (int i = 0; i < skinsToPick.Count; i++)
         {
             if (currentSkinInt == i)
             {
-                currentSkinHolderSprite = skinsToPick[i].skinSprite;
-                currentSkinHolderAnimator.runtimeAnimatorController = skinsToPick[i].animationController;
+                if(animateRoutine != null)
+                {
+                    StopCoroutine(animateRoutine);
+                }
 
+              
+                currentSkinHolderImage.sprite = skinsToPick[i].skinSprite;
+                currentSkinHolderAnimator.runtimeAnimatorController = skinsToPick[i].animationController;
+ 
                 break;
             }
         }
+
+        animateRoutine = StartCoroutine(animationRandomizer());
 
     }
 
@@ -193,6 +205,15 @@ public class Customize_Loadout : MonoBehaviour
      * SKIN RELATED FUNCTIONS
      ************************************************************** 
      */
+    #endregion
+
+    #region LOADOUT
+
+
+
+    #endregion
+
+
 
 
 

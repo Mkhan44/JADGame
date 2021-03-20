@@ -19,6 +19,11 @@ public class CollectableData
     public int numDefrosters;
     public int numFireVests;
 
+    //Loadout items that will correspond to enum in the Collect_Manager.
+    int item1;
+    int item2;
+    int item3;
+
     //Index of the current skin that the player had been using during last session.
     public int currentSkin;
 
@@ -34,6 +39,9 @@ public class CollectableData
         numDefrosters = Collect_Manager.instance.numDefrosters;
         numFireVests = Collect_Manager.instance.numFireVests;
         currentSkin = Collect_Manager.instance.currentSkin;
+        item1 = Collect_Manager.instance.item1;
+        item2 = Collect_Manager.instance.item2;
+        item3 = Collect_Manager.instance.item3;
 
         //Loop through and insert every numbered skin that the player has unlocked.
       

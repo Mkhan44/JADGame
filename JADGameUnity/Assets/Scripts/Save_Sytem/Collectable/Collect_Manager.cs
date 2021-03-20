@@ -24,6 +24,7 @@ public class Collect_Manager : MonoBehaviour
     public int numFireVests;
 
 
+
     public enum typeOfItem
     {
         HandWarmer,
@@ -39,6 +40,13 @@ public class Collect_Manager : MonoBehaviour
         mario,
         snake
     }
+
+    [Header("Loadout")]
+    //Loadout...Save as Int and we can figure out the corresponding enum index based on that. 0 = handwarmer, 1 = defroster, etc.
+    public int item1;
+    public int item2;
+    public int item3;
+    
 
 
     [Header("Skin related")]
@@ -98,6 +106,9 @@ public class Collect_Manager : MonoBehaviour
             skinsUnlocked.Add(0);
             skinsUnlocked.Add(1);
             skinsUnlocked.Add(2);
+
+            //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
+            totalCoins = 50000;
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
