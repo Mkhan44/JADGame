@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Skin3
   m_EditorClassIdentifier: 
   skinSprite: {fileID: 21300000, guid: d449981b02526c64bb84118b81e44ec8, type: 3}
-  animationController: {fileID: 9100000, guid: 87390fa6d3e9c1d46b4d6ddd0734b561, type: 2}
+  animationOverrideController: {fileID: 22100000, guid: 70304c1ff01daee4ba9d8930fe49a939, type: 2}
   thisSkinType: 2
   skinIcon: {fileID: 21300000, guid: 6244e0ce072f26c4a82335e6f27357de, type: 3}

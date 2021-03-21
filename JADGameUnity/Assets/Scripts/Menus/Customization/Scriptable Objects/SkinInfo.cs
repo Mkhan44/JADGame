@@ -15,8 +15,8 @@ public class SkinInfo : ScriptableObject
     [Tooltip("Sprite that the skin will use.")]
     public Sprite skinSprite;
 
-    [Tooltip("There should be an animator controller that this skin will be using. This is for the preview.")]
-    public RuntimeAnimatorController animationController;
+    [Tooltip("There should be an override controller that this skin will be using. This is for the preview.")]
+    public AnimatorOverrideController animationOverrideController;
 
     public Collect_Manager.skinTypes thisSkinType;
 

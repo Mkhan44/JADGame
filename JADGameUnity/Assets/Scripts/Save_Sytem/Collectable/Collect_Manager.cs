@@ -43,6 +43,7 @@ public class Collect_Manager : MonoBehaviour
 
     [Header("Loadout")]
     //Loadout...Save as Int and we can figure out the corresponding enum index based on that. 0 = handwarmer, 1 = defroster, etc.
+    //We will make this -1 if no item is selected.
     public int item1;
     public int item2;
     public int item3;
@@ -106,6 +107,11 @@ public class Collect_Manager : MonoBehaviour
             skinsUnlocked.Add(0);
             skinsUnlocked.Add(1);
             skinsUnlocked.Add(2);
+
+            //Default the loadout to -1's so we don't put any items in the loadout.
+            item1 = -1;
+            item2 = -1;
+            item3 = -1;
 
             //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
             totalCoins = 50000;
@@ -220,5 +226,38 @@ public class Collect_Manager : MonoBehaviour
     }
 
     //Shop related stuff.
+
+
+
+    //Customization stuff
+    public void equipItem(typeOfItem typePassed)
+    {
+        switch (typePassed)
+        {
+            case typeOfItem.HandWarmer:
+                {
+                    handWarmers -= 1;
+                    break;
+                }
+            case typeOfItem.Defroster:
+                {
+                    numDefrosters -= 1;
+                    break;
+                }
+            case typeOfItem.FireVest:
+                {
+                    numFireVests -= 1;
+                    break;
+                }
+            default:
+                {
+                    Debug.LogWarning("Hey! We are in the default switch for purchaseItemConfirm()!");
+                    break;
+                }
+
+        }
+    }
+
+    //Customization stuff
 
 }
