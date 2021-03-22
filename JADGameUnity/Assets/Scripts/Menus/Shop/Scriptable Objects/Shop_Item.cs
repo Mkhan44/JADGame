@@ -40,5 +40,15 @@ public class Shop_Item : ScriptableObject
     [Tooltip("For currency only. What is the price in USD going to be? [We should determine this ourselves]")]
     public float currencyUSD;
 
+
+    //GAMEPLAY VARIABLES!
+
+    [Header("Gameplay related")]
+    [Tooltip("ONLY APPLICABLE TO GAMEPLAY RELATED ITEMS: If the item has a duration and isn't an instant use, check this.")]
+    public bool hasDuration;
+    [Tooltip("If the item has a duration , this is where we set it: Otherwise leave this as 0.")]
+    public float duration;
+
+    //GAMEPLAY VARIABLES!
     //Might want a way to eliminate stuff we can only buy once like no ads after player has bought it.
 }

@@ -95,13 +95,13 @@ public class Temperature_Manager : MonoBehaviour
         /*
          * Firevest + handwarmer power up check
          */
-        if(Level_Manager.Instance.getCurrentItem() == Item.itemType.FireVest && typeOfMeter == meterType.heatMeter)
+        if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.FireVest && typeOfMeter == meterType.heatMeter)
         {
           
             amount = 0;
             
         }
-        else if(Level_Manager.Instance.getCurrentItem() == Item.itemType.HandWarmers && typeOfMeter == meterType.iceMeter)
+        else if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.HandWarmer && typeOfMeter == meterType.iceMeter)
         {
             amount = 0;
         }

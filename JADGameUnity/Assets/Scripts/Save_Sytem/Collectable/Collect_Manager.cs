@@ -29,7 +29,9 @@ public class Collect_Manager : MonoBehaviour
     {
         HandWarmer,
         Defroster,
-        FireVest
+        FireVest,
+        //DEBUG
+        none
     }
 
     public enum skinTypes
@@ -56,6 +58,10 @@ public class Collect_Manager : MonoBehaviour
 
     //Array storing which skin indexes are unlocked. 0 and 1 (Male and female default) unlocked by default.
     public List<int> skinsUnlocked = new List<int>();
+
+    [Header("Things to reference throughout the game.")]
+    public List<SkinInfo> skinsToPick;
+    public List<Shop_Item> itemsToPick;
 
     [Header("Singleton")]
     public static Collect_Manager instance;
@@ -84,7 +90,6 @@ public class Collect_Manager : MonoBehaviour
     {
         CollectableData collect = Save_System.LoadCollectables();
 
-        //Fill in the rest later.
 
         if(collect != null)
         {
@@ -93,6 +98,9 @@ public class Collect_Manager : MonoBehaviour
             numDefrosters = collect.numDefrosters;
             numFireVests = collect.numFireVests;
             currentSkin = collect.currentSkin;
+            item1 = collect.item1;
+            item2 = collect.item2;
+            item3 = collect.item3;
           
             for (int i = 0; i < collect.skinsUnlocked.Count; i++)
             {
@@ -100,10 +108,11 @@ public class Collect_Manager : MonoBehaviour
             }
 
         }
+        //IF THERE IS NO SAVE FILE, THIS WILL BE CALLED.
         else
         {
-            currentSkin = 1;
-            //Player will have default skin unlocked no matter what. That value = 1. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 2.
+            currentSkin = 0;
+            //Player will have default skin unlocked no matter what. That value = 0. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 1.
             skinsUnlocked.Add(0);
             skinsUnlocked.Add(1);
             skinsUnlocked.Add(2);
@@ -259,5 +268,6 @@ public class Collect_Manager : MonoBehaviour
     }
 
     //Customization stuff
+
 
 }

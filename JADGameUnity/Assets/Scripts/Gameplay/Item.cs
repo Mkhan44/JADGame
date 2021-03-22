@@ -9,18 +9,8 @@ using UnityEngine.EventSystems;
 
 public class Item : MonoBehaviour , IPointerDownHandler
 {
-    public enum itemType
-    {
-        FireVest,
-        HandWarmers,
-        Clock,
-        Defroster,
-        LiquidNitrogen,
-        //debug
-        none
-    }
 
-    public itemType thisItemType;
+    public Collect_Manager.typeOfItem thisItemType;
 
     bool hasBeenUsed;
 
@@ -49,7 +39,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
         //Activate power up.
 
         //If player is not powered up already, and this object isn't interactable (opactiy not at 100%) we can activate the power up.
-        if(!hasBeenUsed)
+        if(!hasBeenUsed && this.thisItemType != Collect_Manager.typeOfItem.none)
         {
             if (!Level_Manager.Instance.thePlayer.isPoweredUp)
             {
@@ -59,7 +49,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
 
                     switch (thisItemType)
                     {
-                        case itemType.Defroster:
+                        case Collect_Manager.typeOfItem.Defroster:
                             {
                                 if (Level_Manager.Instance.thePlayer.GetState() == Player.playerState.frozen && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
                                 {
@@ -86,13 +76,13 @@ public class Item : MonoBehaviour , IPointerDownHandler
                         //Go through the check for which item with a duration it is.
                         switch (thisItemType)
                         {
-                            case itemType.FireVest:
+                            case Collect_Manager.typeOfItem.FireVest:
                                 {
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     //  fireVest();
                                     break;
                                 }
-                            case itemType.HandWarmers:
+                            case Collect_Manager.typeOfItem.HandWarmer:
                                 {
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     break;
@@ -180,5 +170,8 @@ public class Item : MonoBehaviour , IPointerDownHandler
         gameObject.SetActive(false);
     }
 
-
+    public void changeItem(Collect_Manager.typeOfItem item)
+    {
+        thisItemType = item;
+    }
 }

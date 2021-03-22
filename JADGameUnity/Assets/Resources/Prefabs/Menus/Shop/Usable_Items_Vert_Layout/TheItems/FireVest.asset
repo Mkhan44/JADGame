@@ -20,3 +20,5 @@ MonoBehaviour:
   gemPrice: 0
   skinIndex: 0
   currencyUSD: 0
+  hasDuration: 1
+  duration: 5

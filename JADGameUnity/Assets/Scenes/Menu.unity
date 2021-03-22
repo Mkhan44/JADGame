@@ -405,7 +405,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.23958007, y: 0.24300002}
   m_AnchorMax: {x: 0.767, y: 0.3743516}
-  m_AnchoredPosition: {x: 2.9519958, y: 1.8833008}
+  m_AnchoredPosition: {x: 2.9520264, y: 1.8833008}
   m_SizeDelta: {x: -2.1929998, y: 2.4689999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &548387659
@@ -645,18 +645,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skinSelectPrefab: {fileID: 5829736215615373225, guid: 77fc319b23ba75446a4de050979a65ba, type: 3}
   itemHolderPrefab: {fileID: 2582128719448822073, guid: d8a9894dc0a099f47b718393199a0579, type: 3}
-  skinsToPick:
-  - {fileID: 11400000, guid: 6ee6a8ac49a944044b1460d6fb42e10f, type: 2}
-  - {fileID: 11400000, guid: df4aab4fc64be3843978ce8994f6d691, type: 2}
-  - {fileID: 11400000, guid: 99ef4d33bc1289d46bd375c2117ab717, type: 2}
   currentSkinHolder: {fileID: 5800389450341904283}
   skinScrollableArea: {fileID: 1903305095}
   currentSkinHolderAnimator: {fileID: 0}
   defaultAnimator: {fileID: 9100000, guid: de6193ce30a1b0c459824c157dd36f3a, type: 2}
-  itemsToPick:
-  - {fileID: 11400000, guid: 01447de20f5822e4da4867945763da96, type: 2}
-  - {fileID: 11400000, guid: fa95c8b844b1cc04b842b0df322479d2, type: 2}
-  - {fileID: 11400000, guid: 1579c4150263260478bcd2a356961f0b, type: 2}
   loadoutItem1: {fileID: 0}
   loadoutItem2: {fileID: 0}
   loadoutItem3: {fileID: 0}
@@ -665,6 +657,8 @@ MonoBehaviour:
   - {fileID: 1165452276}
   - {fileID: 1811080549}
   - {fileID: 941740257}
+  loadoutScrollableArea: {fileID: 1602882762}
+  loadoutScrollRect: {fileID: 1580605402}
 --- !u!1 &922221489
 GameObject:
   m_ObjectHideFlags: 0
@@ -1538,7 +1532,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1597012567
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1596,7 +1590,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_SizeDelta: {x: -776.69305, y: -246.1637}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602882761
 MonoBehaviour:
@@ -1627,8 +1621,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 0
-    m_Bottom: 0
+    m_Top: 20
+    m_Bottom: 20
   m_ChildAlignment: 0
   m_Spacing: 10
   m_ChildForceExpandWidth: 1
@@ -1786,8 +1780,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.13514948, y: 0.09973326}
   m_AnchorMax: {x: 0.855, y: 0.23873326}
-  m_AnchoredPosition: {x: 5.51001, y: 4}
-  m_SizeDelta: {x: -1.2999878, y: -6.449951}
+  m_AnchoredPosition: {x: 5.51001, y: 16.961914}
+  m_SizeDelta: {x: -1.3, y: 19.474}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668086589
 MonoBehaviour:
@@ -2813,7 +2807,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7981402997246719147, guid: 14967b370a3ad5e42b6f940cda2a2add, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7981402998662226273, guid: 14967b370a3ad5e42b6f940cda2a2add, type: 3}
       propertyPath: m_AnchoredPosition.y

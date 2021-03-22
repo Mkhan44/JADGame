@@ -22,7 +22,7 @@ public class Customize_Loadout : MonoBehaviour
     //At runtime we'll determine which skins the player has and keep those in this list to spawn in.
     //MAKE SURE THIS LIST = IN THE RIGHT ORDER.
     [Tooltip("Ensure this list is in the same order as the information in Collect_Manager script!!!!")]
-    public List<SkinInfo> skinsToPick;
+    
 
     //This is a constant.
     public GameObject currentSkinHolder;
@@ -35,8 +35,6 @@ public class Customize_Loadout : MonoBehaviour
     Coroutine animateRoutine;
 
     [Header("Loadout related stuff")]
-    public List<Shop_Item> itemsToPick;
-
     //Player's current loadout.
     [SerializeField]
     Shop_Item loadoutItem1;
@@ -51,6 +49,9 @@ public class Customize_Loadout : MonoBehaviour
     [SerializeField]
     List<GameObject> itemLoadoutHolders;
 
+    public VerticalLayoutGroup loadoutScrollableArea;
+    public ScrollRect loadoutScrollRect;
+
     bool enteredOnce;
 
 
@@ -58,8 +59,13 @@ public class Customize_Loadout : MonoBehaviour
     void Start()
     {
         enteredOnce = false;
+        //Skin related
         initializeSkinCustomization();
+
+
+        //Loadout related
         initializeLoadoutCustomization();
+
         enteredOnce = true;
     }
 
@@ -67,10 +73,16 @@ public class Customize_Loadout : MonoBehaviour
     {
        if(enteredOnce)
         {
-            resetScrollableArea();
+            //Skin related.
+            resetSkinScrollableArea();
             StopCoroutine(animateRoutine);
             animateRoutine = StartCoroutine(animationRandomizer());
             loadSkins();
+
+            //Loadout related
+            resetLoadoutScrollableArea();
+
+
         }
        
     }
@@ -108,11 +120,11 @@ public class Customize_Loadout : MonoBehaviour
 
     public void loadSkins()
     {
-        for(int i = 0; i < skinsToPick.Count; i++)
+        for(int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
         {
             GameObject tempObj = Instantiate(skinSelectPrefab);
             tempObj.transform.SetParent(skinScrollableArea.gameObject.transform, false);
-            tempObj.GetComponent<Image>().sprite = skinsToPick[i].skinIcon;
+            tempObj.GetComponent<Image>().sprite = Collect_Manager.instance.skinsToPick[i].skinIcon;
             Button tempButton = tempObj.transform.GetChild(0).GetComponent<Button>();
             int tempNum = i;
             tempButton.onClick.AddListener(() => setCurrentSkin(tempNum));
@@ -135,7 +147,7 @@ public class Customize_Loadout : MonoBehaviour
     }
 
     //Whenever we re-enter the menu, we want to reset the selectable skins because the player might have bought/unlocked some more.
-    public void resetScrollableArea()
+    public void resetSkinScrollableArea()
     {
         foreach(Transform child in skinScrollableArea.gameObject.transform)
         {
@@ -171,7 +183,7 @@ public class Customize_Loadout : MonoBehaviour
         int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
 
         //Populate the skin preview on the top based on what the user has currently equipped.
-        for (int i = 0; i < skinsToPick.Count; i++)
+        for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
         {
             if (currentSkinInt == i)
             {
@@ -182,14 +194,14 @@ public class Customize_Loadout : MonoBehaviour
 
               
                 // currentSkinHolderImage.sprite = skinsToPick[i].skinSprite;
-                if(skinsToPick[i].animationOverrideController == null)
+                if (Collect_Manager.instance.skinsToPick[i].animationOverrideController == null)
                 {
                     Debug.Log("Hey we're using the default animatorController...is something wrong?");
                     currentSkinHolderAnimator.runtimeAnimatorController = defaultAnimator;
                 }
                 else
                 {
-                    currentSkinHolderAnimator.runtimeAnimatorController = skinsToPick[i].animationOverrideController;
+                    currentSkinHolderAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
                 }
                
  
@@ -239,71 +251,119 @@ public class Customize_Loadout : MonoBehaviour
     public void initializeLoadoutCustomization()
     {
        //Grab the 3 items from Collect_Manager. If they are null, leave them null and don't update the boxes/turn off the - buttons. If they are filled...Basically call equip in the order of what's filled.
+
+
+        //ITEM 1
         if(Collect_Manager.instance.item1 >= 0)
         {
             Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item1);
-
-            for (int i = 0; i < itemsToPick.Count; i++)
+            for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
             {
-                if(tempItem == itemsToPick[i].theItem)
+                if(tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
                 {
-                    loadoutItem1 = itemsToPick[i];
+                    loadoutItem1 = Collect_Manager.instance.itemsToPick[i];
                     Image tempImg = itemLoadoutHolders[0].transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = loadoutItem1.itemImage;
+                    break;
                 }
             }
         }
-  
+        else
+        {
+            Button removeButton = itemLoadoutHolders[0].transform.GetChild(1).GetComponent<Button>();
+            removeButton.interactable = false;
+        }
+
+
+        //ITEM 2
         if (Collect_Manager.instance.item2 >= 0)
         {
             Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item2);
 
-            for (int i = 0; i < itemsToPick.Count; i++)
+            for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
             {
-                if (tempItem == itemsToPick[i].theItem)
+                if (tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
                 {
-                    loadoutItem2 = itemsToPick[i];
+                    loadoutItem2 = Collect_Manager.instance.itemsToPick[i];
                     Image tempImg = itemLoadoutHolders[1].transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = loadoutItem2.itemImage;
+                    break;
                 }
             }
-
-
         }
+        else
+        {
+            Button removeButton = itemLoadoutHolders[1].transform.GetChild(1).GetComponent<Button>();
+            removeButton.interactable = false;
+        }
+
+
+        //ITEM 3
         if (Collect_Manager.instance.item3 >= 0)
         {
             Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item3);
 
-            for (int i = 0; i < itemsToPick.Count; i++)
+            for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
             {
-                if (tempItem == itemsToPick[i].theItem)
+                if (tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
                 {
-                    loadoutItem3 = itemsToPick[i];
+                    loadoutItem3 = Collect_Manager.instance.itemsToPick[i];
                     Image tempImg = itemLoadoutHolders[2].transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = loadoutItem3.itemImage;
+                    break;
                 }
             }
+        }
 
-
+        else
+        {
+            Button removeButton = itemLoadoutHolders[2].transform.GetChild(1).GetComponent<Button>();
+            removeButton.interactable = false;
         }
 
         //Load the item list below.
-        for(int i = 0; i < itemsToPick.Count; i++)
+        for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
         {
+          
             GameObject tempObj = Instantiate(itemHolderPrefab);
             tempObj.transform.SetParent(invLayout.transform, false);
             Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
-            tempIMG.sprite = itemsToPick[i].itemImage;
+            tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
             TextMeshProUGUI tempName = tempObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-            tempName.text = itemsToPick[i].theName;
+            tempName.text = Collect_Manager.instance.itemsToPick[i].theName;
             TextMeshProUGUI tempDesc = tempObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            tempDesc.text = itemsToPick[i].description;
+            tempDesc.text = Collect_Manager.instance.itemsToPick[i].description;
             TextMeshProUGUI tempOwnedText = tempObj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            tempOwnedText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(itemsToPick[i].theItem).ToString();
-            Button tempButton = tempObj.GetComponent<Button>();
+            tempOwnedText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(Collect_Manager.instance.itemsToPick[i].theItem).ToString();
+
             int tempNum = i;
-            tempButton.onClick.AddListener(() => equipItem(itemsToPick[tempNum], tempOwnedText));
+            if (loadoutItem1 != null && loadoutItem1 == Collect_Manager.instance.itemsToPick[i])
+            {
+                Button removeButton = itemLoadoutHolders[0].transform.GetChild(1).GetComponent<Button>();
+                removeButton.onClick.RemoveAllListeners();
+                removeButton.onClick.AddListener(() => unEquipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText, 1, removeButton));
+            }
+            if (loadoutItem2 != null && loadoutItem2 == Collect_Manager.instance.itemsToPick[i])
+            {
+                Button removeButton = itemLoadoutHolders[1].transform.GetChild(1).GetComponent<Button>();
+                removeButton.onClick.RemoveAllListeners();
+                removeButton.onClick.AddListener(() => unEquipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText, 2, removeButton));
+            }
+            if (loadoutItem3 != null && loadoutItem3 == Collect_Manager.instance.itemsToPick[i])
+            {
+                Button removeButton = itemLoadoutHolders[2].transform.GetChild(1).GetComponent<Button>();
+                removeButton.onClick.RemoveAllListeners();
+                removeButton.onClick.AddListener(() => unEquipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText, 3, removeButton));
+            }
+
+
+            Button tempButton = tempObj.GetComponent<Button>();
+            tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
         }
+
+        ScrollToTop(loadoutScrollRect);
+
+
     }
 
    
@@ -326,31 +386,94 @@ public class Customize_Loadout : MonoBehaviour
             Collect_Manager.instance.equipItem(loadoutItem1.theItem);
             theText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(theEquip.theItem).ToString();
             Collect_Manager.instance.item1 = (int)getItemFromList(itemNum);
+            Button removeButton = itemLoadoutHolders[0].transform.GetChild(1).GetComponent<Button>();
+            removeButton.onClick.RemoveAllListeners();
+            removeButton.onClick.AddListener(() => unEquipItem(theEquip, theText, 1, removeButton));
+            removeButton.interactable = true;
 
-            /*
-            foreach (Collect_Manager.typeOfItem theItems in System.Enum.GetValues(typeof(Collect_Manager.typeOfItem)))
-            {
-                if(itemNum == (int)theItems)
-                {
-                    Collect_Manager.instance.item1 = itemNum;
-                    Debug.Log("The item we matched with was: " + theItems + " We are assigning that to " + loadoutItem1.name);
-                }
-            }
-            */
         }
         else if(loadoutItem2 == null)
         {
-
+            //Seconds item = 1st index.
+            Image tempImg = itemLoadoutHolders[1].transform.GetChild(0).GetComponent<Image>();
+            tempImg.sprite = theEquip.itemImage;
+            loadoutItem2 = theEquip;
+            int itemNum = (int)loadoutItem2.theItem;
+            Collect_Manager.instance.equipItem(loadoutItem2.theItem);
+            theText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(theEquip.theItem).ToString();
+            Collect_Manager.instance.item2 = (int)getItemFromList(itemNum);
+            Button removeButton = itemLoadoutHolders[1].transform.GetChild(1).GetComponent<Button>();
+            removeButton.onClick.RemoveAllListeners();
+            removeButton.onClick.AddListener(() => unEquipItem(theEquip, theText, 2, removeButton));
+            removeButton.interactable = true;
         }
         else if(loadoutItem3 == null)
         {
-
+            //Third item = 2nd index.
+            Image tempImg = itemLoadoutHolders[2].transform.GetChild(0).GetComponent<Image>();
+            tempImg.sprite = theEquip.itemImage;
+            loadoutItem3 = theEquip;
+            int itemNum = (int)loadoutItem3.theItem;
+            Collect_Manager.instance.equipItem(loadoutItem3.theItem);
+            theText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(theEquip.theItem).ToString();
+            Collect_Manager.instance.item3 = (int)getItemFromList(itemNum);
+            Button removeButton = itemLoadoutHolders[2].transform.GetChild(1).GetComponent<Button>();
+            removeButton.onClick.RemoveAllListeners();
+            removeButton.onClick.AddListener(() => unEquipItem(theEquip, theText, 3, removeButton));
+            removeButton.interactable = true;
         }
         else
         {
             //Don't load anything because we filled all 3 slots.
         }
 
+        //Save whenever the player adds a new item.
+        Save_System.SaveCollectables(Collect_Manager.instance);
+
+    }
+
+    public void unEquipItem(Shop_Item theEquip, TextMeshProUGUI theText, int boxNum, Button removeButton)
+    {
+        Image tempImg = default;
+
+        switch (boxNum)
+        {
+            case 1:
+                {
+                    tempImg = itemLoadoutHolders[0].transform.GetChild(0).GetComponent<Image>();
+                    loadoutItem1 = null;
+                    Collect_Manager.instance.item1 = -1;
+                    break;
+                }
+            case 2:
+                {
+                    tempImg = itemLoadoutHolders[1].transform.GetChild(0).GetComponent<Image>();
+                    loadoutItem2 = null;
+                    Collect_Manager.instance.item2 = -1;
+                    break;
+                }
+            case 3:
+                {
+                    tempImg = itemLoadoutHolders[2].transform.GetChild(0).GetComponent<Image>();
+                    loadoutItem3 = null;
+                    Collect_Manager.instance.item3 = -1;
+                    break;
+                }
+            default:
+                {
+                    Debug.LogWarning("We're in the default case for unEquipItem() ...Is something wrong?");
+                    break;
+                }
+        }
+
+
+        Collect_Manager.instance.purchaseItemConfirm(theEquip.theItem);
+        theText.text = "Owned: \n X" + Collect_Manager.instance.numPlayerOwns(theEquip.theItem).ToString();
+        tempImg.sprite = null;
+        removeButton.interactable = false;
+
+        //Save whenever the player deletes an item.
+        Save_System.SaveCollectables(Collect_Manager.instance);
     }
 
     //Grabs the item from the enum list we have created in Collect_Manager.
@@ -364,8 +487,39 @@ public class Customize_Loadout : MonoBehaviour
             }
         }
         Debug.LogWarning("We got to the end of the loop and couldn't find the corresponding item...Is something wrong?");
-        return Collect_Manager.typeOfItem.Defroster;
+        return Collect_Manager.typeOfItem.none;
     }
+
+    public void resetLoadoutScrollableArea()
+    {
+        foreach (Transform child in loadoutScrollableArea.gameObject.transform)
+        {
+            Destroy(child.gameObject);
+        }
+
+        for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
+        {
+
+            GameObject tempObj = Instantiate(itemHolderPrefab);
+            tempObj.transform.SetParent(invLayout.transform, false);
+            Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
+            tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
+            TextMeshProUGUI tempName = tempObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+            tempName.text = Collect_Manager.instance.itemsToPick[i].theName;
+            TextMeshProUGUI tempDesc = tempObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+            tempDesc.text = Collect_Manager.instance.itemsToPick[i].description;
+            TextMeshProUGUI tempOwnedText = tempObj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+            tempOwnedText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(Collect_Manager.instance.itemsToPick[i].theItem).ToString();
+            int tempNum = i;
+          
+
+            Button tempButton = tempObj.GetComponent<Button>();
+            tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
+        }
+
+        ScrollToTop(loadoutScrollRect);
+    }
+
 
 
     /*
@@ -374,5 +528,11 @@ public class Customize_Loadout : MonoBehaviour
     * ******************************
     */
 
+
+
+    public void ScrollToTop(ScrollRect scrollArea)
+    {
+        scrollArea.normalizedPosition = new Vector2(0, 1);
+    }
 
 }

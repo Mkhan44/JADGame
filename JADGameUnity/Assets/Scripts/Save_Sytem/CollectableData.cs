@@ -20,9 +20,9 @@ public class CollectableData
     public int numFireVests;
 
     //Loadout items that will correspond to enum in the Collect_Manager.
-    int item1;
-    int item2;
-    int item3;
+    public int item1;
+    public int item2;
+    public int item3;
 
     //Index of the current skin that the player had been using during last session.
     public int currentSkin;

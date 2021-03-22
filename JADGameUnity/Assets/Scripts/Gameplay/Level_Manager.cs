@@ -82,14 +82,27 @@ public class Level_Manager : MonoBehaviour
     [Header("Item related.")]
     public List<Item> itemsThisRun;
 
-    Item.itemType currentItem;
+    Collect_Manager.typeOfItem currentItem;
 
     float useDuration;
     public TextMeshProUGUI useDurationText;
 
+    [SerializeField]
+    Shop_Item item1;
+    [SerializeField]
+    Shop_Item item2;
+    [SerializeField]
+    Shop_Item item3;
+
+    public GameObject item1Holder;
+    public GameObject item2Holder;
+    public GameObject item3Holder;
+
     [Header("Treasure chest related")]
     [Tooltip("This variable is for checking whether or not player has selected a chest. 1 = top, 2 = bottom")]
     public int chestSelect;
+
+    
 
     public static Level_Manager Instance;
     private void Awake()
@@ -101,7 +114,9 @@ public class Level_Manager : MonoBehaviour
         playerRigid2D = player.GetComponent<Rigidbody2D>();
 
         Input.multiTouchEnabled = false;
-        currentItem = Item.itemType.none;
+        currentItem = Collect_Manager.typeOfItem.none;
+       
+
         chestSelect = 0;
         portalSelect = 0;
 
@@ -133,8 +148,115 @@ public class Level_Manager : MonoBehaviour
 
         useDurationText.text = "No item in use.";
         setMeterRates();
+        setupItems();
 
     }
+
+    /*
+     *  SETUP FUNCTIONS
+     * 
+     */
+
+    void setupItems()
+    {
+        //If player has items, populate them.
+        if (Collect_Manager.instance.item1 >= 0)
+        {
+            foreach (Collect_Manager.typeOfItem items in System.Enum.GetValues(typeof(Collect_Manager.typeOfItem)))
+            {
+                if (Collect_Manager.instance.item1 == (int)items)
+                {
+                    item1 = Collect_Manager.instance.itemsToPick[(int)items];
+                    Debug.LogWarning(item1);
+                    Item theItem = item1Holder.transform.GetChild(0).GetComponent<Item>();
+                    theItem.thisItemType = item1.theItem;
+                    Image tempImg = item1Holder.transform.GetChild(0).GetComponent<Image>();
+                    tempImg.sprite = item1.itemImage;
+                    if (item1.hasDuration)
+                    {
+                        theItem.itemDuration = item1.duration;
+                    }
+                    else
+                    {
+                        theItem.itemDuration = 0f;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Item theItem = item1Holder.transform.GetChild(0).GetComponent<Item>();
+            theItem.thisItemType = Collect_Manager.typeOfItem.none;
+            Image tempImg = item1Holder.transform.GetChild(0).GetComponent<Image>();
+            tempImg.sprite = null;
+        }
+        if (Collect_Manager.instance.item2 >= 0)
+        {
+            foreach (Collect_Manager.typeOfItem items in System.Enum.GetValues(typeof(Collect_Manager.typeOfItem)))
+            {
+                if (Collect_Manager.instance.item2 == (int)items)
+                {
+                    item2 = Collect_Manager.instance.itemsToPick[(int)items];
+                    Item theItem = item2Holder.transform.GetChild(0).GetComponent<Item>();
+                    theItem.thisItemType = item2.theItem;
+                    Image tempImg = item2Holder.transform.GetChild(0).GetComponent<Image>();
+                    tempImg.sprite = item2.itemImage;
+                    if (item2.hasDuration)
+                    {
+                        theItem.itemDuration = item2.duration;
+                    }
+                    else
+                    {
+                        theItem.itemDuration = 0f;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Item theItem = item2Holder.transform.GetChild(0).GetComponent<Item>();
+            theItem.thisItemType = Collect_Manager.typeOfItem.none;
+            Image tempImg = item2Holder.transform.GetChild(0).GetComponent<Image>();
+            tempImg.sprite = null;
+        }
+        if (Collect_Manager.instance.item3 >= 0)
+        {
+            foreach (Collect_Manager.typeOfItem items in System.Enum.GetValues(typeof(Collect_Manager.typeOfItem)))
+            {
+                if (Collect_Manager.instance.item3 == (int)items)
+                {
+                    item3 = Collect_Manager.instance.itemsToPick[(int)items];
+                    Item theItem = item3Holder.transform.GetChild(0).GetComponent<Item>();
+                    theItem.thisItemType = item3.theItem;
+                    Image tempImg = item3Holder.transform.GetChild(0).GetComponent<Image>();
+                    tempImg.sprite = item3.itemImage;
+                    if (item3.hasDuration)
+                    {
+                        theItem.itemDuration = item3.duration;
+                    }
+                    else
+                    {
+                        theItem.itemDuration = 0f;
+                    }
+                    break;
+                }
+            }
+        }
+        else
+        {
+            Item theItem = item3Holder.transform.GetChild(0).GetComponent<Item>();
+            theItem.thisItemType = Collect_Manager.typeOfItem.none;
+            Image tempImg = item3Holder.transform.GetChild(0).GetComponent<Image>();
+            tempImg.sprite = null;
+        }
+    }
+
+    /*
+     * SETUP FUNCTIONS
+     * 
+     */
 
     private void Update()
     {
@@ -243,7 +365,7 @@ public class Level_Manager : MonoBehaviour
                             //Stay crouched. Increase cool meter.
                             //Coolmeter += something...
 
-                            if (currentItem != Item.itemType.HandWarmers && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                            if (currentItem != Collect_Manager.typeOfItem.HandWarmer && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                             {
                                 StartCoroutine(iceMeter.fillConstant());
                             }
@@ -282,7 +404,7 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        if(currentItem != Item.itemType.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                        if(currentItem != Collect_Manager.typeOfItem.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
                             StartCoroutine(heatMeter.fillConstant());
                         }
@@ -390,7 +512,7 @@ public class Level_Manager : MonoBehaviour
         else
         {
             thePlayer.isPoweredUp = false;
-            currentItem = Item.itemType.none;
+            currentItem = Collect_Manager.typeOfItem.none;
         }
 
     }
@@ -517,7 +639,7 @@ public class Level_Manager : MonoBehaviour
     }
 
    //Just setting the Item to not be null here so we know the player is using an Item.
-    public void setCurrentItem(Item.itemType tempPowerUp , float duration)
+    public void setCurrentItem(Collect_Manager.typeOfItem tempPowerUp , float duration)
     {
         //If the duration == 0 we know that this is a one time use.
         if(duration == 0 )
@@ -537,7 +659,7 @@ public class Level_Manager : MonoBehaviour
     }
 
     //For other scripts accessing what power up we currently have.
-    public Item.itemType getCurrentItem()
+    public Collect_Manager.typeOfItem getCurrentItem()
     {
         return currentItem;
     }
