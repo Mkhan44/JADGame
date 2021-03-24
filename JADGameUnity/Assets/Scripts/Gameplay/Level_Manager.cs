@@ -56,6 +56,14 @@ public class Level_Manager : MonoBehaviour
     //Debug for now.
     public Button retryButton;
 
+    //CONSTANTS FOR ANIMATION!
+    const string IsCrouching = "IsCrouching";
+    const string Damaged = "Damaged";
+    const string IsJumping = "IsJumping";
+    const string IsGrounded = "IsGrounded";
+    const string IsFalling = "IsFalling";
+    //CONSTANTS FOR ANIMATION!
+
     //Time period related.
     public enum timePeriod
     {
@@ -276,8 +284,11 @@ public class Level_Manager : MonoBehaviour
 
         //  StartCoroutine(jumpUp(currentPos));
         jumpButton.interactable = false;
-        thePlayer.setState(Player.playerState.jumping);
         duckButton.interactable = false;
+        thePlayer.setState(Player.playerState.jumping);
+        playerAnimator.SetBool(IsGrounded, false);
+        playerAnimator.SetBool(IsJumping, true);
+       
 
 
     }
@@ -288,6 +299,8 @@ public class Level_Manager : MonoBehaviour
         playerRigid2D.gravityScale = 0f;
         jumpButton.interactable = false;
         duckButton.interactable = false;
+        playerAnimator.SetBool(IsGrounded, false);
+        playerAnimator.SetBool(IsJumping, false);
     }
 
    
@@ -296,7 +309,7 @@ public class Level_Manager : MonoBehaviour
         // Debug.Log("Calling duck");
         thePlayer.setState(Player.playerState.ducking);
 
-        playerAnimator.SetBool("IsCrouching", true);
+        playerAnimator.SetBool(IsCrouching, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
         // StartCoroutine(getUp());
@@ -305,14 +318,14 @@ public class Level_Manager : MonoBehaviour
     public void getUpReg()
     {
         thePlayer.setState(Player.playerState.idle);
-        playerAnimator.SetBool("IsCrouching", false);
+        playerAnimator.SetBool(IsCrouching, false);
         duckButton.interactable = true;
     }
 
     public void frozenDuck()
     {
         //Add some type of particle effect to simulate frozen player.
-        playerAnimator.SetBool("IsCrouching", true);
+        playerAnimator.SetBool(IsCrouching, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
        // Debug.Log("We called frozenDuck()!");
@@ -420,6 +433,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             //Prolly have some variable to dictate this.
                             playerRigid2D.gravityScale = gravityScale;
+                            playerAnimator.SetBool(IsFalling, true);
                             thePlayer.setState(Player.playerState.idle);
 
                         }
@@ -471,7 +485,7 @@ public class Level_Manager : MonoBehaviour
                         if (iceMeter.getMeterVal() <= 0)
                         {
                             thePlayer.setState(Player.playerState.idle);
-                            playerAnimator.SetBool("IsCrouching", false);
+                            playerAnimator.SetBool(IsCrouching, false);
                             meterFilled = false;
                         }
                         break;
@@ -484,6 +498,8 @@ public class Level_Manager : MonoBehaviour
                         coolDownButton.gameObject.SetActive(false);
                         if (onGround)
                         {
+                            playerAnimator.SetBool(IsGrounded, true);
+                            playerAnimator.SetBool(IsFalling, false);
                             jumpButton.interactable = true;
                             duckButton.interactable = true;
                         }
@@ -598,6 +614,20 @@ public class Level_Manager : MonoBehaviour
             GameOver();
             //Gameover but allow ad to be played for revive.
         }
+        else
+        {
+            StartCoroutine(damageAni());
+        }
+    }
+
+    //How long player should be in hitstun after taking damage. If we want to add any type of invince, we needa add it here.
+    IEnumerator damageAni()
+    {
+        //MAYBE ADD THE BUTTON INTERACTABLES HERE INSTEAD??? THAT WAY PLAYER CAN'T INTERRUPT ANIMATIONS.
+
+        playerAnimator.SetBool(Damaged, true);
+        yield return new WaitForSeconds(0.3f);
+        playerAnimator.SetBool(Damaged, false);
     }
 
     public void collectCoin(int amount)
@@ -680,10 +710,9 @@ public class Level_Manager : MonoBehaviour
     //Use this to force player into Idle for anything that we need to show the player. Gameplay buttons should be disabled elsewhere.
     public void ResetAnimator()
     {
-        playerAnimator.SetBool("IsCrouching", false);
+        playerAnimator.SetBool(IsCrouching, false);
         playerRigid2D.gravityScale = gravityScale;
         thePlayer.setState(Player.playerState.idle);
-        // playerAnimator.SetBool("IsJumping", false);
     }
 
     //Player is dead.

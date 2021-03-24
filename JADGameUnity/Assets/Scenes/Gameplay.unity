@@ -4419,7 +4419,7 @@ GameObject:
   - component: {fileID: 1760689350}
   - component: {fileID: 1760689349}
   m_Layer: 0
-  m_Name: Player_Beta
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4435,7 +4435,7 @@ Animator:
   m_GameObject: {fileID: 1760689348}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: de6193ce30a1b0c459824c157dd36f3a, type: 2}
+  m_Controller: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -4474,7 +4474,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.027533233, y: -0.06824857}
+  m_Offset: {x: 0.027533382, y: 0.04334578}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -4485,7 +4485,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8485869, y: 1.8496269}
+  m_Size: {x: 0.8485872, y: 1.8013759}
   m_EdgeRadius: 0
 --- !u!50 &1760689352
 Rigidbody2D:
@@ -4548,7 +4548,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cd0a0f2079a88144abeb5f4ab44cb671, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3f8c878fcf849e84391b064066c36666, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -4567,8 +4567,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1760689348}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.16, y: -0.6, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -2.16, y: -0.8251967, z: 0}
+  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 9
