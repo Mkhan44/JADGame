@@ -62,6 +62,9 @@ public class Level_Manager : MonoBehaviour
     const string IsJumping = "IsJumping";
     const string IsGrounded = "IsGrounded";
     const string IsFalling = "IsFalling";
+    const string IsHanging = "IsHanging";
+    const string IsBurning = "IsBurning";
+    const string IsFrozen = "IsFrozen";
     //CONSTANTS FOR ANIMATION!
 
     //Time period related.
@@ -132,7 +135,7 @@ public class Level_Manager : MonoBehaviour
 
     private void Start()
     {
-        // currentPlayerHealth = thePlayer.getCurrentHealth();
+        currentPlayerHealth = thePlayer.getCurrentHealth();
 
         if (currentPlayerHealth == 0)
         {
@@ -301,6 +304,7 @@ public class Level_Manager : MonoBehaviour
         duckButton.interactable = false;
         playerAnimator.SetBool(IsGrounded, false);
         playerAnimator.SetBool(IsJumping, false);
+        playerAnimator.SetBool(IsHanging, true);
     }
 
    
@@ -326,6 +330,7 @@ public class Level_Manager : MonoBehaviour
     {
         //Add some type of particle effect to simulate frozen player.
         playerAnimator.SetBool(IsCrouching, true);
+        playerAnimator.SetBool(IsFrozen, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
        // Debug.Log("We called frozenDuck()!");
@@ -336,13 +341,13 @@ public class Level_Manager : MonoBehaviour
     {
         //We may want to randomize the jump height/gravity to make it seem crazier.
         playerRigid2D.velocity = Vector2.up * burningJumpHeight;
-
         //playerRigid2D.gravityScale = gravityScale;
     }
 
     //Wait period between jumps.
     public IEnumerator burningJumpWait()
     {
+        playerAnimator.SetBool(IsBurning, true);
         jumpButton.interactable = false;
         duckButton.interactable = false;
         while (heatMeter.getMeterVal() > 0)
@@ -400,14 +405,15 @@ public class Level_Manager : MonoBehaviour
                         if (Input.GetMouseButton(0) || Input.GetKey("up"))
                         {
                             //Hanging feature if we decide to implement it. Otherwise just count this as spam jumping maybe?
-                            
-                           thePlayer.setState(Player.playerState.hanging);
-                           
+
+                            thePlayer.setState(Player.playerState.hanging);
+
                         }
                         //Not holding so don't hang.
                         else
                         {
-                            if(onGround)
+                           
+                            if (onGround)
                             {
                                 thePlayer.setState(Player.playerState.idle);
                                 jumpButton.interactable = true;
@@ -433,6 +439,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             //Prolly have some variable to dictate this.
                             playerRigid2D.gravityScale = gravityScale;
+                            playerAnimator.SetBool(IsHanging, false);
                             playerAnimator.SetBool(IsFalling, true);
                             thePlayer.setState(Player.playerState.idle);
 
@@ -500,6 +507,8 @@ public class Level_Manager : MonoBehaviour
                         {
                             playerAnimator.SetBool(IsGrounded, true);
                             playerAnimator.SetBool(IsFalling, false);
+                            playerAnimator.SetBool(IsBurning, false);
+                            playerAnimator.SetBool(IsFrozen, false);
                             jumpButton.interactable = true;
                             duckButton.interactable = true;
                         }
@@ -624,10 +633,13 @@ public class Level_Manager : MonoBehaviour
     IEnumerator damageAni()
     {
         //MAYBE ADD THE BUTTON INTERACTABLES HERE INSTEAD??? THAT WAY PLAYER CAN'T INTERRUPT ANIMATIONS.
-
+     //   jumpButton.interactable = false;
+    //    duckButton.interactable = false;
         playerAnimator.SetBool(Damaged, true);
         yield return new WaitForSeconds(0.3f);
         playerAnimator.SetBool(Damaged, false);
+     //   jumpButton.interactable = true;
+     //   duckButton.interactable = true;
     }
 
     public void collectCoin(int amount)

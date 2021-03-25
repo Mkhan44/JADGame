@@ -100,7 +100,7 @@ MonoBehaviour:
   speed: 0
   increaseRate: 0.18
   spawnPoint: 0
-  objectElement: 0
+  objectElement: 1
   thisObstacleDiff: 0
   thisType: 0
   theEra: 0

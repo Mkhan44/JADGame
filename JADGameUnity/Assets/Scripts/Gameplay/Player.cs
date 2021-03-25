@@ -9,7 +9,7 @@ using UnityEngine;
 //Use to house the variables related to the player.
 public class Player : MonoBehaviour
 {
-    int currentHealth;
+    public int currentHealth;
     int maxHealth;
 
     Vector2 initialPos;
