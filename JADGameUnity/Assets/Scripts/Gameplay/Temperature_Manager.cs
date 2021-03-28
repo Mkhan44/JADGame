@@ -198,7 +198,7 @@ public class Temperature_Manager : MonoBehaviour
     //Once meter is filled, it should decrease automatically over a set period using this function.
     public IEnumerator decreaseMeterFilled(bool filledMeter)
     {
-        while(filledMeter && currentMeterVal > 0)
+        while(filledMeter && currentMeterVal > 0 && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.idle)
         {
             yield return new WaitForSeconds(0.1f);
             currentMeterVal -= 0.3f;

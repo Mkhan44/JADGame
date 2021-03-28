@@ -17,7 +17,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     float ogSpeed;
     [Tooltip("How fast will this object go? This determines the speed increase rate.")]
     public float increaseRate;
-
+    [Tooltip("Maximum speed this object should approach. If 0f , it will be set to increase rate by default.")]
+    public float maxSpeed;
     //We will have spawn points set up in the Wave_Spawner script.
     [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
     public Wave_Spawner.spawnPointNum spawnPoint;
@@ -56,12 +57,17 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [SerializeField]
     typeOfObstacle thisType;
 
+    public Level_Manager.timePeriod theEra;
 
-    public Level_Manager.timePeriod theEra; 
+    Rigidbody2D thisRigid;
     private void Awake()
     {
-       
+        thisRigid = this.GetComponent<Rigidbody2D>();
         ogSpeed = speed;
+        if(maxSpeed == 0)
+        {
+            maxSpeed = increaseRate;
+        }
     }
 
     // Start is called before the first frame update
@@ -91,31 +97,46 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         {
             if(increaseRate != 0f)
             {
-                speed += increaseRate * Time.deltaTime;
+                if(speed < maxSpeed)
+                {
+                    speed += increaseRate * Time.deltaTime;
+                }
+                else
+                {
+                    speed = maxSpeed;
+                }
             }
             else
             {
-                speed += 0.15f * Time.deltaTime;
+                if(speed < maxSpeed)
+                {
+                    speed += 0.15f * Time.deltaTime;
+                }
+                else
+                {
+                    speed = maxSpeed;
+                }    
+             
             }
            
-
-            this.transform.position = Vector2.Lerp(startPos, endPos, speed);
-
-            if (this.transform.position.x == endPos.x)
+            if(thisRigid != null)
             {
-                //TURN ON WHEN WE ARE READY TO POOL
-                Object_Pooler.Instance.AddToPool(gameObject);
-                //Destroy(gameObject);
-                return;
+                thisRigid.velocity = Vector2.left * speed;
             }
+            
         }
         //If it's a chest or time portal.
         else
         {
             endPos = new Vector2((startPos.x - 5), (startPos.y));
 
-            speed += 1.0f * Time.deltaTime;
+            if (this.transform.position != new Vector3(endPos.x,endPos.y, this.transform.position.z))
+            {
+                speed += 1.0f * Time.deltaTime;
+            }
+           
             this.transform.position = Vector2.Lerp(startPos, endPos, speed);
+
         }
         
     }
@@ -124,5 +145,17 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     public ElementType getElement()
     {
         return objectElement;
+    }
+
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if(collision.gameObject.tag == "Despawner")
+        {
+             //TURN ON WHEN WE ARE READY TO POOL
+                thisRigid.velocity = Vector2.zero;
+                Object_Pooler.Instance.AddToPool(gameObject);
+                //Destroy(gameObject);
+                return;
+        }
     }
 }

@@ -16,6 +16,8 @@ public class Level_Manager : MonoBehaviour
     public GameObject player;
     public Button jumpButton;
     public Button duckButton;
+    Button_Interact jumpButtonInteract;
+    Button_Interact duckButtonInteract;
     public Button coolDownButton;
     public Button heatUpButton;
     List<GameObject> powerUps;
@@ -113,6 +115,12 @@ public class Level_Manager : MonoBehaviour
     [Tooltip("This variable is for checking whether or not player has selected a chest. 1 = top, 2 = bottom")]
     public int chestSelect;
 
+
+    [Header("Coroutines")]
+    Coroutine increaseHeatMeterRoutine;
+    Coroutine decreaseHeatMeterRoutine;
+    Coroutine increaseIceMeterRoutine;
+    Coroutine decreaseIceMeterRoutine;
     
 
     public static Level_Manager Instance;
@@ -126,7 +134,10 @@ public class Level_Manager : MonoBehaviour
 
         Input.multiTouchEnabled = false;
         currentItem = Collect_Manager.typeOfItem.none;
-       
+
+        jumpButtonInteract = jumpButton.GetComponent<Button_Interact>();
+        duckButtonInteract = duckButton.GetComponent<Button_Interact>();
+
 
         chestSelect = 0;
         portalSelect = 0;
@@ -178,7 +189,7 @@ public class Level_Manager : MonoBehaviour
                 if (Collect_Manager.instance.item1 == (int)items)
                 {
                     item1 = Collect_Manager.instance.itemsToPick[(int)items];
-                    Debug.LogWarning(item1);
+                   // Debug.LogWarning(item1);
                     Item theItem = item1Holder.transform.GetChild(0).GetComponent<Item>();
                     theItem.thisItemType = item1.theItem;
                     Image tempImg = item1Holder.transform.GetChild(0).GetComponent<Image>();
@@ -291,8 +302,6 @@ public class Level_Manager : MonoBehaviour
         thePlayer.setState(Player.playerState.jumping);
         playerAnimator.SetBool(IsGrounded, false);
         playerAnimator.SetBool(IsJumping, true);
-       
-
 
     }
 
@@ -300,6 +309,7 @@ public class Level_Manager : MonoBehaviour
     public void Hang()
     {
         playerRigid2D.gravityScale = 0f;
+        playerRigid2D.velocity = Vector2.up * jumpHeight;
         jumpButton.interactable = false;
         duckButton.interactable = false;
         playerAnimator.SetBool(IsGrounded, false);
@@ -350,7 +360,7 @@ public class Level_Manager : MonoBehaviour
         playerAnimator.SetBool(IsBurning, true);
         jumpButton.interactable = false;
         duckButton.interactable = false;
-        while (heatMeter.getMeterVal() > 0)
+        while (heatMeter.getMeterVal() > 0 && thePlayer.GetState() == Player.playerState.burning)
         {
             yield return new WaitForSeconds(0.1f);
             if(onGround)
@@ -378,20 +388,19 @@ public class Level_Manager : MonoBehaviour
                         //Do ducking stuff...
 
                         //If we're holding the button.
-                        if (Input.GetMouseButton(0) || Input.GetKey("down"))
+                        if (duckButtonInteract.getHeldValue())
                         {
-                            //Stay crouched. Increase cool meter.
-                            //Coolmeter += something...
-
-                            if (currentItem != Collect_Manager.typeOfItem.HandWarmer && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                            if(duckButtonInteract.getTimeHeld() >= 0.3f)
                             {
-                                StartCoroutine(iceMeter.fillConstant());
+                                if (currentItem != Collect_Manager.typeOfItem.HandWarmer && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                                {
+                                    StartCoroutine(iceMeter.fillConstant());
+                                }
+                                if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                                {
+                                    StartCoroutine(heatMeter.decreaseConstant());
+                                }
                             }
-                            if(this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
-                            {
-                                StartCoroutine(heatMeter.decreaseConstant());
-                            }
-                            
                         }
                         else
                         {
@@ -402,21 +411,29 @@ public class Level_Manager : MonoBehaviour
                 case Player.playerState.jumping:
                     {
                         //They hold the button here so hang.
-                        if (Input.GetMouseButton(0) || Input.GetKey("up"))
+                        if (jumpButtonInteract.getHeldValue())
                         {
-                            //Hanging feature if we decide to implement it. Otherwise just count this as spam jumping maybe?
-
-                            thePlayer.setState(Player.playerState.hanging);
+                            if(jumpButtonInteract.getTimeHeld() >= 0.3f)
+                            {
+                                thePlayer.setState(Player.playerState.hanging);
+                            }
+                          
 
                         }
                         //Not holding so don't hang.
                         else
                         {
-                           
                             if (onGround)
                             {
                                 thePlayer.setState(Player.playerState.idle);
-                                jumpButton.interactable = true;
+                               // jumpButton.interactable = true;
+                            }
+                            else
+                            {
+                                //Player is falling.
+                                playerAnimator.SetBool(IsJumping, false);
+                                playerAnimator.SetBool(IsFalling, true);
+
                             }
                         }
                         break;
@@ -431,7 +448,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             StartCoroutine(iceMeter.decreaseConstant());
                         }
-                        if (Input.GetMouseButton(0) || Input.GetKey("up"))
+                        if (jumpButtonInteract.getHeldValue())
                         {
                             Hang();
                         }
@@ -449,6 +466,8 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.dead:
                     {
+                        heatMeter.setMeterValExternally(0f);
+                        iceMeter.setMeterValExternally(0f);
                         player.SetActive(false);
                         duckButton.interactable = false;
                         jumpButton.interactable = false;
@@ -463,7 +482,6 @@ public class Level_Manager : MonoBehaviour
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
                             coolDownButton.gameObject.SetActive(true);
-                            StartCoroutine(burningJumpWait());
                         }
                         //Call the burningJump function.
 
@@ -472,6 +490,10 @@ public class Level_Manager : MonoBehaviour
                         {
                             playerRigid2D.gravityScale = gravityScale;
                             thePlayer.setState(Player.playerState.idle);
+                            if(decreaseHeatMeterRoutine != null)
+                            {
+                                decreaseHeatMeterRoutine = null;
+                            }
                             meterFilled = false;
                         }
                         break;
@@ -509,6 +531,7 @@ public class Level_Manager : MonoBehaviour
                             playerAnimator.SetBool(IsFalling, false);
                             playerAnimator.SetBool(IsBurning, false);
                             playerAnimator.SetBool(IsFrozen, false);
+                            playerRigid2D.gravityScale = gravityScale;
                             jumpButton.interactable = true;
                             duckButton.interactable = true;
                         }
@@ -633,13 +656,9 @@ public class Level_Manager : MonoBehaviour
     IEnumerator damageAni()
     {
         //MAYBE ADD THE BUTTON INTERACTABLES HERE INSTEAD??? THAT WAY PLAYER CAN'T INTERRUPT ANIMATIONS.
-     //   jumpButton.interactable = false;
-    //    duckButton.interactable = false;
         playerAnimator.SetBool(Damaged, true);
         yield return new WaitForSeconds(0.3f);
         playerAnimator.SetBool(Damaged, false);
-     //   jumpButton.interactable = true;
-     //   duckButton.interactable = true;
     }
 
     public void collectCoin(int amount)
@@ -722,8 +741,16 @@ public class Level_Manager : MonoBehaviour
     //Use this to force player into Idle for anything that we need to show the player. Gameplay buttons should be disabled elsewhere.
     public void ResetAnimator()
     {
+        playerAnimator.SetBool(Damaged, false);
+        playerAnimator.SetBool(IsJumping, false);
+        playerAnimator.SetBool(IsFalling, false);
+        playerAnimator.SetBool(IsHanging, false);
+        playerAnimator.SetBool(IsBurning, false);
+        playerAnimator.SetBool(IsFrozen, false);
         playerAnimator.SetBool(IsCrouching, false);
-        playerRigid2D.gravityScale = gravityScale;
+        playerAnimator.SetBool(IsGrounded, true);
+        meterFilled = false;
+        playerRigid2D.gravityScale = 50f;
         thePlayer.setState(Player.playerState.idle);
     }
 
@@ -823,11 +850,13 @@ public class Level_Manager : MonoBehaviour
     {
         // duckButton.gameObject.SetActive(false);
         // jumpButton.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.2f);
         while (chestSelect == 0)
         {
-            if (thePlayer.GetState() == Player.playerState.hanging)
+            if (thePlayer.GetState() == Player.playerState.jumping)
             {
+                yield return new WaitForSeconds(0.1f);
+                playerAnimator.SetBool(IsJumping, false);
+                playerAnimator.SetBool(IsFalling, true);
                 chestSelect = 2;
                // Debug.Log("You selected chest 2!");
                 duckButton.gameObject.SetActive(false);
@@ -835,6 +864,8 @@ public class Level_Manager : MonoBehaviour
             }
             else if (thePlayer.GetState() == Player.playerState.ducking)
             {
+                yield return new WaitForSeconds(0.1f);
+                playerAnimator.SetBool(IsCrouching, false);
                 chestSelect = 1;
               //  Debug.Log("You selected chest 1!");
                 duckButton.gameObject.SetActive(false);
@@ -842,6 +873,7 @@ public class Level_Manager : MonoBehaviour
             }
             yield return null;
         }
+
        
     }
 
@@ -889,8 +921,11 @@ public class Level_Manager : MonoBehaviour
 
         while (portalSelect == 0)
         {
-            if (thePlayer.GetState() == Player.playerState.hanging)
+            if (thePlayer.GetState() == Player.playerState.jumping)
             {
+                yield return new WaitForSeconds(0.1f);
+                playerAnimator.SetBool(IsJumping, false);
+                playerAnimator.SetBool(IsFalling, true);
                 portalSelect = 2;
                 // Debug.Log("You selected chest 2!");
                 duckButton.gameObject.SetActive(false);
@@ -898,6 +933,8 @@ public class Level_Manager : MonoBehaviour
             }
             else if (thePlayer.GetState() == Player.playerState.ducking)
             {
+                yield return new WaitForSeconds(0.1f);
+                playerAnimator.SetBool(IsCrouching, false);
                 portalSelect = 1;
                 //  Debug.Log("You selected chest 1!");
                 duckButton.gameObject.SetActive(false);

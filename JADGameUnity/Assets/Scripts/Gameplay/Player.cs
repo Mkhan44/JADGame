@@ -161,7 +161,39 @@ public class Player : MonoBehaviour
  
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        if(collision.gameObject.tag == "Ground")
+        //If the tag is 'obstacle'  , check if we're invincible, if not then go to hurt mode and call damage from levelmanager.
+        if (collision.gameObject.tag == "Obstacle")
+        {
+            // Debug.Log("Obstacle touched player!");
+            Debug.Log("The element of this obstacle is: " + collision.gameObject.GetComponent<Obstacle_Behaviour>().getElement());
+            switch (collision.gameObject.GetComponent<Obstacle_Behaviour>().getElement())
+            {
+                case Obstacle_Behaviour.ElementType.fire:
+                    {
+                        Level_Manager.Instance.temperatureMetersManager(Obstacle_Behaviour.ElementType.fire);
+                        break;
+                    }
+                case Obstacle_Behaviour.ElementType.ice:
+                    {
+                        Level_Manager.Instance.temperatureMetersManager(Obstacle_Behaviour.ElementType.ice);
+                        break;
+                    }
+                default:
+                    {
+                        break;
+                    }
+            }
+            Level_Manager.Instance.Damage();
+        }
+        else if (collision.gameObject.tag == "Coin")
+        {
+            // Debug.Log("Collected the coin!");
+            Level_Manager.Instance.collectCoin(1);
+            Object_Pooler.Instance.AddToPool(collision.gameObject);
+            //Destroy(theTrigger.gameObject);
+        }
+
+        if (collision.gameObject.tag == "Ground")
         {
             onGround = true;
          //   Debug.Log("Hey, we are touching the ground!");

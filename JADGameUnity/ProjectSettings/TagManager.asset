@@ -10,6 +10,7 @@ TagManager:
   - Spawnpoint
   - FxTemporaire
   - TreasureChest
+  - Despawner
   layers:
   - Default
   - TransparentFX

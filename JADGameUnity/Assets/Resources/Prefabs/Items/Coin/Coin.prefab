@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6894734349349987306}
   - component: {fileID: 6894734349349987307}
   - component: {fileID: 6894734349349987308}
+  - component: {fileID: -7384532942291146203}
   - component: {fileID: 6894734349349987305}
   - component: {fileID: 7062961072752976126}
   m_Layer: 0
@@ -111,6 +112,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.07, y: 0.09}
   m_EdgeRadius: 0
+--- !u!50 &-7384532942291146203
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6894734349349987309}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!95 &6894734349349987305
 Animator:
   serializedVersion: 3
@@ -143,7 +165,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  increaseRate: 5
+  maxSpeed: 4
   spawnPoint: 1
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 1
+  theEra: 0

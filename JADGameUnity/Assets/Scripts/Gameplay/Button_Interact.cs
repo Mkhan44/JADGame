@@ -6,8 +6,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
-public class Button_Interact : MonoBehaviour , IPointerDownHandler
+public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpHandler
 {
     public enum buttonType
     {
@@ -19,10 +20,18 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
 
     public buttonType typeOfButton;
 
+    float timeHeld;
+
+    public bool isHeld;
+
+    Coroutine heldRoutine;
+
     // Start is called before the first frame update
     void Start()
     {
-        switch(typeOfButton)
+        timeHeld = 0f;
+        isHeld = false;
+        switch (typeOfButton)
         {
             case buttonType.duck:
                 {
@@ -67,8 +76,11 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
                 //   Debug.Log("down arrow key is held down");
             }
         }
+
         
     }
+
+
 
     public void OnPointerDown(PointerEventData eventData)
     {
@@ -78,6 +90,13 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
 
         if (Level_Manager.Instance.player.activeInHierarchy || !Level_Manager.Instance.meterFilled)
         {
+            if(heldRoutine == null && gameObject.GetComponent<Button>().IsInteractable())
+            {
+                heldRoutine = StartCoroutine(heldButtonTimer());
+               // Debug.Log("Started heldButtonTimer coroutine!");
+            }
+
+
             switch (typeOfButton)
             {
                 case buttonType.duck:
@@ -117,5 +136,40 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler
         
     }
 
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        //Need some type of timer here...Reset it here and turn isHeld to false.
+        if(heldRoutine != null)
+        {
+            StopCoroutine(heldRoutine);
+            heldRoutine = null;
+        }
+        timeHeld = 0f;
+        isHeld = false;
+    }
 
+
+    //Tracks how long the player has been holding down the button.
+    public IEnumerator heldButtonTimer()
+    {
+        isHeld = true;
+
+        while (isHeld)
+        {
+            timeHeld += Time.deltaTime;
+            yield return null;
+        }
+    }
+
+    public bool getHeldValue()
+    {
+        return isHeld;
+    }
+
+    public float getTimeHeld()
+    {
+        return timeHeld;
+    }
+
+   
 }
