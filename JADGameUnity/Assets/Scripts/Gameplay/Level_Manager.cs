@@ -480,6 +480,7 @@ public class Level_Manager : MonoBehaviour
                         if(heatMeter.getMeterVal() == 100f)
                         {
                             playerRigid2D.gravityScale = burningGravity;
+                            StartCoroutine(burningJumpWait());
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
                             coolDownButton.gameObject.SetActive(true);
                         }
