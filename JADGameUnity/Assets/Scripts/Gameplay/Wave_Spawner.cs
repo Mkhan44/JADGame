@@ -324,6 +324,7 @@ public class Wave_Spawner : MonoBehaviour
             
             enemyCount += 2;
             waveCount += 1;
+            Level_Manager.Instance.setWavesSurvived((waveCount - 1));
             wavesSinceDifficultyChange += 1;
         }
         else if(theWaveType == typeOfWave.bonus)
@@ -516,6 +517,7 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
 
         waveType = typeOfWave.normal;
+        Level_Manager.Instance.checkScore();
         specialWaveOn = false;
         Level_Manager.Instance.setChestSelect(0);
 
@@ -580,9 +582,12 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.duckButton.gameObject.SetActive(true);
         Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         waveType = typeOfWave.normal;
+        Level_Manager.Instance.checkScore();
         specialWaveOn = false;
         Level_Manager.Instance.setTimePortalSelection(0);
         wavesSinceDifficultyChange = 0;
+
+        //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
 
 

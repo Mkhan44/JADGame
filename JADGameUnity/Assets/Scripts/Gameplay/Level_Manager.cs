@@ -121,6 +121,11 @@ public class Level_Manager : MonoBehaviour
     Coroutine decreaseHeatMeterRoutine;
     Coroutine increaseIceMeterRoutine;
     Coroutine decreaseIceMeterRoutine;
+
+    [Header("Score related")]
+    [SerializeField] int currentScore;
+    [SerializeField] int wavesSurvived;
+    public TextMeshProUGUI scoreText;
     
 
     public static Level_Manager Instance;
@@ -141,6 +146,9 @@ public class Level_Manager : MonoBehaviour
 
         chestSelect = 0;
         portalSelect = 0;
+
+        currentScore = 0;
+        wavesSurvived = 0;
 
     }
 
@@ -169,8 +177,11 @@ public class Level_Manager : MonoBehaviour
         coinText.text = "Coins: " + coinsCollected.ToString();
 
         useDurationText.text = "No item in use.";
+        scoreText.text = "Score: 0";
+
         setMeterRates();
         setupItems();
+        checkScore();
 
     }
 
@@ -779,6 +790,7 @@ public class Level_Manager : MonoBehaviour
         //  player.SetActive(false);
         healthText.text = "Health: 0";
         Collect_Manager.instance.totalCoins += coinsCollected;
+        Debug.Log("You survived: " + wavesSurvived + " waves!");
         SaveCollectables();
         retryButton.gameObject.SetActive(true);
     }
@@ -954,4 +966,75 @@ public class Level_Manager : MonoBehaviour
   //***********************************************************************
   //***********************************************************************
   */
+
+
+
+    /*Scoring  related functions
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+*/
+    public void setWavesSurvived(int num)
+    {
+        wavesSurvived = num;
+    }
+
+    //This function updates the score periodically. We should be calling this in constantly to update the integer value.
+    //Math that needs to be done for multipliers etc will be done elsewhere.
+    public void updateScore(int increase)
+    {
+        if(currentScore > 9999999)
+        {
+            currentScore = 9999999;
+        }
+        else
+        {
+            currentScore += increase;
+        }
+
+        scoreText.text = "Score: " + currentScore.ToString();
+        
+    }
+
+    //This function uses a coroutine to update the score periodically.
+    public void checkScore()
+    {
+        StartCoroutine(scoreTimer());
+    }
+
+    //Every second update the score by 50 as a test.
+    public IEnumerator scoreTimer()
+    {
+     
+        float timePassed = 0f;
+        yield return null;
+
+        //Refactor the check here...don't wanna continously be calling this. !!!!!
+        while(this.GetComponent<Wave_Spawner>().getWaveType() == Wave_Spawner.typeOfWave.normal && thePlayer.GetState() != Player.playerState.dead)
+        {
+            timePassed += Time.deltaTime;
+
+            //May want to have the threshold as a variable so that we can edit it on the fly for multipliers and stuff?
+            if(timePassed >= 2.5f)
+            {
+                updateScore(50);
+                timePassed = 0f;
+
+            }
+
+            yield return null;
+        }
+    }
+
+
+
+    /*Scoring  related functions
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+*/
 }

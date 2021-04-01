@@ -24,7 +24,6 @@ public class Collect_Manager : MonoBehaviour
     public int numFireVests;
 
 
-
     public enum typeOfItem
     {
         HandWarmer,
@@ -49,7 +48,13 @@ public class Collect_Manager : MonoBehaviour
     public int item1;
     public int item2;
     public int item3;
-    
+
+
+    [Header("Score related")]
+    public int highScore;
+    public int highestWave;
+    public int mostWavesSurvived;
+    public int totalWavesSurvived;
 
 
     [Header("Skin related")]

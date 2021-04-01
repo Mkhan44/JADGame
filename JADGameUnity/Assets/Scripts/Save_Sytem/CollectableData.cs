@@ -24,6 +24,12 @@ public class CollectableData
     public int item2;
     public int item3;
 
+    //Score related variables.
+    public int highScore;
+    public int highestWave;
+    public int mostWavesSurvived;
+    public int totalWavesSurvived;
+
     //Index of the current skin that the player had been using during last session.
     public int currentSkin;
 
@@ -42,6 +48,10 @@ public class CollectableData
         item1 = Collect_Manager.instance.item1;
         item2 = Collect_Manager.instance.item2;
         item3 = Collect_Manager.instance.item3;
+        highScore = Collect_Manager.instance.highScore;
+        highestWave = Collect_Manager.instance.highestWave;
+        mostWavesSurvived = Collect_Manager.instance.mostWavesSurvived;
+        totalWavesSurvived = Collect_Manager.instance.totalWavesSurvived;
 
         //Loop through and insert every numbered skin that the player has unlocked.
       
