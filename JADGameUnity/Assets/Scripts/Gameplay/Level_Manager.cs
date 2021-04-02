@@ -57,6 +57,7 @@ public class Level_Manager : MonoBehaviour
     //Game over/Retry
     //Debug for now.
     public Button retryButton;
+    public GameObject gameOverPanel;
 
     //CONSTANTS FOR ANIMATION!
     const string IsCrouching = "IsCrouching";
@@ -170,14 +171,13 @@ public class Level_Manager : MonoBehaviour
 
         heatUpButton.gameObject.SetActive(false);
         coolDownButton.gameObject.SetActive(false);
-
-        retryButton.gameObject.SetActive(false);
-
         coinsCollected = 0;
         coinText.text = "Coins: " + coinsCollected.ToString();
 
         useDurationText.text = "No item in use.";
         scoreText.text = "Score: 0";
+
+        gameOverPanel.SetActive(false);
 
         setMeterRates();
         setupItems();
@@ -295,7 +295,7 @@ public class Level_Manager : MonoBehaviour
     {
         //Does stuff according to player's current state.
         checkState();
-        coinText.text = "Coins: " + coinsCollected.ToString();
+      //  coinText.text = "Coins: " + coinsCollected.ToString();
 
     }
 
@@ -675,14 +675,36 @@ public class Level_Manager : MonoBehaviour
 
     public void collectCoin(int amount)
     {
-        //Have player collect a coin and add it to a counter that we need to save.
+        //1 coin = 10 points. Do math to figure out how much to increase the score.
+        int scoreIncrease = (amount * 10);
+        updateScore(scoreIncrease);
+
+        int tempCollected = coinsCollected;
         coinsCollected += amount;
         if(amount > 1)
         {
+            StartCoroutine(coinAni(tempCollected, coinsCollected));
             Debug.Log("You collected: " + amount + " coins!");
+        }
+        else
+        {
+            coinText.text = "Coins: " + coinsCollected.ToString();
         }
        // Debug.Log("Collected a coin!");
 
+    }
+
+    IEnumerator coinAni(int incomingAmt, int newAmt)
+    {
+        coinText.text = "Coins: " + incomingAmt.ToString();
+        while (incomingAmt < newAmt)
+        {
+            yield return new WaitForSeconds(0.01f);
+            incomingAmt += 1;
+            coinText.text = "Coins: " + incomingAmt.ToString();
+        }
+
+        yield return null;
     }
 
     //We'll need this to send values over to the different meters based on what the Player's current fill rate is.
@@ -791,6 +813,10 @@ public class Level_Manager : MonoBehaviour
         healthText.text = "Health: 0";
         Collect_Manager.instance.totalCoins += coinsCollected;
         Debug.Log("You survived: " + wavesSurvived + " waves!");
+        //Debug.Log("Your score is: " + currentScore);
+        checkFinalWaves();
+        checkFinalScore();
+        gameOverPanel.SetActive(false);
         SaveCollectables();
         retryButton.gameObject.SetActive(true);
     }
@@ -802,13 +828,48 @@ public class Level_Manager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-    //Save
+     /*Save related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
+
+    //save system!
     void SaveCollectables()
     {
         Save_System.SaveCollectables(Collect_Manager.instance);
     }
 
-    //Save
+    void checkFinalWaves()
+    {
+        //Add to total waves survived. Might have some achievement for this.
+        Collect_Manager.instance.totalWavesSurvived += wavesSurvived;
+
+        if (wavesSurvived > Collect_Manager.instance.mostWavesSurvived)
+        {
+            Collect_Manager.instance.mostWavesSurvived = wavesSurvived;
+            Debug.Log("You got a new record for most waves survived!");
+        }
+    }
+
+    void checkFinalScore()
+    {
+        if (currentScore > Collect_Manager.instance.highScore)
+        {
+            Collect_Manager.instance.highScore = currentScore;
+            Debug.Log("You got a new high score!");
+        }
+    }
+
+    /*Save related functions
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   */
 
 
     /*Player gameplay related functions
@@ -969,13 +1030,13 @@ public class Level_Manager : MonoBehaviour
 
 
 
-    /*Scoring  related functions
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-*/
+        /*Scoring  related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
     public void setWavesSurvived(int num)
     {
         wavesSurvived = num;
@@ -988,13 +1049,17 @@ public class Level_Manager : MonoBehaviour
         if(currentScore > 9999999)
         {
             currentScore = 9999999;
+            scoreText.text = "Score: " + currentScore.ToString();
         }
         else
         {
+            int tempScore = currentScore;
             currentScore += increase;
+            //Current score has been increased, so we pass that in as the target to get to.
+            StartCoroutine(scoreAni(tempScore, currentScore));
         }
 
-        scoreText.text = "Score: " + currentScore.ToString();
+       
         
     }
 
@@ -1028,13 +1093,30 @@ public class Level_Manager : MonoBehaviour
         }
     }
 
+    //Animation for making the score count up like a ticker.
+    public IEnumerator scoreAni(int incomingScore, int nextScore)
+    {
+        scoreText.text = "Score: " + incomingScore.ToString();
+        while (incomingScore < nextScore)
+        {
+            yield return new WaitForSeconds(0.01f);
+            incomingScore += 1;
+            scoreText.text = "Score: " + incomingScore.ToString();
+        }
+
+        yield return null;
+
+    }
 
 
-    /*Scoring  related functions
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-//***********************************************************************
-*/
+
+
+
+        /*Scoring  related functions
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    //***********************************************************************
+    */
 }

@@ -106,7 +106,10 @@ public class Collect_Manager : MonoBehaviour
             item1 = collect.item1;
             item2 = collect.item2;
             item3 = collect.item3;
-          
+            highScore = collect.highScore;
+            highestWave = collect.highestWave;
+            mostWavesSurvived = collect.mostWavesSurvived;
+            totalWavesSurvived = collect.totalWavesSurvived;
             for (int i = 0; i < collect.skinsUnlocked.Count; i++)
             {
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
