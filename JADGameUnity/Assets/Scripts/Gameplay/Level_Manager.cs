@@ -122,11 +122,16 @@ public class Level_Manager : MonoBehaviour
     Coroutine decreaseHeatMeterRoutine;
     Coroutine increaseIceMeterRoutine;
     Coroutine decreaseIceMeterRoutine;
+    Coroutine scoreCountRoutine;
+    Coroutine coinCountRoutine;
 
     [Header("Score related")]
     [SerializeField] int currentScore;
     [SerializeField] int wavesSurvived;
     public TextMeshProUGUI scoreText;
+    [SerializeField] int pointMultiplier;
+    public TextMeshProUGUI multiplierText;
+    [SerializeField] int enemiesDodgedSinceLastMulti;
     
 
     public static Level_Manager Instance;
@@ -176,6 +181,9 @@ public class Level_Manager : MonoBehaviour
 
         useDurationText.text = "No item in use.";
         scoreText.text = "Score: 0";
+        pointMultiplier = 1;
+        multiplierText.text = "Multiplier: X " + pointMultiplier.ToString();
+        enemiesDodgedSinceLastMulti = 0;
 
         gameOverPanel.SetActive(false);
 
@@ -662,6 +670,8 @@ public class Level_Manager : MonoBehaviour
         {
             StartCoroutine(damageAni());
         }
+
+        resetMultiplier();
     }
 
     //How long player should be in hitstun after taking damage. If we want to add any type of invince, we needa add it here.
@@ -683,7 +693,13 @@ public class Level_Manager : MonoBehaviour
         coinsCollected += amount;
         if(amount > 1)
         {
-            StartCoroutine(coinAni(tempCollected, coinsCollected));
+            if (coinCountRoutine != null)
+            {
+                StopCoroutine(coinCountRoutine);
+                coinCountRoutine = null;
+               // Debug.Log("New coin total = " + currentScore);
+            }
+            coinCountRoutine = StartCoroutine(coinAni(tempCollected, coinsCollected));
             Debug.Log("You collected: " + amount + " coins!");
         }
         else
@@ -1046,20 +1062,67 @@ public class Level_Manager : MonoBehaviour
     //Math that needs to be done for multipliers etc will be done elsewhere.
     public void updateScore(int increase)
     {
-        if(currentScore > 9999999)
+        if(thePlayer.GetState() != Player.playerState.dead)
         {
-            currentScore = 9999999;
-            scoreText.text = "Score: " + currentScore.ToString();
-        }
-        else
-        {
-            int tempScore = currentScore;
-            currentScore += increase;
-            //Current score has been increased, so we pass that in as the target to get to.
-            StartCoroutine(scoreAni(tempScore, currentScore));
+            if (currentScore > 9999999)
+            {
+                currentScore = 9999999;
+                scoreText.text = "Score: " + currentScore.ToString();
+            }
+            else
+            {
+                int tempScore = currentScore;
+                //We may need to change this logic if pointMultiplier isn't a blanket effect.
+                currentScore += (increase * pointMultiplier);
+                //Current score has been increased, so we pass that in as the target to get to.
+                if (scoreCountRoutine != null)
+                {
+                    StopCoroutine(scoreCountRoutine);
+                    scoreCountRoutine = null;
+                    Debug.Log("New score total = " + currentScore);
+                }
+
+                scoreCountRoutine = StartCoroutine(scoreAni(tempScore, currentScore));
+            }
+
         }
 
-       
+
+
+
+    }
+
+    public void increaseMultiplier()
+    {
+        pointMultiplier += 1;
+        if(pointMultiplier > 5)
+        {
+            pointMultiplier = 5;
+        }
+        multiplierText.text = "Multiplier: X " + pointMultiplier;
+    }
+
+    public void resetMultiplier()
+    {
+        pointMultiplier = 1;
+        multiplierText.text = "Multiplier: X " + pointMultiplier;
+        enemiesDodgedSinceLastMulti = 0;
+    }
+
+    //If we need this via another script.
+    public int getMultiplier()
+    {
+        return pointMultiplier;
+    }
+
+    public void increaseEnemiesDodged()
+    {
+        enemiesDodgedSinceLastMulti += 1;
+        if(enemiesDodgedSinceLastMulti == 5)
+        {
+            increaseMultiplier();
+            enemiesDodgedSinceLastMulti = 0;
+        }
         
     }
 

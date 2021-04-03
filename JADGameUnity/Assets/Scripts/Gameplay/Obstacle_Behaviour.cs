@@ -57,6 +57,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [SerializeField]
     typeOfObstacle thisType;
 
+    [Tooltip("The score value of this enemy. Should be in values of 100's.")]
+    [SerializeField] int scoreValue;
+
     public Level_Manager.timePeriod theEra;
 
     Rigidbody2D thisRigid;
@@ -151,11 +154,25 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     {
         if(collision.gameObject.tag == "Despawner")
         {
-             //TURN ON WHEN WE ARE READY TO POOL
-                thisRigid.velocity = Vector2.zero;
-                Object_Pooler.Instance.AddToPool(gameObject);
-                //Destroy(gameObject);
-                return;
+            if(thisType == typeOfObstacle.obstacle)
+            {
+                Level_Manager.Instance.increaseEnemiesDodged();
+                if (scoreValue <= 0)
+                {
+                    Level_Manager.Instance.updateScore(100);
+                }
+                else
+                {
+                    Level_Manager.Instance.updateScore(scoreValue);
+                }
+            }
+         
+
+            //TURN ON WHEN WE ARE READY TO POOL
+            thisRigid.velocity = Vector2.zero;
+            Object_Pooler.Instance.AddToPool(gameObject);
+            //Destroy(gameObject);
+            return;
         }
     }
 }
