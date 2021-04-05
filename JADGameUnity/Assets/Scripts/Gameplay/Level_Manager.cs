@@ -58,6 +58,19 @@ public class Level_Manager : MonoBehaviour
     //Debug for now.
     public Button retryButton;
     public GameObject gameOverPanel;
+    public GameObject gameOverAdP;
+    public GameObject gameOverTallyP;
+    public GameObject gameOverButtonsP;
+    public GameObject skipTallyButtonP;
+    [SerializeField] bool firstTimeDying;
+    public TextMeshProUGUI totalScoreText;
+    public TextMeshProUGUI waveBonusText;
+    public TextMeshProUGUI RPGameOverText;
+    public TextMeshProUGUI coinsGameOverText;
+    int totalScore = 0;
+    int waveBonus = 0;
+    int finalCoins = 0;
+
 
     //CONSTANTS FOR ANIMATION!
     const string IsCrouching = "IsCrouching";
@@ -124,6 +137,7 @@ public class Level_Manager : MonoBehaviour
     Coroutine decreaseIceMeterRoutine;
     Coroutine scoreCountRoutine;
     Coroutine coinCountRoutine;
+    Coroutine finalTallyRoutine;
 
     [Header("Score related")]
     [SerializeField] int currentScore;
@@ -186,6 +200,8 @@ public class Level_Manager : MonoBehaviour
         enemiesDodgedSinceLastMulti = 0;
 
         gameOverPanel.SetActive(false);
+        firstTimeDying = false;
+
 
         setMeterRates();
         setupItems();
@@ -569,7 +585,7 @@ public class Level_Manager : MonoBehaviour
         //Debug, may need to take this out later.
         if (currentPlayerHealth <= 0 && thePlayer.GetState() != Player.playerState.dead)
         {
-            GameOver();
+            gameOver();
         }
 
         //Debug
@@ -663,7 +679,7 @@ public class Level_Manager : MonoBehaviour
                 // Destroy(coins[i]);
 
             }
-            GameOver();
+            gameOver();
             //Gameover but allow ad to be played for revive.
         }
         else
@@ -715,7 +731,7 @@ public class Level_Manager : MonoBehaviour
         coinText.text = "Coins: " + incomingAmt.ToString();
         while (incomingAmt < newAmt)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
             incomingAmt += 1;
             coinText.text = "Coins: " + incomingAmt.ToString();
         }
@@ -808,7 +824,7 @@ public class Level_Manager : MonoBehaviour
     //Probably will load a panel in with some stats and ask if they want to retry (Watch ad) or go back to menu/share.
     //Seperate function for 'retry' will be implemented.
 
-    void GameOver()
+    void gameOver()
     {
         meterFilled = false;
         //In this if/elseif , make sure that when we add particle effects that you disable those. Also, get rid of the unfreeze/unheat buttons.
@@ -831,10 +847,37 @@ public class Level_Manager : MonoBehaviour
         Debug.Log("You survived: " + wavesSurvived + " waves!");
         //Debug.Log("Your score is: " + currentScore);
         checkFinalWaves();
-        checkFinalScore();
+        gameOverPanelSpawn();
+       
+    }
+
+    void gameOverPanelSpawn()
+    {
+        gameOverPanel.SetActive(true);
+        skipTallyButtonP.SetActive(false);
+
+        if (!firstTimeDying)
+        {
+            gameOverAdP.SetActive(true);
+            gameOverTallyP.SetActive(false);
+            firstTimeDying = true;
+        }
+        else
+        {
+            gameOverAdP.SetActive(false);
+            gameOverTally();
+        }
+    }
+
+    //Gets called if player watches an ad to respawn the player and continue the game.
+    public void respawnPlayer()
+    {
+        //Play ad.
+
         gameOverPanel.SetActive(false);
-        SaveCollectables();
-        retryButton.gameObject.SetActive(true);
+        currentPlayerHealth = 3;
+        player.SetActive(true);
+        ResetAnimator();
     }
 
     public void restartScene()
@@ -858,26 +901,7 @@ public class Level_Manager : MonoBehaviour
         Save_System.SaveCollectables(Collect_Manager.instance);
     }
 
-    void checkFinalWaves()
-    {
-        //Add to total waves survived. Might have some achievement for this.
-        Collect_Manager.instance.totalWavesSurvived += wavesSurvived;
-
-        if (wavesSurvived > Collect_Manager.instance.mostWavesSurvived)
-        {
-            Collect_Manager.instance.mostWavesSurvived = wavesSurvived;
-            Debug.Log("You got a new record for most waves survived!");
-        }
-    }
-
-    void checkFinalScore()
-    {
-        if (currentScore > Collect_Manager.instance.highScore)
-        {
-            Collect_Manager.instance.highScore = currentScore;
-            Debug.Log("You got a new high score!");
-        }
-    }
+   
 
     /*Save related functions
    //***********************************************************************
@@ -964,6 +988,7 @@ public class Level_Manager : MonoBehaviour
             yield return null;
         }
 
+        yield return null;
        
     }
 
@@ -1033,6 +1058,8 @@ public class Level_Manager : MonoBehaviour
             yield return null;
         }
 
+        yield return null;
+
     }
 
 
@@ -1087,9 +1114,6 @@ public class Level_Manager : MonoBehaviour
 
         }
 
-
-
-
     }
 
     public void increaseMultiplier()
@@ -1132,7 +1156,7 @@ public class Level_Manager : MonoBehaviour
         StartCoroutine(scoreTimer());
     }
 
-    //Every second update the score by 50 as a test.
+    //Every few seconds update the score by 50 as a test.
     public IEnumerator scoreTimer()
     {
      
@@ -1162,7 +1186,7 @@ public class Level_Manager : MonoBehaviour
         scoreText.text = "Score: " + incomingScore.ToString();
         while (incomingScore < nextScore)
         {
-            yield return new WaitForSeconds(0.01f);
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
             incomingScore += 1;
             scoreText.text = "Score: " + incomingScore.ToString();
         }
@@ -1173,13 +1197,168 @@ public class Level_Manager : MonoBehaviour
 
 
 
+    //Game over related score stuff.
+
+    //Tally up the points you received, and the wave bonus. Convert those totals into coins. Add bonus coins to your currently collected coins. Right now we're doing 1000 points = 1 coin.
+    public void gameOverTally()
+    {
+        gameOverTallyP.SetActive(true);
+        gameOverAdP.SetActive(false);
+
+       
+
+        //RPGameOverText.text = "RP: " + currentScore.ToString();
+        waveBonus = wavesSurvived * 50;
+        //waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 =" +  waveBonus.ToString();
+        totalScore = currentScore + waveBonus;
+        //totalScoreText.text = "Total score: " + totalScore.ToString();
+       
+        int extraCoins = totalScore / 1000;
+
+        finalCoins = coinsCollected + extraCoins;
+
+        //coinsGameOverText.text = "X " + finalCoins;
+
+        finalTallyRoutine = StartCoroutine(finalTally(currentScore, waveBonus, coinsCollected, finalCoins, totalScore));
+        skipTallyButtonP.SetActive(true);
+        coinsCollected = finalCoins;
+        currentScore = totalScore;
+        checkFinalScore();
+        SaveCollectables();
+
+    }
+
+    public void stopTally()
+    {
+        if(finalTallyRoutine != null)
+        {
+            StopCoroutine(finalTallyRoutine);
+        }
+
+        int oldCurrentScore = totalScore - waveBonus;
+        RPGameOverText.text = "RP: " + oldCurrentScore.ToString();
+        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + waveBonus.ToString();
+        totalScoreText.text = "Total score: " + totalScore;
+        coinsGameOverText.text = "X " + finalCoins;
+
+        gameOverButtonsP.SetActive(true);
+    }
+
+    IEnumerator finalTally(int incomingScore, int finalWaveBonus, int incomingCoins, int finalCoins, int finalScore)
+    {
+        RPGameOverText.text = "RP: " + currentScore.ToString();
+        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = 0";
+        totalScoreText.text = "Total score: 0";
+        coinsGameOverText.text = "X " + incomingCoins;
+
+        int currentWaveBonus = 0;
+        int tempCurrentScore = 0;
+
+        //Count up the current score player received during the run, not counting any bonuses yet.
+        while (tempCurrentScore < incomingScore)
+        {
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+
+            //Increase speed of count based on points.
+            if(incomingScore > 10000)
+            {
+                tempCurrentScore += 1000;
+            }
+            else if(incomingScore > 100000)
+            {
+                tempCurrentScore += 10000;
+            }
+            else
+            {
+                tempCurrentScore += 100;
+            }
+            
+            if(tempCurrentScore > incomingScore)
+            {
+                tempCurrentScore = incomingScore;
+            }
+            RPGameOverText.text = "RP: " + tempCurrentScore.ToString();
+            totalScoreText.text = "Total score: " + tempCurrentScore.ToString();
+        }
+
+        yield return new WaitForSeconds(3.0f * Time.deltaTime);
+
+        //Count up the bonus points player received based on the amount of waves they survived.
+        while (currentWaveBonus < finalWaveBonus)
+        {
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            currentWaveBonus += 2;
+            if(currentWaveBonus > finalWaveBonus)
+            {
+                currentWaveBonus = finalWaveBonus;
+            }
+            waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + currentWaveBonus;
+        }
+
+        yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
 
-        /*Scoring  related functions
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    */
+        //Take the sum of the wave bonus and incoming points and add them to the score to make the final score.
+
+        int tempSum = currentWaveBonus + incomingScore;
+        while (tempCurrentScore < tempSum)
+        {
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            tempCurrentScore += 5;
+            if(tempCurrentScore > tempSum)
+            {
+                tempCurrentScore = tempSum;
+            }
+            totalScoreText.text = "Total score: " + tempCurrentScore.ToString();
+        }
+
+        yield return new WaitForSeconds(3.0f * Time.deltaTime);
+
+        //Calculate the amount of bonus coins the player gets based on their score.
+        while (incomingCoins < finalCoins)
+        {
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            incomingCoins += 1;
+            coinsGameOverText.text = "X " + incomingCoins;
+        }
+
+        yield return new WaitForSeconds(3.0f * Time.deltaTime);
+
+        gameOverButtonsP.SetActive(true);
+        yield return null;
+    }
+
+    void checkFinalWaves()
+    {
+        //Add to total waves survived. Might have some achievement for this.
+        Collect_Manager.instance.totalWavesSurvived += wavesSurvived;
+
+        if (wavesSurvived > Collect_Manager.instance.mostWavesSurvived)
+        {
+            Collect_Manager.instance.mostWavesSurvived = wavesSurvived;
+            Debug.Log("You got a new record for most waves survived!");
+        }
+    }
+
+    void checkFinalScore()
+    {
+        if (currentScore > Collect_Manager.instance.highScore)
+        {
+            Collect_Manager.instance.highScore = currentScore;
+            Debug.Log("You got a new high score!");
+        }
+    }
+
+
+    //Game over related score stuff.
+
+    /*Scoring  related functions
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+//***********************************************************************
+*/
+
+
 }
