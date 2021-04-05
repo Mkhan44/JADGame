@@ -621,4 +621,12 @@ public class Wave_Spawner : MonoBehaviour
 
 
     //Getters/Setters
+
+
+    //Respawn from LevelManager function
+    public void respawnPlayer()
+    {
+        stopCo = false;
+        spawnRoutine = StartCoroutine(waveSpawner(waveType));
+    }
 }

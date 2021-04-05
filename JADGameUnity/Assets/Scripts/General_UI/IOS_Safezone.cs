@@ -25,10 +25,7 @@ public class IOS_Safezone : MonoBehaviour
 
     private void Awake()
     {
-        if(isIphone)
-        {
-            Application.targetFrameRate = 60;
-        }
+      Application.targetFrameRate = 60;
     }
     private void Start()
     {

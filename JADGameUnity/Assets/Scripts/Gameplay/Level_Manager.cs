@@ -877,6 +877,7 @@ public class Level_Manager : MonoBehaviour
         gameOverPanel.SetActive(false);
         currentPlayerHealth = 3;
         player.SetActive(true);
+        this.GetComponent<Wave_Spawner>().respawnPlayer();
         ResetAnimator();
     }
 

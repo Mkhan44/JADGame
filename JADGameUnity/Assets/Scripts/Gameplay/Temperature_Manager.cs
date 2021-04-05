@@ -193,6 +193,7 @@ public class Temperature_Manager : MonoBehaviour
         {
             currentMeterVal = 0;
         }
+        theMeter.value = currentMeterVal;
     }
 
     //Once meter is filled, it should decrease automatically over a set period using this function.

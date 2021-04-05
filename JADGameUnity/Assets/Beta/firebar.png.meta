@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 1dfc5e237a7634f438c89797ab3f7f1e
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 302341528346665135
+    second: firebar_1
+  - first:
+      213: 3632025462618496024
+    second: firebar_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -41,9 +47,9 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
@@ -125,7 +131,49 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: firebar_1
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 85
+        width: 70
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0a3f5a402223400800000000000000
+      internalID: 302341528346665135
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: firebar_3
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 85
+        width: 470
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 29, y: 11, z: 29, w: 11}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 81c9c8a3aeb876230800000000000000
+      internalID: 3632025462618496024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

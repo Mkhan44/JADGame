@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cccae76d501b1d478985d0f296b1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIphone: 0
+  isIphone: 1
   isStage: 0
   mainCam: {fileID: 1123934238}
 --- !u!1 &843204372
