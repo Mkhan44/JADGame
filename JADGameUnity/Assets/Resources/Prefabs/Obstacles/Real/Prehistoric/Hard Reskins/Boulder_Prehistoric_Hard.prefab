@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
   m_Layer: 0
-  m_Name: Boulder_Prehistoric_Easy
+  m_Name: Boulder_Prehistoric_Hard
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bf809b85b556cb34986a56b2195fecb3, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 595ee8b84710c224587a5d07736d789d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   objectElement: 2
   thisObstacleDiff: 0
   thisType: 0
-  scoreValue: 100
+  scoreValue: 300
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ac39cd7611a6f948bf7f5ad92b32e52, type: 2}
+  m_Controller: {fileID: 9100000, guid: f2ccf259e33da9c4a923026c28d27168, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
   m_Layer: 0
-  m_Name: Boulder_Prehistoric_Easy 1
+  m_Name: Boulder_Prehistoric_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 8ac39cd7611a6f948bf7f5ad92b32e52, type: 2}
+  m_Controller: {fileID: 9100000, guid: f40130d3c96041941b52fb7431e437ee, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

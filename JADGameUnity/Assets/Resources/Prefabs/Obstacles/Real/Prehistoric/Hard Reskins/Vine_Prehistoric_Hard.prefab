@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -4463066423456843901}
   - component: {fileID: 5857835583463249108}
   m_Layer: 0
-  m_Name: Vine_Prehistoric_Easy
+  m_Name: Vine_Prehistoric_Hard
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: bb9cb967c943a0a4cb3ffecc83ae8838, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3e4d7db744aa12e42bdd3eb6d09d5753, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -105,7 +105,7 @@ MonoBehaviour:
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 0
-  scoreValue: 100
+  scoreValue: 300
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82489381696327e4394ced559baf94cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: 764fa4770c5cf1f458b554f7372b853a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
