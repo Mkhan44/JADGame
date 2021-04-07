@@ -564,6 +564,7 @@ public class Level_Manager : MonoBehaviour
                         if (onGround)
                         {
                             playerAnimator.SetBool(IsGrounded, true);
+                            playerAnimator.SetBool(IsJumping, false);
                             playerAnimator.SetBool(IsFalling, false);
                             playerAnimator.SetBool(IsBurning, false);
                             playerAnimator.SetBool(IsFrozen, false);
@@ -967,29 +968,27 @@ public class Level_Manager : MonoBehaviour
         // jumpButton.gameObject.SetActive(false);
         while (chestSelect == 0)
         {
-            if (thePlayer.GetState() == Player.playerState.jumping)
+            if (thePlayer.GetState() == Player.playerState.hanging && jumpButtonInteract.getTimeHeld() > 1.0f)
             {
-                yield return new WaitForSeconds(0.1f);
-                playerAnimator.SetBool(IsJumping, false);
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
                 playerAnimator.SetBool(IsFalling, true);
                 chestSelect = 2;
                // Debug.Log("You selected chest 2!");
+                
+                break;
+            }
+            else if (thePlayer.GetState() == Player.playerState.ducking && duckButtonInteract.getTimeHeld() > 1.0f)
+            {
                 duckButton.gameObject.SetActive(false);
                 jumpButton.gameObject.SetActive(false);
-            }
-            else if (thePlayer.GetState() == Player.playerState.ducking)
-            {
-                yield return new WaitForSeconds(0.1f);
-                playerAnimator.SetBool(IsCrouching, false);
                 chestSelect = 1;
               //  Debug.Log("You selected chest 1!");
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+
+                break;
             }
             yield return null;
         }
-
-        yield return null;
        
     }
 
@@ -1037,29 +1036,24 @@ public class Level_Manager : MonoBehaviour
 
         while (portalSelect == 0)
         {
-            if (thePlayer.GetState() == Player.playerState.jumping)
+            if (thePlayer.GetState() == Player.playerState.hanging && jumpButtonInteract.getTimeHeld() > 1.0f)
             {
-                yield return new WaitForSeconds(0.1f);
-                playerAnimator.SetBool(IsJumping, false);
+                duckButton.gameObject.SetActive(false);
+                jumpButton.gameObject.SetActive(false);
                 playerAnimator.SetBool(IsFalling, true);
                 portalSelect = 2;
                 // Debug.Log("You selected chest 2!");
+            }
+            else if (thePlayer.GetState() == Player.playerState.ducking && duckButtonInteract.getTimeHeld() > 1.0f)
+            {
                 duckButton.gameObject.SetActive(false);
                 jumpButton.gameObject.SetActive(false);
-            }
-            else if (thePlayer.GetState() == Player.playerState.ducking)
-            {
-                yield return new WaitForSeconds(0.1f);
-                playerAnimator.SetBool(IsCrouching, false);
                 portalSelect = 1;
                 //  Debug.Log("You selected chest 1!");
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+
             }
             yield return null;
         }
-
-        yield return null;
 
     }
 

@@ -196,7 +196,7 @@ public class Player : MonoBehaviour
         if (collision.gameObject.tag == "Ground")
         {
             onGround = true;
-         //   Debug.Log("Hey, we are touching the ground!");
+            Debug.Log("Hey, we are touching the ground!");
             CheckGroundPlayer();
         }
     }
@@ -206,7 +206,7 @@ public class Player : MonoBehaviour
         if(collision.gameObject.tag == "Ground")
         {
             onGround = false;
-           // Debug.Log("We are not touching the ground!");
+            Debug.Log("We are not touching the ground!");
             CheckGroundPlayer();
         }
     }

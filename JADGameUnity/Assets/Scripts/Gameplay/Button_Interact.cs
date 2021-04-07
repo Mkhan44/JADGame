@@ -84,7 +84,6 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
 
     public void OnPointerDown(PointerEventData eventData)
     {
-
         Player.playerState checkState;
         checkState = Level_Manager.Instance.player.GetComponent<Player>().GetState();
 
@@ -171,5 +170,15 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
         return timeHeld;
     }
 
-   
+    public void OnEnable()
+    {
+        timeHeld = 0f;
+        isHeld = false;
+    }
+
+    void OnDisable()
+    {
+
+    }
+
 }
