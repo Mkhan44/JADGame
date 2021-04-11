@@ -22,6 +22,7 @@ public class Level_Manager : MonoBehaviour
     public Button heatUpButton;
     List<GameObject> powerUps;
     public Player thePlayer;
+    [SerializeField] Color damagedColor;
     Animator playerAnimator;
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
@@ -694,9 +695,21 @@ public class Level_Manager : MonoBehaviour
     //How long player should be in hitstun after taking damage. If we want to add any type of invince, we needa add it here.
     IEnumerator damageAni()
     {
-        //MAYBE ADD THE BUTTON INTERACTABLES HERE INSTEAD??? THAT WAY PLAYER CAN'T INTERRUPT ANIMATIONS.
         playerAnimator.SetBool(Damaged, true);
-        yield return new WaitForSeconds(0.3f);
+        player.GetComponent<SpriteRenderer>().color = damagedColor;
+        playerRigid2D.constraints &= ~RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        player.transform.position = new Vector2((player.transform.position.x + 0.1f), player.transform.position.y);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.position = new Vector2((player.transform.position.x - 0.1f), player.transform.position.y);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.position = new Vector2((player.transform.position.x + 0.1f), player.transform.position.y);
+        yield return new WaitForSeconds(0.05f);
+        player.transform.position = new Vector2((player.transform.position.x - 0.1f), player.transform.position.y);
+        yield return new WaitForSeconds(0.05f);
+
+        playerRigid2D.constraints = RigidbodyConstraints2D.FreezePositionX | RigidbodyConstraints2D.FreezeRotation;
+        yield return new WaitForSeconds(0.1f);
+        player.GetComponent<SpriteRenderer>().color = new Color(255, 255, 255);
         playerAnimator.SetBool(Damaged, false);
     }
 
@@ -1204,7 +1217,6 @@ public class Level_Manager : MonoBehaviour
     {
         gameOverTallyP.SetActive(true);
         gameOverAdP.SetActive(false);
-
        
 
         //RPGameOverText.text = "RP: " + currentScore.ToString();
@@ -1322,6 +1334,7 @@ public class Level_Manager : MonoBehaviour
             coinsGameOverText.text = "X " + incomingCoins;
         }
 
+        skipTallyButtonP.gameObject.SetActive(false);
         yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
         gameOverButtonsP.SetActive(true);

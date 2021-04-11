@@ -139,7 +139,11 @@ public class Wave_Spawner : MonoBehaviour
         {
             if(stopCo == false)
             {
-                StopCoroutine(spawnRoutine);
+                if(spawnRoutine != null)
+                {
+                    StopCoroutine(spawnRoutine);
+                }
+              
                 stopCo = true;
             }
             
@@ -376,13 +380,13 @@ public class Wave_Spawner : MonoBehaviour
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 0)
+            if (wavesSinceBonus > 2)
             {
                 
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-                doWeBonus = 8;
+                //doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
