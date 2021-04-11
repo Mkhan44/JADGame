@@ -376,13 +376,13 @@ public class Wave_Spawner : MonoBehaviour
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 3)
+            if (wavesSinceBonus > 0)
             {
                 
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-               // doWeBonus = 8;
+                doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
@@ -400,13 +400,13 @@ public class Wave_Spawner : MonoBehaviour
         {
             wavesSinceTimeSwap++;
             Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
-            if (wavesSinceTimeSwap > 0)
+            if (wavesSinceTimeSwap > 2)
             {
                 
                 int doWeTimeSwap;
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
-                doWeTimeSwap = 8;
+               // doWeTimeSwap = 8;
                 if (doWeTimeSwap >= 2)
                 {
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
@@ -463,16 +463,18 @@ public class Wave_Spawner : MonoBehaviour
         chest2.GetComponent<SpriteRenderer>().flipY = true;
         int theSelection = Level_Manager.Instance.getChestSelect();
 
-        
-        Level_Manager.Instance.duckButton.gameObject.SetActive(false);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
+
+        Level_Manager.Instance.duckButton.enabled = false;
+        Level_Manager.Instance.jumpButton.enabled = false;
+       // Level_Manager.Instance.duckButton.gameObject.SetActive(false);
+       // Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
 
       //  Level_Manager.Instance.ResetAnimator();
 
         yield return new WaitForSeconds(1.5f);
 
-        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
+        Level_Manager.Instance.duckButton.enabled = true;
+        Level_Manager.Instance.jumpButton.enabled = true;
 
         StartCoroutine(Level_Manager.Instance.pickAChest());
         //Play animation for "Jump or Duck" option, then make the buttons available.
@@ -517,9 +519,12 @@ public class Wave_Spawner : MonoBehaviour
         Destroy(chest1);
         Destroy(chest2);
 
+
+
+
         //We finished the bonus wave.
-        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
+        Level_Manager.Instance.duckButton.enabled = true;
+        Level_Manager.Instance.jumpButton.enabled = true;
 
         waveType = typeOfWave.normal;
         Level_Manager.Instance.checkScore();
@@ -540,16 +545,15 @@ public class Wave_Spawner : MonoBehaviour
         portal2.GetComponent<SpriteRenderer>().flipY = true;
         int theSelection = Level_Manager.Instance.getTimePortalSelection();
 
-        
-        Level_Manager.Instance.duckButton.gameObject.SetActive(false);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(false);
+        Level_Manager.Instance.duckButton.enabled = false;
+        Level_Manager.Instance.jumpButton.enabled = false;
 
         yield return new WaitForSeconds(1.5f);
 
+        Level_Manager.Instance.duckButton.enabled = true;
+        Level_Manager.Instance.jumpButton.enabled = true;
         //Play animation for "Jump or Duck" option, then make the buttons available.
 
-        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
         StartCoroutine(Level_Manager.Instance.pickAPortal());
 
         Debug.Log("Waiting for response from the player...");
@@ -584,8 +588,8 @@ public class Wave_Spawner : MonoBehaviour
         Destroy(portal2);
 
         //We finished the timeswap  wave.
-        Level_Manager.Instance.duckButton.gameObject.SetActive(true);
-        Level_Manager.Instance.jumpButton.gameObject.SetActive(true);
+        Level_Manager.Instance.duckButton.enabled = true;
+        Level_Manager.Instance.jumpButton.enabled = true;
         waveType = typeOfWave.normal;
         Level_Manager.Instance.checkScore();
         specialWaveOn = false;

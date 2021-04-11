@@ -100,16 +100,17 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
             {
                 case buttonType.duck:
                     {
-                        if(Level_Manager.Instance.duckButton.interactable != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
+                        if(Level_Manager.Instance.duckButton.interactable != false && Level_Manager.Instance.duckButton.enabled != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
                         {
-                            Level_Manager.Instance.duck(); 
+                            Level_Manager.Instance.duck();
+                            Debug.Log("Duck button was pressed!");
                         }
                         break;
 
                     }
                 case buttonType.jump:
                     {
-                        if (Level_Manager.Instance.jumpButton.interactable != false && checkState != Player.playerState.ducking && checkState != Player.playerState.hanging)
+                        if (Level_Manager.Instance.jumpButton.interactable != false && Level_Manager.Instance.jumpButton.enabled != false && checkState != Player.playerState.ducking && checkState != Player.playerState.hanging)
                         {
                             Level_Manager.Instance.Jump();
                         }
@@ -137,14 +138,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //Need some type of timer here...Reset it here and turn isHeld to false.
-        if(heldRoutine != null)
-        {
-            StopCoroutine(heldRoutine);
-            heldRoutine = null;
-        }
-        timeHeld = 0f;
-        isHeld = false;
+        resetHeldValue();
     }
 
 
@@ -170,6 +164,17 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
         return timeHeld;
     }
 
+    public void resetHeldValue()
+    {
+        if (heldRoutine != null)
+        {
+            StopCoroutine(heldRoutine);
+            heldRoutine = null;
+        }
+        timeHeld = 0f;
+        isHeld = false;
+    }
+
     public void OnEnable()
     {
         timeHeld = 0f;
@@ -178,7 +183,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
 
     void OnDisable()
     {
-
+       
     }
 
 }

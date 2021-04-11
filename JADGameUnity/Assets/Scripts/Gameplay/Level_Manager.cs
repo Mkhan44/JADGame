@@ -335,6 +335,7 @@ public class Level_Manager : MonoBehaviour
         jumpButton.interactable = false;
         duckButton.interactable = false;
         thePlayer.setState(Player.playerState.jumping);
+        onGround = false;
         playerAnimator.SetBool(IsGrounded, false);
         playerAnimator.SetBool(IsJumping, true);
 
@@ -355,13 +356,12 @@ public class Level_Manager : MonoBehaviour
    
     public void duck()
     {
-        // Debug.Log("Calling duck");
+        Debug.Log("Calling duck from levelManager");
         thePlayer.setState(Player.playerState.ducking);
 
         playerAnimator.SetBool(IsCrouching, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
-        // StartCoroutine(getUp());
     }
 
     public void getUpReg()
@@ -423,7 +423,7 @@ public class Level_Manager : MonoBehaviour
                         //Do ducking stuff...
 
                         //If we're holding the button.
-                        if (duckButtonInteract.getHeldValue())
+                        if (duckButtonInteract.getHeldValue() && duckButton.enabled != false)
                         {
                             if(duckButtonInteract.getTimeHeld() >= 0.3f)
                             {
@@ -483,7 +483,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             StartCoroutine(iceMeter.decreaseConstant());
                         }
-                        if (jumpButtonInteract.getHeldValue())
+                        if (jumpButtonInteract.getHeldValue() && jumpButton.enabled != false)
                         {
                             Hang();
                         }
@@ -966,12 +966,15 @@ public class Level_Manager : MonoBehaviour
     {
         // duckButton.gameObject.SetActive(false);
         // jumpButton.gameObject.SetActive(false);
+        duckButtonInteract.resetHeldValue();
+        jumpButtonInteract.resetHeldValue();
+
         while (chestSelect == 0)
         {
             if (thePlayer.GetState() == Player.playerState.hanging && jumpButtonInteract.getTimeHeld() > 1.0f)
             {
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+                duckButton.enabled = false;
+                jumpButton.enabled = false;
                 playerAnimator.SetBool(IsFalling, true);
                 chestSelect = 2;
                // Debug.Log("You selected chest 2!");
@@ -980,8 +983,8 @@ public class Level_Manager : MonoBehaviour
             }
             else if (thePlayer.GetState() == Player.playerState.ducking && duckButtonInteract.getTimeHeld() > 1.0f)
             {
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+                duckButton.enabled = false;
+                jumpButton.enabled = false;
                 chestSelect = 1;
               //  Debug.Log("You selected chest 1!");
 
@@ -1033,21 +1036,23 @@ public class Level_Manager : MonoBehaviour
     {
         // duckButton.gameObject.SetActive(false);
         // jumpButton.gameObject.SetActive(false);
+        duckButtonInteract.resetHeldValue();
+        jumpButtonInteract.resetHeldValue();
 
         while (portalSelect == 0)
         {
             if (thePlayer.GetState() == Player.playerState.hanging && jumpButtonInteract.getTimeHeld() > 1.0f)
             {
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+                duckButton.enabled = false;
+                jumpButton.enabled = false;
                 playerAnimator.SetBool(IsFalling, true);
                 portalSelect = 2;
                 // Debug.Log("You selected chest 2!");
             }
             else if (thePlayer.GetState() == Player.playerState.ducking && duckButtonInteract.getTimeHeld() > 1.0f)
             {
-                duckButton.gameObject.SetActive(false);
-                jumpButton.gameObject.SetActive(false);
+                duckButton.enabled = false;
+                jumpButton.enabled = false;
                 portalSelect = 1;
                 //  Debug.Log("You selected chest 1!");
 
