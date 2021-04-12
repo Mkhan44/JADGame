@@ -105,6 +105,7 @@ MonoBehaviour:
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 0
+  scoreValue: 100
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
