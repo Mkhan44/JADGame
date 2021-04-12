@@ -35,8 +35,8 @@ public class Collect_Manager : MonoBehaviour
 
     public enum skinTypes
     {
-        male1,
-        female1,
+        guy1,
+        dummy,
         sonic,
         mario,
         snake

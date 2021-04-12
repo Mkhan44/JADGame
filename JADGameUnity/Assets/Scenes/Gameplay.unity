@@ -7483,7 +7483,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534869, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.8251967
+      value: -0.89
       objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534869, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_LocalPosition.z
@@ -7565,6 +7565,10 @@ PrefabInstance:
       propertyPath: heatMeterFillVal
       value: 0.3
       objectReference: {fileID: 0}
+    - target: {fileID: 2754374759307534874, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
     - target: {fileID: 2754374759307534875, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_Name
       value: Player

@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aad5c8464a95e44193305e08aeab6a4, type: 3}
-  m_Name: Default_Skin
+  m_Name: Guy1
   m_EditorClassIdentifier: 
-  skinSprite: {fileID: 21300000, guid: cd0a0f2079a88144abeb5f4ab44cb671, type: 3}
-  animationController: {fileID: 9100000, guid: de6193ce30a1b0c459824c157dd36f3a, type: 2}
+  skinSprite: {fileID: 21300000, guid: 3f8c878fcf849e84391b064066c36666, type: 3}
+  animationOverrideController: {fileID: 22100000, guid: 55f7d51c91437834cbfab558a9c8aceb, type: 2}
   thisSkinType: 0
-  skinIcon: {fileID: 21300000, guid: cd0a0f2079a88144abeb5f4ab44cb671, type: 3}
+  skinIcon: {fileID: 21300000, guid: f65bad691db328644abcc82fd5fe1423, type: 3}
