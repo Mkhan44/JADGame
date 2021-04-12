@@ -519,6 +519,7 @@ public class Level_Manager : MonoBehaviour
                             StartCoroutine(burningJumpWait());
                             StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
                             coolDownButton.gameObject.SetActive(true);
+                            playerAnimator.SetBool(IsHanging, false);
                         }
                         //Call the burningJump function.
 
@@ -545,6 +546,7 @@ public class Level_Manager : MonoBehaviour
                             frozenDuck();
                             heatUpButton.gameObject.SetActive(true);
                             StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                            playerAnimator.SetBool(IsHanging, false);
                         }
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
@@ -892,7 +894,8 @@ public class Level_Manager : MonoBehaviour
         currentPlayerHealth = 3;
         player.SetActive(true);
         this.GetComponent<Wave_Spawner>().respawnPlayer();
-        ResetAnimator();
+        thePlayer.setState(Player.playerState.idle);
+        playerRigid2D.gravityScale = 20;
     }
 
     public void restartScene()

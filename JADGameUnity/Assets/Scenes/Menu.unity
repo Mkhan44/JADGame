@@ -497,7 +497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cccae76d501b1d478985d0f296b1dd3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isIphone: 1
+  isIphone: 0
   isStage: 0
   mainCam: {fileID: 1123934238}
 --- !u!1 &843204372
@@ -1590,7 +1590,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -776.45856, y: -246.2443}
+  m_SizeDelta: {x: -1080.738, y: -244.26288}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1602882761
 MonoBehaviour:
@@ -1778,10 +1778,10 @@ RectTransform:
   m_Father: {fileID: 862864953}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.13514948, y: 0.09973326}
-  m_AnchorMax: {x: 0.855, y: 0.23873326}
-  m_AnchoredPosition: {x: 5.51001, y: 16.961914}
-  m_SizeDelta: {x: -1.3, y: 19.474}
+  m_AnchorMin: {x: 0, y: 0.10300001}
+  m_AnchorMax: {x: 1, y: 0.25244084}
+  m_AnchoredPosition: {x: -0.17907715, y: -1.0380859}
+  m_SizeDelta: {x: 0.22000122, y: -2.525999}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1668086589
 MonoBehaviour:
