@@ -100,10 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 6
   spawnPoint: 0
   objectElement: 1
-  thisObstacleDiff: 0
+  thisObstacleDiff: 1
   thisType: 0
   scoreValue: 200
   theEra: 0

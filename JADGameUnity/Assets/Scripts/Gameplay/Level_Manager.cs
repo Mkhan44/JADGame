@@ -171,6 +171,20 @@ public class Level_Manager : MonoBehaviour
         currentScore = 0;
         wavesSurvived = 0;
 
+        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
+
+        //Pick player skin.
+        for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
+        {
+            if (currentSkinInt == i)
+            {
+             
+               playerAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
+             
+               break;
+            }
+        }
+
     }
 
     private void Start()
@@ -309,6 +323,10 @@ public class Level_Manager : MonoBehaviour
             Image tempImg = item3Holder.transform.GetChild(0).GetComponent<Image>();
             tempImg.sprite = null;
         }
+
+        Collect_Manager.instance.item1 = -1;
+        Collect_Manager.instance.item2 = -1;
+        Collect_Manager.instance.item3 = -1;
     }
 
     /*
@@ -832,8 +850,9 @@ public class Level_Manager : MonoBehaviour
         playerAnimator.SetBool(IsCrouching, false);
         playerAnimator.SetBool(IsGrounded, true);
         meterFilled = false;
-        playerRigid2D.gravityScale = 50f;
         thePlayer.setState(Player.playerState.idle);
+        playerRigid2D.gravityScale = 20f;
+        
     }
 
     //Player is dead.
@@ -895,7 +914,7 @@ public class Level_Manager : MonoBehaviour
         player.SetActive(true);
         this.GetComponent<Wave_Spawner>().respawnPlayer();
         thePlayer.setState(Player.playerState.idle);
-        playerRigid2D.gravityScale = 20;
+      //  playerRigid2D.gravityScale = 20;
     }
 
     public void restartScene()

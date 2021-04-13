@@ -183,12 +183,15 @@ public class Wave_Spawner : MonoBehaviour
         if (theWaveType == typeOfWave.normal)
         {
             //Test values for changing difficulty. Will need some formula later on.
-            if (wavesSinceDifficultyChange == 3)
+           // if (wavesSinceDifficultyChange == 3)
+           //DEBUG , USE THE ONE ABOVE FOR REAL!
+            if (wavesSinceDifficultyChange == 1)
             {
                 theWaveDiff = waveDiff.medium;
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            if (wavesSinceDifficultyChange == 5)
+            if (wavesSinceDifficultyChange == 2)
+            //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);

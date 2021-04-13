@@ -187,12 +187,9 @@ public class Customize_Loadout : MonoBehaviour
         {
             if (currentSkinInt == i)
             {
-                if(animateRoutine != null)
-                {
-                    StopCoroutine(animateRoutine);
-                }
+                stopAnimator();
 
-              
+
                 // currentSkinHolderImage.sprite = skinsToPick[i].skinSprite;
                 if (Collect_Manager.instance.skinsToPick[i].animationOverrideController == null)
                 {
@@ -234,6 +231,14 @@ public class Customize_Loadout : MonoBehaviour
             yield return new WaitForSeconds(1.0f);
         }
 
+    }
+
+    public void stopAnimator()
+    {
+        if (animateRoutine != null)
+        {
+            StopCoroutine(animateRoutine);
+        }
     }
 
     /*
