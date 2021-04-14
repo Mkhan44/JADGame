@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  increaseRate: 5
+  increaseRate: 4.5
   maxSpeed: 6
   spawnPoint: 1
   objectElement: 2

@@ -5931,7 +5931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0.73300004, y: 0.11973795}
   m_AnchorMax: {x: 0.9555307, y: 0.47960693}
-  m_AnchoredPosition: {x: -0.7636719, y: -0.32006836}
+  m_AnchoredPosition: {x: -0.7636719, y: -0.320076}
   m_SizeDelta: {x: 2.927002, y: 1.199997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673177705
@@ -7391,58 +7391,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Color.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Color.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Color.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 4cbb6d6f15792914bbcf3bb0c0a5cc14, type: 2}
-    - target: {fileID: 2754374759307534871, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Constraints
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534872, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Size.x
-      value: 0.96668947
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534872, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Size.y
-      value: 1.7053461
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534872, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.013446271
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534872, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.08200562
-      objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: currentHealth
-      value: 3
+      value: 9
       objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: iceMeterFillVal
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: heatMeterFillVal
-      value: 0.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 2754374759307534874, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
     - target: {fileID: 2754374759307534875, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_Name
       value: Player

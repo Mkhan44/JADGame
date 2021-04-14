@@ -32,7 +32,10 @@ public class Menu_Manager : MonoBehaviour
 
     public void PlayGame()
     {
+        Save_System.SaveCollectables(Collect_Manager.instance);
+
         //Might want to make sure that this string works.
+
         SceneManager.LoadScene("Gameplay");
     }
 
