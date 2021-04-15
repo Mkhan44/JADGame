@@ -81,6 +81,10 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefabs for different time periods.")]
     public List<GameObject> timePortalPrefabs;
 
+    [SerializeField] List<GameObject> backgrounds;
+    [SerializeField] GameObject currentBG1;
+    [SerializeField] GameObject currentBG2;
+
     public Player thePlayer;
     Player.playerState currentPlayerState;
 
@@ -112,6 +116,11 @@ public class Wave_Spawner : MonoBehaviour
         specialWaveOn = false;
         wavesSinceDifficultyChange = 0;
         SetCurrentEnemies();
+
+        //Setup the BGs, this will be based on the era from LevelManager!
+        currentBG1 = Instantiate(backgrounds[0]);
+        currentBG2 = Instantiate(backgrounds[0]);
+        currentBG2.transform.position = new Vector3(backgrounds[0].transform.position.x + + 16.8f, backgrounds[0].transform.position.y);
 
     }
 

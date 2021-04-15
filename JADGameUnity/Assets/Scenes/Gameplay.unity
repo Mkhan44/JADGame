@@ -1194,7 +1194,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.15
+  m_fontSize: 89.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1328,7 +1328,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.7
+  m_fontSize: 75.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1462,7 +1462,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.65
+  m_fontSize: 67.6
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3078,7 +3078,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.75
+  m_fontSize: 71.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4129,7 +4129,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100.1
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5931,7 +5931,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 180, y: 0, z: 0}
   m_AnchorMin: {x: 0.73300004, y: 0.11973795}
   m_AnchorMax: {x: 0.9555307, y: 0.47960693}
-  m_AnchoredPosition: {x: -0.7636719, y: -0.32006836}
+  m_AnchoredPosition: {x: -0.7636719, y: -0.320076}
   m_SizeDelta: {x: 2.927002, y: 1.199997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673177705
@@ -7076,7 +7076,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.65
+  m_fontSize: 56.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7843,6 +7843,22 @@ PrefabInstance:
       propertyPath: thePlayer
       value: 
       objectReference: {fileID: 1760689350}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: backgrounds.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: backgrounds.Array.data[0]
+      value: 
+      objectReference: {fileID: 3985197169080890867, guid: 897eb8696ff7c3d4696b7af370b034fc, type: 3}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: backgrounds.Array.data[1]
+      value: 
+      objectReference: {fileID: 3985197169080890867, guid: 435918fd458918e4ab41d62d047273bc, type: 3}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: backgrounds.Array.data[2]
+      value: 
+      objectReference: {fileID: 3985197169080890867, guid: 4b23f873016b79f4ab6d18f033852b78, type: 3}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: spawnPoints.Array.data[0]
       value: 

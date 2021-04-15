@@ -30,25 +30,11 @@ public class Object_Pooler : MonoBehaviour
         Instance = this;
     }
 
-    [Tooltip("This number reflects the amount of pools. This needs to be manually entered for now.")]
-    public int numPools;
-
-    public List<Pool> pools;
 
     public List<ListWrapper> thePools;
 
     //The current list of prefabs that we're using. We will figure this out based on the time period we're in.
     List<GameObject> currentList = new List<GameObject>();
-
-
-    /*
-    //We want something like this...Need to figure out how to do this more efficiently.
-    public List<Pool> prehistoricPools;
-    public List<Pool> FeudalJapanPools;
-    public List<Pool> WildWestPools;
-    public List<Pool> MedPools;
-    public List<Pool> FuturePools;
-    */
 
 
     public Dictionary<string, Queue<GameObject>> poolDictionary;
