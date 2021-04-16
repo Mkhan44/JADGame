@@ -8,8 +8,8 @@ using UnityEngine;
 
 public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 {
-    Vector2 startPos;
-    Vector2 endPos;
+    protected Vector2 startPos;
+    protected Vector2 endPos;
     //Speed
     [Tooltip("Speed of the obstacle moving from right to left. KEEP THIS AS 0.")]
     public float speed = 0f;
@@ -55,14 +55,14 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     public obstacleDiff thisObstacleDiff;
 
     [SerializeField]
-    typeOfObstacle thisType;
+    protected typeOfObstacle thisType;
 
     [Tooltip("The score value of this enemy. Should be in values of 100's.")]
-    [SerializeField] int scoreValue;
+    [SerializeField] protected int scoreValue;
 
     public Level_Manager.timePeriod theEra;
 
-    Rigidbody2D thisRigid;
+    protected Rigidbody2D thisRigid;
     private void Awake()
     {
         thisRigid = this.GetComponent<Rigidbody2D>();
@@ -95,12 +95,18 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     // Update is called once per frame
     void Update()
     {
+        Movement();
+    }
+
+    //Movement for regular obstacles/treasures and timeswap...Will be changed on other obstacles.
+    protected virtual void Movement()
+    {
         //If it's anything that's not a chest.
-        if(thisType != typeOfObstacle.chest && thisType != typeOfObstacle.timePortal)
+        if (thisType != typeOfObstacle.chest && thisType != typeOfObstacle.timePortal)
         {
-            if(increaseRate != 0f)
+            if (increaseRate != 0f)
             {
-                if(speed < maxSpeed)
+                if (speed < maxSpeed)
                 {
                     speed += increaseRate * Time.deltaTime;
                 }
@@ -111,37 +117,37 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             }
             else
             {
-                if(speed < maxSpeed)
+                if (speed < maxSpeed)
                 {
                     speed += 0.15f * Time.deltaTime;
                 }
                 else
                 {
                     speed = maxSpeed;
-                }    
-             
+                }
+
             }
-           
-            if(thisRigid != null)
+
+            if (thisRigid != null)
             {
                 thisRigid.velocity = Vector2.left * speed;
             }
-            
+
         }
         //If it's a chest or time portal.
         else
         {
             endPos = new Vector2((startPos.x - 5), (startPos.y));
 
-            if (this.transform.position != new Vector3(endPos.x,endPos.y, this.transform.position.z))
+            if (this.transform.position != new Vector3(endPos.x, endPos.y, this.transform.position.z))
             {
                 speed += 1.0f * Time.deltaTime;
             }
-           
+
             this.transform.position = Vector2.Lerp(startPos, endPos, speed);
 
         }
-        
+
     }
 
     //Get the element from another script if needed.
