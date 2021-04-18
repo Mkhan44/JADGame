@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Boulder_Prehistoric_Hard
   m_TagString: Obstacle
   m_Icon: {fileID: 0}

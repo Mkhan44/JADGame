@@ -22,6 +22,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     //We will have spawn points set up in the Wave_Spawner script.
     [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
     public Wave_Spawner.spawnPointNum spawnPoint;
+
+    [Tooltip("We will use this to determine if objects should flip and what not. Since player can only move verticaly, things shouldn't be able to drop on them.")]
+    protected bool inPlayerVicinity;
     public enum ElementType
     {
         neutral,
@@ -63,7 +66,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     public Level_Manager.timePeriod theEra;
 
     protected Rigidbody2D thisRigid;
-    private void Awake()
+    protected virtual void Awake()
     {
         thisRigid = this.GetComponent<Rigidbody2D>();
         ogSpeed = speed;
@@ -71,6 +74,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         {
             maxSpeed = increaseRate;
         }
+        inPlayerVicinity = false;
     }
 
     // Start is called before the first frame update
@@ -83,8 +87,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     }
 
     //'start' method whenever this is reused via Pooling.
-    public void OnObjectSpawn()
+    public virtual void OnObjectSpawn()
     {
+        inPlayerVicinity = false;
         speed = ogSpeed;
         startPos = this.transform.position;
         endPos = new Vector2((startPos.x - 20), (startPos.y));
@@ -156,8 +161,10 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         return objectElement;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
+
+
         if(collision.gameObject.tag == "Despawner")
         {
             if(thisType == typeOfObstacle.obstacle)
@@ -172,7 +179,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                     Level_Manager.Instance.updateScore(scoreValue);
                 }
             }
-         
+            inPlayerVicinity = false;
 
             //TURN ON WHEN WE ARE READY TO POOL
             thisRigid.velocity = Vector2.zero;
@@ -181,4 +188,14 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             return;
         }
     }
+
+    protected virtual void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Player_Vicinity_Blocker")
+        {
+            inPlayerVicinity = true;
+            Debug.Log("Obstacle is in player vicinity!");
+        }
+    }
+
 }

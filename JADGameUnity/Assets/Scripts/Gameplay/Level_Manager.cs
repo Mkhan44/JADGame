@@ -375,7 +375,7 @@ public class Level_Manager : MonoBehaviour
    
     public void duck()
     {
-        Debug.Log("Calling duck from levelManager");
+      //  Debug.Log("Calling duck from levelManager");
         thePlayer.setState(Player.playerState.ducking);
 
         playerAnimator.SetBool(IsCrouching, true);
@@ -750,7 +750,7 @@ public class Level_Manager : MonoBehaviour
                // Debug.Log("New coin total = " + currentScore);
             }
             coinCountRoutine = StartCoroutine(coinAni(tempCollected, coinsCollected));
-            Debug.Log("You collected: " + amount + " coins!");
+           // Debug.Log("You collected: " + amount + " coins!");
         }
         else
         {
@@ -1141,7 +1141,7 @@ public class Level_Manager : MonoBehaviour
                 {
                     StopCoroutine(scoreCountRoutine);
                     scoreCountRoutine = null;
-                    Debug.Log("New score total = " + currentScore);
+                   // Debug.Log("New score total = " + currentScore);
                 }
 
                 scoreCountRoutine = StartCoroutine(scoreAni(tempScore, currentScore));

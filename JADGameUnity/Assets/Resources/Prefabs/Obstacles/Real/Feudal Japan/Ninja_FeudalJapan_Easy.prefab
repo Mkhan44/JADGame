@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ninja_FeudalJapan_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 4
   spawnPoint: 1
   objectElement: 2
   thisObstacleDiff: 0
@@ -108,6 +108,9 @@ MonoBehaviour:
   scoreValue: 100
   theEra: 0
   ninjaAnimator: {fileID: 5857835583463249108}
+  elapsedTime: 0
+  teleportRate: 2
+  maxNumTeleports: 2
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -121,7 +124,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.2030943, y: -0.09600234}
+  m_Offset: {x: -0.22236992, y: -0.09600234}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -132,7 +135,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2855539, y: 1.306174}
+  m_Size: {x: 1.1702247, y: 1.306174}
   m_EdgeRadius: 0
 --- !u!50 &8632900936152516657
 Rigidbody2D:
