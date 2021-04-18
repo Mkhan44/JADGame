@@ -38,7 +38,7 @@ public class Wave_Spawner : MonoBehaviour
     }
 
     [Tooltip("The difficulty of the wave. Should be changeable on the fly.")]
-    waveDiff theWaveDiff;
+    [SerializeField] waveDiff theWaveDiff;
     
     [Tooltip("The type of wave. We spawn on chests on bonus, portals on timeWarp")]
     typeOfWave waveType;
