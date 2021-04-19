@@ -10,12 +10,13 @@ GameObject:
   m_Component:
   - component: {fileID: 2171952644357041671}
   - component: {fileID: 4259822024414378004}
-  - component: {fileID: 8617969083274795738}
+  - component: {fileID: 2832292700334892532}
   - component: {fileID: 8160921082443146840}
-  - component: {fileID: 4522823996157882729}
+  - component: {fileID: -8258185522588736221}
   - component: {fileID: 5857835583463249108}
+  - component: {fileID: 7739306957846548187}
   m_Layer: 6
-  m_Name: Spear_Prehistoric_Easy
+  m_Name: Dragon_Top_FeudalJapan_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 1}
+  m_LocalScale: {x: 0.4, y: 0.4, z: 0.4}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +76,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 8982f6d093f932747a4fb3e53db7bbe5, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 233c0e0470835204cb223f9036e66bfe, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -86,7 +87,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8617969083274795738
+--- !u!114 &2832292700334892532
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,18 +96,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af219c0450362942a6286a7c0758384, type: 3}
+  m_Script: {fileID: 11500000, guid: de949ff1270c01b4cba593325cc2c7b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  increaseRate: 5
-  maxSpeed: 5
-  spawnPoint: 0
-  objectElement: 0
+  increaseRate: 4
+  maxSpeed: 4
+  spawnPoint: 1
+  objectElement: 1
   thisObstacleDiff: 0
   thisType: 0
   scoreValue: 100
   theEra: 0
+  ogCollider: {fileID: 8160921082443146840}
+  endCollision: {fileID: 7739306957846548187}
+  despawnerCollider: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -120,20 +124,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.023616552, y: -0.039918274}
+  m_Offset: {x: -0.497638, y: 0.094216466}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.4, y: 1.6}
+    oldSize: {x: 10, y: 2.4}
     newSize: {x: 0.36, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.9386849, y: 0.52287656}
+  m_Size: {x: 7.8448863, y: 1.5037155}
   m_EdgeRadius: 0
---- !u!50 &4522823996157882729
+--- !u!50 &-8258185522588736221
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -153,7 +157,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 6
+  m_Constraints: 4
 --- !u!95 &5857835583463249108
 Animator:
   serializedVersion: 3
@@ -164,7 +168,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b4754f4a5838d8d488117b63bf28d946, type: 2}
+  m_Controller: {fileID: 9100000, guid: c1614b8ea2e3c6f41bbeddd970ad8121, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -173,3 +177,29 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!61 &7739306957846548187
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4158279202637467101}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 3.9848487, y: 0.10181582}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 10, y: 2.4}
+    newSize: {x: 0.36, y: 0.28}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.9476743, y: 1.1018488}
+  m_EdgeRadius: 0

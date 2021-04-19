@@ -1942,7 +1942,7 @@ GameObject:
   - component: {fileID: 586992887}
   - component: {fileID: 586992886}
   - component: {fileID: 586992885}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Despawner
   m_TagString: Despawner
   m_Icon: {fileID: 0}
@@ -3122,7 +3122,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &974877421
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6308,7 +6308,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.73300004, y: 0.53852415}
   m_AnchorMax: {x: 0.9555307, y: 0.89943427}
-  m_AnchoredPosition: {x: 1.4635925, y: 1.0299988}
+  m_AnchoredPosition: {x: 1.463623, y: 1.0299988}
   m_SizeDelta: {x: 2.927002, y: 0.2000122}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673177705
@@ -7978,10 +7978,22 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.size
-      value: 2
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[0].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[6].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[7].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[8].size
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
@@ -8044,6 +8056,34 @@ PrefabInstance:
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[1].prefab
       value: 
       objectReference: {fileID: 4158279202637467101, guid: 5263cc1d636a0b141a4493912224f0f1, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: c2421493863ac8a40bf06a2a4be4f370, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[3].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: f1ee3fb3dad61784987edcdeb9845ea4, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[4].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 37085e8caea919044958bdeb9b993ba9, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[5].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 57e0bb06bac167244b4ab11179d854ab, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[6].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 88cf410c2ce472443bb40c2914abe412, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[7].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 22f654d3af5f14442917455ace7ef52d, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[4].wrappedList.Array.data[8].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: ea5407d910eb31341adbabc5cd112938, type: 3}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[0].wrappedList.Array.data[10].prefab
       value: 
@@ -8110,7 +8150,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton
@@ -8242,7 +8282,7 @@ PrefabInstance:
       objectReference: {fileID: 1760689350}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: theWaveDiff
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: backgrounds.Array.size

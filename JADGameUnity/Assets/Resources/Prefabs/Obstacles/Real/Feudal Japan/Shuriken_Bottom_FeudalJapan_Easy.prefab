@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4259822024414378004}
   - component: {fileID: 8617969083274795738}
   - component: {fileID: 8160921082443146840}
-  - component: {fileID: -4463066423456843901}
+  - component: {fileID: -8258185522588736221}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Vine_Prehistoric_Easy
+  m_Name: Shuriken_Bottom_FeudalJapan_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -75,12 +75,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 241c986033fdc35429a38104a7b731f2, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 86677f07c2d842842bee59c18007c926, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.8, y: 4}
+  m_Size: {x: 0.36, y: 0.28}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -100,9 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 3.7
-  spawnPoint: 0
-  objectElement: 0
+  maxSpeed: 5
+  spawnPoint: 1
+  objectElement: 1
   thisObstacleDiff: 0
   thisType: 0
   scoreValue: 100
@@ -120,20 +120,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.055172846, y: 0.9264493}
+  m_Offset: {x: 0.032260433, y: -0.026219964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 0.8, y: 4}
-    newSize: {x: 0.8, y: 4}
+    oldSize: {x: 0.8, y: 0.8}
+    newSize: {x: 0.36, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.36371693, y: 2.161704}
+  m_Size: {x: 0.3571045, y: 0.353122}
   m_EdgeRadius: 0
---- !u!50 &-4463066423456843901
+--- !u!50 &-8258185522588736221
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: -5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 82489381696327e4394ced559baf94cb, type: 2}
+  m_Controller: {fileID: 9100000, guid: dbb490045ad4d4a4da0a3ac1d2e851a2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
