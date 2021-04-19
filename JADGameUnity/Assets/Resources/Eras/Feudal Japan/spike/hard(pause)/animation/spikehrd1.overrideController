@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: spikehrd1
+  m_Controller: {fileID: 9100000, guid: 084baedaceebfc14ca1a73fc7ebae719, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: e56fb55d3aa62e04891f37d27bba8f89, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0364282d57e37f04a92a68d406a481cd, type: 2}
