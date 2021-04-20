@@ -194,7 +194,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         if (collision.gameObject.tag == "Player_Vicinity_Blocker")
         {
             inPlayerVicinity = true;
-            Debug.Log("Obstacle is in player vicinity!");
+          //  Debug.Log("Obstacle is in player vicinity!");
         }
     }
 

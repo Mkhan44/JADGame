@@ -235,7 +235,7 @@ MonoBehaviour:
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 0
-  scoreValue: 0
+  scoreValue: 100
   theEra: 0
   sai1Collider: {fileID: 8160921082443146840}
   sai2Collider: {fileID: 4763884683996148514}

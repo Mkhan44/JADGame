@@ -12,10 +12,10 @@ GameObject:
   - component: {fileID: 4259822024414378004}
   - component: {fileID: 8617969083274795738}
   - component: {fileID: 8160921082443146840}
-  - component: {fileID: 1677953187544278703}
+  - component: {fileID: -8258185522588736221}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Velociraptor_Prehistoric_Easy
+  m_Name: Shuriken_Top_FeudalJapan_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.5, y: 0.5, z: 0.6}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9893b3ebfb792824ab672939c5a36ec8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 3ba30b00c84e49a44a22b0314c0feb6c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -100,12 +100,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
-  spawnPoint: 1
-  objectElement: 2
-  thisObstacleDiff: 0
+  maxSpeed: 5.5
+  spawnPoint: 0
+  objectElement: 1
+  thisObstacleDiff: 1
   thisType: 0
-  scoreValue: 100
+  scoreValue: 200
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -120,20 +120,20 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.25518465, y: -0.008560836}
+  m_Offset: {x: 0.032260433, y: -0.026219964}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.2, y: 1.6}
+    oldSize: {x: 0.8, y: 0.8}
     newSize: {x: 0.36, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.1497784, y: 1.2680944}
+  m_Size: {x: 0.3571045, y: 0.353122}
   m_EdgeRadius: 0
---- !u!50 &1677953187544278703
+--- !u!50 &-8258185522588736221
 Rigidbody2D:
   serializedVersion: 4
   m_ObjectHideFlags: 0
@@ -148,7 +148,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 5
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -164,7 +164,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ca46c1ae44f49364cbcbf85ec848d3bf, type: 2}
+  m_Controller: {fileID: 22100000, guid: a232c22f5e9885e49bf6539508b29ec5, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

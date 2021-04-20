@@ -118,8 +118,8 @@ public class Wave_Spawner : MonoBehaviour
         SetCurrentEnemies();
 
         //Setup the BGs, this will be based on the era from LevelManager!
-        currentBG1 = Instantiate(backgrounds[0]);
-        currentBG2 = Instantiate(backgrounds[0]);
+        currentBG1 = Instantiate(backgrounds[2]);
+        currentBG2 = Instantiate(backgrounds[2]);
         currentBG2.transform.position = new Vector3(backgrounds[0].transform.position.x + + 16.8f, backgrounds[0].transform.position.y);
 
     }

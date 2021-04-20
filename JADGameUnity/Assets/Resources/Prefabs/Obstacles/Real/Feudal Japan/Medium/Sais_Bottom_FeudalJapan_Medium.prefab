@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 0ba3d333c072ba54b8021d687b7f7f2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1a7226d21d785b4380f6bc0509542d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,7 +94,7 @@ Animator:
   m_GameObject: {fileID: 3445821416467419842}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aad2e9ca88453ca40b9261b91bbc7652, type: 2}
+  m_Controller: {fileID: 22100000, guid: 148ffc1ee62640b4fa81f8d532838f40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -144,7 +144,7 @@ GameObject:
   - component: {fileID: -8258185522588736221}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Sais_Top_FeudalJapan_Easy
+  m_Name: Sais_Bottom_FeudalJapan_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -159,7 +159,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
+  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
   m_Children:
   - {fileID: 5932193746151899886}
   m_Father: {fileID: 0}
@@ -205,7 +205,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 0ba3d333c072ba54b8021d687b7f7f2c, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b1a7226d21d785b4380f6bc0509542d1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -230,12 +230,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
-  spawnPoint: 0
+  maxSpeed: 5.5
+  spawnPoint: 1
   objectElement: 0
-  thisObstacleDiff: 0
+  thisObstacleDiff: 1
   thisType: 0
-  scoreValue: 100
+  scoreValue: 200
   theEra: 0
   sai1Collider: {fileID: 8160921082443146840}
   sai2Collider: {fileID: 4763884683996148514}
@@ -297,7 +297,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: aad2e9ca88453ca40b9261b91bbc7652, type: 2}
+  m_Controller: {fileID: 22100000, guid: 148ffc1ee62640b4fa81f8d532838f40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
