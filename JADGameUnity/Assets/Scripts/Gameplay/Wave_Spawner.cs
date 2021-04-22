@@ -81,7 +81,13 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefabs for different time periods.")]
     public List<GameObject> timePortalPrefabs;
 
-    [SerializeField] List<GameObject> backgrounds;
+    
+    [SerializeField] List<GameObject> prehistoricBackgrounds;
+    [SerializeField] List<GameObject> FeudalBackgrounds;
+    [SerializeField] List<GameObject> WildWestBackgrounds;
+    [SerializeField] List<GameObject> MedBackgrounds;
+    [SerializeField] List<GameObject> FutureBackgrounds;
+
     [SerializeField] GameObject currentBG1;
     [SerializeField] GameObject currentBG2;
 
@@ -117,10 +123,46 @@ public class Wave_Spawner : MonoBehaviour
         wavesSinceDifficultyChange = 0;
         SetCurrentEnemies();
 
+        List<GameObject> BGsToLoad = prehistoricBackgrounds;
         //Setup the BGs, this will be based on the era from LevelManager!
-        currentBG1 = Instantiate(backgrounds[0]);
-        currentBG2 = Instantiate(backgrounds[0]);
-        currentBG2.transform.position = new Vector3(backgrounds[0].transform.position.x + + 16.8f, backgrounds[0].transform.position.y);
+        switch(Level_Manager.Instance.TimePeriod)
+        {
+            case Level_Manager.timePeriod.Prehistoric:
+                {
+                    BGsToLoad = prehistoricBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.FeudalJapan:
+                {
+                    BGsToLoad = FeudalBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.WildWest:
+                {
+                    BGsToLoad = WildWestBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.Medieval:
+                {
+                    BGsToLoad = MedBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.Future:
+                {
+                    BGsToLoad = FutureBackgrounds;
+                  
+                    break;
+                }
+             default:
+                {
+                    BGsToLoad = FutureBackgrounds;
+                    break;
+                }
+        }
+        currentBG1 = Instantiate(BGsToLoad[0]);
+        currentBG2 = Instantiate(BGsToLoad[0]);
+        currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
+
 
     }
 
@@ -197,12 +239,14 @@ public class Wave_Spawner : MonoBehaviour
             if (wavesSinceDifficultyChange == 2)
             {
                 theWaveDiff = waveDiff.medium;
+                setBGs(theWaveDiff);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
             if (wavesSinceDifficultyChange == 3)
             //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
+                setBGs(theWaveDiff);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
 
@@ -614,6 +658,7 @@ public class Wave_Spawner : MonoBehaviour
 
         //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
+        setBGs(theWaveDiff);
 
 
         waveComplete = true;
@@ -644,6 +689,71 @@ public class Wave_Spawner : MonoBehaviour
         }
     }
 
+
+    //If swapping difficulties.
+    void setBGs(waveDiff difficulty)
+    {
+        List<GameObject> BGsToLoad = FeudalBackgrounds;
+
+        switch (Level_Manager.Instance.TimePeriod)
+        {
+            case Level_Manager.timePeriod.Prehistoric:
+                {
+                    BGsToLoad = prehistoricBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.FeudalJapan:
+                {
+                    BGsToLoad = FeudalBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.WildWest:
+                {
+                    BGsToLoad = WildWestBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.Medieval:
+                {
+                    BGsToLoad = MedBackgrounds;
+                    break;
+                }
+            case Level_Manager.timePeriod.Future:
+                {
+                    BGsToLoad = FutureBackgrounds;
+
+                    break;
+                }
+            default:
+                {
+                    BGsToLoad = FutureBackgrounds;
+                    break;
+                }
+        }
+
+
+        int indexInList = 0;
+        if(difficulty == waveDiff.easy)
+        {
+            indexInList = 0;
+        }
+        else if(difficulty == waveDiff.medium)
+        {
+            indexInList = 1;
+        }
+        else
+        {
+            indexInList = 2;
+        }
+
+        Transform bg1Trans = currentBG1.transform;
+        Destroy(currentBG1);
+        Destroy(currentBG2);
+        currentBG1 = null;
+        currentBG2 = null;
+        currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
+        currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
+        currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
+    }
 
     //Getters/Setters
 

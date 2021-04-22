@@ -63,6 +63,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [Tooltip("The score value of this enemy. Should be in values of 100's.")]
     [SerializeField] protected int scoreValue;
 
+    [Tooltip("ONLY USE FOR TIMEPORTALS!!!! Leave blank otherwise.")]
     public Level_Manager.timePeriod theEra;
 
     protected Rigidbody2D thisRigid;
