@@ -49,10 +49,10 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Display the time period we're currently in.")]
     public TextMeshProUGUI eraText;
 
-    [SerializeField]
-    int waveCount;
-    int wavesSinceBonus;
-    int wavesSinceTimeSwap;
+
+    [SerializeField] int waveCount;
+    [SerializeField] int wavesSinceBonus;
+    [SerializeField] int wavesSinceTimeSwap;
 
     [Tooltip("Rate that enemies will spawn in at. This should decrease with each wave passed.")]
     public float spawnRate;
@@ -71,6 +71,8 @@ public class Wave_Spawner : MonoBehaviour
 
     [Tooltip("How many enemies we want to spawn during this wave.")]
     public int enemyCount;
+    [Tooltip("Enemies left. This starts at enemyCount and then goes down whenever an enemy de-spawns.")]
+    public int enemiesLeft;
 
     [Tooltip("Prefab of a coin that we will be spawning in.")]
     public GameObject coinPrefab;
@@ -107,6 +109,12 @@ public class Wave_Spawner : MonoBehaviour
 
     int wavesSinceDifficultyChange;
 
+    public static Wave_Spawner Instance;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     void Start()
     {
        
@@ -121,6 +129,7 @@ public class Wave_Spawner : MonoBehaviour
        // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         specialWaveOn = false;
         wavesSinceDifficultyChange = 0;
+        enemiesLeft = enemyCount;
         SetCurrentEnemies();
 
         List<GameObject> BGsToLoad = prehistoricBackgrounds;
@@ -250,10 +259,29 @@ public class Wave_Spawner : MonoBehaviour
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
 
+            int tempLeftNum = 0;
+            tempLeftNum = enemiesLeft;
             for (int i = 0; i < enemyCount; i++)
             {
+
                 //In this case the range can be 0 , or the exact count because randomize needs to be 1 above whatever you want. EX: List has 2 items, count = 2, but only 2 index...So 2 won't ever be called.
                 //randNum = Random.Range(minNum, maxNum);
+               
+
+                while (tempLeftNum <= enemiesLeft)
+                {
+                    Debug.Log("tempLeftNum = " + tempLeftNum + " enemies left = " + enemiesLeft);
+                    if(i == 0)
+                    {
+                        break;
+                    }
+                    yield return null;
+                }
+                if(i != 0)
+                {
+                    tempLeftNum = enemiesLeft;
+                }
+                
                 
                 switch(theWaveDiff)
                 {
@@ -371,11 +399,14 @@ public class Wave_Spawner : MonoBehaviour
                     StartCoroutine(CoinSpawn(spawnCoinRnd, amountofCoinsToSpawn));
                 }
 
-
+                //If there are too many enemies on screen maybe have some delay here instead of just static at the spawnRate value???
                 yield return new WaitForSeconds(spawnRate);
             }
 
-
+            while(enemiesLeft > 0)
+            {
+                yield return null;
+            }
             //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
             if(spawnRate > 1.5f)
             {
@@ -383,6 +414,7 @@ public class Wave_Spawner : MonoBehaviour
             }
             
             enemyCount += 2;
+            enemiesLeft = enemyCount;
             waveCount += 1;
             Level_Manager.Instance.setWavesSurvived((waveCount - 1));
             wavesSinceDifficultyChange += 1;
@@ -753,6 +785,12 @@ public class Wave_Spawner : MonoBehaviour
         currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
         currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
         currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
+    }
+
+    public void updateEnemiesLeft(int num)
+    {
+        enemiesLeft -= num;
+        Debug.Log("Enemies left are: " + enemiesLeft);
     }
 
     //Getters/Setters

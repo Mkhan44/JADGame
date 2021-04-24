@@ -446,11 +446,11 @@ public class Level_Manager : MonoBehaviour
                         {
                             if(duckButtonInteract.getTimeHeld() >= 0.3f)
                             {
-                                if (currentItem != Collect_Manager.typeOfItem.HandWarmer && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                                if (currentItem != Collect_Manager.typeOfItem.HandWarmer && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                                 {
                                     StartCoroutine(iceMeter.fillConstant());
                                 }
-                                if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                                if (Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                                 {
                                     StartCoroutine(heatMeter.decreaseConstant());
                                 }
@@ -494,11 +494,11 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.hanging:
                     {
-                        if(currentItem != Collect_Manager.typeOfItem.FireVest && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                        if(currentItem != Collect_Manager.typeOfItem.FireVest && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
                             StartCoroutine(heatMeter.fillConstant());
                         }
-                        if (this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.bonus && this.GetComponent<Wave_Spawner>().getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                        if (Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
                             StartCoroutine(iceMeter.decreaseConstant());
                         }
@@ -678,11 +678,12 @@ public class Level_Manager : MonoBehaviour
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
 
-        
 
+        Wave_Spawner.Instance.updateEnemiesLeft(obstacles.Length);
         for (int i = 0; i < obstacles.Length; i++)
         {
             //TURN ON WHEN WE ARE READY TO POOL.
+
             Object_Pooler.Instance.AddToPool(obstacles[i]);
             //Destroy(obstacles[i]);
         }
@@ -912,7 +913,7 @@ public class Level_Manager : MonoBehaviour
         gameOverPanel.SetActive(false);
         currentPlayerHealth = 3;
         player.SetActive(true);
-        this.GetComponent<Wave_Spawner>().respawnPlayer();
+        Wave_Spawner.Instance.respawnPlayer();
         thePlayer.setState(Player.playerState.idle);
       //  playerRigid2D.gravityScale = 20;
     }
@@ -1199,7 +1200,7 @@ public class Level_Manager : MonoBehaviour
         yield return null;
 
         //Refactor the check here...don't wanna continously be calling this. !!!!!
-        while(this.GetComponent<Wave_Spawner>().getWaveType() == Wave_Spawner.typeOfWave.normal && thePlayer.GetState() != Player.playerState.dead)
+        while(Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal && thePlayer.GetState() != Player.playerState.dead)
         {
             timePassed += Time.deltaTime;
 

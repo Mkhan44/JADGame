@@ -76,7 +76,7 @@ public class Ninja : Obstacle_Behaviour
             {
                 randomChance = Random.Range(1.0f, teleportRate);
                 tempTeleRate = randomChance;
-                Debug.Log("Randomized the tele rate, it's now: " + tempTeleRate);
+              //  Debug.Log("Randomized the tele rate, it's now: " + tempTeleRate);
             }
         }
         float timeVariance = 0f;
@@ -94,7 +94,7 @@ public class Ninja : Obstacle_Behaviour
         }
         //Debug.Log("TELEPORTING!");
         numTeleportsLeft-=1;
-        Debug.Log("Num teleports = " +numTeleportsLeft.ToString());
+      //  Debug.Log("Num teleports = " +numTeleportsLeft.ToString());
         elapsedTime = 0f;
         ninjaAnimator.SetBool(IsTeleporting, true);
         ninjaAnimator.SetInteger(teleportVar, 1);

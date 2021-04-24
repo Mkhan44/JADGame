@@ -168,8 +168,10 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
         if(collision.gameObject.tag == "Despawner")
         {
-            if(thisType == typeOfObstacle.obstacle)
+
+            if (thisType == typeOfObstacle.obstacle)
             {
+                Wave_Spawner.Instance.updateEnemiesLeft(1);
                 Level_Manager.Instance.increaseEnemiesDodged();
                 if (scoreValue <= 0)
                 {
