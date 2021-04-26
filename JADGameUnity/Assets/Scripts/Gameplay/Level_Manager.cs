@@ -54,6 +54,11 @@ public class Level_Manager : MonoBehaviour
     public Temperature_Manager iceMeter;
     public bool meterFilled;
 
+    [Header("Indicators")]
+    [SerializeField] Image indicatorArrowTop;
+    [SerializeField] Image indicatorArrowMid;
+    [SerializeField] Image indicatorArrowBot;
+
     [Header("GameOver/Retry stuff")]
     //Game over/Retry
     //Debug for now.
@@ -972,6 +977,70 @@ public class Level_Manager : MonoBehaviour
         elapsedTime += Time.deltaTime;
     }
 
+
+    //Flash one of the indicator arrows and then have it slowly fade away to show the player which of the 3 lanes the enemy will attack from.
+    public void indicatorArrow(Wave_Spawner.spawnPointNum theSpawn)
+    {
+        if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint3)
+        {
+            indicatorArrowTop.color = new Color32(255, 0, 0, 180);
+          //  StartCoroutine(fadeIndicatorArrow(indicatorArrowTop));
+        }
+        else if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint2)
+        {
+            indicatorArrowBot.color = new Color32(255, 0, 0, 180);
+           // StartCoroutine(fadeIndicatorArrow(indicatorArrowBot));
+        }
+        else
+        {
+            indicatorArrowMid.color = new Color32(255, 0, 0, 180);
+          // StartCoroutine(fadeIndicatorArrow(indicatorArrowMid));
+        }
+    }
+
+    public void indicatorArrowOff(Wave_Spawner.spawnPointNum theSpawn)
+    {
+        if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint3)
+        {
+            indicatorArrowTop.color = new Color32(255, 0, 0, 0);
+            //  StartCoroutine(fadeIndicatorArrow(indicatorArrowTop));
+        }
+        else if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint2)
+        {
+            indicatorArrowBot.color = new Color32(255, 0, 0, 0);
+            // StartCoroutine(fadeIndicatorArrow(indicatorArrowBot));
+        }
+        else
+        {
+            indicatorArrowMid.color = new Color32(255, 0, 0, 0);
+            // StartCoroutine(fadeIndicatorArrow(indicatorArrowMid));
+        }
+    }
+
+    IEnumerator fadeIndicatorArrow(Image indArrow)
+    {
+        /*
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 255);
+        Color32 endColor = new Color32(255, 255, 255, 0);
+
+
+        rate = (1.0f / 4.5f) * 1.0f;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            indArrow.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+        }
+        */
+        yield return new WaitForSeconds(1.5f);
+        indArrow.color = new Color(255, 0, 0, 0);
+
+       // Color indArrowColor = indArrow.color;
+
+       // indArrow.color = Color.Lerp(indArrowColor, new Color(0, 0, 0, 0), 0.5f);
+    }
 
     /*Obstacle  related functions
     //***********************************************************************

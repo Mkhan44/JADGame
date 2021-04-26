@@ -20,11 +20,14 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [Tooltip("Maximum speed this object should approach. If 0f , it will be set to increase rate by default.")]
     public float maxSpeed;
     //We will have spawn points set up in the Wave_Spawner script.
-    [Tooltip("Spawnpoint1 = Top, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
+    [Tooltip("Spawnpoint1 = Mid, Spawnpoint2 = Bottom, Spawnpoint3 = hanging from ceiling")]
     public Wave_Spawner.spawnPointNum spawnPoint;
 
     [Tooltip("We will use this to determine if objects should flip and what not. Since player can only move verticaly, things shouldn't be able to drop on them.")]
     protected bool inPlayerVicinity;
+
+    [Tooltip("This will be used for indicator arrows.")]
+    protected bool inIndicatorVicinity;
     public enum ElementType
     {
         neutral,
@@ -197,7 +200,25 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         if (collision.gameObject.tag == "Player_Vicinity_Blocker")
         {
             inPlayerVicinity = true;
-          //  Debug.Log("Obstacle is in player vicinity!");
+        }
+
+        //In here we will make whatever arrow it is highlighted and then begin the coroutine to fade it out.
+        if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
+        {
+            inIndicatorVicinity = true;
+        //    Debug.Log("Obstacle has been spawned, trigger indicator at spawnpoint: " + spawnPoint.ToString());
+            //Level_Manager.Instance.indicatorArrow(spawnPoint);
+        }
+    }
+
+    protected virtual void OnTriggerExit2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
+        {
+            inIndicatorVicinity = false;
+            
+            Debug.Log("Testing to see if we left the collider.");
+            //Level_Manager.Instance.indicatorArrowOff(spawnPoint);
         }
     }
 

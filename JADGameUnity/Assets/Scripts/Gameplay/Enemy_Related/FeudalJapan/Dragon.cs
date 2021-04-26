@@ -12,6 +12,7 @@ public class Dragon : Obstacle_Behaviour
     [SerializeField] BoxCollider2D ogCollider;
     [SerializeField] BoxCollider2D endCollision;
     [SerializeField] BoxCollider2D despawnerCollider;
+    [SerializeField] BoxCollider2D indicatorCollider;
     BoxCollider2D playerCollider;
     bool gotCollider;
     protected override void Awake()
@@ -28,8 +29,10 @@ public class Dragon : Obstacle_Behaviour
         {
             //Bad, gotta refactor!
             despawnerCollider = GameObject.Find("Despawner").GetComponent<BoxCollider2D>();
+          //  indicatorCollider = GameObject.Find("Indicator_Vicinity_Collider").GetComponent<BoxCollider2D>();
             playerCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(endCollision, playerCollider);
+           // Physics2D.IgnoreCollision(endCollision, indicatorCollider);
             Physics2D.IgnoreCollision(ogCollider, despawnerCollider);
             gotCollider = true;
         }

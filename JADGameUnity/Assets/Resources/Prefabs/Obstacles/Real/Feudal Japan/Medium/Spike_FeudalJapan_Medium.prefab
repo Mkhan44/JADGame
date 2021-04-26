@@ -102,7 +102,7 @@ MonoBehaviour:
   speed: 0
   increaseRate: 5
   maxSpeed: 3.5
-  spawnPoint: 0
+  spawnPoint: 2
   objectElement: 0
   thisObstacleDiff: 1
   thisType: 0

@@ -13,6 +13,7 @@ TagManager:
   - Despawner
   - Ceiling
   - Player_Vicinity_Blocker
+  - Indicator_Vicinity_Collider
   layers:
   - Default
   - TransparentFX
