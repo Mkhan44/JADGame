@@ -243,16 +243,16 @@ public class Wave_Spawner : MonoBehaviour
         if (theWaveType == typeOfWave.normal)
         {
             //Test values for changing difficulty. Will need some formula later on.
-            if (wavesSinceDifficultyChange == 3)
+            //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!
-            //if (wavesSinceDifficultyChange == 2)
+            if (wavesSinceDifficultyChange == 2)
             {
                 theWaveDiff = waveDiff.medium;
                 setBGs(theWaveDiff);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            //if (wavesSinceDifficultyChange == 3)
-            if (wavesSinceDifficultyChange == 5)
+            if (wavesSinceDifficultyChange == 3)
+            //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
                 setBGs(theWaveDiff);
@@ -266,15 +266,24 @@ public class Wave_Spawner : MonoBehaviour
 
                 //In this case the range can be 0 , or the exact count because randomize needs to be 1 above whatever you want. EX: List has 2 items, count = 2, but only 2 index...So 2 won't ever be called.
                 //randNum = Random.Range(minNum, maxNum);
-               
 
+                float timePassed = 0f;
                 while (tempLeftNum <= enemiesLeft)
                 {
-                    Debug.Log("tempLeftNum = " + tempLeftNum + " enemies left = " + enemiesLeft);
+                   // Debug.Log("tempLeftNum = " + tempLeftNum + " enemies left = " + enemiesLeft);
                     if(i == 0)
                     {
                         break;
                     }
+                    /*
+                    //Failsafe.
+                    timePassed += Time.deltaTime;
+                    if(timePassed > spawnRate)
+                    {
+                        //Debug.Log("Broke out of the loop, got stuck!");
+                        break;
+                    }
+                    */
                     yield return null;
                 }
                 if(i != 0)
@@ -405,6 +414,7 @@ public class Wave_Spawner : MonoBehaviour
 
             while(enemiesLeft > 0)
             {
+                Debug.Log("There's still an enemy on screen!");
                 yield return null;
             }
             //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
@@ -436,8 +446,6 @@ public class Wave_Spawner : MonoBehaviour
         else if(theWaveType == typeOfWave.timeSwap)
         {
             //Insert timeportal spawn here. Will need another list of diff time portals.
-
-            //Test. Numbers will be calculated via RNG in the future.
 
             if(!specialWaveOn)
             {
@@ -477,7 +485,7 @@ public class Wave_Spawner : MonoBehaviour
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-                //doWeBonus = 8;
+               // doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
@@ -516,11 +524,11 @@ public class Wave_Spawner : MonoBehaviour
 
         if (waveType == typeOfWave.normal)
         {
-            Debug.Log("Special wave is: " + specialWaveOn);
+           // Debug.Log("Special wave is: " + specialWaveOn);
             yield return new WaitForSeconds(timeBetweenWaves);
         }
 
-
+        Debug.Log("The wave is complete, new wave type is: " + waveType.ToString());
 
         waveComplete = true;
     }

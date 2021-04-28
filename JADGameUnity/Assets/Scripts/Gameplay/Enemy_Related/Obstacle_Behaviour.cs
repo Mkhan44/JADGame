@@ -197,29 +197,40 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     protected virtual void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Player_Vicinity_Blocker")
+        if (thisType == typeOfObstacle.obstacle)
         {
-            inPlayerVicinity = true;
+            if (collision.gameObject.tag == "Player_Vicinity_Blocker")
+            {
+                inPlayerVicinity = true;
+            }
+
+            //In here we will make whatever arrow it is highlighted and then begin the coroutine to fade it out.
+            if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
+            {
+                inIndicatorVicinity = true;
+                //    Debug.Log("Obstacle has been spawned, trigger indicator at spawnpoint: " + spawnPoint.ToString());
+                Level_Manager.Instance.indicatorArrow(spawnPoint);
+            }
         }
 
-        //In here we will make whatever arrow it is highlighted and then begin the coroutine to fade it out.
-        if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
-        {
-            inIndicatorVicinity = true;
-        //    Debug.Log("Obstacle has been spawned, trigger indicator at spawnpoint: " + spawnPoint.ToString());
-            //Level_Manager.Instance.indicatorArrow(spawnPoint);
-        }
+
+      
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
+        if (thisType == typeOfObstacle.obstacle)
         {
-            inIndicatorVicinity = false;
-            
-            Debug.Log("Testing to see if we left the collider.");
-            //Level_Manager.Instance.indicatorArrowOff(spawnPoint);
+            if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
+            {
+                inIndicatorVicinity = false;
+
+                Debug.Log(gameObject.name + " Left the indicator collider!");
+                Level_Manager.Instance.indicatorArrowOff(spawnPoint);
+            }
         }
+
+       
     }
 
 }

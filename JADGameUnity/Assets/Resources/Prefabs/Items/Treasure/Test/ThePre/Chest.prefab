@@ -116,7 +116,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  spawnPoint: 0
+  increaseRate: 0
+  maxSpeed: 0
+  spawnPoint: 2
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 2
+  scoreValue: 0
+  theEra: 0
