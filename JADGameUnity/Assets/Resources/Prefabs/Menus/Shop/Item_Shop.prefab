@@ -1096,6 +1096,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: fa95c8b844b1cc04b842b0df322479d2, type: 2}
   - {fileID: 11400000, guid: 1579c4150263260478bcd2a356961f0b, type: 2}
   - {fileID: 11400000, guid: 01447de20f5822e4da4867945763da96, type: 2}
+  - {fileID: 11400000, guid: db7342969dcd39c41a39c26d584779fa, type: 2}
   itemPrefab: {fileID: 2582128719448822073, guid: d700cf3d38218df4cb702e7ce41c2c86, type: 3}
   scrollArea: {fileID: 4944282568586016136}
 --- !u!1 &4944282567744092395

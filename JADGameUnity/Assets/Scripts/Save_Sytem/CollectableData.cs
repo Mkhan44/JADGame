@@ -18,6 +18,7 @@ public class CollectableData
     public int handWarmers;
     public int numDefrosters;
     public int numFireVests;
+    public int numLiquidNitrogenCanisters;
 
     //Loadout items that will correspond to enum in the Collect_Manager.
     public int item1;
@@ -39,15 +40,24 @@ public class CollectableData
     //Constructor.
     public CollectableData(Collect_Manager collectmanager)
     {
+        //Currency
         totalCoins = Collect_Manager.instance.totalCoins;
         totalGems = Collect_Manager.instance.totalGems;
+
+        //Items
         handWarmers = Collect_Manager.instance.handWarmers;
         numDefrosters = Collect_Manager.instance.numDefrosters;
         numFireVests = Collect_Manager.instance.numFireVests;
+        numLiquidNitrogenCanisters = Collect_Manager.instance.numLiquidNitrogenCanisters;
+
         currentSkin = Collect_Manager.instance.currentSkin;
+
+        //Gameplay
         item1 = Collect_Manager.instance.item1;
         item2 = Collect_Manager.instance.item2;
         item3 = Collect_Manager.instance.item3;
+
+        //Scores
         highScore = Collect_Manager.instance.highScore;
         highestWave = Collect_Manager.instance.highestWave;
         mostWavesSurvived = Collect_Manager.instance.mostWavesSurvived;

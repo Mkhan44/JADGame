@@ -22,13 +22,14 @@ public class Collect_Manager : MonoBehaviour
     public int handWarmers;
     public int numDefrosters;
     public int numFireVests;
-
+    public int numLiquidNitrogenCanisters;
 
     public enum typeOfItem
     {
         HandWarmer,
         Defroster,
         FireVest,
+        LiquidNitrogenCanister,
         //DEBUG
         none
     }
@@ -102,10 +103,14 @@ public class Collect_Manager : MonoBehaviour
             handWarmers = collect.handWarmers;
             numDefrosters = collect.numDefrosters;
             numFireVests = collect.numFireVests;
+            numLiquidNitrogenCanisters = collect.numLiquidNitrogenCanisters;
+
             currentSkin = collect.currentSkin;
             item1 = collect.item1;
             item2 = collect.item2;
             item3 = collect.item3;
+
+
             highScore = collect.highScore;
             highestWave = collect.highestWave;
             mostWavesSurvived = collect.mostWavesSurvived;
@@ -156,6 +161,11 @@ public class Collect_Manager : MonoBehaviour
             case typeOfItem.FireVest:
                 {
                     return numFireVests;
+                    break;
+                }
+            case typeOfItem.LiquidNitrogenCanister:
+                {
+                    return numLiquidNitrogenCanisters;
                     break;
                 }
             default:
@@ -211,6 +221,11 @@ public class Collect_Manager : MonoBehaviour
                     numFireVests += 1;
                     break;
                 }
+            case typeOfItem.LiquidNitrogenCanister:
+                {
+                    numLiquidNitrogenCanisters += 1;
+                    break;
+                }
             default:
                 {
                     Debug.LogWarning("Hey! We are in the default switch for purchaseItemConfirm()!");
@@ -264,6 +279,11 @@ public class Collect_Manager : MonoBehaviour
             case typeOfItem.FireVest:
                 {
                     numFireVests -= 1;
+                    break;
+                }
+            case typeOfItem.LiquidNitrogenCanister:
+                {
+                    numLiquidNitrogenCanisters -= 1;
                     break;
                 }
             default:

@@ -43,9 +43,10 @@ public class Item : MonoBehaviour , IPointerDownHandler
         {
             if (!Level_Manager.Instance.thePlayer.isPoweredUp)
             {
-                if(itemDuration == 0)
+                //We know this is an item that is used once and it's over. No duration.
+                if (itemDuration == 0)
                 {
-                    //We know this is an item that is used once and it's over. No duration.
+                   
 
                     switch (thisItemType)
                     {
@@ -60,7 +61,23 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                 else
                                 {
                                     //Play error SFX when we implement sound.
-                                  //  Debug.Log("Can't use the item, player isn't frozen!");
+                                    Debug.Log("Can't use the item, player isn't frozen!");
+                                }
+
+                                break;
+                            }
+                        case Collect_Manager.typeOfItem.LiquidNitrogenCanister:
+                            {
+                                if (Level_Manager.Instance.thePlayer.GetState() == Player.playerState.burning && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
+                                {
+                                    Level_Manager.Instance.heatMeter.setMeterValExternally(0);
+                                    //Item has been used!
+                                    disableItem();
+                                }
+                                else
+                                {
+                                    //Play error SFX when we implement sound.
+                                     Debug.Log("Can't use the item, player isn't burning!");
                                 }
 
                                 break;
@@ -69,6 +86,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
 
 
                 }
+                //Items with duration fall under this else.
                 else
                 {
                     if(Level_Manager.Instance.thePlayer.GetState() != Player.playerState.burning && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.frozen && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
