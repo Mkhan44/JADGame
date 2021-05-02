@@ -8,6 +8,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Collect_Manager : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class Collect_Manager : MonoBehaviour
     [Tooltip("Total amount of coin currency the player has.")]
     public int totalCoins;
     [Tooltip("Total amount of gem currency the player has.")]
-    public int totalGems;
+    public int totalBolts;
 
     [Header("Items")]
     //Numbers of each item the player has.
@@ -127,8 +128,8 @@ public class Collect_Manager : MonoBehaviour
             currentSkin = 0;
             //Player will have default skin unlocked no matter what. That value = 0. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 1.
             skinsUnlocked.Add(0);
-            skinsUnlocked.Add(1);
-            skinsUnlocked.Add(2);
+           // skinsUnlocked.Add(1);
+           // skinsUnlocked.Add(2);
 
             //Default the loadout to -1's so we don't put any items in the loadout.
             item1 = -1;
@@ -184,7 +185,7 @@ public class Collect_Manager : MonoBehaviour
 
         foreach(int i in System.Enum.GetValues(typeof(skinTypes)))
         {
-            //Case the enum to an integer to compare it.
+            //Cast the enum to an integer to compare it.
             if((int)theSkin == i)
             {
                 Debug.Log("Current skin number is: " + i + " Which corresponds to: " + theSkin);
@@ -238,22 +239,74 @@ public class Collect_Manager : MonoBehaviour
 
     public void purchaseItemWithCoins(int cost, typeOfItem typePassed)
     {
-        int playerCoins = Collect_Manager.instance.totalCoins;
+        int playerCoins = totalCoins;
 
         if (playerCoins >= cost)
         {
-            Collect_Manager.instance.totalCoins -= cost;
+            totalCoins -= cost;
             Debug.Log("You just bought: " + typePassed);
 
-            Collect_Manager.instance.purchaseItemConfirm(typePassed);
+            purchaseItemConfirm(typePassed);
 
             //Save the purchase!
-            Save_System.SaveCollectables(Collect_Manager.instance);
+            Save_System.SaveCollectables(this);
         }
         else
         {
             Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
         }
+
+    }
+
+    public void purchaseSkin(skinTypes theSkin, int coinCost, int boltCost, bool coinsOrBolts, Button skinBuyButton)
+    {
+
+        foreach (int i in System.Enum.GetValues(typeof(skinTypes)))
+        {
+            //Cast the enum to an integer to compare it.
+            if ((int)theSkin == i)
+            {
+                //Check method that player is using to purchase the skin:
+                //If 0, = coins, 1 = bolts for coinsOrBolts.
+                if (!coinsOrBolts)
+                {
+                    if(coinCost <= totalCoins)
+                    {
+                        skinsUnlocked.Add(i);
+                        Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                        totalCoins -= coinCost;
+                        skinBuyButton.interactable = false;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("You don't have enough coins to purchase this item.");
+                    }
+                }
+                else
+                {
+                    if(boltCost <= totalBolts)
+                    {
+                        skinsUnlocked.Add(i);
+                        Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                        totalBolts -= boltCost;
+                        skinBuyButton.interactable = false;
+                    }
+                    else
+                    {
+                        Debug.LogWarning("You don't have enough bolts to purchase this item.");
+                    }
+                }
+                break;
+            }
+
+          
+        }
+
+        //Save the purchase!
+        Save_System.SaveCollectables(this);
+
+
+
 
     }
 

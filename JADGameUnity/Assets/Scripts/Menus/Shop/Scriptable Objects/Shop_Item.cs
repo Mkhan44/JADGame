@@ -29,11 +29,11 @@ public class Shop_Item : ScriptableObject
     public Collect_Manager.typeOfItem theItem;
 
     [Header("Skins")]
-    [Tooltip("If it costs gems, the price in gems of the item. Leave this as 0 otherwise.")]
-    public int gemPrice;
+    [Tooltip("If it costs bolt, the price in bolt of the item. Leave this as 0 otherwise.")]
+    public int boltPrice;
 
     [Tooltip("If this is a skin, we need a value corresponding to it. THESE MUST BE UNIQUE!!!! Otherwise leave this as 0.")]
-    public int skinIndex;
+    public Collect_Manager.skinTypes thisSkinType;
 
 
     [Header("Currency")]

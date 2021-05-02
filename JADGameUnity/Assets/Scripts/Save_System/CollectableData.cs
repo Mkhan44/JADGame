@@ -13,7 +13,7 @@ using UnityEngine;
 public class CollectableData
 {
     public int totalCoins;
-    public int totalGems;
+    public int totalBolts;
     //Numbers of each item the player has.
     public int handWarmers;
     public int numDefrosters;
@@ -42,7 +42,7 @@ public class CollectableData
     {
         //Currency
         totalCoins = Collect_Manager.instance.totalCoins;
-        totalGems = Collect_Manager.instance.totalGems;
+        totalBolts = Collect_Manager.instance.totalBolts;
 
         //Items
         handWarmers = Collect_Manager.instance.handWarmers;

@@ -33,9 +33,22 @@ public class Vertical_Layout_Formatter : MonoBehaviour
 
     List<TextMeshProUGUI> tempTextMeshList = new List<TextMeshProUGUI>();
 
+    public TextMeshProUGUI coinsTotalText;
+    public TextMeshProUGUI gemsTotalText;
+
+    //Skin related purchase stuff.
+    public Button purchaseWithCoinsButton;
+    public Button purchaseWithBoltsButton;
+    public GameObject skinPurchasePanel;
+    public Button closeShopButton;
+
     private void Start()
     {
-        for(int i = 0; i < itemsForSale.Count; i++)
+        coinsTotalText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
+        gemsTotalText.text = "My Bolts: " + Collect_Manager.instance.totalBolts.ToString();
+
+
+        for (int i = 0; i < itemsForSale.Count; i++)
         {
             GameObject tempSpawn = Instantiate(itemPrefab, this.transform);
             tempSpawn.transform.SetParent(this.transform);
@@ -56,7 +69,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             tempName.text = itemsForSale[i].theName;
             tempDesc.text = itemsForSale[i].description;
             tempCoinCostText.text = itemsForSale[i].coinPrice.ToString();
-            tempGemCostText.text = itemsForSale[i].gemPrice.ToString();
+            tempGemCostText.text = itemsForSale[i].boltPrice.ToString();
 
 
             //This part should probably also only be if we're on currency...not sure yet.
@@ -85,6 +98,30 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             else if(thisTab == WhichTabAreWeOn.Skins)
             {
                 //Need to add listener to the button for skins.
+                int tempNum = i;
+                tempButtonAddListener.onClick.AddListener(() => addListenerForSkins(itemsForSale[tempNum], tempButtonAddListener));
+                //tempButtonAddListener.onClick.AddListener(() => changeText(tempNum));
+
+                foreach (int j in System.Enum.GetValues(typeof(Collect_Manager.skinTypes)))
+                {
+                    //Cast the enum to an integer to compare it.
+                    if ((int)itemsForSale[i].thisSkinType == j)
+                    {
+                        for(int k = 0; k < Collect_Manager.instance.skinsUnlocked.Count; k++)
+                        {
+                            //Checking if we have the skin unlocked already.
+                            if(Collect_Manager.instance.skinsUnlocked[k] == j)
+                            {
+                                Debug.Log("Current skin number is: " + j + " Which corresponds to: " + itemsForSale[i].thisSkinType);
+                                Debug.Log("We are skipping putting this skin in the menu. Turn off everything corresponding to this skin since player has it already.");
+                                tempSpawn.SetActive(false);
+                                break;
+                            }
+                        }
+                       
+                        break;
+                    }
+                }
 
                 tempCurrencyCostText.gameObject.SetActive(false);
                 tempPlayerOwnedText.gameObject.SetActive(false);
@@ -110,11 +147,30 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     public void changeText(int indexOfItem)
     {
         tempTextMeshList[indexOfItem].text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[indexOfItem].theItem);
+        coinsTotalText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
+        gemsTotalText.text = "My Bolts: " + Collect_Manager.instance.totalBolts.ToString();
     }
 
     public void ScrollToTop()
     {
         scrollArea.normalizedPosition = new Vector2(0, 1);
+    }
+
+    public void addListenerForSkins(Shop_Item theItemForSale, Button buyButton)
+    {
+        skinPurchasePanel.SetActive(true);
+        closeShopButton.interactable = false;
+        purchaseWithCoinsButton.onClick.RemoveAllListeners();
+        purchaseWithBoltsButton.onClick.RemoveAllListeners();
+        purchaseWithCoinsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, false, buyButton));
+        purchaseWithBoltsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, true, buyButton));
+
+    }
+
+    public void turnStuffOn()
+    {
+        closeShopButton.interactable = true;
+        skinPurchasePanel.SetActive(false);
     }
 
 

@@ -1099,6 +1099,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: db7342969dcd39c41a39c26d584779fa, type: 2}
   itemPrefab: {fileID: 2582128719448822073, guid: d700cf3d38218df4cb702e7ce41c2c86, type: 3}
   scrollArea: {fileID: 4944282568586016136}
+  coinsTotalText: {fileID: 0}
+  gemsTotalText: {fileID: 0}
 --- !u!1 &4944282567744092395
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,9 +13,12 @@ MonoBehaviour:
   m_Name: DefaultSkinTest
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: cd0a0f2079a88144abeb5f4ab44cb671, type: 3}
-  theName: Skin 1
-  description: The default skin!
-  coinPrice: 10000
-  gemPrice: 100
-  collectManagerNumString: 
-  skinIndex: 3
+  theName: Mystery Skin
+  description: This skin is a mystery!
+  coinPrice: 1000
+  theItem: 4
+  boltPrice: 100
+  thisSkinType: 1
+  currencyUSD: 0
+  hasDuration: 0
+  duration: 0
