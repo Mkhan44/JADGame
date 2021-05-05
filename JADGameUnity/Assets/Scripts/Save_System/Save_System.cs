@@ -55,4 +55,14 @@ public static class Save_System
         
     }
 
+    public static void DeleteCollectables()
+    {
+
+        BinaryFormatter formatter = new BinaryFormatter();
+        string path = Path.Combine(Application.persistentDataPath, "CollectableSave.Rass");
+
+
+        File.Delete(path);
+    }
+
 }

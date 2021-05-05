@@ -350,5 +350,11 @@ public class Collect_Manager : MonoBehaviour
 
     //Customization stuff
 
+    //DEBUG FUNCTIONS
 
+    public void deleteSave()
+    {
+        Save_System.DeleteCollectables();
+    }
+    //DEBUG FUNCTIONS
 }
