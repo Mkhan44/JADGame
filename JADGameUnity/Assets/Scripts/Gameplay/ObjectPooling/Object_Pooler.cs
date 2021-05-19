@@ -232,6 +232,29 @@ public class Object_Pooler : MonoBehaviour
                     }
                     break;
                 }
+            case Level_Manager.timePeriod.tutorial:
+                {
+                    for (int i = 0; i < thePools.Count; i++)
+                    {
+                        if (thePools[i].listName == "Tutorial")
+                        {
+                            //Essentially what we do here is: Add the items fo 'currentList' 
+                            //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
+                            //Finally, the new list is assigned and we can return that list.
+                            for (int j = 0; j < thePools[i].wrappedList.Count; j++)
+                            {
+                                currentList.Add(thePools[i].wrappedList[j].prefab);
+                            }
+                            break;
+                        }
+                        else if (i == thePools.Count)
+                        {
+                            Debug.LogWarning("We didn't find the specified set of pools for: " + TheTimePeriod);
+                            break;
+                        }
+                    }
+                    break;
+                }
 
             //OTHER ERAS TO BE ADDED.
             default:

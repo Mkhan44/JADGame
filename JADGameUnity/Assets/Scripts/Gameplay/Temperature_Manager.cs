@@ -176,6 +176,22 @@ public class Temperature_Manager : MonoBehaviour
         theMeter.value = currentMeterVal;
     }
 
+    public IEnumerator decreaseIdle()
+    {
+        Debug.Log("Decreasing the meter while player is idle");
+        while(Level_Manager.Instance.thePlayer.GetState() == Player.playerState.idle && Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal)
+        {
+            currentMeterVal -= 0.2f;
+            if (currentMeterVal <= 0.0f)
+            {
+                currentMeterVal = 0.0f;
+            }
+            theMeter.value = currentMeterVal;
+            yield return new WaitForSeconds(0.1f);
+        }
+       
+    }
+
     public float getMeterVal()
     {
         return currentMeterVal;

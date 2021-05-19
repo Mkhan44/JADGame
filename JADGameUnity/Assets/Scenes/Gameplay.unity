@@ -1455,7 +1455,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.25
+  m_fontSize: 89.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1589,7 +1589,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.8
+  m_fontSize: 75.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1723,7 +1723,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.6
+  m_fontSize: 67.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -3606,7 +3606,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4313883, y: 0.11757018}
   m_AnchorMax: {x: 0.7518245, y: 0.30366343}
-  m_AnchoredPosition: {x: 0.7591553, y: 3.2999258}
+  m_AnchoredPosition: {x: 0.7591553, y: 3.2999277}
   m_SizeDelta: {x: 1.5, y: 1.4000015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026014328
@@ -3656,7 +3656,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.65
+  m_fontSize: 71.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4841,7 +4841,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 100.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7887,7 +7887,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.7
+  m_fontSize: 56.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8407,12 +8407,24 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.size
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].listName
+      value: Tutorial
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[0].wrappedList.Array.size
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.size
       value: 27
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.size
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[0].size
@@ -8432,6 +8444,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[9].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[0].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[1].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[2].size
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
@@ -8595,6 +8619,18 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 4158279202637467101, guid: 30b7546bc33524f4b9d03e7594097361, type: 3}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 44064960154c54b4b9530a91a50ac523, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[1].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 6accef1b3255c5d4aa117bc5834952e8, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[6].wrappedList.Array.data[2].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 09eea45e437128c4996cf87ba91ed63a, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[0].wrappedList.Array.data[10].prefab
       value: 
       objectReference: {fileID: 4158279202637467101, guid: 2fda636cdc4cad341afb87f99aaa714c, type: 3}
@@ -8728,7 +8764,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 1
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton
@@ -8766,6 +8802,10 @@ PrefabInstance:
       propertyPath: heatUpButton
       value: 
       objectReference: {fileID: 47558011}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: theLevelType
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: gameOverPanel
       value: 

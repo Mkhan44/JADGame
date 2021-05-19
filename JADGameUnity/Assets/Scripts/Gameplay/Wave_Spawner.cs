@@ -37,6 +37,9 @@ public class Wave_Spawner : MonoBehaviour
         hardPause
     }
 
+    [SerializeField] Level_Manager.levelType theLevelType;
+
+
     [Tooltip("The difficulty of the wave. Should be changeable on the fly.")]
     [SerializeField] waveDiff theWaveDiff;
     
@@ -117,7 +120,7 @@ public class Wave_Spawner : MonoBehaviour
     }
     void Start()
     {
-       
+        theLevelType = Level_Manager.Instance.getThisLevelType();
         currentPlayerState = thePlayer.GetState();
         waveType = typeOfWave.normal;
         waveComplete = true;
@@ -164,7 +167,7 @@ public class Wave_Spawner : MonoBehaviour
                 }
              default:
                 {
-                    BGsToLoad = FutureBackgrounds;
+                    BGsToLoad = prehistoricBackgrounds;
                     break;
                 }
         }
@@ -195,7 +198,7 @@ public class Wave_Spawner : MonoBehaviour
 
         eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
         //Messy...Might want to reorganize.
-        if(!Level_Manager.Instance.player.activeInHierarchy)
+        if(!Level_Manager.Instance.player.activeInHierarchy || Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
         {
             if(stopCo == false)
             {
@@ -219,6 +222,7 @@ public class Wave_Spawner : MonoBehaviour
 
     }
 
+  
     //Spawn for the regular waves.
     //We can potentially use this same function for bonus + time swap...Just need to pass in the current waveState and do something based on what it is.
     IEnumerator waveSpawner(typeOfWave theWaveType)

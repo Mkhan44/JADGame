@@ -11,6 +11,17 @@ using TMPro;
 using Random = UnityEngine.Random;
 public class Level_Manager : MonoBehaviour
 {
+   
+    public enum levelType
+    {
+        normal,
+        tutorial
+    }
+
+    [Header("Level Type")]
+    [SerializeField] levelType theLevelType;
+
+
     [Header("Player related")]
 
     public GameObject player;
@@ -98,6 +109,7 @@ public class Level_Manager : MonoBehaviour
         WildWest,
         Medieval,
         Future,
+        tutorial,
     }
 
     [Header("Time periods")]
@@ -144,6 +156,8 @@ public class Level_Manager : MonoBehaviour
     Coroutine scoreCountRoutine;
     Coroutine coinCountRoutine;
     Coroutine finalTallyRoutine;
+    Coroutine decreaseHeatIdleRoutine;
+    Coroutine decreaseIceIdleRoutine;
 
     [Header("Score related")]
     [SerializeField] int currentScore;
@@ -584,7 +598,13 @@ public class Level_Manager : MonoBehaviour
                     //Idle state.
                 default:
                     {
+
                         thePlayer.setState(Player.playerState.idle);
+                        if (decreaseHeatIdleRoutine == null && decreaseIceIdleRoutine == null)
+                        {
+                            decreaseHeatIdleRoutine = StartCoroutine(heatMeter.decreaseIdle());
+                            decreaseIceIdleRoutine = StartCoroutine(iceMeter.decreaseIdle());
+                        }
                         heatUpButton.gameObject.SetActive(false);
                         coolDownButton.gameObject.SetActive(false);
                         if (onGround)
@@ -600,6 +620,16 @@ public class Level_Manager : MonoBehaviour
                         }
                         break;
                     }
+            }
+            if(thePlayer.GetState() != Player.playerState.idle)
+            {
+                if (decreaseHeatIdleRoutine != null && decreaseIceIdleRoutine != null)
+                {
+                    StopCoroutine(decreaseHeatIdleRoutine);
+                    StopCoroutine(decreaseIceIdleRoutine);
+                    decreaseHeatIdleRoutine = null;
+                    decreaseIceIdleRoutine = null;
+                }
             }
         }
 
@@ -930,13 +960,42 @@ public class Level_Manager : MonoBehaviour
         SceneManager.LoadScene(0);
     }
 
-     /*Save related functions
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    //***********************************************************************
-    */
+    /*Level related functions
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  */
+    
+    //We'll call this function externally if the player clicks tutorial somewhere.
+    public void setThisLevelType(levelType theSetType)
+    {
+        theLevelType = theSetType;
+    }
+
+    public levelType getThisLevelType()
+    {
+        return theLevelType;
+    }
+
+
+
+    /*Level related functions
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  //***********************************************************************
+  */
+
+    /*Save related functions
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   //***********************************************************************
+   */
 
     //save system!
     void SaveCollectables()
