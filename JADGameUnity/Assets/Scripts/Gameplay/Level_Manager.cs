@@ -190,19 +190,24 @@ public class Level_Manager : MonoBehaviour
         currentScore = 0;
         wavesSurvived = 0;
 
-        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
 
-        //Pick player skin.
-        for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
+        if(theLevelType != levelType.tutorial)
         {
-            if (currentSkinInt == i)
+            int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
+
+            //Pick player skin.
+            for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
             {
-             
-               playerAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
-             
-               break;
+                if (currentSkinInt == i)
+                {
+
+                    playerAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
+
+                    break;
+                }
             }
         }
+      
 
     }
 
@@ -238,8 +243,14 @@ public class Level_Manager : MonoBehaviour
 
 
         setMeterRates();
-        setupItems();
-        checkScore();
+
+        if (theLevelType != levelType.tutorial)
+        {
+            setupItems();
+            checkScore();
+        }
+  
+           
 
     }
 
@@ -364,6 +375,10 @@ public class Level_Manager : MonoBehaviour
     //Jump.
     public void Jump()
     {
+        if(Tutorial_Manager.Instance.getCurrentStep() == 2)
+        {
+            Tutorial_Manager.Instance.conditionComplete();
+        }
         //Jump height is based off of the value we set for player jump height.
         playerRigid2D.velocity = Vector2.up * jumpHeight;
 
