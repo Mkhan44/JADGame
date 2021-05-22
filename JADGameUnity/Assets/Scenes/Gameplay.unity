@@ -1869,10 +1869,73 @@ MonoBehaviour:
   phrases:
   - Ah, a new test subject. My name is Dr. Numbskull! Welcome to the time-twister
     machine. I created it myself.
-  - In here you'll need to watch your health, and survive a bunch of waves of obstacles!
-  - You can jump and duck. Try tapping the jump button now.
-  - Nice, you did it!
-  conditionCheck: 00000100
+  - 'This may be a simulation: But everything you encounter will feel just as real
+    as if you weren''t wearing that special headset.'
+  - Follow my comprehensive verbal guide and you'll be able to accumulate massive
+    amounts of research for me!
+  - You'll notice 2 buttons down below. These are your jump and duck buttons.
+  - You CANNOT move left or right while in the time-twister simulation, so get used
+    to these buttons!
+  - Let's try jumping. Quickly tap the jump button in order to jump.
+  - 'Marvelous, you''re a natural. '
+  - Next, try tapping the duck button to crouch down.
+  - That's it! You're a much better learner than my previous subjects.
+  - Try holding down the jump button to hang. Don't worry, you'll be magnetized to
+    the ceiling and won't fall until you let go of the button.
+  - 'Amazing! '
+  - For your last basic maneuver, hold down the duck button to stay crouched.
+  - I will now release some obstacles for you to jump over and duck under. Tap the
+    correct button when they come close to you.
+  - Tap the jump button now!
+  - Tap the duck button now!
+  - 'If you fail to avoid an obstacle: you''ll sustain damage to the equipment keeping
+    you thethered to the simulated world.'
+  - Watch your battery life! If it reaches 0, you'll be trapped in time and I will
+    be unable to assist you.
+  - This machine requires an equilibrium in it's temperature levels to function.
+    Look above and below you.
+  - The equipment you're wearing can help regulate your body temperature. However...
+  - Hanging or crouching will bring you into contact with the magma filled ceiling
+    or liquid nitrogen filled floor.
+  - Your current temperature is dictated by these meters, known as heat and ice meters
+    respectivley.
+  - Obstacles that are of heat or ice element can affect these meters as well.
+  - If your heat meter fills completely...
+  - You'll enter burning state. You'll be unable to jump or duck on your own. Mash
+    the cooldown button to lower your body heat!
+  - 'On the other hand: If your ice meter is filled...'
+  - You'll become frozen and temporarily stuck crouched to the ground. Mash the heat
+    up button to bring your temperature back up!
+  - Watching your meters is the key to lasting longer throughout the time-twister
+    machine.
+  - Next, I'll explain how items work.
+  - You can bring a maximum of 3 items into the time-twister machine with you at
+    a time. Even if you DO NOT use them, the items will disappear once you leave
+    the machine. Choose your loadout wisely.
+  - What's that? You want to know how to obtain more items?
+  - Well, the longer you last in this simulation, the more research points I will
+    receive from you. I'll transfer those research points into currency that you
+    can use at my lab's shop.
+  - Also any treasure you find during your adventure is yours to keep. I crave to
+    enrich my mind, not my wallet!
+  - Simply tap an item to use it. If an item is greyed out, it means a condition
+    must be met before it can be used. Try using the handwarmers item.
+  - The handwarmers item prevents your heat meter from rising for a limited time.
+  - Incoming obstacle!
+  - Kyahaha. Did that startle you? Well you may have sustained some equipment damage,
+    but your heat meter did not increase despite this being an obstacle with the
+    heat element attached to it.
+  - 'Now let''s try an instant use item. '
+  - Instead of mashing the heat up button, use the defroster item.
+  - Once an item is used it's not gone forever! Notice these numbers in front of
+    the item graphics.
+  - Each wave completed will decrease this number by 1. If it reaches 0, the item
+    can be used again however the cooldown period between uses will increase.
+  - Those are the basics of how to use the time-twister machine simulator! You can
+    come back and view this tutorial again from the main menu if needed.
+  - Now, I require more specimens for research. I hope you won't end up like my previous
+    test subjects -- Er I mean, best of luck!
+  conditionCheck: 000000000001000100010001000101000000000000000001000100000000000001010100000100010000
 --- !u!1 &463817542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3783,7 +3846,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4313883, y: 0.11757018}
   m_AnchorMax: {x: 0.7518245, y: 0.30366343}
-  m_AnchoredPosition: {x: 0.7591553, y: 3.2999258}
+  m_AnchoredPosition: {x: 0.7591553, y: 3.2999268}
   m_SizeDelta: {x: 1.5, y: 1.4000015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026014328

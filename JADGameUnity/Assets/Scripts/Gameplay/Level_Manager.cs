@@ -375,10 +375,11 @@ public class Level_Manager : MonoBehaviour
     //Jump.
     public void Jump()
     {
-        if(Tutorial_Manager.Instance.getCurrentStep() == 2)
-        {
-            Tutorial_Manager.Instance.conditionComplete();
-        }
+     //   if(Tutorial_Manager.Instance.getCurrentStep() == 2)
+      //  {
+       //     Tutorial_Manager.Instance.conditionComplete();
+       // }
+        Tutorial_Manager.Instance.conditionComplete();
         //Jump height is based off of the value we set for player jump height.
         playerRigid2D.velocity = Vector2.up * jumpHeight;
 
