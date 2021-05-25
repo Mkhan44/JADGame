@@ -375,11 +375,14 @@ public class Level_Manager : MonoBehaviour
     //Jump.
     public void Jump()
     {
-     //   if(Tutorial_Manager.Instance.getCurrentStep() == 2)
-      //  {
-       //     Tutorial_Manager.Instance.conditionComplete();
-       // }
-        Tutorial_Manager.Instance.conditionComplete();
+        if(theLevelType == levelType.tutorial)
+        {
+            if(Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.jumpButton)
+            {
+                Tutorial_Manager.Instance.conditionComplete();
+            }
+        }
+
         //Jump height is based off of the value we set for player jump height.
         playerRigid2D.velocity = Vector2.up * jumpHeight;
 
@@ -398,6 +401,13 @@ public class Level_Manager : MonoBehaviour
     //Player is hanging from the top.
     public void Hang()
     {
+        if (theLevelType == levelType.tutorial)
+        {
+            if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.hang)
+            {
+                Tutorial_Manager.Instance.conditionComplete();
+            }
+        }
         playerRigid2D.gravityScale = 0f;
         playerRigid2D.velocity = Vector2.up * jumpHeight;
         jumpButton.interactable = false;
@@ -410,7 +420,15 @@ public class Level_Manager : MonoBehaviour
    
     public void duck()
     {
-      //  Debug.Log("Calling duck from levelManager");
+        if (theLevelType == levelType.tutorial)
+        {
+            if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.duckButton)
+            {
+                Tutorial_Manager.Instance.conditionComplete();
+            }
+        }
+
+        //  Debug.Log("Calling duck from levelManager");
         thePlayer.setState(Player.playerState.ducking);
 
         playerAnimator.SetBool(IsCrouching, true);
@@ -483,6 +501,14 @@ public class Level_Manager : MonoBehaviour
                             {
                                 if (currentItem != Collect_Manager.typeOfItem.HandWarmer && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                                 {
+                                    if (theLevelType == levelType.tutorial)
+                                    {
+                                        if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.crouch)
+                                        {
+                                            Tutorial_Manager.Instance.conditionComplete();
+                                        }
+                                    }
+
                                     StartCoroutine(iceMeter.fillConstant());
                                 }
                                 if (Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)

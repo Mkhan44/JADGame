@@ -817,4 +817,109 @@ public class Wave_Spawner : MonoBehaviour
         stopCo = false;
         spawnRoutine = StartCoroutine(waveSpawner(waveType));
     }
+
+    //Tutorial functions.
+
+    public void tutorialSpawn()
+    {
+        switch(Tutorial_Manager.Instance.getCurrentStep())
+        {
+            //Spawn boulder.
+            case 12:
+                {
+                    Transform enemySpawnPlacement;
+
+                    currentSpawn = enemies[0].GetComponent<Obstacle_Behaviour>().spawnPoint;
+                    //Add to this switch statement if we add more spawn points. May want to revise this to make it easier for futureproofing.
+                    switch (currentSpawn)
+                    {
+                        case spawnPointNum.spawnPoint1:
+                            {
+                                //First spawn point.
+                                enemySpawnPlacement = spawnPoints[0].transform;
+                                break;
+                            }
+                        case spawnPointNum.spawnPoint2:
+                            {
+                                //Second spawn point.
+                                enemySpawnPlacement = spawnPoints[1].transform;
+                                break;
+                            }
+                        case spawnPointNum.spawnPoint3:
+                            {
+                                //Third spawn point.
+                                enemySpawnPlacement = spawnPoints[2].transform;
+                                break;
+                            }
+                        case spawnPointNum.random:
+                            {
+                                int randomSpawn;
+                                randomSpawn = Random.Range(0, spawnPoints.Count);
+                                enemySpawnPlacement = spawnPoints[randomSpawn].transform;
+                                break;
+                            }
+                        default:
+                            {
+                                //Just use the first one if we don't have anything assigned for some reason.
+                                enemySpawnPlacement = spawnPoints[0].transform;
+                                break;
+                            }
+
+                    }
+
+                    GameObject enemyClone = Object_Pooler.Instance.SpawnFromPool(enemies[0].name, enemySpawnPlacement.position, enemySpawnPlacement.rotation);
+                    break;
+                }
+            //Spawn vine.
+            case 14:
+                {
+                    Transform enemySpawnPlacement;
+
+                    currentSpawn = enemies[1].GetComponent<Obstacle_Behaviour>().spawnPoint;
+                    //Add to this switch statement if we add more spawn points. May want to revise this to make it easier for futureproofing.
+                    switch (currentSpawn)
+                    {
+                        case spawnPointNum.spawnPoint1:
+                            {
+                                //First spawn point.
+                                enemySpawnPlacement = spawnPoints[0].transform;
+                                break;
+                            }
+                        case spawnPointNum.spawnPoint2:
+                            {
+                                //Second spawn point.
+                                enemySpawnPlacement = spawnPoints[1].transform;
+                                break;
+                            }
+                        case spawnPointNum.spawnPoint3:
+                            {
+                                //Third spawn point.
+                                enemySpawnPlacement = spawnPoints[2].transform;
+                                break;
+                            }
+                        case spawnPointNum.random:
+                            {
+                                int randomSpawn;
+                                randomSpawn = Random.Range(0, spawnPoints.Count);
+                                enemySpawnPlacement = spawnPoints[randomSpawn].transform;
+                                break;
+                            }
+                        default:
+                            {
+                                //Just use the first one if we don't have anything assigned for some reason.
+                                enemySpawnPlacement = spawnPoints[0].transform;
+                                break;
+                            }
+
+                    }
+
+                    GameObject enemyClone = Object_Pooler.Instance.SpawnFromPool(enemies[1].name, enemySpawnPlacement.position, enemySpawnPlacement.rotation);
+                    break;
+                }
+            default:
+                {
+                    break;
+                }
+        }
+    }
 }

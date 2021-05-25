@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.15
+  m_fontSize: 54.95
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 75.7
+  m_fontSize: 50
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.7
+  m_fontSize: 36.4
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1866,6 +1866,7 @@ MonoBehaviour:
   stepText: {fileID: 1252557592}
   nextButton: {fileID: 1992332848}
   tutPanel: {fileID: 463078952}
+  textPanelHolder: {fileID: 1556482928}
   phrases:
   - Ah, a new test subject. My name is Dr. Numbskull! Welcome to the time-twister
     machine. I created it myself.
@@ -1887,6 +1888,7 @@ MonoBehaviour:
   - I will now release some obstacles for you to jump over and duck under. Tap the
     correct button when they come close to you.
   - Tap the jump button now!
+  - Great! Here comes another one.
   - Tap the duck button now!
   - 'If you fail to avoid an obstacle: you''ll sustain damage to the equipment keeping
     you thethered to the simulated world.'
@@ -1935,7 +1937,50 @@ MonoBehaviour:
     come back and view this tutorial again from the main menu if needed.
   - Now, I require more specimens for research. I hope you won't end up like my previous
     test subjects -- Er I mean, best of luck!
-  conditionCheck: 000000000001000100010001000101000000000000000001000100000000000001010100000100010000
+  conditionCheck:
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 7b0d3d8887fe8b642a7a159fc508b714, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: c4dad2d6d32358741873063388029afd, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: e1fd3c20dfb5ff442a027138ddef5b42, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 96168a5eb75f411469ccc8878550ebc0, type: 2}
+  - {fileID: 11400000, guid: c1cea94dc021ed644b7608c3c0659fd1, type: 2}
+  - {fileID: 11400000, guid: 646e9200f61fbcb4db4785cae3102151, type: 2}
+  - {fileID: 11400000, guid: f314c82f84bd7994286c9074a0594017, type: 2}
+  - {fileID: 11400000, guid: 78940b20d57b9d54db9b8cfca3d12c34, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
 --- !u!1 &463817542
 GameObject:
   m_ObjectHideFlags: 0
@@ -3846,7 +3891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4313883, y: 0.11757018}
   m_AnchorMax: {x: 0.7518245, y: 0.30366343}
-  m_AnchoredPosition: {x: 0.7591553, y: 3.2999268}
+  m_AnchoredPosition: {x: 0.7591553, y: 3.2999258}
   m_SizeDelta: {x: 1.5, y: 1.4000015}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1026014328
@@ -3896,7 +3941,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.75
+  m_fontSize: 39.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4545,7 +4590,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 67.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5063,7 +5108,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.8
+  m_fontSize: 70
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5350,7 +5395,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100.15
+  m_fontSize: 56.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8471,7 +8516,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 90
+  m_fontSize: 71.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8605,7 +8650,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.65
+  m_fontSize: 72
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
