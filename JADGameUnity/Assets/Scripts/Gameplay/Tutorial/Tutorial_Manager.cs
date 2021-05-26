@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.SceneManagement;
 public class Tutorial_Manager : MonoBehaviour
 {
     int numSteps;
@@ -48,6 +49,7 @@ public class Tutorial_Manager : MonoBehaviour
         {
             Debug.Log("Hey we cleared everything!");
             tutPanel.SetActive(false);
+            SceneManager.LoadScene(0);
             return;
         }
 
@@ -70,6 +72,7 @@ public class Tutorial_Manager : MonoBehaviour
             if (conditionCheck[currentStep].hasStep)
             {
                 nextButton.gameObject.SetActive(false);
+                doStep();
                 conditionMet = false;
                 Debug.Log("This step requires a condition to be met.");
                 //Player needs to complete the next step before being able to move onto the next instruction.
@@ -79,6 +82,7 @@ public class Tutorial_Manager : MonoBehaviour
         {
             Debug.Log("Hey we cleared everything!");
             tutPanel.SetActive(false);
+            SceneManager.LoadScene(0);
         }
     }
 
@@ -99,6 +103,65 @@ public class Tutorial_Manager : MonoBehaviour
     public Tutorial_Step.stepType getStepType()
     {
         return conditionCheck[currentStep].thisStepType;
+    }
+
+    void doStep()
+    {
+        switch(conditionCheck[currentStep].thisStepType)
+        {
+            case Tutorial_Step.stepType.burning:
+                {
+                    Level_Manager.Instance.heatMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
+                    break;
+                }
+            case Tutorial_Step.stepType.frozen:
+                {
+                    Level_Manager.Instance.iceMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
+                    break;
+                }
+            case Tutorial_Step.stepType.useHandwarmer:
+                {
+                    //Assign item1 as handwarmer.
+                    Level_Manager.Instance.item1 = Collect_Manager.instance.itemsToPick[0];
+                    Item theItem = Level_Manager.Instance.item1Holder.transform.GetChild(0).GetComponent<Item>();
+                    theItem.thisItemType = Level_Manager.Instance.item1.theItem;
+                    Image tempImg = Level_Manager.Instance.item1Holder.transform.GetChild(0).GetComponent<Image>();
+                    tempImg.sprite = Level_Manager.Instance.item1.itemImage;
+                    if (Level_Manager.Instance.item1.hasDuration)
+                    {
+                        theItem.itemDuration = Level_Manager.Instance.item1.duration;
+                    }
+                    else
+                    {
+                        theItem.itemDuration = 0f;
+                    }
+                    break;
+                }
+            case Tutorial_Step.stepType.useDefroster:
+                {
+                    Level_Manager.Instance.iceMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
+                    //Assign item2 as defroster.
+                    Level_Manager.Instance.item2 = Collect_Manager.instance.itemsToPick[1];
+                    Item theItem = Level_Manager.Instance.item2Holder.transform.GetChild(0).GetComponent<Item>();
+                    theItem.thisItemType = Level_Manager.Instance.item2.theItem;
+                    Image tempImg = Level_Manager.Instance.item2Holder.transform.GetChild(0).GetComponent<Image>();
+                    tempImg.sprite = Level_Manager.Instance.item2.itemImage;
+                    if (Level_Manager.Instance.item2.hasDuration)
+                    {
+                        theItem.itemDuration = Level_Manager.Instance.item2.duration;
+                    }
+                    else
+                    {
+                        theItem.itemDuration = 0f;
+                    }
+                    break;
+                }
+            default:
+                {
+                    Debug.Log("This is not a burning or frozen step.");
+                    break;
+                }
+        }
     }
 
 
@@ -142,6 +205,12 @@ public class Tutorial_Manager : MonoBehaviour
                     Wave_Spawner.Instance.tutorialSpawn();
                     break;
                 }
+            case 35:
+                {
+                    Wave_Spawner.Instance.tutorialSpawn();
+                    textPanelHolder.SetActive(true);
+                    break;
+                }
             default:
                 {
                     Debug.LogWarning("Hey we didn't find a step that has a special condition in the switch statement!");
@@ -158,11 +227,15 @@ public class Tutorial_Manager : MonoBehaviour
         }
 
        // yield return new WaitForSecondsRealtime(waitTime);
-        Time.timeScale = 0f;
-        textPanelHolder.SetActive(true);
-        nextButton.gameObject.SetActive(true);
-        //incrementCurrentStepExternally();
-        nextStep();
+       if(currentStep != 35)
+        {
+            Time.timeScale = 0f;
+        }
+        
+       textPanelHolder.SetActive(true);
+       nextButton.gameObject.SetActive(true);
+       //incrementCurrentStepExternally();
+       nextStep();
 
 
     }

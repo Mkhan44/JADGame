@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 54.95
+  m_fontSize: 89.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1590,7 +1590,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 50
+  m_fontSize: 75.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1724,7 +1724,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36.4
+  m_fontSize: 67.7
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -1920,9 +1920,10 @@ MonoBehaviour:
     can use at my lab's shop.
   - Also any treasure you find during your adventure is yours to keep. I crave to
     enrich my mind, not my wallet!
-  - Simply tap an item to use it. If an item is greyed out, it means a condition
-    must be met before it can be used. Try using the handwarmers item.
+  - 'Simply tap an item to use it. If an item is greyed out, it means a condition
+    must be met before it can be used. '
   - The handwarmers item prevents your heat meter from rising for a limited time.
+    Tap on it to use it!
   - Incoming obstacle!
   - Kyahaha. Did that startle you? Well you may have sustained some equipment damage,
     but your heat meter did not increase despite this being an obstacle with the
@@ -1962,6 +1963,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 49977671efaa4144b8550eeda3ac1617, type: 2}
+  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: 8c15ba1a490d67041a933c3e19b95bc5, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
@@ -1969,14 +1973,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: b63ef9037ec9594418388ec76fa0398c, type: 2}
+  - {fileID: 11400000, guid: 228c046d38119d14eb15e15a18db8fae, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: ab7c383c0cf55994abfd47258950f6b6, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
@@ -3941,7 +3942,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 39.65
+  m_fontSize: 71.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -4590,7 +4591,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.8
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5108,7 +5109,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 69.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -5395,7 +5396,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.2
+  m_fontSize: 100.15
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6054,7 +6055,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 2
+  thisItemType: 4
   itemDuration: 1
 --- !u!114 &1471785559
 MonoBehaviour:
@@ -6076,7 +6077,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300042, guid: e35b1509688e6294cad1ada6c91b7693, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6812,7 +6813,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300052, guid: fe9aa33e50412c242bd73e9324bc7922, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -6842,7 +6843,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 0
+  thisItemType: 4
   itemDuration: 1
 --- !u!1 &1603605012
 GameObject:
@@ -6894,7 +6895,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 1
+  thisItemType: 4
   itemDuration: 1
 --- !u!114 &1603605015
 MonoBehaviour:
@@ -6916,7 +6917,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 04f1527fb0ce000488e1293a08a5e9f1, type: 3}
+  m_Sprite: {fileID: 0}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -8516,7 +8517,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 71.3
+  m_fontSize: 90
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -8650,7 +8651,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 72
+  m_fontSize: 56.65
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1

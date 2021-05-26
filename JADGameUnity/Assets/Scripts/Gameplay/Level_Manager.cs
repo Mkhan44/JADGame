@@ -133,11 +133,11 @@ public class Level_Manager : MonoBehaviour
     public TextMeshProUGUI useDurationText;
 
     [SerializeField]
-    Shop_Item item1;
+    public Shop_Item item1;
     [SerializeField]
-    Shop_Item item2;
+    public Shop_Item item2;
     [SerializeField]
-    Shop_Item item3;
+    public Shop_Item item3;
 
     public GameObject item1Holder;
     public GameObject item2Holder;
@@ -207,7 +207,6 @@ public class Level_Manager : MonoBehaviour
                 }
             }
         }
-      
 
     }
 
@@ -250,8 +249,6 @@ public class Level_Manager : MonoBehaviour
             checkScore();
         }
   
-           
-
     }
 
     /*
@@ -596,7 +593,15 @@ public class Level_Manager : MonoBehaviour
                         {
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(burningJumpWait());
-                            StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                            if (theLevelType == levelType.tutorial)
+                            {
+                 
+                            }
+                            else
+                            {
+                                StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                            }
+                            
                             coolDownButton.gameObject.SetActive(true);
                             playerAnimator.SetBool(IsHanging, false);
                         }
@@ -605,6 +610,14 @@ public class Level_Manager : MonoBehaviour
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (heatMeter.getMeterVal() <= 0)
                         {
+                            if (theLevelType == levelType.tutorial)
+                            {
+                                if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.burning)
+                                {
+                                    Tutorial_Manager.Instance.conditionComplete();
+                                }
+                            }
+
                             playerRigid2D.gravityScale = gravityScale;
                             thePlayer.setState(Player.playerState.idle);
                             if(decreaseHeatMeterRoutine != null)
@@ -624,13 +637,29 @@ public class Level_Manager : MonoBehaviour
                         {
                             frozenDuck();
                             heatUpButton.gameObject.SetActive(true);
-                            StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                            if (theLevelType == levelType.tutorial)
+                            {
+
+                            }
+                            else
+                            {
+                                StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                            }
+                          
                             playerAnimator.SetBool(IsHanging, false);
                         }
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (iceMeter.getMeterVal() <= 0)
                         {
+                            if (theLevelType == levelType.tutorial)
+                            {
+                                if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.frozen)
+                                {
+                                    Tutorial_Manager.Instance.conditionComplete();
+                                }
+                            }
+
                             thePlayer.setState(Player.playerState.idle);
                             playerAnimator.SetBool(IsCrouching, false);
                             meterFilled = false;

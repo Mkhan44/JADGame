@@ -54,6 +54,14 @@ public class Item : MonoBehaviour , IPointerDownHandler
                             {
                                 if (Level_Manager.Instance.thePlayer.GetState() == Player.playerState.frozen && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.dead)
                                 {
+                                    if (Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+                                    {
+                                        if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.useDefroster)
+                                        {
+                                            Tutorial_Manager.Instance.conditionComplete();
+                                        }
+                                    }
+
                                     Level_Manager.Instance.iceMeter.setMeterValExternally(0);
                                     //Item has been used!
                                     disableItem();
@@ -102,6 +110,13 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                 }
                             case Collect_Manager.typeOfItem.HandWarmer:
                                 {
+                                    if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+                                    {
+                                        if(Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.useHandwarmer)
+                                        {
+                                            Tutorial_Manager.Instance.conditionComplete();
+                                        }
+                                    }
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     break;
                                 }
