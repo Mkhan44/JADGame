@@ -19,6 +19,11 @@ public class Tutorial_Manager : MonoBehaviour
     public Button nextButton;
     public GameObject tutPanel;
     public GameObject textPanelHolder;
+    public GameObject bottomUIPanelBlocker;
+    public GameObject jumpButtonBlocker;
+    public GameObject duckButtonBlocker;
+    public GameObject HUCDButtonBlocker;
+    public GameObject itemHolderBLocker;
 
     [Tooltip("Text that the steps actually say in game. stepText will display this.")]
     [TextArea]  public List<string> phrases = new List<string>();
@@ -40,21 +45,28 @@ public class Tutorial_Manager : MonoBehaviour
         {
             tutPanel.SetActive(false);
         }
+
+        bottomUIPanelBlocker.SetActive(true);
+        jumpButtonBlocker.SetActive(false);
+        duckButtonBlocker.SetActive(false);
+        HUCDButtonBlocker.SetActive(false);
+        itemHolderBLocker.SetActive(false);
     }
 
     public void nextStep()
     {
         //We're done, don't go any further.
-        if(currentStep == conditionCheck.Count-1)
+        if(currentStep == numSteps)
         {
             Debug.Log("Hey we cleared everything!");
-            tutPanel.SetActive(false);
+          //  tutPanel.SetActive(false);
             SceneManager.LoadScene(0);
             return;
         }
 
         if(conditionCheck[currentStep+1].isSpecial)
         {
+            bottomUIPanelBlocker.SetActive(true);
             doSpecial();
             return;
         }
@@ -72,16 +84,25 @@ public class Tutorial_Manager : MonoBehaviour
             if (conditionCheck[currentStep].hasStep)
             {
                 nextButton.gameObject.SetActive(false);
+                bottomUIPanelBlocker.SetActive(false);
                 doStep();
                 conditionMet = false;
                 Debug.Log("This step requires a condition to be met.");
                 //Player needs to complete the next step before being able to move onto the next instruction.
             }
+            else
+            {
+                bottomUIPanelBlocker.SetActive(true);
+                jumpButtonBlocker.SetActive(false);
+                duckButtonBlocker.SetActive(false);
+                HUCDButtonBlocker.SetActive(false);
+                itemHolderBLocker.SetActive(false);
+            }
         }
         else
         {
             Debug.Log("Hey we cleared everything!");
-            tutPanel.SetActive(false);
+          //  tutPanel.SetActive(false);
             SceneManager.LoadScene(0);
         }
     }
@@ -112,11 +133,25 @@ public class Tutorial_Manager : MonoBehaviour
             case Tutorial_Step.stepType.burning:
                 {
                     Level_Manager.Instance.heatMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
+
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(false);
+                    itemHolderBLocker.SetActive(true);
+
                     break;
                 }
             case Tutorial_Step.stepType.frozen:
                 {
                     Level_Manager.Instance.iceMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
+
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(false);
+                    itemHolderBLocker.SetActive(true);
+
                     break;
                 }
             case Tutorial_Step.stepType.useHandwarmer:
@@ -135,6 +170,13 @@ public class Tutorial_Manager : MonoBehaviour
                     {
                         theItem.itemDuration = 0f;
                     }
+
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(false);
+
                     break;
                 }
             case Tutorial_Step.stepType.useDefroster:
@@ -154,13 +196,61 @@ public class Tutorial_Manager : MonoBehaviour
                     {
                         theItem.itemDuration = 0f;
                     }
+
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(false);
+
                     break;
                 }
             default:
                 {
-                    Debug.Log("This is not a burning or frozen step.");
+                    Debug.Log("This is not a burning or frozen or item step.");
                     break;
                 }
+        }
+
+        switch(conditionCheck[currentStep].thisStepType)
+        {
+            case Tutorial_Step.stepType.jumpButton:
+                {
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(false);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(true);
+                    break;
+                }
+            case Tutorial_Step.stepType.duckButton:
+                {
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(false);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(true);
+                    break;
+                }
+            case Tutorial_Step.stepType.hang:
+                {
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(false);
+                    duckButtonBlocker.SetActive(true);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(true);
+                    break;
+                }
+            case Tutorial_Step.stepType.crouch:
+                {
+                    bottomUIPanelBlocker.SetActive(false);
+                    jumpButtonBlocker.SetActive(true);
+                    duckButtonBlocker.SetActive(false);
+                    HUCDButtonBlocker.SetActive(true);
+                    itemHolderBLocker.SetActive(true);
+                    break;
+                }
+
         }
     }
 
@@ -175,6 +265,16 @@ public class Tutorial_Manager : MonoBehaviour
     public void incrementCurrentStepExternally()
     {
         currentStep += 1;
+    }
+
+    public IEnumerator disableJDButtons()
+    {
+        yield return new WaitForSeconds(1.5f);
+        Level_Manager.Instance.jumpButton.enabled = false;
+        Level_Manager.Instance.duckButton.enabled = false;
+        yield return new WaitForSeconds(1.0f);
+        Level_Manager.Instance.jumpButton.enabled = true;
+        Level_Manager.Instance.duckButton.enabled = true;
     }
 
     IEnumerator waitText(float waitTime)

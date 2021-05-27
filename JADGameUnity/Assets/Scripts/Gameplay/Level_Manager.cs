@@ -404,6 +404,7 @@ public class Level_Manager : MonoBehaviour
             {
                 Tutorial_Manager.Instance.conditionComplete();
             }
+            StartCoroutine(Tutorial_Manager.Instance.disableJDButtons());
         }
         playerRigid2D.gravityScale = 0f;
         playerRigid2D.velocity = Vector2.up * jumpHeight;
@@ -503,10 +504,16 @@ public class Level_Manager : MonoBehaviour
                                         if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.crouch)
                                         {
                                             Tutorial_Manager.Instance.conditionComplete();
+                                           
                                         }
+                                        StartCoroutine(Tutorial_Manager.Instance.disableJDButtons());
+                                    }
+                                    else
+                                    {
+                                        StartCoroutine(iceMeter.fillConstant());
                                     }
 
-                                    StartCoroutine(iceMeter.fillConstant());
+                                   
                                 }
                                 if (Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                                 {
@@ -554,7 +561,12 @@ public class Level_Manager : MonoBehaviour
                     {
                         if(currentItem != Collect_Manager.typeOfItem.FireVest && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
-                            StartCoroutine(heatMeter.fillConstant());
+                            if (theLevelType != levelType.tutorial)
+                            {
+                                StartCoroutine(heatMeter.fillConstant());
+                            }
+
+       
                         }
                         if (Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                         {
