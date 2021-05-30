@@ -39,5 +39,13 @@ public class Menu_Manager : MonoBehaviour
         SceneManager.LoadScene("Gameplay");
     }
 
+    public void tutorialToggle(bool toggleVal)
+    {
+        if(Tutorial_Instance_Debug.instance != null)
+        {
+            Tutorial_Instance_Debug.instance.setTutorial(toggleVal);
+        }
+    }
+
 
 }

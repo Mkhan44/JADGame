@@ -6,7 +6,7 @@ public class Tutorial_Instance_Debug : MonoBehaviour
 {
     public static Tutorial_Instance_Debug instance;
 
-    bool isTutorial;
+    [SerializeField] bool isTutorial;
 
     private void Awake()
     {
