@@ -190,6 +190,22 @@ public class Level_Manager : MonoBehaviour
         currentScore = 0;
         wavesSurvived = 0;
 
+        if(Tutorial_Instance_Debug.instance != null)
+        {
+            if (Tutorial_Instance_Debug.instance.getTutorialVal())
+            {
+                theLevelType = levelType.tutorial;
+                TimePeriod = timePeriod.tutorial;
+            }
+            else
+            {
+                theLevelType = levelType.normal;
+                //Need to randomize this in the future. !!!!
+                TimePeriod = timePeriod.Prehistoric;
+            }
+        }
+      
+
 
         if(theLevelType != levelType.tutorial)
         {
@@ -615,6 +631,7 @@ public class Level_Manager : MonoBehaviour
                             }
                             
                             coolDownButton.gameObject.SetActive(true);
+                            playerAnimator.SetBool(IsCrouching, false);
                             playerAnimator.SetBool(IsHanging, false);
                         }
                         //Call the burningJump function.
@@ -697,6 +714,7 @@ public class Level_Manager : MonoBehaviour
                             playerAnimator.SetBool(IsFalling, false);
                             playerAnimator.SetBool(IsBurning, false);
                             playerAnimator.SetBool(IsFrozen, false);
+                            playerAnimator.SetBool(IsCrouching, false);
                             playerRigid2D.gravityScale = gravityScale;
                             jumpButton.interactable = true;
                             duckButton.interactable = true;
