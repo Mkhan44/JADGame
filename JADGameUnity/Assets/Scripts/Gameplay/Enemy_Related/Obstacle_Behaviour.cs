@@ -28,6 +28,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Tooltip("This will be used for indicator arrows.")]
     protected bool inIndicatorVicinity;
+
+    [Tooltip("This will indicate when the obstacle is on the screen.")]
+    protected bool onScreenIndicator;
     public enum ElementType
     {
         neutral,
@@ -79,6 +82,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             maxSpeed = increaseRate;
         }
         inPlayerVicinity = false;
+        onScreenIndicator = false;
     }
 
     // Start is called before the first frame update
@@ -94,6 +98,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     public virtual void OnObjectSpawn()
     {
         inPlayerVicinity = false;
+        onScreenIndicator = false;
         speed = ogSpeed;
         startPos = this.transform.position;
         endPos = new Vector2((startPos.x - 20), (startPos.y));
@@ -165,6 +170,13 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         return objectElement;
     }
 
+    //Get Score value.
+
+    public int getScoreVal()
+    {
+        return scoreValue;
+    }
+
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
 
@@ -204,6 +216,12 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 inPlayerVicinity = true;
             }
 
+            if(collision.gameObject.tag == "On_screen_Vicinity_Collider")
+            {
+                onScreenIndicator = true;
+                Debug.Log(gameObject.name + " Is now on screen!");
+            }
+
             //In here we will make whatever arrow it is highlighted and then begin the coroutine to fade it out.
             if (collision.gameObject.tag == "Indicator_Vicinity_Collider")
             {
@@ -212,8 +230,6 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 Level_Manager.Instance.indicatorArrow(spawnPoint);
             }
         }
-
-
       
     }
 
@@ -225,7 +241,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             {
                 inIndicatorVicinity = false;
 
-                Debug.Log(gameObject.name + " Left the indicator collider!");
+               // Debug.Log(gameObject.name + " Left the indicator collider!");
                 Level_Manager.Instance.indicatorArrowOff(spawnPoint);
             }
         }

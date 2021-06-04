@@ -201,8 +201,22 @@ public class Level_Manager : MonoBehaviour
             {
                 theLevelType = levelType.normal;
                 //Need to randomize this in the future. !!!!
+                if(TimePeriod == timePeriod.None)
+                {
+                    TimePeriod = timePeriod.Prehistoric;
+                }
+                
+            }
+        }
+        else
+        {
+            theLevelType = levelType.normal;
+            //Need to randomize this in the future. !!!!
+            if (TimePeriod == timePeriod.None)
+            {
                 TimePeriod = timePeriod.Prehistoric;
             }
+            Debug.LogWarning("The tutorial_instance_debug is null!");
         }
       
 
@@ -813,6 +827,7 @@ public class Level_Manager : MonoBehaviour
         //Since player took damage, destroy all.
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
 
 
         Wave_Spawner.Instance.updateEnemiesLeft(obstacles.Length);
@@ -824,7 +839,13 @@ public class Level_Manager : MonoBehaviour
             //Destroy(obstacles[i]);
         }
 
-       
+        for (int j = 0; j < bullets.Length; j++)
+        {
+            Destroy(bullets[j]);
+            //Destroy(obstacles[j]);
+        }
+
+
         currentPlayerHealth -= 1;
 
 
