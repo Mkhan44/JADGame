@@ -17,6 +17,8 @@ public class Cowboy : Obstacle_Behaviour
     [SerializeField] BoxCollider2D gunHitbox;
     [SerializeField] bool isFlipped;
 
+    [SerializeField] float horizontalBulletSpeed;
+    [SerializeField] float verticalBulletSpeed;
     //Stuff local to cowboy.
     bool isStopped;
     bool hasShot;
@@ -81,28 +83,58 @@ public class Cowboy : Obstacle_Behaviour
         bool animDone = false;
         cowboyAnimator.SetBool(IsSpinning, true);
         cowboyAnimator.SetBool(IsStopped, true);
+
+        //1 or 2.
+        int randNum = Random.Range(1, 3);
+
         yield return new WaitForSeconds(2f);
 
-        cowboyAnimator.SetInteger(ShootDirection, 1);
-
-        while (!animDone)
+        //Shoot up.
+        if(randNum == 1)
         {
+            cowboyAnimator.SetInteger(ShootDirection, 1);
 
-            if (cowboyAnimator.GetCurrentAnimatorStateInfo(0).IsName("cowboyshootup"))
+            while (!animDone)
             {
-                yield return new WaitForSeconds(0.2f);
-                animDone = true;
-                cowboyAnimator.SetInteger(ShootDirection, 3);
-                GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.transform);
-                tempBullet.transform.parent = null;
+                if (cowboyAnimator.GetCurrentAnimatorStateInfo(0).IsName("cowboyshootup"))
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    animDone = true;
+                    cowboyAnimator.SetInteger(ShootDirection, 3);
+                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.transform);
+                    tempBullet.transform.parent = null;
 
-                //Change the speed based on difficulty!
-                tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(1, 2.0f, this.gameObject);
-                bulletCollider = tempBullet.GetComponent<BoxCollider2D>();
+                    //Change the speed based on difficulty!
+                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, horizontalBulletSpeed, verticalBulletSpeed, this.gameObject);
+                    bulletCollider = tempBullet.GetComponent<BoxCollider2D>();
+                }
+                yield return null;
             }
-            yield return null;
+            animDone = false;
         }
-        animDone = false;
+        else
+        {
+            cowboyAnimator.SetInteger(ShootDirection, 2);
+
+            while (!animDone)
+            {
+                if (cowboyAnimator.GetCurrentAnimatorStateInfo(0).IsName("cowboyshootdown"))
+                {
+                    yield return new WaitForSeconds(0.2f);
+                    animDone = true;
+                    cowboyAnimator.SetInteger(ShootDirection, 3);
+                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.transform);
+                    tempBullet.transform.parent = null;
+
+                    //Change the speed based on difficulty!
+                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, horizontalBulletSpeed, verticalBulletSpeed, this.gameObject);
+                    bulletCollider = tempBullet.GetComponent<BoxCollider2D>();
+                }
+                yield return null;
+            }
+            animDone = false;
+        }
+       
 
         //While bullet has not hit the player or gone off screen yet...
 
@@ -132,7 +164,7 @@ public class Cowboy : Obstacle_Behaviour
             yield return null;
         }
 
-        Debug.Log("FINISHED THE LOOP");
+     //   Debug.Log("FINISHED THE LOOP");
 
        
         yield return null;

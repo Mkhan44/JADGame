@@ -171,6 +171,8 @@ MonoBehaviour:
   bulletCollider: {fileID: 0}
   gunHitbox: {fileID: 9108902030229743994}
   isFlipped: 0
+  horizontalBulletSpeed: 3
+  verticalBulletSpeed: 6.5
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
