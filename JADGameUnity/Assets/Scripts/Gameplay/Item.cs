@@ -6,16 +6,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+using TMPro;
 public class Item : MonoBehaviour , IPointerDownHandler
 {
 
     public Collect_Manager.typeOfItem thisItemType;
 
     bool hasBeenUsed;
+    bool inCooldown;
+
+    [SerializeField] GameObject CDPanel;
+    [SerializeField] TextMeshProUGUI CDText;
 
     [Tooltip("If the item has a duration till it runs out, edit this value in seconds. Otherwise keep it at 0.")]
     public float itemDuration;
+
+    [Tooltip("How many waves to wait for cooldown. If 0 , item is gone after one use.")]
+    public int waveCooldownTime;
+
+    [SerializeField] int tempCoolDownCounter;
+    [SerializeField] int wavesTillCDDone;
+    [SerializeField] int numTimesUsed;
 
     private void Awake()
     {
@@ -32,6 +43,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
         }
 
         hasBeenUsed = false;
+        inCooldown = false;
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -200,7 +212,61 @@ public class Item : MonoBehaviour , IPointerDownHandler
     void disableItem()
     {
         hasBeenUsed = true;
-        gameObject.SetActive(false);
+        if(waveCooldownTime > 0)
+        {
+            inCooldown = true;
+            CDPanel.SetActive(true);
+            //If this is the first time you've used the item.
+            if (numTimesUsed == 0)
+            {
+                tempCoolDownCounter = waveCooldownTime;
+            }
+
+            //Otherwise...
+            else
+            {
+                tempCoolDownCounter = waveCooldownTime+numTimesUsed;
+           
+            }
+            numTimesUsed += 1;
+            wavesTillCDDone = tempCoolDownCounter;
+            CDText.text = wavesTillCDDone.ToString();
+            
+        }
+        else
+        {
+            CDPanel.SetActive(true);
+            CDText.text = "No Use!";
+            gameObject.SetActive(false);
+        }
+        
+    }
+
+    public void updateCDTime()
+    {
+        wavesTillCDDone -= 1;
+        CDText.text = wavesTillCDDone.ToString();
+        if(wavesTillCDDone == 0)
+        {
+            inCooldown = false;
+            hasBeenUsed = false;
+            disableCDPanel();
+        }
+    }
+
+    public int getCDTime()
+    {
+        return tempCoolDownCounter;
+    }
+
+    public bool cooldownStatus()
+    {
+        return inCooldown;
+    }
+
+    void disableCDPanel()
+    {
+        CDPanel.SetActive(false);
     }
 
     public void changeItem(Collect_Manager.typeOfItem item)

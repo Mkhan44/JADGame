@@ -17,8 +17,9 @@ MonoBehaviour:
   description: Instantly gets you out of "Burning" status!
   coinPrice: 100
   theItem: 3
-  gemPrice: 0
-  skinIndex: 0
+  boltPrice: 0
+  thisSkinType: 0
   currencyUSD: 0
   hasDuration: 0
   duration: 0
+  waveCooldown: 3

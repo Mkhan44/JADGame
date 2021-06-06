@@ -246,6 +246,9 @@ public class Wave_Spawner : MonoBehaviour
         //Regular spawn.
         if (theWaveType == typeOfWave.normal)
         {
+            //Update item cooldowns.
+            Level_Manager.Instance.itemCDUpdate();
+
             //Test values for changing difficulty. Will need some formula later on.
             //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!

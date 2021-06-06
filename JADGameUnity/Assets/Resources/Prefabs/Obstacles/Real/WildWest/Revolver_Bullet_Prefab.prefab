@@ -104,8 +104,12 @@ MonoBehaviour:
   cowboyScript: {fileID: 0}
   thisRigid: {fileID: 0}
   thisAnimator: {fileID: 0}
+  inPlayerVicinity: 0
   shootDirection: 0
-  shotSpeed: 0
+  shotSpeedHorizontal: 0
+  shotSpeedVertical: 0
+  ogRot: {x: 0, y: 0, z: 0}
+  playerCollider: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -119,7 +123,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.00004318729, y: 0.00003325753}
+  m_Offset: {x: 0.024031466, y: 0.00046316162}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -130,7 +134,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.100658454, y: 0.05051719}
+  m_Size: {x: 0.052509148, y: 0.04277891}
   m_EdgeRadius: 0
 --- !u!50 &8632900936152516657
 Rigidbody2D:
