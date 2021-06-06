@@ -132,6 +132,11 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
                                     break;
                                 }
+                            case Collect_Manager.typeOfItem.NeutralTablet:
+                                {
+                                    Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
+                                    break;
+                                }
                             default:
                                 {
                                     break;

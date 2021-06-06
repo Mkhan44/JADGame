@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 765161011247301976}
   - component: {fileID: 4236642348474493964}
   - component: {fileID: 3896542031738949500}
+  - component: {fileID: -6529236103538032259}
   m_Layer: 0
   m_Name: FeudalJapanPortal
   m_TagString: Untagged
@@ -96,8 +97,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  increaseRate: 0
+  maxSpeed: 0
   spawnPoint: 0
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 3
+  scoreValue: 0
   theEra: 2
+--- !u!95 &-6529236103538032259
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509886699335351895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

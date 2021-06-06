@@ -229,22 +229,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5677571316212111687, guid: fe013ccdfcd6b3a4da489e2e10f46d9e, type: 3}
-      propertyPath: itemsToPick.Array.size
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 5677571316212111687, guid: fe013ccdfcd6b3a4da489e2e10f46d9e, type: 3}
-      propertyPath: skinsToPick.Array.size
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 5677571316212111687, guid: fe013ccdfcd6b3a4da489e2e10f46d9e, type: 3}
-      propertyPath: itemsToPick.Array.data[3]
-      value: 
-      objectReference: {fileID: 11400000, guid: db7342969dcd39c41a39c26d584779fa, type: 2}
-    - target: {fileID: 5677571316212111687, guid: fe013ccdfcd6b3a4da489e2e10f46d9e, type: 3}
-      propertyPath: skinsToPick.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fe013ccdfcd6b3a4da489e2e10f46d9e, type: 3}
 --- !u!1 &230272868
@@ -3142,7 +3126,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4944282567623314654, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_SizeDelta.y
-      value: -978.2268
+      value: -979.02637
       objectReference: {fileID: 0}
     - target: {fileID: 4944282567744092395, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_Name
