@@ -24,6 +24,7 @@ public class Collect_Manager : MonoBehaviour
     public int numDefrosters;
     public int numFireVests;
     public int numLiquidNitrogenCanisters;
+    public int numNeutralTablets;
 
     public enum typeOfItem
     {
@@ -31,6 +32,7 @@ public class Collect_Manager : MonoBehaviour
         Defroster,
         FireVest,
         LiquidNitrogenCanister,
+        NeutralTablet,
         //DEBUG
         none
     }
@@ -105,6 +107,7 @@ public class Collect_Manager : MonoBehaviour
             numDefrosters = collect.numDefrosters;
             numFireVests = collect.numFireVests;
             numLiquidNitrogenCanisters = collect.numLiquidNitrogenCanisters;
+            numNeutralTablets = collect.numNeutralTablets;
 
             currentSkin = collect.currentSkin;
             item1 = collect.item1;
@@ -169,6 +172,11 @@ public class Collect_Manager : MonoBehaviour
                     return numLiquidNitrogenCanisters;
                     break;
                 }
+            case typeOfItem.NeutralTablet:
+                {
+                    return numNeutralTablets;
+                    break;
+                }
             default:
                 {
                     return -1;
@@ -225,6 +233,11 @@ public class Collect_Manager : MonoBehaviour
             case typeOfItem.LiquidNitrogenCanister:
                 {
                     numLiquidNitrogenCanisters += 1;
+                    break;
+                }
+            case typeOfItem.NeutralTablet:
+                {
+                    numNeutralTablets += 1;
                     break;
                 }
             default:
@@ -337,6 +350,11 @@ public class Collect_Manager : MonoBehaviour
             case typeOfItem.LiquidNitrogenCanister:
                 {
                     numLiquidNitrogenCanisters -= 1;
+                    break;
+                }
+            case typeOfItem.NeutralTablet:
+                {
+                    numNeutralTablets -= 1;
                     break;
                 }
             default:

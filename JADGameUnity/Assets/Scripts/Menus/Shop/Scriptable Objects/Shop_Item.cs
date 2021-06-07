@@ -48,6 +48,8 @@ public class Shop_Item : ScriptableObject
     public bool hasDuration;
     [Tooltip("If the item has a duration , this is where we set it: Otherwise leave this as 0.")]
     public float duration;
+    [Tooltip("Cooldown. The item will have a cooldown that means it needs to wait x amount of waves before being used again. If this is 0, item is gone after 1 use.")]
+    public int waveCooldown;
 
     //GAMEPLAY VARIABLES!
     //Might want a way to eliminate stuff we can only buy once like no ads after player has bought it.

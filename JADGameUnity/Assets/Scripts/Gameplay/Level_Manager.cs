@@ -143,6 +143,10 @@ public class Level_Manager : MonoBehaviour
     public GameObject item2Holder;
     public GameObject item3Holder;
 
+    public GameObject item1CDPanel;
+    public GameObject item2CDPanel;
+    public GameObject item3CDPanel;
+
     [Header("Treasure chest related")]
     [Tooltip("This variable is for checking whether or not player has selected a chest. 1 = top, 2 = bottom")]
     public int chestSelect;
@@ -196,13 +200,30 @@ public class Level_Manager : MonoBehaviour
             {
                 theLevelType = levelType.tutorial;
                 TimePeriod = timePeriod.tutorial;
+                item1CDPanel.SetActive(false);
+                item2CDPanel.SetActive(false);
+                item3CDPanel.SetActive(false);
             }
             else
             {
                 theLevelType = levelType.normal;
                 //Need to randomize this in the future. !!!!
+                if(TimePeriod == timePeriod.None)
+                {
+                    TimePeriod = timePeriod.Prehistoric;
+                }
+                
+            }
+        }
+        else
+        {
+            theLevelType = levelType.normal;
+            //Need to randomize this in the future. !!!!
+            if (TimePeriod == timePeriod.None)
+            {
                 TimePeriod = timePeriod.Prehistoric;
             }
+            Debug.LogWarning("The tutorial_instance_debug is null!");
         }
       
 
@@ -274,6 +295,10 @@ public class Level_Manager : MonoBehaviour
 
     void setupItems()
     {
+        item1CDPanel.SetActive(false);
+        item2CDPanel.SetActive(false);
+        item3CDPanel.SetActive(false);
+
         //If player has items, populate them.
         if (Collect_Manager.instance.item1 >= 0)
         {
@@ -294,6 +319,14 @@ public class Level_Manager : MonoBehaviour
                     else
                     {
                         theItem.itemDuration = 0f;
+                    }
+                    if(item1.waveCooldown > 0)
+                    {
+                        theItem.waveCooldownTime = item1.waveCooldown;
+                    }
+                    else
+                    {
+                        theItem.waveCooldownTime = 0;
                     }
                     break;
                 }
@@ -325,6 +358,14 @@ public class Level_Manager : MonoBehaviour
                     {
                         theItem.itemDuration = 0f;
                     }
+                    if (item2.waveCooldown > 0)
+                    {
+                        theItem.waveCooldownTime = item2.waveCooldown;
+                    }
+                    else
+                    {
+                        theItem.waveCooldownTime = 0;
+                    }
                     break;
                 }
             }
@@ -354,6 +395,14 @@ public class Level_Manager : MonoBehaviour
                     else
                     {
                         theItem.itemDuration = 0f;
+                    }
+                    if (item3.waveCooldown > 0)
+                    {
+                        theItem.waveCooldownTime = item3.waveCooldown;
+                    }
+                    else
+                    {
+                        theItem.waveCooldownTime = 0;
                     }
                     break;
                 }
@@ -813,6 +862,7 @@ public class Level_Manager : MonoBehaviour
         //Since player took damage, destroy all.
 
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
+        GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
 
 
         Wave_Spawner.Instance.updateEnemiesLeft(obstacles.Length);
@@ -824,7 +874,13 @@ public class Level_Manager : MonoBehaviour
             //Destroy(obstacles[i]);
         }
 
-       
+        for (int j = 0; j < bullets.Length; j++)
+        {
+            Destroy(bullets[j]);
+            //Destroy(obstacles[j]);
+        }
+
+
         currentPlayerHealth -= 1;
 
 
@@ -936,7 +992,9 @@ public class Level_Manager : MonoBehaviour
 
     }
 
-   //Just setting the Item to not be null here so we know the player is using an Item.
+    //ITEM SCRIPTS
+
+    //Just setting the Item to not be null here so we know the player is using an Item.
     public void setCurrentItem(Collect_Manager.typeOfItem tempPowerUp , float duration)
     {
         //If the duration == 0 we know that this is a one time use.
@@ -951,6 +1009,7 @@ public class Level_Manager : MonoBehaviour
             useDuration = duration;
             StartCoroutine(durationCount());
         }
+
         Debug.Log("The current item being used is: " + tempPowerUp.ToString());
         currentItem = tempPowerUp;
         thePlayer.isPoweredUp = true;
@@ -960,6 +1019,27 @@ public class Level_Manager : MonoBehaviour
     public Collect_Manager.typeOfItem getCurrentItem()
     {
         return currentItem;
+    }
+
+    public void itemCDUpdate()
+    {
+        Item theItem1 = item1Holder.transform.GetChild(0).GetComponent<Item>();
+        if (theItem1.cooldownStatus())
+        {
+            theItem1.updateCDTime();
+        }
+
+        Item theItem2 = item2Holder.transform.GetChild(0).GetComponent<Item>();
+        if (theItem2.cooldownStatus())
+        {
+            theItem2.updateCDTime();
+        }
+
+        Item theItem3 = item3Holder.transform.GetChild(0).GetComponent<Item>();
+        if (theItem3.cooldownStatus())
+        {
+            theItem3.updateCDTime();
+        }
     }
 
     public IEnumerator durationCount()
@@ -974,6 +1054,8 @@ public class Level_Manager : MonoBehaviour
         useDurationText.text = "No item in use.";
         Debug.Log("Finished the duration count!");
     }
+
+    //ITEM SCRIPTS
 
     //Use this to force player into Idle for anything that we need to show the player. Gameplay buttons should be disabled elsewhere.
     public void ResetAnimator()

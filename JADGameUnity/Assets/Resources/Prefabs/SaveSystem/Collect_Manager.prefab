@@ -44,20 +44,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   totalCoins: 0
-  totalGems: 0
+  totalBolts: 0
   handWarmers: 0
   numDefrosters: 0
   numFireVests: 0
+  numLiquidNitrogenCanisters: 0
+  numNeutralTablets: 0
   item1: 0
   item2: 0
   item3: 0
+  highScore: 0
+  highestWave: 0
+  mostWavesSurvived: 0
+  totalWavesSurvived: 0
   currentSkin: 0
   skinsUnlocked: 
   skinsToPick:
   - {fileID: 11400000, guid: 6ee6a8ac49a944044b1460d6fb42e10f, type: 2}
   - {fileID: 11400000, guid: df4aab4fc64be3843978ce8994f6d691, type: 2}
-  - {fileID: 11400000, guid: 99ef4d33bc1289d46bd375c2117ab717, type: 2}
   itemsToPick:
   - {fileID: 11400000, guid: 1579c4150263260478bcd2a356961f0b, type: 2}
   - {fileID: 11400000, guid: 01447de20f5822e4da4867945763da96, type: 2}
   - {fileID: 11400000, guid: fa95c8b844b1cc04b842b0df322479d2, type: 2}
+  - {fileID: 11400000, guid: db7342969dcd39c41a39c26d584779fa, type: 2}
+  - {fileID: 11400000, guid: 7a7bbc00364d4554bb201158dc9facef, type: 2}

@@ -19,6 +19,7 @@ public class CollectableData
     public int numDefrosters;
     public int numFireVests;
     public int numLiquidNitrogenCanisters;
+    public int numNeutralTablets;
 
     //Loadout items that will correspond to enum in the Collect_Manager.
     public int item1;
@@ -49,6 +50,7 @@ public class CollectableData
         numDefrosters = Collect_Manager.instance.numDefrosters;
         numFireVests = Collect_Manager.instance.numFireVests;
         numLiquidNitrogenCanisters = Collect_Manager.instance.numLiquidNitrogenCanisters;
+        numNeutralTablets = Collect_Manager.instance.numNeutralTablets;
 
         currentSkin = Collect_Manager.instance.currentSkin;
 

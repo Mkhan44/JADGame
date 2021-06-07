@@ -178,10 +178,18 @@ public class Temperature_Manager : MonoBehaviour
 
     public IEnumerator decreaseIdle()
     {
-        Debug.Log("Decreasing the meter while player is idle");
+        //Debug.Log("Decreasing the meter while player is idle");
         while(Level_Manager.Instance.thePlayer.GetState() == Player.playerState.idle && Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal)
         {
-            currentMeterVal -= 0.2f;
+            if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.NeutralTablet)
+            {
+                currentMeterVal -= 1.0f;
+            }
+            else
+            {
+                currentMeterVal -= 0.2f;
+            }
+            
             if (currentMeterVal <= 0.0f)
             {
                 currentMeterVal = 0.0f;
