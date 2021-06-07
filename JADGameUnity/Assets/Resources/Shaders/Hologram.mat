@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Hologram
+  m_Shader: {fileID: -6465566751694194690, guid: b2aba13e107093847b2ce13718e0054c, type: 3}
+  m_ShaderKeywords: BOOLEAN_B173980E9E384798B4C564092BDAECC2_ON BOOLEAN_F66695283C6F4DE2B5B398A7BC65C208_ON
+    ETC1_EXTERNAL_ALPHA
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - Texture2D_34a838b8af4f4b0794f84e38fdc37807:
+        m_Texture: {fileID: 2800000, guid: 3f749523927de4d4babef21a853812c9, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _AlphaTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 2800000, guid: 3a445ef4231236648b5ff4ad0dd908e7, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MaskTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_Lightmaps:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_LightmapsInd:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - unity_ShadowMasks:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - BOOLEAN_B173980E9E384798B4C564092BDAECC2: 1
+    - BOOLEAN_F66695283C6F4DE2B5B398A7BC65C208: 1
+    - Boolean_a8bcf987543044a79b543e4014b60ec9: 0
+    - Vector1_81102240db974453a1e6023f57f6a66d: 0.5
+    - Vector1_baf058e9bc6f4dee9056f9931edc3df7: 0.05
+    - Vector1_dbd0a87c9d3a403e8160b2b322c52790: 0
+    - _EnableExternalAlpha: 0
+    m_Colors:
+    - Color_5259282cfa1a404c8a4f941808695754: {r: 0.28459975, g: 0.5795486, b: 0.98833734, a: 1}
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _Flip: {r: 1, g: 1, b: 1, a: 1}
+    - _RendererColor: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []

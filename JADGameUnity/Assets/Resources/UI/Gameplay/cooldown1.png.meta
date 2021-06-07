@@ -23,7 +23,7 @@ TextureImporter:
     externalNormalMap: 0
     heightScale: 0.25
     normalMapFilter: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -138,8 +138,8 @@ TextureImporter:
         width: 210
         height: 205
       alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 35, y: 31, z: 35, w: 30}
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 40, y: 35, z: 40, w: 35}
       outline: []
       physicsShape: []
       tessellationDetail: 0
