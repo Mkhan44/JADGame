@@ -128,6 +128,9 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             }
             else if(thisTab == WhichTabAreWeOn.Currency)
             {
+                //We need a way to tell it to add the purchase_button script and know which currency to purchase.
+
+                tempSpawn.SetActive(false);
                 tempGemImg.gameObject.SetActive(false);
                 tempCoinImg.gameObject.SetActive(false);
                 tempCoinCostText.gameObject.SetActive(false);
