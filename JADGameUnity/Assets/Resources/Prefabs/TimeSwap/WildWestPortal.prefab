@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 765161011247301976}
   - component: {fileID: 4236642348474493964}
   - component: {fileID: 3896542031738949500}
+  - component: {fileID: 8392050047558635114}
   m_Layer: 0
   m_Name: WildWestPortal
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
-  m_Color: {r: 0.8867924, g: 0.8146103, b: 0.18823427, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 744a0ef25fd812f43bd55b5a704416c4, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -96,8 +97,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  increaseRate: 0
+  maxSpeed: 0
   spawnPoint: 0
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 3
+  scoreValue: 0
   theEra: 3
+--- !u!95 &8392050047558635114
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509886699335351895}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 470dc6ba84d5f33488af70138afdf7c1, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

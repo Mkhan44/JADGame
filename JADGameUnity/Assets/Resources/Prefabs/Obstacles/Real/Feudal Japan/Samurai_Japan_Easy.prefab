@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Samurai_FeudalJapan_Easy
+  m_Name: Samurai_Japan_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55,7 +55,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35f395b2fa7748648867a029eb5b52f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
