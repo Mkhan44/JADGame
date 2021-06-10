@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
 {
     public int currentHealth;
     int maxHealth;
+    public Material outlineMaterialInstance;
 
     Vector2 initialPos;
 
@@ -49,7 +50,8 @@ public class Player : MonoBehaviour
         isPoweredUp = false;
         currentState = playerState.idle;
         initialPos = gameObject.transform.position;
-
+        outlineMaterialInstance = this.GetComponent<SpriteRenderer>().material;
+        outlineMaterialInstance.SetFloat("_OutlineThickness", 2.5f);
 
     }
     // Start is called before the first frame update

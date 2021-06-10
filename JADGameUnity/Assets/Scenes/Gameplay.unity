@@ -2166,7 +2166,7 @@ PrefabInstance:
       objectReference: {fileID: 1302531493}
     - target: {fileID: 2217944577348458810, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.5006714
+      value: 2.5007324
       objectReference: {fileID: 0}
     - target: {fileID: 2217944577370591970, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2204,9 +2204,13 @@ PrefabInstance:
       propertyPath: mainCam
       value: 
       objectReference: {fileID: 519420031}
+    - target: {fileID: 2217944578079776264, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.75
+      objectReference: {fileID: 0}
     - target: {fileID: 2217944578106424762, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 2.8446655
+      value: 2.8447266
       objectReference: {fileID: 0}
     - target: {fileID: 2217944578114439714, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_AnchorMax.x
@@ -2215,6 +2219,10 @@ PrefabInstance:
     - target: {fileID: 2217944578114439714, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2217944578327450728, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5.5499268
       objectReference: {fileID: 0}
     - target: {fileID: 2217944578791910107, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
@@ -2425,10 +2433,6 @@ PrefabInstance:
       value: 2.4
       objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300000, guid: 3f8c878fcf849e84391b064066c36666, type: 3}
-    - target: {fileID: 2754374759307534870, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
@@ -2460,6 +2464,10 @@ PrefabInstance:
       propertyPath: currentHealth
       value: 9
       objectReference: {fileID: 0}
+    - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
+      propertyPath: outlineMaterialInstance
+      value: 
+      objectReference: {fileID: 2100000, guid: 35f395b2fa7748648867a029eb5b52f3, type: 2}
     - target: {fileID: 2754374759307534875, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: m_Name
       value: Player

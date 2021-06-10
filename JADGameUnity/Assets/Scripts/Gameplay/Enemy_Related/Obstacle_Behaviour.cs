@@ -31,6 +31,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Tooltip("This will indicate when the obstacle is on the screen.")]
     protected bool onScreenIndicator;
+
+    [Tooltip("This is going to be an instance of the material for the outline that is created at runtime. We will use this to change outline shader on the fly.")]
+    protected Material outlineMat;
     public enum ElementType
     {
         neutral,
@@ -88,6 +91,26 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     // Start is called before the first frame update
     void Start()
     {
+        outlineMat = this.GetComponent<SpriteRenderer>().material;
+        if(outlineMat == null && thisType != typeOfObstacle.obstacle)
+        {
+            Debug.LogError("We can't find the material of this object!");
+        }
+
+        outlineMat.SetFloat("_OutlineThickness", 3f);
+
+        if (objectElement == ElementType.fire)
+        {
+           // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+            Color fireColor = new Color(212, 139, 57, 255);
+            outlineMat.SetColor("_OutlineColor", Color.red);
+        }
+        else if(objectElement == ElementType.ice)
+        {
+           // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+            Color iceColor = new Color(70, 219, 213, 255);
+            outlineMat.SetColor("_OutlineColor", Color.cyan);
+        }
         startPos = this.transform.position;
        
         endPos = new Vector2((startPos.x - 20), (startPos.y));
