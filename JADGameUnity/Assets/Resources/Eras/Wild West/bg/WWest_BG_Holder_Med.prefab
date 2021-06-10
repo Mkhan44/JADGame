@@ -14,12 +14,12 @@ GameObject:
   - component: {fileID: 3122449595091387032}
   - component: {fileID: 3122449595091387035}
   m_Layer: 0
-  m_Name: feudalsun
+  m_Name: wwestbgmountains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3122449595091387034
 Transform:
   m_ObjectHideFlags: 0
@@ -28,8 +28,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122449595091387013}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2255004, z: 0}
-  m_LocalScale: {x: 1.0178, y: 1.0178, z: 1.0178}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3122449596152611019}
   m_RootOrder: 4
@@ -73,8 +73,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: c76687a81027e7a4dacc79148ea071eb, type: 3}
+  m_SortingOrder: -9
+  m_Sprite: {fileID: 21300000, guid: 0623c1ad1e3c59540a437b8d35140da5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -221,7 +221,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -7
-  m_Sprite: {fileID: 21300000, guid: c789a0a14b767034ab5a66a0382a6633, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 60eacf5c276cd8849b2f52024a35277e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -308,12 +308,12 @@ GameObject:
   - component: {fileID: 3122449595817651256}
   - component: {fileID: 3122449595817651259}
   m_Layer: 0
-  m_Name: feudalcastle
+  m_Name: wwestcactus
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3122449595817651258
 Transform:
   m_ObjectHideFlags: 0
@@ -322,7 +322,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122449595817651237}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.09, y: 0.16, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3122449596152611019}
@@ -367,8 +367,8 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -8
-  m_Sprite: {fileID: 21300000, guid: b94984a9f23585d41bad580876acdb9b, type: 3}
+  m_SortingOrder: -3
+  m_Sprite: {fileID: 21300000, guid: 001c7606506dccd4e9b2c227dfbf6357, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -465,7 +465,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122449596152611018}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.4, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 3122449596525933796}
@@ -490,12 +490,12 @@ GameObject:
   - component: {fileID: 3122449596255746659}
   - component: {fileID: 3122449596255746658}
   m_Layer: 0
-  m_Name: feudalmountains
+  m_Name: wwestmountains
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3122449596255746669
 Transform:
   m_ObjectHideFlags: 0
@@ -504,7 +504,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122449596255746671}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.14, y: 0.109999955, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3122449596152611019}
@@ -550,7 +550,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -9
-  m_Sprite: {fileID: 21300000, guid: ec2aeb04ac803ae4aa9d8cbbae1c502b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 65bac9e4b3620564daceab3f5a1cd208, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -637,12 +637,12 @@ GameObject:
   - component: {fileID: 3122449596525933818}
   - component: {fileID: 3122449596525933797}
   m_Layer: 0
-  m_Name: feudalbgcolor
+  m_Name: wwestlbgcolor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &3122449596525933796
 Transform:
   m_ObjectHideFlags: 0
@@ -651,7 +651,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3122449596525933798}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.2699998, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 3122449596152611019}
@@ -697,8 +697,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: -10
-  m_Sprite: {fileID: 21300000, guid: 032b66b357537c04cb26a4cd377ab43b, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Sprite: {fileID: 21300000, guid: edd20e202d5a6bf4ba1f280a1b811d5d, type: 3}
+  m_Color: {r: 1, g: 0.7435665, b: 0.2688679, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
