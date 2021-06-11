@@ -88,6 +88,8 @@ public class Level_Manager : MonoBehaviour
     int waveBonus = 0;
     int finalCoins = 0;
 
+    bool isPaused;
+
 
     //CONSTANTS FOR ANIMATION!
     const string IsCrouching = "IsCrouching";
@@ -175,6 +177,8 @@ public class Level_Manager : MonoBehaviour
     public static Level_Manager Instance;
     private void Awake()
     {
+        isPaused = false;
+
         Instance = this;
         thePlayer = player.GetComponent<Player>();
         playerAnimator = player.GetComponent<Animator>();
@@ -292,6 +296,23 @@ public class Level_Manager : MonoBehaviour
      *  SETUP FUNCTIONS
      * 
      */
+
+    //DEBUG TAKE OUT LATER.
+
+    void pauseGame()
+    {
+        if(isPaused == true)
+        {
+            Time.timeScale = 1f;
+            isPaused = false;
+        }
+        else
+        {
+            isPaused = true;
+            Time.timeScale = 0f;
+        }
+       
+    }
 
     void setupItems()
     {
@@ -430,6 +451,10 @@ public class Level_Manager : MonoBehaviour
     {
         //Does stuff according to player's current state.
         checkState();
+        if (Input.GetKeyDown("space"))
+        {
+            pauseGame();
+        }
       //  coinText.text = "Coins: " + coinsCollected.ToString();
 
     }

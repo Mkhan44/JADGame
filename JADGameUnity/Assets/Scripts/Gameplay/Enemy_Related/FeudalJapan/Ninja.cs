@@ -31,10 +31,7 @@ public class Ninja : Obstacle_Behaviour
             maxNumTeleports = 2;
         }
     }
-    void Start()
-    {
-       // OnObjectSpawn();
-    }
+
     public override void OnObjectSpawn()
     {
         numTeleportsLeft = maxNumTeleports;
