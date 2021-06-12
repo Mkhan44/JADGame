@@ -52,7 +52,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 35f395b2fa7748648867a029eb5b52f3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -240,7 +240,6 @@ MonoBehaviour:
   sai1Collider: {fileID: 8160921082443146840}
   sai2Collider: {fileID: 4763884683996148514}
   despawnerCollider: {fileID: 0}
-  backSaiMat: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

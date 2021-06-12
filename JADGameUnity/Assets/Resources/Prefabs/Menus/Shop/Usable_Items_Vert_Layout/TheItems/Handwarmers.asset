@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
   m_Name: Handwarmers
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: fcd60abf734f17e49b991b36dec8537c, type: 3}
+  itemImage: {fileID: 21300000, guid: aba578b8d0999904d909e8aca956fb2f, type: 3}
   theName: Handwarmers
   description: Ice meter won't rise for 5 seconds!
   coinPrice: 100

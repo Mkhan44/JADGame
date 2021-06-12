@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
   m_Name: LiquidNitrogenCanister
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 1b9297c4e4d0bee4881944a8ac273e49, type: 3}
+  itemImage: {fileID: 21300042, guid: fe9aa33e50412c242bd73e9324bc7922, type: 3}
   theName: Liquid Nitrogen
   description: Instantly gets you out of "Burning" status!
   coinPrice: 100

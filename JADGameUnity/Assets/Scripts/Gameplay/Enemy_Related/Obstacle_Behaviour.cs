@@ -61,8 +61,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         timePortal
     }
 
-    [SerializeField] 
-    protected ElementType objectElement;
+    [SerializeField]
+    ElementType objectElement;
 
     public obstacleDiff thisObstacleDiff;
 

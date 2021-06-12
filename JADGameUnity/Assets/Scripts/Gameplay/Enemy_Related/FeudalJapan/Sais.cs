@@ -13,28 +13,10 @@ public class Sais : Obstacle_Behaviour
     //Back sai.
     [SerializeField] BoxCollider2D sai2Collider;
     [SerializeField] BoxCollider2D despawnerCollider;
-    [SerializeField] Material backSaiMat;
     bool gotCollider;
 
     protected override void Awake()
     {
-        backSaiMat = sai2Collider.gameObject.GetComponent<SpriteRenderer>().material;
-
-        backSaiMat.SetFloat("_OutlineThickness", 3f);
-
-        if (objectElement == ElementType.fire)
-        {
-            // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color fireColor = new Color(212, 139, 57, 255);
-            backSaiMat.SetColor("_OutlineColor", Color.red);
-        }
-        else if (objectElement == ElementType.ice)
-        {
-            // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color iceColor = new Color(70, 219, 213, 255);
-            backSaiMat.SetColor("_OutlineColor", Color.cyan);
-        }
-
         gotCollider = false;
         base.Awake();
     }
