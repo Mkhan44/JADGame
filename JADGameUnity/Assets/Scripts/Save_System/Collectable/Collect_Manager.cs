@@ -41,9 +41,9 @@ public class Collect_Manager : MonoBehaviour
     {
         guy1,
         dummy,
+        girlDefault,
         sonic,
-        mario,
-        snake
+        mario
     }
 
     [Header("Loadout")]
@@ -132,7 +132,7 @@ public class Collect_Manager : MonoBehaviour
             //Player will have default skin unlocked no matter what. That value = 0. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 1.
             skinsUnlocked.Add(0);
            // skinsUnlocked.Add(1);
-           // skinsUnlocked.Add(2);
+            skinsUnlocked.Add(2);
 
             //Default the loadout to -1's so we don't put any items in the loadout.
             item1 = -1;

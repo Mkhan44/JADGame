@@ -800,8 +800,10 @@ public class Wave_Spawner : MonoBehaviour
         Destroy(currentBG2);
         currentBG1 = null;
         currentBG2 = null;
-        currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
+        currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position , this.transform.rotation);
         currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
+        //DEBUG, GOTTA MAKE SURE THAT WE DON'T NEED THIS 0.2F INCREASE IN THE FUTURE!
+        currentBG1.transform.position = new Vector2(currentBG1.transform.position.x, currentBG1.transform.position.y + 0.2f);
         currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
     }
 
