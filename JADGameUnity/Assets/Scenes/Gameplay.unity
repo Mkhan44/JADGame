@@ -2945,7 +2945,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
   - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
   - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
-  tutorialMusic: {fileID: 8300000, guid: 7796b54b22f7f02439fc159ff0ec2b7c, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 6cb0928a40ef9c243b0c3df66794f6d7, type: 3}
   bonusSource: {fileID: 1053783709}
   easySource: {fileID: 661722298}
   mediumSource: {fileID: 110316524}

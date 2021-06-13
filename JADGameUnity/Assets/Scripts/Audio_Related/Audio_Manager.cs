@@ -173,14 +173,16 @@ public class Audio_Manager : MonoBehaviour
     IEnumerator fadeBetweenTimeswaps(AudioSource currentTrackToFade, float fadeInTargetVolume)
     {
         //Fade out current track.
+        
         while(currentTrackToFade.volume > 0)
         {
+            Debug.Log("During Timeswap loop: " + currentTrackToFade.volume + " = the volume of current track");
             if(currentTrackToFade.volume > 0)
             {
                 currentTrackToFade.volume -= 0.1f;
             }
 
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.2f);
         }
 
         yield return new WaitForSeconds(1.0f);

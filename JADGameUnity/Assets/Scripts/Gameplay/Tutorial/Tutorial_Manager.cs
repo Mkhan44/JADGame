@@ -171,6 +171,8 @@ public class Tutorial_Manager : MonoBehaviour
                         theItem.itemDuration = 0f;
                     }
 
+                    theItem.waveCooldownTime = 2;
+
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(true);
                     duckButtonBlocker.SetActive(true);
@@ -196,6 +198,8 @@ public class Tutorial_Manager : MonoBehaviour
                     {
                         theItem.itemDuration = 0f;
                     }
+
+                    theItem.waveCooldownTime = 3;
 
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(true);

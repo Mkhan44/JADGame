@@ -698,8 +698,6 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.setTimePeriod(tempTimePeriod);
         Object_Pooler.Instance.SetTimePeriodList(Level_Manager.Instance.getTimePeriod());
 
-        Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
-
         yield return new WaitForSeconds(0.1f);
         //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
         SetCurrentEnemies();
@@ -721,6 +719,7 @@ public class Wave_Spawner : MonoBehaviour
 
         //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
+        Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
         //Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
         setBGs(theWaveDiff);
 
