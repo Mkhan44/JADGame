@@ -2926,10 +2926,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
   - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
   feudalJapanMusic:
-  - {fileID: 8300000, guid: 5893d26e72ca73e429124e6c0305b31e, type: 3}
-  - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
-  - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
-  - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
+  - {fileID: 8300000, guid: 418b6c44df272dc4d90364f8b51c062a, type: 3}
+  - {fileID: 8300000, guid: c280665faa8ab6d4daa47c3c8f4166c9, type: 3}
+  - {fileID: 8300000, guid: 9905d1f3b66304f4bbd7c4c853b39f6b, type: 3}
+  - {fileID: 8300000, guid: 809503b80d49ff046ab6c68cfcf1fa63, type: 3}
   wildWestMusic:
   - {fileID: 8300000, guid: 5893d26e72ca73e429124e6c0305b31e, type: 3}
   - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
@@ -2945,7 +2945,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
   - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
   - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
-  tutorialMusic: {fileID: 8300000, guid: 5893d26e72ca73e429124e6c0305b31e, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 7796b54b22f7f02439fc159ff0ec2b7c, type: 3}
   bonusSource: {fileID: 1053783709}
   easySource: {fileID: 661722298}
   mediumSource: {fileID: 110316524}

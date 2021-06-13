@@ -177,8 +177,8 @@ public class Wave_Spawner : MonoBehaviour
         currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
 
 
-        Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
-        Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+     //   Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
+    //    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
 
     }
 
@@ -699,6 +699,7 @@ public class Wave_Spawner : MonoBehaviour
         Object_Pooler.Instance.SetTimePeriodList(Level_Manager.Instance.getTimePeriod());
 
         Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
+
         yield return new WaitForSeconds(0.1f);
         //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
         SetCurrentEnemies();
@@ -720,7 +721,7 @@ public class Wave_Spawner : MonoBehaviour
 
         //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
-        Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+        //Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
         setBGs(theWaveDiff);
 
 
@@ -816,7 +817,7 @@ public class Wave_Spawner : MonoBehaviour
         currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position , this.transform.rotation);
         currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
         //DEBUG, GOTTA MAKE SURE THAT WE DON'T NEED THIS 0.2F INCREASE IN THE FUTURE!
-        currentBG1.transform.position = new Vector2(currentBG1.transform.position.x, currentBG1.transform.position.y + 0.2f);
+        currentBG1.transform.position = new Vector2(currentBG1.transform.position.x, currentBG1.transform.position.y);
         currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
     }
 

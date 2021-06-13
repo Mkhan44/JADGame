@@ -35,6 +35,7 @@ public class Audio_Manager : MonoBehaviour
         if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.normal)
         {
             tutorialSource.gameObject.SetActive(false);
+            currentlyPlayingTrack = easySource;
         }
         else
         {
@@ -42,6 +43,8 @@ public class Audio_Manager : MonoBehaviour
             mediumSource.gameObject.SetActive(false);
             bonusSource.gameObject.SetActive(false);
             hardPauseSource.gameObject.SetActive(false);
+            currentlyPlayingTrack = tutorialSource;
+       
         }
 
         setMusicTracks(Level_Manager.Instance.getTimePeriod());
@@ -60,6 +63,22 @@ public class Audio_Manager : MonoBehaviour
                     hardPauseSource.clip = prehistoricMusic[3];
                     break;
                 }
+            case Level_Manager.timePeriod.FeudalJapan:
+                {
+                    bonusSource.clip = feudalJapanMusic[0];
+                    easySource.clip = feudalJapanMusic[1];
+                    mediumSource.clip = feudalJapanMusic[2];
+                    hardPauseSource.clip = feudalJapanMusic[3];
+                    break;
+                }
+            case Level_Manager.timePeriod.tutorial:
+                {
+                    tutorialSource.clip = tutorialMusic;
+                    tutorialSource.volume = 1f;
+                    tutorialSource.Play();
+                    return;
+                    break;
+                }
             default:
                 {
                     break;  
@@ -67,18 +86,20 @@ public class Audio_Manager : MonoBehaviour
         }
 
         //DEBUG.
-        easySource.volume = 1f;
+        
+        StartCoroutine(fadeBetweenTimeswaps(currentlyPlayingTrack, 1f));
+
+        /*
+        easySource.volume = 0f;
         mediumSource.volume = 0f;
         hardPauseSource.volume = 0f;
         bonusSource.volume = 0f;
-        currentlyPlayingTrack = easySource;
+        */
+        
 
         //Have coroutine fade out the current tracks and then play the new ones.
         //Fade out should probably be before the swap above.
-        bonusSource.Play();
-        easySource.Play();
-        mediumSource.Play();
-        hardPauseSource.Play();
+   
     }
 
     //Change the music based on the difficulty we are in. If it's a bonus/timeswap wave, use the Bonus music track.
@@ -149,12 +170,44 @@ public class Audio_Manager : MonoBehaviour
      
     }
 
+    IEnumerator fadeBetweenTimeswaps(AudioSource currentTrackToFade, float fadeInTargetVolume)
+    {
+        //Fade out current track.
+        while(currentTrackToFade.volume > 0)
+        {
+            if(currentTrackToFade.volume > 0)
+            {
+                currentTrackToFade.volume -= 0.1f;
+            }
+
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        yield return new WaitForSeconds(1.0f);
+
+        bonusSource.Play();
+        easySource.Play();
+        mediumSource.Play();
+        hardPauseSource.Play();
+
+        //Fade in new track.
+        while (easySource.volume < fadeInTargetVolume)
+        {
+            easySource.volume += 0.1f;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+        currentlyPlayingTrack = easySource;
+        yield return null;
+    }
     IEnumerator fadeBetweenDifficultyTracks(AudioSource currentTrackToFadeOut, AudioSource nextTrackToFadeIn, float fadeInTargetVolume)
     {
-        Debug.Log("BEFORE LOOP: " + currentlyPlayingTrack.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
+        currentlyPlayingTrack = nextTrackToFadeIn;
+
+        Debug.Log("BEFORE LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
         while(currentTrackToFadeOut.volume > 0 && nextTrackToFadeIn.volume < fadeInTargetVolume)
         {
-            Debug.Log("DURING LOOP: " + currentlyPlayingTrack.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
+            Debug.Log("DURING LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
             //Failsafe for if one is completed and the other is not.
             if (currentTrackToFadeOut.volume > 0)
             {
@@ -171,10 +224,11 @@ public class Audio_Manager : MonoBehaviour
         }
 
         //Ensure that they are at the proper settings.
+        Debug.Log("The current track we are fading out is: " + currentTrackToFadeOut.clip.name + " And the next track is: " + nextTrackToFadeIn.clip.name);
         currentTrackToFadeOut.volume = 0f;
         nextTrackToFadeIn.volume = fadeInTargetVolume;
 
-        currentlyPlayingTrack = nextTrackToFadeIn;
+        //currentlyPlayingTrack = nextTrackToFadeIn;
         yield return null;
     }
 
