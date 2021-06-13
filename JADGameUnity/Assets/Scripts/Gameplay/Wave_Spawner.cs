@@ -137,7 +137,8 @@ public class Wave_Spawner : MonoBehaviour
 
         List<GameObject> BGsToLoad = prehistoricBackgrounds;
         //Setup the BGs, this will be based on the era from LevelManager!
-        switch(Level_Manager.Instance.TimePeriod)
+        //Will also setup music tracks here.
+        switch(Level_Manager.Instance.getTimePeriod())
         {
             case Level_Manager.timePeriod.Prehistoric:
                 {
@@ -175,6 +176,9 @@ public class Wave_Spawner : MonoBehaviour
         currentBG2 = Instantiate(BGsToLoad[0]);
         currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
 
+
+        Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
+        Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
 
     }
 
@@ -256,6 +260,7 @@ public class Wave_Spawner : MonoBehaviour
             {
                 theWaveDiff = waveDiff.medium;
                 setBGs(theWaveDiff);
+                Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
             if (wavesSinceDifficultyChange == 3)
@@ -263,6 +268,7 @@ public class Wave_Spawner : MonoBehaviour
             {
                 theWaveDiff = waveDiff.hardPause;
                 setBGs(theWaveDiff);
+                Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
 
@@ -421,7 +427,7 @@ public class Wave_Spawner : MonoBehaviour
 
             while(enemiesLeft > 0)
             {
-                Debug.Log("There's still an enemy on screen!");
+                //Debug.Log("There's still an enemy on screen!");
                 yield return null;
             }
             //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
@@ -498,6 +504,7 @@ public class Wave_Spawner : MonoBehaviour
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
                     wavesSinceBonus = 0;
                     waveType = typeOfWave.bonus;
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
                 }
 
             }
@@ -522,6 +529,7 @@ public class Wave_Spawner : MonoBehaviour
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
                     wavesSinceTimeSwap = 0;
                     waveType = typeOfWave.timeSwap;
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
                 }
 
             }
@@ -535,7 +543,7 @@ public class Wave_Spawner : MonoBehaviour
             yield return new WaitForSeconds(timeBetweenWaves);
         }
 
-        Debug.Log("The wave is complete, new wave type is: " + waveType.ToString());
+       // Debug.Log("The wave is complete, new wave type is: " + waveType.ToString());
 
         waveComplete = true;
     }
@@ -641,6 +649,8 @@ public class Wave_Spawner : MonoBehaviour
         specialWaveOn = false;
         Level_Manager.Instance.setChestSelect(0);
 
+
+        Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
         waveComplete = true;
 
 
@@ -687,6 +697,8 @@ public class Wave_Spawner : MonoBehaviour
 
         Level_Manager.Instance.setTimePeriod(tempTimePeriod);
         Object_Pooler.Instance.SetTimePeriodList(Level_Manager.Instance.getTimePeriod());
+
+        Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
         yield return new WaitForSeconds(0.1f);
         //After swapping time periods, we'll swap the currently used list in ObjectPooler thus affecting the list here.
         SetCurrentEnemies();
@@ -708,6 +720,7 @@ public class Wave_Spawner : MonoBehaviour
 
         //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
+        Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
         setBGs(theWaveDiff);
 
 

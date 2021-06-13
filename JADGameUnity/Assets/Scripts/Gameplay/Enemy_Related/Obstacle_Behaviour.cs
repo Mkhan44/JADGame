@@ -242,7 +242,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             if(collision.gameObject.tag == "On_screen_Vicinity_Collider")
             {
                 onScreenIndicator = true;
-                Debug.Log(gameObject.name + " Is now on screen!");
+                //Debug.Log(gameObject.name + " Is now on screen!");
             }
 
             //In here we will make whatever arrow it is highlighted and then begin the coroutine to fade it out.

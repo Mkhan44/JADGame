@@ -103,7 +103,7 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
                         if(Level_Manager.Instance.duckButton.interactable != false && Level_Manager.Instance.duckButton.enabled != false && checkState != Player.playerState.jumping && checkState != Player.playerState.hanging)
                         {
                             Level_Manager.Instance.duck();
-                            Debug.Log("Duck button was pressed!");
+                            //Debug.Log("Duck button was pressed!");
                         }
                         break;
 
