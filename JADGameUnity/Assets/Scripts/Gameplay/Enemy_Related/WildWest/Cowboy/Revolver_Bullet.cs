@@ -179,7 +179,7 @@ public class Revolver_Bullet : MonoBehaviour
 
         if (collision.gameObject.tag == "Player")
         {
-            Wave_Spawner.Instance.updateEnemiesLeft(1);
+            //Wave_Spawner.Instance.updateEnemiesLeft(1);
             Level_Manager.Instance.increaseEnemiesDodged();
             Level_Manager.Instance.Damage();
             Object_Pooler.Instance.AddToPool(cowboyParent.gameObject);

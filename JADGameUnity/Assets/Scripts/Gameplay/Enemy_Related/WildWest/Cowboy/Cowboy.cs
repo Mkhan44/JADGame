@@ -87,11 +87,16 @@ public class Cowboy : Obstacle_Behaviour
         //1 or 2.
         int randNum = Random.Range(1, 3);
 
+        //Duration of the animation.
+        float animDuration = 0;
+
         yield return new WaitForSeconds(2f);
 
+        
         //Shoot up.
         if(randNum == 1)
         {
+            
             cowboyAnimator.SetInteger(ShootDirection, 1);
 
             while (!animDone)
@@ -123,7 +128,7 @@ public class Cowboy : Obstacle_Behaviour
                     yield return new WaitForSeconds(0.2f);
                     animDone = true;
                     cowboyAnimator.SetInteger(ShootDirection, 3);
-                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.transform);
+                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.gameObject.transform);
                     tempBullet.transform.parent = null;
 
                     //Change the speed based on difficulty!
@@ -233,7 +238,6 @@ public class Cowboy : Obstacle_Behaviour
 
     void flipSprite()
     {
-        //Flip updside down.
         if (!isFlipped)
         {
             Vector3 rot = this.transform.rotation.eulerAngles;
@@ -241,7 +245,6 @@ public class Cowboy : Obstacle_Behaviour
             this.transform.rotation = Quaternion.Euler(rot);
             isFlipped = true;
         }
-        //Flip right side up.
         else
         {
             Vector3 rot = this.transform.rotation.eulerAngles;

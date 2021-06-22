@@ -120,6 +120,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     //'start' method whenever this is reused via Pooling.
     public virtual void OnObjectSpawn()
     {
+        speed = 0f;
         inPlayerVicinity = false;
         onScreenIndicator = false;
         speed = ogSpeed;
