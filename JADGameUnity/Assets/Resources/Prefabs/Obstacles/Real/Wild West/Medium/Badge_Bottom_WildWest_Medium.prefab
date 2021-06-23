@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: -8258185522588736221}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Badge_WildWest_Medium
+  m_Name: Badge_Bottom_WildWest_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -103,7 +103,7 @@ MonoBehaviour:
   maxSpeed: 5
   spawnPoint: 1
   objectElement: 1
-  thisObstacleDiff: 0
+  thisObstacleDiff: 1
   thisType: 0
   scoreValue: 200
   theEra: 0

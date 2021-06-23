@@ -1,62 +1,5 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &779514613802933597
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 6376858697161159568}
-  - component: {fileID: 9108902030229743994}
-  m_Layer: 6
-  m_Name: Bullet_Spawn
-  m_TagString: Untagged
-  m_Icon: {fileID: 3936346786652291628, guid: 0000000000000000d000000000000000, type: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &6376858697161159568
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779514613802933597}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 2171952644357041671}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &9108902030229743994
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 779514613802933597}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: -0.3811183, y: 0.023617126}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.3227092, y: 0.4675967}
-  m_EdgeRadius: 0
 --- !u!1 &4158279202637467101
 GameObject:
   m_ObjectHideFlags: 0
@@ -67,13 +10,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2171952644357041671}
   - component: {fileID: 4259822024414378004}
-  - component: {fileID: 4523059582098304586}
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Shotgun_WildWest_Easy
-  m_TagString: Obstacle
+  m_Name: ShotgunShellBigHard
+  m_TagString: Bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -87,9 +29,8 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.7, y: 0.7, z: 0.7}
-  m_Children:
-  - {fileID: 6376858697161159568}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -133,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cefd9096504aaf844a87bc86a0d5b59f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 140ee48190d0a0341ab2805694027282, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -144,40 +85,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &4523059582098304586
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4158279202637467101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1eb8b5fb698340647ba3f883203d121d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speed: 0
-  increaseRate: 2
-  maxSpeed: 2
-  spawnPoint: 0
-  objectElement: 0
-  thisObstacleDiff: 0
-  thisType: 0
-  scoreValue: 100
-  theEra: 0
-  shotgunAnimator: {fileID: 5857835583463249108}
-  shotgunShellPrefab: {fileID: 4158279202637467101, guid: 60c2b0d719131c84ba8a6e1f499b35e4, type: 3}
-  shellCollider: {fileID: 9108902030229743994}
-  shotgunShellInstance: {fileID: 0}
-  bigShellRigid: {fileID: 0}
-  smallShellPrefab: {fileID: 4158279202637467101, guid: 554a6b831f509d2459cf379835b7d7e0, type: 3}
-  smallShellCollider1: {fileID: 0}
-  smallShellRigid1: {fileID: 0}
-  smallShellCollider2: {fileID: 0}
-  smallShellRigid2: {fileID: 0}
-  isFlipped: 0
-  horizontalBulletSpeed: 0
-  verticalBulletSpeed: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -191,18 +98,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.38012025, y: 0.024271846}
+  m_Offset: {x: -0.25308484, y: -0.025341064}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 3.35, y: 1.8}
+    oldSize: {x: 1.55, y: 0.75}
     newSize: {x: 0.36, y: 0.28}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.7581404, y: 1.6545417}
+  m_Size: {x: 0.5567684, y: 0.21824768}
   m_EdgeRadius: 0
 --- !u!50 &8632900936152516657
 Rigidbody2D:
@@ -235,7 +142,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 918e097b8018fd744ba0925487faf97f, type: 2}
+  m_Controller: {fileID: 22100000, guid: 8b0e79a06a7416049af5b7ea009a1c00, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

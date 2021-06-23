@@ -161,7 +161,7 @@ MonoBehaviour:
   maxSpeed: 2
   spawnPoint: 1
   objectElement: 1
-  thisObstacleDiff: 0
+  thisObstacleDiff: 2
   thisType: 0
   scoreValue: 300
   theEra: 0

@@ -72,7 +72,7 @@ GameObject:
   - component: {fileID: 8632900936152516657}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Shotgun_WildWest_Easy
+  m_Name: Shotgun_WildWest_Hard
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: cefd9096504aaf844a87bc86a0d5b59f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 736562c7b10c5f041b0f222f69644a97, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -161,16 +161,16 @@ MonoBehaviour:
   maxSpeed: 2
   spawnPoint: 0
   objectElement: 0
-  thisObstacleDiff: 0
+  thisObstacleDiff: 2
   thisType: 0
-  scoreValue: 100
+  scoreValue: 300
   theEra: 0
   shotgunAnimator: {fileID: 5857835583463249108}
-  shotgunShellPrefab: {fileID: 4158279202637467101, guid: 60c2b0d719131c84ba8a6e1f499b35e4, type: 3}
+  shotgunShellPrefab: {fileID: 4158279202637467101, guid: 9466218921a21d044869b538fce2fd86, type: 3}
   shellCollider: {fileID: 9108902030229743994}
   shotgunShellInstance: {fileID: 0}
   bigShellRigid: {fileID: 0}
-  smallShellPrefab: {fileID: 4158279202637467101, guid: 554a6b831f509d2459cf379835b7d7e0, type: 3}
+  smallShellPrefab: {fileID: 4158279202637467101, guid: d0308de43ab07bc488f0ee886f760534, type: 3}
   smallShellCollider1: {fileID: 0}
   smallShellRigid1: {fileID: 0}
   smallShellCollider2: {fileID: 0}
@@ -235,7 +235,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 918e097b8018fd744ba0925487faf97f, type: 2}
+  m_Controller: {fileID: 22100000, guid: 0997193391c3755438aff009882504c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
