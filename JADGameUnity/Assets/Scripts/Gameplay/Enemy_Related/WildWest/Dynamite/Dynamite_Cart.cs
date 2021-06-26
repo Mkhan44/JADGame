@@ -8,6 +8,18 @@ using UnityEngine;
 using Random = UnityEngine.Random;
 public class Dynamite_Cart : Obstacle_Behaviour
 {
+    [SerializeField] GameObject explosionParticlePrefab;
+    [SerializeField] GameObject boomParticlePrefab;
+    [SerializeField] GameObject bangParticlePrefab;
+
+    GameObject currentComicEffectParticleInstance;
+    GameObject currentParticleInstance;
+    [SerializeField] Animator dynaAnimator;
+
+    const string dynamitefadeName = "dynamitefade";
+    const string dynamiteidleName = "dynamiteidle";
+    const string dynaBool = "Explode";
+
     protected override void Awake()
     {
         base.Awake();
@@ -43,6 +55,9 @@ public class Dynamite_Cart : Obstacle_Behaviour
     public override void OnObjectSpawn()
     {
         base.OnObjectSpawn();
+        Destroy(currentParticleInstance);
+        Destroy(currentComicEffectParticleInstance);
+        dynaAnimator.SetBool(dynaBool, false);
     }
 
     protected override void Movement()
@@ -61,6 +76,43 @@ public class Dynamite_Cart : Obstacle_Behaviour
         base.OnCollisionEnter2D(collision);
     }
 
+    IEnumerator explosionAni()
+    {
+        AnimationClip dynaClip;
+
+        dynaClip = dynaAnimator.runtimeAnimatorController.animationClips[0];
+
+        float aniTime = dynaClip.length;
+
+
+        dynaAnimator.SetBool(dynaBool, true);
+
+       // yield return new WaitForSeconds(aniTime - 0.1f);
+
+        //Vector2 particlePos = new Vector2(dynaAnimator.gameObject.transform.position.x, dynaAnimator.gameObject.transform.position.y + 0.2f);
+        Vector2 particlePos = new Vector2(dynaAnimator.gameObject.transform.position.x, dynaAnimator.gameObject.transform.position.y + 0.35f);
+
+        Vector2 particlePosComic = new Vector2(dynaAnimator.gameObject.transform.position.x, dynaAnimator.gameObject.transform.position.y + 0.25f);
+
+        currentParticleInstance = Instantiate(explosionParticlePrefab, particlePos, this.transform.rotation);
+        currentParticleInstance.transform.SetParent(gameObject.transform, true);
+        currentParticleInstance.transform.SetSiblingIndex(0);
+
+        {
+            currentComicEffectParticleInstance = Instantiate(boomParticlePrefab, particlePos, this.transform.rotation);
+            currentComicEffectParticleInstance.transform.SetParent(gameObject.transform, true);
+            currentComicEffectParticleInstance.transform.SetSiblingIndex(0);
+        }
+
+
+
+        yield return new WaitForSeconds(1.0f);
+
+        
+
+        yield return null;
+    }
+
     protected override void OnTriggerEnter2D(Collider2D collision)
     {
         if (thisType == typeOfObstacle.obstacle)
@@ -69,9 +121,12 @@ public class Dynamite_Cart : Obstacle_Behaviour
             {
                 int randNum = Random.Range(0, 2);
 
+                //TEST
+                randNum = 0;
                 if(randNum == 0)
                 {
                     Debug.Log("Explode!");
+                    StartCoroutine(explosionAni());
                 }
                 else
                 {
