@@ -256,14 +256,14 @@ public class Wave_Spawner : MonoBehaviour
             //Test values for changing difficulty. Will need some formula later on.
             //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!
-            if (wavesSinceDifficultyChange == 2)
+            if (wavesSinceDifficultyChange == 4)
             {
                 theWaveDiff = waveDiff.medium;
                 setBGs(theWaveDiff);
                 Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            if (wavesSinceDifficultyChange == 3)
+            if (wavesSinceDifficultyChange == 5)
             //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
@@ -477,9 +477,20 @@ public class Wave_Spawner : MonoBehaviour
                         random2 += 1;
                     }
                 }
-                //Debug for prehistoric & feudal.
-                random1 = 1;
-                random2 = 3;
+                //Debug for testing purposes.
+                if(random1 == 2 || random1 == 4)
+                {
+                    random1 = 1;
+                    random2 = 0;
+                }
+                else if(random2 == 2 || random2 == 4)
+                {
+                    random1 = 1;
+                    random2 = 0;
+                }
+                //Debug for testing purposes.
+                //random1 = 1;
+                //random2 = 3;
                 timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2));
             }
             

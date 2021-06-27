@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 3.7
   spawnPoint: 1
   objectElement: 2
   thisObstacleDiff: 0

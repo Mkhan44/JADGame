@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3556317153881099313}
   - component: {fileID: 6940091093071475573}
+  - component: {fileID: 4457354529941002274}
   m_Layer: 0
   m_Name: Dynamite_Hard
   m_TagString: Untagged
@@ -82,6 +83,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &4457354529941002274
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3379836060723523969}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 22100000, guid: f8cccd2e4db33fa4f9482893a847b8fa, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4158279202637467101
 GameObject:
   m_ObjectHideFlags: 0
@@ -92,7 +112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2171952644357041671}
   - component: {fileID: 4259822024414378004}
-  - component: {fileID: 8617969083274795738}
+  - component: {fileID: 4617552200718853952}
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 1677953187544278703}
   - component: {fileID: 5857835583463249108}
@@ -112,7 +132,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.6, y: 0.6, z: 0.6}
+  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
   m_Children:
   - {fileID: 3556317153881099313}
   m_Father: {fileID: 0}
@@ -169,7 +189,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &8617969083274795738
+--- !u!114 &4617552200718853952
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -178,18 +198,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2af219c0450362942a6286a7c0758384, type: 3}
+  m_Script: {fileID: 11500000, guid: 3903d92a3401bc240b942da46b0d2e3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 4.5
   spawnPoint: 1
-  objectElement: 2
+  objectElement: 1
   thisObstacleDiff: 2
   thisType: 0
   scoreValue: 300
   theEra: 0
+  explosionParticlePrefab: {fileID: 7756195258975480725, guid: fbc0a3a4c5970624ba396b357b23ffd0, type: 3}
+  boomParticlePrefab: {fileID: 3126646067317863400, guid: 4aee42b607e7c784c8d1b000e845cb35, type: 3}
+  bangParticlePrefab: {fileID: 3126646067317863400, guid: 70de7f6981506c3409f6994a463c1ed0, type: 3}
+  dynaAnimator: {fileID: 4457354529941002274}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

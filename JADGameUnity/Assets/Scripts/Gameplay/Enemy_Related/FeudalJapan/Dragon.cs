@@ -22,6 +22,11 @@ public class Dragon : Obstacle_Behaviour
         base.Awake();
     }
 
+    private void Start()
+    {
+        
+    }
+
     public override void OnObjectSpawn()
     {
         this.transform.position = new Vector2(this.transform.position.x + 2, this.transform.position.y);
@@ -31,11 +36,15 @@ public class Dragon : Obstacle_Behaviour
             despawnerCollider = GameObject.Find("Despawner").GetComponent<BoxCollider2D>();
             indicatorCollider = GameObject.Find("Indicator_Vicinity_Collider").GetComponent<BoxCollider2D>();
             playerCollider = GameObject.Find("Player").GetComponent<BoxCollider2D>();
-            Physics2D.IgnoreCollision(endCollision, playerCollider);
-            Physics2D.IgnoreCollision(endCollision, indicatorCollider);
-            Physics2D.IgnoreCollision(ogCollider, despawnerCollider);
+            //Physics2D.IgnoreCollision(endCollision, playerCollider);
+           // Physics2D.IgnoreCollision(endCollision, indicatorCollider);
+           // Physics2D.IgnoreCollision(ogCollider, despawnerCollider);
             gotCollider = true;
         }
+
+        Physics2D.IgnoreCollision(endCollision, playerCollider);
+        Physics2D.IgnoreCollision(endCollision, indicatorCollider);
+        Physics2D.IgnoreCollision(ogCollider, despawnerCollider);
         base.OnObjectSpawn();
     }
 
