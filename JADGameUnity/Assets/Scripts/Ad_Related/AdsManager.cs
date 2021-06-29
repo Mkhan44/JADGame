@@ -7,8 +7,8 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
     private string noAdsKey = "noAdsKey";
     public int adsPurchasedCheck;
 
-    private string playStoreID = "3633238";
-    private string appStoreID = "3633239";
+    private string playStoreID = "3985667";
+    private string appStoreID = "3985666";
 
     private string interstitialAd = "video";
     private string rewardedVideoAd = "rewardedVideo";
@@ -23,9 +23,6 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
     float globalVolumePref;
     float MusicVolumePref;
     float SFXVolumePref;
-
-    string numHintsKey = "remainingHints";
-    int numHintsLeft;
 
 
     public static AdsManager instance;
@@ -43,9 +40,6 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
                 return;
             }
             DontDestroyOnLoad(this);
-       
-      
-           
 
     }
     void Start()
@@ -87,7 +81,7 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
 
     public void playRewardedVideoAd()
     {
-        numHintsLeft = PlayerPrefs.GetInt(numHintsKey);
+      //  numHintsLeft = PlayerPrefs.GetInt(numHintsKey);
         if (!Advertisement.IsReady(rewardedVideoAd))
         {
 
@@ -123,8 +117,16 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
                     if(placementId == rewardedVideoAd)
                     {
                         Debug.Log("Rewarded video!");
-                        
-                        PlayerPrefs.SetInt(numHintsKey, (numHintsLeft + 1));
+                        //Let player respawn during gameplay.
+                        if (Level_Manager.Instance != null)
+                        {
+                            Level_Manager.Instance.respawnPlayer();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Hey, the level manager instance is null!!! Are we in gameplay mode?");
+                        }
+                       
                     }
                     else if(placementId == interstitialAd)
                     {
@@ -134,14 +136,22 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
                 }
         }
 
-        globalVolumePref = PlayerPrefs.GetFloat(globalVolumeKey);
-        EazySoundManager.GlobalVolume = globalVolumePref;
+        if(Audio_Manager.Instance != null)
+        {
+            Audio_Manager.Instance.unmuteCurrentTrack();
+        }
+
+        //globalVolumePref = PlayerPrefs.GetFloat(globalVolumeKey);
+        //     EazySoundManager.GlobalVolume = globalVolumePref;
     }
 
     public void OnUnityAdsDidStart(string placementId)
     {
-     //   throw new System.NotImplementedException();
-        EazySoundManager.GlobalVolume = 0f;
+        //   throw new System.NotImplementedException();
+        if (Audio_Manager.Instance != null)
+        {
+            Audio_Manager.Instance.muteCurrentTrack();
+        }
     }
 
     public void OnUnityAdsReady(string placementId)

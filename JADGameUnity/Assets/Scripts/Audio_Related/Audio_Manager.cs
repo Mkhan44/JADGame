@@ -247,4 +247,14 @@ public class Audio_Manager : MonoBehaviour
     {
         
     }
+
+    public void muteCurrentTrack()
+    {
+        currentlyPlayingTrack.volume = 0f;
+    }
+
+    public void unmuteCurrentTrack()
+    {
+        currentlyPlayingTrack.volume = 1f;
+    }
 }

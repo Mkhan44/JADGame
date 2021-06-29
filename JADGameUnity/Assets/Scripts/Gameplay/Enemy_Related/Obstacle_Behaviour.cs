@@ -34,6 +34,11 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Tooltip("This is going to be an instance of the material for the outline that is created at runtime. We will use this to change outline shader on the fly.")]
     protected Material outlineMat;
+
+    [Tooltip("If there is a hitbox we don't want to count when despawning the object, assign it here.")]
+    [SerializeField] protected BoxCollider2D extraCollider;
+
+    private BoxCollider2D theDespawnerCollider;
     public enum ElementType
     {
         neutral,
@@ -91,6 +96,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     // Start is called before the first frame update
     void Start()
     {
+    
+
         outlineMat = this.GetComponent<SpriteRenderer>().material;
         if(outlineMat == null && thisType != typeOfObstacle.obstacle)
         {
@@ -126,6 +133,12 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         speed = ogSpeed;
         startPos = this.transform.position;
         endPos = new Vector2((startPos.x - 20), (startPos.y));
+
+        if(extraCollider != null)
+        {
+            theDespawnerCollider = GameObject.Find("Despawner").GetComponent<BoxCollider2D>();
+            Physics2D.IgnoreCollision(extraCollider, theDespawnerCollider);
+        }
        // Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
   

@@ -26,9 +26,16 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
 
     Coroutine heldRoutine;
 
+    public Sprite disabledImg;
+    public Sprite pressedImg;
+
+    public SpriteState theSpriteState;
+
     // Start is called before the first frame update
     void Start()
     {
+        theSpriteState = this.GetComponent<Button>().spriteState;
+
         timeHeld = 0f;
         isHeld = false;
         switch (typeOfButton)

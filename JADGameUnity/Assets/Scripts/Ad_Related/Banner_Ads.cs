@@ -7,8 +7,8 @@ using Hellmade.Sound;
 public class Banner_Ads : MonoBehaviour
 {
 
-    private string playStoreID = "3633238";
-    private string appStoreID = "3633239";
+    private string playStoreID = "3985667";
+    private string appStoreID = "3985666";
     private string theID;
 
     private string banner = "Banner";
@@ -48,14 +48,7 @@ public class Banner_Ads : MonoBehaviour
             yield return null;
         }
 
-        if(adsPurchasedCheck == 0)
-        {
-            Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
-            Advertisement.Banner.Show(banner);
-        }
-       
-
-        
+        hideBanner();
     }
 
     public void hideBanner()

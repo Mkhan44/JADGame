@@ -462,7 +462,13 @@ public class Level_Manager : MonoBehaviour
     //Jump.
     public void Jump()
     {
-        if(theLevelType == levelType.tutorial)
+        duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.disabledImg;
+        jumpButtonInteract.theSpriteState.disabledSprite = jumpButtonInteract.pressedImg;
+
+        duckButton.spriteState = duckButtonInteract.theSpriteState;
+        jumpButton.spriteState = jumpButtonInteract.theSpriteState;
+
+        if (theLevelType == levelType.tutorial)
         {
             if(Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.jumpButton)
             {
@@ -508,6 +514,12 @@ public class Level_Manager : MonoBehaviour
    
     public void duck()
     {
+        duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.pressedImg;
+        jumpButtonInteract.theSpriteState.disabledSprite = jumpButtonInteract.disabledImg;
+
+        duckButton.spriteState = duckButtonInteract.theSpriteState;
+        jumpButton.spriteState = jumpButtonInteract.theSpriteState;
+
         if (theLevelType == levelType.tutorial)
         {
             if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.duckButton)
@@ -689,10 +701,16 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.burning:
                     {
-                       // Debug.Log("Player is burning!");
+                     
+                        // Debug.Log("Player is burning!");
                         //Only call this once.
-                        if(heatMeter.getMeterVal() == 100f)
+                        if (heatMeter.getMeterVal() == 100f)
                         {
+                            duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.disabledImg;
+                            jumpButtonInteract.theSpriteState.disabledSprite = jumpButtonInteract.disabledImg;
+                            duckButton.spriteState = duckButtonInteract.theSpriteState;
+                            jumpButton.spriteState = jumpButtonInteract.theSpriteState;
+
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(burningJumpWait());
                             if (theLevelType == levelType.tutorial)
@@ -733,11 +751,16 @@ public class Level_Manager : MonoBehaviour
                     }
                 case Player.playerState.frozen:
                     {
-
-                       // Debug.Log("Player is frozen!");
+                       
+                        // Debug.Log("Player is frozen!");
                         //Only call this once.
                         if (iceMeter.getMeterVal() == 100f)
                         {
+                            duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.disabledImg;
+                            jumpButtonInteract.theSpriteState.disabledSprite = jumpButtonInteract.disabledImg;
+                            duckButton.spriteState = duckButtonInteract.theSpriteState;
+                            jumpButton.spriteState = jumpButtonInteract.theSpriteState;
+
                             frozenDuck();
                             heatUpButton.gameObject.SetActive(true);
                             if (theLevelType == levelType.tutorial)
@@ -772,7 +795,6 @@ public class Level_Manager : MonoBehaviour
                     //Idle state.
                 default:
                     {
-
                         thePlayer.setState(Player.playerState.idle);
                         if (decreaseHeatIdleRoutine == null && decreaseIceIdleRoutine == null)
                         {
@@ -783,6 +805,11 @@ public class Level_Manager : MonoBehaviour
                         coolDownButton.gameObject.SetActive(false);
                         if (onGround)
                         {
+                            duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.pressedImg;
+                            jumpButtonInteract.theSpriteState.disabledSprite = jumpButtonInteract.pressedImg;
+                            duckButton.spriteState = duckButtonInteract.theSpriteState;
+                            jumpButton.spriteState = jumpButtonInteract.theSpriteState;
+
                             playerAnimator.SetBool(IsGrounded, true);
                             playerAnimator.SetBool(IsJumping, false);
                             playerAnimator.SetBool(IsFalling, false);
@@ -1145,6 +1172,19 @@ public class Level_Manager : MonoBehaviour
         {
             gameOverAdP.SetActive(false);
             gameOverTally();
+        }
+    }
+
+    public void playRespawnVid()
+    {
+        if(AdsManager.instance != null)
+        {
+            AdsManager.instance.playRewardedVideoAd();
+
+        }
+        else
+        {
+            Debug.LogWarning("Hey, the adsManager instance is null!");
         }
     }
 
@@ -1718,6 +1758,14 @@ public class Level_Manager : MonoBehaviour
         {
             Collect_Manager.instance.highScore = currentScore;
             Debug.Log("You got a new high score!");
+        }
+    }
+
+    void playRespawnAd()
+    {
+        if (AdsManager.instance != null)
+        {
+            AdsManager.instance.playRewardedVideoAd();
         }
     }
 

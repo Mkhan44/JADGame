@@ -103,6 +103,7 @@ MonoBehaviour:
   increaseRate: 5
   maxSpeed: 5.2
   spawnPoint: 1
+  extraCollider: {fileID: 8160921082443146840}
   objectElement: 2
   thisObstacleDiff: 1
   thisType: 0
