@@ -528,13 +528,13 @@ public class Wave_Spawner : MonoBehaviour
         {
             wavesSinceTimeSwap++;
             Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
-            if (wavesSinceTimeSwap > 2)
+            if (wavesSinceTimeSwap > 0)
             {
                 
                 int doWeTimeSwap;
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
-               // doWeTimeSwap = 8;
+                doWeTimeSwap = 8;
                 if (doWeTimeSwap >= 2)
                 {
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
@@ -672,8 +672,9 @@ public class Wave_Spawner : MonoBehaviour
         GameObject portal1 = Instantiate(timePortalPrefabs[portalIndex1], spawnPoints[1].transform);
         GameObject portal2 = Instantiate(timePortalPrefabs[portalIndex2], spawnPoints[2].transform);
 
-        //Flip chest that's spawning on the top.
-        portal2.GetComponent<SpriteRenderer>().flipY = true;
+
+        //portal2.GetComponent<SpriteRenderer>().flipY = true;
+        portal2.GetComponent<Rigidbody2D>().gravityScale = -10f;
         int theSelection = Level_Manager.Instance.getTimePortalSelection();
 
         Level_Manager.Instance.duckButton.enabled = false;

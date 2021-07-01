@@ -81,6 +81,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     public Level_Manager.timePeriod theEra;
 
     protected Rigidbody2D thisRigid;
+
+    bool madeToEnd = false;
     protected virtual void Awake()
     {
         thisRigid = this.GetComponent<Rigidbody2D>();
@@ -188,14 +190,42 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         //If it's a chest or time portal.
         else
         {
-            endPos = new Vector2((startPos.x - 5), (startPos.y));
-
-            if (this.transform.position != new Vector3(endPos.x, endPos.y, this.transform.position.z))
+            endPos = new Vector2((startPos.x - 5.5f), (startPos.y));
+            speed = 7f;
+            if(thisRigid != null)
             {
-                speed += 1.0f * Time.deltaTime;
+                if (this.transform.position.x > endPos.x)
+                {
+                    thisRigid.velocity = Vector2.left * speed;
+                }
+                else
+                {
+                    this.transform.position = new Vector2(endPos.x, this.transform.position.y);
+                    thisRigid.velocity = Vector2.zero;
+                }
+                   
             }
 
-            this.transform.position = Vector2.Lerp(startPos, endPos, speed);
+            /*
+            if(!madeToEnd)
+            {
+                endPos = new Vector2((startPos.x - 5.5f), (startPos.y));
+                
+                if (this.transform.position != new Vector3(endPos.x, endPos.y, this.transform.position.z))
+                {
+                    speed += 1.0f * Time.deltaTime;
+                }
+                
+
+                this.transform.position = Vector2.Lerp(startPos, endPos, speed);
+            }
+
+            if(this.transform.position == new Vector3 (endPos.x, endPos.y))
+            {
+                madeToEnd = true;
+            }
+            */
+         
 
         }
 
@@ -216,8 +246,6 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
-
-
         if(collision.gameObject.tag == "Despawner")
         {
 
