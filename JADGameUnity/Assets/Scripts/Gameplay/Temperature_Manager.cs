@@ -134,7 +134,7 @@ public class Temperature_Manager : MonoBehaviour
     {
         //We need a variable in the inspector just in case we have any modifers to the speed at which bar fills.
 
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSeconds(0.1f * Time.deltaTime);
 
         if (typeOfMeter == meterType.heatMeter)
         {
@@ -225,7 +225,7 @@ public class Temperature_Manager : MonoBehaviour
     {
         while(filledMeter && currentMeterVal > 0 && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.idle)
         {
-            yield return new WaitForSeconds(0.1f);
+            yield return new WaitForSeconds(0.1f * Time.deltaTime);
             currentMeterVal -= 0.3f;
             if (currentMeterVal <= 0.0f)
             {

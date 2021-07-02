@@ -295,7 +295,16 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 Level_Manager.Instance.indicatorArrow(spawnPoint);
             }
         }
-      
+      if(thisType == typeOfObstacle.coin)
+        {
+            if(collision.gameObject.tag == "Despawner")
+            {
+                thisRigid.velocity = Vector2.zero;
+              //  Debug.Log("Adding coin to pool since it collided with despawner!");
+                Object_Pooler.Instance.AddToPool(gameObject);
+                return;
+            }
+        }
     }
 
     protected virtual void OnTriggerExit2D(Collider2D collision)

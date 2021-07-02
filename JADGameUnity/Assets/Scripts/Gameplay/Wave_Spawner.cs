@@ -80,8 +80,9 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefab of a coin that we will be spawning in.")]
     public GameObject coinPrefab;
 
-    [Tooltip("Prefab treasure chest that will spawn in.")]
-    public GameObject chestPrefab;
+    [Tooltip("Prefabs for treasure chests that will spawn in.")]
+    public GameObject chestPrefabGround;
+    public GameObject chestPrefabAir;
 
     [Tooltip("Prefabs for different time periods.")]
     public List<GameObject> timePortalPrefabs;
@@ -256,14 +257,14 @@ public class Wave_Spawner : MonoBehaviour
             //Test values for changing difficulty. Will need some formula later on.
             //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!
-            if (wavesSinceDifficultyChange == 2)
+            if (wavesSinceDifficultyChange == 3)
             {
                 theWaveDiff = waveDiff.medium;
                 setBGs(theWaveDiff);
                 Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            if (wavesSinceDifficultyChange == 3)
+            if (wavesSinceDifficultyChange == 5)
             //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
@@ -528,13 +529,13 @@ public class Wave_Spawner : MonoBehaviour
         {
             wavesSinceTimeSwap++;
             Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
-            if (wavesSinceTimeSwap > 0)
+            if (wavesSinceTimeSwap > 2)
             {
                 
                 int doWeTimeSwap;
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
-                doWeTimeSwap = 8;
+                //doWeTimeSwap = 8;
                 if (doWeTimeSwap >= 2)
                 {
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
@@ -565,9 +566,10 @@ public class Wave_Spawner : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
 
         //Spawn X amount of coins based on the RNG.
-        //Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
+        Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
         for(int i = 0; i <= (amountToSpawn-1); i++)
         {
+            Debug.Log("Spawning in coin # " + i);
             if(rndSpawn == 0)
             {
                 Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[1].transform.position,spawnPoints[1].transform.rotation);
@@ -576,7 +578,7 @@ public class Wave_Spawner : MonoBehaviour
             {
                 Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.3f);
            
         }
         
@@ -586,10 +588,16 @@ public class Wave_Spawner : MonoBehaviour
     public IEnumerator chestSpawn()
     {
 
-        GameObject chest1 = Instantiate(chestPrefab, spawnPoints[1].transform);
-        GameObject chest2 = Instantiate(chestPrefab, spawnPoints[2].transform);
-        //Flip chest that's spawning on the top.
-        chest2.GetComponent<SpriteRenderer>().flipY = true;
+        AnimationClip chestOpenClip;
+        float aniTime = 0f;
+        //Since there is only 1 animation , this should be the clip for cocking and shooting the shotgun.
+       
+
+        GameObject chest1 = Instantiate(chestPrefabGround, spawnPoints[1].transform);
+        //This 2nd prefab will probably be the top graphic that Timour has so we may need a 2nd prefab here.
+        GameObject chest2 = Instantiate(chestPrefabAir, spawnPoints[2].transform);
+        chest2.GetComponent<Rigidbody2D>().gravityScale = -10f;
+
         int theSelection = Level_Manager.Instance.getChestSelect();
 
 
@@ -619,12 +627,20 @@ public class Wave_Spawner : MonoBehaviour
 
         if(theSelection == 1)
         {
-            chest1.GetComponent<Animator>().SetBool("Chest_Open", true);
+            Animator tempAnimator = chest1.GetComponent<Animator>();
+            chestOpenClip = tempAnimator.runtimeAnimatorController.animationClips[0];
+            aniTime = chestOpenClip.length;
+            tempAnimator.SetBool("Chest_Open", true);
         }
         else
         {
-            chest2.GetComponent<Animator>().SetBool("Chest_Open", true);
+            Animator tempAnimator = chest2.GetComponent<Animator>();
+            chestOpenClip = tempAnimator.runtimeAnimatorController.animationClips[0];
+            aniTime = chestOpenClip.length;
+            tempAnimator.SetBool("Chest_Open", true);
         }
+
+       // Debug.Log("Ani time = " + aniTime);
 
         //Basic randomization for prizes. This will have to be changed and have different stipulations based on waves passed, and other stuff etc.
         int randPrizeNum = 0;
@@ -643,12 +659,11 @@ public class Wave_Spawner : MonoBehaviour
                 }
         }
 
-        yield return new WaitForSeconds(1.0f);
+        //Prolly gonna have this take longer since we'll need to show item player received coming out of the chest.
+        yield return new WaitForSeconds(aniTime + 1.0f);
 
         Destroy(chest1);
         Destroy(chest2);
-
-
 
 
         //We finished the bonus wave.

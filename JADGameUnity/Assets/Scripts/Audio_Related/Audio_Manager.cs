@@ -95,6 +95,7 @@ public class Audio_Manager : MonoBehaviour
 
         //DEBUG.
         
+        //Prolly need to call this function BEFORE swapping the tracks...
         StartCoroutine(fadeBetweenTimeswaps(currentlyPlayingTrack, 1f));
 
         /*
@@ -214,10 +215,10 @@ public class Audio_Manager : MonoBehaviour
     {
         currentlyPlayingTrack = nextTrackToFadeIn;
 
-        Debug.Log("BEFORE LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
+        //Debug.Log("BEFORE LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
         while(currentTrackToFadeOut.volume > 0 && nextTrackToFadeIn.volume < fadeInTargetVolume)
         {
-            Debug.Log("DURING LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
+          //  Debug.Log("DURING LOOP: " + currentTrackToFadeOut.volume + " = the volume of the current track & " + nextTrackToFadeIn.volume + " = the volume of the next track!");
             //Failsafe for if one is completed and the other is not.
             if (currentTrackToFadeOut.volume > 0)
             {
@@ -234,7 +235,7 @@ public class Audio_Manager : MonoBehaviour
         }
 
         //Ensure that they are at the proper settings.
-        Debug.Log("The current track we are fading out is: " + currentTrackToFadeOut.clip.name + " And the next track is: " + nextTrackToFadeIn.clip.name);
+       // Debug.Log("The current track we are fading out is: " + currentTrackToFadeOut.clip.name + " And the next track is: " + nextTrackToFadeIn.clip.name);
         currentTrackToFadeOut.volume = 0f;
         nextTrackToFadeIn.volume = fadeInTargetVolume;
 

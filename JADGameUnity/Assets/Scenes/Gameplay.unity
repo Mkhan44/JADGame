@@ -3471,7 +3471,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2217944579090429893, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -3.6220703
+      value: -3.6220398
       objectReference: {fileID: 0}
     - target: {fileID: 5044305995097725144, guid: 71db19a40daf2234da44abc79bcbb3ba, type: 3}
       propertyPath: m_Type
@@ -4012,6 +4012,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[9].size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[5].wrappedList.Array.data[0].size
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
@@ -4622,6 +4626,14 @@ PrefabInstance:
       propertyPath: theWaveDiff
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: chestPrefabAir
+      value: 
+      objectReference: {fileID: 8492531496662785174, guid: 2b0d3f8ecd2924a4fb3840de7670474e, type: 3}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: chestPrefabGround
+      value: 
+      objectReference: {fileID: 8492531496662785174, guid: b9fc91ae0c956474e9e1396315019e94, type: 3}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: backgrounds.Array.size
       value: 3
