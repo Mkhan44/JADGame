@@ -190,15 +190,15 @@ public class Wave_Spawner : MonoBehaviour
 
         if(waveType == typeOfWave.normal)
         {
-            waveText.text = "Wave: " + waveCount.ToString();
+            waveText.text = waveCount.ToString();
         }
         else if(waveType == typeOfWave.bonus)
         {
-            waveText.text = "Wave: Bonus!";
+            waveText.text = "Bonus!";
         }
         else if(waveType == typeOfWave.timeSwap)
         {
-            waveText.text = "Wave: Timeswap!";
+            waveText.text = "Timeswap!";
         }
 
         eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();

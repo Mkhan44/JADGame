@@ -270,12 +270,12 @@ public class Level_Manager : MonoBehaviour
         heatUpButton.gameObject.SetActive(false);
         coolDownButton.gameObject.SetActive(false);
         coinsCollected = 0;
-        coinText.text = "Coins: " + coinsCollected.ToString();
+        coinText.text = " : " + coinsCollected.ToString();
 
         useDurationText.text = "No item in use.";
         scoreText.text = "Score: 0";
         pointMultiplier = 1;
-        multiplierText.text = "Multiplier: X " + pointMultiplier.ToString();
+        multiplierText.text = pointMultiplier.ToString() + "x";
         enemiesDodgedSinceLastMulti = 0;
 
         gameOverPanel.SetActive(false);
@@ -455,7 +455,7 @@ public class Level_Manager : MonoBehaviour
         {
             pauseGame();
         }
-      //  coinText.text = "Coins: " + coinsCollected.ToString();
+      //  coinText.text = " : " + coinsCollected.ToString();
 
     }
 
@@ -999,7 +999,7 @@ public class Level_Manager : MonoBehaviour
         }
         else
         {
-            coinText.text = "Coins: " + coinsCollected.ToString();
+            coinText.text = " : " + coinsCollected.ToString();
         }
        // Debug.Log("Collected a coin!");
 
@@ -1007,12 +1007,12 @@ public class Level_Manager : MonoBehaviour
 
     IEnumerator coinAni(int incomingAmt, int newAmt)
     {
-        coinText.text = "Coins: " + incomingAmt.ToString();
+        coinText.text = " : " + incomingAmt.ToString();
         while (incomingAmt < newAmt)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
             incomingAmt += 1;
-            coinText.text = "Coins: " + incomingAmt.ToString();
+            coinText.text = " : " + incomingAmt.ToString();
         }
 
         yield return null;
@@ -1506,7 +1506,7 @@ public class Level_Manager : MonoBehaviour
             if (currentScore > 9999999)
             {
                 currentScore = 9999999;
-                scoreText.text = "Score: " + currentScore.ToString();
+                scoreText.text = "RP: " + currentScore.ToString();
             }
             else
             {
@@ -1535,13 +1535,13 @@ public class Level_Manager : MonoBehaviour
         {
             pointMultiplier = 5;
         }
-        multiplierText.text = "Multiplier: X " + pointMultiplier;
+        multiplierText.text = pointMultiplier.ToString() + "x";
     }
 
     public void resetMultiplier()
     {
         pointMultiplier = 1;
-        multiplierText.text = "Multiplier: X " + pointMultiplier;
+        multiplierText.text = pointMultiplier.ToString() + "x";
         enemiesDodgedSinceLastMulti = 0;
     }
 
@@ -1595,12 +1595,12 @@ public class Level_Manager : MonoBehaviour
     //Animation for making the score count up like a ticker.
     public IEnumerator scoreAni(int incomingScore, int nextScore)
     {
-        scoreText.text = "Score: " + incomingScore.ToString();
+        scoreText.text = "RP: " + incomingScore.ToString();
         while (incomingScore < nextScore)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
             incomingScore += 1;
-            scoreText.text = "Score: " + incomingScore.ToString();
+            scoreText.text = "RP: " + incomingScore.ToString();
         }
 
         yield return null;
