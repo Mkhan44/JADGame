@@ -1224,7 +1224,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.16738904, y: 0.026}
   m_AnchorMax: {x: 0.32919323, y: 0.2773435}
-  m_AnchoredPosition: {x: -2.2999878, y: -2.3999023}
+  m_AnchoredPosition: {x: -2.3000488, y: -2.3999023}
   m_SizeDelta: {x: 4.5, y: 0.2999878}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &155560432
@@ -1585,7 +1585,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.17450394, y: 0.12282757}
   m_AnchorMax: {x: 0.321, y: 0.9111117}
-  m_AnchoredPosition: {x: -1.8999634, y: -2.7000122}
+  m_AnchoredPosition: {x: -1.9000244, y: -2.7000122}
   m_SizeDelta: {x: 8.700012, y: 10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &239041425
@@ -10370,7 +10370,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
   - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
   - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
-  tutorialMusic: {fileID: 8300000, guid: 6cb0928a40ef9c243b0c3df66794f6d7, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 523f93e4829d858499a0283953cc18f3, type: 3}
   bonusSource: {fileID: 1053783709}
   easySource: {fileID: 661722298}
   mediumSource: {fileID: 110316524}
