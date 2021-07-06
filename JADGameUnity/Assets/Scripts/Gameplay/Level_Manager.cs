@@ -40,6 +40,7 @@ public class Level_Manager : MonoBehaviour
     bool onGround;
     int currentPlayerHealth;
     public TextMeshProUGUI healthText;
+    [SerializeField] Heart_System theHeartSystem;
 
     [Tooltip("The gravity for the player. Obtained via Player script.")]
     [SerializeField]
@@ -63,6 +64,7 @@ public class Level_Manager : MonoBehaviour
     //Meters
     public Temperature_Manager heatMeter;
     public Temperature_Manager iceMeter;
+    public Slider powerupMeter;
     public bool meterFilled;
 
     [Header("Indicators")]
@@ -289,7 +291,8 @@ public class Level_Manager : MonoBehaviour
             setupItems();
             checkScore();
         }
-  
+
+        theHeartSystem.initializeHealth(currentPlayerHealth);
     }
 
     /*
@@ -358,7 +361,7 @@ public class Level_Manager : MonoBehaviour
             Item theItem = item1Holder.transform.GetChild(0).GetComponent<Item>();
             theItem.thisItemType = Collect_Manager.typeOfItem.none;
             Image tempImg = item1Holder.transform.GetChild(0).GetComponent<Image>();
-            tempImg.sprite = null;
+           // tempImg.sprite = null;
         }
         if (Collect_Manager.instance.item2 >= 0)
         {
@@ -396,7 +399,7 @@ public class Level_Manager : MonoBehaviour
             Item theItem = item2Holder.transform.GetChild(0).GetComponent<Item>();
             theItem.thisItemType = Collect_Manager.typeOfItem.none;
             Image tempImg = item2Holder.transform.GetChild(0).GetComponent<Image>();
-            tempImg.sprite = null;
+           // tempImg.sprite = null;
         }
         if (Collect_Manager.instance.item3 >= 0)
         {
@@ -434,7 +437,7 @@ public class Level_Manager : MonoBehaviour
             Item theItem = item3Holder.transform.GetChild(0).GetComponent<Item>();
             theItem.thisItemType = Collect_Manager.typeOfItem.none;
             Image tempImg = item3Holder.transform.GetChild(0).GetComponent<Image>();
-            tempImg.sprite = null;
+          //  tempImg.sprite = null;
         }
 
         Collect_Manager.instance.item1 = -1;
@@ -916,7 +919,6 @@ public class Level_Manager : MonoBehaviour
         GameObject[] obstacles = GameObject.FindGameObjectsWithTag("Obstacle");
         GameObject[] bullets = GameObject.FindGameObjectsWithTag("Bullet");
 
-
         Wave_Spawner.Instance.updateEnemiesLeft(obstacles.Length);
         for (int i = 0; i < obstacles.Length; i++)
         {
@@ -935,6 +937,7 @@ public class Level_Manager : MonoBehaviour
 
         currentPlayerHealth -= 1;
 
+        theHeartSystem.updateHealth(currentPlayerHealth);
 
         if (currentPlayerHealth <= 0)
         {
@@ -1023,6 +1026,7 @@ public class Level_Manager : MonoBehaviour
     {
         iceMeter.setIce(thePlayer.getIceMeterFill());
         heatMeter.setHeat(thePlayer.getHeatMeterFill());
+        powerupMeter.value = 0f;
     }
 
     //Might wanna add a value for each obstacle based on their 'meter increase value'. That way harder obstacles increase it by more later on etc.
@@ -1044,7 +1048,7 @@ public class Level_Manager : MonoBehaviour
 
     }
 
-    //ITEM SCRIPTS
+    //ITEM Functions
 
     //Just setting the Item to not be null here so we know the player is using an Item.
     public void setCurrentItem(Collect_Manager.typeOfItem tempPowerUp , float duration)
@@ -1059,6 +1063,7 @@ public class Level_Manager : MonoBehaviour
         else
         {
             useDuration = duration;
+            powerupMeter.value = 100f;
             StartCoroutine(durationCount());
         }
 
@@ -1096,18 +1101,22 @@ public class Level_Manager : MonoBehaviour
 
     public IEnumerator durationCount()
     {
-        while(useDuration > 0)
+   
+        while (useDuration > 0)
         {
+            powerupMeter.value -= 0.6f;
             useDuration -= Time.deltaTime;
             useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
             yield return null;
         }
         useDuration = 0;
+        powerupMeter.value = 0f;
         useDurationText.text = "No item in use.";
         Debug.Log("Finished the duration count!");
     }
 
-    //ITEM SCRIPTS
+    //ITEM Functions
+
 
     //Use this to force player into Idle for anything that we need to show the player. Gameplay buttons should be disabled elsewhere.
     public void ResetAnimator()
@@ -1195,6 +1204,7 @@ public class Level_Manager : MonoBehaviour
 
         gameOverPanel.SetActive(false);
         currentPlayerHealth = 3;
+        theHeartSystem.updateHealth(currentPlayerHealth);
         player.SetActive(true);
         Wave_Spawner.Instance.respawnPlayer();
         thePlayer.setState(Player.playerState.idle);
