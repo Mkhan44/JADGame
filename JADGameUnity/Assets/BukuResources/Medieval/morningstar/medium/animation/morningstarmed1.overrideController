@@ -1,0 +1,13 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: morningstarmed1
+  m_Controller: {fileID: 9100000, guid: cbe8a580de2db574b8b9e87bc7206277, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 507812f2d1ace9d40b2dba3d49f89817, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: db78bc5ea36d03240a79b3b9bdd8fc3e, type: 2}
