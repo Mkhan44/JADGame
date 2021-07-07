@@ -1767,7 +1767,17 @@ public class Level_Manager : MonoBehaviour
         if (currentScore > Collect_Manager.instance.highScore)
         {
             Collect_Manager.instance.highScore = currentScore;
-            Debug.Log("You got a new high score!");
+            if(CloudOnce_Services.instance != null)
+            {
+                CloudOnce_Services.instance.submitLeaderboardScore(currentScore);
+                Debug.Log("You got a new high score! Submitted it to the leaderboard.");
+            }
+            else
+            {
+                Debug.LogWarning("You got a new high score! Couldn't submit it to the leaderboard, though.");
+            }
+         
+            
         }
     }
 
