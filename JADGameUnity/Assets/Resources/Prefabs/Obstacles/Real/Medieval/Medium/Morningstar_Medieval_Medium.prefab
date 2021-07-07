@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1677953187544278703}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Morningstar_Medieval_Medieval_Medium
+  m_Name: Morningstar_Medieval_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -108,7 +108,7 @@ MonoBehaviour:
   objectElement: 2
   thisObstacleDiff: 0
   thisType: 0
-  scoreValue: 100
+  scoreValue: 200
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
