@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 1677953187544278703}
   - component: {fileID: 5857835583463249108}
   m_Layer: 6
-  m_Name: Morningstar_Medieval_Easy
+  m_Name: Morningstar_Top_Medieval_Medium
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,13 +101,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  increaseRate: 5
-  maxSpeed: 5
-  spawnPoint: 1
-  objectElement: 2
-  thisObstacleDiff: 0
+  increaseRate: 4.5
+  maxSpeed: 6
+  spawnPoint: 0
+  extraCollider: {fileID: 0}
+  objectElement: 1
+  thisObstacleDiff: 1
   thisType: 0
-  scoreValue: 100
+  scoreValue: 200
   theEra: 0
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -166,7 +167,7 @@ Animator:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 924af639d89c15d469fded5dd93734ea, type: 2}
+  m_Controller: {fileID: 0}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -352,7 +353,7 @@ Animator:
   m_GameObject: {fileID: 7034686116341056044}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cbe8a580de2db574b8b9e87bc7206277, type: 2}
+  m_Controller: {fileID: 22100000, guid: 266014e6bf28a8d4b90e3d7dac3be93e, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -458,7 +459,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ae7199ea38e7f38408daa090fc5f790e, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 11e4c66fcf793f84597e0f667d86c42c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -231,10 +231,10 @@ MonoBehaviour:
   speed: 0
   increaseRate: 5
   maxSpeed: 6
-  spawnPoint: 1
+  spawnPoint: 0
   extraCollider: {fileID: 0}
   objectElement: 1
-  thisObstacleDiff: 0
+  thisObstacleDiff: 2
   thisType: 0
   scoreValue: 300
   theEra: 0
