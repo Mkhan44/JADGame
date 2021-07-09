@@ -1063,6 +1063,8 @@ public class Level_Manager : MonoBehaviour
         else
         {
             useDuration = duration;
+            Vector4 powerUpColor = new Vector4(191, 170, 34, 1.0f);
+            thePlayer.outlineMaterialInstance.SetColor("_OutlineColor", Color.yellow);
             powerupMeter.value = 100f;
             StartCoroutine(durationCount());
         }
@@ -1109,6 +1111,8 @@ public class Level_Manager : MonoBehaviour
             useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
             yield return null;
         }
+        Vector4 regularColor = new Vector4(191, 137, 137, 1.0f);
+        thePlayer.outlineMaterialInstance.SetColor("_OutlineColor", Color.white);
         useDuration = 0;
         powerupMeter.value = 0f;
         useDurationText.text = "No item in use.";

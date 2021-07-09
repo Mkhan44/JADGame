@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.5176471, g: 0.5176471, b: 0.5176471, a: 1}
+  m_Color: {r: 0.9245283, g: 0.7433743, b: 0.36196154, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -2141,7 +2141,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 74.35
+  m_fontSize: 89.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2409,7 +2409,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 103.05
+  m_fontSize: 132.3
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6217,7 +6217,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.2
+  m_fontSize: 100
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6817,7 +6817,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 70
+  m_fontSize: 69.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7285,7 +7285,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 77.55
+  m_fontSize: 100.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10127,7 +10127,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 172
+  m_fontSize: 200
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10468,7 +10468,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0000000080781, y: -93.50001}
+  m_AnchoredPosition: {x: 0.0000000080781, y: -93.49999}
   m_SizeDelta: {x: 182.2, y: 81.4}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1901874673
@@ -10844,7 +10844,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.95
+  m_fontSize: 77.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -12918,6 +12918,10 @@ PrefabInstance:
       value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[2].wrappedList.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.size
       value: 27
       objectReference: {fileID: 0}
@@ -12971,7 +12975,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[5].wrappedList.Array.data[0].size
-      value: 10
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[6].wrappedList.Array.data[0].size
@@ -13189,6 +13193,10 @@ PrefabInstance:
       propertyPath: thePools.Array.data[1].wrappedList.Array.data[9].prefab
       value: 
       objectReference: {fileID: 4158279202637467101, guid: 0c6250f0082382846b71a302ede206a9, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[2].wrappedList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 78b0d10579103124fa869e8b9bc4a87b, type: 3}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[0].prefab
       value: 
@@ -13419,7 +13427,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton

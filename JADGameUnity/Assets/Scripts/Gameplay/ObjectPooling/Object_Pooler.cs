@@ -104,7 +104,6 @@ public class Object_Pooler : MonoBehaviour
         }
 
         poolDictionary[tag].Enqueue(objectToSpawn);
-
         return objectToSpawn;
     }
 

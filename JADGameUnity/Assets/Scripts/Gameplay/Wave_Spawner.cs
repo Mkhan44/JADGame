@@ -96,6 +96,12 @@ public class Wave_Spawner : MonoBehaviour
 
     [SerializeField] GameObject currentBG1;
     [SerializeField] GameObject currentBG2;
+    [SerializeField] GameObject easyBG1;
+    [SerializeField] GameObject easyBG2;
+    [SerializeField] GameObject medBG1;
+    [SerializeField] GameObject medBG2;
+    [SerializeField] GameObject hardBG1;
+    [SerializeField] GameObject hardBG2;
 
     public Player thePlayer;
     Player.playerState currentPlayerState;
@@ -107,6 +113,8 @@ public class Wave_Spawner : MonoBehaviour
     bool specialWaveOn;
 
     bool stopCo;
+
+    bool lastEnemySpawnedCoins;
 
 
     //Variance on waves related things.
@@ -129,6 +137,7 @@ public class Wave_Spawner : MonoBehaviour
         wavesSinceBonus = 0;
         wavesSinceTimeSwap = 0;
         stopCo = false;
+        lastEnemySpawnedCoins = false;
         theWaveDiff = waveDiff.easy;
        // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         specialWaveOn = false;
@@ -175,11 +184,25 @@ public class Wave_Spawner : MonoBehaviour
         }
         currentBG1 = Instantiate(BGsToLoad[0]);
         currentBG2 = Instantiate(BGsToLoad[0]);
+
+        /*
+        easyBG1 = currentBG1;
+        easyBG2 = currentBG2;
+        medBG1 = Instantiate(BGsToLoad[1]);
+        medBG2 = Instantiate(BGsToLoad[1]);
+        hardBG1 = Instantiate(BGsToLoad[2]);
+        hardBG2 = Instantiate(BGsToLoad[2]);
+        */
+
         currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
 
+        /*
+        medBG2.transform.position = new Vector3(BGsToLoad[1].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
+        hardBG2.transform.position = new Vector3(BGsToLoad[2].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
+        */
 
-     //   Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
-    //    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+        //   Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
+        //    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
 
     }
 
@@ -411,16 +434,29 @@ public class Wave_Spawner : MonoBehaviour
                 diffOptions.Clear();
 
 
-                //Test for spawning in coins.
-                int spawnCoinRnd = Random.Range(0, 500);
-                if (spawnCoinRnd >= 250)
-                {
-                    //Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
 
-                    spawnCoinRnd = Random.Range(0, 2);
-                    int amountofCoinsToSpawn = Random.Range(1, 6);
-                    StartCoroutine(CoinSpawn(spawnCoinRnd, amountofCoinsToSpawn));
+                //Test for spawning in coins.
+
+                if(!lastEnemySpawnedCoins)
+                {
+                    int spawnCoinRnd = Random.Range(0, 500);
+                    if (spawnCoinRnd >= 250)
+                    {
+                        //Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
+
+                        spawnCoinRnd = Random.Range(0, 2);
+                        int amountofCoinsToSpawn = Random.Range(1, 6);
+                        StartCoroutine(CoinSpawn(spawnCoinRnd, amountofCoinsToSpawn));
+                        lastEnemySpawnedCoins = true;
+                    }
+                   
                 }
+                else
+                {
+                    Debug.Log("Not spawning in coins since we spawned them on the last enemy.");
+                    lastEnemySpawnedCoins = false;
+                }
+              
 
                 //If there are too many enemies on screen maybe have some delay here instead of just static at the spawnRate value???
                 yield return new WaitForSeconds(spawnRate);
@@ -569,7 +605,7 @@ public class Wave_Spawner : MonoBehaviour
         Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
         for(int i = 0; i <= (amountToSpawn-1); i++)
         {
-            Debug.Log("Spawning in coin # " + i);
+           // Debug.Log("Spawning in coin # " + i);
             if(rndSpawn == 0)
             {
                 Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[1].transform.position,spawnPoints[1].transform.rotation);
@@ -578,7 +614,7 @@ public class Wave_Spawner : MonoBehaviour
             {
                 Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
             }
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.25f);
            
         }
         
@@ -842,7 +878,6 @@ public class Wave_Spawner : MonoBehaviour
         currentBG2 = null;
         currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position , this.transform.rotation);
         currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
-        //DEBUG, GOTTA MAKE SURE THAT WE DON'T NEED THIS 0.2F INCREASE IN THE FUTURE!
         currentBG1.transform.position = new Vector2(currentBG1.transform.position.x, currentBG1.transform.position.y);
         currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
     }

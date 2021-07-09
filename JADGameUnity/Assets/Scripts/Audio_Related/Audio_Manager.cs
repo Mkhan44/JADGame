@@ -79,6 +79,14 @@ public class Audio_Manager : MonoBehaviour
                     hardPauseSource.clip = wildWestMusic[3];
                     break;
                 }
+            case Level_Manager.timePeriod.Medieval:
+                {
+                    bonusSource.clip = wildWestMusic[0];
+                    easySource.clip = wildWestMusic[1];
+                    mediumSource.clip = wildWestMusic[2];
+                    hardPauseSource.clip = wildWestMusic[3];
+                    break;
+                }
             case Level_Manager.timePeriod.tutorial:
                 {
                     tutorialSource.clip = tutorialMusic;
