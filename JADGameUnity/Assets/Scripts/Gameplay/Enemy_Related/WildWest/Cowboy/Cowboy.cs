@@ -20,7 +20,7 @@ public class Cowboy : Obstacle_Behaviour
     [SerializeField] float horizontalBulletSpeed;
     [SerializeField] float verticalBulletSpeed;
     //Stuff local to cowboy.
-    bool isStopped;
+    bool isStoppedBool;
     bool hasShot;
 
     const string IsStopped = "IsStopped";
@@ -55,9 +55,9 @@ public class Cowboy : Obstacle_Behaviour
         if(onScreenIndicator)
         {
           
-            if(!isStopped)
+            if(!isStoppedBool)
             {
-                isStopped = true;
+                isStoppedBool = true;
                 thisRigid.velocity = Vector2.zero;
                // Debug.Log("onScreenIndicator in movement function!");
                 StartCoroutine(shootGun());
@@ -69,7 +69,7 @@ public class Cowboy : Obstacle_Behaviour
     public override void OnObjectSpawn()
     {
         isFlipped = false;
-        isStopped = false;
+        isStoppedBool = false;
         hasShot = false;
         Vector3 rot = this.transform.rotation.eulerAngles;
         rot = new Vector3(0f, rot.y, rot.z);

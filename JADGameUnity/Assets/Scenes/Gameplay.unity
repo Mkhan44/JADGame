@@ -1040,10 +1040,10 @@ RectTransform:
   m_Father: {fileID: 1952562824}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 702.98, y: -56.964016}
-  m_SizeDelta: {x: 1293, y: 141.47}
+  m_AnchorMin: {x: 0.0386946, y: 0.29886326}
+  m_AnchorMax: {x: 0.9386411, y: 0.5218633}
+  m_AnchoredPosition: {x: -0.52001953, y: 0.035980225}
+  m_SizeDelta: {x: -4, y: -0.5299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115540801
 MonoBehaviour:
@@ -1065,7 +1065,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 160, y: 160}
+  m_CellSize: {x: 140, y: 140}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1165,7 +1165,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 7.3
+  m_Value: 82.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1315,7 +1315,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.9245283, g: 0.7433743, b: 0.36196154, a: 1}
+  m_Color: {r: 0.9245283, g: 0.7433743, b: 0.36196154, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -1467,7 +1467,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.2988163, g: 0.6796455, b: 0.8018868, a: 1}
+  m_Color: {r: 0.2988163, g: 0.6796455, b: 0.8018868, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -3269,7 +3269,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 9
+  m_Value: 75.7
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -3309,7 +3309,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.22535591}
   m_AnchorMax: {x: 1, y: 0.75}
-  m_AnchoredPosition: {x: 0, y: 3.9799995}
+  m_AnchoredPosition: {x: 0, y: 3.9799957}
   m_SizeDelta: {x: 0, y: -24.64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &567660965
@@ -4661,7 +4661,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.07169503, y: 0.0408652}
   m_AnchorMax: {x: 0.4764429, y: 0.35383698}
-  m_AnchoredPosition: {x: -0.5, y: 0.37991333}
+  m_AnchoredPosition: {x: -0.5, y: 0.3798828}
   m_SizeDelta: {x: -3, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &899054755
@@ -4711,7 +4711,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 100
   m_WholeNumbers: 0
-  m_Value: 9
+  m_Value: 79.9
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -8132,10 +8132,10 @@ RectTransform:
   m_Father: {fileID: 910152575}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.21496582, y: 0.000061035156}
-  m_SizeDelta: {x: -0.43, y: 0}
+  m_AnchorMin: {x: 0.039679237, y: 0.028315924}
+  m_AnchorMax: {x: 0.9603208, y: 0.966}
+  m_AnchoredPosition: {x: 0.21496582, y: 0.23999786}
+  m_SizeDelta: {x: 1.9099998, y: -0.6800003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1471785558
 MonoBehaviour:
@@ -8749,7 +8749,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -0.54003906, y: 0.8387451}
+  m_AnchoredPosition: {x: -0.5400696, y: 0.8387451}
   m_SizeDelta: {x: -1.0700073, y: -2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1532690632
@@ -8765,7 +8765,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.4230351, b: 0.07843137, a: 1}
+  m_Color: {r: 1, g: 0.4230351, b: 0.07843137, a: 0.3137255}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -9039,10 +9039,10 @@ RectTransform:
   m_Father: {fileID: 2124784579}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.21502686, y: 0.000061035156}
-  m_SizeDelta: {x: -0.43, y: 0}
+  m_AnchorMin: {x: 0.028320769, y: 0.017}
+  m_AnchorMax: {x: 0.9716793, y: 0.96021146}
+  m_AnchoredPosition: {x: -0.41000366, y: 0.37000275}
+  m_SizeDelta: {x: 0.11000013, y: 0.5300002}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1591516013
 MonoBehaviour:
@@ -9135,10 +9135,10 @@ RectTransform:
   m_Father: {fileID: 160158094}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.21496582, y: 0.000061035156}
-  m_SizeDelta: {x: -0.43, y: 0}
+  m_AnchorMin: {x: 0.034, y: 0.028308328}
+  m_AnchorMax: {x: 0.9603208, y: 0.9601583}
+  m_AnchoredPosition: {x: 0.8999939, y: 0.1800003}
+  m_SizeDelta: {x: 1.5, y: 0.9200001}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1603605014
 MonoBehaviour:
@@ -9636,7 +9636,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.70652425, y: 0.59063804}
   m_AnchorMax: {x: 0.98, y: 0.9591714}
-  m_AnchoredPosition: {x: 1.5, y: 2.3300018}
+  m_AnchoredPosition: {x: 1.5, y: 2.330017}
   m_SizeDelta: {x: -10, y: -2.300003}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1673177705
@@ -12505,7 +12505,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17835529, g: 0.18053982, b: 0.2264151, a: 0.92156863}
+  m_Color: {r: 0.17835529, g: 0.18053982, b: 0.2264151, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -12535,7 +12535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.17835529, g: 0.18053982, b: 0.2264151, a: 0.83137256}
+  m_Color: {r: 0.17835529, g: 0.18053982, b: 0.2264151, a: 0.5882353}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -13196,7 +13196,7 @@ PrefabInstance:
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[2].wrappedList.Array.data[0].prefab
       value: 
-      objectReference: {fileID: 4158279202637467101, guid: 78b0d10579103124fa869e8b9bc4a87b, type: 3}
+      objectReference: {fileID: 4158279202637467101, guid: 2daf8aecdcc0aba41aa6ae6e0f8b131d, type: 3}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[4].wrappedList.Array.data[0].prefab
       value: 
@@ -13427,7 +13427,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton

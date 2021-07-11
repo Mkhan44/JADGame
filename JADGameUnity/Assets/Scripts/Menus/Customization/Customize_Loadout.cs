@@ -54,6 +54,8 @@ public class Customize_Loadout : MonoBehaviour
 
     bool enteredOnce;
 
+    [SerializeField] Sprite itemHolderSprite;
+
 
     // Start is called before the first frame update
     void Start()
@@ -474,7 +476,7 @@ public class Customize_Loadout : MonoBehaviour
 
         Collect_Manager.instance.purchaseItemConfirm(theEquip.theItem);
         theText.text = "Owned: \n X" + Collect_Manager.instance.numPlayerOwns(theEquip.theItem).ToString();
-        tempImg.sprite = null;
+        tempImg.sprite = itemHolderSprite;
         removeButton.interactable = false;
 
         //Save whenever the player deletes an item.
