@@ -99,6 +99,13 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     void Start()
     {
     
+        if(this.transform.childCount > 0)
+        {
+            foreach(Transform child in this.transform)
+            {
+                //We'll assign a material to each child so that we can alter it based on the element and what not.
+            }
+        }
 
         outlineMat = this.GetComponent<SpriteRenderer>().material;
         if(outlineMat == null && thisType != typeOfObstacle.obstacle)

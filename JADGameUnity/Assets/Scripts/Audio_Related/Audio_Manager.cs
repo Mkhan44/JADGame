@@ -81,10 +81,10 @@ public class Audio_Manager : MonoBehaviour
                 }
             case Level_Manager.timePeriod.Medieval:
                 {
-                    bonusSource.clip = wildWestMusic[0];
-                    easySource.clip = wildWestMusic[1];
-                    mediumSource.clip = wildWestMusic[2];
-                    hardPauseSource.clip = wildWestMusic[3];
+                    bonusSource.clip = medMusic[0];
+                    easySource.clip = medMusic[1];
+                    mediumSource.clip = medMusic[2];
+                    hardPauseSource.clip = medMusic[3];
                     break;
                 }
             case Level_Manager.timePeriod.tutorial:
