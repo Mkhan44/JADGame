@@ -1,0 +1,82 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: MainMenu_UI_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 303f50e97cbe71d4bb3d538a455b20b7, type: 3}
+    - {fileID: 2800000, guid: 0733a2af7911aa84bb65d0b06bef37e0, type: 3}
+    - {fileID: 2800000, guid: a534731d797042b44ae1fce5cd3aad03, type: 3}
+    - {fileID: 2800000, guid: 259062194c6d55e4eb657bd119f9f4bb, type: 3}
+    - {fileID: 2800000, guid: f29c9bbbc6d1e9e49a3df244655b7536, type: 3}
+    - {fileID: 2800000, guid: 1c0a88af7c6d5c14d93e91f4c5c2c524, type: 3}
+    - {fileID: 2800000, guid: 519a20e2dd4abd84db1493f1d22f49f1, type: 3}
+    - {fileID: 2800000, guid: 41bdd9ce73a30ec4692190802b3baaa6, type: 3}
+    - {fileID: 2800000, guid: 3b1620cfe11fb1f499af1143ea72bde0, type: 3}
+    totalSpriteSurfaceArea: 1332878
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: -4076546865901888420, guid: 519a20e2dd4abd84db1493f1d22f49f1, type: 3}
+  - {fileID: -564861206746367246, guid: 259062194c6d55e4eb657bd119f9f4bb, type: 3}
+  - {fileID: -4320295261928297051, guid: 303f50e97cbe71d4bb3d538a455b20b7, type: 3}
+  - {fileID: 1110141295592075106, guid: f29c9bbbc6d1e9e49a3df244655b7536, type: 3}
+  - {fileID: 7660504440969176926, guid: a534731d797042b44ae1fce5cd3aad03, type: 3}
+  - {fileID: 4394909124677073533, guid: 41bdd9ce73a30ec4692190802b3baaa6, type: 3}
+  - {fileID: 21300000, guid: 0733a2af7911aa84bb65d0b06bef37e0, type: 3}
+  - {fileID: -7992175441346035037, guid: 1c0a88af7c6d5c14d93e91f4c5c2c524, type: 3}
+  - {fileID: -4459195827775279454, guid: 3b1620cfe11fb1f499af1143ea72bde0, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - mainmerchbutton_0
+  - maincustombutton_0
+  - logo_0
+  - mainfbbutton_0
+  - maincreditsbutton_0
+  - mainplaybutton_0
+  - mainbg
+  - mainldrbutton_0
+  - mainshopbutton_0
+  m_RenderDataMap: {}
+  m_Tag: MainMenu_UI_Atlas
+  m_IsVariant: 0

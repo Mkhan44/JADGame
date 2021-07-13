@@ -49,7 +49,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: d2057c2702154f541b7526cae5a9866f, type: 3}
     - {fileID: 2800000, guid: d9bd2bca522fddf47832da8bf5dd7ee9, type: 3}
     - {fileID: 2800000, guid: 16cacd854d6799049aa4faa5678cd8c5, type: 3}
-    totalSpriteSurfaceArea: 4032000
+    - {fileID: 2800000, guid: d702339d6f8c07441ba3e76dd896635e, type: 3}
+    totalSpriteSurfaceArea: 4704000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -61,6 +62,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d2057c2702154f541b7526cae5a9866f, type: 3}
   - {fileID: 21300000, guid: 7a66043ad37595a43991cc7d24515922, type: 3}
   - {fileID: 21300000, guid: d9bd2bca522fddf47832da8bf5dd7ee9, type: 3}
+  - {fileID: 21300000, guid: d702339d6f8c07441ba3e76dd896635e, type: 3}
   m_PackedSpriteNamesToIndex:
   - preshistoricmiddleground
   - preshistoricmainmed
@@ -68,6 +70,7 @@ SpriteAtlas:
   - preshistorictree
   - preshistoricmainhrd
   - preshistorictreehrd
+  - preshistoricbgcolor
   m_RenderDataMap: {}
   m_Tag: Prehistoric_BG_Atlas
   m_IsVariant: 0
