@@ -19,26 +19,7 @@ public class Arrow : Obstacle_Behaviour
     protected override void Awake()
     {
         base.Awake();
-        outlineMat = this.transform.GetChild(0).GetComponent<SpriteRenderer>().material;
-        if (outlineMat == null && thisType != typeOfObstacle.obstacle)
-        {
-            Debug.LogError("We can't find the material of this object!");
-        }
-
-        outlineMat.SetFloat("_OutlineThickness", 2f);
-
-        if (objectElement == ElementType.fire)
-        {
-            // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color fireColor = new Color(212, 139, 57, 255);
-            outlineMat.SetColor("_OutlineColor", Color.red);
-        }
-        else if (objectElement == ElementType.ice)
-        {
-            // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color iceColor = new Color(70, 219, 213, 255);
-            outlineMat.SetColor("_OutlineColor", Color.cyan);
-        }
+      
     }
     protected override void Movement()
     {

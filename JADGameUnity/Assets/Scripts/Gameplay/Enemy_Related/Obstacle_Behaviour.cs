@@ -34,6 +34,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Tooltip("This is going to be an instance of the material for the outline that is created at runtime. We will use this to change outline shader on the fly.")]
     protected Material outlineMat;
+    protected List<Material> outlineChildList = new List<Material>();
 
     [Tooltip("If there is a hitbox we don't want to count when despawning the object, assign it here.")]
     [SerializeField] protected BoxCollider2D extraCollider;
@@ -93,40 +94,90 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         }
         inPlayerVicinity = false;
         onScreenIndicator = false;
+
+        if (this.transform.childCount > 0)
+        {
+            foreach (Transform child in transform)
+            {
+                if(child.GetComponent<SpriteRenderer>() != null)
+                {
+                    outlineChildList.Add(child.GetComponent<SpriteRenderer>().material);
+                }
+             
+            }
+            for (int i = 0; i < outlineChildList.Count; i++)
+            {
+                outlineChildList[i].SetFloat("_OutlineThickness", 3f);
+
+                if (objectElement == ElementType.fire)
+                {
+                    // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+                    Color fireColor = new Color(212, 139, 57, 255);
+                    outlineChildList[i].SetColor("_OutlineColor", Color.red);
+                }
+                else if (objectElement == ElementType.ice)
+                {
+                    // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+                    Color iceColor = new Color(70, 219, 213, 255);
+                    outlineChildList[i].SetColor("_OutlineColor", Color.cyan);
+                }
+            }
+
+            if(this.GetComponent<SpriteRenderer>() != null)
+            {
+                outlineMat = this.GetComponent<SpriteRenderer>().material;
+                if (outlineMat == null && thisType != typeOfObstacle.obstacle)
+                {
+                    Debug.LogError("We can't find the material of this object!");
+                }
+
+                outlineMat.SetFloat("_OutlineThickness", 3f);
+
+                if (objectElement == ElementType.fire)
+                {
+                    // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+                    Color fireColor = new Color(212, 139, 57, 255);
+                    outlineMat.SetColor("_OutlineColor", Color.red);
+                }
+                else if (objectElement == ElementType.ice)
+                {
+                    // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+                    Color iceColor = new Color(70, 219, 213, 255);
+                    outlineMat.SetColor("_OutlineColor", Color.cyan);
+                }
+            }
+
+        }
+
+        else
+        {
+            outlineMat = this.GetComponent<SpriteRenderer>().material;
+            if (outlineMat == null && thisType != typeOfObstacle.obstacle)
+            {
+                Debug.LogError("We can't find the material of this object!");
+            }
+
+            outlineMat.SetFloat("_OutlineThickness", 3f);
+
+            if (objectElement == ElementType.fire)
+            {
+                // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color fireColor = new Color(212, 139, 57, 255);
+                outlineMat.SetColor("_OutlineColor", Color.red);
+            }
+            else if (objectElement == ElementType.ice)
+            {
+                // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color iceColor = new Color(70, 219, 213, 255);
+                outlineMat.SetColor("_OutlineColor", Color.cyan);
+            }
+        }
+
     }
 
     // Start is called before the first frame update
     void Start()
     {
-    
-        if(this.transform.childCount > 0)
-        {
-            foreach(Transform child in this.transform)
-            {
-                //We'll assign a material to each child so that we can alter it based on the element and what not.
-            }
-        }
-
-        outlineMat = this.GetComponent<SpriteRenderer>().material;
-        if(outlineMat == null && thisType != typeOfObstacle.obstacle)
-        {
-            Debug.LogError("We can't find the material of this object!");
-        }
-
-        outlineMat.SetFloat("_OutlineThickness", 3f);
-
-        if (objectElement == ElementType.fire)
-        {
-           // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color fireColor = new Color(212, 139, 57, 255);
-            outlineMat.SetColor("_OutlineColor", Color.red);
-        }
-        else if(objectElement == ElementType.ice)
-        {
-           // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
-            Color iceColor = new Color(70, 219, 213, 255);
-            outlineMat.SetColor("_OutlineColor", Color.cyan);
-        }
         startPos = this.transform.position;
        
         endPos = new Vector2((startPos.x - 20), (startPos.y));
