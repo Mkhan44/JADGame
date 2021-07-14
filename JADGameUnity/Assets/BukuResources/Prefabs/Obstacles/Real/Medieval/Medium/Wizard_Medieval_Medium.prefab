@@ -110,8 +110,8 @@ MonoBehaviour:
   theEra: 0
   fireTellParticlePrefab: {fileID: 907397275273053934, guid: 655397dfdbee3be49b5233374afbc9f7, type: 3}
   iceTellParticlePrefab: {fileID: 7071488789469175710, guid: 45c869a74af737049ac3e9cc96d8570d, type: 3}
-  fireBeamPrefab: {fileID: 0}
-  iceBeamPrefab: {fileID: 0}
+  fireBeamPrefab: {fileID: 4158279202637467101, guid: 26661baed785ea8459f9222b9e02925f, type: 3}
+  iceBeamPrefab: {fileID: 4158279202637467101, guid: be0b1b015ca111749af73e3cff862898, type: 3}
   wizardAnimator: {fileID: 7891216525974026662}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -233,7 +233,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: 9f609ea8f25ff7f429cd5d1350867e3a, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1ad3427f9653a9847b6e5014dfa44303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -254,7 +254,7 @@ Animator:
   m_GameObject: {fileID: 7034686116341056044}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: 4492de3e3000c374aa9d7d1191233986, type: 2}
+  m_Controller: {fileID: 22100000, guid: adf79b2bb5d75f84481ac97e63b83a6a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

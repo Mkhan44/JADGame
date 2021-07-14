@@ -35,6 +35,7 @@ public class Wizard : Obstacle_Behaviour
     AnimationClip castDownAni;
     AnimationClip castUpIdleAni;
     AnimationClip castDownIdleAni;
+    AnimationClip beamAni;
 
     const string dynamitefadeName = "dynamitefade";
     const string dynamiteidleName = "dynamiteidle";
@@ -56,6 +57,14 @@ public class Wizard : Obstacle_Behaviour
         hasTeledIn = false;
         hasCast = false;
         randCast = 0;
+        if(fireBeamInstance != null)
+        {
+            Destroy(fireBeamInstance);
+        }
+        if(iceBeamInstance != null)
+        {
+            Destroy(iceBeamInstance);
+        }
     }
 
     // Start is called before the first frame update
@@ -145,12 +154,14 @@ public class Wizard : Obstacle_Behaviour
     {
         randCast = Random.Range(1, 3);
         float castAniWait = 0f;
+        float beamAniWait = 0f;
+      
         if (randCast == 1)
         {
             fireTellParticleInstance = Instantiate(fireTellParticlePrefab);
             castUpAni = wizardAnimator.runtimeAnimatorController.animationClips[1];
             castAniWait = castUpAni.length;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.3f);
 
             wizardAnimator.Play("wizardtopcast");
         }
@@ -159,21 +170,36 @@ public class Wizard : Obstacle_Behaviour
             iceTellParticleInstance = Instantiate(iceTellParticlePrefab);
             castDownAni = wizardAnimator.runtimeAnimatorController.animationClips[2];
             castAniWait = castDownAni.length;
-            yield return new WaitForSeconds(1.5f);
+            yield return new WaitForSeconds(1.3f);
 
             wizardAnimator.Play("wizardbotcast");
         }
 
-        yield return new WaitForSeconds(castAniWait);
+        yield return new WaitForSeconds(castAniWait - 0.6f);
 
         Destroy(fireTellParticleInstance);
         Destroy(iceTellParticleInstance);
 
-       // fireBeamInstance = Instantiate(fireBeamPrefab);
-      //  iceBeamInstance = Instantiate(iceBeamInstance);
+        if(randCast == 1)
+        {
+            fireBeamInstance = Instantiate(fireBeamPrefab);
+            fireBeamInstance.GetComponent<WizBeam>().initializeBeam(this.gameObject);
+            beamAni = fireBeamInstance.GetComponent<Animator>().runtimeAnimatorController.animationClips[0];
+        }
+        else
+        {
+            iceBeamInstance = Instantiate(iceBeamPrefab);
+            iceBeamInstance.GetComponent<WizBeam>().initializeBeam(this.gameObject);
+            beamAni = iceBeamInstance.GetComponent<Animator>().runtimeAnimatorController.animationClips[0];
+        }
+
+        beamAniWait = beamAni.length;
 
         //This will probably change based on difficulty or be randomized slightly.
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(beamAniWait);
+
+        Destroy(fireBeamInstance);
+        Destroy(iceBeamInstance);
 
         //Should teleport out after calling this.
         teleCo = StartCoroutine(teleAniCo());

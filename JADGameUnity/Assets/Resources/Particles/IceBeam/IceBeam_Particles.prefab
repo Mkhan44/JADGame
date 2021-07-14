@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7071488789469175708}
   - component: {fileID: 7071488789469175711}
   m_Layer: 0
-  m_Name: FireBeam_Particles
+  m_Name: IceBeam_Particles
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 7071488789469175710}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -1.2891104, y: -0.74532217, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalScale: {x: 0.08, y: 0.08, z: 0.08}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0

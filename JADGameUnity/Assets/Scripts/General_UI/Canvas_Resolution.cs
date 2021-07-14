@@ -9,6 +9,8 @@ using UnityEngine.UI;
 public class Canvas_Resolution : MonoBehaviour
 {
 
+
+
     public float resoX;
     public float resoY;
 
@@ -24,6 +26,14 @@ public class Canvas_Resolution : MonoBehaviour
 
     void setInfo()
     {
+        /*
+#if UNITY_EDITOR
+        resoX = 1440f;
+        resoY = 2560f;
+        can.referenceResolution = new Vector2(resoX, resoY);
+        return;
+#endif
+        */
         resoX = (float)Screen.currentResolution.width;
         resoY = (float)Screen.currentResolution.height;
 
