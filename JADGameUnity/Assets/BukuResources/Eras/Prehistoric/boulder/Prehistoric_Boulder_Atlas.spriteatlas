@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Prehistoric_Boulder_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: bf809b85b556cb34986a56b2195fecb3, type: 3}
+    - {fileID: 2800000, guid: 82416e0b4ee33f64f839604a28c3c0ed, type: 3}
+    - {fileID: 2800000, guid: 30765e0b674689e4ca74f7ebe5950e94, type: 3}
+    - {fileID: 2800000, guid: 43ffd58ce759dce4fb5289e560d31cc9, type: 3}
+    - {fileID: 2800000, guid: 5f2d7cd8fac998c46a65158382cba7ce, type: 3}
+    - {fileID: 2800000, guid: b0f4e958b9291594ea1030c4f820b6b1, type: 3}
+    - {fileID: 2800000, guid: e8780adbc910e1047b20db30da558479, type: 3}
+    - {fileID: 2800000, guid: 7530043a04d91b642b5571ba5f226211, type: 3}
+    - {fileID: 2800000, guid: 595ee8b84710c224587a5d07736d789d, type: 3}
+    - {fileID: 2800000, guid: 80666cc126961c74cb516792c7fd9aac, type: 3}
+    - {fileID: 2800000, guid: 18fb5a8768839aa42acc4e7fa70fc566, type: 3}
+    - {fileID: 2800000, guid: 94e92c8d1bef2844bb8029f1047ab130, type: 3}
+    totalSpriteSurfaceArea: 307200
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 80666cc126961c74cb516792c7fd9aac, type: 3}
+  - {fileID: 21300000, guid: bf809b85b556cb34986a56b2195fecb3, type: 3}
+  - {fileID: 21300000, guid: 18fb5a8768839aa42acc4e7fa70fc566, type: 3}
+  - {fileID: 21300000, guid: b0f4e958b9291594ea1030c4f820b6b1, type: 3}
+  - {fileID: 21300000, guid: 595ee8b84710c224587a5d07736d789d, type: 3}
+  - {fileID: 21300000, guid: 5f2d7cd8fac998c46a65158382cba7ce, type: 3}
+  - {fileID: 21300000, guid: 7530043a04d91b642b5571ba5f226211, type: 3}
+  - {fileID: 21300000, guid: 30765e0b674689e4ca74f7ebe5950e94, type: 3}
+  - {fileID: 21300000, guid: 82416e0b4ee33f64f839604a28c3c0ed, type: 3}
+  - {fileID: 21300000, guid: e8780adbc910e1047b20db30da558479, type: 3}
+  - {fileID: 21300000, guid: 43ffd58ce759dce4fb5289e560d31cc9, type: 3}
+  - {fileID: 21300000, guid: 94e92c8d1bef2844bb8029f1047ab130, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - boulderhrd2
+  - boulder1
+  - boulderhrd3
+  - bouldermed2
+  - boulderhrd1
+  - bouldermed1
+  - bouldermed4
+  - boulder3
+  - boulder2
+  - bouldermed3
+  - boulder4
+  - boulderhrd4
+  m_RenderDataMap: {}
+  m_Tag: Prehistoric_Boulder_Atlas
+  m_IsVariant: 0

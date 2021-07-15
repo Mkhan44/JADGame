@@ -1842,6 +1842,7 @@ GameObject:
   - component: {fileID: 7806366962693749054}
   - component: {fileID: 2391983906040402980}
   - component: {fileID: 3540301919165386629}
+  - component: {fileID: 3011317314817758791}
   m_Layer: 5
   m_Name: Leaderboards_Button
   m_TagString: Untagged
@@ -1951,6 +1952,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &3011317314817758791
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8313607785420250533}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 60e35abd56f8827428f1d3b9b8fe9188, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8475357224014146581
 GameObject:
   m_ObjectHideFlags: 0

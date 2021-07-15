@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Prehistoric_Club_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0a97ead85513ec646b28ebdaa88d5727, type: 3}
+    - {fileID: 2800000, guid: 2aa467ec2f2c3f14d9829100a61a663c, type: 3}
+    - {fileID: 2800000, guid: 35b7b1a2bf647dd4ba1ac7eef700bd5a, type: 3}
+    - {fileID: 2800000, guid: de07438c1c234574db0e9bddc30261f5, type: 3}
+    - {fileID: 2800000, guid: 7d77414a4c755964892e949921c8eef8, type: 3}
+    - {fileID: 2800000, guid: 3c08cd5478adf4d439f6c894df6db02c, type: 3}
+    - {fileID: 2800000, guid: 9ff0fe1a5e4bee84cb8b34ac84fa7f18, type: 3}
+    - {fileID: 2800000, guid: dd76080cea6fb274eade0f453d6c621b, type: 3}
+    - {fileID: 2800000, guid: 08a8377e58b45124c8afb38ac6a39346, type: 3}
+    - {fileID: 2800000, guid: 7521766e8dfe2724a9442041b038066c, type: 3}
+    - {fileID: 2800000, guid: ac9f2018e382b7348834e519503c5c44, type: 3}
+    - {fileID: 2800000, guid: b10699660c898d749800bdd405833180, type: 3}
+    totalSpriteSurfaceArea: 307200
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 35b7b1a2bf647dd4ba1ac7eef700bd5a, type: 3}
+  - {fileID: 21300000, guid: 3c08cd5478adf4d439f6c894df6db02c, type: 3}
+  - {fileID: 21300000, guid: b10699660c898d749800bdd405833180, type: 3}
+  - {fileID: 21300000, guid: ac9f2018e382b7348834e519503c5c44, type: 3}
+  - {fileID: 21300000, guid: 0a97ead85513ec646b28ebdaa88d5727, type: 3}
+  - {fileID: 21300000, guid: 9ff0fe1a5e4bee84cb8b34ac84fa7f18, type: 3}
+  - {fileID: 21300000, guid: 7d77414a4c755964892e949921c8eef8, type: 3}
+  - {fileID: 21300000, guid: dd76080cea6fb274eade0f453d6c621b, type: 3}
+  - {fileID: 21300000, guid: de07438c1c234574db0e9bddc30261f5, type: 3}
+  - {fileID: 21300000, guid: 2aa467ec2f2c3f14d9829100a61a663c, type: 3}
+  - {fileID: 21300000, guid: 7521766e8dfe2724a9442041b038066c, type: 3}
+  - {fileID: 21300000, guid: 08a8377e58b45124c8afb38ac6a39346, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - club3
+  - clubmed2
+  - clubhrd4
+  - clubhrd3
+  - club1
+  - clubmed3
+  - clubmed1
+  - clubmed4
+  - club4
+  - club2
+  - clubhrd2
+  - clubhrd1
+  m_RenderDataMap: {}
+  m_Tag: Prehistoric_Club_Atlas
+  m_IsVariant: 0
