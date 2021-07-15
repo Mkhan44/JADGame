@@ -27,6 +27,9 @@ public class Wizard : Obstacle_Behaviour
     bool hasCast;
     int randCast;
 
+    Color transparentColor = new Color(255, 255, 255, 0);
+    Color regularColor = new Color(255, 255, 255, 255);
+
     Coroutine teleCo;
 
     //Animation clips & their lengths.
@@ -37,15 +40,13 @@ public class Wizard : Obstacle_Behaviour
     AnimationClip castDownIdleAni;
     AnimationClip beamAni;
 
-    const string dynamitefadeName = "dynamitefade";
-    const string dynamiteidleName = "dynamiteidle";
-    const string dynaBool = "Explode";
 
     protected override void Awake()
     {
         base.Awake();
-       
-        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+
+        // this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+        this.transform.GetChild(0).GetComponent<SpriteRenderer>().color = transparentColor;
     }
 
     public override void OnObjectSpawn()
@@ -53,7 +54,8 @@ public class Wizard : Obstacle_Behaviour
         base.OnObjectSpawn();
         onScreenIndicator = false;
         teleCo = null;
-        this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+        //this.transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+        this.transform.GetChild(0).GetComponent<SpriteRenderer>().color = transparentColor;
         hasTeledIn = false;
         hasCast = false;
         randCast = 0;
@@ -121,6 +123,7 @@ public class Wizard : Obstacle_Behaviour
             teleAni = wizardAnimator.runtimeAnimatorController.animationClips[0];
            // Debug.Log(teleAni.name);
             wizardAnimator.Play("wizardtele");
+            this.transform.GetChild(0).GetComponent<SpriteRenderer>().color = regularColor;
             hasTeledIn = true;
         }
         else
