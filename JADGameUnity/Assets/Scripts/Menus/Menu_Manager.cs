@@ -15,7 +15,8 @@ public class Menu_Manager : MonoBehaviour
 
     [Header("Fade to gameplay stuff")]
     [SerializeField] GameObject fadePanel;
-    [SerializeField] Color panelColor;
+    [SerializeField] GameObject loadingIcon;
+    [SerializeField] GameObject noInputPanel;
 
     Scene gameplayScene;
 
@@ -42,7 +43,8 @@ public class Menu_Manager : MonoBehaviour
         //Might want to make sure that this string works.
 
         StartCoroutine(fadeToGameplay());
-
+        //Make it so player can't spam the button.
+        noInputPanel.SetActive(true);
 
     }
 
@@ -61,9 +63,11 @@ public class Menu_Manager : MonoBehaviour
         Vector3 currentScale = fadePanelTransform.localScale;
         Vector3 increaseScaleRate = new Vector3(1, 1, 1);
 
+        loadingIcon.SetActive(true);
+
         float i = 0.0f;
         float rate = 0.0f;
-        Color32 startColor = new Color32(255, 255, 255, 10);
+        Color32 startColor = new Color32(255, 255, 255, 100);
         Color32 endColor = new Color32(255, 255, 255, 255);
         Image fadePanelImg = fadePanel.GetComponent<Image>();
 
