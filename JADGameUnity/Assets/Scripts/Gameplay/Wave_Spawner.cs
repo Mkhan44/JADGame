@@ -96,12 +96,10 @@ public class Wave_Spawner : MonoBehaviour
 
     [SerializeField] GameObject currentBG1;
     [SerializeField] GameObject currentBG2;
-    [SerializeField] GameObject easyBG1;
-    [SerializeField] GameObject easyBG2;
-    [SerializeField] GameObject medBG1;
-    [SerializeField] GameObject medBG2;
-    [SerializeField] GameObject hardBG1;
-    [SerializeField] GameObject hardBG2;
+
+
+    [SerializeField] bool introTransitionFinished;
+    [SerializeField] RectTransform fadePanel;
 
     public Player thePlayer;
     Player.playerState currentPlayerState;
@@ -126,8 +124,58 @@ public class Wave_Spawner : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        introTransitionFinished = false;
     }
     void Start()
+    {
+        initializeWaveSpawner();
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+      //  currentPlayerState = thePlayer.GetState();
+
+        if(waveType == typeOfWave.normal)
+        {
+            waveText.text = waveCount.ToString();
+        }
+        else if(waveType == typeOfWave.bonus)
+        {
+            waveText.text = "Bonus!";
+        }
+        else if(waveType == typeOfWave.timeSwap)
+        {
+            waveText.text = "Timeswap!";
+        }
+
+        eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
+        //Messy...Might want to reorganize.
+        if((!Level_Manager.Instance.player.activeInHierarchy || Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial) && introTransitionFinished)
+        {
+            if(stopCo == false)
+            {
+                if(spawnRoutine != null)
+                {
+                    StopCoroutine(spawnRoutine);
+                }
+              
+                stopCo = true;
+            }
+            
+        }
+        else
+        {
+            if (waveComplete == true && introTransitionFinished)
+            {
+                stopCo = false;
+                spawnRoutine = StartCoroutine(waveSpawner(waveType));
+            }
+        }
+
+    }
+
+    void initializeWaveSpawner()
     {
         theLevelType = Level_Manager.Instance.getThisLevelType();
         currentPlayerState = thePlayer.GetState();
@@ -139,7 +187,7 @@ public class Wave_Spawner : MonoBehaviour
         stopCo = false;
         lastEnemySpawnedCoins = false;
         theWaveDiff = waveDiff.easy;
-       // Level_Manager.Instance = this.GetComponent<Level_Manager>();
+        // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         specialWaveOn = false;
         wavesSinceDifficultyChange = 0;
         enemiesLeft = enemyCount;
@@ -148,7 +196,7 @@ public class Wave_Spawner : MonoBehaviour
         List<GameObject> BGsToLoad = prehistoricBackgrounds;
         //Setup the BGs, this will be based on the era from LevelManager!
         //Will also setup music tracks here.
-        switch(Level_Manager.Instance.getTimePeriod())
+        switch (Level_Manager.Instance.getTimePeriod())
         {
             case Level_Manager.timePeriod.Prehistoric:
                 {
@@ -173,10 +221,10 @@ public class Wave_Spawner : MonoBehaviour
             case Level_Manager.timePeriod.Future:
                 {
                     BGsToLoad = FutureBackgrounds;
-                  
+
                     break;
                 }
-             default:
+            default:
                 {
                     BGsToLoad = prehistoricBackgrounds;
                     break;
@@ -204,53 +252,47 @@ public class Wave_Spawner : MonoBehaviour
         //   Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
         //    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
 
+        //Play intro transition.
+        StartCoroutine(introTransition());
     }
 
-    // Update is called once per frame
-    void Update()
+    IEnumerator introTransition()
     {
-      //  currentPlayerState = thePlayer.GetState();
+        fadePanel.gameObject.SetActive(true);
 
-        if(waveType == typeOfWave.normal)
-        {
-            waveText.text = waveCount.ToString();
-        }
-        else if(waveType == typeOfWave.bonus)
-        {
-            waveText.text = "Bonus!";
-        }
-        else if(waveType == typeOfWave.timeSwap)
-        {
-            waveText.text = "Timeswap!";
-        }
+        Vector3 currentScale = fadePanel.localScale;
+        Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
 
-        eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
-        //Messy...Might want to reorganize.
-        if(!Level_Manager.Instance.player.activeInHierarchy || Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 150);
+        Color32 endColor = new Color32(255, 255, 255, 0);
+        Image fadePanelImg = fadePanel.GetComponent<Image>();
+
+        rate = (1.0f / 2.5f) * 1.0f;
+
+
+        while (i < 1.0f)
         {
-            if(stopCo == false)
-            {
-                if(spawnRoutine != null)
-                {
-                    StopCoroutine(spawnRoutine);
-                }
-              
-                stopCo = true;
-            }
-            
-        }
-        else
-        {
-            if (waveComplete == true)
-            {
-                stopCo = false;
-                spawnRoutine = StartCoroutine(waveSpawner(waveType));
-            }
+            currentScale -= decreaseScaleRate;
+           // fadePanel.localScale = currentScale;
+            i += Time.deltaTime * rate;
+
+            fadePanel.localScale = Vector3.Lerp(fadePanel.localScale, new Vector3(0, 0, 0), (i));
+
+            fadePanelImg.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+
+            //  yield return new WaitForSeconds(0.001f);
         }
 
+        fadePanel.transform.parent.gameObject.SetActive(false);
+        fadePanel.gameObject.SetActive(false);
+        introTransitionFinished = true;
+        yield return null;
     }
 
-  
+
     //Spawn for the regular waves.
     //We can potentially use this same function for bonus + time swap...Just need to pass in the current waveState and do something based on what it is.
     IEnumerator waveSpawner(typeOfWave theWaveType)

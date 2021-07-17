@@ -77,7 +77,7 @@ public class Menu_Manager : MonoBehaviour
         while (i < 1.0f)
         {
             currentScale += increaseScaleRate;
-            fadePanelTransform.localScale = currentScale;
+            //fadePanelTransform.localScale = currentScale;
             i += Time.deltaTime * rate;
 
             fadePanelTransform.localScale = Vector3.Lerp(fadePanelTransform.localScale, new Vector3(20, 20, 20), (i));
