@@ -3219,7 +3219,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0, y: 0.35241714}
   m_AnchorMax: {x: 0.27442658, y: 0.6346438}
-  m_AnchoredPosition: {x: -91, y: 5}
+  m_AnchoredPosition: {x: -91.000015, y: 5}
   m_SizeDelta: {x: 184.47388, y: -11.599915}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &522617085
@@ -6419,12 +6419,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
+  m_Sprite: {fileID: 4798424233900112988, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 6.7, y: 3.4}
+  m_Size: {x: 6.4200006, y: 3.122151}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -8784,8 +8784,8 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 7.5, y: 4.85}
-    newSize: {x: 0.32, y: 0.32}
+    oldSize: {x: 7.2, y: 4.55}
+    newSize: {x: 7.2, y: 4.55}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -8833,12 +8833,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Sprite: {fileID: 21300000, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
+  m_Sprite: {fileID: -3742592120836699101, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.32, y: 0.32}
+  m_Size: {x: 7.2, y: 4.55}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -11947,7 +11947,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: currentHealth
-      value: 6
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2754374759307534873, guid: 194e508c1791b5c499d5d67373369a42, type: 3}
       propertyPath: outlineMaterialInstance
@@ -12882,7 +12882,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 4
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton
