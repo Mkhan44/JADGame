@@ -36,11 +36,17 @@ public class Temperature_Manager : MonoBehaviour
     //Will use this based on what type of meter this script is attached to.
     float realFillRate;
     //If any modifiers need to be applied to the bar fill rate, they will happen here.
-    float modifer;
+    float modifier;
+
+    [SerializeField] Image meterTransparency;
+    Color32 changeColor;
+    float alphaMod;
 
     private void Awake()
     {
-        
+        changeColor = meterTransparency.color;
+        alphaMod = changeColor.a;
+
     }
     // Start is called before the first frame update
     void Start()
@@ -54,7 +60,36 @@ public class Temperature_Manager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+       
+    }
+
+    void changeTransparency()
+    {
+        //80 = base.
+        if(currentMeterVal < 30)
+        {
+            alphaMod = (currentMeterVal + 60);
+        }
+        else if(currentMeterVal < 50)
+        {
+            alphaMod = (currentMeterVal + 90);
+        }
+        else if(currentMeterVal < 70)
+        {
+            alphaMod = (currentMeterVal + 120);
+        }
+        else if(currentMeterVal < 90)
+        {
+            alphaMod = (currentMeterVal + 140);
+        }
+        else
+        {
+            alphaMod = (currentMeterVal + 155);
+        }
+      
+        changeColor = new Color32(changeColor.r, changeColor.g, changeColor.b, (byte)alphaMod);
+
+        meterTransparency.color = changeColor;
     }
 
     //Setters/Getters.
@@ -116,7 +151,9 @@ public class Temperature_Manager : MonoBehaviour
             
         }
         theMeter.value = currentMeterVal;
-      
+        changeTransparency();
+
+
     }
 
     public void decreaseMeter(float amount)
@@ -127,6 +164,7 @@ public class Temperature_Manager : MonoBehaviour
             currentMeterVal = 0f;
         }
         theMeter.value = currentMeterVal;
+        changeTransparency();
     }
 
     //Depending on the type of bar...We need to call this and fill the corresponding bar with each passing second by a set amount.
@@ -158,9 +196,11 @@ public class Temperature_Manager : MonoBehaviour
             //Fill cold
             //Debug.Log("Filling cold...");
         }
+        changeTransparency();
 
-        
-        
+
+
+
     }
 
     //Use this when ducking to decrease heat meter or when jumping/hanging to decrease ice meter.
@@ -174,6 +214,7 @@ public class Temperature_Manager : MonoBehaviour
             currentMeterVal = 0.0f;
         }
         theMeter.value = currentMeterVal;
+        changeTransparency();
     }
 
     public IEnumerator decreaseIdle()
@@ -195,9 +236,12 @@ public class Temperature_Manager : MonoBehaviour
                 currentMeterVal = 0.0f;
             }
             theMeter.value = currentMeterVal;
+            changeTransparency();
             yield return new WaitForSeconds(0.1f);
         }
-       
+
+
+
     }
 
     public float getMeterVal()
@@ -218,6 +262,7 @@ public class Temperature_Manager : MonoBehaviour
             currentMeterVal = 0;
         }
         theMeter.value = currentMeterVal;
+        changeTransparency();
     }
 
     //Once meter is filled, it should decrease automatically over a set period using this function.
@@ -233,6 +278,7 @@ public class Temperature_Manager : MonoBehaviour
                 filledMeter = false;
             }
             theMeter.value = currentMeterVal;
+            changeTransparency();
 
             yield return null;
         }
