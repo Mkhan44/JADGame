@@ -41,6 +41,11 @@ public class Heart_System : MonoBehaviour
             theGrid.cellSize = new Vector2(100, 100);
         }
 
+        if(Canvas_Resolution.instance.getReferenceReso() == new Vector2(828, 1792))
+        {
+            theGrid.cellSize = new Vector2(100, 100);
+        }
+
         for (int i = 0; i < maxHealth; i++)
         {
             GameObject tempObj = Instantiate(healthIconPrefab, this.transform);

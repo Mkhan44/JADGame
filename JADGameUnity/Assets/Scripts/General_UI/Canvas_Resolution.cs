@@ -8,14 +8,17 @@ using UnityEngine;
 using UnityEngine.UI;
 public class Canvas_Resolution : MonoBehaviour
 {
-
-
-
     public float resoX;
     public float resoY;
 
     private CanvasScaler can;
-    
+
+    public static Canvas_Resolution instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,11 @@ public class Canvas_Resolution : MonoBehaviour
         resoY = (float)Screen.currentResolution.height;
 
         can.referenceResolution = new Vector2(resoX, resoY);
+    }
+
+    public Vector2 getReferenceReso()
+    {
+        return can.referenceResolution;
     }
   
 }
