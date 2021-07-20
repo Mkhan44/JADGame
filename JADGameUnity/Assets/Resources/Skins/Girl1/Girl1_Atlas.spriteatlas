@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Girl1_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 8f4fb7b6148373042a8f8c4ea066fe69, type: 3}
+    - {fileID: 2800000, guid: 9c26b09f715bc0c4da60682d0f208d3b, type: 3}
+    - {fileID: 2800000, guid: 254736d60f1f1054fae6f424ab9623ab, type: 3}
+    - {fileID: 2800000, guid: 2cb07d33c1981e341bec07aabc985c4a, type: 3}
+    - {fileID: 2800000, guid: be2b2cde76df374408f10a11073df73b, type: 3}
+    - {fileID: 2800000, guid: 1dafa52fe8ddfc64a9a44cf1dfaafe32, type: 3}
+    - {fileID: 2800000, guid: ab72ad76f838d974a8e41f8af1d20560, type: 3}
+    - {fileID: 2800000, guid: 2749f17398217fb41b7f76ffd76fc32e, type: 3}
+    - {fileID: 2800000, guid: fc081e83fcf1dbf4cb065ad28241a05b, type: 3}
+    - {fileID: 2800000, guid: 9d7486bb28024a343b37124c6f0e9529, type: 3}
+    - {fileID: 2800000, guid: c089b18a77a12ac45a75e4320f050460, type: 3}
+    - {fileID: 2800000, guid: 8a91567c2ce087745bb0f8e563b7d034, type: 3}
+    - {fileID: 2800000, guid: 2746762163d629d48b495c16e652bebb, type: 3}
+    - {fileID: 2800000, guid: f07c6a3d196e2b0418044c74cca8b64a, type: 3}
+    - {fileID: 2800000, guid: 3f230a9ec74aa5b4faf6721072b6f3dc, type: 3}
+    - {fileID: 2800000, guid: 08f11f7d3eb1221439a4b595484686fe, type: 3}
+    - {fileID: 2800000, guid: e26eee2373e9ebc418d167a9a72281c7, type: 3}
+    - {fileID: 2800000, guid: c5757fa2b7469a649a67e32c34a33728, type: 3}
+    - {fileID: 2800000, guid: af0ad9fa29dafdc4ba5e69b733d15804, type: 3}
+    - {fileID: 2800000, guid: 11de544bcebff5343aee9157b7cc154e, type: 3}
+    - {fileID: 2800000, guid: 1a86de51a4a6d0145a5e350b5c585c52, type: 3}
+    - {fileID: 2800000, guid: d8f59781b0ce5db4c840435ecf91a4ce, type: 3}
+    - {fileID: 2800000, guid: fbf73eb3a2f79494b93dccfea8996e42, type: 3}
+    - {fileID: 2800000, guid: 9fa7785d433831c48be614acac6950c3, type: 3}
+    - {fileID: 2800000, guid: 8d50f2605da5eb74cb3e7728af9e28a4, type: 3}
+    - {fileID: 2800000, guid: 3e0e9216c5b850445a418c24cb9bb1d9, type: 3}
+    - {fileID: 2800000, guid: a411bb1166a6d7d40bcb991df2356e1b, type: 3}
+    - {fileID: 2800000, guid: fa3ce7895cccd6a449aad67b42737a02, type: 3}
+    - {fileID: 2800000, guid: 13e866fd9a9925e42859aef316c1aa25, type: 3}
+    - {fileID: 2800000, guid: 1e180193cebaf6049a595aa2412cb3a1, type: 3}
+    totalSpriteSurfaceArea: 1152000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 8d50f2605da5eb74cb3e7728af9e28a4, type: 3}
+  - {fileID: 21300000, guid: a411bb1166a6d7d40bcb991df2356e1b, type: 3}
+  - {fileID: 21300000, guid: 2746762163d629d48b495c16e652bebb, type: 3}
+  - {fileID: 21300000, guid: 1a86de51a4a6d0145a5e350b5c585c52, type: 3}
+  - {fileID: 21300000, guid: d8f59781b0ce5db4c840435ecf91a4ce, type: 3}
+  - {fileID: 21300000, guid: c5757fa2b7469a649a67e32c34a33728, type: 3}
+  - {fileID: 21300000, guid: e26eee2373e9ebc418d167a9a72281c7, type: 3}
+  - {fileID: 21300000, guid: 2cb07d33c1981e341bec07aabc985c4a, type: 3}
+  - {fileID: 21300000, guid: 2749f17398217fb41b7f76ffd76fc32e, type: 3}
+  - {fileID: 21300000, guid: fc081e83fcf1dbf4cb065ad28241a05b, type: 3}
+  - {fileID: 21300000, guid: 1e180193cebaf6049a595aa2412cb3a1, type: 3}
+  - {fileID: 21300000, guid: fbf73eb3a2f79494b93dccfea8996e42, type: 3}
+  - {fileID: 21300000, guid: 3e0e9216c5b850445a418c24cb9bb1d9, type: 3}
+  - {fileID: 21300000, guid: ab72ad76f838d974a8e41f8af1d20560, type: 3}
+  - {fileID: 21300000, guid: 8f4fb7b6148373042a8f8c4ea066fe69, type: 3}
+  - {fileID: 21300000, guid: 254736d60f1f1054fae6f424ab9623ab, type: 3}
+  - {fileID: 21300000, guid: fa3ce7895cccd6a449aad67b42737a02, type: 3}
+  - {fileID: 21300000, guid: c089b18a77a12ac45a75e4320f050460, type: 3}
+  - {fileID: 21300000, guid: af0ad9fa29dafdc4ba5e69b733d15804, type: 3}
+  - {fileID: 21300000, guid: 11de544bcebff5343aee9157b7cc154e, type: 3}
+  - {fileID: 21300000, guid: 9d7486bb28024a343b37124c6f0e9529, type: 3}
+  - {fileID: 21300000, guid: 8a91567c2ce087745bb0f8e563b7d034, type: 3}
+  - {fileID: 21300000, guid: f07c6a3d196e2b0418044c74cca8b64a, type: 3}
+  - {fileID: 21300000, guid: 9fa7785d433831c48be614acac6950c3, type: 3}
+  - {fileID: 21300000, guid: 08f11f7d3eb1221439a4b595484686fe, type: 3}
+  - {fileID: 21300000, guid: 13e866fd9a9925e42859aef316c1aa25, type: 3}
+  - {fileID: 21300000, guid: 3f230a9ec74aa5b4faf6721072b6f3dc, type: 3}
+  - {fileID: 21300000, guid: be2b2cde76df374408f10a11073df73b, type: 3}
+  - {fileID: 21300000, guid: 1dafa52fe8ddfc64a9a44cf1dfaafe32, type: 3}
+  - {fileID: 21300000, guid: 9c26b09f715bc0c4da60682d0f208d3b, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - girl1idle3
+  - girl1jump1
+  - girl1fall3
+  - girl1hurt2
+  - girl1hurt3
+  - girl1hanging2
+  - girl1hanging1
+  - girl1burning4
+  - girl1duckhurt1
+  - girl1duckhurt2
+  - girl1jump4
+  - girl1idle1
+  - girl1idle4
+  - girl1duck3
+  - girl1burning1
+  - girl1burning3
+  - girl1jump2
+  - girl1fall1
+  - girl1hanging3
+  - girl1hurt1
+  - girl1duckhurt3
+  - girl1fall2
+  - girl1fall4
+  - girl1idle2
+  - girl1frozen2
+  - girl1jump3
+  - girl1frozen1
+  - girl1duck1
+  - girl1duck2
+  - girl1burning2
+  m_RenderDataMap: {}
+  m_Tag: Girl1_Atlas
+  m_IsVariant: 0

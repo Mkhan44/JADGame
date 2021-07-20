@@ -1200,6 +1200,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMeter: 1
   theMeter: {fileID: 138729505}
+  meterTransparency: {fileID: 0}
 --- !u!114 &138729505
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4811,6 +4812,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   typeOfMeter: 0
   theMeter: {fileID: 899054755}
+  meterTransparency: {fileID: 0}
 --- !u!1 &910152574
 GameObject:
   m_ObjectHideFlags: 0
@@ -6713,7 +6715,7 @@ SpriteRenderer:
   m_Size: {x: 6.7, y: 3.4}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &1201911227
@@ -9066,7 +9068,7 @@ SpriteRenderer:
   m_Size: {x: 0.32, y: 0.32}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1547209348

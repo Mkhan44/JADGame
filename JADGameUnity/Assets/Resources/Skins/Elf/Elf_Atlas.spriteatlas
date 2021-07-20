@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Elf_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 9e13d9af5a8888f4c8af936245c97a42, type: 3}
+    - {fileID: 2800000, guid: c24148807ae6adc4981271ed41fe5bec, type: 3}
+    - {fileID: 2800000, guid: c4f996715f095384bbbbb20d409fb655, type: 3}
+    - {fileID: 2800000, guid: 0e01f8aac7eb7864cbca936ec53caf53, type: 3}
+    - {fileID: 2800000, guid: 4b0c2706681b4d04c9b64cfd48ad6ae2, type: 3}
+    - {fileID: 2800000, guid: a69a4e493666d664685d76e43a8f2f67, type: 3}
+    - {fileID: 2800000, guid: fb942e9226f1cd741882f79900fcfcc5, type: 3}
+    - {fileID: 2800000, guid: 3ab52e50099a39b41a5483c70f580390, type: 3}
+    - {fileID: 2800000, guid: b364cf592189cda46b955a6d50c2baa7, type: 3}
+    - {fileID: 2800000, guid: e70912e76731da745a0b94e94c9c603c, type: 3}
+    - {fileID: 2800000, guid: 6f7b0e89fc37d37498320ee6b8cf92f0, type: 3}
+    - {fileID: 2800000, guid: 1bed3f7c7841fc04aaf4a33426f4b990, type: 3}
+    - {fileID: 2800000, guid: 08bcf015409827f45ab01ef7a0f5e964, type: 3}
+    - {fileID: 2800000, guid: c8050c9d172e4574bbfbd60dc3387189, type: 3}
+    - {fileID: 2800000, guid: 0a05f34eaf3e936468d19765bde9bc94, type: 3}
+    - {fileID: 2800000, guid: b4eff279014ad99408fab896cf5dbc07, type: 3}
+    - {fileID: 2800000, guid: feaa782ce19fe6d4780088312f285ac6, type: 3}
+    - {fileID: 2800000, guid: 5049a409cbcff8042823d58f355fb4fe, type: 3}
+    - {fileID: 2800000, guid: bcbd5c2b16cb1df4f879af46144941e6, type: 3}
+    - {fileID: 2800000, guid: d276cd80f0bab134d8006d7b564f83dd, type: 3}
+    - {fileID: 2800000, guid: 485abf516d4d66849a5e141f39388c07, type: 3}
+    - {fileID: 2800000, guid: 188b2c499e650de4f96df0b8e0c40157, type: 3}
+    - {fileID: 2800000, guid: c0ecd3ef6fec61548a2dc15622adc3e7, type: 3}
+    - {fileID: 2800000, guid: 7a3e538b0425fe94eb02bcc8928c4eb4, type: 3}
+    - {fileID: 2800000, guid: 7954ad45b627ab547aaec0d95d82c7e1, type: 3}
+    - {fileID: 2800000, guid: 3e40909f2334c0f428a65ac4e6c86b71, type: 3}
+    - {fileID: 2800000, guid: 2137e34db363ae549b901fd363cd1a03, type: 3}
+    - {fileID: 2800000, guid: 6d18f487328db26409d28f9e242ee1d7, type: 3}
+    - {fileID: 2800000, guid: a1d3e059b8da7e8448aec6f9eff5ec08, type: 3}
+    - {fileID: 2800000, guid: 56be10fccbb5f0d4a97b14bfa516f28e, type: 3}
+    totalSpriteSurfaceArea: 1168400
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 3ab52e50099a39b41a5483c70f580390, type: 3}
+  - {fileID: 21300000, guid: c24148807ae6adc4981271ed41fe5bec, type: 3}
+  - {fileID: 21300000, guid: d276cd80f0bab134d8006d7b564f83dd, type: 3}
+  - {fileID: 21300000, guid: 485abf516d4d66849a5e141f39388c07, type: 3}
+  - {fileID: 21300000, guid: c4f996715f095384bbbbb20d409fb655, type: 3}
+  - {fileID: 21300000, guid: fb942e9226f1cd741882f79900fcfcc5, type: 3}
+  - {fileID: 21300000, guid: 08bcf015409827f45ab01ef7a0f5e964, type: 3}
+  - {fileID: 21300000, guid: 7954ad45b627ab547aaec0d95d82c7e1, type: 3}
+  - {fileID: 21300000, guid: 4b0c2706681b4d04c9b64cfd48ad6ae2, type: 3}
+  - {fileID: 21300000, guid: 6d18f487328db26409d28f9e242ee1d7, type: 3}
+  - {fileID: 21300000, guid: e70912e76731da745a0b94e94c9c603c, type: 3}
+  - {fileID: 21300000, guid: 5049a409cbcff8042823d58f355fb4fe, type: 3}
+  - {fileID: 21300000, guid: 188b2c499e650de4f96df0b8e0c40157, type: 3}
+  - {fileID: 21300000, guid: a69a4e493666d664685d76e43a8f2f67, type: 3}
+  - {fileID: 21300000, guid: a1d3e059b8da7e8448aec6f9eff5ec08, type: 3}
+  - {fileID: 21300000, guid: b364cf592189cda46b955a6d50c2baa7, type: 3}
+  - {fileID: 21300000, guid: b4eff279014ad99408fab896cf5dbc07, type: 3}
+  - {fileID: 21300000, guid: 6f7b0e89fc37d37498320ee6b8cf92f0, type: 3}
+  - {fileID: 21300000, guid: 0e01f8aac7eb7864cbca936ec53caf53, type: 3}
+  - {fileID: 21300000, guid: bcbd5c2b16cb1df4f879af46144941e6, type: 3}
+  - {fileID: 21300000, guid: 7a3e538b0425fe94eb02bcc8928c4eb4, type: 3}
+  - {fileID: 21300000, guid: feaa782ce19fe6d4780088312f285ac6, type: 3}
+  - {fileID: 21300000, guid: 1bed3f7c7841fc04aaf4a33426f4b990, type: 3}
+  - {fileID: 21300000, guid: 56be10fccbb5f0d4a97b14bfa516f28e, type: 3}
+  - {fileID: 21300000, guid: 2137e34db363ae549b901fd363cd1a03, type: 3}
+  - {fileID: 21300000, guid: c8050c9d172e4574bbfbd60dc3387189, type: 3}
+  - {fileID: 21300000, guid: 0a05f34eaf3e936468d19765bde9bc94, type: 3}
+  - {fileID: 21300000, guid: 3e40909f2334c0f428a65ac4e6c86b71, type: 3}
+  - {fileID: 21300000, guid: 9e13d9af5a8888f4c8af936245c97a42, type: 3}
+  - {fileID: 21300000, guid: c0ecd3ef6fec61548a2dc15622adc3e7, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - elfduckhurt1
+  - elfburning2
+  - elfhurt1
+  - elfhurt2
+  - elfburning3
+  - elfduck3
+  - elffall3
+  - elfidle3
+  - elfduck1
+  - elfjump2
+  - elfduckhurt3
+  - elfhang2
+  - elfhurt3
+  - elfduck2
+  - elfjump3
+  - elfduckhurt2
+  - elffrozen2
+  - elffall1
+  - elfburning4
+  - elfhang3
+  - elfidle2
+  - elfhang1
+  - elffall2
+  - elfjump4
+  - elfjump1
+  - elffall4
+  - elffrozen1
+  - elfidle4
+  - elfburning1
+  - elfidle1
+  m_RenderDataMap: {}
+  m_Tag: Elf_Atlas
+  m_IsVariant: 0
