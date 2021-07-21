@@ -8,6 +8,7 @@ namespace CloudOnce.QuickStart
     using CloudOnce;
     using UnityEngine;
     using UnityEngine.UI;
+    using TMPro;
 
     /// <summary>
     /// Google requires that players are provided with a sign-out option:
@@ -17,16 +18,16 @@ namespace CloudOnce.QuickStart
     public class GoogleSignOutButton : MonoBehaviour
     {
         private Button cachedButton;
-        private Text textComponent;
+        private TextMeshProUGUI textComponent;
 
         private Button CachedButton
         {
             get { return cachedButton ?? (cachedButton = GetComponent<Button>()); }
         }
 
-        private Text TextComponent
+        private TextMeshProUGUI TextComponent
         {
-            get { return textComponent ?? (textComponent = GetComponentInChildren<Text>()); }
+            get { return textComponent ?? (textComponent = GetComponentInChildren<TextMeshProUGUI>()); }
         }
 
         #region Private methods
@@ -38,6 +39,12 @@ namespace CloudOnce.QuickStart
 
         private void Awake()
         {
+            if(Application.platform != RuntimePlatform.Android)
+            {
+                gameObject.SetActive(false);
+                return;
+            }
+
             Cloud.OnSignedInChanged += UpdateButtonText;
             if (CachedButton != null)
             {
