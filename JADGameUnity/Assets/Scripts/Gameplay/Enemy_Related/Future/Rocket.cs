@@ -15,10 +15,17 @@ public class Rocket : Obstacle_Behaviour
     [SerializeField] SpriteRenderer numberSprite;
     Coroutine switchCo;
     bool isFlipped;
-    [Tooltip("A number that determines the rate of switching. Closer to 0 means faster rate.")]
+    [Tooltip("A number that determines the rate of switching. Closer to 0 means faster rate. SHOULD NEVER BE LOWER THAN 1.")]
     [SerializeField] float switchRate;
     [Tooltip("Number of switches allowed. The rocket can never switch directions more than this amount.")]
     [SerializeField] int maxNumSwitches;
+    [Tooltip("Rate at which the rocket rotates. Bigger the number faster the rotation.")]
+    [SerializeField] int rotationRate;
+
+    //If this is true, we're on bottom. If false on top.
+    bool botOrTop;
+    bool turning;
+    bool justFinishedTurning;
     //This will represent the number on the rocket at any given point.
     int numSwitchesLeft;
 
@@ -26,18 +33,61 @@ public class Rocket : Obstacle_Behaviour
     const string teleportVar = "TeleportVar";
     bool inCoroutine;
 
-    // Start is called before the first frame update
-    void Start()
+
+    public override void OnObjectSpawn()
     {
+        base.OnObjectSpawn();
+        if(spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
+        {
+            botOrTop = true;
+        }
+        else
+        {
+            botOrTop = false;
+        }
+        turning = false;
+        inCoroutine = false;
+        numSwitchesLeft = maxNumSwitches;
         setNumberSprite();
-        
+        justFinishedTurning = false;
     }
 
-    // Update is called once per frame
-    void Update()
+    protected override void Awake()
     {
-        
+        base.Awake();
+        if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
+        {
+            botOrTop = true;
+        }
+        else
+        {
+            botOrTop = false;
+        }
+        turning = false;
+        inCoroutine = false;
+        numSwitchesLeft = maxNumSwitches;
+        setNumberSprite();
+        justFinishedTurning = false;
     }
+
+    protected override void Movement()
+    {
+        if(!turning)
+        {
+            base.Movement();
+        }
+        else
+        {
+            return;
+        }
+ 
+
+        if(!inPlayerVicinity && !inCoroutine && !inIndicatorVicinity)
+        {
+            StartCoroutine(turnRocket());
+        }
+    }
+
 
     void setNumberSprite()
     {
@@ -45,5 +95,138 @@ public class Rocket : Obstacle_Behaviour
         {
             numberSprite.sprite = numbersList[numSwitchesLeft];
         }
+        else
+        {
+            numberSprite.sprite = numbersList[0];
+        }
+    }
+
+    void topBotToggle()
+    {
+        if(botOrTop)
+        {
+            botOrTop = false;
+        }
+        else
+        {
+            botOrTop = true;
+        }
+    }
+
+    IEnumerator turnRocket()
+    {
+        inCoroutine = true;
+        if(numSwitchesLeft == 0)
+        {
+            yield break;
+        }
+        //See if we will turn or not.
+        float randomNum = Random.Range(0, switchRate);
+
+        if (randomNum > 1 && !justFinishedTurning)
+        {
+            Debug.Log("Rocket will turn!");
+            thisRigid.velocity = Vector2.zero;
+            turning = true;
+            numSwitchesLeft -= 1;
+            setNumberSprite();
+            yield return new WaitForSeconds(0.2f);
+        }
+        else
+        {
+            Debug.Log("Not gonna turn the rocket.");
+            yield return new WaitForSeconds(1.0f);
+
+            //CODE NOT GETTING TO HERE...
+            if(justFinishedTurning)
+            {
+                yield return new WaitForSeconds(2.0f);
+                Debug.Log("Just turned, gonna wait a bit before turning again.");
+            }
+            justFinishedTurning = false;
+            inCoroutine = false;
+            yield break;
+        }
+
+        //90 degrees if turning down
+        //-90 if turning up.
+        Vector3 tempRotation;
+        tempRotation = this.transform.eulerAngles;
+
+        //thisRigid.velocity = Vector2.zero;
+        if(!botOrTop)
+        {
+            while(this.transform.eulerAngles.z < 90)
+            {
+                tempRotation.z += rotationRate;
+                if (tempRotation.z > 90)
+                {
+                    tempRotation.z = 90;
+                }
+                this.transform.eulerAngles = tempRotation;
+            
+                yield return null;
+            }
+
+            //Test.
+            thisRigid.velocity = Vector2.down * 2;
+
+            yield return new WaitForSeconds(0.5f);
+
+            thisRigid.velocity = Vector2.zero;
+
+            while (this.transform.eulerAngles.z != 0)
+            {
+                tempRotation.z -= rotationRate;
+                if (tempRotation.z < 0)
+                {
+                    tempRotation.z = 0;
+                }
+                this.transform.eulerAngles = tempRotation;
+                yield return null;
+            }
+        }
+        else
+        {
+            while (this.transform.eulerAngles.z > -90)
+            {
+                tempRotation.z -= rotationRate;
+                if (tempRotation.z < -90)
+                {
+                    tempRotation.z = -90;
+                }
+                this.transform.eulerAngles = tempRotation;
+                yield return null;
+            }
+            //Test.
+            thisRigid.velocity = Vector2.up * 2;
+
+            yield return new WaitForSeconds(0.5f);
+
+            thisRigid.velocity = Vector2.zero;
+
+            while (this.transform.eulerAngles.z != 0)
+            {
+                tempRotation.z += rotationRate;
+                if (tempRotation.z > 0)
+                {
+                    tempRotation.z = 0;
+                }
+                this.transform.eulerAngles = tempRotation;
+                yield return null;
+            }
+        }
+        turning = false;
+        inCoroutine = false;
+        justFinishedTurning = true;
+        topBotToggle();
+
+        yield return null;
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        base.OnCollisionEnter2D(collision);
+  
     }
 }

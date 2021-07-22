@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8132826845308507476}
   - component: {fileID: 6306183299283742624}
   - component: {fileID: 1069611469627032588}
+  - component: {fileID: 311108583899043734}
   m_Layer: 0
   m_Name: CloudOnceServices_Manager
   m_TagString: Untagged
@@ -44,9 +45,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9cbee2052be1944a62dbcb0ced7aa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cloudSaveEnabled: 1
+  cloudSaveEnabled: 0
   autoSignIn: 1
-  autoCloudLoad: 1
+  autoCloudLoad: 0
 --- !u!114 &1069611469627032588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57,5 +58,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 92168e69e97b9944e8f6a5125a8985b1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &311108583899043734
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6805761504459938422}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6407db580bdfe2488b6c0eeb4ced9db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 

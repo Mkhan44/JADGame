@@ -857,10 +857,9 @@ GameObject:
   - component: {fileID: 410825028}
   - component: {fileID: 410825027}
   - component: {fileID: 410825026}
-  - component: {fileID: 410825030}
   - component: {fileID: 410825029}
   m_Layer: 5
-  m_Name: Button
+  m_Name: GooglePlaySignOutButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -883,7 +882,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.4064035, y: 0.03552111}
   m_AnchorMax: {x: 0.5917456, y: 0.1404789}
-  m_AnchoredPosition: {x: 1.7117996, y: 1.000061}
+  m_AnchoredPosition: {x: 1.7117996, y: 1}
   m_SizeDelta: {x: -0.15999985, y: -2.0000763}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &410825026
@@ -980,19 +979,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ddfadca8ed4b6b4b9566995c849de81, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &410825030
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 410825024}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: da97be8b46211b143a49df08415d1197, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  activeInEditor: 1
 --- !u!1 &480632945 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4944282567744092395, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
@@ -1595,7 +1581,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 56.45
+  m_fontSize: 56.4
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6974,7 +6960,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 44.45
+  m_fontSize: 44.5
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7356,7 +7342,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 51.1
+  m_fontSize: 51.15
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
