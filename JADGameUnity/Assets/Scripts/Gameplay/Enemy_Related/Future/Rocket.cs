@@ -86,6 +86,7 @@ public class Rocket : Obstacle_Behaviour
 
         if(!inPlayerVicinity && !inCoroutine && !inIndicatorVicinity)
         {
+            //Maybe we force it to end on an even # of switches if it's coming from bottom and odd # if it's coming from top to ensure Player has to do something to dodge it.
             StartCoroutine(turnRocket());
         }
     }
@@ -93,7 +94,7 @@ public class Rocket : Obstacle_Behaviour
 
     void setNumberSprite()
     {
-        if (numSwitchesLeft > 0 || numSwitchesLeft < numbersList.Count)
+        if (numSwitchesLeft > 0)
         {
             numberSprite.sprite = numbersList[numSwitchesLeft];
         }
