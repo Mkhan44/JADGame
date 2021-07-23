@@ -7279,7 +7279,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.12282757}
   m_AnchorMax: {x: 0.40016326, y: 0.27341112}
-  m_AnchoredPosition: {x: -0.14990234, y: -25.226685}
+  m_AnchoredPosition: {x: -0.14990234, y: -25.226715}
   m_SizeDelta: {x: -0.30000305, y: -18.058807}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1308463710
@@ -12955,10 +12955,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[3].wrappedList.Array.size
-      value: 1
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[3].wrappedList.Array.data[0].size
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: thePools.Array.data[3].wrappedList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: 6e140306b8db7d04282e32caf4e9a02e, type: 3}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[3].wrappedList.Array.data[1].prefab
       value: 
       objectReference: {fileID: 4158279202637467101, guid: b04a7570f7640ad45ba9856c19208b47, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}

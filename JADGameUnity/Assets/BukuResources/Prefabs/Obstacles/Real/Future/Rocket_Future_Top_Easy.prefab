@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 1677953187544278703}
   m_Layer: 6
-  m_Name: Rocket_Future_Easy
+  m_Name: Rocket_Future_Top_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 4
   spawnPoint: 2
   extraCollider: {fileID: 0}
   objectElement: 1
@@ -125,7 +125,7 @@ MonoBehaviour:
   numberSprite: {fileID: 2424100589432118134}
   switchRate: 3
   maxNumSwitches: 3
-  rotationRate: 5
+  rotationRate: 15
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -326,7 +326,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 3
-  m_Sprite: {fileID: 21300000, guid: e6f0b671fa768455ba13a47e55071566, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 1baabd3da4f994cf1b2f79ffead97462, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -50,6 +50,7 @@ public class Rocket : Obstacle_Behaviour
         numSwitchesLeft = maxNumSwitches;
         setNumberSprite();
         justFinishedTurning = false;
+        this.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     protected override void Awake()
@@ -68,6 +69,7 @@ public class Rocket : Obstacle_Behaviour
         numSwitchesLeft = maxNumSwitches;
         setNumberSprite();
         justFinishedTurning = false;
+        this.transform.eulerAngles = new Vector3(0, 0, 0);
     }
 
     protected override void Movement()
@@ -135,13 +137,11 @@ public class Rocket : Obstacle_Behaviour
         else
         {
             Debug.Log("Not gonna turn the rocket.");
-            yield return new WaitForSeconds(1.0f);
-
+            yield return new WaitForSeconds(0.2f);
             //CODE NOT GETTING TO HERE...
             if(justFinishedTurning)
             {
-                yield return new WaitForSeconds(2.0f);
-                Debug.Log("Just turned, gonna wait a bit before turning again.");
+                yield return new WaitForSeconds(0.7f);
             }
             justFinishedTurning = false;
             inCoroutine = false;
@@ -156,7 +156,7 @@ public class Rocket : Obstacle_Behaviour
         //thisRigid.velocity = Vector2.zero;
         if(!botOrTop)
         {
-            while(this.transform.eulerAngles.z < 90)
+            while(this.transform.eulerAngles.z != 90)
             {
                 tempRotation.z += rotationRate;
                 if (tempRotation.z > 90)
@@ -169,9 +169,9 @@ public class Rocket : Obstacle_Behaviour
             }
 
             //Test.
-            thisRigid.velocity = Vector2.down * 2;
+            thisRigid.velocity = Vector2.down * 10;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
 
             thisRigid.velocity = Vector2.zero;
 
@@ -188,20 +188,24 @@ public class Rocket : Obstacle_Behaviour
         }
         else
         {
-            while (this.transform.eulerAngles.z > -90)
+
+            //Right now, the z rotation is instead going to 270 since it can't be negative.
+            while (this.transform.eulerAngles.z != 270)
             {
                 tempRotation.z -= rotationRate;
-                if (tempRotation.z < -90)
+                if (tempRotation.z > 270)
                 {
-                    tempRotation.z = -90;
+                    tempRotation.z = 270;
                 }
                 this.transform.eulerAngles = tempRotation;
+                Debug.Log("Stuck in while loop. The value of the z rotation is: " + this.transform.eulerAngles.z.ToString());
                 yield return null;
             }
+            Debug.Log("Should be going up now.");
             //Test.
-            thisRigid.velocity = Vector2.up * 2;
+            thisRigid.velocity = Vector2.up * 10;
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.1f);
 
             thisRigid.velocity = Vector2.zero;
 
