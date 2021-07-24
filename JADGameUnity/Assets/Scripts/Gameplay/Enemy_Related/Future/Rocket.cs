@@ -94,6 +94,8 @@ public class Rocket : Obstacle_Behaviour
 
     void setNumberSprite()
     {
+    
+
         if (numSwitchesLeft > 0)
         {
             numberSprite.sprite = numbersList[numSwitchesLeft];
@@ -128,7 +130,7 @@ public class Rocket : Obstacle_Behaviour
 
         if (randomNum > 1 && !justFinishedTurning)
         {
-            Debug.Log("Rocket will turn!");
+          //  Debug.Log("Rocket will turn!");
             thisRigid.velocity = Vector2.zero;
             turning = true;
             numSwitchesLeft -= 1;
@@ -137,7 +139,7 @@ public class Rocket : Obstacle_Behaviour
         }
         else
         {
-            Debug.Log("Not gonna turn the rocket.");
+           // Debug.Log("Not gonna turn the rocket.");
             yield return new WaitForSeconds(0.2f);
             //CODE NOT GETTING TO HERE...
             if(justFinishedTurning)
@@ -170,7 +172,15 @@ public class Rocket : Obstacle_Behaviour
             }
 
             //Test.
-            thisRigid.velocity = Vector2.down * 10;
+            if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint3)
+            {
+                thisRigid.velocity = Vector2.down * 10;
+            }
+            else
+            {
+                thisRigid.velocity = Vector2.down * 5;
+            }
+
 
             yield return new WaitForSeconds(0.1f);
 
@@ -199,12 +209,21 @@ public class Rocket : Obstacle_Behaviour
                     tempRotation.z = 270;
                 }
                 this.transform.eulerAngles = tempRotation;
-                Debug.Log("Stuck in while loop. The value of the z rotation is: " + this.transform.eulerAngles.z.ToString());
+              //  Debug.Log("Stuck in while loop. The value of the z rotation is: " + this.transform.eulerAngles.z.ToString());
                 yield return null;
             }
-            Debug.Log("Should be going up now.");
+            //   Debug.Log("Should be going up now.");
             //Test.
-            thisRigid.velocity = Vector2.up * 10;
+
+            if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
+            {
+                thisRigid.velocity = Vector2.up * 5;
+            }
+            else
+            {
+                thisRigid.velocity = Vector2.up * 10;
+            }
+          
 
             yield return new WaitForSeconds(0.1f);
 

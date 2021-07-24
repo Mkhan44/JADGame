@@ -10,11 +10,11 @@ GameObject:
   m_Component:
   - component: {fileID: 2171952644357041671}
   - component: {fileID: 4259822024414378004}
-  - component: {fileID: -7289774627439860158}
+  - component: {fileID: 8617969083274795738}
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 1677953187544278703}
   m_Layer: 6
-  m_Name: UFO_Future_Easy
+  m_Name: Satellite_Top_Future_Medium 1
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8, y: 0.8, z: 0.8}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1.5}
   m_Children:
   - {fileID: 7305455519006573469}
   m_Father: {fileID: 0}
@@ -86,7 +86,7 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &-7289774627439860158
+--- !u!114 &8617969083274795738
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -95,23 +95,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 4158279202637467101}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 688f9f6f90bbe0c49a5a50dda8f2eeb4, type: 3}
+  m_Script: {fileID: 11500000, guid: 2af219c0450362942a6286a7c0758384, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 1.5
-  spawnPoint: 2
+  maxSpeed: 4.5
+  spawnPoint: 0
   extraCollider: {fileID: 0}
-  objectElement: 0
-  thisObstacleDiff: 0
+  objectElement: 2
+  thisObstacleDiff: 2
   thisType: 0
-  scoreValue: 100
+  scoreValue: 300
   theEra: 0
-  droppedEnemyPrefab: {fileID: 4158279202637467101, guid: cd4098883cd65ec4d8d0e145efbc91da, type: 3}
-  dropRate: 1.5
-  maxDrops: 3
-  UFOAnimator: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -125,7 +121,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.0007686764, y: -0.0049631298}
+  m_Offset: {x: -0.0012936443, y: -0.024653979}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -136,7 +132,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5148004, y: 0.6853331}
+  m_Size: {x: 0.22448695, y: 0.26921272}
   m_EdgeRadius: 0
 --- !u!50 &1677953187544278703
 Rigidbody2D:
@@ -153,7 +149,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: -4
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -170,7 +166,7 @@ GameObject:
   - component: {fileID: 7305455519006573469}
   - component: {fileID: 3437276611055833781}
   m_Layer: 6
-  m_Name: UFO
+  m_Name: Satellite
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -230,7 +226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: 21300000, guid: daad0e87766d6624ea685b3a164a05bd, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 045b0c7f121001342b510dce72241832, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

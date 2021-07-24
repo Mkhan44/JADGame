@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 8160921082443146840}
   - component: {fileID: 1677953187544278703}
   m_Layer: 6
-  m_Name: Rocket_Future_Bottom_Easy
+  m_Name: Rocket_Bottom_Future_Easy
   m_TagString: Obstacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -122,10 +122,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 18411d59e0dec478b9c00d05eef31117, type: 3}
   - {fileID: 21300000, guid: a87dd135a81284efa849d837ab9a0789, type: 3}
   - {fileID: 21300000, guid: d9654015344ac4c91973b86b01bee386, type: 3}
-  numberSprite: {fileID: 2424100589432118134, guid: b04a7570f7640ad45ba9856c19208b47, type: 3}
+  numberSprite: {fileID: 2424100589432118134}
   switchRate: 3
   maxNumSwitches: 3
-  rotationRate: 15
+  rotationRate: 5
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

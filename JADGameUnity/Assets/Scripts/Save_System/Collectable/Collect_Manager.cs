@@ -42,7 +42,7 @@ public class Collect_Manager : MonoBehaviour
         guy1,
         dummy,
         girlDefault,
-        sonic,
+        Elincia,
         mario
     }
 

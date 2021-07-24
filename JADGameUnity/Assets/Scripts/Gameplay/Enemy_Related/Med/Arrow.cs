@@ -96,7 +96,7 @@ public class Arrow : Obstacle_Behaviour
         //Arrow to duck under.
         if (randNum == 1)
         {
-            thisRigid.velocity = new Vector2(-speed, -2.5f);
+            thisRigid.velocity = new Vector2(-speed, -2.2f);
         }
         //Arrow to Jump over.
         else

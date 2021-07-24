@@ -568,7 +568,7 @@ public class Wave_Spawner : MonoBehaviour
                     random2 = 4;
                 }
                 //Debug for testing purposes.
-                //random1 = 1;
+                random1 = 2;
                 //random2 = 3;
                 timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2));
             }

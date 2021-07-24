@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
+  m_Name: Elincia
+  m_EditorClassIdentifier: 
+  itemImage: {fileID: 21300000, guid: c0ecd3ef6fec61548a2dc15622adc3e7, type: 3}
+  theName: Elincia
+  description: An elven archer who is very acrobatic.
+  coinPrice: 1000
+  theItem: 5
+  boltPrice: 100
+  thisSkinType: 3
+  currencyUSD: 0
+  hasDuration: 0
+  duration: 0
+  waveCooldown: 0

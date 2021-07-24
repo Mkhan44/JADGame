@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 765161011247301976}
   - component: {fileID: 4236642348474493964}
   - component: {fileID: 3896542031738949500}
+  - component: {fileID: 2639628651984795696}
+  - component: {fileID: 569784556498762627}
   m_Layer: 0
   m_Name: FuturePortal
   m_TagString: Untagged
@@ -72,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 2
-  m_Sprite: {fileID: -2413806693520163455, guid: 4adeaf2d2b1c7417e89f026626d8264f, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 871938d53e97aff4ca2765a11a72c6ca, type: 3}
   m_Color: {r: 0.5999911, g: 0.91194487, b: 0.9150943, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -96,8 +98,49 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
+  increaseRate: 0
+  maxSpeed: 0
   spawnPoint: 0
+  extraCollider: {fileID: 0}
   objectElement: 0
   thisObstacleDiff: 0
   thisType: 3
+  scoreValue: 0
   theEra: 5
+--- !u!70 &2639628651984795696
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509886699335351895}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.05445361, y: -0.16336083}
+  m_Size: {x: 0.9168547, y: 1.8158613}
+  m_Direction: 0
+--- !u!50 &569784556498762627
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2509886699335351895}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

@@ -144,12 +144,8 @@ MonoBehaviour:
   FutureBackgrounds: []
   currentBG1: {fileID: 0}
   currentBG2: {fileID: 0}
-  easyBG1: {fileID: 0}
-  easyBG2: {fileID: 0}
-  medBG1: {fileID: 0}
-  medBG2: {fileID: 0}
-  hardBG1: {fileID: 0}
-  hardBG2: {fileID: 0}
+  introTransitionFinished: 0
+  fadePanel: {fileID: 0}
   thePlayer: {fileID: 0}
 --- !u!114 &8248098668222182069
 MonoBehaviour:
@@ -298,17 +294,35 @@ MonoBehaviour:
       size: 10
   - listName: FuturePools
     wrappedList:
-    - prefab: {fileID: 6716103093585239697, guid: dc08cd91a8dfd744c9a3904886053605, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: 6e140306b8db7d04282e32caf4e9a02e, type: 3}
       size: 10
-    - prefab: {fileID: 6716103093585239697, guid: 34bb51daac8713041aaffe221f86486e, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: b04a7570f7640ad45ba9856c19208b47, type: 3}
       size: 10
-    - prefab: {fileID: 6716103093585239697, guid: 810b1253f3eed8e42bbf9e3f15291905, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: 8c7f767ca243fca4ea7ffc4db279ddfe, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 1f8f5b3f63eb72541b5eeec936ce133f, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: af8464392cd8aaa4181bfe13f104fad2, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: f83973e0e7b40a0499058079ad5212ad, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: d73fe77cc778b854890028dfb0bd9a1d, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 059da1ecf0b59874eae9095580eebecd, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: a5d352060f4a67c458691636d22e7b63, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 67d91c870ceef5b4cb930e406ac11da8, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 608f16f3a469c7a4e83270b11ad20773, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: e68dc7b58b1222a4bb3e553c31b1d0d0, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 6a9edebb6eb267f48803e708daf36942, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 8736a5c81effe2c40927263270d585b4, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 304f4df2111fc7943ab9e845de04f4ad, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 9f1fef011cf75624b98d126eb0eadf95, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 89a1503428074de40bf5ecb85e05e928, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: ec8dd129cea6d1248909ce87293324e8, type: 3}
       size: 10
   - listName: FeudalJapanPools
     wrappedList:
