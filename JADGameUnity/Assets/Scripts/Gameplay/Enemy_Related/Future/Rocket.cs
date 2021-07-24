@@ -84,7 +84,7 @@ public class Rocket : Obstacle_Behaviour
         }
  
 
-        if(!inPlayerVicinity && !inCoroutine && !inIndicatorVicinity)
+        if(!inPlayerVicinity && !inCoroutine && onScreenIndicator)
         {
             //Maybe we force it to end on an even # of switches if it's coming from bottom and odd # if it's coming from top to ensure Player has to do something to dodge it.
             StartCoroutine(turnRocket());
@@ -142,7 +142,7 @@ public class Rocket : Obstacle_Behaviour
             //CODE NOT GETTING TO HERE...
             if(justFinishedTurning)
             {
-                yield return new WaitForSeconds(0.7f);
+                yield return new WaitForSeconds(0.4f);
             }
             justFinishedTurning = false;
             inCoroutine = false;
