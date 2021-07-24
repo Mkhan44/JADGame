@@ -2169,7 +2169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.014612261, y: 0.32569656}
   m_AnchorMax: {x: 0.49300003, y: 0.46256554}
-  m_AnchoredPosition: {x: 0.39990234, y: -44.128662}
+  m_AnchoredPosition: {x: 0.39990234, y: -44.12866}
   m_SizeDelta: {x: 0.099998474, y: -12.759796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409316503
@@ -10479,7 +10479,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0affb777592a1954dbac44929131cb61, type: 3}
   - {fileID: 8300000, guid: 4e50236c3cae0994fa00163574b603ba, type: 3}
   - {fileID: 8300000, guid: ef45b29174644db4a8dc86df167f3908, type: 3}
-  tutorialMusic: {fileID: 8300000, guid: 523f93e4829d858499a0283953cc18f3, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 2de0af4ac5441a7408692cd4976aeb53, type: 3}
   bonusSource: {fileID: 1053783709}
   easySource: {fileID: 661722298}
   mediumSource: {fileID: 110316524}
