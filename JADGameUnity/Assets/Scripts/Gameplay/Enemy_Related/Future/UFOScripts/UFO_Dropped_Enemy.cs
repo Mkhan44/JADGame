@@ -8,18 +8,25 @@ using UnityEngine;
 
 public class UFO_Dropped_Enemy : MonoBehaviour
 {
-    float increaseRate;
-    float maxSpeed;
+    [SerializeField] float increaseRate;
+    [SerializeField] float maxSpeed;
     float speed;
     UFO ufoParentScript;
     GameObject ufoParent;
     Rigidbody2D thisRigid;
 
-    bool onGround;
+   [SerializeField] bool onGround;
 
     private void Awake()
     {
         onGround = false;
+    }
+
+    public void initializeDroppedEnemy(GameObject parent)
+    {
+        ufoParent = parent;
+        ufoParentScript = parent.GetComponent<UFO>();
+        thisRigid = GetComponent<Rigidbody2D>();
     }
 
     private void Update()
@@ -67,21 +74,11 @@ public class UFO_Dropped_Enemy : MonoBehaviour
     {
         if (collision.gameObject.tag == "Despawner")
         {
-            Wave_Spawner.Instance.updateEnemiesLeft(1);
-            Level_Manager.Instance.increaseEnemiesDodged();
-            if (ufoParentScript.getScoreVal() <= 0)
-            {
-                Level_Manager.Instance.updateScore(100);
-            }
-            else
-            {
-                Level_Manager.Instance.updateScore(ufoParentScript.getScoreVal());
-            }
+          
 
             //TURN ON WHEN WE ARE READY TO POOL
             thisRigid.velocity = Vector2.zero;
-            Object_Pooler.Instance.AddToPool(ufoParent.gameObject);
-            Destroy(gameObject);
+           
             return;
         }
 
