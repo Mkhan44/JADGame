@@ -87,6 +87,14 @@ public class Audio_Manager : MonoBehaviour
                     hardPauseSource.clip = medMusic[3];
                     break;
                 }
+            case Level_Manager.timePeriod.Future:
+                {
+                    bonusSource.clip = futureMusic[0];
+                    easySource.clip = futureMusic[1];
+                    mediumSource.clip = futureMusic[2];
+                    hardPauseSource.clip = futureMusic[3];
+                    break;
+                }
             case Level_Manager.timePeriod.tutorial:
                 {
                     tutorialSource.clip = tutorialMusic;

@@ -9648,7 +9648,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14400001, y: 0.33841616}
   m_AnchorMax: {x: 0.30800003, y: 0.40141615}
-  m_AnchoredPosition: {x: 5.050293, y: 7}
+  m_AnchoredPosition: {x: 5.050537, y: 7}
   m_SizeDelta: {x: 8, y: 1.8999939}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1673177703
@@ -10470,10 +10470,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 2a1d45bdcb0190a4e870b018e51f340a, type: 3}
   - {fileID: 8300000, guid: c4c64edc3b4a51b43b50a3ce99d1524c, type: 3}
   futureMusic:
-  - {fileID: 8300000, guid: 5893d26e72ca73e429124e6c0305b31e, type: 3}
-  - {fileID: 8300000, guid: f828571244b27ee438fb45fa4e7fe24d, type: 3}
-  - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
-  - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
+  - {fileID: 8300000, guid: 9a3e0e1e2e92a54458d33f95c887fcf0, type: 3}
+  - {fileID: 8300000, guid: 1948b3f5fc2303a4a92caf75029f948f, type: 3}
+  - {fileID: 8300000, guid: 38c44d100c077c54fbcc7f6f7c1f01c6, type: 3}
+  - {fileID: 8300000, guid: 45aae338d5d56a9478a4eb18cc82e0a3, type: 3}
   medMusic:
   - {fileID: 8300000, guid: 9c84446f5d0aa5748b5b76c5a9ed481d, type: 3}
   - {fileID: 8300000, guid: 0affb777592a1954dbac44929131cb61, type: 3}
@@ -12991,7 +12991,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton

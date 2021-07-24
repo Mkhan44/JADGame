@@ -51,7 +51,7 @@ public class Player : MonoBehaviour
         currentState = playerState.idle;
         initialPos = gameObject.transform.position;
         outlineMaterialInstance = this.GetComponent<SpriteRenderer>().material;
-        outlineMaterialInstance.SetFloat("_OutlineThickness", 2.5f);
+        outlineMaterialInstance.SetFloat("_OutlineThickness", 2.0f);
 
     }
     // Start is called before the first frame update
