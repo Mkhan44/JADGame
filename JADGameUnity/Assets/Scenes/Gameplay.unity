@@ -10520,7 +10520,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.0000000080781, y: -93.49996}
+  m_AnchoredPosition: {x: 0.0000000080781, y: -93.49995}
   m_SizeDelta: {x: 182.2, y: 81.4}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &1901874673
@@ -12950,9 +12950,13 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
-      propertyPath: thePools.Array.data[2].wrappedList.Array.size
+      propertyPath: thePools.Array.data[3].wrappedList.Array.size
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182069, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: thePools.Array.data[3].wrappedList.Array.data[0].prefab
+      value: 
+      objectReference: {fileID: 4158279202637467101, guid: c4580ec8eb22e304da150f7073536f53, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: player
       value: 
