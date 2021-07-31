@@ -1,0 +1,91 @@
+//Code written by Mohamed Riaz Khan of BukuGames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+//Not authorized for use outside of the Github repository of this Mobile game developed by BukuGames.
+
+using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using Random = UnityEngine.Random;
+
+public class FlyingCar : Obstacle_Behaviour
+{
+    [SerializeField] bool spedUp;
+    bool inCoroutine;
+    float speedUpMaxSpeed;
+    float newIncreaseRate;
+
+    protected override void Awake()
+    {
+        base.Awake();
+        initializeFlyingCar();
+    }
+
+    public override void OnObjectSpawn()
+    {
+        base.OnObjectSpawn();
+        initializeFlyingCar();
+    }
+
+    void initializeFlyingCar()
+    {
+        spedUp = false;
+        inCoroutine = false;
+    }
+
+    protected override void Movement()
+    {
+        if(!spedUp && !onScreenIndicator)
+        {
+            base.Movement();
+        }
+        else if(!spedUp && !inCoroutine)
+        {
+            StartCoroutine(speedUp());
+        }
+        else if(spedUp)
+        {
+            Debug.Log("Car is going forward at it's fast speed now!");
+       
+            if (speed < speedUpMaxSpeed)
+            {
+                speed += newIncreaseRate * Time.deltaTime;
+            }
+            else
+            {
+                speed = speedUpMaxSpeed;
+            }
+
+            if (thisRigid != null)
+            {
+                thisRigid.velocity = Vector2.left * speed;
+            }
+
+            
+        }
+     
+    }
+
+    IEnumerator speedUp()
+    {
+        inCoroutine = true;
+        //Asign new max speed + increase rate based on difficulty here.
+
+        //This value should probably be a rate that fluctuates via rng...So like it won't speed up until x amount of time passes. For now the value = a test.
+        yield return new WaitForSeconds(0.3f);
+
+        thisRigid.velocity = Vector2.right * 0.5f;
+
+        yield return new WaitForSeconds(1.0f);
+
+        //Slingshot forward by making speed way higher.
+        speed = 0;
+
+        speedUpMaxSpeed = maxSpeed * 3.5f;
+        newIncreaseRate = increaseRate * 4.5f;
+
+        inCoroutine = false;
+        spedUp = true;
+
+        yield return null;
+    }
+}

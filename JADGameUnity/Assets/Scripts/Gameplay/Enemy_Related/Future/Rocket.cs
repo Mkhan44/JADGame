@@ -136,12 +136,17 @@ public class Rocket : Obstacle_Behaviour
             numSwitchesLeft -= 1;
             setNumberSprite();
             yield return new WaitForSeconds(0.2f);
+
+            if(numSwitchesLeft == maxNumSwitches)
+            {
+                //Wait a bit before turning the first time so rocket = fully on screen.
+                yield return new WaitForSeconds(0.5f);
+            }
         }
         else
         {
            // Debug.Log("Not gonna turn the rocket.");
             yield return new WaitForSeconds(0.2f);
-            //CODE NOT GETTING TO HERE...
             if(justFinishedTurning)
             {
                 yield return new WaitForSeconds(0.4f);

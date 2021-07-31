@@ -77,6 +77,8 @@ public class Rover : Obstacle_Behaviour
 
         if(randNum == 0)
         {
+
+            yield return new WaitForSeconds(0.5f);
             stopping = true;
             float timeToWait = 0;
 
