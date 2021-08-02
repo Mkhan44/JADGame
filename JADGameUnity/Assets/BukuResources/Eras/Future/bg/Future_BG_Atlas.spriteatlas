@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Future_BG_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 4096
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 56f0abd8861d47d408fc84077eaf4e7f, type: 3}
+    - {fileID: 2800000, guid: 0a761756b84594247b5882ecaef9459b, type: 3}
+    - {fileID: 2800000, guid: 3ad98a687e49fb540a68093f25c17b2b, type: 3}
+    - {fileID: 2800000, guid: 1ba3d5089e32cad49835bdfa9369b726, type: 3}
+    - {fileID: 2800000, guid: 5c92b131952fc3a4f877e9f671871611, type: 3}
+    - {fileID: 2800000, guid: a3f8e21d26d5fd24e9cfc45dac949cc8, type: 3}
+    - {fileID: 2800000, guid: 576955ac9bedfe3458ea6921233c890a, type: 3}
+    - {fileID: 2800000, guid: 34cc4dea34a5bc946a24614e2efecd87, type: 3}
+    - {fileID: 2800000, guid: 9611076f5ded9764fb5486d81db680a2, type: 3}
+    - {fileID: 2800000, guid: f0b0f812718e1924f83d5ea34d0d844b, type: 3}
+    - {fileID: 2800000, guid: 88ae1d1a8862ca2469425977c12d5734, type: 3}
+    - {fileID: 2800000, guid: 0c2011dda28ec2349a300c0a6a04ae6e, type: 3}
+    - {fileID: 2800000, guid: 11371674ac1b6824fb54796584ce718c, type: 3}
+    - {fileID: 2800000, guid: b5dcafbba918e3b4a8c8f99f56f8500e, type: 3}
+    - {fileID: 2800000, guid: b1bfd7abf3db1b540bfa3f92c770d4c0, type: 3}
+    - {fileID: 2800000, guid: 1e25864d9009d3c4397b082af7dc2fd8, type: 3}
+    - {fileID: 2800000, guid: 8610ea6caac98364e80f631b29f2bc7a, type: 3}
+    - {fileID: 2800000, guid: f121996d09de9aa4c95632775e6ba1e1, type: 3}
+    totalSpriteSurfaceArea: 12096000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5c92b131952fc3a4f877e9f671871611, type: 3}
+  - {fileID: 21300000, guid: f0b0f812718e1924f83d5ea34d0d844b, type: 3}
+  - {fileID: 21300000, guid: 11371674ac1b6824fb54796584ce718c, type: 3}
+  - {fileID: 21300000, guid: 0a761756b84594247b5882ecaef9459b, type: 3}
+  - {fileID: 21300000, guid: 1ba3d5089e32cad49835bdfa9369b726, type: 3}
+  - {fileID: 21300000, guid: 3ad98a687e49fb540a68093f25c17b2b, type: 3}
+  - {fileID: 21300000, guid: 56f0abd8861d47d408fc84077eaf4e7f, type: 3}
+  - {fileID: 21300000, guid: 88ae1d1a8862ca2469425977c12d5734, type: 3}
+  - {fileID: 21300000, guid: 34cc4dea34a5bc946a24614e2efecd87, type: 3}
+  - {fileID: 21300000, guid: b1bfd7abf3db1b540bfa3f92c770d4c0, type: 3}
+  - {fileID: 21300000, guid: b5dcafbba918e3b4a8c8f99f56f8500e, type: 3}
+  - {fileID: 21300000, guid: 8610ea6caac98364e80f631b29f2bc7a, type: 3}
+  - {fileID: 21300000, guid: 576955ac9bedfe3458ea6921233c890a, type: 3}
+  - {fileID: 21300000, guid: a3f8e21d26d5fd24e9cfc45dac949cc8, type: 3}
+  - {fileID: 21300000, guid: 1e25864d9009d3c4397b082af7dc2fd8, type: 3}
+  - {fileID: 21300000, guid: f121996d09de9aa4c95632775e6ba1e1, type: 3}
+  - {fileID: 21300000, guid: 0c2011dda28ec2349a300c0a6a04ae6e, type: 3}
+  - {fileID: 21300000, guid: 9611076f5ded9764fb5486d81db680a2, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - futurebuildingsbackhrd
+  - futuremain
+  - futureplanets
+  - futurebridgehrd
+  - futurebuildingsback
+  - futurebridgemed
+  - futurebridge
+  - futuremainhrd
+  - futurebuildingsfronthrd
+  - futurestars
+  - futuresky
+  - futurestationhrd
+  - futurebuildingsfront
+  - futurebuildingsbackmed
+  - futurestation
+  - futurestationmed
+  - futuremainmed
+  - futurebuildingsfrontmed
+  m_RenderDataMap: {}
+  m_Tag: Future_BG_Atlas
+  m_IsVariant: 0

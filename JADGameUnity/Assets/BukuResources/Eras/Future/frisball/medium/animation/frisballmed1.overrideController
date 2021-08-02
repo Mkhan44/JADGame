@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: frisballmed1
+  m_Controller: {fileID: 9100000, guid: e710fe72fe6a47b4aae14fd6421c55cd, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 569411bae64734a47b0284e2db5417be, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 73ca8ad92304e8248b001299ce5fa35f, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 449d46f4b3b1ec940bca4fd109071626, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 5ec3d3dd7b6c72f44850be6632328fce, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: a3ff744f152695a478e3fbaf9480cfb3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4f7068c1225c30f4091e303cb1de4267, type: 2}

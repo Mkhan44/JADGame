@@ -1,0 +1,121 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UFO_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 1024
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 47a5e5f4969df6b4cbf9b7895e0301ad, type: 3}
+    - {fileID: 2800000, guid: a92279ea8f4aa794b896823a30b006db, type: 3}
+    - {fileID: 2800000, guid: 4ad0bfc58e11f88489b202f94f50f118, type: 3}
+    - {fileID: 2800000, guid: b7f138dcef8b7a34dabba1717af856d4, type: 3}
+    - {fileID: 2800000, guid: 05526b62a37fd2848a88c0195f3fa4b4, type: 3}
+    - {fileID: 2800000, guid: 44a59089943ea93458a65e7054f3f947, type: 3}
+    - {fileID: 2800000, guid: e8f8deca1facf9f438bc9c3e79f10d4f, type: 3}
+    - {fileID: 2800000, guid: 93e85d71a52788049b0082e3c7a8ae50, type: 3}
+    - {fileID: 2800000, guid: 4e7e0008e9deb464582c4ffd316e73a5, type: 3}
+    - {fileID: 2800000, guid: ecfde7b7a0ead2b44970b868f28909fa, type: 3}
+    - {fileID: 2800000, guid: e7ea242bb510fea45a74a5d8f9536ed4, type: 3}
+    - {fileID: 2800000, guid: dd5f4c37fa9d1e14484ec6cfb9d54e34, type: 3}
+    - {fileID: 2800000, guid: 09eb91cf383b49f4195a1164ca6f6a14, type: 3}
+    - {fileID: 2800000, guid: 052c2e0526fe4ff4eb8b3090a8e43a15, type: 3}
+    - {fileID: 2800000, guid: 5434de9ad342e4347af47df3cd2428a0, type: 3}
+    - {fileID: 2800000, guid: da7dc9074096d8344909fda2ff002ae3, type: 3}
+    - {fileID: 2800000, guid: 8553b4b7e1d10e3459aa63fde1e0bbea, type: 3}
+    - {fileID: 2800000, guid: 1a309567ab3e3a54eaf55b0ac0933403, type: 3}
+    - {fileID: 2800000, guid: 587ae1e053d335a4497132fd0638f19c, type: 3}
+    - {fileID: 2800000, guid: 490268e6df67cff44a5515124e6d623f, type: 3}
+    - {fileID: 2800000, guid: 954bbeac66ab63d4abf578e3c30ebb24, type: 3}
+    - {fileID: 2800000, guid: b39dff8661b3f574f953a48856c1c0bc, type: 3}
+    totalSpriteSurfaceArea: 785700
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 587ae1e053d335a4497132fd0638f19c, type: 3}
+  - {fileID: 21300000, guid: 93e85d71a52788049b0082e3c7a8ae50, type: 3}
+  - {fileID: 21300000, guid: 05526b62a37fd2848a88c0195f3fa4b4, type: 3}
+  - {fileID: 21300000, guid: 47a5e5f4969df6b4cbf9b7895e0301ad, type: 3}
+  - {fileID: 21300000, guid: 052c2e0526fe4ff4eb8b3090a8e43a15, type: 3}
+  - {fileID: 21300000, guid: 4ad0bfc58e11f88489b202f94f50f118, type: 3}
+  - {fileID: 21300000, guid: b39dff8661b3f574f953a48856c1c0bc, type: 3}
+  - {fileID: 21300000, guid: 490268e6df67cff44a5515124e6d623f, type: 3}
+  - {fileID: 21300000, guid: da7dc9074096d8344909fda2ff002ae3, type: 3}
+  - {fileID: 21300000, guid: dd5f4c37fa9d1e14484ec6cfb9d54e34, type: 3}
+  - {fileID: 21300000, guid: 1a309567ab3e3a54eaf55b0ac0933403, type: 3}
+  - {fileID: 21300000, guid: 8553b4b7e1d10e3459aa63fde1e0bbea, type: 3}
+  - {fileID: 21300000, guid: ecfde7b7a0ead2b44970b868f28909fa, type: 3}
+  - {fileID: 21300000, guid: 4e7e0008e9deb464582c4ffd316e73a5, type: 3}
+  - {fileID: 21300000, guid: 44a59089943ea93458a65e7054f3f947, type: 3}
+  - {fileID: 21300000, guid: 5434de9ad342e4347af47df3cd2428a0, type: 3}
+  - {fileID: 21300000, guid: e8f8deca1facf9f438bc9c3e79f10d4f, type: 3}
+  - {fileID: 21300000, guid: a92279ea8f4aa794b896823a30b006db, type: 3}
+  - {fileID: 21300000, guid: e7ea242bb510fea45a74a5d8f9536ed4, type: 3}
+  - {fileID: 21300000, guid: 954bbeac66ab63d4abf578e3c30ebb24, type: 3}
+  - {fileID: 21300000, guid: b7f138dcef8b7a34dabba1717af856d4, type: 3}
+  - {fileID: 21300000, guid: 09eb91cf383b49f4195a1164ca6f6a14, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - metal3
+  - ufomed1
+  - metalmed1
+  - ufolight1
+  - ufohrd1
+  - ufolight3
+  - ufo3
+  - ufo1
+  - ufohrd3
+  - metalhrd2
+  - metal2
+  - metal1
+  - ufomed3
+  - ufomed2
+  - metalmed2
+  - ufohrd2
+  - metalmed3
+  - ufolight2
+  - metalhrd1
+  - ufo2
+  - ufolight4
+  - metalhrd3
+  m_RenderDataMap: {}
+  m_Tag: UFO_Atlas
+  m_IsVariant: 0

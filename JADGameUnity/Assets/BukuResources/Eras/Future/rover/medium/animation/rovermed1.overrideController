@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: rovermed1
+  m_Controller: {fileID: 9100000, guid: 0eb4f65abaddd7c44be0732919c2142f, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: a09d53d0f035da84abb2df06de47ea53, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a8319f5cbd05e384695759a13c9506b1, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 59dedd805c24d864fb69a975eb5cf54c, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: a8e4b64a164d54c45854a0a3fa3800be, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: fc63379a8c20d2544aa7d1e10a611d43, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: cb027d263c70f1742a1d0a0fd8e8c08a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2b8847abee0c5ab49b11d7255d92b186, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: bb6ddcfd0c9e4be4f9c2118161cbad65, type: 2}

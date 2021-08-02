@@ -2169,7 +2169,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.014612261, y: 0.32569656}
   m_AnchorMax: {x: 0.49300003, y: 0.46256554}
-  m_AnchoredPosition: {x: 0.39990234, y: -44.12866}
+  m_AnchoredPosition: {x: 0.39990234, y: -44.128662}
   m_SizeDelta: {x: 0.099998474, y: -12.759796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409316503
@@ -2219,7 +2219,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.25
+  m_fontSize: 89.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2487,7 +2487,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 132.25
+  m_fontSize: 132.35
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -6869,7 +6869,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 69.75
+  m_fontSize: 69.8
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -7337,7 +7337,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100
+  m_fontSize: 100.1
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -11357,7 +11357,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 0.00061274, y: -95.999985}
+  m_AnchoredPosition: {x: 0.00061274, y: -95.99998}
   m_SizeDelta: {x: 209.6, y: 83.9}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &2093914701
@@ -13224,15 +13224,15 @@ PrefabInstance:
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: FutureBackgrounds.Array.data[0]
       value: 
-      objectReference: {fileID: 6118741555894132546, guid: 52bdc07777fca2c4aa323700474c40c6, type: 3}
+      objectReference: {fileID: 3122449596152611018, guid: 1d3884e159a640243a7c758aaa6cc538, type: 3}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: FutureBackgrounds.Array.data[1]
       value: 
-      objectReference: {fileID: 8010159567617576693, guid: 9b2fabe3f7badf84ab20cf42cd6e411e, type: 3}
+      objectReference: {fileID: 3122449596152611018, guid: fb2e0bcc36edf7d4f9aec2f88f7f20f2, type: 3}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: FutureBackgrounds.Array.data[2]
       value: 
-      objectReference: {fileID: 4349965249535820742, guid: d2930474295bbf1459cda619fe1f8432, type: 3}
+      objectReference: {fileID: 3122449596152611018, guid: 3270f5496717dbe43b62761d080019f2, type: 3}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: WildWestBackgrounds.Array.data[0]
       value: 
