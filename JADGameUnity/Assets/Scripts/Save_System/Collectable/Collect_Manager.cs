@@ -65,7 +65,7 @@ public class Collect_Manager : MonoBehaviour
     //Index of the current skin that the player had been using during last session.
     public int currentSkin;
 
-    //Array storing which skin indexes are unlocked. 0 and 1 (Male and female default) unlocked by default.
+    //Array storing which skin indexes are unlocked. 0 and 2 (Male and female default) unlocked by default.
     public List<int> skinsUnlocked = new List<int>();
 
     [Header("Things to reference throughout the game.")]
@@ -74,6 +74,7 @@ public class Collect_Manager : MonoBehaviour
 
     [Header("Singleton")]
     public static Collect_Manager instance;
+
 
     private void Awake()
     {
@@ -140,7 +141,7 @@ public class Collect_Manager : MonoBehaviour
             item3 = -1;
 
             //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
-            totalCoins = 50000;
+            totalCoins = 1000;
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
@@ -373,6 +374,7 @@ public class Collect_Manager : MonoBehaviour
     public void deleteSave()
     {
         Save_System.DeleteCollectables();
+        CloudOnce_Services.instance.deleteData();
     }
     //DEBUG FUNCTIONS
 }

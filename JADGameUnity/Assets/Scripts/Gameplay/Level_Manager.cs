@@ -1162,7 +1162,6 @@ public class Level_Manager : MonoBehaviour
         thePlayer.setState(Player.playerState.dead);
         //  player.SetActive(false);
         healthText.text = "Health: 0";
-        Collect_Manager.instance.totalCoins += coinsCollected;
         Debug.Log("You survived: " + wavesSurvived + " waves!");
         //Debug.Log("Your score is: " + currentScore);
         checkFinalWaves();
@@ -1647,6 +1646,7 @@ public class Level_Manager : MonoBehaviour
         finalTallyRoutine = StartCoroutine(finalTally(currentScore, waveBonus, coinsCollected, finalCoins, totalScore));
         skipTallyButtonP.SetActive(true);
         coinsCollected = finalCoins;
+        Collect_Manager.instance.totalCoins += coinsCollected;
         currentScore = totalScore;
         checkFinalScore();
         SaveCollectables();

@@ -9,6 +9,7 @@
 using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
+using CloudOnce;
 
 public static class Save_System 
 {
@@ -23,6 +24,15 @@ public static class Save_System
 
         formatter.Serialize(stream, collectableData);
         stream.Close();
+
+        if (CloudOnce_Services.instance != null)
+        {
+            Debug.Log("Total coins in the cloud save was: " + CloudVariables.TotalCoins.ToString());
+            CloudVariables.TotalCoins = collectmanager.totalCoins;
+            Debug.Log("Total coins in the cloud save is now: " + CloudVariables.TotalCoins.ToString());
+
+            CloudOnce_Services.instance.saveCloud();
+        }
     }
 
     public static CollectableData LoadCollectables()
