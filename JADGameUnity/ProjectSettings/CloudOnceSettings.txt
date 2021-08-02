@@ -7,7 +7,15 @@
 			"GoogleID":"CgkIv4u63aIUEAIQAA"
 		}
 	],
-	"CloudVariables":[],
+	"CloudVariables":[
+		{
+			"Key":"TotalCoins",
+			"Type":"0",
+			"DefaultValue":"0",
+			"PersistenceType":"0",
+			"AllowNegative":false
+		}
+	],
 	"AppleSupported":true,
 	"GoogleSupported":true,
 	"GoogleAppID":"696517559743",
