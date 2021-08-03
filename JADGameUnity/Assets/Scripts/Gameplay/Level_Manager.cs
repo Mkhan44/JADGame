@@ -214,21 +214,16 @@ public class Level_Manager : MonoBehaviour
             {
                 theLevelType = levelType.normal;
                 //Need to randomize this in the future. !!!!
-                if(TimePeriod == timePeriod.None)
-                {
-                    TimePeriod = timePeriod.Prehistoric;
-                }
-                
+                selectTimePeriod();
+
+
             }
         }
         else
         {
             theLevelType = levelType.normal;
             //Need to randomize this in the future. !!!!
-            if (TimePeriod == timePeriod.None)
-            {
-                TimePeriod = timePeriod.Prehistoric;
-            }
+            selectTimePeriod();
             Debug.LogWarning("The tutorial_instance_debug is null!");
         }
       
@@ -251,6 +246,59 @@ public class Level_Manager : MonoBehaviour
             }
         }
 
+    }
+
+    void selectTimePeriod()
+    {
+        if (TimePeriod == timePeriod.None)
+        {
+            int randomTimePeriodToStart = 0;
+            int numTimePeriods = System.Enum.GetValues(typeof(timePeriod)).Length;
+            //Account for 'none' and 'tutorial'.
+            numTimePeriods -= 2;
+            randomTimePeriodToStart = Random.Range(0, numTimePeriods + 1);
+            //0 = prehistoric, 1 = feudalJapan, 2 = WildWest, 3 = Med, 4 = Future
+            switch (randomTimePeriodToStart)
+            {
+                case 0:
+                    {
+                        TimePeriod = timePeriod.Prehistoric;
+                        break;
+                    }
+                case 1:
+                    {
+                        TimePeriod = timePeriod.FeudalJapan;
+                        break;
+                    }
+                case 2:
+                    {
+                        TimePeriod = timePeriod.WildWest;
+                        break;
+                    }
+                case 3:
+                    {
+                        TimePeriod = timePeriod.Medieval;
+                        break;
+                    }
+                case 4:
+                    {
+                        TimePeriod = timePeriod.Future;
+                        break;
+                    }
+                default:
+                    {
+                        TimePeriod = timePeriod.Prehistoric;
+                        Debug.LogWarning("We could not find a corresponding time period!");
+                        break;
+                    }
+            }
+
+
+        }
+        else
+        {
+            Debug.Log("We're selecting the time period externally prolly through the editor.");
+        }
     }
 
     private void Start()

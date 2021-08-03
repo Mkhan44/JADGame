@@ -556,19 +556,9 @@ public class Wave_Spawner : MonoBehaviour
                         random2 += 1;
                     }
                 }
+       
                 //Debug for testing purposes.
-                if(random1 == 2)
-                {
-                    random1 = 1;
-                    random2 = 4;
-                }
-                else if(random2 == 2)
-                {
-                    random1 = 1;
-                    random2 = 4;
-                }
-                //Debug for testing purposes.
-                random1 = 2;
+               // random1 = 2;
                 //random2 = 3;
                 timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2));
             }

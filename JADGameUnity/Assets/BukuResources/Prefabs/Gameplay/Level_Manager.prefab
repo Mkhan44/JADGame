@@ -294,35 +294,63 @@ MonoBehaviour:
       size: 10
   - listName: FuturePools
     wrappedList:
+    - prefab: {fileID: 4158279202637467101, guid: 77a5ea817fbc82a448e5c21831761b2f, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: c13ad045176911040880122281adc29c, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 671c9538c2ddaaa4488341df716bf021, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 9168561389bdb8b409ebfcef38de3c17, type: 3}
+      size: 10
     - prefab: {fileID: 4158279202637467101, guid: 6e140306b8db7d04282e32caf4e9a02e, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: b04a7570f7640ad45ba9856c19208b47, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: c058be0d7348c5040842fd940f9fd821, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 32c6abb09e7d890409c20a1bc4b453bb, type: 3}
       size: 10
     - prefab: {fileID: 4158279202637467101, guid: 8c7f767ca243fca4ea7ffc4db279ddfe, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: af8464392cd8aaa4181bfe13f104fad2, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: f9a08f859f94c734da1bd018c248d849, type: 3}
       size: 10
     - prefab: {fileID: 4158279202637467101, guid: d73fe77cc778b854890028dfb0bd9a1d, type: 3}
       size: 10
+    - prefab: {fileID: 4158279202637467101, guid: f4c855faa3e7c58458a79b8b98107342, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: e0afd120af35e654e9137903f1f1cd9c, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 18f990690af96264daecfebdcdc20b64, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 7599b2c54b4fe6f4fa0b3be5372f7d99, type: 3}
+      size: 10
     - prefab: {fileID: 4158279202637467101, guid: a5d352060f4a67c458691636d22e7b63, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 67d91c870ceef5b4cb930e406ac11da8, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: 7e38116f64a2a0f488eb1bb6a7b11659, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 608f16f3a469c7a4e83270b11ad20773, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: cef86df7a7f1392448b36a11fc5497e2, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: e68dc7b58b1222a4bb3e553c31b1d0d0, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: eb7abb0079489ed46a703937d23995e5, type: 3}
       size: 10
     - prefab: {fileID: 4158279202637467101, guid: 6a9edebb6eb267f48803e708daf36942, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 8736a5c81effe2c40927263270d585b4, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: cad245ee248428b4484891bbbb0c9798, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 304f4df2111fc7943ab9e845de04f4ad, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: 624922e2b4a86444fab4642cada33b29, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 9f1fef011cf75624b98d126eb0eadf95, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: b488fc0cd94b2a74ea08a1a0cd0fc42e, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: 89a1503428074de40bf5ecb85e05e928, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: da5cc4f2b07b01343b769ec1a187876b, type: 3}
       size: 10
-    - prefab: {fileID: 4158279202637467101, guid: ec8dd129cea6d1248909ce87293324e8, type: 3}
+    - prefab: {fileID: 4158279202637467101, guid: 38fcc2e8da2efac43941892f081b7d7f, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: cb3df3284783ad64f90e8d2a97f34f16, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 8d40658b513332d4f80ba542422bcc63, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 7c4d94b6a193dcd40aedd045f985c3d7, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 7e85c46798a1fa44e9c9785933524fdb, type: 3}
+      size: 10
+    - prefab: {fileID: 4158279202637467101, guid: 171fdb62a2caeae4d9e31f4164c89357, type: 3}
       size: 10
   - listName: FeudalJapanPools
     wrappedList:

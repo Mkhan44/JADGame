@@ -73,12 +73,18 @@ public class Rover : Obstacle_Behaviour
         }
 
         randNum = Random.Range(0, 2);
-        Debug.Log(randNum);
 
         if(randNum == 0)
         {
 
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
+
+            if(inPlayerVicinity)
+            {
+                inCoroutine = false;
+                didStop = true;
+                yield break;
+            }
             stopping = true;
             float timeToWait = 0;
 

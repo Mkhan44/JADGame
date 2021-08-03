@@ -29,7 +29,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 7305455519006573469}
   m_Father: {fileID: 0}
@@ -98,10 +98,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e6abf60b0f07345a1d63ec7b1d137f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 4.5
+  speed: 0
   increaseRate: 5
   maxSpeed: 4.5
-  spawnPoint: 1
+  spawnPoint: 0
   extraCollider: {fileID: 0}
   objectElement: 1
   thisObstacleDiff: 0

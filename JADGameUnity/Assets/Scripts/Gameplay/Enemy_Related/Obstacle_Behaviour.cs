@@ -12,6 +12,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     protected Vector2 endPos;
     //Speed
     [Tooltip("Speed of the obstacle moving from right to left. KEEP THIS AS 0.")]
+    [HideInInspector]
     public float speed = 0f;
 
     float ogSpeed;
