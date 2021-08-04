@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eeec00769cc43f2a21921915f8fa89, type: 3}
+  m_Name: SharingServices
+  m_EditorClassIdentifier: 
+  m_isEnabled: 1
+  m_iosProperties:
+    m_files:
+    - m_reference: {fileID: -1121539586, guid: f8024ee8b330f47f2aa7b28097c80f83, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: efe6e4db72511424dbd9cf1b5deb5b5f, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 14cca52dcc2394e3b85e6a3d6c1ed777, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 6ca0537f5b60547e28da88bf33125326, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: fc60e9200e7df444bba89d2c07aabec7, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 468051c720fe9411fa192b979b35ed9d, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 2e96c6f952c1a4774b6eb66845717000, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 22fa4f8ed0f9e456db1191fd39a9e7a4, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 2b047e1a270d249cd8577314824ace0a, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 808ce76ee8b314313a6b9d030b330e8a, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 8924bd7e0fea54b09af08024fa8ce61b, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 62ba57c9a35a846da9561f3180d1fab0, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: cf46766d833c44fffbb2730e46ea9e8f, type: 3}
+      m_compileFlags: 
+    m_folders: []
+    m_headerPaths: []
+    m_frameworks:
+    - m_name: MessageUI.framework
+      m_isWeak: 0
+    - m_name: Social.framework
+      m_isWeak: 0
+    m_capabilities: []
+    m_macros: []

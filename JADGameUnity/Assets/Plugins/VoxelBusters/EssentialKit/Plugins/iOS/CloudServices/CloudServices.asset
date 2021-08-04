@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eeec00769cc43f2a21921915f8fa89, type: 3}
+  m_Name: CloudServices
+  m_EditorClassIdentifier: 
+  m_isEnabled: 1
+  m_iosProperties:
+    m_files:
+    - m_reference: {fileID: -1121539586, guid: 64e63cf3e2fd34366b7dbb8c8ea90bf9, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: ec180b0e2672a4dd1b595aeb60616981, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: fb7d3f886e8c44fe2af7062ec12b2021, type: 3}
+      m_compileFlags: 
+    m_folders: []
+    m_headerPaths: []
+    m_frameworks:
+    - m_name: CloudKit.framework
+      m_isWeak: 1
+    m_capabilities:
+    - m_type: 2
+      m_associatedDomainsEntitlement:
+        m_domains: []
+    m_macros: []

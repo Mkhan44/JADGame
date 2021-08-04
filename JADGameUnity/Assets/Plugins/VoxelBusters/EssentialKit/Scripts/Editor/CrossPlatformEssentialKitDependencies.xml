@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--DONT MODIFY HERE. AUTO GENERATED DEPENDENCIES FROM AndroidLibraryDependenciesGenerator.cs [Cross Platform Essential Kit : Native Plugins 2.0-->
+<dependencies>
+	<androidPackages>
+		<!--Dependency added for using Billing Services-->
+		<androidPackage
+			spec="com.android.billingclient:billing:3.0.2+" />
+		<!--Dependency added for using Google Play Services-->
+		<androidPackage
+			spec="com.google.android.gms:play-services-games:21.0.0+">
+			<androidSdkPackageIds>
+				<androidSdkPackageId>extra-google-m2repository</androidSdkPackageId>
+				<androidSdkPackageId>extra-android-m2repository</androidSdkPackageId>
+			</androidSdkPackageIds>
+		</androidPackage>
+		<androidPackage
+			spec="com.google.android.gms:play-services-nearby:17.0.0+" />
+		<androidPackage
+			spec="com.google.android.gms:play-services-auth:18.1.0+" />
+		<!--Dependency added for using Remote Notifications-->
+		<androidPackage
+			spec="com.google.firebase:firebase-messaging:20.2.4+" />
+		<!--Dependency added for using RateMyApp or Utilities-->
+		<androidPackage
+			spec="com.google.android.play:core:1.9.0" />
+		<!--Dependency added for using AndroidX Core Libraries-->
+		<androidPackage
+			spec="androidx.core:core:1.3.2+" />
+		<androidPackage
+			spec="androidx.exifinterface:exifinterface:1.3.0+" />
+	</androidPackages>
+</dependencies>

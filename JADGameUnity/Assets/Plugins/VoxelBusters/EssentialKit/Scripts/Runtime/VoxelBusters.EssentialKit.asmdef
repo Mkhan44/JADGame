@@ -1,0 +1,16 @@
+{
+    "name": "VoxelBusters.EssentialKit",
+    "references": [
+        "VoxelBusters.CoreLibrary",
+        "VoxelBusters.CoreLibrary.NativePlugins",
+        "VoxelBusters.Parser"
+    ],
+    "optionalUnityReferences": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": []
+}

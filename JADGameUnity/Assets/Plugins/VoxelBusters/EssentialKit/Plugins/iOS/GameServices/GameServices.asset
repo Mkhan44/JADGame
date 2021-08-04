@@ -1,0 +1,43 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eeec00769cc43f2a21921915f8fa89, type: 3}
+  m_Name: GameServices
+  m_EditorClassIdentifier: 
+  m_isEnabled: 1
+  m_iosProperties:
+    m_files:
+    - m_reference: {fileID: -1121539586, guid: 448e92ba77294429290b87ed2b924c30, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 46d87fd15ecf54a049a0ef343575ec16, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: bb02a4d8aee3a40b7a61591b4960ad1f, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 7de67c979ca5f4bc9ab0d79b168314c8, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 30e70c8333e08454da217da1ddfe8c4a, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 5603c9bdccdc04cd780a919421763915, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: cd97287cbf04e48b58c0ba69a0bf1c4e, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 9e7d0376291444140a6b53897a134303, type: 3}
+      m_compileFlags: 
+    m_folders: []
+    m_headerPaths: []
+    m_frameworks:
+    - m_name: GameKit.framework
+      m_isWeak: 1
+    m_capabilities:
+    - m_type: 0
+      m_associatedDomainsEntitlement:
+        m_domains: []
+    m_macros: []

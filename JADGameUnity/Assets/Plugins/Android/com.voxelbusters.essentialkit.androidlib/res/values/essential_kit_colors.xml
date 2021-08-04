@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!--For webview -->
+    <item name="ESSENTIAL_KIT_WEBVIEW_COLOR_TOPBAR" type="color">#FF555555</item>
+    <!-- Changing from transaparent will make the below color to be used as the loader color>-->
+    <item name="ESSENTIAL_KIT_WEBVIEW_COLOR_LOADING_OVERRIDE" type="color">#00000000</item>
+
+
+    <!-- Common  -->
+    <item name="ESSENTIAL_KIT_COLOR_TRANSPARENT" type="color">#00000000</item>
+    <item name="ESSENTIAL_KIT_COLOR_SEMI_TRANSPARENT" type="color">#AA000000</item>
+    <item name="ESSENTIAL_KIT_COLOR_BLACK" type="color">#FF000000</item>
+</resources>

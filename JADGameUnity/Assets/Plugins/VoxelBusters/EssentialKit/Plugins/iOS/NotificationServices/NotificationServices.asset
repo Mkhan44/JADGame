@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4eeec00769cc43f2a21921915f8fa89, type: 3}
+  m_Name: NotificationServices
+  m_EditorClassIdentifier: 
+  m_isEnabled: 1
+  m_iosProperties:
+    m_files:
+    - m_reference: {fileID: -1121539586, guid: d52d4437b65924546b8d7fff06144999, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 23368eeef4eda4c5f9e85c09bdd94cb7, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: dd58429107f6f4bc6984662001497f77, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: b1ddc6bb85cdd4b3889355184809a6c9, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 23f6e06edaadf4a6dbd50956400fee5f, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 518ae9552fee8439babb4f7b119727dc, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 442bc14e4dc08436fa1bd3725248e84c, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 984b30386dc8e441081d23b10b0dde7a, type: 3}
+      m_compileFlags: 
+    - m_reference: {fileID: -1121539586, guid: 177522314f22c4460beb1073faba5655, type: 3}
+      m_compileFlags: 
+    m_folders: []
+    m_headerPaths: []
+    m_frameworks:
+    - m_name: UserNotifications.framework
+      m_isWeak: 0
+    m_capabilities:
+    - m_type: 3
+      m_associatedDomainsEntitlement:
+        m_domains: []
+    m_macros:
+    - NATIVE_PLUGINS_USES_NOTIFICATION
+    - NATIVE_PLUGINS_USES_PUSH_NOTIFICATION

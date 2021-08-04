@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Game services setting -->
+    <string name="game_services_server_client_id">client-id-here</string>
+
+    <!-- Notification services setting -->
+    <bool name="notification_services_uses_external_service">false</bool>
+
+
+</resources>
