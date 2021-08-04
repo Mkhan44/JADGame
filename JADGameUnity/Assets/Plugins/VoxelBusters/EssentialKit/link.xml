@@ -1,16 +1,1 @@
-﻿<linker>
-  <assembly fullname="VoxelBusters.EssentialKit.iOSModule">
-    <namespace fullname="VoxelBusters.EssentialKit.AddressBookCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.BillingServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.CloudServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.GameServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.MediaServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.NativeUICore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.NetworkServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.NotificationServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.SharingServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.WebViewCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.DeepLinkServicesCore.iOS" preserve="all" />
-    <namespace fullname="VoxelBusters.EssentialKit.ExtrasCore.iOS" preserve="all" />
-  </assembly>
-</linker>
+﻿<linker />

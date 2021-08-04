@@ -3,7 +3,7 @@
   <string name="WEBVIEW_TOOLBAR_FORWARD">Forward</string>
   <string name="WEBVIEW_TOOLBAR_RELOAD">Reload</string>
   <string name="WEBVIEW_TOOLBAR_DONE">Done</string>
-  <string name="USES_CLOUD_SERVICES">true</string>
+  <string name="USES_CLOUD_SERVICES">false</string>
   <string name="GAME_SERVICES_SIGN_IN_FAILED">Sign in failed</string>
   <string name="GAME_SERVICES_SERVER_CLIENT_ID">
   </string>

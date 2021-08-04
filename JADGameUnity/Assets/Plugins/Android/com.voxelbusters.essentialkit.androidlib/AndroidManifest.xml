@@ -2,36 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools" package="com.voxelbusters.android.essentialkitplugin" android:versionCode="1" android:versionName="1.0">
   <uses-sdk />
   <application>
-    <activity android:name="com.voxelbusters.android.essentialkit.features.webview.WebViewActivity" android:theme="@style/Theme.Transparent" android:hardwareAccelerated="true" />
-    <activity android:name="com.voxelbusters.android.essentialkit.features.notificationservices.NotificationLauncher" android:theme="@style/Theme.Transparent" android:exported="true" />
-    <provider android:name="androidx.core.content.FileProvider" android:authorities="com.voxelbusters.essentialkit.essentialkit.fileprovider" android:exported="false" android:grantUriPermissions="true">
+    <provider android:name="androidx.core.content.FileProvider" android:authorities="com.BukuGames.RightPlaceRightTime.essentialkit.fileprovider" android:exported="false" android:grantUriPermissions="true">
       <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/essential_kit_file_paths" />
     </provider>
-    <service android:name="com.voxelbusters.android.essentialkit.features.notificationservices.provider.fcm.FCMMessagingService">
-      <intent-filter>
-        <action android:name="com.google.firebase.MESSAGING_EVENT" />
-      </intent-filter>
-    </service>
-    <receiver android:name="com.voxelbusters.android.essentialkit.features.notificationservices.AlarmBroadcastReceiver" />
-    <receiver android:name="com.voxelbusters.android.essentialkit.features.notificationservices.BootCompleteBroadcastReceiver">
-      <intent-filter>
-        <category android:name="android.intent.category.DEFAULT" />
-        <action android:name="android.intent.action.BOOT_COMPLETED" />
-        <action android:name="android.intent.action.QUICKBOOT_POWERON" />
-        <action android:name="com.htc.intent.action.QUICKBOOT_POWERON" />
-      </intent-filter>
-    </receiver>
-    <meta-data android:name="com.google.android.gms.games.APP_ID" android:value="\u003113386462231" />
   </application>
-  <uses-permission android:name="android.permission.READ_CONTACTS" />
-  <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-  <uses-permission android:name="android.permission.INTERNET" />
-  <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
-  <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion" />
-  <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" tools:remove="android:maxSdkVersion" />
-  <uses-permission android:name="com.google.android.apps.photos.permission.GOOGLE_PHOTOS" />
-  <uses-permission android:name="android.permission.MANAGE_DOCUMENTS" />
-  <uses-permission android:name="android.permission.CAMERA" />
-  <uses-feature android:name="android.hardware.camera" />
-  <uses-feature android:name="android.hardware.camera.autofocus" />
 </manifest>

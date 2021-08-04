@@ -17,7 +17,7 @@
 		}
 	],
 	"AppleSupported":true,
-	"GoogleSupported":false,
+	"GoogleSupported":true,
 	"GoogleAppID":"696517559743",
 	"GoogleSetupRun":true,
 	"DebugModeEnabled":false,
