@@ -257,6 +257,7 @@ public class Level_Manager : MonoBehaviour
             //Account for 'none' and 'tutorial'.
             numTimePeriods -= 2;
             randomTimePeriodToStart = Random.Range(0, numTimePeriods + 1);
+           // Debug.Log("The amount of time period's we're randomizing between are: " + randomTimePeriodToStart.ToString());
             //0 = prehistoric, 1 = feudalJapan, 2 = WildWest, 3 = Med, 4 = Future
             switch (randomTimePeriodToStart)
             {
