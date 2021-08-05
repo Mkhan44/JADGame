@@ -125,6 +125,20 @@ public class Collect_Manager : MonoBehaviour
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
             }
 
+         
+            //Check against the cloud.
+            if(Cloud_Saving.instance != null)
+            {
+                if(Cloud_Saving.instance.myCloudData != null)
+                {
+                    if (Cloud_Saving.instance.myCloudData.totalCoins != totalCoins)
+                    {
+                        totalCoins = Cloud_Saving.instance.myCloudData.totalCoins;
+                    }
+                }
+           
+            }
+
         }
         //IF THERE IS NO SAVE FILE, THIS WILL BE CALLED.
         else
@@ -141,7 +155,6 @@ public class Collect_Manager : MonoBehaviour
             item3 = -1;
 
             //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
-            totalCoins = 1000;
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         

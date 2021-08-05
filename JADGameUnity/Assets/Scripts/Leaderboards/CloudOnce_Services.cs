@@ -15,9 +15,9 @@ public class CloudOnce_Services : MonoBehaviour
         if (instance == null)
         {
             instance = this;
-            Cloud.OnInitializeComplete += CloudOnceInitializeComplete;
-            Cloud.Initialize(true, true);
-            Cloud.OnCloudLoadComplete += CloudOnceLoadComplete;
+           // Cloud.OnInitializeComplete += CloudOnceInitializeComplete;
+           // Cloud.Initialize(true, true);
+           // Cloud.OnCloudLoadComplete += CloudOnceLoadComplete;
         }
         else
         {
@@ -49,12 +49,12 @@ public class CloudOnce_Services : MonoBehaviour
 
         if (Collect_Manager.instance != null)
         {
-            Collect_Manager.instance.totalCoins = CloudVariables.TotalCoins;
+           // Collect_Manager.instance.totalCoins = CloudVariables.TotalCoins;
         }
     }
     public void saveCloud()
     {
-        Cloud.Storage.Save();
+        //Cloud.Storage.Save();
         //Also save to collect_Manager.
     }
 

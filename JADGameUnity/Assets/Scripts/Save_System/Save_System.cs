@@ -25,6 +25,13 @@ public static class Save_System
         formatter.Serialize(stream, collectableData);
         stream.Close();
 
+        if(Cloud_Saving.instance.myCloudData != null)
+        {
+            Cloud_Saving.instance.myCloudData.totalCoins = collectmanager.totalCoins;
+
+            Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudDataKey, Cloud_Saving.instance.myCloudData);
+        }
+        /*
         if (CloudOnce_Services.instance != null)
         {
             Debug.Log("Total coins in the cloud save was: " + CloudVariables.TotalCoins.ToString());
@@ -33,6 +40,7 @@ public static class Save_System
 
             CloudOnce_Services.instance.saveCloud();
         }
+        */
     }
 
     public static CollectableData LoadCollectables()

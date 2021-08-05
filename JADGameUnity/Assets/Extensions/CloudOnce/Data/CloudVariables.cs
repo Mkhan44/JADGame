@@ -13,12 +13,5 @@ namespace CloudOnce
     /// </summary>
     public static class CloudVariables
     {
-        private static readonly CloudInt s_totalCoins = new CloudInt("TotalCoins", PersistenceType.Latest, 0);
-
-        public static int TotalCoins
-        {
-            get { return s_totalCoins.Value; }
-            set { s_totalCoins.Value = value; }
-        }
     }
 }
