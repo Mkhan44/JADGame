@@ -1,0 +1,145 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Caveman_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 33d7914cd0afe284694a2f7b2491a369, type: 3}
+    - {fileID: 2800000, guid: ad2a8fc0bda0c18488263f5b4deeaa5a, type: 3}
+    - {fileID: 2800000, guid: 2bd50283322f9fc4f9597945d535d125, type: 3}
+    - {fileID: 2800000, guid: 167ba3a3c052a65489509e23330866e5, type: 3}
+    - {fileID: 2800000, guid: 26de3a31f4b99644bb97b97cab681bfc, type: 3}
+    - {fileID: 2800000, guid: a67efbf4d6e50504e999232dd589d5ae, type: 3}
+    - {fileID: 2800000, guid: b041cb5c641384d4baf1d33714974dbe, type: 3}
+    - {fileID: 2800000, guid: 790a899b0b5fbb842aa97fe7079a2f16, type: 3}
+    - {fileID: 2800000, guid: 48a0acdbfc0d4d940b7d228fe9ebe0c9, type: 3}
+    - {fileID: 2800000, guid: 5531e296a211b2f4c97383565ec71904, type: 3}
+    - {fileID: 2800000, guid: d02751797e01afd4aa022ff6742faaca, type: 3}
+    - {fileID: 2800000, guid: 31210e3d1a473ec4db04e968b35d2657, type: 3}
+    - {fileID: 2800000, guid: ab8c23d091cf747479cbd6096231c60a, type: 3}
+    - {fileID: 2800000, guid: ed91c56b2e49d164a92c4a66ecf10877, type: 3}
+    - {fileID: 2800000, guid: e4b29b2cfce4d704fb2afea8a166abfa, type: 3}
+    - {fileID: 2800000, guid: d0b2fcbb2a74fb54897249245917668a, type: 3}
+    - {fileID: 2800000, guid: a0bc4585a46734c4b98e1db88b3b35dd, type: 3}
+    - {fileID: 2800000, guid: ead92813d2a66eb4ab131a3ec08a721f, type: 3}
+    - {fileID: 2800000, guid: 25c7c35071e54694fa166bf2f4494da2, type: 3}
+    - {fileID: 2800000, guid: 9e9c9847770900c49bbf6b0de6001ff6, type: 3}
+    - {fileID: 2800000, guid: dc4fbeac8d375d548ab9bcd55f0379da, type: 3}
+    - {fileID: 2800000, guid: e517a95a492081d46aac965ce854ecd5, type: 3}
+    - {fileID: 2800000, guid: c32130d3ca4823a4f93440f5da963aec, type: 3}
+    - {fileID: 2800000, guid: 2c3e267a58140ff4fadb17a607021569, type: 3}
+    - {fileID: 2800000, guid: 68d0e001fcf57ab4e95189263ba5be6f, type: 3}
+    - {fileID: 2800000, guid: 5b3eab0a7a36cfa42b1a825855cbe6ab, type: 3}
+    - {fileID: 2800000, guid: d888aa7894d252c4cb72af3a3d066dba, type: 3}
+    - {fileID: 2800000, guid: 43a953962a45f2c46b1d5c306c8059cb, type: 3}
+    - {fileID: 2800000, guid: 69884d49e3b0c0746934c466dd52634b, type: 3}
+    - {fileID: 2800000, guid: 2effcfc80f202b7468c5c0fdfd472cec, type: 3}
+    totalSpriteSurfaceArea: 1236800
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 25c7c35071e54694fa166bf2f4494da2, type: 3}
+  - {fileID: 21300000, guid: ad2a8fc0bda0c18488263f5b4deeaa5a, type: 3}
+  - {fileID: 21300000, guid: ab8c23d091cf747479cbd6096231c60a, type: 3}
+  - {fileID: 21300000, guid: 68d0e001fcf57ab4e95189263ba5be6f, type: 3}
+  - {fileID: 21300000, guid: 26de3a31f4b99644bb97b97cab681bfc, type: 3}
+  - {fileID: 21300000, guid: ead92813d2a66eb4ab131a3ec08a721f, type: 3}
+  - {fileID: 21300000, guid: 2bd50283322f9fc4f9597945d535d125, type: 3}
+  - {fileID: 21300000, guid: 167ba3a3c052a65489509e23330866e5, type: 3}
+  - {fileID: 21300000, guid: c32130d3ca4823a4f93440f5da963aec, type: 3}
+  - {fileID: 21300000, guid: a67efbf4d6e50504e999232dd589d5ae, type: 3}
+  - {fileID: 21300000, guid: a0bc4585a46734c4b98e1db88b3b35dd, type: 3}
+  - {fileID: 21300000, guid: 5531e296a211b2f4c97383565ec71904, type: 3}
+  - {fileID: 21300000, guid: 43a953962a45f2c46b1d5c306c8059cb, type: 3}
+  - {fileID: 21300000, guid: 9e9c9847770900c49bbf6b0de6001ff6, type: 3}
+  - {fileID: 21300000, guid: d888aa7894d252c4cb72af3a3d066dba, type: 3}
+  - {fileID: 21300000, guid: 2effcfc80f202b7468c5c0fdfd472cec, type: 3}
+  - {fileID: 21300000, guid: 69884d49e3b0c0746934c466dd52634b, type: 3}
+  - {fileID: 21300000, guid: d02751797e01afd4aa022ff6742faaca, type: 3}
+  - {fileID: 21300000, guid: 5b3eab0a7a36cfa42b1a825855cbe6ab, type: 3}
+  - {fileID: 21300000, guid: e517a95a492081d46aac965ce854ecd5, type: 3}
+  - {fileID: 21300000, guid: 2c3e267a58140ff4fadb17a607021569, type: 3}
+  - {fileID: 21300000, guid: ed91c56b2e49d164a92c4a66ecf10877, type: 3}
+  - {fileID: 21300000, guid: 790a899b0b5fbb842aa97fe7079a2f16, type: 3}
+  - {fileID: 21300000, guid: d0b2fcbb2a74fb54897249245917668a, type: 3}
+  - {fileID: 21300000, guid: 48a0acdbfc0d4d940b7d228fe9ebe0c9, type: 3}
+  - {fileID: 21300000, guid: e4b29b2cfce4d704fb2afea8a166abfa, type: 3}
+  - {fileID: 21300000, guid: 33d7914cd0afe284694a2f7b2491a369, type: 3}
+  - {fileID: 21300000, guid: b041cb5c641384d4baf1d33714974dbe, type: 3}
+  - {fileID: 21300000, guid: dc4fbeac8d375d548ab9bcd55f0379da, type: 3}
+  - {fileID: 21300000, guid: 31210e3d1a473ec4db04e968b35d2657, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - cavemanhang3
+  - cavemanburning2
+  - cavemanfall3
+  - cavemanidle3
+  - cavemanduck1
+  - cavemanhang2
+  - cavemanburning3
+  - cavemanburning4
+  - cavemanidle1
+  - cavemanduck2
+  - cavemanhang1
+  - cavemanduckhurt3
+  - cavemanjump2
+  - cavemanhurt1
+  - cavemanjump1
+  - cavemanjump4
+  - cavemanjump3
+  - cavemanfall1
+  - cavemanidle4
+  - cavemanhurt3
+  - cavemanidle2
+  - cavemanfall4
+  - cavemanduckhurt1
+  - cavemanfrozen2
+  - cavemanduckhurt2
+  - cavemanfrozen1
+  - cavemanburning1
+  - cavemanduck3
+  - cavemanhurt2
+  - cavemanfall2
+  m_RenderDataMap: {}
+  m_Tag: Caveman_Atlas
+  m_IsVariant: 0
