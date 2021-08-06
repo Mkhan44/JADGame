@@ -1,1 +1,7 @@
-﻿<linker />
+﻿<linker>
+  <assembly fullname="VoxelBusters.EssentialKit.AndroidModule">
+    <namespace fullname="VoxelBusters.EssentialKit.CloudServicesCore.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EssentialKit.GameServicesCore.Android" preserve="all" />
+    <namespace fullname="VoxelBusters.EssentialKit.ExtrasCore.Android" preserve="all" />
+  </assembly>
+</linker>

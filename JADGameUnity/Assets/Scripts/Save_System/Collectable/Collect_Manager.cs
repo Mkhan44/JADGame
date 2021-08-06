@@ -101,7 +101,8 @@ public class Collect_Manager : MonoBehaviour
         CollectableData collect = Save_System.LoadCollectables();
 
 
-        if(collect != null)
+
+        if (collect != null)
         {
             totalCoins = collect.totalCoins;
             handWarmers = collect.handWarmers;

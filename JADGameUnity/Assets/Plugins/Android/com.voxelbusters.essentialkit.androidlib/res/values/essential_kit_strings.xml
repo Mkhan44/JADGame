@@ -3,12 +3,12 @@
   <string name="WEBVIEW_TOOLBAR_FORWARD">Forward</string>
   <string name="WEBVIEW_TOOLBAR_RELOAD">Reload</string>
   <string name="WEBVIEW_TOOLBAR_DONE">Done</string>
-  <string name="USES_CLOUD_SERVICES">false</string>
+  <string name="USES_CLOUD_SERVICES">true</string>
   <string name="GAME_SERVICES_SIGN_IN_FAILED">Sign in failed</string>
   <string name="GAME_SERVICES_SERVER_CLIENT_ID">
   </string>
-  <string name="GAME_SERVICES_NEEDS_PROFILE_SCOPE">true</string>
-  <string name="GAME_SERVICES_NEEDS_EMAIL_SCOPE">true</string>
+  <string name="GAME_SERVICES_NEEDS_PROFILE_SCOPE">false</string>
+  <string name="GAME_SERVICES_NEEDS_EMAIL_SCOPE">false</string>
   <string name="GAME_SERVICES_SHOW_ERROR_DIALOGS">true</string>
   <string name="GAME_SERVICES_NEEDS_POPUPS_AT_TOP">true</string>
   <string name="ADDRESS_BOOK_PERMISSON_REASON">%app_name% uses contacts.</string>

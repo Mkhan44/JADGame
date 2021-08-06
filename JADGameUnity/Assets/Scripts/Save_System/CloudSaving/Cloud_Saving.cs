@@ -57,6 +57,16 @@ public class Cloud_Saving : MonoBehaviour
         Debug.Log("Status: " + result.Success);
         // By this time, you have the latest data from cloud and you can start reading.
         myCloudData = GetCloudData(cloudDataKey);
+        if(myCloudData == null)
+        {
+            Universal_Dialouge_Box.instance.activatePopup("myCloudData is null!");
+        }
+        else
+        {
+              Universal_Dialouge_Box.instance.activatePopup("myCloudData is not null. Your current coins from the cloud are: " + myCloudData.totalCoins);
+        }
+        
+        
         //Debug.Log(myCloudData);
     }
 
