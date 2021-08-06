@@ -1820,6 +1820,20 @@ public class Level_Manager : MonoBehaviour
         if (currentScore > Collect_Manager.instance.highScore)
         {
             Collect_Manager.instance.highScore = currentScore;
+
+            //Submit to leaderboard here!
+            if (Essential_GameServices.instance != null)
+            {
+                Essential_GameServices.instance.ReportScoreToLeaderboards("Mostresearchpoints", currentScore);
+                Debug.Log("Submitting your high score to the leaderboard!");
+            }
+            else
+            {
+                Debug.LogWarning("Hey, we could not find the instance of the gameservices. Can't submit your high score!");
+            }
+        
+
+            /*
             if(CloudOnce_Services.instance != null)
             {
                 CloudOnce_Services.instance.submitLeaderboardScore(currentScore);
@@ -1829,8 +1843,9 @@ public class Level_Manager : MonoBehaviour
             {
                 Debug.LogWarning("You got a new high score! Couldn't submit it to the leaderboard, though.");
             }
-         
-            
+            */
+
+
         }
     }
 

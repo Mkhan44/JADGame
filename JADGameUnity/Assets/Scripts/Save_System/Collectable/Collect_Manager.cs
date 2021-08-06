@@ -388,7 +388,6 @@ public class Collect_Manager : MonoBehaviour
     public void deleteSave()
     {
         Save_System.DeleteCollectables();
-        CloudOnce_Services.instance.deleteData();
     }
     //DEBUG FUNCTIONS
 }

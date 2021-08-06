@@ -84,7 +84,14 @@ MonoBehaviour:
     m_syncInterval: 60
   m_gameServicesSettings:
     m_isEnabled: 1
-    m_leaderboards: []
+    m_leaderboards:
+    - m_id: Mostresearchpoints
+      m_platformId: RightPlaceRightTimeMostresearchpoints
+      m_platformIdOverrides:
+        m_ios: com.RightPlaceRightTime.MostResearchPoints
+        m_tvos: 
+        m_android: CgkIv4u63aIUEAIQAA
+      m_title: Most research points
     m_achievements: []
     m_showAchievementCompletionBanner: 1
     m_androidProperties:
