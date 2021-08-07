@@ -79,19 +79,19 @@ MonoBehaviour:
   m_sharingServicesSettings:
     m_isEnabled: 0
   m_cloudServicesSettings:
-    m_isEnabled: 0
+    m_isEnabled: 1
     m_synchronizeOnLoad: 1
     m_syncInterval: 60
   m_gameServicesSettings:
-    m_isEnabled: 0
+    m_isEnabled: 1
     m_leaderboards:
-    - m_id: 
-      m_platformId: 
+    - m_id: Mostresearchpoints
+      m_platformId: RightPlaceRightTimeMostresearchpoints
       m_platformIdOverrides:
         m_ios: com.RightPlaceRightTime.MostResearchPoints
         m_tvos: 
         m_android: CgkIv4u63aIUEAIQAA
-      m_title: Most Research Points
+      m_title: Most research points
     m_achievements: []
     m_showAchievementCompletionBanner: 1
     m_androidProperties:

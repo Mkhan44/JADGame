@@ -101,7 +101,8 @@ public class Collect_Manager : MonoBehaviour
         CollectableData collect = Save_System.LoadCollectables();
 
 
-        if(collect != null)
+
+        if (collect != null)
         {
             totalCoins = collect.totalCoins;
             handWarmers = collect.handWarmers;
@@ -125,6 +126,36 @@ public class Collect_Manager : MonoBehaviour
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
             }
 
+         
+            //Check against the cloud.
+            if(Cloud_Saving.instance != null)
+            {
+                if(Cloud_Saving.instance.myCloudData != null)
+                {
+                    if (Cloud_Saving.instance.myCloudData.totalCoins != totalCoins)
+                    {
+                        totalCoins = Cloud_Saving.instance.myCloudData.totalCoins;
+                    }
+                }
+           
+            }
+
+            //test
+            if(Cloud_Saving.instance != null)
+            {
+                if(Cloud_Saving.instance.cloudTotalCoinsTest != totalCoins)
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("The coins on the server were: " + Cloud_Saving.instance.cloudTotalCoinsTest + " so we have updated the local save file to match that value.");
+                    totalCoins = Cloud_Saving.instance.cloudTotalCoinsTest;
+                 
+                }
+                else
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("The coins on the server were: " + Cloud_Saving.instance.cloudTotalCoinsTest + " And our local save is equal to that.");
+                }
+            }
+            //test
+
         }
         //IF THERE IS NO SAVE FILE, THIS WILL BE CALLED.
         else
@@ -141,7 +172,6 @@ public class Collect_Manager : MonoBehaviour
             item3 = -1;
 
             //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
-            totalCoins = 1000;
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
         }
         
@@ -374,7 +404,6 @@ public class Collect_Manager : MonoBehaviour
     public void deleteSave()
     {
         Save_System.DeleteCollectables();
-        CloudOnce_Services.instance.deleteData();
     }
     //DEBUG FUNCTIONS
 }
