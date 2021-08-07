@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Gameplay.unity
     guid: 2cda990e2423bbf4892e6590ba056729
+  - enabled: 0
+    path: Assets/Plugins/VoxelBusters/EssentialKit/Scenes/Demo/CloudServicesDemo.unity
+    guid: f1d5f4f628d4d47c0af716db3baf242f
   m_configObjects: {}

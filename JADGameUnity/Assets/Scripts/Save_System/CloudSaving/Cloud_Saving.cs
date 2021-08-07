@@ -9,6 +9,8 @@ public class Cloud_Saving : MonoBehaviour
     public static Cloud_Saving instance;
     public Cloud_Data myCloudData;
 
+    public int cloudTotalCoinsTest;
+
     [Header("DO NOT CHANGE THIS!")]
     [SerializeField] public string cloudDataKey;
     // Start is called before the first frame update
@@ -55,9 +57,14 @@ public class Cloud_Saving : MonoBehaviour
     {
         Debug.Log("Received synchronize finish callback.");
         Debug.Log("Status: " + result.Success);
+        Universal_Dialouge_Box.instance.activatePopup("Received synchronize finish callback. Status: " + result.Success.ToString());
         // By this time, you have the latest data from cloud and you can start reading.
         myCloudData = GetCloudData(cloudDataKey);
-        if(myCloudData == null)
+        cloudTotalCoinsTest = loadCloudData();
+
+        /*
+
+        if (myCloudData == null)
         {
             Universal_Dialouge_Box.instance.activatePopup("myCloudData is null!");
         }
@@ -65,7 +72,7 @@ public class Cloud_Saving : MonoBehaviour
         {
               Universal_Dialouge_Box.instance.activatePopup("myCloudData is not null. Your current coins from the cloud are: " + myCloudData.totalCoins);
         }
-        
+        */
         
         //Debug.Log(myCloudData);
     }
@@ -77,11 +84,28 @@ public class Cloud_Saving : MonoBehaviour
         CloudServices.SetString(key, json);
     }
 
+    //Test version for updating highscore.
+    public void SaveCloudData(int num)
+    {
+        CloudServices.SetInt("testSuperIntRPRT", num);
+    }
+
+    public int loadCloudData()
+    {
+      return  CloudServices.GetInt("testSuperIntRPRT");
+    }
+    //test
+
     public Cloud_Data GetCloudData(string key)
     {
         string json = CloudServices.GetString(key);
 
         return JsonUtility.FromJson<Cloud_Data>(json);
+    }
+
+    public void manualSync()
+    {
+        CloudServices.Synchronize();
     }
 
     private void OnUserChange(CloudServicesUserChangeResult result, Error error)
@@ -116,6 +140,22 @@ public class Cloud_Saving : MonoBehaviour
                 SaveCloudData(cloudDataKey, myCloudData);
 
                 //CHECK ALL CLOUD VS LOCAL STUFF HERE.
+            }
+
+            if(result.ChangedKeys[i] == "testSuperIntRPRT")
+            {
+                int serverCopyTotalCoins = loadCloudData();
+
+                if(serverCopyTotalCoins > cloudTotalCoinsTest)
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("We changed the number of coins. On server coin value was: " + serverCopyTotalCoins + " and on local copy we had " + cloudTotalCoinsTest + " Which has now been updated to match the server.");
+                    cloudTotalCoinsTest = serverCopyTotalCoins;
+
+                }
+                else
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("We DID NOT change the number of coins. On server coin value was: " + serverCopyTotalCoins + " and on local copy we had " + cloudTotalCoinsTest + " Which is NOT bigger than server.");
+                }
             }
         }
     }

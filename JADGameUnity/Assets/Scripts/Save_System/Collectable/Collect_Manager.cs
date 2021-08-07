@@ -140,6 +140,22 @@ public class Collect_Manager : MonoBehaviour
            
             }
 
+            //test
+            if(Cloud_Saving.instance != null)
+            {
+                if(Cloud_Saving.instance.cloudTotalCoinsTest != totalCoins)
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("The coins on the server were: " + Cloud_Saving.instance.cloudTotalCoinsTest + " so we have updated the local save file to match that value.");
+                    totalCoins = Cloud_Saving.instance.cloudTotalCoinsTest;
+                 
+                }
+                else
+                {
+                    Universal_Dialouge_Box.instance.activatePopup("The coins on the server were: " + Cloud_Saving.instance.cloudTotalCoinsTest + " And our local save is equal to that.");
+                }
+            }
+            //test
+
         }
         //IF THERE IS NO SAVE FILE, THIS WILL BE CALLED.
         else

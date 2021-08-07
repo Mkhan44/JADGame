@@ -24,11 +24,18 @@ public static class Save_System
         formatter.Serialize(stream, collectableData);
         stream.Close();
 
-        if(Cloud_Saving.instance.myCloudData != null)
+        //test
+        Cloud_Saving.instance.cloudTotalCoinsTest = collectmanager.totalCoins;
+        Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudTotalCoinsTest);
+
+        //test
+
+        if (Cloud_Saving.instance.myCloudData != null)
         {
             Cloud_Saving.instance.myCloudData.totalCoins = collectmanager.totalCoins;
 
             Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudDataKey, Cloud_Saving.instance.myCloudData);
+
         }
         /*
         if (CloudOnce_Services.instance != null)
