@@ -31,6 +31,10 @@ public class Cloud_Saving : MonoBehaviour
         {
             CloudServices.Synchronize();
         }
+        else
+        {
+            Universal_Dialouge_Box.instance.activatePopup("Cloud services not available! Cannot Synchronize.");
+        }
 
 
     }
@@ -130,7 +134,8 @@ public class Cloud_Saving : MonoBehaviour
                     Debug.Log("The server copy had: " + serverCopy.totalCoins + " coins and the local copy had: " + myCloudData.totalCoins + " coins. We are updating the local copy.");
                     myCloudData.totalCoins = serverCopy.totalCoins;
                     //Update the collect manager as well.
-                    Collect_Manager.instance.totalCoins = myCloudData.totalCoins;
+                    int tempCoins = (int)myCloudData.totalCoins;
+                    Collect_Manager.instance.totalCoins = tempCoins;
                 }
                 else
                 {
@@ -165,10 +170,10 @@ public class Cloud_Saving : MonoBehaviour
 //All data we need to save. For a list we may need to do some tweaking...
 public class Cloud_Data
 {
-    public int totalCoins;
-    public int highScore;
-    public int highestWave;
-    public int mostWavesSurvived;
-    public int totalWavesSurvived;
+    public long totalCoins;
+    public long highScore;
+    public long highestWave;
+    public long mostWavesSurvived;
+    public long totalWavesSurvived;
 
 }

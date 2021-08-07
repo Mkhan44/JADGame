@@ -47,58 +47,37 @@ SpriteAtlas:
     - {fileID: 2800000, guid: a64469ac14c79a44cbf949471ea13fb5, type: 3}
     - {fileID: 2800000, guid: d7ff4cb604ed43543bb40429c39b065f, type: 3}
     - {fileID: 2800000, guid: 3d546fb686a39f844aefbfea686a8cb4, type: 3}
-    - {fileID: 2800000, guid: f2c3ff0a9ad2e6b4e8f9923814554714, type: 3}
-    - {fileID: 2800000, guid: d8efbafb5dca3514c8c4046b760bcdef, type: 3}
-    - {fileID: 2800000, guid: cb13fc32d2f36b74f81baebc38788c24, type: 3}
     - {fileID: 2800000, guid: a95df5c8b372fe940820cc54e1cda3a4, type: 3}
     - {fileID: 2800000, guid: 19cc85a2c61b2f84fa1056adb2dc9ef5, type: 3}
     - {fileID: 2800000, guid: f8bd005af4b0ad440bec37d03b2d9e24, type: 3}
     - {fileID: 2800000, guid: 0cd3b389e732d1644900017cd213ce71, type: 3}
     - {fileID: 2800000, guid: 816339eec2eab6347a7bd978c1f193f5, type: 3}
-    - {fileID: 2800000, guid: 8431a9ec122c98542a722fd7f256e20b, type: 3}
-    - {fileID: 2800000, guid: 813bc9bb5374c1f458b09f75feaa6821, type: 3}
-    - {fileID: 2800000, guid: 3f4153b59f38c02478dbabe640145c1e, type: 3}
     - {fileID: 2800000, guid: d424159ee3988ff4d85ce6983b920d93, type: 3}
-    - {fileID: 2800000, guid: f451495d57049fe4d95e41ec0a803903, type: 3}
-    totalSpriteSurfaceArea: 1187075
+    totalSpriteSurfaceArea: 749075
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: dfd48031b2ef7724eb5f3a103ec3977d, type: 3}
-  - {fileID: 21300000, guid: cb13fc32d2f36b74f81baebc38788c24, type: 3}
   - {fileID: 6083894150515743118, guid: 19cc85a2c61b2f84fa1056adb2dc9ef5, type: 3}
-  - {fileID: 21300000, guid: 3f4153b59f38c02478dbabe640145c1e, type: 3}
   - {fileID: -8284644078155369443, guid: d7ff4cb604ed43543bb40429c39b065f, type: 3}
   - {fileID: 967176019817119371, guid: 3d546fb686a39f844aefbfea686a8cb4, type: 3}
   - {fileID: 3925885732214637743, guid: a95df5c8b372fe940820cc54e1cda3a4, type: 3}
   - {fileID: 21300000, guid: 0cd3b389e732d1644900017cd213ce71, type: 3}
-  - {fileID: 21300000, guid: f2c3ff0a9ad2e6b4e8f9923814554714, type: 3}
   - {fileID: -4048175659487860363, guid: f8bd005af4b0ad440bec37d03b2d9e24, type: 3}
-  - {fileID: 21300000, guid: 813bc9bb5374c1f458b09f75feaa6821, type: 3}
-  - {fileID: 21300000, guid: d8efbafb5dca3514c8c4046b760bcdef, type: 3}
   - {fileID: 4213733262280214363, guid: a64469ac14c79a44cbf949471ea13fb5, type: 3}
-  - {fileID: 21300000, guid: 8431a9ec122c98542a722fd7f256e20b, type: 3}
-  - {fileID: 21300000, guid: f451495d57049fe4d95e41ec0a803903, type: 3}
   - {fileID: 21300000, guid: d424159ee3988ff4d85ce6983b920d93, type: 3}
   - {fileID: 5494964437342709293, guid: 816339eec2eab6347a7bd978c1f193f5, type: 3}
   m_PackedSpriteNamesToIndex:
   - bottomui
-  - duckbuttondisabled
   - heatup2_0
-  - jumpbuttondisabled
   - cooldown2_0
   - cooldown3_0
   - heatup1_0
   - iconholder
-  - duckbutton1
   - heatup3_0
-  - jumpbutton2
-  - duckbutton2
   - cooldown1_0
-  - jumpbutton1
-  - usagebar
   - topui
   - itemslot_0
   m_RenderDataMap: {}

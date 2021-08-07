@@ -90,7 +90,8 @@ public class Collect_Manager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-
+       // Debug.Log("This is a test from collect manager.");
+        Universal_Dialouge_Box.instance.activatePopup("Test.");
         //Debug.Log(System.Enum.GetValues(typeof(skinTypes)).Length);
 
     }
@@ -134,7 +135,7 @@ public class Collect_Manager : MonoBehaviour
                 {
                     if (Cloud_Saving.instance.myCloudData.totalCoins != totalCoins)
                     {
-                        totalCoins = Cloud_Saving.instance.myCloudData.totalCoins;
+                        totalCoins = (int)Cloud_Saving.instance.myCloudData.totalCoins;
                     }
                 }
            
