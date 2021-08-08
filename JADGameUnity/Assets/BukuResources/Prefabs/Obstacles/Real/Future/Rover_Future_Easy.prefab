@@ -108,6 +108,7 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
+  roverAnimator: {fileID: 3408275287507789755}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

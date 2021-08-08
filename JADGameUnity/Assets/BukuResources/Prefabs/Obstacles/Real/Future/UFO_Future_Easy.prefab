@@ -108,10 +108,14 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
-  droppedEnemyPrefab: {fileID: 4158279202637467101, guid: cd4098883cd65ec4d8d0e145efbc91da, type: 3}
+  droppedEnemyPrefabs:
+  - {fileID: 4158279202637467101, guid: cd4098883cd65ec4d8d0e145efbc91da, type: 3}
+  - {fileID: 4158279202637467101, guid: f648e4fa4cab2994fa38dc8bd9a4fe87, type: 3}
+  - {fileID: 4158279202637467101, guid: 85dfc2dc3be1bc04e85ff7865f0d2f81, type: 3}
   dropRate: 1.5
   maxDrops: 3
-  UFOAnimator: {fileID: 0}
+  UFOAnimator: {fileID: 6798387960695762313}
+  lightSpriteRend: {fileID: 4831793603783777689}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

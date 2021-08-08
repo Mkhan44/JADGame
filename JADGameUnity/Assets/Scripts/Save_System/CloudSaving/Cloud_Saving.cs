@@ -61,7 +61,7 @@ public class Cloud_Saving : MonoBehaviour
     {
         Debug.Log("Received synchronize finish callback.");
         Debug.Log("Status: " + result.Success);
-        Universal_Dialouge_Box.instance.activatePopup("Received synchronize finish callback. Status: " + result.Success.ToString());
+       // Universal_Dialouge_Box.instance.activatePopup("Received synchronize finish callback. Status: " + result.Success.ToString());
         // By this time, you have the latest data from cloud and you can start reading.
         myCloudData = GetCloudData(cloudDataKey);
         cloudTotalCoinsTest = loadCloudData();
@@ -147,6 +147,7 @@ public class Cloud_Saving : MonoBehaviour
                 //CHECK ALL CLOUD VS LOCAL STUFF HERE.
             }
 
+            /*
             if(result.ChangedKeys[i] == "testSuperIntRPRT")
             {
                 int serverCopyTotalCoins = loadCloudData();
@@ -162,6 +163,7 @@ public class Cloud_Saving : MonoBehaviour
                     Universal_Dialouge_Box.instance.activatePopup("We DID NOT change the number of coins. On server coin value was: " + serverCopyTotalCoins + " and on local copy we had " + cloudTotalCoinsTest + " Which is NOT bigger than server.");
                 }
             }
+            */
         }
     }
 

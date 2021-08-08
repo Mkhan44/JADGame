@@ -9,27 +9,50 @@ using Random = UnityEngine.Random;
 
 public class UFO : Obstacle_Behaviour
 {
-    [SerializeField] GameObject droppedEnemyPrefab;
+    [SerializeField] List<GameObject> droppedEnemyPrefabs = new List<GameObject>();
     [SerializeField] float dropRate;
     [SerializeField] int maxDrops;
     [SerializeField] Animator UFOAnimator;
+    [SerializeField] SpriteRenderer lightSpriteRend;
     bool inCoroutine;
     int currentDropsLeft;
     int timesSinceLastDrop;
+    float adjustedDropRate;
+
+    //Animation clips
+    AnimationClip lightOn;
+    AnimationClip lightRetract;
+
+    const string ufoLightOn = "ufolight";
+    const string ufoLightRetract = "ufolightretract";
+    const string ufoLightIdle = "ufolightidle";
     protected override void Awake()
     {
         base.Awake();
-        currentDropsLeft = maxDrops;
-        inCoroutine = false;
-        timesSinceLastDrop = 0;
+        initializeUFO();
     }
 
     public override void OnObjectSpawn()
     {
         base.OnObjectSpawn();
+        initializeUFO();
+    }
+
+    private void initializeUFO()
+    {
         currentDropsLeft = maxDrops;
         inCoroutine = false;
         timesSinceLastDrop = 0;
+        lightOn = UFOAnimator.runtimeAnimatorController.animationClips[0];
+        lightRetract = UFOAnimator.runtimeAnimatorController.animationClips[1];
+        lightSpriteRend.color = new Color(255, 255, 255, 0);
+        adjustedDropRate = dropRate - (lightOn.length + lightRetract.length);
+
+        if(adjustedDropRate < 0f)
+        {
+            adjustedDropRate = 0f;
+        }
+
     }
 
     protected override void Movement()
@@ -69,10 +92,29 @@ public class UFO : Obstacle_Behaviour
             yield break;
         }
 
-        GameObject tempDroppedEnemy = Instantiate(droppedEnemyPrefab, this.transform);
-        tempDroppedEnemy.GetComponent<UFO_Dropped_Enemy>().initializeDroppedEnemy(this.gameObject);
+        int randJunkSpawn = Random.Range(0, droppedEnemyPrefabs.Count);
 
-        yield return new WaitForSeconds(dropRate);
+        UFOAnimator.Play(ufoLightOn);
+
+        lightSpriteRend.color = new Color(255, 255, 255, 255);
+        yield return new WaitForSeconds(0.3f);
+
+        Vector2 currentUFOPos = this.transform.position;
+        //GameObject tempDroppedEnemy = Instantiate(droppedEnemyPrefabs[randJunkSpawn], this.transform);
+        GameObject tempDroppedEnemy = Instantiate(droppedEnemyPrefabs[randJunkSpawn], new Vector2(currentUFOPos.x, currentUFOPos.y - 0.2f), this.transform.rotation);
+        tempDroppedEnemy.GetComponent<UFO_Dropped_Enemy>().initializeDroppedEnemy(this.gameObject);
+        tempDroppedEnemy.transform.SetParent(this.transform);
+        yield return new WaitForSeconds(lightOn.length - 0.3f);
+
+        UFOAnimator.Play(ufoLightRetract);
+
+        yield return new WaitForSeconds(lightRetract.length);
+
+        lightSpriteRend.color = new Color(255, 255, 255, 0);
+
+        UFOAnimator.Play(ufoLightIdle);
+
+        yield return new WaitForSeconds(adjustedDropRate);
 
         inCoroutine = false;
 

@@ -10,11 +10,14 @@ public class Rover : Obstacle_Behaviour
 {
     bool inCoroutine;
     int randNum;
-    Animator roverAnimator;
+    [SerializeField] Animator roverAnimator;
     AnimationClip stopAni;
     bool didStop;
     bool stopping;
 
+    int randEle;
+    const string fireGo = "roverfire";
+    const string iceGo = "roverice";
     const string stopString = "";
     const string goString = "";
 
@@ -35,6 +38,22 @@ public class Rover : Obstacle_Behaviour
         inCoroutine = false;
         didStop = false;
         stopping = false;
+        randEle = Random.Range(0, 2);
+
+        if(randEle == 0)
+        {
+            this.objectElement = ElementType.fire;
+            roverAnimator.Play(fireGo);
+        }
+        else
+        {
+            this.objectElement = ElementType.ice;
+            roverAnimator.Play(iceGo);
+        }
+        changeOutline();
+
+
+        //Switch to appropriate animation based on element here.
     }
 
     protected override void Movement()
@@ -58,6 +77,37 @@ public class Rover : Obstacle_Behaviour
             if (thisRigid != null)
             {
                 thisRigid.velocity = Vector2.left * speed;
+            }
+        }
+    }
+
+    void changeOutline()
+    {
+
+        //Change element to opposite + redraw outline.
+        foreach (Transform child in transform)
+        {
+            if (child.GetComponent<SpriteRenderer>() != null)
+            {
+                outlineChildList.Add(child.GetComponent<SpriteRenderer>().material);
+            }
+
+        }
+        for (int i = 0; i < outlineChildList.Count; i++)
+        {
+            outlineChildList[i].SetFloat("_OutlineThickness", 3f);
+
+            if (objectElement == ElementType.fire)
+            {
+                // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color fireColor = new Color(212, 139, 57, 255);
+                outlineChildList[i].SetColor("_OutlineColor", Color.red);
+            }
+            else if (objectElement == ElementType.ice)
+            {
+                // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color iceColor = new Color(70, 219, 213, 255);
+                outlineChildList[i].SetColor("_OutlineColor", Color.cyan);
             }
         }
     }
@@ -88,19 +138,58 @@ public class Rover : Obstacle_Behaviour
             stopping = true;
             float timeToWait = 0;
 
+            //test
+            timeToWait = 0.15f;
+
+            float timePassed = 0f;
+            bool toggleStuck = false;
+
+
+            //Stop it.
+            thisRigid.velocity = Vector2.zero;
+
+            while (timePassed < timeToWait)
+            {
+                timePassed += Time.deltaTime;
+                if(toggleStuck)
+                {
+                    thisRigid.velocity = Vector2.right * 3.0f;
+                    toggleStuck = false;
+                }
+                else
+                {
+                    thisRigid.velocity = Vector2.left * 3.0f;
+                    toggleStuck = true;
+                }
+           
+                yield return new WaitForSeconds(0.1f);
+            }
+
+            if(objectElement == ElementType.fire)
+            {
+                objectElement = ElementType.ice;
+                roverAnimator.Play(iceGo);
+
+            }
+            else
+            {
+                objectElement = ElementType.fire;
+                roverAnimator.Play(fireGo);
+            }
+            changeOutline();
+
+
             //Get the animationClip time.
             //stopAni = roverAnimator.runtimeAnimatorController.animationClips[0];
             //timeToWait = stopAni.length;
 
-            //Do it.
-            thisRigid.velocity = Vector2.zero;
 
             //Play animation.
 
             //yield return new WaitForSeconds(timeToWait);
 
             //Placeholder.
-            yield return new WaitForSeconds(1.5f);
+            // yield return new WaitForSeconds(1.5f);
         }
         else
         {
