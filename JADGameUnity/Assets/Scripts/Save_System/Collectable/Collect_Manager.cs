@@ -90,8 +90,7 @@ public class Collect_Manager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
-       // Debug.Log("This is a test from collect manager.");
-        Universal_Dialouge_Box.instance.activatePopup("Test.");
+      //  Universal_Dialouge_Box.instance.activatePopup("Test.");
         //Debug.Log(System.Enum.GetValues(typeof(skinTypes)).Length);
 
     }
@@ -141,6 +140,7 @@ public class Collect_Manager : MonoBehaviour
            
             }
 
+            /*
             //test
             if(Cloud_Saving.instance != null)
             {
@@ -156,7 +156,7 @@ public class Collect_Manager : MonoBehaviour
                 }
             }
             //test
-
+            */
         }
         //IF THERE IS NO SAVE FILE, THIS WILL BE CALLED.
         else

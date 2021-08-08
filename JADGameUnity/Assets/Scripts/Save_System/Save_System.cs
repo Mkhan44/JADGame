@@ -29,7 +29,7 @@ public static class Save_System
         Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudTotalCoinsTest);
 
         //test
-
+        /*
         if (Cloud_Saving.instance.myCloudData != null)
         {
             Cloud_Saving.instance.myCloudData.totalCoins = collectmanager.totalCoins;
@@ -37,6 +37,8 @@ public static class Save_System
             Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudDataKey, Cloud_Saving.instance.myCloudData);
 
         }
+        */
+
         /*
         if (CloudOnce_Services.instance != null)
         {

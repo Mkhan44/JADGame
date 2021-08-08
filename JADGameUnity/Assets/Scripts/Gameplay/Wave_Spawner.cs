@@ -83,6 +83,7 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefabs for treasure chests that will spawn in.")]
     public GameObject chestPrefabGround;
     public GameObject chestPrefabAir;
+    public Sprite coinImg;
 
     [Tooltip("Prefabs for different time periods.")]
     public List<GameObject> timePortalPrefabs;
@@ -233,24 +234,7 @@ public class Wave_Spawner : MonoBehaviour
         currentBG1 = Instantiate(BGsToLoad[0]);
         currentBG2 = Instantiate(BGsToLoad[0]);
 
-        /*
-        easyBG1 = currentBG1;
-        easyBG2 = currentBG2;
-        medBG1 = Instantiate(BGsToLoad[1]);
-        medBG2 = Instantiate(BGsToLoad[1]);
-        hardBG1 = Instantiate(BGsToLoad[2]);
-        hardBG2 = Instantiate(BGsToLoad[2]);
-        */
-
         currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
-
-        /*
-        medBG2.transform.position = new Vector3(BGsToLoad[1].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
-        hardBG2.transform.position = new Vector3(BGsToLoad[2].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
-        */
-
-        //   Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
-        //    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
 
         //Play intro transition.
         StartCoroutine(introTransition());
@@ -567,18 +551,18 @@ public class Wave_Spawner : MonoBehaviour
         }
 
         
-        //Bonus test.
+        //Bonus wave spawn.
         if(!specialWaveOn && waveType != typeOfWave.timeSwap)
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 2)
+            if (wavesSinceBonus > 0)
             {
                 
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-               // doWeBonus = 8;
+                doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
@@ -592,7 +576,7 @@ public class Wave_Spawner : MonoBehaviour
         
 
 
-        //TimerPortal test.
+        //TimerPortal wave spawn.
         if (!specialWaveOn && waveType != typeOfWave.bonus)
         {
             wavesSinceTimeSwap++;
@@ -658,13 +642,18 @@ public class Wave_Spawner : MonoBehaviour
 
         AnimationClip chestOpenClip;
         float aniTime = 0f;
-        //Since there is only 1 animation , this should be the clip for cocking and shooting the shotgun.
-       
 
         GameObject chest1 = Instantiate(chestPrefabGround, spawnPoints[1].transform);
-        //This 2nd prefab will probably be the top graphic that Timour has so we may need a 2nd prefab here.
+        //This 2nd prefab will probably be the top graphic that Timour has.
         GameObject chest2 = Instantiate(chestPrefabAir, spawnPoints[2].transform);
         chest2.GetComponent<Rigidbody2D>().gravityScale = -10f;
+
+        //Basic randomization for prizes. This will have to be changed and have different stipulations based on waves passed, and other stuff etc.
+        int randPrizeNum = 0;
+        Sprite itemToReceive;
+        GameObject chestSpriteChild;
+        SpriteRenderer itemSpriteToChange;
+        Collect_Manager.typeOfItem itemToGive = Collect_Manager.typeOfItem.none;
 
         int theSelection = Level_Manager.Instance.getChestSelect();
 
@@ -698,6 +687,8 @@ public class Wave_Spawner : MonoBehaviour
             Animator tempAnimator = chest1.GetComponent<Animator>();
             chestOpenClip = tempAnimator.runtimeAnimatorController.animationClips[0];
             aniTime = chestOpenClip.length;
+            chestSpriteChild = chest1.transform.GetChild(0).gameObject;
+            itemSpriteToChange = chestSpriteChild.GetComponent<SpriteRenderer>();
             tempAnimator.SetBool("Chest_Open", true);
         }
         else
@@ -705,30 +696,125 @@ public class Wave_Spawner : MonoBehaviour
             Animator tempAnimator = chest2.GetComponent<Animator>();
             chestOpenClip = tempAnimator.runtimeAnimatorController.animationClips[0];
             aniTime = chestOpenClip.length;
+            chestSpriteChild = chest2.transform.GetChild(0).gameObject;
+            itemSpriteToChange = chestSpriteChild.GetComponent<SpriteRenderer>();
             tempAnimator.SetBool("Chest_Open", true);
         }
 
-       // Debug.Log("Ani time = " + aniTime);
+        // Debug.Log("Ani time = " + aniTime);
+        /*
+        CURRENT ENUM
+        HandWarmer,
+        Defroster,
+        FireVest,
+        LiquidNitrogenCanister,
+        NeutralTablet,
+        none
+        CURRENT ENUM
+        randPrizeNum needs to be randomized to be between 0 (First index of the enum) and 1 less than the total number of elements in the enum. EX: 5 elements in enum, so highLimit would be 5-1 or 4.
+        However, we are using itemsToPick as the list to count based on. So highLimit = the count of itemsToPick or everything except for 'none' from the enum.
+        Since Random.Range is inclusive for the high end, it needs to be our value + 1...So highLimit = 5 , we do 5 + 1 or 6. This means that it can randomize between 0 and 5.
+        Finally, since we're testing for coins as well, we add an extra value. So instead of 5 + 1, we'll do 5 + 2. This means it's randomizing between the 5 elements + 1 extra for coins, or 0-6.
+         */
 
-        //Basic randomization for prizes. This will have to be changed and have different stipulations based on waves passed, and other stuff etc.
-        int randPrizeNum = 0;
-        randPrizeNum = Random.Range(1, 3);
-        switch(randPrizeNum)
+        int highLimit = Collect_Manager.instance.itemsToPick.Count;
+        randPrizeNum = Random.Range(0, (highLimit+2));
+        if(randPrizeNum != Collect_Manager.instance.itemsToPick.Count+1)
         {
-            case 1:
+            foreach (Collect_Manager.typeOfItem theItem in System.Enum.GetValues(typeof(Collect_Manager.typeOfItem)))
+            {
+                //Cast the enum to an integer to compare it.
+                if (randPrizeNum == (int)theItem)
                 {
-                    Level_Manager.Instance.collectCoin(50);
+                    Debug.Log("Current item number is: " + theItem + " Which corresponds to: " + randPrizeNum);
+                    itemToGive = theItem;
                     break;
                 }
-            case 2:
+            }
+        }
+        else
+        {
+            itemToGive = Collect_Manager.typeOfItem.none;
+        }
+
+        bool isAnItem = true;
+        switch(itemToGive)
+        {
+            case Collect_Manager.typeOfItem.HandWarmer:
                 {
-                    Level_Manager.Instance.collectCoin(20);
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.HandWarmer].itemImage;
+                    break;
+                }
+            case Collect_Manager.typeOfItem.Defroster:
+                {
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.Defroster].itemImage;
+                    break;
+                }
+            case Collect_Manager.typeOfItem.FireVest:
+                {
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.FireVest].itemImage;
+                    break;
+                }
+            case Collect_Manager.typeOfItem.LiquidNitrogenCanister:
+                {
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.LiquidNitrogenCanister].itemImage;
+                    break;
+                }
+            case Collect_Manager.typeOfItem.NeutralTablet:
+                {
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.NeutralTablet].itemImage;
+                    break;
+                }
+            //For 'none'.
+            default:
+                {
+                    itemToReceive = coinImg;
+                    isAnItem = false;
                     break;
                 }
         }
+       
+        yield return new WaitForSeconds(aniTime - 0.1f);
 
-        //Prolly gonna have this take longer since we'll need to show item player received coming out of the chest.
-        yield return new WaitForSeconds(aniTime + 1.0f);
+        chestSpriteChild.SetActive(true);
+        Vector2 oldTrans = chestSpriteChild.transform.position;
+        float duration = 0.4f;
+        float time = 0f;
+        int randItemImg;
+        while (time < duration)
+        {
+            randItemImg = Random.Range(-1, Collect_Manager.instance.itemsToPick.Count);
+            if(randItemImg == -1)
+            {
+                itemSpriteToChange.sprite = coinImg;
+            }
+            else
+            {
+                itemSpriteToChange.sprite = Collect_Manager.instance.itemsToPick[randItemImg].itemImage;
+            }
+              
+            chestSpriteChild.transform.position = Vector2.Lerp(oldTrans, new Vector2(oldTrans.x, oldTrans.y + 0.25f), time/duration);
+            time += Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+
+        itemSpriteToChange.sprite = itemToReceive;
+
+        //Play animation of item rising out of the chest and randomizing.
+        yield return new WaitForSeconds(1.0f);
+
+
+        if (isAnItem)
+        {
+            Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+        }
+        else
+        {
+            Level_Manager.Instance.collectCoin(50);
+            Debug.Log("Received: 50 coins from the treasure chest!");
+        }
 
         Destroy(chest1);
         Destroy(chest2);
