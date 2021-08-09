@@ -1152,11 +1152,16 @@ public class Level_Manager : MonoBehaviour
 
     public IEnumerator durationCount()
     {
+        float fullDuration = useDuration;
+        float timePassed = 0f;
    
         while (useDuration > 0)
         {
-            powerupMeter.value -= 0.6f;
+            //powerupMeter.value -= 0.6f;
             useDuration -= Time.deltaTime;
+           
+            powerupMeter.value = Mathf.Lerp(100, 0, timePassed/fullDuration);
+            timePassed += Time.deltaTime;
             useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
             yield return null;
         }
