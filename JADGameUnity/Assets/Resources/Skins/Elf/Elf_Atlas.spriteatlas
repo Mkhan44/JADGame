@@ -73,7 +73,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 6d18f487328db26409d28f9e242ee1d7, type: 3}
     - {fileID: 2800000, guid: a1d3e059b8da7e8448aec6f9eff5ec08, type: 3}
     - {fileID: 2800000, guid: 56be10fccbb5f0d4a97b14bfa516f28e, type: 3}
-    totalSpriteSurfaceArea: 1168400
+    - {fileID: 2800000, guid: 9b5c133a0a5095f46a8e28d9fb657645, type: 3}
+    totalSpriteSurfaceArea: 1170900
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -97,6 +98,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: b364cf592189cda46b955a6d50c2baa7, type: 3}
   - {fileID: 21300000, guid: b4eff279014ad99408fab896cf5dbc07, type: 3}
   - {fileID: 21300000, guid: 6f7b0e89fc37d37498320ee6b8cf92f0, type: 3}
+  - {fileID: 21300000, guid: 9b5c133a0a5095f46a8e28d9fb657645, type: 3}
   - {fileID: 21300000, guid: 0e01f8aac7eb7864cbca936ec53caf53, type: 3}
   - {fileID: 21300000, guid: bcbd5c2b16cb1df4f879af46144941e6, type: 3}
   - {fileID: 21300000, guid: 7a3e538b0425fe94eb02bcc8928c4eb4, type: 3}
@@ -128,6 +130,7 @@ SpriteAtlas:
   - elfduckhurt2
   - elffrozen2
   - elffall1
+  - elfportrait
   - elfburning4
   - elfhang3
   - elfidle2
