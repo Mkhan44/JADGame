@@ -73,7 +73,8 @@ SpriteAtlas:
     - {fileID: 2800000, guid: fa3ce7895cccd6a449aad67b42737a02, type: 3}
     - {fileID: 2800000, guid: 13e866fd9a9925e42859aef316c1aa25, type: 3}
     - {fileID: 2800000, guid: 1e180193cebaf6049a595aa2412cb3a1, type: 3}
-    totalSpriteSurfaceArea: 1152000
+    - {fileID: 2800000, guid: a6b92c8eeec78c84b87a2f73f6647b18, type: 3}
+    totalSpriteSurfaceArea: 1154500
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
@@ -105,6 +106,7 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 9fa7785d433831c48be614acac6950c3, type: 3}
   - {fileID: 21300000, guid: 08f11f7d3eb1221439a4b595484686fe, type: 3}
   - {fileID: 21300000, guid: 13e866fd9a9925e42859aef316c1aa25, type: 3}
+  - {fileID: 21300000, guid: a6b92c8eeec78c84b87a2f73f6647b18, type: 3}
   - {fileID: 21300000, guid: 3f230a9ec74aa5b4faf6721072b6f3dc, type: 3}
   - {fileID: 21300000, guid: be2b2cde76df374408f10a11073df73b, type: 3}
   - {fileID: 21300000, guid: 1dafa52fe8ddfc64a9a44cf1dfaafe32, type: 3}
@@ -136,6 +138,7 @@ SpriteAtlas:
   - girl1idle2
   - girl1frozen2
   - girl1jump3
+  - girl1portrait
   - girl1frozen1
   - girl1duck1
   - girl1duck2
