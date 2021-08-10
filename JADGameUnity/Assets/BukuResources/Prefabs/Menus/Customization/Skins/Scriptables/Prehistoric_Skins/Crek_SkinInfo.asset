@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3aad5c8464a95e44193305e08aeab6a4, type: 3}
-  m_Name: Dummy
+  m_Name: Crek_SkinInfo
   m_EditorClassIdentifier: 
-  skinSprite: {fileID: 21300000, guid: 1f484c7b4a790464b90af7fa69788965, type: 3}
-  animationOverrideController: {fileID: 22100000, guid: 372fc9a05dbd2d04aa237e3a1094699b, type: 2}
-  thisSkinType: 4
-  skinIcon: {fileID: 21300000, guid: ad4dcc0290c131b45b747607ca51d769, type: 3}
+  skinSprite: {fileID: 21300000, guid: c32130d3ca4823a4f93440f5da963aec, type: 3}
+  animationOverrideController: {fileID: 22100000, guid: 6b19c3463758ea1479055fa71d9252bc, type: 2}
+  thisSkinType: 3
+  skinIcon: {fileID: 21300000, guid: a67efbf4d6e50504e999232dd589d5ae, type: 3}

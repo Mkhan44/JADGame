@@ -39,11 +39,11 @@ public class Collect_Manager : MonoBehaviour
 
     public enum skinTypes
     {
-        guy1,
-        dummy,
-        girlDefault,
+        AverageJoe,
+        AverageJoanne,
         Elincia,
-        mario
+        Crek,
+        Dummy,
     }
 
     [Header("Loadout")]
@@ -69,8 +69,10 @@ public class Collect_Manager : MonoBehaviour
     public List<int> skinsUnlocked = new List<int>();
 
     [Header("Things to reference throughout the game.")]
+    [Tooltip("Current skins: AverageJoe,AverageJoanne,Elincia,Crek,Dummy,")]
     public List<SkinInfo> skinsToPick;
     public List<Shop_Item> itemsToPick;
+    public bool isMuted;
 
     [Header("Singleton")]
     public static Collect_Manager instance;
@@ -90,6 +92,7 @@ public class Collect_Manager : MonoBehaviour
             return;
         }
         DontDestroyOnLoad(this);
+        
       //  Universal_Dialouge_Box.instance.activatePopup("Test.");
         //Debug.Log(System.Enum.GetValues(typeof(skinTypes)).Length);
 
@@ -121,6 +124,7 @@ public class Collect_Manager : MonoBehaviour
             highestWave = collect.highestWave;
             mostWavesSurvived = collect.mostWavesSurvived;
             totalWavesSurvived = collect.totalWavesSurvived;
+            isMuted = collect.isMuted;
             for (int i = 0; i < collect.skinsUnlocked.Count; i++)
             {
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
@@ -162,10 +166,9 @@ public class Collect_Manager : MonoBehaviour
         else
         {
             currentSkin = 0;
-            //Player will have default skin unlocked no matter what. That value = 0. Should also have another skin maybe like 1 alt for female unlocked from the start as well. That will = 1.
+            //Player will have default skin male & female unlocked no matter what.
             skinsUnlocked.Add(0);
-           // skinsUnlocked.Add(1);
-            skinsUnlocked.Add(2);
+            skinsUnlocked.Add(1);
 
             //Default the loadout to -1's so we don't put any items in the loadout.
             item1 = -1;

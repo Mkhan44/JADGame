@@ -127,6 +127,9 @@ public class Level_Manager : MonoBehaviour
     [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
     public TextMeshProUGUI coinText;
     int coinsCollected;
+    [SerializeField] Sprite mutedSprite;
+    [SerializeField] Sprite unmutedSprite;
+    [SerializeField] Image muteButtonSprite;
 
     [Header("Item related.")]
     public List<Item> itemsThisRun;
@@ -332,6 +335,7 @@ public class Level_Manager : MonoBehaviour
         gameOverPanel.SetActive(false);
         firstTimeDying = false;
 
+        toggleMute(false);
 
         setMeterRates();
 
@@ -365,6 +369,29 @@ public class Level_Manager : MonoBehaviour
         }
        
     }
+
+    //For game audio muting.
+    public void toggleMute(bool togglingMute)
+    {
+        if (togglingMute)
+        {
+            Collect_Manager.instance.isMuted = !Collect_Manager.instance.isMuted;
+        }
+        Debug.Log("Value of mute is: " + Collect_Manager.instance.isMuted);
+
+
+        if (Collect_Manager.instance.isMuted)
+        {
+            AudioListener.volume = 0;
+            muteButtonSprite.sprite = mutedSprite;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+            muteButtonSprite.sprite = unmutedSprite;
+        }
+    }
+
 
     void setupItems()
     {

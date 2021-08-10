@@ -7,5 +7,25 @@ AnimatorOverrideController:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Elf
-  m_Controller: {fileID: 0}
-  m_Clips: []
+  m_Controller: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 4021a2ae31172b842bbf548271e3abea, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d1a86b70f6224724bb38ac4405e2ad19, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 639226ffb62781540a50b92150f554f3, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 630c5e06567367e4593b71871377f14a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 16612a081e4ad6b43b564609c13cb656, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 94bd1ac3999a6f74182f4a3431dee597, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: f3194e9859752574f875dbc2d3a527a2, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 4a20d7f7a08e0474e9a9715251a6a339, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5f1c137dd13d0ee42968110e7881c069, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: fd66c42ae6ebcc7439e91c2d7d8a8a85, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 0513cf3154788b443a795a16b2a71b48, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 85c756c873f045340a86eca60d5afca5, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 9bf44edc2e77fc945adeae7e82ded524, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: d6b8648bb81ad864f98f4fe09a96055d, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 2689e121681f6364a838f945d0035df0, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 00d18baafa8cc1f44a02eca92ebb7e13, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 4151bf6834d34804b8fcaa6a252a3f05, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 7d6dcc9fa0adb854ab0b2e55a2834cbe, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 5ec3be7048a6eb5438eb25d0ab23fe9a, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 8852db34ee630d54a9845849eddf769f, type: 2}

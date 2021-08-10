@@ -132,6 +132,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   thisTab: 0
   itemsForSale:
-  - {fileID: 0}
+  - {fileID: 11400000, guid: a9a5a0933ec72384384816aa6ddf2b91, type: 2}
+  - {fileID: 11400000, guid: e70e146f87807554bab7b00ceaf6a5f8, type: 2}
   itemPrefab: {fileID: 2582128719448822073, guid: d700cf3d38218df4cb702e7ce41c2c86, type: 3}
   scrollArea: {fileID: 0}
+  coinsTotalText: {fileID: 0}
+  gemsTotalText: {fileID: 0}
+  purchaseWithCoinsButton: {fileID: 0}
+  purchaseWithBoltsButton: {fileID: 0}
+  skinPurchasePanel: {fileID: 0}
+  closeShopButton: {fileID: 0}

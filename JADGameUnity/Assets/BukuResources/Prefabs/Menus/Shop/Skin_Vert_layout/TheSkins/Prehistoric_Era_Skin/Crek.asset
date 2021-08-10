@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
-  m_Name: Elincia
+  m_Name: Crek
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: c0ecd3ef6fec61548a2dc15622adc3e7, type: 3}
-  theName: Elincia
-  description: An elven archer who is very acrobatic.
+  itemImage: {fileID: 21300000, guid: c32130d3ca4823a4f93440f5da963aec, type: 3}
+  theName: Crek
+  description: '"Crek want food!"'
   coinPrice: 1000
   theItem: 5
   boltPrice: 100
-  thisSkinType: 2
+  thisSkinType: 3
   currencyUSD: 0
   hasDuration: 0
   duration: 0

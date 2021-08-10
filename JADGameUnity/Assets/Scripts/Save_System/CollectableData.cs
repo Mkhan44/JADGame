@@ -38,6 +38,9 @@ public class CollectableData
     //Array storing which skin indexes are unlocked. 0 and 1 (Male and female default) unlocked by default.
     public List<int> skinsUnlocked = new List<int>();
 
+    //Determines whether game audio should be muted or not.
+    public bool isMuted;
+
     //Constructor.
     public CollectableData(Collect_Manager collectmanager)
     {
@@ -64,6 +67,9 @@ public class CollectableData
         highestWave = Collect_Manager.instance.highestWave;
         mostWavesSurvived = Collect_Manager.instance.mostWavesSurvived;
         totalWavesSurvived = Collect_Manager.instance.totalWavesSurvived;
+
+        //Extra stuff.
+        isMuted = Collect_Manager.instance.isMuted;
 
         //Loop through and insert every numbered skin that the player has unlocked.
       

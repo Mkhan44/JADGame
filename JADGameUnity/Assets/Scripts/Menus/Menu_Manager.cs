@@ -17,6 +17,9 @@ public class Menu_Manager : MonoBehaviour
     [SerializeField] GameObject fadePanel;
     [SerializeField] GameObject loadingIcon;
     [SerializeField] GameObject noInputPanel;
+    [SerializeField] Sprite unmutedSprite;
+    [SerializeField] Sprite mutedSprite;
+    [SerializeField] Image muteButtonSprite;
 
     Scene gameplayScene;
 
@@ -27,6 +30,7 @@ public class Menu_Manager : MonoBehaviour
     void Start()
     {
         //gameplayScene = SceneManager.GetSceneByName("Gameplay");
+        toggleMute(false);
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
     }
@@ -34,6 +38,27 @@ public class Menu_Manager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void toggleMute(bool togglingMute)
+    {
+        if(togglingMute)
+        {
+            Collect_Manager.instance.isMuted = !Collect_Manager.instance.isMuted;
+        }
+        Debug.Log("Value of mute is: " + Collect_Manager.instance.isMuted);
+    
+
+        if (Collect_Manager.instance.isMuted)
+        {
+            AudioListener.volume = 0;
+            muteButtonSprite.sprite = mutedSprite;
+        }
+        else
+        {
+            AudioListener.volume = 1;
+            muteButtonSprite.sprite = unmutedSprite;
+        }
     }
 
     public void PlayGame()
