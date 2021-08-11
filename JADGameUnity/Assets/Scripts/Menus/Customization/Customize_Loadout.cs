@@ -157,7 +157,7 @@ public class Customize_Loadout : MonoBehaviour
         }
     }
 
-    //Sets the skin the Collect_Manager once the user has picked a skin.
+    //Sets the skin in the Collect_Manager once the user has picked a skin.
     //This is what will be called when clicking on a portrait/skin in the horizontal scroll group.
     public void setCurrentSkin(int currentSkinNum)
     {

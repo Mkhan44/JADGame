@@ -2090,6 +2090,8 @@ MonoBehaviour:
   unmutedSprite: {fileID: 21300000, guid: d2987d74224915940a46da42b39a7abd, type: 3}
   mutedSprite: {fileID: 21300000, guid: 9589d60160a78374c8dc1d76c03a46d3, type: 3}
   muteButtonSprite: {fileID: 2046747932}
+  skinAnimator: {fileID: 2156872373037190676}
+  defaultAnimator: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
 --- !u!4 &922221491
 Transform:
   m_ObjectHideFlags: 0
@@ -4815,6 +4817,18 @@ MonoBehaviour:
       - m_Target: {fileID: 862864956}
         m_TargetAssemblyTypeName: Customize_Loadout, Assembly-CSharp
         m_MethodName: stopAnimator
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 922221490}
+        m_TargetAssemblyTypeName: Menu_Manager, Assembly-CSharp
+        m_MethodName: setSkin
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

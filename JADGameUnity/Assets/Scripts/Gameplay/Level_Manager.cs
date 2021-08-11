@@ -130,6 +130,7 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] Sprite mutedSprite;
     [SerializeField] Sprite unmutedSprite;
     [SerializeField] Image muteButtonSprite;
+    [SerializeField] GameObject pausePanel;
 
     [Header("Item related.")]
     public List<Item> itemsThisRun;
@@ -355,15 +356,23 @@ public class Level_Manager : MonoBehaviour
 
     //DEBUG TAKE OUT LATER.
 
-    void pauseGame()
+    public void pauseGame(bool changeIcon)
     {
+        if(changeIcon)
+        {
+            //Change the icon.
+        }
+        
+
         if(isPaused == true)
         {
             Time.timeScale = 1f;
+            pausePanel.SetActive(false);
             isPaused = false;
         }
         else
         {
+            pausePanel.SetActive(true);
             isPaused = true;
             Time.timeScale = 0f;
         }
@@ -532,7 +541,7 @@ public class Level_Manager : MonoBehaviour
         checkState();
         if (Input.GetKeyDown("space"))
         {
-            pauseGame();
+            pauseGame(false);
         }
       //  coinText.text = " : " + coinsCollected.ToString();
 

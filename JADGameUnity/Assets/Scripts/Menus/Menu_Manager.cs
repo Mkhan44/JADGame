@@ -17,9 +17,16 @@ public class Menu_Manager : MonoBehaviour
     [SerializeField] GameObject fadePanel;
     [SerializeField] GameObject loadingIcon;
     [SerializeField] GameObject noInputPanel;
+
+    [Header("Mute related stuff.")]
     [SerializeField] Sprite unmutedSprite;
     [SerializeField] Sprite mutedSprite;
     [SerializeField] Image muteButtonSprite;
+
+    [Header("Character switching")]
+    [SerializeField] Animator skinAnimator;
+    public RuntimeAnimatorController defaultAnimator;
+
 
     Scene gameplayScene;
 
@@ -31,6 +38,7 @@ public class Menu_Manager : MonoBehaviour
     {
         //gameplayScene = SceneManager.GetSceneByName("Gameplay");
         toggleMute(false);
+        setSkin();
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
     }
@@ -38,6 +46,36 @@ public class Menu_Manager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    public void setSkin()
+    {
+        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
+
+        //Populate the skin preview on the top based on what the user has currently equipped.
+        for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
+        {
+            if (currentSkinInt == i)
+            {
+               // stopAnimator();
+
+
+                // currentSkinHolderImage.sprite = skinsToPick[i].skinSprite;
+                if (Collect_Manager.instance.skinsToPick[i].animationOverrideController == null)
+                {
+                    Debug.Log("Hey we're using the default animatorController...is something wrong?");
+                    skinAnimator.runtimeAnimatorController = defaultAnimator;
+                }
+                else
+                {
+                    skinAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
+                }
+
+
+                break;
+            }
+        }
+
     }
 
     public void toggleMute(bool togglingMute)
