@@ -86,6 +86,8 @@ public class Level_Manager : MonoBehaviour
     public TextMeshProUGUI waveBonusText;
     public TextMeshProUGUI RPGameOverText;
     public TextMeshProUGUI coinsGameOverText;
+    [SerializeField] GameObject playerGameoverSpin;
+    [SerializeField] Animator playerGameoverSpinAnimator;
     int totalScore = 0;
     int waveBonus = 0;
     int finalCoins = 0;
@@ -1268,6 +1270,7 @@ public class Level_Manager : MonoBehaviour
         {
             gameOverAdP.SetActive(true);
             gameOverTallyP.SetActive(false);
+            playerGameoverSpin.SetActive(false);
             firstTimeDying = true;
         }
         else
@@ -1275,6 +1278,62 @@ public class Level_Manager : MonoBehaviour
             gameOverAdP.SetActive(false);
             gameOverTally();
         }
+    }
+
+    public void setGameoverSkin()
+    {
+        int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
+
+        //Populate the skin preview on the top based on what the user has currently equipped.
+        for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
+        {
+            if (currentSkinInt == i)
+            {
+                // stopAnimator();
+
+
+                // currentSkinHolderImage.sprite = skinsToPick[i].skinSprite;
+                if (Collect_Manager.instance.skinsToPick[i].animationOverrideController == null)
+                {
+                    Debug.Log("Hey we're using the default animatorController...is something wrong?");
+                    //playerGameoverSpinAnimator.runtimeAnimatorController = defaultAnimator;
+                }
+                else
+                {
+                    playerGameoverSpinAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
+                }
+
+
+                break;
+            }
+        }
+
+        
+        playerGameoverSpinAnimator.SetBool(IsFalling, true);
+        playerGameoverSpinAnimator.SetBool(IsJumping, true);
+        playerGameoverSpinAnimator.SetBool(IsGrounded, false);
+       // playerGameoverSpinAnimator.Play("Guy1_Fall");
+        StartCoroutine(spinPlayerSprite());
+
+    }
+
+    IEnumerator spinPlayerSprite()
+    {
+        Vector3 testVect = playerGameoverSpin.transform.eulerAngles;
+
+        while(gameOverPanel.activeInHierarchy)
+        {
+            if(testVect.z > 360 || testVect.z < -360)
+            {
+                testVect.z = 0;
+            }
+
+            testVect.z += 5;
+            playerGameoverSpin.transform.eulerAngles = testVect;
+            yield return null;
+        }
+
+        yield return null;
     }
 
     public void playRespawnVid()
@@ -1717,9 +1776,14 @@ public class Level_Manager : MonoBehaviour
     //Tally up the points you received, and the wave bonus. Convert those totals into coins. Add bonus coins to your currently collected coins. Right now we're doing 1000 points = 1 coin.
     public void gameOverTally()
     {
+
         gameOverTallyP.SetActive(true);
         gameOverAdP.SetActive(false);
-       
+
+        //Change game over sprite to match the sprite player is playing with.
+        playerGameoverSpin.SetActive(true);
+        setGameoverSkin();
+    
 
         //RPGameOverText.text = "RP: " + currentScore.ToString();
         waveBonus = wavesSurvived * 50;

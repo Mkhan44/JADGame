@@ -7918,7 +7918,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Game Over...
+  m_text: Trapped in Time...
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 9a45ba409cbbfb44aac56c3a77d9db22, type: 2}
   m_sharedMaterial: {fileID: -6039488525617841036, guid: 9a45ba409cbbfb44aac56c3a77d9db22, type: 2}
@@ -9327,10 +9327,10 @@ RectTransform:
   m_Father: {fileID: 1698541413}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.34500003, y: 0.061490893}
-  m_AnchorMax: {x: 0.6487, y: 0.35670444}
-  m_AnchoredPosition: {x: 5.5, y: 1.9000244}
-  m_SizeDelta: {x: -4.800049, y: 7.199951}
+  m_AnchorMin: {x: 0.36375704, y: 0.061490893}
+  m_AnchorMax: {x: 0.6332002, y: 0.32055962}
+  m_AnchoredPosition: {x: 3, y: -0.099975586}
+  m_SizeDelta: {x: -10.599998, y: 3.199997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1481381737
 MonoBehaviour:
@@ -10962,7 +10962,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1698541413
 RectTransform:
   m_ObjectHideFlags: 0
@@ -14949,6 +14949,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 821379988}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: playerGameoverSpin
+      value: 
+      objectReference: {fileID: 1481381735}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: itemsThisRun.Array.data[0]
       value: 
       objectReference: {fileID: 1591516015}
@@ -14956,6 +14960,10 @@ PrefabInstance:
       propertyPath: itemsThisRun.Array.data[1]
       value: 
       objectReference: {fileID: 1471785558}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: playerGameoverSpinAnimator
+      value: 
+      objectReference: {fileID: 786298617}
     - target: {fileID: 8248098668222182073, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: m_Name
       value: Level_Manager
