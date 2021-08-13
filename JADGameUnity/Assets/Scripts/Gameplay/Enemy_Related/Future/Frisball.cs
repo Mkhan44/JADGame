@@ -16,10 +16,10 @@ public class Frisball : Obstacle_Behaviour
     AnimationClip ballTrans;
     AnimationClip frisTrans;
 
-    const string ballTransString = "";
-    const string frisTransString = "";
-    const string frisIdleString = "";
-    const string ballIdleString = "";
+    const string ballToFrisTransString = "frisballtrans";
+    const string frisToBallTransString = "frisballtransout";
+    const string frisIdleString = "frisballflat";
+    const string ballIdleString = "frisballround";
 
     //True = bottom, False = Mid.
     bool botOrMid;
@@ -49,11 +49,13 @@ public class Frisball : Obstacle_Behaviour
         if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint1)
         {
             //Start as frisbee.
+            frisballAnimator.Play(frisIdleString);
             botOrMid = false;
         }
         else
         {
             //Start as ball.
+            frisballAnimator.Play(ballIdleString);
             botOrMid = true;
         }
     }
@@ -106,8 +108,7 @@ public class Frisball : Obstacle_Behaviour
 
             targetYValue = this.transform.localPosition.y + 0.8f;
 
-            //frisballAnimator.Play(frisTransString);
-
+            frisballAnimator.Play(ballToFrisTransString);
 
             //Play transform animation here.
             while (this.transform.localPosition.y < targetYValue)
@@ -131,7 +132,7 @@ public class Frisball : Obstacle_Behaviour
 
             targetYValue = this.transform.localPosition.y - 0.8f;
 
-            //frisballAnimator.Play(ballTransString);
+            frisballAnimator.Play(frisToBallTransString);
 
 
             //Play transform animation here.

@@ -1283,7 +1283,6 @@ public class Level_Manager : MonoBehaviour
     public void setGameoverSkin()
     {
         int currentSkinInt = (Collect_Manager.instance.getCurrentSkin());
-
         //Populate the skin preview on the top based on what the user has currently equipped.
         for (int i = 0; i < Collect_Manager.instance.skinsToPick.Count; i++)
         {
@@ -1321,7 +1320,9 @@ public class Level_Manager : MonoBehaviour
     {
         Vector3 testVect = playerGameoverSpin.transform.eulerAngles;
 
-        while(gameOverPanel.activeInHierarchy)
+        StartCoroutine(turnOnColorPlayerSpin());
+
+        while (gameOverPanel.activeInHierarchy)
         {
             if(testVect.z > 360 || testVect.z < -360)
             {
@@ -1332,6 +1333,28 @@ public class Level_Manager : MonoBehaviour
             playerGameoverSpin.transform.eulerAngles = testVect;
             yield return null;
         }
+
+        yield return null;
+    }
+
+    IEnumerator turnOnColorPlayerSpin()
+    {
+        float timePassed = 0f;
+        float duration = 50;
+        Image playerSpinIMG = playerGameoverSpin.transform.GetChild(0).GetComponent<Image>();
+        Color noAlphaColor = playerSpinIMG.color;
+        Color fullAlpha = new Color(255, 255, 255, 255);
+
+        while (timePassed < duration)
+        {
+            playerSpinIMG.color = Color.Lerp(noAlphaColor, fullAlpha, timePassed / duration);
+            timePassed += Time.deltaTime;
+            yield return new WaitForSeconds(0.1f);
+        }
+
+
+        // yield return new WaitForSeconds(0.3f);
+        // playerGameoverSpin.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
 
         yield return null;
     }

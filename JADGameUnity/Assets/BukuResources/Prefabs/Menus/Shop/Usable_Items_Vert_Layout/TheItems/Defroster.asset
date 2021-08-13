@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
   m_Name: Defroster
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: daad0e87766d6624ea685b3a164a05bd, type: 3}
+  itemImage: {fileID: 21300000, guid: e14efd6b8dbf75048aa0ba3a5c75d071, type: 3}
   theName: Defroster
   description: Instantly gets you out of "Frozen" status!
   coinPrice: 100
