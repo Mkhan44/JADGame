@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Badge_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 1
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: a4ae75f9f92483540afd577414ce84f6, type: 3}
+    - {fileID: 2800000, guid: 096f4040dcb7e14418c42cde8894edc0, type: 3}
+    - {fileID: 2800000, guid: 4ba1b6c399b30c44ba7f77cd63314e42, type: 3}
+    - {fileID: 2800000, guid: f16adb695c2ae1745880349080cf394c, type: 3}
+    - {fileID: 2800000, guid: 1ca993aae1c7f1e499206d0d4c081b82, type: 3}
+    - {fileID: 2800000, guid: fbcbff63d45be7248bb7a554aa56fac6, type: 3}
+    - {fileID: 2800000, guid: 2f2056cbb8d006c4885fe4b2c4873c35, type: 3}
+    - {fileID: 2800000, guid: 2f861a9006fa661428d9e1317b8fecda, type: 3}
+    - {fileID: 2800000, guid: 8982a3bc4c595cc4b9087ccf2a2e43bc, type: 3}
+    - {fileID: 2800000, guid: 05a39e322728d6f4abea45742f1c3df8, type: 3}
+    - {fileID: 2800000, guid: d25c064d3362ae340bd6b448da40dc69, type: 3}
+    - {fileID: 2800000, guid: 7d97b5246dc718044b3aea636d3811f3, type: 3}
+    - {fileID: 2800000, guid: e7dad66330b1f3348b912c7ee5ccdd1f, type: 3}
+    - {fileID: 2800000, guid: ab7d0fcbec1f5d74ab78cb9fa82ee1ec, type: 3}
+    - {fileID: 2800000, guid: d028df226395f4544b507dcb825979f3, type: 3}
+    - {fileID: 2800000, guid: 0782e6643690acd4598f6a68cd77deb6, type: 3}
+    - {fileID: 2800000, guid: 7d8009ca17ca4b6469ea9464d740a5ce, type: 3}
+    - {fileID: 2800000, guid: 790aaeb450694294baef7348c7007a2f, type: 3}
+    - {fileID: 2800000, guid: 0bb2723a613c12f4e94803d6051462ea, type: 3}
+    - {fileID: 2800000, guid: e746a9f16d4a67f449a2e6d084fbd0e3, type: 3}
+    - {fileID: 2800000, guid: 400ffcdac8be6264cac2e8810a6df4b8, type: 3}
+    - {fileID: 2800000, guid: 26b40b696b7fc834984af46be4a1a492, type: 3}
+    - {fileID: 2800000, guid: 1cb661fbce3796e4183dcfaff7a8d734, type: 3}
+    - {fileID: 2800000, guid: f6ed7672e8253914c9467399894fc6aa, type: 3}
+    totalSpriteSurfaceArea: 228000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 096f4040dcb7e14418c42cde8894edc0, type: 3}
+  - {fileID: 21300000, guid: 2f861a9006fa661428d9e1317b8fecda, type: 3}
+  - {fileID: 21300000, guid: e746a9f16d4a67f449a2e6d084fbd0e3, type: 3}
+  - {fileID: 21300000, guid: d028df226395f4544b507dcb825979f3, type: 3}
+  - {fileID: 21300000, guid: 05a39e322728d6f4abea45742f1c3df8, type: 3}
+  - {fileID: 21300000, guid: f6ed7672e8253914c9467399894fc6aa, type: 3}
+  - {fileID: 21300000, guid: e7dad66330b1f3348b912c7ee5ccdd1f, type: 3}
+  - {fileID: 21300000, guid: fbcbff63d45be7248bb7a554aa56fac6, type: 3}
+  - {fileID: 21300000, guid: 4ba1b6c399b30c44ba7f77cd63314e42, type: 3}
+  - {fileID: 21300000, guid: 7d97b5246dc718044b3aea636d3811f3, type: 3}
+  - {fileID: 21300000, guid: 0782e6643690acd4598f6a68cd77deb6, type: 3}
+  - {fileID: 21300000, guid: 790aaeb450694294baef7348c7007a2f, type: 3}
+  - {fileID: 21300000, guid: 26b40b696b7fc834984af46be4a1a492, type: 3}
+  - {fileID: 21300000, guid: f16adb695c2ae1745880349080cf394c, type: 3}
+  - {fileID: 21300000, guid: a4ae75f9f92483540afd577414ce84f6, type: 3}
+  - {fileID: 21300000, guid: 0bb2723a613c12f4e94803d6051462ea, type: 3}
+  - {fileID: 21300000, guid: 1ca993aae1c7f1e499206d0d4c081b82, type: 3}
+  - {fileID: 21300000, guid: 7d8009ca17ca4b6469ea9464d740a5ce, type: 3}
+  - {fileID: 21300000, guid: 400ffcdac8be6264cac2e8810a6df4b8, type: 3}
+  - {fileID: 21300000, guid: 2f2056cbb8d006c4885fe4b2c4873c35, type: 3}
+  - {fileID: 21300000, guid: ab7d0fcbec1f5d74ab78cb9fa82ee1ec, type: 3}
+  - {fileID: 21300000, guid: 1cb661fbce3796e4183dcfaff7a8d734, type: 3}
+  - {fileID: 21300000, guid: 8982a3bc4c595cc4b9087ccf2a2e43bc, type: 3}
+  - {fileID: 21300000, guid: d25c064d3362ae340bd6b448da40dc69, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - badge2
+  - badge8
+  - badgemed4
+  - badgehrd7
+  - badgehrd2
+  - badgemed8
+  - badgehrd5
+  - badge6
+  - badge3
+  - badgehrd4
+  - badgehrd8
+  - badgemed2
+  - badgemed6
+  - badge4
+  - badge1
+  - badgemed3
+  - badge5
+  - badgemed1
+  - badgemed5
+  - badge7
+  - badgehrd6
+  - badgemed7
+  - badgehrd1
+  - badgehrd3
+  m_RenderDataMap: {}
+  m_Tag: Badge_Atlas
+  m_IsVariant: 0

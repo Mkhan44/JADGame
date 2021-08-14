@@ -1,0 +1,109 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Horse_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b1f4af335841ab44c98abe0b0a27341f, type: 3}
+    - {fileID: 2800000, guid: 424f1d655154adc46884216924b72abd, type: 3}
+    - {fileID: 2800000, guid: 3b64bfc8f5b523744a49cfd4e3049e98, type: 3}
+    - {fileID: 2800000, guid: 69752fbc5d6f2ce4988426173eb2ca79, type: 3}
+    - {fileID: 2800000, guid: 3cd5cfb8fd1686049850051176ecaef0, type: 3}
+    - {fileID: 2800000, guid: c560c17eac74eb14eab535e2ad67650d, type: 3}
+    - {fileID: 2800000, guid: adb09a931a5c2d640b0aa5a1010afa0e, type: 3}
+    - {fileID: 2800000, guid: e7a6e0ced02dfbf4abadc3e0ea19ec32, type: 3}
+    - {fileID: 2800000, guid: 691df5b70ff6a254f85082f7e4737608, type: 3}
+    - {fileID: 2800000, guid: 2d9ca8e326c74e4448487e9fc6b59502, type: 3}
+    - {fileID: 2800000, guid: 66725b46a051d8e43a38e6f4c5fa774b, type: 3}
+    - {fileID: 2800000, guid: 3b3307a6063c54f4a85fa7505616b695, type: 3}
+    - {fileID: 2800000, guid: 1cced9dc26e8e424c88858d9790531cf, type: 3}
+    - {fileID: 2800000, guid: c104f76ddf042554cbc8170e0519ba53, type: 3}
+    - {fileID: 2800000, guid: 483d8a8181f875c4bb904f3d70ff9e2e, type: 3}
+    - {fileID: 2800000, guid: b621f4dfc9ab1b14085fc27e91549091, type: 3}
+    - {fileID: 2800000, guid: b3d88823539b19840a23e5abda33d120, type: 3}
+    - {fileID: 2800000, guid: 915b20c63cd260d4f8d2ce29ddedaa62, type: 3}
+    totalSpriteSurfaceArea: 1098000
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 483d8a8181f875c4bb904f3d70ff9e2e, type: 3}
+  - {fileID: 21300000, guid: b3d88823539b19840a23e5abda33d120, type: 3}
+  - {fileID: 21300000, guid: b1f4af335841ab44c98abe0b0a27341f, type: 3}
+  - {fileID: 21300000, guid: adb09a931a5c2d640b0aa5a1010afa0e, type: 3}
+  - {fileID: 21300000, guid: 2d9ca8e326c74e4448487e9fc6b59502, type: 3}
+  - {fileID: 21300000, guid: 424f1d655154adc46884216924b72abd, type: 3}
+  - {fileID: 21300000, guid: 66725b46a051d8e43a38e6f4c5fa774b, type: 3}
+  - {fileID: 21300000, guid: 3b3307a6063c54f4a85fa7505616b695, type: 3}
+  - {fileID: 21300000, guid: 915b20c63cd260d4f8d2ce29ddedaa62, type: 3}
+  - {fileID: 21300000, guid: 691df5b70ff6a254f85082f7e4737608, type: 3}
+  - {fileID: 21300000, guid: 3cd5cfb8fd1686049850051176ecaef0, type: 3}
+  - {fileID: 21300000, guid: 3b64bfc8f5b523744a49cfd4e3049e98, type: 3}
+  - {fileID: 21300000, guid: 69752fbc5d6f2ce4988426173eb2ca79, type: 3}
+  - {fileID: 21300000, guid: 1cced9dc26e8e424c88858d9790531cf, type: 3}
+  - {fileID: 21300000, guid: c104f76ddf042554cbc8170e0519ba53, type: 3}
+  - {fileID: 21300000, guid: c560c17eac74eb14eab535e2ad67650d, type: 3}
+  - {fileID: 21300000, guid: e7a6e0ced02dfbf4abadc3e0ea19ec32, type: 3}
+  - {fileID: 21300000, guid: b621f4dfc9ab1b14085fc27e91549091, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - horsemed3
+  - horsemed5
+  - horse1
+  - horsehrd1
+  - horsehrd4
+  - horse2
+  - horsehrd5
+  - horsehrd6
+  - horsemed6
+  - horsehrd3
+  - horse5
+  - horse3
+  - horse4
+  - horsemed1
+  - horsemed2
+  - horse6
+  - horsehrd2
+  - horsemed4
+  m_RenderDataMap: {}
+  m_Tag: Horse_Atlas
+  m_IsVariant: 0

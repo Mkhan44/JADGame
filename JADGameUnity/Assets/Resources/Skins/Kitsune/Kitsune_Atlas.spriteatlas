@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Kitsune_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: b5b141437b7651d44a18af00ca42367a, type: 3}
+    - {fileID: 2800000, guid: eb70d24475c27194eb32c09e47127684, type: 3}
+    - {fileID: 2800000, guid: 0216b94b02c1bd24789b3bf1e351099e, type: 3}
+    - {fileID: 2800000, guid: d837ebf6cdde1c7479e0516ad1644556, type: 3}
+    - {fileID: 2800000, guid: 8f6c5346ada5d6947a9aa07473b5d52f, type: 3}
+    - {fileID: 2800000, guid: 5c6b41ab33a736849b1cc64c46d3b369, type: 3}
+    - {fileID: 2800000, guid: be5f61bedd94096478c642514c5bf111, type: 3}
+    - {fileID: 2800000, guid: 14aacd228dc31494c885b9f4a9b96825, type: 3}
+    - {fileID: 2800000, guid: fa6f966d745776e4b8355017c5d25687, type: 3}
+    - {fileID: 2800000, guid: ff746cb65e84b924bb4fa42303f7712f, type: 3}
+    - {fileID: 2800000, guid: 97aae675ca932be46a1a58b2f4bfe410, type: 3}
+    - {fileID: 2800000, guid: ebe8be4cfe1170a49b6caa3cdb21d8ea, type: 3}
+    - {fileID: 2800000, guid: 36c17fc992a768c4daf7059a6796b1f1, type: 3}
+    - {fileID: 2800000, guid: 50d2677d26d902e49898505362c6213b, type: 3}
+    - {fileID: 2800000, guid: 727d573b3981ee34585651377494e43a, type: 3}
+    - {fileID: 2800000, guid: ea6df24c745c20e47a31df1d1f8ad95c, type: 3}
+    - {fileID: 2800000, guid: e8838b26731b52f45a0ff0705a826737, type: 3}
+    - {fileID: 2800000, guid: cd6f0b48a046d23429cb9cc37c8f6376, type: 3}
+    - {fileID: 2800000, guid: 29beb9f16d07ca94d98c2c09e0477870, type: 3}
+    - {fileID: 2800000, guid: 92a194c36b283a84cb058a5eb5b42fd5, type: 3}
+    - {fileID: 2800000, guid: 64ce3f3ffbab048469cb151083730bdf, type: 3}
+    - {fileID: 2800000, guid: 8b661f1e749a3e04daa708f8140be5c3, type: 3}
+    - {fileID: 2800000, guid: 6a609f466e7259a4e8aef915e69280c7, type: 3}
+    - {fileID: 2800000, guid: 1bcf7b681a79e3948b5f9e1c403e30b0, type: 3}
+    - {fileID: 2800000, guid: e0758189f7034e840b6810b0184588de, type: 3}
+    - {fileID: 2800000, guid: e44a6363b513693468f9816816ef82ff, type: 3}
+    - {fileID: 2800000, guid: de6ebb01c3612ba4e90eb6d6f5451858, type: 3}
+    - {fileID: 2800000, guid: b5c6495264cdf8f48bcd3ee631858c67, type: 3}
+    - {fileID: 2800000, guid: 4a2e290f398a1b94e8d6ac4acf062df5, type: 3}
+    - {fileID: 2800000, guid: 83fbc17c4ac495a4d97153e13c036137, type: 3}
+    - {fileID: 2800000, guid: 2f28da26b99b92f4e940b0fa856a8895, type: 3}
+    totalSpriteSurfaceArea: 1207300
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: de6ebb01c3612ba4e90eb6d6f5451858, type: 3}
+  - {fileID: 21300000, guid: 29beb9f16d07ca94d98c2c09e0477870, type: 3}
+  - {fileID: 21300000, guid: 14aacd228dc31494c885b9f4a9b96825, type: 3}
+  - {fileID: 21300000, guid: b5c6495264cdf8f48bcd3ee631858c67, type: 3}
+  - {fileID: 21300000, guid: b5b141437b7651d44a18af00ca42367a, type: 3}
+  - {fileID: 21300000, guid: e44a6363b513693468f9816816ef82ff, type: 3}
+  - {fileID: 21300000, guid: 92a194c36b283a84cb058a5eb5b42fd5, type: 3}
+  - {fileID: 21300000, guid: eb70d24475c27194eb32c09e47127684, type: 3}
+  - {fileID: 21300000, guid: 97aae675ca932be46a1a58b2f4bfe410, type: 3}
+  - {fileID: 21300000, guid: 2f28da26b99b92f4e940b0fa856a8895, type: 3}
+  - {fileID: 21300000, guid: e8838b26731b52f45a0ff0705a826737, type: 3}
+  - {fileID: 21300000, guid: 8f6c5346ada5d6947a9aa07473b5d52f, type: 3}
+  - {fileID: 21300000, guid: 6a609f466e7259a4e8aef915e69280c7, type: 3}
+  - {fileID: 21300000, guid: ff746cb65e84b924bb4fa42303f7712f, type: 3}
+  - {fileID: 21300000, guid: d837ebf6cdde1c7479e0516ad1644556, type: 3}
+  - {fileID: 21300000, guid: cd6f0b48a046d23429cb9cc37c8f6376, type: 3}
+  - {fileID: 21300000, guid: 1bcf7b681a79e3948b5f9e1c403e30b0, type: 3}
+  - {fileID: 21300000, guid: e0758189f7034e840b6810b0184588de, type: 3}
+  - {fileID: 21300000, guid: 36c17fc992a768c4daf7059a6796b1f1, type: 3}
+  - {fileID: 21300000, guid: 727d573b3981ee34585651377494e43a, type: 3}
+  - {fileID: 21300000, guid: 0216b94b02c1bd24789b3bf1e351099e, type: 3}
+  - {fileID: 21300000, guid: 5c6b41ab33a736849b1cc64c46d3b369, type: 3}
+  - {fileID: 21300000, guid: ea6df24c745c20e47a31df1d1f8ad95c, type: 3}
+  - {fileID: 21300000, guid: ebe8be4cfe1170a49b6caa3cdb21d8ea, type: 3}
+  - {fileID: 21300000, guid: 83fbc17c4ac495a4d97153e13c036137, type: 3}
+  - {fileID: 21300000, guid: fa6f966d745776e4b8355017c5d25687, type: 3}
+  - {fileID: 21300000, guid: 50d2677d26d902e49898505362c6213b, type: 3}
+  - {fileID: 21300000, guid: 8b661f1e749a3e04daa708f8140be5c3, type: 3}
+  - {fileID: 21300000, guid: be5f61bedd94096478c642514c5bf111, type: 3}
+  - {fileID: 21300000, guid: 4a2e290f398a1b94e8d6ac4acf062df5, type: 3}
+  - {fileID: 21300000, guid: 64ce3f3ffbab048469cb151083730bdf, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - kitsunejump1
+  - kitsunehang3
+  - kitsuneduckhurt1
+  - kitsunejump2
+  - kitsuneburning1
+  - kitsuneidle4
+  - kitsunehurt1
+  - kitsuneburning2
+  - kitsunefall1
+  - kitsuneportrait
+  - kitsunehang1
+  - kitsuneduck1
+  - kitsuneidle1
+  - kitsuneduckhurt3
+  - kitsuneburning4
+  - kitsunehang2
+  - kitsuneidle2
+  - kitsuneidle3
+  - kitsunefall3
+  - kitsunefrozen1
+  - kitsuneburning3
+  - kitsuneduck2
+  - kitsunefrozen2
+  - kitsunefall2
+  - kitsunejump4
+  - kitsuneduckhurt2
+  - kitsunefall4
+  - kitsunehurt3
+  - kitsuneduck3
+  - kitsunejump3
+  - kitsunehurt2
+  m_RenderDataMap: {}
+  m_Tag: Kitsune_Atlas
+  m_IsVariant: 0

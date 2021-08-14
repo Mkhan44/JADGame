@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shuriken_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 86677f07c2d842842bee59c18007c926, type: 3}
+    - {fileID: 2800000, guid: 23f55c649cbc7064e82fa9786bba531f, type: 3}
+    - {fileID: 2800000, guid: 8fb5cd0bd2738ae43a7e29234af8a44b, type: 3}
+    - {fileID: 2800000, guid: 6cc6515479d21ea498e59bfcab8a83c2, type: 3}
+    - {fileID: 2800000, guid: dd423585bf1b9f243ab9ff32085ebd7e, type: 3}
+    - {fileID: 2800000, guid: af67cd237ac7f0147a99fe1bdcb2982d, type: 3}
+    - {fileID: 2800000, guid: cbfbc150bb69d5b41abf5d9c69c40a55, type: 3}
+    - {fileID: 2800000, guid: d194d617199731045a8c86ea350546db, type: 3}
+    - {fileID: 2800000, guid: 3ba30b00c84e49a44a22b0314c0feb6c, type: 3}
+    - {fileID: 2800000, guid: 8263da5e90c4ee14eb378c230b967694, type: 3}
+    - {fileID: 2800000, guid: f2dba7c4b182ca247a153e7ec07b4077, type: 3}
+    - {fileID: 2800000, guid: f16626e6cd5d61441b9274e94bed2e1e, type: 3}
+    totalSpriteSurfaceArea: 76800
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 3ba30b00c84e49a44a22b0314c0feb6c, type: 3}
+  - {fileID: 21300000, guid: cbfbc150bb69d5b41abf5d9c69c40a55, type: 3}
+  - {fileID: 21300000, guid: af67cd237ac7f0147a99fe1bdcb2982d, type: 3}
+  - {fileID: 21300000, guid: 6cc6515479d21ea498e59bfcab8a83c2, type: 3}
+  - {fileID: 21300000, guid: 23f55c649cbc7064e82fa9786bba531f, type: 3}
+  - {fileID: 21300000, guid: f2dba7c4b182ca247a153e7ec07b4077, type: 3}
+  - {fileID: 21300000, guid: dd423585bf1b9f243ab9ff32085ebd7e, type: 3}
+  - {fileID: 21300000, guid: f16626e6cd5d61441b9274e94bed2e1e, type: 3}
+  - {fileID: 21300000, guid: 86677f07c2d842842bee59c18007c926, type: 3}
+  - {fileID: 21300000, guid: d194d617199731045a8c86ea350546db, type: 3}
+  - {fileID: 21300000, guid: 8fb5cd0bd2738ae43a7e29234af8a44b, type: 3}
+  - {fileID: 21300000, guid: 8263da5e90c4ee14eb378c230b967694, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - shurikenmed1
+  - shurikenhrd3
+  - shurikenhrd2
+  - shuriken4
+  - shuriken2
+  - shurikenmed3
+  - shurikenhrd1
+  - shurikenmed4
+  - shuriken1
+  - shurikenhrd4
+  - shuriken3
+  - shurikenmed2
+  m_RenderDataMap: {}
+  m_Tag: Shuriken_Atlas
+  m_IsVariant: 0
