@@ -394,6 +394,8 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
+  burningMashSound: {fileID: 8300000, guid: 055d4b811227358469f43030ff42788f, type: 3}
+  frozenMashSound: {fileID: 8300000, guid: 64235859bb59eae43820cf5d3f5c81d8, type: 3}
 --- !u!114 &47558011
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5773,6 +5775,8 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
+  burningMashSound: {fileID: 8300000, guid: 055d4b811227358469f43030ff42788f, type: 3}
+  frozenMashSound: {fileID: 8300000, guid: 64235859bb59eae43820cf5d3f5c81d8, type: 3}
 --- !u!114 &1062321714
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10263,6 +10267,8 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
+  burningMashSound: {fileID: 0}
+  frozenMashSound: {fileID: 0}
 --- !u!114 &1673177709
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10885,6 +10891,8 @@ MonoBehaviour:
     m_PressedSprite: {fileID: 0}
     m_SelectedSprite: {fileID: 0}
     m_DisabledSprite: {fileID: 0}
+  burningMashSound: {fileID: 0}
+  frozenMashSound: {fileID: 0}
 --- !u!222 &1847008607
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -14065,17 +14073,29 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 138729504}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: duckSound
+      value: 
+      objectReference: {fileID: 8300000, guid: da86338d29118994396764b5f0cabd18, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: heatMeter
       value: 
       objectReference: {fileID: 899054756}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: jumpSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 7d50fff92eb31d9469c654f18ff09342, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: scoreText
       value: 
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: deathSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 00c5cd534f2b6d8409320d5a5995eb21, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: duckButton
       value: 
@@ -14092,6 +14112,10 @@ PrefabInstance:
       propertyPath: pausePanel
       value: 
       objectReference: {fileID: 8114439738751377713}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: damageSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2205927705587604db3b78363b1a6d5a, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: gameOverAdP
       value: 
@@ -14117,6 +14141,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1671991107}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: RPTallySound
+      value: 
+      objectReference: {fileID: 8300000, guid: ef45c2ed670b7ac46871e173de3bc65d, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: heatUpButton
       value: 
       objectReference: {fileID: 47558011}
@@ -14132,6 +14160,10 @@ PrefabInstance:
       propertyPath: item3CDPanel
       value: 
       objectReference: {fileID: 5868954406858278532}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: landingSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 239e97091cefc1f4f9eb150fd14c6ffe, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: powerupMeter
       value: 
@@ -14156,6 +14188,14 @@ PrefabInstance:
       propertyPath: RPGameOverText
       value: 
       objectReference: {fileID: 1797285415}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: burnEnterSound
+      value: 
+      objectReference: {fileID: 8300000, guid: fac048c5d2de89541a4ed12faab7c755, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: coinTallySound
+      value: 
+      objectReference: {fileID: 8300000, guid: 2f771a3adf0b420428165d00c89f1a28, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: coolDownButton
       value: 
@@ -14193,9 +14233,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1652906010}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: frozenMashSonud
+      value: 
+      objectReference: {fileID: 8300000, guid: 64235859bb59eae43820cf5d3f5c81d8, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: magnetizedSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c91727fee36f0f14d97a8b9ee472abc4, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: useDurationText
       value: 
       objectReference: {fileID: 409316503}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: burningMashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 055d4b811227358469f43030ff42788f, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: frozenEnterSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 4edcadd686efe06429f87febcdb2d885, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: gameOverButtonsP
       value: 
@@ -14217,6 +14273,10 @@ PrefabInstance:
       value: 4281874675
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: frozenBrokenSound
+      value: 
+      objectReference: {fileID: 8300000, guid: deaf4bb9c393d8643b3c7106c087f88b, type: 3}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: indicatorArrowBot
       value: 
       objectReference: {fileID: 10419807}
@@ -14232,6 +14292,10 @@ PrefabInstance:
       propertyPath: playerGameoverSpin
       value: 
       objectReference: {fileID: 1481381735}
+    - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: burningDissipateSound
+      value: 
+      objectReference: {fileID: 8300000, guid: ff25ec571e1e02f4e94e847138e7187e, type: 3}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: itemsThisRun.Array.data[0]
       value: 

@@ -180,7 +180,24 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] int pointMultiplier;
     public TextMeshProUGUI multiplierText;
     [SerializeField] int enemiesDodgedSinceLastMulti;
-    
+
+    [Header("Player Audio Clips")]
+    [SerializeField] AudioClip jumpSound;
+    [SerializeField] AudioClip duckSound;
+    [SerializeField] AudioClip magnetizedSound;
+    [SerializeField] AudioClip landingSound;
+    [SerializeField] AudioClip damageSound;
+    [SerializeField] AudioClip burnEnterSound;
+    [SerializeField] AudioClip frozenEnterSound;
+    [SerializeField] AudioClip deathSound;
+    [SerializeField] AudioClip burningDissipateSound;
+    [SerializeField] AudioClip frozenBrokenSound;
+
+    [Header("Gameover SFX")]
+    [SerializeField] AudioClip RPTallySound;
+    [SerializeField] AudioClip coinTallySound;
+
+
 
     public static Level_Manager Instance;
     private void Awake()
@@ -585,6 +602,8 @@ public class Level_Manager : MonoBehaviour
         playerAnimator.SetBool(IsGrounded, false);
         playerAnimator.SetBool(IsJumping, true);
 
+        Audio_Manager.Instance.playSFX(jumpSound);
+
     }
 
     //Player is hanging from the top.
@@ -630,6 +649,8 @@ public class Level_Manager : MonoBehaviour
         playerAnimator.SetBool(IsCrouching, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
+
+        Audio_Manager.Instance.playSFX(duckSound);
     }
 
     public void getUpReg()
@@ -646,7 +667,9 @@ public class Level_Manager : MonoBehaviour
         playerAnimator.SetBool(IsFrozen, true);
         duckButton.interactable = false;
         jumpButton.interactable = false;
-       // Debug.Log("We called frozenDuck()!");
+
+       
+        // Debug.Log("We called frozenDuck()!");
     }
 
     //Jump function that will be called when player is burning.
@@ -654,6 +677,7 @@ public class Level_Manager : MonoBehaviour
     {
         //We may want to randomize the jump height/gravity to make it seem crazier.
         playerRigid2D.velocity = Vector2.up * burningJumpHeight;
+        Audio_Manager.Instance.playSFX(jumpSound);
         //playerRigid2D.gravityScale = gravityScale;
     }
 
@@ -733,6 +757,7 @@ public class Level_Manager : MonoBehaviour
                             if(jumpButtonInteract.getTimeHeld() >= 0.3f)
                             {
                                 thePlayer.setState(Player.playerState.hanging);
+                                Audio_Manager.Instance.playSFX(magnetizedSound, false, 0.5f);
                             }
                           
 
@@ -743,7 +768,7 @@ public class Level_Manager : MonoBehaviour
                             if (onGround)
                             {
                                 thePlayer.setState(Player.playerState.idle);
-                               // jumpButton.interactable = true;
+                                // jumpButton.interactable = true;
                             }
                             else
                             {
@@ -781,7 +806,6 @@ public class Level_Manager : MonoBehaviour
                             playerAnimator.SetBool(IsHanging, false);
                             playerAnimator.SetBool(IsFalling, true);
                             thePlayer.setState(Player.playerState.idle);
-
                         }
                         
                         break;
@@ -821,12 +845,15 @@ public class Level_Manager : MonoBehaviour
                             coolDownButton.gameObject.SetActive(true);
                             playerAnimator.SetBool(IsCrouching, false);
                             playerAnimator.SetBool(IsHanging, false);
+
+                            Audio_Manager.Instance.playSFX(burnEnterSound, false, 0.05f);
                         }
                         //Call the burningJump function.
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (heatMeter.getMeterVal() <= 0)
                         {
+                            Audio_Manager.Instance.playSFX(burningDissipateSound);
                             if (theLevelType == levelType.tutorial)
                             {
                                 if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.burning)
@@ -842,6 +869,8 @@ public class Level_Manager : MonoBehaviour
                                 decreaseHeatMeterRoutine = null;
                             }
                             meterFilled = false;
+
+                            
                         }
                         break;
                     }
@@ -858,6 +887,7 @@ public class Level_Manager : MonoBehaviour
                             jumpButton.spriteState = jumpButtonInteract.theSpriteState;
 
                             frozenDuck();
+                            Audio_Manager.Instance.playSFX(frozenEnterSound, false, 0.05f);
                             heatUpButton.gameObject.SetActive(true);
                             if (theLevelType == levelType.tutorial)
                             {
@@ -874,6 +904,7 @@ public class Level_Manager : MonoBehaviour
                         //Check if meter is depleted fully. If it is, then set player back to idle.
                         if (iceMeter.getMeterVal() <= 0)
                         {
+                            Audio_Manager.Instance.playSFX(frozenBrokenSound);
                             if (theLevelType == levelType.tutorial)
                             {
                                 if (Tutorial_Manager.Instance.getStepType() == Tutorial_Step.stepType.frozen)
@@ -885,6 +916,7 @@ public class Level_Manager : MonoBehaviour
                             thePlayer.setState(Player.playerState.idle);
                             playerAnimator.SetBool(IsCrouching, false);
                             meterFilled = false;
+                           
                         }
                         break;
                     }
@@ -988,6 +1020,11 @@ public class Level_Manager : MonoBehaviour
     public void checkGrounded(bool yesOrNah)
     {
         onGround = yesOrNah;
+
+        if(onGround && thePlayer.GetState() != Player.playerState.burning)
+        {
+            Audio_Manager.Instance.playSFX(landingSound, false, 0.3f);
+        }
     }
 
     //Stuff happening in UPDATE//
@@ -1041,11 +1078,13 @@ public class Level_Manager : MonoBehaviour
                 // Destroy(coins[i]);
 
             }
+            Audio_Manager.Instance.playSFX(deathSound);
             gameOver();
             //Gameover but allow ad to be played for revive.
         }
         else
         {
+            Audio_Manager.Instance.playSFX(damageSound);
             StartCoroutine(damageAni());
         }
 
@@ -1849,6 +1888,7 @@ public class Level_Manager : MonoBehaviour
         coinsGameOverText.text = "X " + finalCoins;
 
         gameOverButtonsP.SetActive(true);
+        Audio_Manager.Instance.stopSFX();
     }
 
     IEnumerator finalTally(int incomingScore, int finalWaveBonus, int incomingCoins, int finalCoins, int finalScore)
@@ -1861,6 +1901,7 @@ public class Level_Manager : MonoBehaviour
         int currentWaveBonus = 0;
         int tempCurrentScore = 0;
 
+        playScoreTallySound();
         //Count up the current score player received during the run, not counting any bonuses yet.
         while (tempCurrentScore < incomingScore)
         {
@@ -1888,9 +1929,15 @@ public class Level_Manager : MonoBehaviour
             totalScoreText.text = "Total score: " + tempCurrentScore.ToString();
         }
 
+        stopScoreTallySound();
+
         yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
+
+
         //Count up the bonus points player received based on the amount of waves they survived.
+        playScoreTallySound();
+
         while (currentWaveBonus < finalWaveBonus)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
@@ -1901,13 +1948,15 @@ public class Level_Manager : MonoBehaviour
             }
             waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + currentWaveBonus;
         }
+        stopScoreTallySound();
 
         yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
 
         //Take the sum of the wave bonus and incoming points and add them to the score to make the final score.
-
         int tempSum = currentWaveBonus + incomingScore;
+        playScoreTallySound();
+
         while (tempCurrentScore < tempSum)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
@@ -1919,9 +1968,14 @@ public class Level_Manager : MonoBehaviour
             totalScoreText.text = "Total score: " + tempCurrentScore.ToString();
         }
 
+        stopScoreTallySound();
+
         yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
+
+
         //Calculate the amount of bonus coins the player gets based on their score.
+        playCoinTallySound();
         while (incomingCoins < finalCoins)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
@@ -1929,12 +1983,35 @@ public class Level_Manager : MonoBehaviour
             coinsGameOverText.text = "X " + incomingCoins;
         }
 
+        stopCoinTallySound();
         skipTallyButtonP.gameObject.SetActive(false);
         yield return new WaitForSeconds(3.0f * Time.deltaTime);
 
         gameOverButtonsP.SetActive(true);
         yield return null;
     }
+
+    void playScoreTallySound()
+    {
+        Audio_Manager.Instance.playSFX(RPTallySound, true, 0.2f);
+    }
+
+    void stopScoreTallySound()
+    {
+        Audio_Manager.Instance.stopSFX(RPTallySound.name);
+    }
+
+    void playCoinTallySound()
+    {
+        Audio_Manager.Instance.playSFX(coinTallySound, true, 0.2f);
+    }
+
+    void stopCoinTallySound()
+    {
+        Audio_Manager.Instance.stopSFX(coinTallySound.name);
+    }
+
+
 
     void checkFinalWaves()
     {

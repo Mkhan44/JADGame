@@ -31,6 +31,10 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
 
     public SpriteState theSpriteState;
 
+    [Header("Sounds")]
+    [SerializeField] AudioClip burningMashSound;
+    [SerializeField] AudioClip frozenMashSound;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -127,11 +131,13 @@ public class Button_Interact : MonoBehaviour , IPointerDownHandler , IPointerUpH
                 case buttonType.coolDown:
                     {
                         Level_Manager.Instance.heatMeter.decreaseMeter(5.0f);
+                        Audio_Manager.Instance.playSFX(burningMashSound, false, 0.05f);
                         break;
                     }
                 case buttonType.heatUp:
                     {
                         Level_Manager.Instance.iceMeter.decreaseMeter(5.0f);
+                        Audio_Manager.Instance.playSFX(frozenMashSound);
                         break;
                     }
                 default:

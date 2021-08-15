@@ -91,7 +91,7 @@ public class Audio_Manager : MonoBehaviour
     }
 
     //SFX Functions
-    public int playSFX(AudioClip soundToPlay, bool loop = false)
+    public int playSFX(AudioClip soundToPlay, bool loop = false, float volume = 0.1f)
     {
         for(int i = 0; i < sfxSources.Count; i++)
         {
@@ -99,7 +99,7 @@ public class Audio_Manager : MonoBehaviour
             {
                 sfxSources[i].clip = soundToPlay;
                 sfxSources[i].loop = loop;
-                sfxSources[i].volume = 0.1f;
+                sfxSources[i].volume = volume;
                 sfxSources[i].Play();
                 return i;
             }
@@ -111,7 +111,7 @@ public class Audio_Manager : MonoBehaviour
         tempObj.name = "SoundSource_" + sfxSources.Count;
         sfxSources[sfxSources.Count - 1].clip = soundToPlay;
         sfxSources[sfxSources.Count - 1].loop = loop;
-        sfxSources[sfxSources.Count - 1].volume = 0.1f;
+        sfxSources[sfxSources.Count - 1].volume = volume;
         sfxSources[sfxSources.Count - 1].Play();
         Debug.LogWarning("All SFX clips are playing, we are going to add another source for more clips!");
         return sfxSources.Count - 1;
@@ -124,6 +124,28 @@ public class Audio_Manager : MonoBehaviour
             sfxSources[audioIndex].Stop();
         }
        
+    }
+
+    public void stopSFX(string clipName)
+    {
+        for (int i = 0; i < sfxSources.Count; i++)
+        {
+            if (sfxSources[i].isPlaying && sfxSources[i].clip.name == clipName)
+            {
+                sfxSources[i].Stop();
+            }
+        }
+    }
+
+    public void stopSFX()
+    {
+        for (int i = 0; i < sfxSources.Count; i++)
+        {
+            if (sfxSources[i].isPlaying)
+            {
+                sfxSources[i].Stop();
+            }
+        }
     }
 
     public void togglePauseSFX()
@@ -144,21 +166,14 @@ public class Audio_Manager : MonoBehaviour
                 Debug.Log("Trying to unpause music.");
                 sfxSources[i].UnPause();
             }
+
+            //Play pause SFX.
             
         }
        // pausedAudioSources.Clear();
     }
 
-    public void stopSFX()
-    {
-        for(int i = 0; i < sfxSources.Count; i++)
-        {
-            if(sfxSources[i].isPlaying)
-            {
-                sfxSources[i].Stop();
-            }
-        }
-    }
+
 
     /*
     void testPlaySFX()

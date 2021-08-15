@@ -91,6 +91,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [SerializeField] bool willLoop;
     [Tooltip("Does this sound effect play at a specific time or as soon as the obstacle is on screen?")]
     [SerializeField] bool playOnStart;
+    [Tooltip("Does this need to be louder or softer than 0.1f? MAX VALUE SHOULD BE 1.")]
+    [SerializeField] float volumeOverride;
     bool hasPlayedYet;
     int audioManagerReferenceNum;
 
@@ -225,7 +227,15 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
         if(!hasPlayedYet && playOnStart && !inIndicatorVicinity && soundToPlay != null)
         {
-            audioManagerReferenceNum = Audio_Manager.Instance.playSFX(soundToPlay, willLoop);
+            if(volumeOverride == 0 || volumeOverride > 1 || volumeOverride < -1)
+            {
+                audioManagerReferenceNum = Audio_Manager.Instance.playSFX(soundToPlay, willLoop);
+            }
+            else
+            {
+                audioManagerReferenceNum = Audio_Manager.Instance.playSFX(soundToPlay, willLoop, volumeOverride);
+            }
+            
             hasPlayedYet = true;
           //  Debug.Log("Playing sound for obstacle!");
         }

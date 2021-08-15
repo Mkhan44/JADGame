@@ -102,11 +102,16 @@ MonoBehaviour:
   increaseRate: 5
   maxSpeed: 5
   spawnPoint: 1
+  extraCollider: {fileID: 0}
   objectElement: 1
   thisObstacleDiff: 0
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: 2353f49680ffbc343af15b6b6e44980f, type: 3}
+  willLoop: 0
+  playOnStart: 1
+  volumeOverride: 0.3
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
