@@ -6,7 +6,7 @@ SpriteAtlas:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Gameplay_BG_UI_Atlas
+  m_Name: Arrow_Atlas
   m_EditorData:
     serializedVersion: 2
     textureSettings:
@@ -33,18 +33,6 @@ SpriteAtlas:
       m_Overridden: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
-    - serializedVersion: 3
-      m_BuildTarget: Android
-      m_MaxTextureSize: 2048
-      m_ResizeAlgorithm: 0
-      m_TextureFormat: 65
-      m_TextureCompression: 1
-      m_CompressionQuality: 50
-      m_CrunchedCompression: 1
-      m_AllowsAlphaSplitting: 0
-      m_Overridden: 1
-      m_AndroidETC2FallbackOverride: 0
-      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
       serializedVersion: 2
       padding: 4
@@ -55,28 +43,22 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
-    - {fileID: 2800000, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
-    - {fileID: 2800000, guid: 752f258e10aa030428dd0fa2e86cb39f, type: 3}
-    - {fileID: 2800000, guid: 570dcce2ad4c83a48b2b65ec72bc2575, type: 3}
-    - {fileID: 2800000, guid: cdf0dbde560b5374797ff8287db45be3, type: 3}
-    totalSpriteSurfaceArea: 0
+    - {fileID: 2800000, guid: 5929cac4a7f01c44c8f04ee01f25ed65, type: 3}
+    - {fileID: 2800000, guid: da0f12ec8204f0f4daed7993dc1e5a42, type: 3}
+    - {fileID: 2800000, guid: 756cac9b250a38547bf6a411a131c113, type: 3}
+    totalSpriteSurfaceArea: 24000
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 570dcce2ad4c83a48b2b65ec72bc2575, type: 3}
-  - {fileID: 4798424233900112988, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
-  - {fileID: -3742592120836699101, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
-  - {fileID: 2432841075797877238, guid: 752f258e10aa030428dd0fa2e86cb39f, type: 3}
-  - {fileID: 21300000, guid: cdf0dbde560b5374797ff8287db45be3, type: 3}
+  - {fileID: 21300000, guid: 5929cac4a7f01c44c8f04ee01f25ed65, type: 3}
+  - {fileID: 21300000, guid: 756cac9b250a38547bf6a411a131c113, type: 3}
+  - {fileID: 21300000, guid: da0f12ec8204f0f4daed7993dc1e5a42, type: 3}
   m_PackedSpriteNamesToIndex:
-  - top
-  - bottomice_0
-  - bottom_0
-  - gameplaybg
-  - topfire
+  - arrow
+  - arrowmed
+  - arrowhrd
   m_RenderDataMap: {}
-  m_Tag: Gameplay_BG_UI_Atlas
+  m_Tag: Arrow_Atlas
   m_IsVariant: 0

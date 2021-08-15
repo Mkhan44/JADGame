@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Skeleton_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: f347581dd331ec045882a82b57402ae1, type: 3}
+    - {fileID: 2800000, guid: 77562b452b8cb054b92bba24d8537627, type: 3}
+    - {fileID: 2800000, guid: 9b274cd7517aa2641945604da08e3977, type: 3}
+    - {fileID: 2800000, guid: 0970b9cb7e43ec44ab4cc248a6698a38, type: 3}
+    - {fileID: 2800000, guid: e37d658bf52b45c4e854e0e513ffa1e3, type: 3}
+    - {fileID: 2800000, guid: 966cc2b9d131af24c8cc25836351b1cc, type: 3}
+    - {fileID: 2800000, guid: f8a6e79ffedca4d469509a6e5adce8ef, type: 3}
+    - {fileID: 2800000, guid: 96ec82995fa3c644f849d3ab96904d21, type: 3}
+    - {fileID: 2800000, guid: b0b2eaab4c545164aa75f06c8074e9d4, type: 3}
+    - {fileID: 2800000, guid: a0816b0cd9156d24f95a700da2995a89, type: 3}
+    - {fileID: 2800000, guid: 93c8ee7e8ae011e46a20a788f7e64454, type: 3}
+    - {fileID: 2800000, guid: aca67aa0a4fb6ab4ba499b0202a4d8e9, type: 3}
+    - {fileID: 2800000, guid: a5fa159677d391643acc8682524301e6, type: 3}
+    - {fileID: 2800000, guid: e6ba555f8fdf2b14fa2b39a62ca3593a, type: 3}
+    - {fileID: 2800000, guid: cb76c6f37f837774aa85f82c60bd23ab, type: 3}
+    - {fileID: 2800000, guid: 7a0fa08b7a7b4e44493868f6d897348b, type: 3}
+    - {fileID: 2800000, guid: e41283bfc31f0d34b96a1d30630f3a39, type: 3}
+    - {fileID: 2800000, guid: 518ef8b73c9a1074f927fb15a1f72981, type: 3}
+    - {fileID: 2800000, guid: efb0fe7130cf3a045a3dde358c74bc60, type: 3}
+    - {fileID: 2800000, guid: e9b6a01318c82d64f82806f154fe95e7, type: 3}
+    - {fileID: 2800000, guid: 73cac72e6d6f5514a907475c9223c32a, type: 3}
+    - {fileID: 2800000, guid: 74bc2c1608a4b3641b4c6436f73ae1c0, type: 3}
+    - {fileID: 2800000, guid: 73f251e5552050141a062015d2befaae, type: 3}
+    - {fileID: 2800000, guid: 09c548f0c7913984d9cff9fc8efe433b, type: 3}
+    totalSpriteSurfaceArea: 1382400
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: aca67aa0a4fb6ab4ba499b0202a4d8e9, type: 3}
+  - {fileID: 21300000, guid: 09c548f0c7913984d9cff9fc8efe433b, type: 3}
+  - {fileID: 21300000, guid: efb0fe7130cf3a045a3dde358c74bc60, type: 3}
+  - {fileID: 21300000, guid: e9b6a01318c82d64f82806f154fe95e7, type: 3}
+  - {fileID: 21300000, guid: cb76c6f37f837774aa85f82c60bd23ab, type: 3}
+  - {fileID: 21300000, guid: 77562b452b8cb054b92bba24d8537627, type: 3}
+  - {fileID: 21300000, guid: 73f251e5552050141a062015d2befaae, type: 3}
+  - {fileID: 21300000, guid: 74bc2c1608a4b3641b4c6436f73ae1c0, type: 3}
+  - {fileID: 21300000, guid: a5fa159677d391643acc8682524301e6, type: 3}
+  - {fileID: 21300000, guid: 518ef8b73c9a1074f927fb15a1f72981, type: 3}
+  - {fileID: 21300000, guid: 9b274cd7517aa2641945604da08e3977, type: 3}
+  - {fileID: 21300000, guid: 96ec82995fa3c644f849d3ab96904d21, type: 3}
+  - {fileID: 21300000, guid: 966cc2b9d131af24c8cc25836351b1cc, type: 3}
+  - {fileID: 21300000, guid: 7a0fa08b7a7b4e44493868f6d897348b, type: 3}
+  - {fileID: 21300000, guid: e37d658bf52b45c4e854e0e513ffa1e3, type: 3}
+  - {fileID: 21300000, guid: b0b2eaab4c545164aa75f06c8074e9d4, type: 3}
+  - {fileID: 21300000, guid: 0970b9cb7e43ec44ab4cc248a6698a38, type: 3}
+  - {fileID: 21300000, guid: a0816b0cd9156d24f95a700da2995a89, type: 3}
+  - {fileID: 21300000, guid: f347581dd331ec045882a82b57402ae1, type: 3}
+  - {fileID: 21300000, guid: 73cac72e6d6f5514a907475c9223c32a, type: 3}
+  - {fileID: 21300000, guid: 93c8ee7e8ae011e46a20a788f7e64454, type: 3}
+  - {fileID: 21300000, guid: e6ba555f8fdf2b14fa2b39a62ca3593a, type: 3}
+  - {fileID: 21300000, guid: f8a6e79ffedca4d469509a6e5adce8ef, type: 3}
+  - {fileID: 21300000, guid: e41283bfc31f0d34b96a1d30630f3a39, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - skeletonhrd4
+  - skeletonmed8
+  - skeletonmed3
+  - skeletonmed4
+  - skeletonhrd7
+  - skeleton2
+  - skeletonmed7
+  - skeletonmed6
+  - skeletonhrd5
+  - skeletonmed2
+  - skeleton3
+  - skeleton8
+  - skeleton6
+  - skeletonhrd8
+  - skeleton5
+  - skeletonhrd1
+  - skeleton4
+  - skeletonhrd2
+  - skeleton1
+  - skeletonmed5
+  - skeletonhrd3
+  - skeletonhrd6
+  - skeleton7
+  - skeletonmed1
+  m_RenderDataMap: {}
+  m_Tag: Skeleton_Atlas
+  m_IsVariant: 0

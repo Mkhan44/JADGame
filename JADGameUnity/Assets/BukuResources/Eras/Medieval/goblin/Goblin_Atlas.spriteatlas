@@ -1,0 +1,127 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Goblin_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 50
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: e046338897fe7b34c9eedd70761444fb, type: 3}
+    - {fileID: 2800000, guid: a07b9f6933cfafd4b9caff51828079f3, type: 3}
+    - {fileID: 2800000, guid: 3ca106a76e0275d418e49f25c8007e62, type: 3}
+    - {fileID: 2800000, guid: 9d349fa84676dcb46bb348787fbd6c8d, type: 3}
+    - {fileID: 2800000, guid: ecac4252607e17643ba8561f47c59f76, type: 3}
+    - {fileID: 2800000, guid: 87111dbc745ce7547a4699677eab1f0f, type: 3}
+    - {fileID: 2800000, guid: dd4d80f489fa6434f9a6e86d63f51d2a, type: 3}
+    - {fileID: 2800000, guid: 46b2fff81417e434293d3d2f618829b6, type: 3}
+    - {fileID: 2800000, guid: ea56bd8a3a1751f44b0a461220e835c4, type: 3}
+    - {fileID: 2800000, guid: b207d774e8c0dab4da8cdfe70b7aefb0, type: 3}
+    - {fileID: 2800000, guid: ac73c725ab32dba4c9c0ff70cfd621fb, type: 3}
+    - {fileID: 2800000, guid: f4c460d282412c94da63b08b52eb07e6, type: 3}
+    - {fileID: 2800000, guid: dc6774fa322dad842803370e0b50be2c, type: 3}
+    - {fileID: 2800000, guid: 69df1aa40883fe54ca36eb3adc961c51, type: 3}
+    - {fileID: 2800000, guid: 75e0eebdd84d3434294fa9d7a1e63a3e, type: 3}
+    - {fileID: 2800000, guid: 1e9771e5bd172a04690d0d611475fdce, type: 3}
+    - {fileID: 2800000, guid: cdc1ff4a44a6f69439eb0dc0c93a06f1, type: 3}
+    - {fileID: 2800000, guid: 1bb35385606c8d54fbbe0c2bd2713b6a, type: 3}
+    - {fileID: 2800000, guid: 9afbabd5661becb44b7e7b1afed57cb6, type: 3}
+    - {fileID: 2800000, guid: 69bfdeaabafec5d4c9c519489bef9a88, type: 3}
+    - {fileID: 2800000, guid: 1f0ccc31fafa85a4d886ee1f4c0c3071, type: 3}
+    - {fileID: 2800000, guid: 634bff17959eecc4a84e3002fc16047c, type: 3}
+    - {fileID: 2800000, guid: 64633c4c34bb7234989a50056a5c53ef, type: 3}
+    - {fileID: 2800000, guid: 6866ce142794cff42aae13225a14db97, type: 3}
+    totalSpriteSurfaceArea: 614400
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 1f0ccc31fafa85a4d886ee1f4c0c3071, type: 3}
+  - {fileID: 21300000, guid: ecac4252607e17643ba8561f47c59f76, type: 3}
+  - {fileID: 21300000, guid: f4c460d282412c94da63b08b52eb07e6, type: 3}
+  - {fileID: 21300000, guid: 6866ce142794cff42aae13225a14db97, type: 3}
+  - {fileID: 21300000, guid: b207d774e8c0dab4da8cdfe70b7aefb0, type: 3}
+  - {fileID: 21300000, guid: 69df1aa40883fe54ca36eb3adc961c51, type: 3}
+  - {fileID: 21300000, guid: dd4d80f489fa6434f9a6e86d63f51d2a, type: 3}
+  - {fileID: 21300000, guid: ac73c725ab32dba4c9c0ff70cfd621fb, type: 3}
+  - {fileID: 21300000, guid: 1bb35385606c8d54fbbe0c2bd2713b6a, type: 3}
+  - {fileID: 21300000, guid: 9afbabd5661becb44b7e7b1afed57cb6, type: 3}
+  - {fileID: 21300000, guid: 1e9771e5bd172a04690d0d611475fdce, type: 3}
+  - {fileID: 21300000, guid: 634bff17959eecc4a84e3002fc16047c, type: 3}
+  - {fileID: 21300000, guid: 3ca106a76e0275d418e49f25c8007e62, type: 3}
+  - {fileID: 21300000, guid: e046338897fe7b34c9eedd70761444fb, type: 3}
+  - {fileID: 21300000, guid: 9d349fa84676dcb46bb348787fbd6c8d, type: 3}
+  - {fileID: 21300000, guid: 46b2fff81417e434293d3d2f618829b6, type: 3}
+  - {fileID: 21300000, guid: a07b9f6933cfafd4b9caff51828079f3, type: 3}
+  - {fileID: 21300000, guid: cdc1ff4a44a6f69439eb0dc0c93a06f1, type: 3}
+  - {fileID: 21300000, guid: ea56bd8a3a1751f44b0a461220e835c4, type: 3}
+  - {fileID: 21300000, guid: 69bfdeaabafec5d4c9c519489bef9a88, type: 3}
+  - {fileID: 21300000, guid: dc6774fa322dad842803370e0b50be2c, type: 3}
+  - {fileID: 21300000, guid: 64633c4c34bb7234989a50056a5c53ef, type: 3}
+  - {fileID: 21300000, guid: 87111dbc745ce7547a4699677eab1f0f, type: 3}
+  - {fileID: 21300000, guid: 75e0eebdd84d3434294fa9d7a1e63a3e, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - goblinmed5
+  - goblin5
+  - goblinhrd4
+  - goblinmed8
+  - goblinhrd2
+  - goblinhrd6
+  - goblin7
+  - goblinhrd3
+  - goblinmed2
+  - goblinmed3
+  - goblinhrd8
+  - goblinmed6
+  - goblin3
+  - goblin1
+  - goblin4
+  - goblin8
+  - goblin2
+  - goblinmed1
+  - goblinhrd1
+  - goblinmed4
+  - goblinhrd5
+  - goblinmed7
+  - goblin6
+  - goblinhrd7
+  m_RenderDataMap: {}
+  m_Tag: Goblin_Atlas
+  m_IsVariant: 0
