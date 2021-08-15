@@ -84,6 +84,16 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     protected Rigidbody2D thisRigid;
 
+    [Header("SFX Related")]
+    [Tooltip("Sound effect used for this obstacle.")]
+    [SerializeField] AudioClip soundToPlay;
+    [Tooltip("Whether or not this sound will loop.")]
+    [SerializeField] bool willLoop;
+    [Tooltip("Does this sound effect play at a specific time or as soon as the obstacle is on screen?")]
+    [SerializeField] bool playOnStart;
+    bool hasPlayedYet;
+    int audioManagerReferenceNum;
+
     bool madeToEnd = false;
     protected virtual void Awake()
     {
@@ -95,6 +105,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         }
         inPlayerVicinity = false;
         onScreenIndicator = false;
+        hasPlayedYet = false;
+        audioManagerReferenceNum = -1;
 
         if (this.transform.childCount > 0)
         {
@@ -200,6 +212,8 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             theDespawnerCollider = GameObject.Find("Despawner").GetComponent<BoxCollider2D>();
             Physics2D.IgnoreCollision(extraCollider, theDespawnerCollider);
         }
+        hasPlayedYet = false;
+        audioManagerReferenceNum = -1;
        // Debug.Log("startPos is: " + startPos + " And endPos is: " + endPos);
     }
   
@@ -208,6 +222,13 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     void Update()
     {
         Movement();
+
+        if(!hasPlayedYet && playOnStart && !inIndicatorVicinity && soundToPlay != null)
+        {
+            audioManagerReferenceNum = Audio_Manager.Instance.playSFX(soundToPlay, willLoop);
+            hasPlayedYet = true;
+          //  Debug.Log("Playing sound for obstacle!");
+        }
     }
 
     //Movement for regular obstacles/treasures and timeswap...Will be changed on other obstacles.
@@ -307,6 +328,10 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     {
         if(collision.gameObject.tag == "Despawner")
         {
+            if(audioManagerReferenceNum != -1)
+            {
+                Audio_Manager.Instance.stopSFX(audioManagerReferenceNum);
+            }
 
             if (thisType == typeOfObstacle.obstacle)
             {

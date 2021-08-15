@@ -271,15 +271,21 @@ public class Temperature_Manager : MonoBehaviour
         while(filledMeter && currentMeterVal > 0 && Level_Manager.Instance.thePlayer.GetState() != Player.playerState.idle)
         {
             yield return new WaitForSeconds(0.1f * Time.deltaTime);
-            currentMeterVal -= 0.3f;
-            if (currentMeterVal <= 0.0f)
+            if(Level_Manager.Instance.pauseStatus())
             {
-                currentMeterVal = 0.0f;
-                filledMeter = false;
+               //Do nothing.
             }
-            theMeter.value = currentMeterVal;
-            changeTransparency();
-
+            else
+            {
+                currentMeterVal -= 0.3f;
+                if (currentMeterVal <= 0.0f)
+                {
+                    currentMeterVal = 0.0f;
+                    filledMeter = false;
+                }
+                theMeter.value = currentMeterVal;
+                changeTransparency();
+            }
             yield return null;
         }
     }

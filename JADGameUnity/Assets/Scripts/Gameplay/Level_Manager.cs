@@ -378,7 +378,13 @@ public class Level_Manager : MonoBehaviour
             isPaused = true;
             Time.timeScale = 0f;
         }
-       
+
+        Audio_Manager.Instance.togglePauseSFX();
+    }
+
+    public bool pauseStatus()
+    {
+        return isPaused;
     }
 
     //For game audio muting.
@@ -1010,7 +1016,6 @@ public class Level_Manager : MonoBehaviour
         for (int i = 0; i < obstacles.Length; i++)
         {
             //TURN ON WHEN WE ARE READY TO POOL.
-
             Object_Pooler.Instance.AddToPool(obstacles[i]);
             //Destroy(obstacles[i]);
         }
@@ -1021,7 +1026,7 @@ public class Level_Manager : MonoBehaviour
             //Destroy(obstacles[j]);
         }
 
-
+        Audio_Manager.Instance.stopSFX();
         currentPlayerHealth -= 1;
 
         theHeartSystem.updateHealth(currentPlayerHealth);

@@ -6,6 +6,15 @@ public class Audio_Manager : MonoBehaviour
 {
     public static Audio_Manager Instance;
 
+    public enum sceneType
+    {
+        menu,
+        gameplay
+    }
+
+    [Header("Scene the Manager is in")]
+    public sceneType theSceneType;
+
     [Header("Era music tracks")]
     [SerializeField] List<AudioClip> prehistoricMusic;
     [SerializeField] List<AudioClip> feudalJapanMusic;
@@ -25,6 +34,13 @@ public class Audio_Manager : MonoBehaviour
     [Header("Swap music variables during transitions.")]
     [SerializeField] AudioSource currentlyPlayingTrack;
 
+    [Header("SFX Holders")]
+    [SerializeField] GameObject SFXHolder;
+    [SerializeField] GameObject audioSourcePrefab;
+
+    [SerializeField] List<AudioSource> sfxSources;
+    List<AudioSource> pausedAudioSources = new List<AudioSource>();
+
     private void Awake()
     {
         Instance = this;
@@ -32,24 +48,131 @@ public class Audio_Manager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.normal)
+        if(theSceneType == sceneType.menu)
         {
-            tutorialSource.gameObject.SetActive(false);
-            currentlyPlayingTrack = easySource;
+
         }
+
+        //Gameplay scene, play music.
         else
         {
-            easySource.gameObject.SetActive(false);
-            mediumSource.gameObject.SetActive(false);
-            bonusSource.gameObject.SetActive(false);
-            hardPauseSource.gameObject.SetActive(false);
-            currentlyPlayingTrack = tutorialSource;
-       
+            if (Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.normal)
+            {
+                tutorialSource.gameObject.SetActive(false);
+                currentlyPlayingTrack = easySource;
+            }
+            else
+            {
+                easySource.gameObject.SetActive(false);
+                mediumSource.gameObject.SetActive(false);
+                bonusSource.gameObject.SetActive(false);
+                hardPauseSource.gameObject.SetActive(false);
+                currentlyPlayingTrack = tutorialSource;
+
+            }
+
+            setMusicTracks(Level_Manager.Instance.getTimePeriod());
         }
 
-        setMusicTracks(Level_Manager.Instance.getTimePeriod());
+        for(int i = 0; i < sfxSources.Count; i++)
+        {
+            GameObject tempObj = Instantiate(audioSourcePrefab, this.transform);
+            tempObj.transform.SetParent(SFXHolder.transform);
+            tempObj.name = "SoundSource_" + i;
+            sfxSources[i] = tempObj.GetComponent<AudioSource>();
+        }
+
+       // testPlaySFX();
+
+
+
+
 
     }
+
+    //SFX Functions
+    public int playSFX(AudioClip soundToPlay, bool loop = false)
+    {
+        for(int i = 0; i < sfxSources.Count; i++)
+        {
+            if(!sfxSources[i].isPlaying)
+            {
+                sfxSources[i].clip = soundToPlay;
+                sfxSources[i].loop = loop;
+                sfxSources[i].volume = 0.1f;
+                sfxSources[i].Play();
+                return i;
+            }
+        }
+
+        GameObject tempObj = Instantiate(audioSourcePrefab, this.transform);
+        tempObj.transform.SetParent(SFXHolder.transform);
+        sfxSources.Add(tempObj.GetComponent<AudioSource>());
+        tempObj.name = "SoundSource_" + sfxSources.Count;
+        sfxSources[sfxSources.Count - 1].clip = soundToPlay;
+        sfxSources[sfxSources.Count - 1].loop = loop;
+        sfxSources[sfxSources.Count - 1].volume = 0.1f;
+        sfxSources[sfxSources.Count - 1].Play();
+        Debug.LogWarning("All SFX clips are playing, we are going to add another source for more clips!");
+        return sfxSources.Count - 1;
+    }
+
+    public void stopSFX(int audioIndex)
+    {
+        if(sfxSources[audioIndex].isPlaying)
+        {
+            sfxSources[audioIndex].Stop();
+        }
+       
+    }
+
+    public void togglePauseSFX()
+    {
+        for(int i = 0; i < sfxSources.Count; i++)
+        {
+          
+            if(Level_Manager.Instance.pauseStatus())
+            {
+                if (sfxSources[i].isPlaying)
+                {
+                    sfxSources[i].Pause();
+                    //  pausedAudioSources.Add(sfxSources[i]);
+                }
+            }
+            else
+            {
+                Debug.Log("Trying to unpause music.");
+                sfxSources[i].UnPause();
+            }
+            
+        }
+       // pausedAudioSources.Clear();
+    }
+
+    public void stopSFX()
+    {
+        for(int i = 0; i < sfxSources.Count; i++)
+        {
+            if(sfxSources[i].isPlaying)
+            {
+                sfxSources[i].Stop();
+            }
+        }
+    }
+
+    /*
+    void testPlaySFX()
+    {
+        GameObject tempObj = Instantiate(audioSourcePrefab, this.transform);
+        tempObj.transform.SetParent(SFXHolder.transform);
+        sfxSources.Add(tempObj.GetComponent<AudioSource>());
+        tempObj.name = "SoundSource_" + (sfxSources.Count-1);
+       // sfxSources[sfxSources.Count - 1].clip = soundToPlay;
+       // sfxSources[sfxSources.Count - 1].Play();
+        Debug.LogWarning("All SFX clips are playing, we are going to add another source for more clips!");
+    }
+    */
+    //SFX Functions
 
     public void setMusicTracks(Level_Manager.timePeriod theEra)
     {
