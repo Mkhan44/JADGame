@@ -560,13 +560,13 @@ public class Wave_Spawner : MonoBehaviour
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 0)
+            if (wavesSinceBonus > 2)
             {
                 
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-                doWeBonus = 8;
+                //doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
@@ -585,7 +585,7 @@ public class Wave_Spawner : MonoBehaviour
         {
             wavesSinceTimeSwap++;
             Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
-            if (wavesSinceTimeSwap > 2)
+            if (wavesSinceTimeSwap > 2 && theWaveDiff == waveDiff.hardPause)
             {
                 
                 int doWeTimeSwap;
@@ -808,7 +808,7 @@ public class Wave_Spawner : MonoBehaviour
             yield return new WaitForSeconds(0.1f);
         }
         Audio_Manager.Instance.stopSFX(itemRouletteSound.name);
-        Audio_Manager.Instance.playSFX(itemGetSound);
+        Audio_Manager.Instance.playSFX(itemGetSound, false, 0.4f);
 
 
         itemSpriteToChange.sprite = itemToReceive;
