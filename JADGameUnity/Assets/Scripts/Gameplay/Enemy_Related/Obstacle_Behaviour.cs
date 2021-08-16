@@ -334,6 +334,11 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         return scoreValue;
     }
 
+    public void playSoundExternally(float volumeOverride = 0.1f)
+    {
+        Audio_Manager.Instance.playSFX(soundToPlay, false, volumeOverride);
+    }
+
     protected virtual void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Despawner")

@@ -158,6 +158,7 @@ public class Player : MonoBehaviour
             // Debug.Log("Adding coin to pool since it collided with the PLAYER!");
             theTrigger.gameObject.transform.position = new Vector2(theTrigger.gameObject.transform.position.x + 10, theTrigger.gameObject.transform.position.y);
             theTrigger.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            theTrigger.gameObject.GetComponent<Obstacle_Behaviour>().playSoundExternally();
             Object_Pooler.Instance.AddToPool(theTrigger.gameObject);
             //Destroy(theTrigger.gameObject);
         }
@@ -196,6 +197,7 @@ public class Player : MonoBehaviour
         {
             // Debug.Log("Collected the coin!");
             Level_Manager.Instance.collectCoin(1);
+            collision.gameObject.GetComponent<Obstacle_Behaviour>().playSoundExternally();
             Object_Pooler.Instance.AddToPool(collision.gameObject);
             //Destroy(theTrigger.gameObject);
         }

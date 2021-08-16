@@ -122,6 +122,10 @@ public class Wave_Spawner : MonoBehaviour
 
     public static Wave_Spawner Instance;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip itemRouletteSound;
+    [SerializeField] AudioClip itemGetSound;
+
     private void Awake()
     {
         Instance = this;
@@ -556,13 +560,13 @@ public class Wave_Spawner : MonoBehaviour
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 2)
+            if (wavesSinceBonus > 0)
             {
                 
                 int doWeBonus;
                 doWeBonus = Random.Range(1, 7);
                //DEBUGGING.
-                //doWeBonus = 8;
+                doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
@@ -690,6 +694,7 @@ public class Wave_Spawner : MonoBehaviour
             chestSpriteChild = chest1.transform.GetChild(0).gameObject;
             itemSpriteToChange = chestSpriteChild.GetComponent<SpriteRenderer>();
             tempAnimator.SetBool("Chest_Open", true);
+            chest1.GetComponent<Obstacle_Behaviour>().playSoundExternally(0.4f);
         }
         else
         {
@@ -699,7 +704,10 @@ public class Wave_Spawner : MonoBehaviour
             chestSpriteChild = chest2.transform.GetChild(0).gameObject;
             itemSpriteToChange = chestSpriteChild.GetComponent<SpriteRenderer>();
             tempAnimator.SetBool("Chest_Open", true);
+            chest2.GetComponent<Obstacle_Behaviour>().playSoundExternally(0.4f);
         }
+
+        
 
         // Debug.Log("Ani time = " + aniTime);
         /*
@@ -781,6 +789,8 @@ public class Wave_Spawner : MonoBehaviour
         float duration = 0.4f;
         float time = 0f;
         int randItemImg;
+
+        Audio_Manager.Instance.playSFX(itemRouletteSound, true);
         while (time < duration)
         {
             randItemImg = Random.Range(-1, Collect_Manager.instance.itemsToPick.Count);
@@ -797,6 +807,8 @@ public class Wave_Spawner : MonoBehaviour
             time += Time.deltaTime;
             yield return new WaitForSeconds(0.1f);
         }
+        Audio_Manager.Instance.stopSFX(itemRouletteSound.name);
+        Audio_Manager.Instance.playSFX(itemGetSound);
 
 
         itemSpriteToChange.sprite = itemToReceive;
