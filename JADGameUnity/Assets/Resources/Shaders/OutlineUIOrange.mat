@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: OutlineUI
+  m_Name: OutlineUIOrange
   m_Shader: {fileID: -6465566751694194690, guid: 145fc852f19c9c84e9cc8caadd2e71d4, type: 3}
   m_ShaderKeywords: CORNERS_ON ETC1_EXTERNAL_ALPHA
   m_LightmapFlags: 4
@@ -90,5 +90,5 @@ Material:
     - Color_618f9fe524a6420780ef016266b6a3b8: {r: 0.6509434, g: 0.1627358, b: 0.1627358, a: 0}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
-    - _OutlineColor: {r: 2.1476815, g: 2.1476815, b: 2.1476815, a: 1}
+    - _OutlineColor: {r: 1.2976131, g: 0.16939925, b: 0, a: 1}
   m_BuildTextureStacks: []

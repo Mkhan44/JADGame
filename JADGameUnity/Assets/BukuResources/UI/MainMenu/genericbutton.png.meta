@@ -50,7 +50,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 55, y: 65, z: 55, w: 55}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -114,18 +114,6 @@ TextureImporter:
     overridden: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
-  - serializedVersion: 3
-    buildTarget: WebGL
-    maxTextureSize: 2048
-    resizeAlgorithm: 0
-    textureFormat: -1
-    textureCompression: 1
-    compressionQuality: 50
-    crunchedCompression: 0
-    allowsAlphaSplitting: 0
-    overridden: 0
-    androidETC2FallbackOverride: 0
-    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
@@ -133,13 +121,13 @@ TextureImporter:
       name: genericbutton_0
       rect:
         serializedVersion: 2
-        x: 20
-        y: 20
-        width: 200
-        height: 195
+        x: 5
+        y: 15
+        width: 230
+        height: 205
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 35, y: 31, z: 35, w: 30}
+      pivot: {x: 0, y: 0}
+      border: {x: 40, y: 50, z: 40, w: 35}
       outline: []
       physicsShape: []
       tessellationDetail: 0
