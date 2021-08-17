@@ -82,10 +82,10 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 19958413dd481144fbdcb48481ba94d1, type: 3}
   - {fileID: 8300000, guid: 7c28d14fca8cd414b92ac53a99927418, type: 3}
   feudalJapanMusic:
-  - {fileID: 8300000, guid: 418b6c44df272dc4d90364f8b51c062a, type: 3}
-  - {fileID: 8300000, guid: c280665faa8ab6d4daa47c3c8f4166c9, type: 3}
-  - {fileID: 8300000, guid: 9905d1f3b66304f4bbd7c4c853b39f6b, type: 3}
-  - {fileID: 8300000, guid: 809503b80d49ff046ab6c68cfcf1fa63, type: 3}
+  - {fileID: 8300000, guid: 2fb18bc712321c346923429bbee33be3, type: 3}
+  - {fileID: 8300000, guid: ebb46267354d1b942af91c50ae2df693, type: 3}
+  - {fileID: 8300000, guid: 1698924db12923b4daccfc15f7ac335e, type: 3}
+  - {fileID: 8300000, guid: 02db860cfbd123e4980d5468a655da09, type: 3}
   wildWestMusic:
   - {fileID: 8300000, guid: 08997c2613301cd478a0d13b102c0e0f, type: 3}
   - {fileID: 8300000, guid: 2de0af4ac5441a7408692cd4976aeb53, type: 3}
