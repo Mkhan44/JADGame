@@ -1,0 +1,115 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Shop_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 80
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 0e54edbf3cbc9464ebf0282ef4bf98e3, type: 3}
+    - {fileID: 2800000, guid: 19a42b7027bbd7543b1b608806e7e9f8, type: 3}
+    - {fileID: 2800000, guid: b593c00373f845d4dac4db35ea8bcb81, type: 3}
+    - {fileID: 2800000, guid: b88476619ea3e2d439f3e9de11a8c3c4, type: 3}
+    - {fileID: 2800000, guid: 8a5d914d1b6491b4fb9d1eb01efe5504, type: 3}
+    - {fileID: 2800000, guid: 4f31bd73491bdac4db5d837968317c85, type: 3}
+    - {fileID: 2800000, guid: 7bddaf7d54b2b294182008170fe7431b, type: 3}
+    - {fileID: 2800000, guid: bdca38662be36e44abdde0f7dc3f6367, type: 3}
+    - {fileID: 2800000, guid: bf3e839adf86ec84cafb46b4913adc46, type: 3}
+    - {fileID: 2800000, guid: 86f60115afcd21c48ad2b58870595409, type: 3}
+    - {fileID: 2800000, guid: ff7c4a8de3011fa41bb381dc93c42467, type: 3}
+    - {fileID: 2800000, guid: 586a0cfe7fe81f44ba632ea726ee2536, type: 3}
+    - {fileID: 2800000, guid: 470f3acec6b1f4547b067887b7ea4a5f, type: 3}
+    - {fileID: 2800000, guid: 8f4e7d0e8efa0474fb1a9527b3b8701a, type: 3}
+    - {fileID: 2800000, guid: d3e32b5354b332c42b3412bb85970257, type: 3}
+    - {fileID: 2800000, guid: df790aac7611e2c4598a2dfd4b75bd1f, type: 3}
+    - {fileID: 2800000, guid: d61f002ca0640784aaa1d68335aa5801, type: 3}
+    - {fileID: 2800000, guid: b40e93a97ce954643bb03ee3b63db917, type: 3}
+    - {fileID: 2800000, guid: a8e7e15857a073d4cbcf37f3f86b2ede, type: 3}
+    - {fileID: 2800000, guid: 50bed7a02e42ca94fadcb1bb021a7cbc, type: 3}
+    totalSpriteSurfaceArea: 2137200
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 19a42b7027bbd7543b1b608806e7e9f8, type: 3}
+  - {fileID: 21300000, guid: 50bed7a02e42ca94fadcb1bb021a7cbc, type: 3}
+  - {fileID: 21300000, guid: b88476619ea3e2d439f3e9de11a8c3c4, type: 3}
+  - {fileID: -7510236470661037842, guid: b593c00373f845d4dac4db35ea8bcb81, type: 3}
+  - {fileID: -7039379986221038198, guid: d3e32b5354b332c42b3412bb85970257, type: 3}
+  - {fileID: 21300000, guid: 4f31bd73491bdac4db5d837968317c85, type: 3}
+  - {fileID: 21300000, guid: 86f60115afcd21c48ad2b58870595409, type: 3}
+  - {fileID: 21300000, guid: bdca38662be36e44abdde0f7dc3f6367, type: 3}
+  - {fileID: -3229463910604819170, guid: a8e7e15857a073d4cbcf37f3f86b2ede, type: 3}
+  - {fileID: -5174414602752427666, guid: b40e93a97ce954643bb03ee3b63db917, type: 3}
+  - {fileID: 21300000, guid: bf3e839adf86ec84cafb46b4913adc46, type: 3}
+  - {fileID: 8933924339877654570, guid: d61f002ca0640784aaa1d68335aa5801, type: 3}
+  - {fileID: 21300000, guid: df790aac7611e2c4598a2dfd4b75bd1f, type: 3}
+  - {fileID: 21300000, guid: 8a5d914d1b6491b4fb9d1eb01efe5504, type: 3}
+  - {fileID: 8568600500119769900, guid: 7bddaf7d54b2b294182008170fe7431b, type: 3}
+  - {fileID: 21300000, guid: ff7c4a8de3011fa41bb381dc93c42467, type: 3}
+  - {fileID: -5046820477371218266, guid: 8f4e7d0e8efa0474fb1a9527b3b8701a, type: 3}
+  - {fileID: 21300000, guid: 470f3acec6b1f4547b067887b7ea4a5f, type: 3}
+  - {fileID: 21300000, guid: 586a0cfe7fe81f44ba632ea726ee2536, type: 3}
+  - {fileID: 21300000, guid: 0e54edbf3cbc9464ebf0282ef4bf98e3, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - plusbutton
+  - xbutton
+  - shopbolts1
+  - shopbg_0
+  - shopitembuttonholder_0
+  - shopbolts3
+  - shopcoins2
+  - shopcoin
+  - shoptabselected_0
+  - shoptabholder_0
+  - shopcoins1
+  - shoptab_0
+  - shopskin
+  - shopbolts2
+  - shopbuybutton_0
+  - shopcoins3
+  - shopitembutton_0
+  - shopitem
+  - shopcurrency
+  - minusbutton
+  m_RenderDataMap: {}
+  m_Tag: Shop_Atlas
+  m_IsVariant: 0
