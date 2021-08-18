@@ -86,13 +86,13 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Header("SFX Related")]
     [Tooltip("Sound effect used for this obstacle.")]
-    [SerializeField] AudioClip soundToPlay;
+    [SerializeField] protected AudioClip soundToPlay;
     [Tooltip("Whether or not this sound will loop.")]
-    [SerializeField] bool willLoop;
+    [SerializeField] protected bool willLoop;
     [Tooltip("Does this sound effect play at a specific time or as soon as the obstacle is on screen?")]
-    [SerializeField] bool playOnStart;
+    [SerializeField] protected bool playOnStart;
     [Tooltip("Does this need to be louder or softer than 0.1f? MAX VALUE SHOULD BE 1.")]
-    [SerializeField] float volumeOverride;
+    [SerializeField] protected float volumeOverride;
     bool hasPlayedYet;
     int audioManagerReferenceNum;
 
@@ -336,7 +336,17 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     public void playSoundExternally(float volumeOverride = 0.1f)
     {
+        if(volumeOverride <= 0 || volumeOverride > 1)
+        {
+            volumeOverride = 0.1f;
+        }
+
         Audio_Manager.Instance.playSFX(soundToPlay, false, volumeOverride);
+    }
+
+    public void playSoundExternally(AudioClip clipToPlay, float volumeOverride = 0.1f)
+    {
+        Audio_Manager.Instance.playSFX(clipToPlay, false, volumeOverride);
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
