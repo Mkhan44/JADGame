@@ -31,7 +31,7 @@ Transform:
   m_GameObject: {fileID: 4158279202637467101}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.55, y: 0.55, z: 0.55}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -111,8 +111,9 @@ MonoBehaviour:
   theEra: 0
   soundToPlay: {fileID: 8300000, guid: eb491396ef5ec2a4c8a0845c59db07fa, type: 3}
   willLoop: 0
-  playOnStart: 1
+  playOnStart: 0
   volumeOverride: 0.2
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

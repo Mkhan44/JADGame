@@ -95,6 +95,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     [SerializeField] protected float volumeOverride;
     bool hasPlayedYet;
     int audioManagerReferenceNum;
+    [SerializeField] protected List<AudioClip> extraAudioClips = new List<AudioClip>();
 
     bool madeToEnd = false;
     protected virtual void Awake()
@@ -336,17 +337,26 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     public void playSoundExternally(float volumeOverride = 0.1f)
     {
-        if(volumeOverride <= 0 || volumeOverride > 1)
+    
+        if (volumeOverride <= 0 || volumeOverride > 1)
         {
             volumeOverride = 0.1f;
         }
 
         Audio_Manager.Instance.playSFX(soundToPlay, false, volumeOverride);
+        
+
+       
     }
 
-    public void playSoundExternally(AudioClip clipToPlay, float volumeOverride = 0.1f)
+    //Usually will fire this from an animation event.
+    public void playExtraSound(AudioClip clipToPlay)
     {
-        Audio_Manager.Instance.playSFX(clipToPlay, false, volumeOverride);
+        if(onScreenIndicator)
+        {
+            Audio_Manager.Instance.playSFX(clipToPlay, false);
+        }
+        
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
