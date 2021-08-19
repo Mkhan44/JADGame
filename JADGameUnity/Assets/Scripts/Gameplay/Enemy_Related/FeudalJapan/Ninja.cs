@@ -23,6 +23,8 @@ public class Ninja : Obstacle_Behaviour
     const string teleportVar = "TeleportVar";
     bool inCoroutine;
 
+    [SerializeField] AudioClip ninjaTeleSound;
+
     protected override void Awake()
     {
         base.Awake();
@@ -42,7 +44,7 @@ public class Ninja : Obstacle_Behaviour
         this.transform.rotation = Quaternion.Euler(rot);
         thisRigid.gravityScale = 30;
         elapsedTime = 0f;
-        teleTimeCo = StartCoroutine(timeBetweenTele());
+       // teleTimeCo = StartCoroutine(timeBetweenTele());
         base.OnObjectSpawn();
     }
 
@@ -63,6 +65,11 @@ public class Ninja : Obstacle_Behaviour
 
     IEnumerator timeBetweenTele()
     {
+        if(!onScreenIndicator)
+        {
+            yield break;
+        }
+
         float tempTeleRate = teleportRate;
         //If the Ninja has already teleported once, we can make it so the next teleport happens potentially faster. A bit of fun extra RNG...I mean challenge xD.
         if(numTeleportsLeft < maxNumTeleports)
@@ -95,37 +102,62 @@ public class Ninja : Obstacle_Behaviour
         elapsedTime = 0f;
         ninjaAnimator.SetBool(IsTeleporting, true);
         ninjaAnimator.SetInteger(teleportVar, 1);
+        
         speed = 0f;
         float tempIncreaseRate = 0f;
         float ogIncreaseRate = increaseRate;
         increaseRate = tempIncreaseRate;
-
         bool animDone = false;
+        float aniTimeDis = 0f;
+        float aniTimeRea = 0f;
+        AnimationClip ninjaDis = ninjaAnimator.runtimeAnimatorController.animationClips[1];
+        AnimationClip ninjaRea = ninjaAnimator.runtimeAnimatorController.animationClips[2];
 
         //Move ninja to top if it's at bottom, bottom if it's at top.
-        while(!animDone)
+        aniTimeDis = ninjaDis.length;
+
+        yield return new WaitForSeconds(aniTimeDis - 0.3f);
+
+        flipSprite();
+
+       // yield return new WaitForSeconds(0.3f);
+        
+        /*
+        while (!animDone)
         {
             if(ninjaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ninjadisappear"))
             {
                 animDone = true;
+               // Audio_Manager.Instance.playSFX(soundToPlay);
                 flipSprite();
             }
             yield return null;
         }
 
         animDone = false;
+        */
 
         ninjaAnimator.SetBool(IsTeleporting, false);
 
+        aniTimeRea = ninjaRea.length;
+       // Debug.Log(ninjaRea.name);
+
+        yield return new WaitForSeconds(aniTimeRea);
+
+        increaseRate = ogIncreaseRate;
+
+        /*
         while (!animDone)
         {
             if(ninjaAnimator.GetCurrentAnimatorStateInfo(0).IsName("ninjareappear"))
             {
                 animDone = true;
+               // Audio_Manager.Instance.playSFX(soundToPlay);
                 increaseRate = ogIncreaseRate;
             }
             yield return null;
         }
+        */
         speed = maxSpeed-1f;
 
         ninjaAnimator.SetInteger(teleportVar, 0);

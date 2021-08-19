@@ -290,13 +290,14 @@ MonoBehaviour:
   extraCollider: {fileID: 0}
   objectElement: 0
   thisObstacleDiff: 0
-  thisType: 2
+  thisType: 3
   scoreValue: 0
   theEra: 0
   soundToPlay: {fileID: 8300000, guid: 5c5b7aa9e2c541540a159934136fff41, type: 3}
   willLoop: 0
   playOnStart: 0
   volumeOverride: 0
+  extraAudioClips: []
 --- !u!50 &-7846552888174590250
 Rigidbody2D:
   serializedVersion: 4

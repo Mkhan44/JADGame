@@ -114,8 +114,9 @@ MonoBehaviour:
   volumeOverride: 0
   ninjaAnimator: {fileID: 5857835583463249108}
   elapsedTime: 0
-  teleportRate: 2
+  teleportRate: 0.8
   maxNumTeleports: 2
+  ninjaTeleSound: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

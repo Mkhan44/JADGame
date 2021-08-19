@@ -64,6 +64,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     {
         obstacle,
         coin,
+        bolt,
         chest,
         timePortal
     }
@@ -86,15 +87,16 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     [Header("SFX Related")]
     [Tooltip("Sound effect used for this obstacle.")]
-    [SerializeField] AudioClip soundToPlay;
+    [SerializeField] protected AudioClip soundToPlay;
     [Tooltip("Whether or not this sound will loop.")]
-    [SerializeField] bool willLoop;
+    [SerializeField] protected bool willLoop;
     [Tooltip("Does this sound effect play at a specific time or as soon as the obstacle is on screen?")]
-    [SerializeField] bool playOnStart;
+    [SerializeField] protected bool playOnStart;
     [Tooltip("Does this need to be louder or softer than 0.1f? MAX VALUE SHOULD BE 1.")]
-    [SerializeField] float volumeOverride;
+    [SerializeField] protected float volumeOverride;
     bool hasPlayedYet;
     int audioManagerReferenceNum;
+    [SerializeField] protected List<AudioClip> extraAudioClips = new List<AudioClip>();
 
     bool madeToEnd = false;
     protected virtual void Awake()
@@ -336,7 +338,26 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
     public void playSoundExternally(float volumeOverride = 0.1f)
     {
+    
+        if (volumeOverride <= 0 || volumeOverride > 1)
+        {
+            volumeOverride = 0.1f;
+        }
+
         Audio_Manager.Instance.playSFX(soundToPlay, false, volumeOverride);
+        
+
+       
+    }
+
+    //Usually will fire this from an animation event.
+    public void playExtraSound(AudioClip clipToPlay)
+    {
+        if(onScreenIndicator)
+        {
+            Audio_Manager.Instance.playSFX(clipToPlay, false);
+        }
+        
     }
 
     protected virtual void OnCollisionEnter2D(Collision2D collision)
@@ -394,7 +415,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 Level_Manager.Instance.indicatorArrow(spawnPoint);
             }
         }
-      if(thisType == typeOfObstacle.coin)
+      if(thisType == typeOfObstacle.coin || thisType == typeOfObstacle.bolt)
         {
             if(collision.gameObject.tag == "Despawner")
             {

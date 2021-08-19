@@ -100,7 +100,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 4.9
+  maxSpeed: 5.2
   spawnPoint: 2
   extraCollider: {fileID: 0}
   objectElement: 0
@@ -110,7 +110,9 @@ MonoBehaviour:
   theEra: 0
   soundToPlay: {fileID: 8300000, guid: b24090c6a0f9e2248aa175b77fe6400b, type: 3}
   willLoop: 0
-  playOnStart: 1
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

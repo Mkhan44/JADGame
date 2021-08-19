@@ -101,7 +101,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 3.5
+  maxSpeed: 3.7
   spawnPoint: 2
   extraCollider: {fileID: 0}
   objectElement: 0
@@ -111,8 +111,9 @@ MonoBehaviour:
   theEra: 0
   soundToPlay: {fileID: 8300000, guid: 8c7198b789555a14f9bb11ac96276110, type: 3}
   willLoop: 0
-  playOnStart: 1
-  volumeOverride: 0.3
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,15 +190,14 @@ GameObject:
   m_Component:
   - component: {fileID: 8506085569883557627}
   - component: {fileID: 1688832994807449832}
-  - component: {fileID: 2338935615138819874}
   - component: {fileID: 518205088904271347}
   m_Layer: 6
-  m_Name: Spike_FeudalJapan_Med
-  m_TagString: Obstacle
+  m_Name: Spike_FeudalJapan_Medium1
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8506085569883557627
 Transform:
   m_ObjectHideFlags: 0
@@ -231,7 +231,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 35f395b2fa7748648867a029eb5b52f3, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -263,32 +263,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2338935615138819874
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8609379887165647871}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0.026426151, y: 1.4265076}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.2, y: 3.2}
-    newSize: {x: 0.8, y: 4}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 0.14987078, y: 0.3530805}
-  m_EdgeRadius: 0
 --- !u!95 &518205088904271347
 Animator:
   serializedVersion: 3
@@ -299,7 +273,7 @@ Animator:
   m_GameObject: {fileID: 8609379887165647871}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 22100000, guid: ebf10d26c1849d74ba7207102b000451, type: 2}
+  m_Controller: {fileID: 22100000, guid: a8833dc949a61444bb0376bc2b02cbbf, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
