@@ -727,10 +727,3 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 0.6363636
-    functionName: playExtraSound
-    data: 
-    objectReferenceParameter: {fileID: 8300000, guid: ce75bd0b79f3b3b458ee33d9bf8af4d1, type: 3}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0

@@ -77,8 +77,15 @@ MonoBehaviour:
   waveBonusText: {fileID: 0}
   RPGameOverText: {fileID: 0}
   coinsGameOverText: {fileID: 0}
+  playerGameoverSpin: {fileID: 0}
+  playerGameoverSpinAnimator: {fileID: 0}
   TimePeriod: 1
   coinText: {fileID: 0}
+  boltText: {fileID: 0}
+  mutedSprite: {fileID: 0}
+  unmutedSprite: {fileID: 0}
+  muteButtonSprite: {fileID: 0}
+  pausePanel: {fileID: 0}
   itemsThisRun:
   - {fileID: 0}
   - {fileID: 0}
@@ -99,6 +106,18 @@ MonoBehaviour:
   pointMultiplier: 0
   multiplierText: {fileID: 0}
   enemiesDodgedSinceLastMulti: 0
+  jumpSound: {fileID: 0}
+  duckSound: {fileID: 0}
+  magnetizedSound: {fileID: 0}
+  landingSound: {fileID: 0}
+  damageSound: {fileID: 0}
+  burnEnterSound: {fileID: 0}
+  frozenEnterSound: {fileID: 0}
+  deathSound: {fileID: 0}
+  burningDissipateSound: {fileID: 0}
+  frozenBrokenSound: {fileID: 0}
+  RPTallySound: {fileID: 0}
+  coinTallySound: {fileID: 0}
 --- !u!114 &8248098668222182074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -129,8 +148,10 @@ MonoBehaviour:
   enemyCount: 3
   enemiesLeft: 0
   coinPrefab: {fileID: 6894734349349987309, guid: ca65564f3f33d4a43b29a44e5a39314e, type: 3}
-  chestPrefabGround: {fileID: 0}
-  chestPrefabAir: {fileID: 0}
+  boltPrefab: {fileID: 6894734349349987309, guid: 991c1fe1233af6742ad15596ab5c2790, type: 3}
+  chestPrefabGround: {fileID: 8492531496662785174, guid: b9fc91ae0c956474e9e1396315019e94, type: 3}
+  chestPrefabAir: {fileID: 8492531496662785174, guid: 2b0d3f8ecd2924a4fb3840de7670474e, type: 3}
+  coinImg: {fileID: 21300000, guid: 977bfae4e89a98b4bb7fd4bfa2e2134b, type: 3}
   timePortalPrefabs:
   - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
   - {fileID: 2509886699335351895, guid: b0b697d05fd40fc43a093694d22e7283, type: 3}
@@ -147,6 +168,9 @@ MonoBehaviour:
   introTransitionFinished: 0
   fadePanel: {fileID: 0}
   thePlayer: {fileID: 0}
+  wavesSinceCollectedBolt: 0
+  itemRouletteSound: {fileID: 0}
+  itemGetSound: {fileID: 0}
 --- !u!114 &8248098668222182069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -411,6 +435,8 @@ MonoBehaviour:
   - listName: Treasure
     wrappedList:
     - prefab: {fileID: 6894734349349987309, guid: ca65564f3f33d4a43b29a44e5a39314e, type: 3}
+      size: 100
+    - prefab: {fileID: 6894734349349987309, guid: 991c1fe1233af6742ad15596ab5c2790, type: 3}
       size: 100
   - listName: Tutorial
     wrappedList:

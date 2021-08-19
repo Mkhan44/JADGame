@@ -91,6 +91,7 @@ public class Level_Manager : MonoBehaviour
     int totalScore = 0;
     int waveBonus = 0;
     int finalCoins = 0;
+    int finalBolts = 0;
 
     bool isPaused;
 
@@ -128,7 +129,10 @@ public class Level_Manager : MonoBehaviour
     [Header("UI MISC related.")]
     [Tooltip("Text that displays the number of coins the user has collected during this play session.")]
     public TextMeshProUGUI coinText;
+    [Tooltip("Text that displays the number of bolts the user has collected during this play session.")]
+    public TextMeshProUGUI boltText;
     int coinsCollected;
+    int boltsCollected;
     [SerializeField] Sprite mutedSprite;
     [SerializeField] Sprite unmutedSprite;
     [SerializeField] Image muteButtonSprite;
@@ -169,6 +173,7 @@ public class Level_Manager : MonoBehaviour
     Coroutine decreaseIceMeterRoutine;
     Coroutine scoreCountRoutine;
     Coroutine coinCountRoutine;
+    Coroutine boltCountRoutine;
     Coroutine finalTallyRoutine;
     Coroutine decreaseHeatIdleRoutine;
     Coroutine decreaseIceIdleRoutine;
@@ -345,9 +350,11 @@ public class Level_Manager : MonoBehaviour
         coolDownButton.gameObject.SetActive(false);
         coinsCollected = 0;
         coinText.text = " : " + coinsCollected.ToString();
+        boltText.text = " : " + boltsCollected.ToString();
 
         useDurationText.text = "No item in use.";
         scoreText.text = "Score: 0";
+
         pointMultiplier = 1;
         multiplierText.text = pointMultiplier.ToString() + "x";
         enemiesDodgedSinceLastMulti = 0;
@@ -1152,6 +1159,41 @@ public class Level_Manager : MonoBehaviour
         yield return null;
     }
 
+    public void collectBolt(int amount)
+    {
+        int scoreIncrease = (amount * 100);
+        updateScore(scoreIncrease);
+
+        int tempCollected = boltsCollected;
+        boltsCollected += amount;
+        if(amount > 1)
+        {
+            if(boltCountRoutine != null)
+            {
+                StopCoroutine(boltCountRoutine);
+                boltCountRoutine = null;
+            }
+            boltCountRoutine = StartCoroutine(boltAni(tempCollected, boltsCollected));
+        }
+        else
+        {
+            boltText.text = " : " + boltsCollected.ToString();
+        }
+    }
+
+    IEnumerator boltAni(int incomingAmt, int newAmt)
+    {
+        boltText.text = " : " + incomingAmt.ToString();
+        while (incomingAmt < newAmt)
+        {
+            yield return new WaitForSeconds(0.01f * Time.deltaTime);
+            incomingAmt += 1;
+            boltText.text = " : " + incomingAmt.ToString();
+        }
+
+        yield return null;
+    }
+
     //We'll need this to send values over to the different meters based on what the Player's current fill rate is.
     public void setMeterRates()
     {
@@ -1861,6 +1903,7 @@ public class Level_Manager : MonoBehaviour
         int extraCoins = totalScore / 1000;
 
         finalCoins = coinsCollected + extraCoins;
+        finalBolts = boltsCollected;
 
         //coinsGameOverText.text = "X " + finalCoins;
 
@@ -1868,6 +1911,7 @@ public class Level_Manager : MonoBehaviour
         skipTallyButtonP.SetActive(true);
         coinsCollected = finalCoins;
         Collect_Manager.instance.totalCoins += coinsCollected;
+        Collect_Manager.instance.totalBolts += boltsCollected;
         currentScore = totalScore;
         checkFinalScore();
         SaveCollectables();

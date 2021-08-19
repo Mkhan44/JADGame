@@ -80,6 +80,9 @@ public class Wave_Spawner : MonoBehaviour
     [Tooltip("Prefab of a coin that we will be spawning in.")]
     public GameObject coinPrefab;
 
+    [Tooltip("Prefab of bolt that we will be spawning in.")]
+    public GameObject boltPrefab;
+
     [Tooltip("Prefabs for treasure chests that will spawn in.")]
     public GameObject chestPrefabGround;
     public GameObject chestPrefabAir;
@@ -114,6 +117,9 @@ public class Wave_Spawner : MonoBehaviour
     bool stopCo;
 
     bool lastEnemySpawnedCoins;
+
+    public int wavesSinceCollectedBolt;
+    bool attemptedToSpawnBoltThisWave;
 
 
     //Variance on waves related things.
@@ -189,6 +195,8 @@ public class Wave_Spawner : MonoBehaviour
         waveCount = 1;
         wavesSinceBonus = 0;
         wavesSinceTimeSwap = 0;
+        wavesSinceCollectedBolt = 0;
+        attemptedToSpawnBoltThisWave = false;
         stopCo = false;
         lastEnemySpawnedCoins = false;
         theWaveDiff = waveDiff.easy;
@@ -483,10 +491,30 @@ public class Wave_Spawner : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Not spawning in coins since we spawned them on the last enemy.");
+                   // Debug.Log("Not spawning in coins since we spawned them on the last enemy.");
                     lastEnemySpawnedCoins = false;
                 }
-              
+
+                //Spawning in Bolt for player to try and pick up.
+
+                Debug.Log("wavesSinceCollectedBolt = " + wavesSinceCollectedBolt);
+                if (wavesSinceCollectedBolt >= 2)
+                {
+                
+                    int rndBoltSpawn = Random.Range(0, 3);
+                    int chanceToSpawn = Random.Range(0, 3);
+
+
+                    //Debug
+                    chanceToSpawn = 2;
+                    if(chanceToSpawn > 0 && !attemptedToSpawnBoltThisWave)
+                    {
+                        attemptedToSpawnBoltThisWave = true;
+                        StartCoroutine(boltSpawn(rndBoltSpawn));
+                    }
+
+                  
+                }
 
                 //If there are too many enemies on screen maybe have some delay here instead of just static at the spawnRate value???
                 yield return new WaitForSeconds(spawnRate);
@@ -508,6 +536,8 @@ public class Wave_Spawner : MonoBehaviour
             waveCount += 1;
             Level_Manager.Instance.setWavesSurvived((waveCount - 1));
             wavesSinceDifficultyChange += 1;
+            wavesSinceCollectedBolt += 1;
+            attemptedToSpawnBoltThisWave = false;
         }
         else if(theWaveType == typeOfWave.bonus)
         {
@@ -583,8 +613,12 @@ public class Wave_Spawner : MonoBehaviour
         //TimerPortal wave spawn.
         if (!specialWaveOn && waveType != typeOfWave.bonus)
         {
-            wavesSinceTimeSwap++;
-            Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
+            if(theWaveDiff == waveDiff.hardPause)
+            {
+                wavesSinceTimeSwap++;
+                Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
+            }
+           
             if (wavesSinceTimeSwap > 2 && theWaveDiff == waveDiff.hardPause)
             {
                 
@@ -638,6 +672,29 @@ public class Wave_Spawner : MonoBehaviour
            
         }
         
+    }
+
+    public IEnumerator boltSpawn(int rndSpawn)
+    {
+        Debug.Log("Spawning in a bolt!");
+
+        yield return new WaitForSeconds(0.5f);
+
+        if(rndSpawn == 0)
+        {
+            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
+        }
+        else if(rndSpawn == 1)
+        {
+            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[1].transform.position, spawnPoints[1].transform.rotation);
+        }
+        else
+        {
+            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
+        }
+         
+
+        yield return null;
     }
 
     //For bonus wave.

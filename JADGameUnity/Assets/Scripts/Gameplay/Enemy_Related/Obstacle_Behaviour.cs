@@ -64,6 +64,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     {
         obstacle,
         coin,
+        bolt,
         chest,
         timePortal
     }
@@ -414,7 +415,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 Level_Manager.Instance.indicatorArrow(spawnPoint);
             }
         }
-      if(thisType == typeOfObstacle.coin)
+      if(thisType == typeOfObstacle.coin || thisType == typeOfObstacle.bolt)
         {
             if(collision.gameObject.tag == "Despawner")
             {

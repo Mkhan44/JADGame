@@ -111,7 +111,7 @@ MonoBehaviour:
   theEra: 0
   soundToPlay: {fileID: 8300000, guid: eb491396ef5ec2a4c8a0845c59db07fa, type: 3}
   willLoop: 0
-  playOnStart: 1
+  playOnStart: 0
   volumeOverride: 0.2
   extraAudioClips: []
 --- !u!61 &8160921082443146840

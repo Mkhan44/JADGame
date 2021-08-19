@@ -162,8 +162,19 @@ public class Player : MonoBehaviour
             Object_Pooler.Instance.AddToPool(theTrigger.gameObject);
             //Destroy(theTrigger.gameObject);
         }
+        else if (theTrigger.gameObject.tag == "Bolt")
+        {
+            //Give the player bolts based on the current multiplier.
+            int multiplier = Level_Manager.Instance.getMultiplier();
+            Level_Manager.Instance.collectBolt(multiplier);
+            theTrigger.gameObject.transform.position = new Vector2(theTrigger.gameObject.transform.position.x + 10, theTrigger.gameObject.transform.position.y);
+            theTrigger.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            theTrigger.gameObject.GetComponent<Obstacle_Behaviour>().playSoundExternally();
+            Wave_Spawner.Instance.wavesSinceCollectedBolt = 0;
+            Object_Pooler.Instance.AddToPool(theTrigger.gameObject);
+        }
 
-  
+
     }
 
  
@@ -193,6 +204,7 @@ public class Player : MonoBehaviour
             }
             Level_Manager.Instance.Damage();
         }
+        /*
         else if (collision.gameObject.tag == "Coin")
         {
             // Debug.Log("Collected the coin!");
@@ -201,6 +213,15 @@ public class Player : MonoBehaviour
             Object_Pooler.Instance.AddToPool(collision.gameObject);
             //Destroy(theTrigger.gameObject);
         }
+        else if(collision.gameObject.tag == "Bolt")
+        {
+            //Give the player bolts based on the current multiplier.
+            int multiplier = Level_Manager.Instance.getMultiplier();
+            Level_Manager.Instance.collectBolt(multiplier);
+            collision.gameObject.GetComponent<Obstacle_Behaviour>().playSoundExternally();
+            Wave_Spawner.Instance.wavesSinceCollectedBolt = 0;
+        }
+        */
 
         if (collision.gameObject.tag == "Ground")
         {

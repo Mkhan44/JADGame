@@ -111,6 +111,8 @@ MonoBehaviour:
   soundToPlay: {fileID: 8300000, guid: b5e8ad0fd606acc4ba3ff7d5f60eb990, type: 3}
   willLoop: 1
   playOnStart: 1
+  volumeOverride: 0
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
