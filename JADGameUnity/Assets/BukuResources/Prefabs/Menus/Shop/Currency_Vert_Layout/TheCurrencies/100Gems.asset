@@ -16,7 +16,10 @@ MonoBehaviour:
   theName: 100 Gems
   description: Get 100 gems instantly!
   coinPrice: 0
-  collectManagerNumString: 
-  gemPrice: 0
-  skinIndex: 0
+  theItem: 5
+  boltPrice: 0
+  thisSkinType: 0
   currencyUSD: 5.99
+  hasDuration: 0
+  duration: 0
+  waveCooldown: 0
