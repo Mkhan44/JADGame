@@ -112,7 +112,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
             //CHECK IF THIS GETS CALLED EVERYTIME...WE DON'T WANT TO KEEP SPAMMING THE PLAYER WITH 1000...THOUGH THIS IS A CONSUMABLE SO I DON'T THINK IT SHOULD.
             Collect_Manager.instance.totalCoins += 1000;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            coinText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
+            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
 
         }
         else
@@ -129,7 +129,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         
             Collect_Manager.instance.totalCoins += 11000;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            coinText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
+            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
 
         }
         else

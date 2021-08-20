@@ -44,8 +44,8 @@ public class Vertical_Layout_Formatter : MonoBehaviour
 
     private void Start()
     {
-        coinsTotalText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
-        gemsTotalText.text = "My Bolts: " + Collect_Manager.instance.totalBolts.ToString();
+        coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+        gemsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
 
         for (int i = 0; i < itemsForSale.Count; i++)
@@ -64,6 +64,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
             Image tempGemImg = tempSpawn.transform.GetChild(7).GetComponent<Image>();
             TextMeshProUGUI tempGemCostText = tempSpawn.transform.GetChild(8).GetComponent<TextMeshProUGUI>();
             TextMeshProUGUI tempCurrencyCostText = tempSpawn.transform.GetChild(9).GetComponent<TextMeshProUGUI>();
+            TextMeshProUGUI tempORText = tempSpawn.transform.GetChild(10).GetComponent<TextMeshProUGUI>();
 
             tempImg.sprite = itemsForSale[i].itemImage;
             tempName.text = itemsForSale[i].theName;
@@ -92,8 +93,9 @@ public class Vertical_Layout_Formatter : MonoBehaviour
 
         
                 tempPlayerOwnedText.text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[i].theItem);
-                
-             
+                tempORText.gameObject.SetActive(false);
+
+
             }
             else if(thisTab == WhichTabAreWeOn.Skins)
             {
@@ -136,6 +138,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
                 tempCoinCostText.gameObject.SetActive(false);
                 tempGemCostText.gameObject.SetActive(false);
                 tempPlayerOwnedText.gameObject.SetActive(false);
+                tempORText.gameObject.SetActive(false);
                 tempCurrencyCostText.text = "$" + itemsForSale[i].currencyUSD + " USD"; 
             }
 
@@ -150,8 +153,8 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     public void changeText(int indexOfItem)
     {
         tempTextMeshList[indexOfItem].text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[indexOfItem].theItem);
-        coinsTotalText.text = "My Coins: " + Collect_Manager.instance.totalCoins.ToString();
-        gemsTotalText.text = "My Bolts: " + Collect_Manager.instance.totalBolts.ToString();
+        coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+        gemsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
     }
 
     public void ScrollToTop()

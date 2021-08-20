@@ -507,7 +507,9 @@ public class Wave_Spawner : MonoBehaviour
 
                     //Debug
                     chanceToSpawn = 2;
-                    if(chanceToSpawn > 0 && !attemptedToSpawnBoltThisWave)
+
+                    //Make sure lastEnemySpawnedCoins so that we don't overlap with coins with the bolt.
+                    if(chanceToSpawn > 0 && !attemptedToSpawnBoltThisWave && lastEnemySpawnedCoins)
                     {
                         attemptedToSpawnBoltThisWave = true;
                         StartCoroutine(boltSpawn(rndBoltSpawn));

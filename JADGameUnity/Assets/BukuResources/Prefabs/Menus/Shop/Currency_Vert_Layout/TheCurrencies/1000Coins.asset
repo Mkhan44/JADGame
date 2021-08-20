@@ -16,7 +16,10 @@ MonoBehaviour:
   theName: 1000 Coins
   description: Get 1000 coins instantly!
   coinPrice: 0
-  collectManagerNumString: 
-  gemPrice: 0
-  skinIndex: 0
+  theItem: 5
+  boltPrice: 0
+  thisSkinType: 0
   currencyUSD: 1.99
+  hasDuration: 0
+  duration: 0
+  waveCooldown: 0
