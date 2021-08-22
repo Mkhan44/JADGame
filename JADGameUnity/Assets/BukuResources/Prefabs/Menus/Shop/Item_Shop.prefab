@@ -5710,6 +5710,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1158653828}
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
+      propertyPath: itemsForSale.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: purchaseWithBoltsButton
       value: 
       objectReference: {fileID: 832344419}
@@ -5720,7 +5724,7 @@ PrefabInstance:
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: itemsForSale.Array.data[2]
       value: 
-      objectReference: {fileID: 11400000, guid: ea1992becb1fa1c47acae0a1eacc47b5, type: 2}
+      objectReference: {fileID: 11400000, guid: b14db6405c152c546b8dcfea8043b6b2, type: 2}
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: itemsForSale.Array.data[3]
       value: 

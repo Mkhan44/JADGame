@@ -44,6 +44,7 @@ public class Collect_Manager : MonoBehaviour
         AverageJoanne,
         Elincia,
         Crek,
+        Kitsune,
         Dummy,
     }
 

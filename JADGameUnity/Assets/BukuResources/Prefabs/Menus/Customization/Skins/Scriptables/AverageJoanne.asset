@@ -15,4 +15,4 @@ MonoBehaviour:
   skinSprite: {fileID: 21300000, guid: fbf73eb3a2f79494b93dccfea8996e42, type: 3}
   animationOverrideController: {fileID: 22100000, guid: e30b50ce74aae0e47918d03a51600d34, type: 2}
   thisSkinType: 1
-  skinIcon: {fileID: 21300000, guid: ab72ad76f838d974a8e41f8af1d20560, type: 3}
+  skinIcon: {fileID: 21300000, guid: a6b92c8eeec78c84b87a2f73f6647b18, type: 3}
