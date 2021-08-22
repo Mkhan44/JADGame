@@ -22,6 +22,10 @@ public class IAPManager : MonoBehaviour, IStoreListener
    // private string removeAds = "remove_ads_lifesadrag";
     private const string coins1000 = "coins1000rprt";
     private const string coins10000 = "coins10000rprt";
+    private const string coins100000 = "coins100000rprt";
+    private const string bolts100 = "bolts100rprt";
+    private const string bolts500 = "bolts500rprt";
+    private const string bolts1000 = "bolts1000rprt";
 
     //************************** Adjust these methods **************************************
     public void InitializePurchasing()
@@ -35,6 +39,10 @@ public class IAPManager : MonoBehaviour, IStoreListener
         //builder.AddProduct(removeAds, ProductType.NonConsumable);
         builder.AddProduct(coins1000, ProductType.Consumable);
         builder.AddProduct(coins10000, ProductType.Consumable);
+        builder.AddProduct(coins100000, ProductType.Consumable);
+        builder.AddProduct(bolts100, ProductType.Consumable);
+        builder.AddProduct(bolts500, ProductType.Consumable);
+        builder.AddProduct(bolts1000, ProductType.Consumable);
 
         UnityPurchasing.Initialize(this, builder);
     }
@@ -61,6 +69,24 @@ public class IAPManager : MonoBehaviour, IStoreListener
     public void buyCoins10000()
     {
         BuyProductID(coins10000);
+    }
+
+    public void buyCoins100000()
+    {
+        BuyProductID(coins100000);
+    }
+
+    public void buyBolts100()
+    {
+        BuyProductID(bolts100);
+    }
+    public void buyBolts500()
+    {
+        BuyProductID(bolts500);
+    }
+    public void buyBolts1000()
+    {
+        BuyProductID(bolts1000);
     }
 
 
@@ -137,7 +163,71 @@ public class IAPManager : MonoBehaviour, IStoreListener
             Debug.Log("Purchase Failed");
         }
 
+        //100000 Coins
+        if (String.Equals(args.purchasedProduct.definition.id, coins100000, StringComparison.Ordinal))
+        {
+            //Need a reference to playerprefs or something to ensure that player now has no ads.
+            Debug.Log("You bought 100000 coins! Got 10000 bonus!");
 
+
+            Collect_Manager.instance.totalCoins += 110000;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+
+        }
+        else
+        {
+            Debug.Log("Purchase Failed");
+        }
+
+        //100 Bolts
+        if (String.Equals(args.purchasedProduct.definition.id, bolts100, StringComparison.Ordinal))
+        {
+            //Need a reference to playerprefs or something to ensure that player now has no ads.
+            Debug.Log("You bought 100 bolts!");
+
+            Collect_Manager.instance.totalBolts += 100;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+
+        }
+        else
+        {
+            Debug.Log("Purchase Failed");
+        }
+
+        //500 Bolts
+        if (String.Equals(args.purchasedProduct.definition.id, bolts500, StringComparison.Ordinal))
+        {
+            //Need a reference to playerprefs or something to ensure that player now has no ads.
+            Debug.Log("You bought 500 bolts! Got 100 bonus bolts!");
+
+            Collect_Manager.instance.totalBolts += 600;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+
+        }
+        else
+        {
+            Debug.Log("Purchase Failed");
+        }
+
+
+        //1000 Bolts
+        if (String.Equals(args.purchasedProduct.definition.id, bolts1000, StringComparison.Ordinal))
+        {
+            //Need a reference to playerprefs or something to ensure that player now has no ads.
+            Debug.Log("You bought 1000 bolts! Got 500 bonus bolts!");
+
+            Collect_Manager.instance.totalBolts += 1500;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+
+        }
+        else
+        {
+            Debug.Log("Purchase Failed");
+        }
 
         return PurchaseProcessingResult.Complete;
     }

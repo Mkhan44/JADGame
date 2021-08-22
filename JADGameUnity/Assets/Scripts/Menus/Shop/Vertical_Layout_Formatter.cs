@@ -34,7 +34,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     List<TextMeshProUGUI> tempTextMeshList = new List<TextMeshProUGUI>();
 
     public TextMeshProUGUI coinsTotalText;
-    public TextMeshProUGUI gemsTotalText;
+    public TextMeshProUGUI boltsTotalText;
 
     //Skin related purchase stuff.
     public Button purchaseWithCoinsButton;
@@ -45,7 +45,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     private void Start()
     {
         coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
-        gemsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+        boltsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
 
         for (int i = 0; i < itemsForSale.Count; i++)
@@ -154,7 +154,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     {
         tempTextMeshList[indexOfItem].text = "You own: " + Collect_Manager.instance.numPlayerOwns(itemsForSale[indexOfItem].theItem);
         coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
-        gemsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+        boltsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
     }
 
     public void ScrollToTop()
@@ -168,8 +168,8 @@ public class Vertical_Layout_Formatter : MonoBehaviour
         closeShopButton.interactable = false;
         purchaseWithCoinsButton.onClick.RemoveAllListeners();
         purchaseWithBoltsButton.onClick.RemoveAllListeners();
-        purchaseWithCoinsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, false, buyButton));
-        purchaseWithBoltsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, true, buyButton));
+        purchaseWithCoinsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, false, buyButton, coinsTotalText));
+        purchaseWithBoltsButton.onClick.AddListener(() => Collect_Manager.instance.purchaseSkin(theItemForSale.thisSkinType, theItemForSale.coinPrice, theItemForSale.boltPrice, true, buyButton, boltsTotalText));
 
     }
 

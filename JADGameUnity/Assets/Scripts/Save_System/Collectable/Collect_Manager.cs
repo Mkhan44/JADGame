@@ -9,6 +9,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Collect_Manager : MonoBehaviour
 {
@@ -108,6 +109,7 @@ public class Collect_Manager : MonoBehaviour
         if (collect != null)
         {
             totalCoins = collect.totalCoins;
+            totalBolts = collect.totalBolts;
             handWarmers = collect.handWarmers;
             numDefrosters = collect.numDefrosters;
             numFireVests = collect.numFireVests;
@@ -306,7 +308,7 @@ public class Collect_Manager : MonoBehaviour
 
     }
 
-    public void purchaseSkin(skinTypes theSkin, int coinCost, int boltCost, bool coinsOrBolts, Button skinBuyButton)
+    public void purchaseSkin(skinTypes theSkin, int coinCost, int boltCost, bool coinsOrBolts, Button skinBuyButton, TextMeshProUGUI playerCurrencyText)
     {
 
         foreach (int i in System.Enum.GetValues(typeof(skinTypes)))
@@ -323,6 +325,7 @@ public class Collect_Manager : MonoBehaviour
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         totalCoins -= coinCost;
+                        playerCurrencyText.text = ": " + totalCoins;
                         skinBuyButton.interactable = false;
                     }
                     else
@@ -337,6 +340,7 @@ public class Collect_Manager : MonoBehaviour
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         totalBolts -= boltCost;
+                        playerCurrencyText.text = ": " + totalBolts;
                         skinBuyButton.interactable = false;
                     }
                     else

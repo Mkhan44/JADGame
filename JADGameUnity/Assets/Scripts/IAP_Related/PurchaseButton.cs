@@ -10,7 +10,12 @@ public class PurchaseButton : MonoBehaviour
     public enum PurchaseType
     {
         coins1000,
-        coins10000
+        coins10000,
+        coins100000,
+        bolts100,
+        bolts500,
+        bolts1000
+
     }
     public PurchaseType purchaseType;
 
@@ -49,6 +54,26 @@ public class PurchaseButton : MonoBehaviour
             case PurchaseType.coins10000:
                 {
                     IAPManager.instance.buyCoins10000();
+                    break;
+                }
+            case PurchaseType.coins100000:
+                {
+                    IAPManager.instance.buyCoins100000();
+                    break;
+                }
+            case PurchaseType.bolts100:
+                {
+                    IAPManager.instance.buyBolts100();
+                    break;
+                }
+            case PurchaseType.bolts500:
+                {
+                    IAPManager.instance.buyBolts500();
+                    break;
+                }
+            case PurchaseType.bolts1000:
+                {
+                    IAPManager.instance.buyBolts1000();
                     break;
                 }
             default:
