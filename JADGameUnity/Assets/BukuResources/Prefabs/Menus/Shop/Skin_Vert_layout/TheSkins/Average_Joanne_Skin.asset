@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c38ee1af1b398d4a9cbc26bcd84673d, type: 3}
-  m_Name: DummySkin
+  m_Name: Average_Joanne_Skin
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 21300000, guid: 1f484c7b4a790464b90af7fa69788965, type: 3}
-  theName: Mystery Skin
-  description: This skin is a mystery!
+  itemImage: {fileID: 21300000, guid: fbf73eb3a2f79494b93dccfea8996e42, type: 3}
+  theName: Average Joanne
+  description: The newest test subject of the Time Twister machine.
   coinPrice: 1000
   theItem: 5
   boltPrice: 100
-  thisSkinType: 5
+  thisSkinType: 1
   currencyUSD: 0
   hasDuration: 0
   duration: 0

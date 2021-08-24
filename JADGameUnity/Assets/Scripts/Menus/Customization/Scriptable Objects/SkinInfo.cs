@@ -22,4 +22,7 @@ public class SkinInfo : ScriptableObject
 
     [Tooltip("The portrait that will be used for the button.")]
     public Sprite skinIcon;
+
+    [Tooltip("Shop info for this skin.")]
+    public Shop_Item shopInfo;
 }

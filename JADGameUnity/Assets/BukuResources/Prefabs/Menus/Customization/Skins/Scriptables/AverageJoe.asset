@@ -16,3 +16,4 @@ MonoBehaviour:
   animationOverrideController: {fileID: 22100000, guid: 55f7d51c91437834cbfab558a9c8aceb, type: 2}
   thisSkinType: 0
   skinIcon: {fileID: 21300000, guid: 5c1dfd0583e2e5049bdd7a47aeea7f5d, type: 3}
+  shopInfo: {fileID: 11400000, guid: a99154bd53a263444ac54a616a121bfe, type: 2}

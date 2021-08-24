@@ -56,6 +56,9 @@ public class Customize_Loadout : MonoBehaviour
 
     [SerializeField] Sprite itemHolderSprite;
 
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI descriptionText;
+
 
     // Start is called before the first frame update
     void Start()
@@ -197,13 +200,16 @@ public class Customize_Loadout : MonoBehaviour
                 {
                     Debug.Log("Hey we're using the default animatorController...is something wrong?");
                     currentSkinHolderAnimator.runtimeAnimatorController = defaultAnimator;
+                  
                 }
                 else
                 {
                     currentSkinHolderAnimator.runtimeAnimatorController = Collect_Manager.instance.skinsToPick[i].animationOverrideController;
                 }
-               
- 
+                nameText.text = Collect_Manager.instance.skinsToPick[i].shopInfo.theName;
+                descriptionText.text = Collect_Manager.instance.skinsToPick[i].shopInfo.description;
+
+
                 break;
             }
         }

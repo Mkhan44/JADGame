@@ -5,6 +5,9 @@ TextureImporter:
   - first:
       213: -7358061564477416813
     second: bottomui_0
+  - first:
+      213: -2344432513084076707
+    second: topui_0
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -44,7 +47,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
+  spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 0
   alignment: 9
@@ -130,22 +133,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: bottomui_0
+      name: topui_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 684
-        height: 261
+        x: 15
+        y: 15
+        width: 720
+        height: 335
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 39a5ed5edf9e2e990800000000000000
-      internalID: -7358061564477416813
+      spriteID: d5d4fb9fc07e67fd0800000000000000
+      internalID: -2344432513084076707
       vertices: []
       indices: 
       edges: []
