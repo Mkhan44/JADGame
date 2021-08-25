@@ -58,25 +58,19 @@ SpriteAtlas:
     - {fileID: 2800000, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
     - {fileID: 2800000, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
     - {fileID: 2800000, guid: 752f258e10aa030428dd0fa2e86cb39f, type: 3}
-    - {fileID: 2800000, guid: 570dcce2ad4c83a48b2b65ec72bc2575, type: 3}
-    - {fileID: 2800000, guid: cdf0dbde560b5374797ff8287db45be3, type: 3}
-    totalSpriteSurfaceArea: 1910704
+    totalSpriteSurfaceArea: 1449504
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 2455513822275430761, guid: 570dcce2ad4c83a48b2b65ec72bc2575, type: 3}
   - {fileID: 4798424233900112988, guid: badc260ac0620e7479489c62e6bd651b, type: 3}
   - {fileID: -3742592120836699101, guid: a4ae404a665ebd545b99ad4f440a3f30, type: 3}
   - {fileID: 2432841075797877238, guid: 752f258e10aa030428dd0fa2e86cb39f, type: 3}
-  - {fileID: -6324316447736752006, guid: cdf0dbde560b5374797ff8287db45be3, type: 3}
   m_PackedSpriteNamesToIndex:
-  - top_0
   - bottomice_0
   - bottom_0
   - gameplaybg
-  - topfire_0
   m_RenderDataMap: {}
   m_Tag: Gameplay_BG_UI_Atlas
   m_IsVariant: 0

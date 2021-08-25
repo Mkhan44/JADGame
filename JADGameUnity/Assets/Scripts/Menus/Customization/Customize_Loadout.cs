@@ -29,6 +29,7 @@ public class Customize_Loadout : MonoBehaviour
 
     //We'll be using this to parent the prefabs.
     public HorizontalLayoutGroup skinScrollableArea;
+    public ScrollRect skinScrollRect;
 
     public Animator currentSkinHolderAnimator;
     public RuntimeAnimatorController defaultAnimator;
@@ -129,8 +130,10 @@ public class Customize_Loadout : MonoBehaviour
         {
             GameObject tempObj = Instantiate(skinSelectPrefab);
             tempObj.transform.SetParent(skinScrollableArea.gameObject.transform, false);
-            tempObj.GetComponent<Image>().sprite = Collect_Manager.instance.skinsToPick[i].skinIcon;
-            Button tempButton = tempObj.transform.GetChild(0).GetComponent<Button>();
+            tempObj.SetActive(false);
+            tempObj.SetActive(true);
+            tempObj.transform.GetChild(0).GetComponent<Image>().sprite = Collect_Manager.instance.skinsToPick[i].skinIcon;
+            Button tempButton = tempObj.transform.GetChild(0).transform.GetChild(0).GetComponent<Button>();
             int tempNum = i;
             tempButton.onClick.AddListener(() => setCurrentSkin(tempNum));
             tempObj.SetActive(false);
@@ -145,6 +148,8 @@ public class Customize_Loadout : MonoBehaviour
                 }
             }
         }
+
+        skinScrollRect.horizontalNormalizedPosition = 0f;
 
        // Debug.Log("The skinsToPick list has: " + skinsToPick.Count + " elements in it.");
 
@@ -339,6 +344,10 @@ public class Customize_Loadout : MonoBehaviour
         {
           
             GameObject tempObj = Instantiate(itemHolderPrefab);
+            if(Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                tempObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            }
             tempObj.transform.SetParent(invLayout.transform, false);
             Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
             tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
