@@ -127,6 +127,7 @@ public class Dynamite_Cart : Obstacle_Behaviour
                 {
                     Debug.Log("Explode!");
                     StartCoroutine(explosionAni());
+                    playSoundExternally();
                 }
                 else
                 {

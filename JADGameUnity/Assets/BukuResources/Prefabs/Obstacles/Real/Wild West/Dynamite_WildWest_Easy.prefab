@@ -103,11 +103,17 @@ MonoBehaviour:
   increaseRate: 5
   maxSpeed: 3.5
   spawnPoint: 1
+  extraCollider: {fileID: 0}
   objectElement: 1
   thisObstacleDiff: 0
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: c765ea6662609b14ea6ac108b8e49d1d, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   explosionParticlePrefab: {fileID: 7756195258975480725, guid: fbc0a3a4c5970624ba396b357b23ffd0, type: 3}
   boomParticlePrefab: {fileID: 3126646067317863400, guid: 4aee42b607e7c784c8d1b000e845cb35, type: 3}
   bangParticlePrefab: {fileID: 3126646067317863400, guid: 70de7f6981506c3409f6994a463c1ed0, type: 3}

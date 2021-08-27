@@ -31,6 +31,8 @@ public class Shotgun : Obstacle_Behaviour
     [SerializeField] float horizontalBulletSpeed;
     [SerializeField] float verticalBulletSpeed;
 
+    [SerializeField] AudioClip splitSound;
+
     const string shootShot = "shotgun";
 
     enum shellSplitFormation
@@ -161,6 +163,7 @@ public class Shotgun : Obstacle_Behaviour
                     break;
                 }
         }
+        Audio_Manager.Instance.playSFX(splitSound);
 
         smallShell1.GetComponent<Shotgun_Shell>().initializeShell(smallShell2, this);
         smallShell2.GetComponent<Shotgun_Shell>().initializeShell(smallShell1, this);

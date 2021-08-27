@@ -28,6 +28,8 @@ public class Item : MonoBehaviour , IPointerDownHandler
     [SerializeField] int wavesTillCDDone;
     [SerializeField] int numTimesUsed;
 
+    [SerializeField] public AudioClip audioToPlay;
+
     private void Awake()
     {
         //There should only be 1 of these.
@@ -216,6 +218,10 @@ public class Item : MonoBehaviour , IPointerDownHandler
     //Once we use the item don't let it be used again.
     void disableItem()
     {
+        if(audioToPlay != null)
+        {
+            Audio_Manager.Instance.playSFX(audioToPlay,false,0.2f);
+        }
         hasBeenUsed = true;
         if(waveCooldownTime > 0)
         {

@@ -160,11 +160,17 @@ MonoBehaviour:
   increaseRate: 2
   maxSpeed: 2
   spawnPoint: 0
+  extraCollider: {fileID: 0}
   objectElement: 0
   thisObstacleDiff: 2
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: c979030176fadc84caf17592d7352898, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   shotgunAnimator: {fileID: 5857835583463249108}
   shotgunShellPrefab: {fileID: 4158279202637467101, guid: 9466218921a21d044869b538fce2fd86, type: 3}
   shellCollider: {fileID: 9108902030229743994}
@@ -178,6 +184,7 @@ MonoBehaviour:
   isFlipped: 0
   horizontalBulletSpeed: 0
   verticalBulletSpeed: 0
+  splitSound: {fileID: 8300000, guid: 9817e6c92fec10c428c066953b0d8f8f, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

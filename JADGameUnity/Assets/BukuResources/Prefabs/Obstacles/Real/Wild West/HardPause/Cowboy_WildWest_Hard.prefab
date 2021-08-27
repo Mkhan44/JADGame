@@ -160,11 +160,17 @@ MonoBehaviour:
   increaseRate: 2
   maxSpeed: 2
   spawnPoint: 1
+  extraCollider: {fileID: 0}
   objectElement: 1
   thisObstacleDiff: 2
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: e05caa8d85129324f828d55f98dfea79, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   cowboyAnimator: {fileID: 5857835583463249108}
   bulletPrefab: {fileID: 4158279202637467101, guid: b4ffdd5cdd5ed77489acb77a87946d3f, type: 3}
   atStandingPoint: 0

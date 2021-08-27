@@ -23,3 +23,4 @@ MonoBehaviour:
   hasDuration: 1
   duration: 5
   waveCooldown: 2
+  useSound: {fileID: 8300000, guid: 5bd42a0920892184aa0305878694645a, type: 3}

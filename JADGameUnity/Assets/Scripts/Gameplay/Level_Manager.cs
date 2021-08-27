@@ -453,6 +453,7 @@ public class Level_Manager : MonoBehaviour
                     theItem.thisItemType = item1.theItem;
                     Image tempImg = item1Holder.transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = item1.itemImage;
+                    theItem.audioToPlay = item1.useSound;
                     if (item1.hasDuration)
                     {
                         theItem.itemDuration = item1.duration;
@@ -491,6 +492,7 @@ public class Level_Manager : MonoBehaviour
                     theItem.thisItemType = item2.theItem;
                     Image tempImg = item2Holder.transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = item2.itemImage;
+                    theItem.audioToPlay = item2.useSound;
                     if (item2.hasDuration)
                     {
                         theItem.itemDuration = item2.duration;
@@ -529,6 +531,7 @@ public class Level_Manager : MonoBehaviour
                     theItem.thisItemType = item3.theItem;
                     Image tempImg = item3Holder.transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = item3.itemImage;
+                    theItem.audioToPlay = item3.useSound;
                     if (item3.hasDuration)
                     {
                         theItem.itemDuration = item3.duration;
@@ -1472,11 +1475,16 @@ public class Level_Manager : MonoBehaviour
       //  playerRigid2D.gravityScale = 20;
     }
 
-    public void restartScene()
+    public void returnToMenu()
     {
         //Gonna need to change this later and have the scene number 
         //FOR DEBUG.
         SceneManager.LoadScene(0);
+    }
+
+    public void retryLevel()
+    {
+        SceneManager.LoadScene(1);
     }
 
     /*Level related functions

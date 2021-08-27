@@ -24,6 +24,8 @@ public class Revolver_Bullet : MonoBehaviour
     [SerializeField] Vector3 ogRot;
     [SerializeField] BoxCollider2D playerCollider;
 
+    [SerializeField] AudioClip ricochetSound;
+
     const string Bounce = "Bounce";
 
     private void Awake()
@@ -144,8 +146,9 @@ public class Revolver_Bullet : MonoBehaviour
             shootDirection = 2;
             rot = new Vector3(ogRot.x, ogRot.y, ogRot.z + 50);
             this.transform.rotation = Quaternion.Euler(rot);
-           // thisAnimator.SetBool(Bounce, true);
-         
+            Audio_Manager.Instance.playSFX(ricochetSound, false, 0.3f);
+            // thisAnimator.SetBool(Bounce, true);
+
         }
 
         if (collision.gameObject.tag == "Ground")
@@ -177,8 +180,9 @@ public class Revolver_Bullet : MonoBehaviour
             shootDirection = 1;
             rot = new Vector3(ogRot.x, ogRot.y, ogRot.z - 50);
             this.transform.rotation = Quaternion.Euler(rot);
-          //  thisAnimator.SetBool(Bounce, true);
-           
+            Audio_Manager.Instance.playSFX(ricochetSound,false,0.3f);
+            //  thisAnimator.SetBool(Bounce, true);
+
         }
 
         if (collision.gameObject.tag == "Player")
