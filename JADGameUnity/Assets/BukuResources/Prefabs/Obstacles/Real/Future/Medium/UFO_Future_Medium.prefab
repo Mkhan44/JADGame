@@ -108,6 +108,11 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 200
   theEra: 0
+  soundToPlay: {fileID: 0}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   droppedEnemyPrefabs:
   - {fileID: 4158279202637467101, guid: 7b376eca9a7cc014988b3a60e3dee9c4, type: 3}
   - {fileID: 4158279202637467101, guid: 9f3dc43bb1f8e4945a87c8c6de56311c, type: 3}
@@ -116,6 +121,9 @@ MonoBehaviour:
   maxDrops: 5
   UFOAnimator: {fileID: 2096318049105473156}
   lightSpriteRend: {fileID: 2257285020035571672}
+  ufoSpinSound: {fileID: 8300000, guid: a81f27420b920754ab81dbd19718adff, type: 3}
+  beamDownSound: {fileID: 8300000, guid: 50339a4a14e0d9541b1794efb51f53ec, type: 3}
+  beamUpSound: {fileID: 8300000, guid: 0121d0dfd816b5c43af0e533a297c950, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

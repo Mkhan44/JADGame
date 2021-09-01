@@ -15,11 +15,12 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: fbf73eb3a2f79494b93dccfea8996e42, type: 3}
   theName: Average Joanne
   description: The newest test subject of the Time Twister machine.
-  coinPrice: 1000
+  coinPrice: 5000
   theItem: 5
-  boltPrice: 100
+  boltPrice: 500
   thisSkinType: 1
   currencyUSD: 0
   hasDuration: 0
   duration: 0
   waveCooldown: 0
+  useSound: {fileID: 0}

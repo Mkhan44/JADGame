@@ -15,7 +15,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: fcd60abf734f17e49b991b36dec8537c, type: 3}
   theName: Handwarmers
   description: Ice meter won't rise for 5 seconds!
-  coinPrice: 100
+  coinPrice: 500
   theItem: 0
   boltPrice: 0
   thisSkinType: 0

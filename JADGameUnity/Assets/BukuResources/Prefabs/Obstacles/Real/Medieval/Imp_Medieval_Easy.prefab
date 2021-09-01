@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 1095422597308562419}
   - component: {fileID: 8699226506992194775}
   - component: {fileID: 799028072981267508}
+  - component: {fileID: 7283235379819390125}
   m_Layer: 6
   m_Name: Imp
   m_TagString: Untagged
@@ -129,6 +130,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7044227, y: 1.0537921}
   m_EdgeRadius: 0
+--- !u!114 &7283235379819390125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 314145243199434411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb836b05bfa3564ca38ceeed75dbef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myParent: {fileID: 8617969083274795738}
 --- !u!1 &4158279202637467101
 GameObject:
   m_ObjectHideFlags: 0
@@ -238,6 +252,11 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: bba771f35897214448c027ffb6dc0604, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

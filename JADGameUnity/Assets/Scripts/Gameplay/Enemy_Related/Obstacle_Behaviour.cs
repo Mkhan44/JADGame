@@ -350,6 +350,11 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
        
     }
 
+    public void stopSpecificSound(AudioClip soundToStop)
+    {
+        Audio_Manager.Instance.stopSFX(soundToStop.name);
+    }
+
     //Usually will fire this from an animation event.
     public void playExtraSound(AudioClip clipToPlay)
     {

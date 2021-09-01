@@ -15,7 +15,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 1b9297c4e4d0bee4881944a8ac273e49, type: 3}
   theName: Liquid Nitrogen
   description: Instantly gets you out of "Burning" status!
-  coinPrice: 100
+  coinPrice: 1000
   theItem: 3
   boltPrice: 0
   thisSkinType: 0

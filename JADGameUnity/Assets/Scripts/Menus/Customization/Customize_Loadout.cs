@@ -395,11 +395,14 @@ public class Customize_Loadout : MonoBehaviour
 
         if(Collect_Manager.instance.numPlayerOwns(theEquip.theItem) <= 0)
         {
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopErrorSound);
             Debug.Log("You don't own any of this item!");
             return;
         }
         if(loadoutItem1 == null)
         {
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.equipUnequipSound);
+
             //First item = 0th index.
             Image tempImg = itemLoadoutHolders[0].transform.GetChild(0).GetComponent<Image>();
             tempImg.sprite = theEquip.itemImage;
@@ -416,6 +419,8 @@ public class Customize_Loadout : MonoBehaviour
         }
         else if(loadoutItem2 == null)
         {
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.equipUnequipSound);
+
             //Seconds item = 1st index.
             Image tempImg = itemLoadoutHolders[1].transform.GetChild(0).GetComponent<Image>();
             tempImg.sprite = theEquip.itemImage;
@@ -431,6 +436,8 @@ public class Customize_Loadout : MonoBehaviour
         }
         else if(loadoutItem3 == null)
         {
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.equipUnequipSound);
+
             //Third item = 2nd index.
             Image tempImg = itemLoadoutHolders[2].transform.GetChild(0).GetComponent<Image>();
             tempImg.sprite = theEquip.itemImage;
@@ -487,6 +494,8 @@ public class Customize_Loadout : MonoBehaviour
                     break;
                 }
         }
+
+        Audio_Manager.Instance.playSFX(Collect_Manager.instance.equipUnequipSound);
 
 
         Collect_Manager.instance.purchaseItemConfirm(theEquip.theItem);

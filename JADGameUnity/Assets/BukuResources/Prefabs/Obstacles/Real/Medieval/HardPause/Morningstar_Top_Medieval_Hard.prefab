@@ -110,6 +110,11 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: 6687aded92449534ea4c6e07e34591b3, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -270,6 +275,7 @@ GameObject:
   - component: {fileID: 3437276611055833781}
   - component: {fileID: 7891216525974026662}
   - component: {fileID: 4645422561908383837}
+  - component: {fileID: 90380292461102296}
   m_Layer: 6
   m_Name: Morningstar
   m_TagString: Untagged
@@ -388,6 +394,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.41870496, y: 0.37868467}
   m_EdgeRadius: 0
+--- !u!114 &90380292461102296
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034686116341056044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb836b05bfa3564ca38ceeed75dbef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myParent: {fileID: 8617969083274795738}
 --- !u!1 &7305345873697728668
 GameObject:
   m_ObjectHideFlags: 0
@@ -458,7 +477,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 54e203491457e1d4891443b7e18d7d93, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

@@ -15,7 +15,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 94271c24fd77c2143bb8e2187b9a5748, type: 3}
   theName: Fire Vest
   description: Heat meter won't rise for 5 seconds!
-  coinPrice: 100
+  coinPrice: 500
   theItem: 2
   boltPrice: 0
   thisSkinType: 0

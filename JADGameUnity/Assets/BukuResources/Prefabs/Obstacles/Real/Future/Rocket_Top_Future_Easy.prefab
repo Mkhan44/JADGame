@@ -210,6 +210,11 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: 47c45636e1b4ea14a90284654fda8d1e, type: 3}
+  willLoop: 1
+  playOnStart: 1
+  volumeOverride: 0.15
+  extraAudioClips: []
   rocketAnimator: {fileID: 0}
   elapsedTime: 0
   numbersList:

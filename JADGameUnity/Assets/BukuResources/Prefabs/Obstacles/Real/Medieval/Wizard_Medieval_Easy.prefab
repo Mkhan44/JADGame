@@ -108,11 +108,18 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: 2b93e68c960d2cf4bb531391c752d029, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   fireTellParticlePrefab: {fileID: 907397275273053934, guid: 655397dfdbee3be49b5233374afbc9f7, type: 3}
   iceTellParticlePrefab: {fileID: 7071488789469175710, guid: 45c869a74af737049ac3e9cc96d8570d, type: 3}
   fireBeamPrefab: {fileID: 4158279202637467101, guid: 26661baed785ea8459f9222b9e02925f, type: 3}
   iceBeamPrefab: {fileID: 4158279202637467101, guid: be0b1b015ca111749af73e3cff862898, type: 3}
   wizardAnimator: {fileID: 7891216525974026662}
+  fireBeamSound: {fileID: 8300000, guid: b5ed07712bc7e8c4ca30d5a63a44d432, type: 3}
+  iceBeamSound: {fileID: 8300000, guid: 459725445f0617c429262965e33f4d4c, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -172,6 +179,7 @@ GameObject:
   - component: {fileID: 3437276611055833781}
   - component: {fileID: 7891216525974026662}
   - component: {fileID: 8757108308380646978}
+  - component: {fileID: 127898186142804535}
   m_Layer: 6
   m_Name: Wizard
   m_TagString: Untagged
@@ -289,3 +297,16 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.76625097, y: 1.9393754}
   m_EdgeRadius: 0
+--- !u!114 &127898186142804535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7034686116341056044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb836b05bfa3564ca38ceeed75dbef2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myParent: {fileID: 9193934825576249297}

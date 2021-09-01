@@ -42,6 +42,8 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     public GameObject skinPurchasePanel;
     public Button closeShopButton;
 
+   
+
     private void Start()
     {
         coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();

@@ -23,6 +23,12 @@ public class UFO : Obstacle_Behaviour
     AnimationClip lightOn;
     AnimationClip lightRetract;
 
+    //SFX
+    [SerializeField] AudioClip ufoSpinSound;
+    [SerializeField] AudioClip beamDownSound;
+    [SerializeField] AudioClip beamUpSound;
+    AudioClip activeSound;
+
     const string ufoLightOn = "ufolight";
     const string ufoLightRetract = "ufolightretract";
     const string ufoLightIdle = "ufolightidle";
@@ -36,6 +42,8 @@ public class UFO : Obstacle_Behaviour
     {
         base.OnObjectSpawn();
         initializeUFO();
+        activeSound = ufoSpinSound;
+        Audio_Manager.Instance.playSFX(activeSound, true, 0.07f);
     }
 
     private void initializeUFO()
@@ -97,6 +105,10 @@ public class UFO : Obstacle_Behaviour
         UFOAnimator.Play(ufoLightOn);
 
         lightSpriteRend.color = new Color(255, 255, 255, 255);
+        Audio_Manager.Instance.stopSFX(activeSound.name);
+        activeSound = beamDownSound;
+
+        Audio_Manager.Instance.playSFX(activeSound, false, 0.2f);
         yield return new WaitForSeconds(0.3f);
 
         Vector2 currentUFOPos = this.transform.position;
@@ -108,12 +120,18 @@ public class UFO : Obstacle_Behaviour
 
         UFOAnimator.Play(ufoLightRetract);
 
+        activeSound = ufoSpinSound;
+        Audio_Manager.Instance.playSFX(activeSound, true, 0.07f);
+        // activeSound = beamUpSound;
+        //Audio_Manager.Instance.playSFX(activeSound);
+
         yield return new WaitForSeconds(lightRetract.length);
 
         lightSpriteRend.color = new Color(255, 255, 255, 0);
 
         UFOAnimator.Play(ufoLightIdle);
 
+     
         yield return new WaitForSeconds(adjustedDropRate);
 
         inCoroutine = false;
@@ -126,7 +144,7 @@ public class UFO : Obstacle_Behaviour
     {
         if (collision.gameObject.tag == "Despawner")
         {
-
+            Audio_Manager.Instance.stopSFX(activeSound.name);
             if (thisType == typeOfObstacle.obstacle)
             {
                 Wave_Spawner.Instance.updateEnemiesLeft(1);

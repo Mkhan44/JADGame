@@ -108,9 +108,17 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 100
   theEra: 0
+  soundToPlay: {fileID: 0}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   randNum: 0
   maxTransforms: 3
   frisballAnimator: {fileID: 8450968950121189932}
+  frisballRollSound: {fileID: 8300000, guid: 536ff2505630d2c4d9dbf823632cebf8, type: 3}
+  frisballSpinSound: {fileID: 8300000, guid: 0c0b588bdba6b96409865db16f10a45f, type: 3}
+  frisballTransformSound: {fileID: 8300000, guid: df2ef65d571fa8645b855d0df76e2c60, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

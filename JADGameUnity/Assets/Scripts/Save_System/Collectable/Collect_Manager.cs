@@ -76,6 +76,14 @@ public class Collect_Manager : MonoBehaviour
     public List<Shop_Item> itemsToPick;
     public bool isMuted;
 
+    [Header("SFX")]
+    public AudioClip shopBuySound;
+    public AudioClip shopErrorSound;
+    public AudioClip equipUnequipSound;
+
+    [Header("DEBUG")]
+    [SerializeField] Level_Manager.timePeriod debugPeriod = Level_Manager.timePeriod.None;
+
     [Header("Singleton")]
     public static Collect_Manager instance;
 
@@ -294,6 +302,7 @@ public class Collect_Manager : MonoBehaviour
 
         if (playerCoins >= cost)
         {
+            Audio_Manager.Instance.playSFX(shopBuySound);
             totalCoins -= cost;
             Debug.Log("You just bought: " + typePassed);
 
@@ -304,6 +313,7 @@ public class Collect_Manager : MonoBehaviour
         }
         else
         {
+            Audio_Manager.Instance.playSFX(shopErrorSound);
             Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
         }
 
@@ -323,6 +333,7 @@ public class Collect_Manager : MonoBehaviour
                 {
                     if(coinCost <= totalCoins)
                     {
+                        Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         totalCoins -= coinCost;
@@ -331,6 +342,7 @@ public class Collect_Manager : MonoBehaviour
                     }
                     else
                     {
+                        Audio_Manager.Instance.playSFX(shopErrorSound);
                         Debug.LogWarning("You don't have enough coins to purchase this item.");
                     }
                 }
@@ -338,6 +350,7 @@ public class Collect_Manager : MonoBehaviour
                 {
                     if(boltCost <= totalBolts)
                     {
+                        Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         totalBolts -= boltCost;
@@ -346,6 +359,7 @@ public class Collect_Manager : MonoBehaviour
                     }
                     else
                     {
+                        Audio_Manager.Instance.playSFX(shopErrorSound);
                         Debug.LogWarning("You don't have enough bolts to purchase this item.");
                     }
                 }
@@ -413,6 +427,50 @@ public class Collect_Manager : MonoBehaviour
     public void deleteSave()
     {
         Save_System.DeleteCollectables();
+    }
+
+    public void changeTimePeriodStart(string timePeriodName)
+    {
+        switch(timePeriodName)
+        {
+            case "Prehistoric":
+                {
+                    debugPeriod = Level_Manager.timePeriod.Prehistoric;
+                    break;
+                }
+            case "FeudalJapan":
+                {
+                    debugPeriod = Level_Manager.timePeriod.FeudalJapan;
+                    break;
+                }
+            case "WildWest":
+                {
+                    debugPeriod = Level_Manager.timePeriod.WildWest;
+                    break;
+                }
+            case "Medieval":
+                {
+                    debugPeriod = Level_Manager.timePeriod.Medieval;
+                    break;
+                }
+            case "Future":
+                {
+                    debugPeriod = Level_Manager.timePeriod.Future;
+                    break;
+                }
+            default:
+                {
+                    debugPeriod = Level_Manager.timePeriod.None;
+                    Debug.LogWarning("Invalid string, setting to none.");
+                    break;
+                }
+        }
+
+    }
+
+    public Level_Manager.timePeriod getTimePeriod()
+    {
+        return debugPeriod;
     }
     //DEBUG FUNCTIONS
 }

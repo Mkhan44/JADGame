@@ -14,6 +14,9 @@ public class FlyingCar : Obstacle_Behaviour
     float speedUpMaxSpeed;
     float newIncreaseRate;
 
+    [SerializeField] AudioClip carForwardSound1;
+    [SerializeField] AudioClip carForwardSound2;
+
     protected override void Awake()
     {
         base.Awake();
@@ -85,6 +88,18 @@ public class FlyingCar : Obstacle_Behaviour
 
         inCoroutine = false;
         spedUp = true;
+
+        int randSoundPlay = Random.Range(0, 2);
+
+        if(randSoundPlay == 0)
+        {
+            Audio_Manager.Instance.playSFX(carForwardSound1, false, 0.3f);
+        }
+        else
+        {
+            Audio_Manager.Instance.playSFX(carForwardSound2, false, 0.3f);
+        }
+       
 
         yield return null;
     }

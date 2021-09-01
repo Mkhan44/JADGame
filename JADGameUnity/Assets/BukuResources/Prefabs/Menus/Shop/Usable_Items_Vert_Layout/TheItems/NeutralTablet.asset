@@ -15,7 +15,7 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: ae195140038eb904d84ee1dceddb722a, type: 3}
   theName: Neutral Tablet
   description: Temperature meters decrease faster while idle!
-  coinPrice: 100
+  coinPrice: 500
   theItem: 4
   boltPrice: 0
   thisSkinType: 0

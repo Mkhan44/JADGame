@@ -40,6 +40,9 @@ public class Wizard : Obstacle_Behaviour
     AnimationClip castDownIdleAni;
     AnimationClip beamAni;
 
+    [SerializeField] AudioClip fireBeamSound;
+    [SerializeField] AudioClip iceBeamSound;
+
 
     protected override void Awake()
     {
@@ -167,6 +170,7 @@ public class Wizard : Obstacle_Behaviour
             yield return new WaitForSeconds(1.3f);
 
             wizardAnimator.Play("wizardtopcast");
+          
         }
         else
         {
@@ -176,6 +180,7 @@ public class Wizard : Obstacle_Behaviour
             yield return new WaitForSeconds(1.3f);
 
             wizardAnimator.Play("wizardbotcast");
+            
         }
 
         yield return new WaitForSeconds(castAniWait - 0.6f);
@@ -188,12 +193,14 @@ public class Wizard : Obstacle_Behaviour
             fireBeamInstance = Instantiate(fireBeamPrefab);
             fireBeamInstance.GetComponent<WizBeam>().initializeBeam(this.gameObject);
             beamAni = fireBeamInstance.GetComponent<Animator>().runtimeAnimatorController.animationClips[0];
+            Audio_Manager.Instance.playSFX(fireBeamSound);
         }
         else
         {
             iceBeamInstance = Instantiate(iceBeamPrefab);
             iceBeamInstance.GetComponent<WizBeam>().initializeBeam(this.gameObject);
             beamAni = iceBeamInstance.GetComponent<Animator>().runtimeAnimatorController.animationClips[0];
+            Audio_Manager.Instance.playSFX(iceBeamSound);
         }
 
         beamAniWait = beamAni.length;
@@ -203,6 +210,17 @@ public class Wizard : Obstacle_Behaviour
 
         Destroy(fireBeamInstance);
         Destroy(iceBeamInstance);
+        if (randCast == 1)
+        {
+            Audio_Manager.Instance.stopSFX(fireBeamSound.name);
+        }
+        else
+        {
+            Audio_Manager.Instance.stopSFX(iceBeamSound.name);
+        }
+           
+        
+
 
         //Should teleport out after calling this.
         teleCo = StartCoroutine(teleAniCo());

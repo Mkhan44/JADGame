@@ -108,7 +108,14 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 0}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   spedUp: 0
+  carForwardSound1: {fileID: 8300000, guid: b7e04942013c88e4c949d0ae3f2cc4fc, type: 3}
+  carForwardSound2: {fileID: 8300000, guid: 5b74fb44184fbb246bec44e774967924, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

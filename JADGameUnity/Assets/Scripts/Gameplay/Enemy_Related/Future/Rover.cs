@@ -21,6 +21,8 @@ public class Rover : Obstacle_Behaviour
     const string stopString = "";
     const string goString = "";
 
+
+    [SerializeField] AudioClip activeSound;
     protected override void Awake()
     {
         base.Awake();
@@ -31,6 +33,8 @@ public class Rover : Obstacle_Behaviour
     {
         base.OnObjectSpawn();
         initializeRover();
+        activeSound = soundToPlay;
+        Audio_Manager.Instance.playSFX(activeSound, true, 0.2f);
     }
 
     void initializeRover()
@@ -147,6 +151,7 @@ public class Rover : Obstacle_Behaviour
 
             //Stop it.
             thisRigid.velocity = Vector2.zero;
+            Audio_Manager.Instance.stopSFX(activeSound.name);
 
             while (timePassed < timeToWait)
             {
@@ -165,7 +170,11 @@ public class Rover : Obstacle_Behaviour
                 yield return new WaitForSeconds(0.1f);
             }
 
-            if(objectElement == ElementType.fire)
+            activeSound = soundToPlay;
+
+            Audio_Manager.Instance.playSFX(activeSound, true, 0.2f);
+
+            if (objectElement == ElementType.fire)
             {
                 objectElement = ElementType.ice;
                 roverAnimator.Play(iceGo);
@@ -204,6 +213,16 @@ public class Rover : Obstacle_Behaviour
         didStop = true;
 
         yield return null;
+    }
+
+    protected override void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.tag == "Despawner")
+        {
+            Audio_Manager.Instance.stopSFX(activeSound.name);
+        }
+
+        base.OnCollisionEnter2D(collision);
     }
 
 

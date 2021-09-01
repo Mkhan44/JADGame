@@ -232,7 +232,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.032, y: 0.6777968}
   m_AnchorMax: {x: 0.97, y: 0.8306407}
-  m_AnchoredPosition: {x: -1.5308228, y: -2}
+  m_AnchoredPosition: {x: -1.5307617, y: -2}
   m_SizeDelta: {x: 12.9, y: 4.699997}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &45753428
@@ -9276,6 +9276,7 @@ MonoBehaviour:
   tempCoolDownCounter: 0
   wavesTillCDDone: 0
   numTimesUsed: 0
+  audioToPlay: {fileID: 0}
 --- !u!114 &1471785559
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10372,6 +10373,7 @@ MonoBehaviour:
   tempCoolDownCounter: 0
   wavesTillCDDone: 0
   numTimesUsed: 0
+  audioToPlay: {fileID: 0}
 --- !u!1 &1603605012
 GameObject:
   m_ObjectHideFlags: 0
@@ -10430,6 +10432,7 @@ MonoBehaviour:
   tempCoolDownCounter: 0
   wavesTillCDDone: 0
   numTimesUsed: 0
+  audioToPlay: {fileID: 0}
 --- !u!114 &1603605015
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14959,7 +14962,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: deathSound

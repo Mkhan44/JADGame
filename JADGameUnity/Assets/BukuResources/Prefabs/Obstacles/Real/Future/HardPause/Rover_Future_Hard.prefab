@@ -108,7 +108,13 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 8300000, guid: 4e1276a3d47b93c45a3313f98515e6bb, type: 3}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   roverAnimator: {fileID: 3408275287507789755}
+  activeSound: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -133,6 +133,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 1000 coins!");
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
             //Give player 1000 coins...Collectmanager?
             //CHECK IF THIS GETS CALLED EVERYTIME...WE DON'T WANT TO KEEP SPAMMING THE PLAYER WITH 1000...THOUGH THIS IS A CONSUMABLE SO I DON'T THINK IT SHOULD.
@@ -151,8 +152,8 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 10000 coins! Got 1000 bonus!");
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
-        
             Collect_Manager.instance.totalCoins += 11000;
             Save_System.SaveCollectables(Collect_Manager.instance);
             coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
@@ -168,7 +169,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 100000 coins! Got 10000 bonus!");
-
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
             Collect_Manager.instance.totalCoins += 110000;
             Save_System.SaveCollectables(Collect_Manager.instance);
@@ -185,6 +186,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 100 bolts!");
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
             Collect_Manager.instance.totalBolts += 100;
             Save_System.SaveCollectables(Collect_Manager.instance);
@@ -201,6 +203,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 500 bolts! Got 100 bonus bolts!");
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
             Collect_Manager.instance.totalBolts += 600;
             Save_System.SaveCollectables(Collect_Manager.instance);
@@ -218,6 +221,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
         {
             //Need a reference to playerprefs or something to ensure that player now has no ads.
             Debug.Log("You bought 1000 bolts! Got 500 bonus bolts!");
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopBuySound);
 
             Collect_Manager.instance.totalBolts += 1500;
             Save_System.SaveCollectables(Collect_Manager.instance);
