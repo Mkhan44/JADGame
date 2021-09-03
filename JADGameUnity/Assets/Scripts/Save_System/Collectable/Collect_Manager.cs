@@ -305,7 +305,7 @@ public class Collect_Manager : MonoBehaviour
             Audio_Manager.Instance.playSFX(shopBuySound);
             totalCoins -= cost;
             Debug.Log("You just bought: " + typePassed);
-
+            Menu_Manager.instance.setupShopTextAnimation("You just bought: " + typePassed.ToString() + " x1!");
             purchaseItemConfirm(typePassed);
 
             //Save the purchase!
@@ -314,7 +314,9 @@ public class Collect_Manager : MonoBehaviour
         else
         {
             Audio_Manager.Instance.playSFX(shopErrorSound);
+            int tempDifference = cost - playerCoins;
             Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
+            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this item.");
         }
 
     }
@@ -336,6 +338,7 @@ public class Collect_Manager : MonoBehaviour
                         Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                        Menu_Manager.instance.setupShopTextAnimation("You can now play as: " + theSkin.ToString() + "!");
                         totalCoins -= coinCost;
                         playerCurrencyText.text = ": " + totalCoins;
                         skinBuyButton.interactable = false;
@@ -343,7 +346,9 @@ public class Collect_Manager : MonoBehaviour
                     else
                     {
                         Audio_Manager.Instance.playSFX(shopErrorSound);
+                        int tempDifference = coinCost - totalCoins;
                         Debug.LogWarning("You don't have enough coins to purchase this item.");
+                        Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this test subject.");
                     }
                 }
                 else
@@ -353,6 +358,7 @@ public class Collect_Manager : MonoBehaviour
                         Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
                         Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                        Menu_Manager.instance.setupShopTextAnimation("You can now play as: " + theSkin.ToString() + "!");
                         totalBolts -= boltCost;
                         playerCurrencyText.text = ": " + totalBolts;
                         skinBuyButton.interactable = false;
@@ -360,7 +366,9 @@ public class Collect_Manager : MonoBehaviour
                     else
                     {
                         Audio_Manager.Instance.playSFX(shopErrorSound);
+                        int tempDifference = boltCost - totalBolts;
                         Debug.LogWarning("You don't have enough bolts to purchase this item.");
+                        Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more bolts to purchase this test subject.");
                     }
                 }
                 break;

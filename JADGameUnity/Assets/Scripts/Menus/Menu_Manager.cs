@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
+using TMPro;
 
 public class Menu_Manager : MonoBehaviour
 {
@@ -27,6 +28,10 @@ public class Menu_Manager : MonoBehaviour
     [SerializeField] Animator skinAnimator;
     public RuntimeAnimatorController defaultAnimator;
 
+    [Header("Shop related")]
+    public TextMeshProUGUI shopNoticeText;
+    public Coroutine shopNoticeAnimateRoutine;
+
 
     Scene gameplayScene;
 
@@ -41,6 +46,7 @@ public class Menu_Manager : MonoBehaviour
         setSkin();
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
+        shopNoticeText.text = "";
     }
 
     void Update()
@@ -155,6 +161,36 @@ public class Menu_Manager : MonoBehaviour
         SceneManager.LoadSceneAsync("Gameplay");
 
     }
+
+    //Shop text
+
+    public void setupShopTextAnimation(string message)
+    {
+        if(shopNoticeAnimateRoutine != null)
+        {
+            StopCoroutine(shopNoticeAnimateRoutine);
+        }
+
+        shopNoticeText.text = message;
+        shopNoticeAnimateRoutine = StartCoroutine(animateShopText());
+    }
+    public IEnumerator animateShopText()
+    {
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 255);
+        Color32 endColor = new Color32(255, 255, 255, 0);
+
+
+        rate = (1.0f / 4.5f) * 1.0f;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            shopNoticeText.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+        }
+    }
+    //Shop text
 
 
 }

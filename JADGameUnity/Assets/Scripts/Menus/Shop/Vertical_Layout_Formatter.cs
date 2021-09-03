@@ -49,7 +49,6 @@ public class Vertical_Layout_Formatter : MonoBehaviour
         coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
         boltsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
-
         for (int i = 0; i < itemsForSale.Count; i++)
         {
             GameObject tempSpawn = Instantiate(itemPrefab, this.transform);
