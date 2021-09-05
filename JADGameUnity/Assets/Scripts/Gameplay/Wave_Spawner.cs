@@ -771,7 +771,7 @@ public class Wave_Spawner : MonoBehaviour
         // Debug.Log("Ani time = " + aniTime);
         /*
         CURRENT ENUM
-        HandWarmer,
+        HandWarmers,
         Defroster,
         FireVest,
         LiquidNitrogenCanister,
@@ -807,9 +807,9 @@ public class Wave_Spawner : MonoBehaviour
         bool isAnItem = true;
         switch(itemToGive)
         {
-            case Collect_Manager.typeOfItem.HandWarmer:
+            case Collect_Manager.typeOfItem.HandWarmers:
                 {
-                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.HandWarmer].itemImage;
+                    itemToReceive = Collect_Manager.instance.itemsToPick[(int)Collect_Manager.typeOfItem.HandWarmers].itemImage;
                     break;
                 }
             case Collect_Manager.typeOfItem.Defroster:

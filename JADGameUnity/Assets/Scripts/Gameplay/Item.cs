@@ -77,13 +77,16 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     }
 
                                     Level_Manager.Instance.iceMeter.setMeterValExternally(0);
+                                    
                                     //Item has been used!
                                     disableItem();
+                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
                                 }
                                 else
                                 {
                                     //Play error SFX when we implement sound.
                                     Debug.Log("Can't use the item, player isn't frozen!");
+                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Frozen!");
                                 }
 
                                 break;
@@ -95,16 +98,20 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     Level_Manager.Instance.heatMeter.setMeterValExternally(0);
                                     //Item has been used!
                                     disableItem();
+                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
                                 }
                                 else
                                 {
                                     //Play error SFX when we implement sound.
                                      Debug.Log("Can't use the item, player isn't burning!");
+                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Burning!");
                                 }
 
                                 break;
                             }
                     }
+
+                    
 
 
                 }
@@ -122,7 +129,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     //  fireVest();
                                     break;
                                 }
-                            case Collect_Manager.typeOfItem.HandWarmer:
+                            case Collect_Manager.typeOfItem.HandWarmers:
                                 {
                                     if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
                                     {
@@ -147,7 +154,10 @@ public class Item : MonoBehaviour , IPointerDownHandler
                         }
                         //Item has been used!
                         disableItem();
+                        Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
                     }
+
+
                     
                     else
                     {

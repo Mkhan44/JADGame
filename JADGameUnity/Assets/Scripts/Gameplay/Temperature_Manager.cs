@@ -128,7 +128,7 @@ public class Temperature_Manager : MonoBehaviour
     public void fillMeter(float amount)
     {
         /*
-         * Firevest + handwarmer power up check
+         * Firevest + HandWarmers power up check
          */
         if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.FireVest && typeOfMeter == meterType.heatMeter)
         {
@@ -136,7 +136,7 @@ public class Temperature_Manager : MonoBehaviour
             amount = 0;
             
         }
-        else if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.HandWarmer && typeOfMeter == meterType.iceMeter)
+        else if(Level_Manager.Instance.getCurrentItem() == Collect_Manager.typeOfItem.HandWarmers && typeOfMeter == meterType.iceMeter)
         {
             amount = 0;
         }

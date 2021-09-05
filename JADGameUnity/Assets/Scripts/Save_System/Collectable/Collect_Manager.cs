@@ -29,7 +29,7 @@ public class Collect_Manager : MonoBehaviour
 
     public enum typeOfItem
     {
-        HandWarmer,
+        HandWarmers,
         Defroster,
         FireVest,
         LiquidNitrogenCanister,
@@ -45,11 +45,12 @@ public class Collect_Manager : MonoBehaviour
         Elincia,
         Crek,
         Kitsune,
+        SheriffShepard,
         Dummy,
     }
 
     [Header("Loadout")]
-    //Loadout...Save as Int and we can figure out the corresponding enum index based on that. 0 = handwarmer, 1 = defroster, etc.
+    //Loadout...Save as Int and we can figure out the corresponding enum index based on that. 0 = HandWarmers, 1 = defroster, etc.
     //We will make this -1 if no item is selected.
     public int item1;
     public int item2;
@@ -198,7 +199,7 @@ public class Collect_Manager : MonoBehaviour
     {
         switch(typePassed)
         {
-            case typeOfItem.HandWarmer:
+            case typeOfItem.HandWarmers:
                 {
                     return handWarmers;
                     break;
@@ -261,7 +262,7 @@ public class Collect_Manager : MonoBehaviour
     {
         switch (typePassed)
         {
-            case typeOfItem.HandWarmer:
+            case typeOfItem.HandWarmers:
                 {
                     handWarmers += 1;
                     break;
@@ -394,7 +395,7 @@ public class Collect_Manager : MonoBehaviour
     {
         switch (typePassed)
         {
-            case typeOfItem.HandWarmer:
+            case typeOfItem.HandWarmers:
                 {
                     handWarmers -= 1;
                     break;

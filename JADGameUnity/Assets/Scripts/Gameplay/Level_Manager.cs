@@ -138,6 +138,11 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] Image muteButtonSprite;
     [SerializeField] GameObject pausePanel;
 
+    //May make this into something that gets instantiated...dunno yet.
+    [Header("Notice UI related")]
+    [SerializeField] TextMeshProUGUI noticeText;
+    Coroutine noticeCoroutine;
+
     [Header("Item related.")]
     public List<Item> itemsThisRun;
 
@@ -361,6 +366,7 @@ public class Level_Manager : MonoBehaviour
         coinsCollected = 0;
         coinText.text = " : " + coinsCollected.ToString();
         boltText.text = " : " + boltsCollected.ToString();
+        noticeText.text = "";
 
         useDurationText.text = "No item in use.";
         scoreText.text = "Score: 0";
@@ -739,7 +745,7 @@ public class Level_Manager : MonoBehaviour
                         {
                             if(duckButtonInteract.getTimeHeld() >= 0.3f)
                             {
-                                if (currentItem != Collect_Manager.typeOfItem.HandWarmer && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
+                                if (currentItem != Collect_Manager.typeOfItem.HandWarmers && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.bonus && Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.timeSwap)
                                 {
                                     if (theLevelType == levelType.tutorial)
                                     {
@@ -853,6 +859,7 @@ public class Level_Manager : MonoBehaviour
 
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(burningJumpWait());
+                            setupNoticeTextAnimation("You're Burning! Mash the cooldown button!");
                             if (theLevelType == levelType.tutorial)
                             {
                  
@@ -907,6 +914,7 @@ public class Level_Manager : MonoBehaviour
                             jumpButton.spriteState = jumpButtonInteract.theSpriteState;
 
                             frozenDuck();
+                            setupNoticeTextAnimation("You're Frozen! Mash the heat up button!");
                             Audio_Manager.Instance.playSFX(frozenEnterSound, false, 0.05f);
                             heatUpButton.gameObject.SetActive(true);
                             if (theLevelType == levelType.tutorial)
@@ -1192,6 +1200,8 @@ public class Level_Manager : MonoBehaviour
         {
             boltText.text = " : " + boltsCollected.ToString();
         }
+
+        setupNoticeTextAnimation("You just collected: " + amount.ToString() + " Bolts!");
     }
 
     IEnumerator boltAni(int incomingAmt, int newAmt)
@@ -1516,26 +1526,51 @@ public class Level_Manager : MonoBehaviour
         return theLevelType;
     }
 
+    public void setupNoticeTextAnimation(string message)
+    {
+        if (noticeCoroutine != null)
+        {
+            StopCoroutine(noticeCoroutine);
+        }
+
+        noticeText.text = message;
+        noticeCoroutine = StartCoroutine(animateNoticeText());
+    }
+    public IEnumerator animateNoticeText()
+    {
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 255);
+        Color32 endColor = new Color32(255, 255, 255, 0);
 
 
-    /*Level related functions
-  //***********************************************************************
-  //***********************************************************************
-  //***********************************************************************
-  //***********************************************************************
-  //***********************************************************************
-  */
+        rate = (1.0f / 4.5f) * 1.0f;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            noticeText.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+        }
+    }
 
-    /*Save related functions
-   //***********************************************************************
-   //***********************************************************************
-   //***********************************************************************
-   //***********************************************************************
-   //***********************************************************************
-   */
+        /*Level related functions
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      */
 
-    //save system!
-    void SaveCollectables()
+        /*Save related functions
+       //***********************************************************************
+       //***********************************************************************
+       //***********************************************************************
+       //***********************************************************************
+       //***********************************************************************
+       */
+
+        //save system!
+        void SaveCollectables()
     {
         Save_System.SaveCollectables(Collect_Manager.instance);
     }
@@ -1579,17 +1614,17 @@ public class Level_Manager : MonoBehaviour
     {
         if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint3)
         {
-            indicatorArrowTop.color = new Color32(255, 0, 0, 180);
+            indicatorArrowTop.color = new Color32(255, 0, 0, 255);
           //  StartCoroutine(fadeIndicatorArrow(indicatorArrowTop));
         }
         else if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint2)
         {
-            indicatorArrowBot.color = new Color32(255, 0, 0, 180);
+            indicatorArrowBot.color = new Color32(255, 0, 0, 255);
            // StartCoroutine(fadeIndicatorArrow(indicatorArrowBot));
         }
         else
         {
-            indicatorArrowMid.color = new Color32(255, 0, 0, 180);
+            indicatorArrowMid.color = new Color32(255, 0, 0, 255);
           // StartCoroutine(fadeIndicatorArrow(indicatorArrowMid));
         }
     }

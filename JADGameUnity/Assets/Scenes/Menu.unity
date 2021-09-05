@@ -4324,7 +4324,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.05
+  m_fontSize: 55.1
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9102,6 +9102,14 @@ PrefabInstance:
       propertyPath: errorSound
       value: 
       objectReference: {fileID: 8300000, guid: f93ab6f74d6434240bf78aa9c91c8610, type: 3}
+    - target: {fileID: 3176456881916126212, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: itemsForSale.Array.size
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176456881916126212, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: itemsForSale.Array.data[3]
+      value: 
+      objectReference: {fileID: 11400000, guid: b180e0dcf54af9b439a194747224b045, type: 2}
     - target: {fileID: 4110214695243413477, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -10092,7 +10100,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 59.6
+  m_fontSize: 59.65
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10234,7 +10242,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 61.8
+  m_fontSize: 61.85
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10474,7 +10482,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 67.9
+  m_fontSize: 67.95
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10608,7 +10616,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 55.45
+  m_fontSize: 55.5
   m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10754,7 +10762,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 63.45
+  m_fontSize: 63.4
   m_fontSizeBase: 24
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10963,7 +10971,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 60.25
+  m_fontSize: 60.3
   m_fontSizeBase: 40
   m_fontWeight: 400
   m_enableAutoSizing: 1

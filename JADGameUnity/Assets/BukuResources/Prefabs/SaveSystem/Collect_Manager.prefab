@@ -65,6 +65,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: df14ee228da0aa7459e97718300c47cb, type: 2}
   - {fileID: 11400000, guid: b6e30198d1d6d744d8b84c11de7056a6, type: 2}
   - {fileID: 11400000, guid: 742378dbd10361a418aa09f07cacb698, type: 2}
+  - {fileID: 11400000, guid: 6f518be8b1df9934398aa0883f331dc1, type: 2}
   - {fileID: 11400000, guid: df4aab4fc64be3843978ce8994f6d691, type: 2}
   itemsToPick:
   - {fileID: 11400000, guid: 1579c4150263260478bcd2a356961f0b, type: 2}
@@ -76,3 +77,4 @@ MonoBehaviour:
   shopBuySound: {fileID: 8300000, guid: 1209fcaa0dd21304091dfb45cc4b25d8, type: 3}
   shopErrorSound: {fileID: 8300000, guid: f93ab6f74d6434240bf78aa9c91c8610, type: 3}
   equipUnequipSound: {fileID: 8300000, guid: 7f1689e0a349f354c8c67296f00e67fd, type: 3}
+  debugPeriod: 0
