@@ -135,8 +135,8 @@ public class Tutorial_Manager : MonoBehaviour
                     Level_Manager.Instance.heatMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
 
                     bottomUIPanelBlocker.SetActive(false);
-                    jumpButtonBlocker.SetActive(true);
-                    duckButtonBlocker.SetActive(true);
+                    //jumpButtonBlocker.SetActive(true);
+                    //duckButtonBlocker.SetActive(true);
                     HUCDButtonBlocker.SetActive(false);
                     itemHolderBLocker.SetActive(true);
 
@@ -147,8 +147,8 @@ public class Tutorial_Manager : MonoBehaviour
                     Level_Manager.Instance.iceMeter.GetComponent<Temperature_Manager>().fillMeter(100f);
 
                     bottomUIPanelBlocker.SetActive(false);
-                    jumpButtonBlocker.SetActive(true);
-                    duckButtonBlocker.SetActive(true);
+                   // jumpButtonBlocker.SetActive(true);
+                   // duckButtonBlocker.SetActive(true);
                     HUCDButtonBlocker.SetActive(false);
                     itemHolderBLocker.SetActive(true);
 
@@ -162,6 +162,7 @@ public class Tutorial_Manager : MonoBehaviour
                     theItem.thisItemType = Level_Manager.Instance.item1.theItem;
                     Image tempImg = Level_Manager.Instance.item1Holder.transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = Level_Manager.Instance.item1.itemImage;
+                    theItem.audioToPlay = Level_Manager.Instance.item1.useSound;
                     if (Level_Manager.Instance.item1.hasDuration)
                     {
                         theItem.itemDuration = Level_Manager.Instance.item1.duration;
@@ -190,6 +191,7 @@ public class Tutorial_Manager : MonoBehaviour
                     theItem.thisItemType = Level_Manager.Instance.item2.theItem;
                     Image tempImg = Level_Manager.Instance.item2Holder.transform.GetChild(0).GetComponent<Image>();
                     tempImg.sprite = Level_Manager.Instance.item2.itemImage;
+                    theItem.audioToPlay = Level_Manager.Instance.item2.useSound;
                     if (Level_Manager.Instance.item2.hasDuration)
                     {
                         theItem.itemDuration = Level_Manager.Instance.item2.duration;
@@ -223,7 +225,7 @@ public class Tutorial_Manager : MonoBehaviour
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(false);
                     duckButtonBlocker.SetActive(true);
-                    HUCDButtonBlocker.SetActive(true);
+                  //  HUCDButtonBlocker.SetActive(true);
                     itemHolderBLocker.SetActive(true);
                     break;
                 }
@@ -232,7 +234,7 @@ public class Tutorial_Manager : MonoBehaviour
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(true);
                     duckButtonBlocker.SetActive(false);
-                    HUCDButtonBlocker.SetActive(true);
+                 //   HUCDButtonBlocker.SetActive(true);
                     itemHolderBLocker.SetActive(true);
                     break;
                 }
@@ -241,7 +243,7 @@ public class Tutorial_Manager : MonoBehaviour
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(false);
                     duckButtonBlocker.SetActive(true);
-                    HUCDButtonBlocker.SetActive(true);
+                  //  HUCDButtonBlocker.SetActive(true);
                     itemHolderBLocker.SetActive(true);
                     break;
                 }
@@ -250,7 +252,7 @@ public class Tutorial_Manager : MonoBehaviour
                     bottomUIPanelBlocker.SetActive(false);
                     jumpButtonBlocker.SetActive(true);
                     duckButtonBlocker.SetActive(false);
-                    HUCDButtonBlocker.SetActive(true);
+                 //   HUCDButtonBlocker.SetActive(true);
                     itemHolderBLocker.SetActive(true);
                     break;
                 }

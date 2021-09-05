@@ -27,6 +27,8 @@ public class Level_Manager : MonoBehaviour
     public GameObject player;
     public Button jumpButton;
     public Button duckButton;
+    Color jumpButtonAlpha;
+    Color duckButtonAlpha;
     Button_Interact jumpButtonInteract;
     Button_Interact duckButtonInteract;
     public Button coolDownButton;
@@ -363,6 +365,9 @@ public class Level_Manager : MonoBehaviour
 
         heatUpButton.gameObject.SetActive(false);
         coolDownButton.gameObject.SetActive(false);
+        jumpButtonAlpha = jumpButton.GetComponent<Image>().color;
+        duckButtonAlpha = duckButton.GetComponent<Image>().color;
+
         coinsCollected = 0;
         coinText.text = " : " + coinsCollected.ToString();
         boltText.text = " : " + boltsCollected.ToString();
@@ -859,21 +864,25 @@ public class Level_Manager : MonoBehaviour
 
                             playerRigid2D.gravityScale = burningGravity;
                             StartCoroutine(burningJumpWait());
-                            setupNoticeTextAnimation("You're Burning! Mash the cooldown button!");
-                            if (theLevelType == levelType.tutorial)
-                            {
-                 
-                            }
-                            else
-                            {
-                                StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
-                            }
-                            
+                           
+                         
                             coolDownButton.gameObject.SetActive(true);
+                            disableAlphaOnButtons();
                             playerAnimator.SetBool(IsCrouching, false);
                             playerAnimator.SetBool(IsHanging, false);
 
+                  
                             Audio_Manager.Instance.playSFX(burnEnterSound, false, 0.05f);
+
+                            if (theLevelType == levelType.tutorial)
+                            {
+                                heatMeter.setMeterValExternally(99.9f);
+                            }
+                            else
+                            {
+                                setupNoticeTextAnimation("You're Burning! Mash the cooldown button!");
+                                StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
+                            }
                         }
                         //Call the burningJump function.
 
@@ -914,19 +923,23 @@ public class Level_Manager : MonoBehaviour
                             jumpButton.spriteState = jumpButtonInteract.theSpriteState;
 
                             frozenDuck();
-                            setupNoticeTextAnimation("You're Frozen! Mash the heat up button!");
+                          
                             Audio_Manager.Instance.playSFX(frozenEnterSound, false, 0.05f);
                             heatUpButton.gameObject.SetActive(true);
+                            disableAlphaOnButtons();
+                            playerAnimator.SetBool(IsHanging, false);
+
                             if (theLevelType == levelType.tutorial)
                             {
-
+                                iceMeter.setMeterValExternally(99.9f);
                             }
                             else
                             {
                                 StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
+                                setupNoticeTextAnimation("You're Frozen! Mash the heat up button!");
                             }
                           
-                            playerAnimator.SetBool(IsHanging, false);
+                           
                         }
 
                         //Check if meter is depleted fully. If it is, then set player back to idle.
@@ -959,6 +972,7 @@ public class Level_Manager : MonoBehaviour
                         }
                         heatUpButton.gameObject.SetActive(false);
                         coolDownButton.gameObject.SetActive(false);
+                        enableAlphaOnButtons();
                         if (onGround)
                         {
                             duckButtonInteract.theSpriteState.disabledSprite = duckButtonInteract.pressedImg;
@@ -1201,7 +1215,15 @@ public class Level_Manager : MonoBehaviour
             boltText.text = " : " + boltsCollected.ToString();
         }
 
-        setupNoticeTextAnimation("You just collected: " + amount.ToString() + " Bolts!");
+        if(amount == 1)
+        {
+            setupNoticeTextAnimation("You just collected: x" + amount.ToString() + " Bolt!");
+        }
+        else
+        {
+            setupNoticeTextAnimation("You just collected: x" + amount.ToString() + " Bolts!");
+        }
+        
     }
 
     IEnumerator boltAni(int incomingAmt, int newAmt)
@@ -1524,6 +1546,18 @@ public class Level_Manager : MonoBehaviour
     public levelType getThisLevelType()
     {
         return theLevelType;
+    }
+
+    public void disableAlphaOnButtons()
+    {
+        jumpButton.GetComponent<Image>().color = new Color32(255,255,255,20);
+        duckButton.GetComponent<Image>().color = new Color32(255, 255, 255, 20);
+    }
+
+    public void enableAlphaOnButtons()
+    {
+        jumpButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
+        duckButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
     public void setupNoticeTextAnimation(string message)

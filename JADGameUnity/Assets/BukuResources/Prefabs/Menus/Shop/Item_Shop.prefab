@@ -5711,7 +5711,7 @@ PrefabInstance:
       objectReference: {fileID: 1158653828}
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: itemsForSale.Array.size
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: purchaseWithBoltsButton
@@ -5728,7 +5728,11 @@ PrefabInstance:
     - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
       propertyPath: itemsForSale.Array.data[3]
       value: 
-      objectReference: {fileID: 11400000, guid: ea1992becb1fa1c47acae0a1eacc47b5, type: 2}
+      objectReference: {fileID: 11400000, guid: b180e0dcf54af9b439a194747224b045, type: 2}
+    - target: {fileID: 7532433622806593369, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
+      propertyPath: itemsForSale.Array.data[4]
+      value: 
+      objectReference: {fileID: 11400000, guid: 7d9eee9641e929943ab1aa78a95ef606, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a940241501f84d8498b7cd4e427e396c, type: 3}
 --- !u!224 &8547523710876180208 stripped

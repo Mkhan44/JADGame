@@ -98,7 +98,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     Level_Manager.Instance.heatMeter.setMeterValExternally(0);
                                     //Item has been used!
                                     disableItem();
-                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
+                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: Liquid Nitrogen Canister");
                                 }
                                 else
                                 {
@@ -231,6 +231,10 @@ public class Item : MonoBehaviour , IPointerDownHandler
         if(audioToPlay != null)
         {
             Audio_Manager.Instance.playSFX(audioToPlay,false,0.2f);
+        }
+        else
+        {
+            Debug.LogWarning("Is there a sound needed for this item?");
         }
         hasBeenUsed = true;
         if(waveCooldownTime > 0)

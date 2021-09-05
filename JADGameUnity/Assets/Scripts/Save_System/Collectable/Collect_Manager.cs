@@ -46,6 +46,7 @@ public class Collect_Manager : MonoBehaviour
         Crek,
         Kitsune,
         SheriffShepard,
+        BUKU1000M,
         Dummy,
     }
 
