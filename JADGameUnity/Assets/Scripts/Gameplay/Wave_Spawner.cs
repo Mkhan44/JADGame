@@ -131,6 +131,9 @@ public class Wave_Spawner : MonoBehaviour
     [Header("SFX")]
     [SerializeField] AudioClip itemRouletteSound;
     [SerializeField] AudioClip itemGetSound;
+    [SerializeField] AudioClip warpInSound;
+    [SerializeField] AudioClip countdownSound;
+    [SerializeField] AudioClip startSound;
 
     private void Awake()
     {
@@ -254,8 +257,13 @@ public class Wave_Spawner : MonoBehaviour
 
     IEnumerator introTransition()
     {
-        fadePanel.gameObject.SetActive(true);
 
+        fadePanel.gameObject.SetActive(true);
+        yield return new WaitForSeconds(0.3f);
+
+        Audio_Manager.Instance.playSFX(warpInSound,false,0.3f);
+
+        Level_Manager.Instance.setupNoticeTextAnimation("Get ready!");
         Vector3 currentScale = fadePanel.localScale;
         Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
 
@@ -281,6 +289,19 @@ public class Wave_Spawner : MonoBehaviour
 
             //  yield return new WaitForSeconds(0.001f);
         }
+
+      //  yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("3");
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("2");
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("1");
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(startSound);
+
 
         fadePanel.transform.parent.gameObject.SetActive(false);
         fadePanel.gameObject.SetActive(false);
@@ -312,6 +333,8 @@ public class Wave_Spawner : MonoBehaviour
         //Regular spawn.
         if (theWaveType == typeOfWave.normal)
         {
+            Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
+
             //Update item cooldowns.
             Level_Manager.Instance.itemCDUpdate();
 
@@ -472,10 +495,32 @@ public class Wave_Spawner : MonoBehaviour
                 diffOptions.Clear();
 
 
+                //Spawning in Bolt for player to try and pick up.
 
-                //Test for spawning in coins.
+                Debug.Log("wavesSinceCollectedBolt = " + wavesSinceCollectedBolt);
+                if (wavesSinceCollectedBolt >= 2)
+                {
 
-                if(!lastEnemySpawnedCoins)
+                    int rndBoltSpawn = Random.Range(0, 3);
+                    int chanceToSpawn = Random.Range(0, 3);
+
+
+                    //Debug
+                    chanceToSpawn = 2;
+
+                    //Make sure lastEnemySpawnedCoins so that we don't overlap with coins with the bolt.
+                    if (chanceToSpawn > 0 && !attemptedToSpawnBoltThisWave && lastEnemySpawnedCoins)
+                    {
+                        attemptedToSpawnBoltThisWave = true;
+                        StartCoroutine(boltSpawn(rndBoltSpawn));
+                    }
+
+
+                }
+
+                //Spawning in coins.
+
+                if (!lastEnemySpawnedCoins)
                 {
                     int spawnCoinRnd = Random.Range(0, 500);
                     if (spawnCoinRnd >= 250)
@@ -495,28 +540,7 @@ public class Wave_Spawner : MonoBehaviour
                     lastEnemySpawnedCoins = false;
                 }
 
-                //Spawning in Bolt for player to try and pick up.
-
-                Debug.Log("wavesSinceCollectedBolt = " + wavesSinceCollectedBolt);
-                if (wavesSinceCollectedBolt >= 2)
-                {
-                
-                    int rndBoltSpawn = Random.Range(0, 3);
-                    int chanceToSpawn = Random.Range(0, 3);
-
-
-                    //Debug
-                    chanceToSpawn = 2;
-
-                    //Make sure lastEnemySpawnedCoins so that we don't overlap with coins with the bolt.
-                    if(chanceToSpawn > 0 && !attemptedToSpawnBoltThisWave && lastEnemySpawnedCoins)
-                    {
-                        attemptedToSpawnBoltThisWave = true;
-                        StartCoroutine(boltSpawn(rndBoltSpawn));
-                    }
-
-                  
-                }
+               
 
                 //If there are too many enemies on screen maybe have some delay here instead of just static at the spawnRate value???
                 yield return new WaitForSeconds(spawnRate);
@@ -880,11 +904,13 @@ public class Wave_Spawner : MonoBehaviour
         {
             Collect_Manager.instance.purchaseItemConfirm(itemToGive);
             Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+            Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
         }
         else
         {
             Level_Manager.Instance.collectCoin(50);
             Debug.Log("Received: 50 coins from the treasure chest!");
+            Level_Manager.Instance.setupNoticeTextAnimation("You just got: 50 coins!");
         }
 
         Destroy(chest1);
@@ -1075,6 +1101,11 @@ public class Wave_Spawner : MonoBehaviour
     {
         enemiesLeft -= num;
         Debug.Log("Enemies left are: " + enemiesLeft);
+    }
+
+    public bool getIntroFinishedStatus()
+    {
+        return introTransitionFinished;
     }
 
     //Getters/Setters

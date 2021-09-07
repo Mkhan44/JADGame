@@ -3454,6 +3454,8 @@ MonoBehaviour:
   skinAnimator: {fileID: 2156872373037190676}
   defaultAnimator: {fileID: 9100000, guid: fdda30192c52a414e87a4cf3d033ebbb, type: 2}
   shopNoticeText: {fileID: 578715419}
+  startupSound: {fileID: 8300000, guid: 5a0c32707e9161a4583601c7ef130c4a, type: 3}
+  buttonPressSound: {fileID: 0}
 --- !u!4 &922221491
 Transform:
   m_ObjectHideFlags: 0

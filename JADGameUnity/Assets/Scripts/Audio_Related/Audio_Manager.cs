@@ -82,7 +82,6 @@ public class Audio_Manager : MonoBehaviour
             sfxSources[i] = tempObj.GetComponent<AudioSource>();
         }
 
-       // testPlaySFX();
     }
 
     //SFX Functions
@@ -332,6 +331,14 @@ public class Audio_Manager : MonoBehaviour
     {
         //Fade out current track.
         
+        if(Wave_Spawner.Instance != null)
+        {
+            while(!Wave_Spawner.Instance.getIntroFinishedStatus())
+            {
+                yield return null;
+            }
+        }
+
         while(currentTrackToFade.volume > 0)
         {
             Debug.Log("During Timeswap loop: " + currentTrackToFade.volume + " = the volume of current track");

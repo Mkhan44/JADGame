@@ -125,8 +125,9 @@ public class Revolver_Bullet : MonoBehaviour
                 //Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), playerCollider);
                 thisAnimator.SetBool(Bounce, true);
                 StartCoroutine(waitBounce());
-                Wave_Spawner.Instance.updateEnemiesLeft(1);
-                Level_Manager.Instance.increaseEnemiesDodged();
+               //Wave_Spawner.Instance.updateEnemiesLeft(1);
+                //Level_Manager.Instance.increaseEnemiesDodged();
+                /*
                 if (cowboyScript.getScoreVal() <= 0)
                 {
                     Level_Manager.Instance.updateScore(100);
@@ -135,7 +136,7 @@ public class Revolver_Bullet : MonoBehaviour
                 {
                     Level_Manager.Instance.updateScore(cowboyScript.getScoreVal());
                 }
-              
+              */
                 return;
             }
           // thisAnimator.SetBool(Bounce, true);
@@ -158,8 +159,9 @@ public class Revolver_Bullet : MonoBehaviour
                 //Physics2D.IgnoreCollision(this.GetComponent<BoxCollider2D>(), playerCollider);
                 thisAnimator.SetBool(Bounce, true);
                 StartCoroutine(waitBounce());
-                Wave_Spawner.Instance.updateEnemiesLeft(1);
-                Level_Manager.Instance.increaseEnemiesDodged();
+               // Wave_Spawner.Instance.updateEnemiesLeft(1);
+              //  Level_Manager.Instance.increaseEnemiesDodged();
+              /*
                 if (cowboyScript.getScoreVal() <= 0)
                 {
                     Level_Manager.Instance.updateScore(100);
@@ -168,7 +170,7 @@ public class Revolver_Bullet : MonoBehaviour
                 {
                     Level_Manager.Instance.updateScore(cowboyScript.getScoreVal());
                 }
-
+              */
                 return;
             }
 
@@ -213,8 +215,8 @@ public class Revolver_Bullet : MonoBehaviour
         }
 
         
-        Object_Pooler.Instance.AddToPool(cowboyParent.gameObject);
-        Destroy(gameObject);
+       // Object_Pooler.Instance.AddToPool(cowboyParent.gameObject);
+       // Destroy(gameObject);
 
 
         yield return null;

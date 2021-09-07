@@ -1760,6 +1760,8 @@ public class Level_Manager : MonoBehaviour
 
                 break;
             }
+
+            Level_Manager.Instance.setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!");
             yield return null;
         }
        
@@ -1827,6 +1829,8 @@ public class Level_Manager : MonoBehaviour
                 //  Debug.Log("You selected chest 1!");
 
             }
+
+            Level_Manager.Instance.setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!");
             yield return null;
         }
 
@@ -1934,7 +1938,7 @@ public class Level_Manager : MonoBehaviour
         yield return null;
 
         //Refactor the check here...don't wanna continously be calling this. !!!!!
-        while(Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal && thePlayer.GetState() != Player.playerState.dead)
+        while(Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal && thePlayer.GetState() != Player.playerState.dead && Wave_Spawner.Instance.getIntroFinishedStatus())
         {
             timePassed += Time.deltaTime;
 
@@ -2072,7 +2076,7 @@ public class Level_Manager : MonoBehaviour
         while (currentWaveBonus < finalWaveBonus)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
-            currentWaveBonus += 2;
+            currentWaveBonus += 3;
             if(currentWaveBonus > finalWaveBonus)
             {
                 currentWaveBonus = finalWaveBonus;

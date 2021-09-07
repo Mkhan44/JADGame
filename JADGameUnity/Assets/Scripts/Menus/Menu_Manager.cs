@@ -32,6 +32,10 @@ public class Menu_Manager : MonoBehaviour
     public TextMeshProUGUI shopNoticeText;
     public Coroutine shopNoticeAnimateRoutine;
 
+    [Header("SFX")]
+    [SerializeField] AudioClip startupSound;
+    [SerializeField] AudioClip buttonPressSound;
+
 
     Scene gameplayScene;
 
@@ -47,11 +51,6 @@ public class Menu_Manager : MonoBehaviour
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
         shopNoticeText.text = "";
-    }
-
-    void Update()
-    {
-        
     }
 
     public void setSkin()
@@ -127,6 +126,10 @@ public class Menu_Manager : MonoBehaviour
     
     IEnumerator fadeToGameplay()
     {
+
+        Audio_Manager.Instance.playSFX(startupSound,false,0.3f);
+
+        yield return new WaitForSeconds(0.8f);
 
         RectTransform fadePanelTransform = fadePanel.GetComponent<RectTransform>();
         Vector3 currentScale = fadePanelTransform.localScale;

@@ -83,14 +83,14 @@ public class Wizard : Obstacle_Behaviour
         if(!onScreenIndicator)
         {
             base.Movement();
-            Debug.Log("Moving using regular movement.");
+          //  Debug.Log("Moving using regular movement.");
         }
         else
         {
             if(!hasTeledIn)
             {
                 teleCo = StartCoroutine(teleAniCo());
-                Debug.Log("hasTeledIn is false, so we started the teleCoroutine.");
+              //  Debug.Log("hasTeledIn is false, so we started the teleCoroutine.");
             }
             else
             {
@@ -98,7 +98,7 @@ public class Wizard : Obstacle_Behaviour
                 {
                     if(teleCo != null)
                     {
-                        Debug.Log("hasTeledIn is TRUE && hasCase is TRUE && teleCo is not null. So we are adding this back to the pool.");
+                     //   Debug.Log("hasTeledIn is TRUE && hasCase is TRUE && teleCo is not null. So we are adding this back to the pool.");
                         hasTeledIn = false;
                         onScreenIndicator = false;
                         Wave_Spawner.Instance.updateEnemiesLeft(1);

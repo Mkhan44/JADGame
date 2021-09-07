@@ -13,6 +13,7 @@ public class Heart_System : MonoBehaviour
     [SerializeField] Sprite brokenHeart;
     [SerializeField] GameObject healthIconPrefab;
     [SerializeField] List<Image> amountOfHearts = new List<Image>();
+    [SerializeField] List<Material> outlineMats = new List<Material>();
     [SerializeField] GridLayoutGroup theGrid;
     int currentHealth;
     int maxHealth;
@@ -51,6 +52,9 @@ public class Heart_System : MonoBehaviour
             GameObject tempObj = Instantiate(healthIconPrefab, this.transform);
             Image currentSprite = tempObj.GetComponent<Image>();
             amountOfHearts.Add(currentSprite);
+            currentSprite.material = Instantiate(currentSprite.material);
+            
+            outlineMats.Add(currentSprite.material);
         }
     }
 
@@ -67,10 +71,13 @@ public class Heart_System : MonoBehaviour
             if(i + 1 <= currentHealth)
             {
                 amountOfHearts[i].sprite = fullHeart;
+                outlineMats[i].SetColor("_OutlineColor", Color.white);
+
             }
             else
             {
                 amountOfHearts[i].sprite = brokenHeart;
+                outlineMats[i].SetColor("_OutlineColor", Color.red);
             }
         }
     }
