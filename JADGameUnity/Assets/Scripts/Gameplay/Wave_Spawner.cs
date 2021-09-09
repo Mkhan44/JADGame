@@ -165,7 +165,7 @@ public class Wave_Spawner : MonoBehaviour
 
         eraText.text = "Current era: " + Level_Manager.Instance.getTimePeriod().ToString();
         //Messy...Might want to reorganize.
-        if((!Level_Manager.Instance.player.activeInHierarchy || Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial) && introTransitionFinished)
+        if((Level_Manager.Instance.thePlayer.getPlayerDeathVal() || Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial) && introTransitionFinished)
         {
             if(stopCo == false)
             {
@@ -173,7 +173,7 @@ public class Wave_Spawner : MonoBehaviour
                 {
                     StopCoroutine(spawnRoutine);
                 }
-              
+                enemiesLeft = enemyCount;
                 stopCo = true;
             }
             
@@ -263,7 +263,7 @@ public class Wave_Spawner : MonoBehaviour
 
         Audio_Manager.Instance.playSFX(warpInSound,false,0.3f);
 
-        Level_Manager.Instance.setupNoticeTextAnimation("Get ready!");
+        Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
         Vector3 currentScale = fadePanel.localScale;
         Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
 
@@ -292,13 +292,13 @@ public class Wave_Spawner : MonoBehaviour
 
       //  yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(countdownSound);
-        Level_Manager.Instance.setupNoticeTextAnimation("3");
+        Level_Manager.Instance.setupNoticeTextAnimation("3", true);
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(countdownSound);
-        Level_Manager.Instance.setupNoticeTextAnimation("2");
+        Level_Manager.Instance.setupNoticeTextAnimation("2", true);
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(countdownSound);
-        Level_Manager.Instance.setupNoticeTextAnimation("1");
+        Level_Manager.Instance.setupNoticeTextAnimation("1", true);
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(startSound);
 
@@ -333,7 +333,15 @@ public class Wave_Spawner : MonoBehaviour
         //Regular spawn.
         if (theWaveType == typeOfWave.normal)
         {
-            Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
+            if (waveCount == 1)
+            {
+                Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!", true);
+            }
+            else
+            {
+                Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
+            }
+            
 
             //Update item cooldowns.
             Level_Manager.Instance.itemCDUpdate();
@@ -498,7 +506,7 @@ public class Wave_Spawner : MonoBehaviour
                 //Spawning in Bolt for player to try and pick up.
 
                 Debug.Log("wavesSinceCollectedBolt = " + wavesSinceCollectedBolt);
-                if (wavesSinceCollectedBolt >= 2)
+                if (wavesSinceCollectedBolt >= 2 && enemiesLeft >= 2)
                 {
 
                     int rndBoltSpawn = Random.Range(0, 3);
@@ -520,7 +528,7 @@ public class Wave_Spawner : MonoBehaviour
 
                 //Spawning in coins.
 
-                if (!lastEnemySpawnedCoins)
+                if (!lastEnemySpawnedCoins && enemiesLeft >= 2)
                 {
                     int spawnCoinRnd = Random.Range(0, 500);
                     if (spawnCoinRnd >= 250)
@@ -1101,6 +1109,11 @@ public class Wave_Spawner : MonoBehaviour
     {
         enemiesLeft -= num;
         Debug.Log("Enemies left are: " + enemiesLeft);
+    }
+
+    public void resetEnemiesLeft()
+    {
+       
     }
 
     public bool getIntroFinishedStatus()

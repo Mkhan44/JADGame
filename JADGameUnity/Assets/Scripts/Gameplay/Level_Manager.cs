@@ -144,6 +144,7 @@ public class Level_Manager : MonoBehaviour
     [Header("Notice UI related")]
     [SerializeField] TextMeshProUGUI noticeText;
     Coroutine noticeCoroutine;
+    [SerializeField] Queue<string> noticeQueue = new Queue<string>();
 
     [Header("Item related.")]
     public List<Item> itemsThisRun;
@@ -735,7 +736,7 @@ public class Level_Manager : MonoBehaviour
     //Stuff happening in UPDATE//
     void checkState()
     {
-        if (player.activeInHierarchy)
+        if (!thePlayer.getPlayerDeathVal())
         {
             checkMeter();
            // Debug.Log(thePlayer.GetState());
@@ -845,7 +846,8 @@ public class Level_Manager : MonoBehaviour
                     {
                         heatMeter.setMeterValExternally(0f);
                         iceMeter.setMeterValExternally(0f);
-                        player.SetActive(false);
+                        thePlayer.setPlayerDeath(true);
+                        //player.SetActive(false);
                         duckButton.interactable = false;
                         jumpButton.interactable = false;
                         break;
@@ -880,7 +882,7 @@ public class Level_Manager : MonoBehaviour
                             }
                             else
                             {
-                                setupNoticeTextAnimation("You're Burning! Mash the cooldown button!");
+                                setupNoticeTextAnimation("You're Burning! Mash the cooldown button!", true);
                                 StartCoroutine(heatMeter.decreaseMeterFilled(meterFilled));
                             }
                         }
@@ -936,7 +938,7 @@ public class Level_Manager : MonoBehaviour
                             else
                             {
                                 StartCoroutine(iceMeter.decreaseMeterFilled(meterFilled));
-                                setupNoticeTextAnimation("You're Frozen! Mash the heat up button!");
+                                setupNoticeTextAnimation("You're Frozen! Mash the heat up button!", true);
                             }
                           
                            
@@ -1063,7 +1065,7 @@ public class Level_Manager : MonoBehaviour
     {
         onGround = yesOrNah;
 
-        if(onGround && thePlayer.GetState() != Player.playerState.burning)
+        if(onGround && thePlayer.GetState() != Player.playerState.burning && !thePlayer.getPlayerDeathVal())
         {
             Audio_Manager.Instance.playSFX(landingSound, false, 0.3f);
         }
@@ -1506,12 +1508,11 @@ public class Level_Manager : MonoBehaviour
     //Gets called if player watches an ad to respawn the player and continue the game.
     public void respawnPlayer()
     {
-        //Play ad.
-
         gameOverPanel.SetActive(false);
         currentPlayerHealth = 3;
         theHeartSystem.updateHealth(currentPlayerHealth);
-        player.SetActive(true);
+        thePlayer.setPlayerDeath(false);
+        //player.SetActive(true);
         Wave_Spawner.Instance.respawnPlayer();
         thePlayer.setState(Player.playerState.idle);
       //  playerRigid2D.gravityScale = 20;
@@ -1560,31 +1561,57 @@ public class Level_Manager : MonoBehaviour
         duckButton.GetComponent<Image>().color = new Color32(255, 255, 255, 255);
     }
 
-    public void setupNoticeTextAnimation(string message)
+    public void setupNoticeTextAnimation(string message, bool skip = false)
     {
+        if (noticeText.color.a > 0 && !skip)
+        {
+            //Add to queue, return for now.
+            noticeQueue.Enqueue(message);
+            Debug.Log("lol returning");
+            return;
+        }
+
         if (noticeCoroutine != null)
         {
             StopCoroutine(noticeCoroutine);
         }
 
-        noticeText.text = message;
-        noticeCoroutine = StartCoroutine(animateNoticeText());
+        noticeCoroutine = StartCoroutine(animateNoticeText(message, skip));
     }
-    public IEnumerator animateNoticeText()
+    public IEnumerator animateNoticeText(string message = "", bool skip = false)
     {
+        if(skip)
+        {
+            noticeText.text = message;
+            noticeQueue.Clear();
+        }
+        else
+        {
+            noticeQueue.Enqueue(message);
+
+            noticeText.text = noticeQueue.Dequeue();
+        }
+     
+
         float i = 0.0f;
         float rate = 0.0f;
         Color32 startColor = new Color32(255, 255, 255, 255);
         Color32 endColor = new Color32(255, 255, 255, 0);
 
-
-        rate = (1.0f / 4.5f) * 1.0f;
+        rate = (1.0f / 4.5f) * 2.0f;
         while (i < 1.0f)
         {
             i += Time.deltaTime * rate;
             noticeText.color = Color32.Lerp(startColor, endColor, (i));
             yield return null;
         }
+
+        if(noticeQueue.Count > 0)
+        {
+            StartCoroutine(animateNoticeText(noticeQueue.Dequeue()));
+        }
+
+        
     }
 
         /*Level related functions
@@ -1761,7 +1788,7 @@ public class Level_Manager : MonoBehaviour
                 break;
             }
 
-            Level_Manager.Instance.setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!");
+            setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!",true);
             yield return null;
         }
        
@@ -1830,7 +1857,7 @@ public class Level_Manager : MonoBehaviour
 
             }
 
-            Level_Manager.Instance.setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!");
+            setupNoticeTextAnimation("Hold down the Jump or Duck button to make a choice!",true);
             yield return null;
         }
 

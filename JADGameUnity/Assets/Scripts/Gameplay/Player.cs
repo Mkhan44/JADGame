@@ -45,11 +45,14 @@ public class Player : MonoBehaviour
 
     bool onGround;
 
+    bool isDead;
+
    
 
     private void Awake()
     {
         isPoweredUp = false;
+        isDead = false;
         currentState = playerState.idle;
         initialPos = gameObject.transform.position;
         outlineMaterialInstance = this.GetComponent<SpriteRenderer>().material;
@@ -116,6 +119,16 @@ public class Player : MonoBehaviour
     public float getIceMeterFill()
     {
         return iceMeterFillVal;
+    }
+
+    public void setPlayerDeath(bool setVal)
+    {
+        isDead = setVal;
+    }
+
+    public bool getPlayerDeathVal()
+    {
+        return isDead;
     }
 
         /*
