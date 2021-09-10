@@ -252,7 +252,7 @@ MonoBehaviour:
   thisType: 0
   scoreValue: 300
   theEra: 0
-  soundToPlay: {fileID: 0}
+  soundToPlay: {fileID: 8300000, guid: bba771f35897214448c027ffb6dc0604, type: 3}
   willLoop: 0
   playOnStart: 0
   volumeOverride: 0

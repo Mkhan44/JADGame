@@ -206,7 +206,7 @@ public class Wizard : Obstacle_Behaviour
         beamAniWait = beamAni.length;
 
         //This will probably change based on difficulty or be randomized slightly.
-        yield return new WaitForSeconds(beamAniWait);
+        yield return new WaitForSeconds(beamAniWait - 0.5f);
 
         Destroy(fireBeamInstance);
         Destroy(iceBeamInstance);

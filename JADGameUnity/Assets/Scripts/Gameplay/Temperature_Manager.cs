@@ -117,7 +117,7 @@ public class Temperature_Manager : MonoBehaviour
         //Failsafe.
         if(realFillRate == 0f)
         {
-            realFillRate = 1f;
+            realFillRate = 0.5f;
         }
     }
 

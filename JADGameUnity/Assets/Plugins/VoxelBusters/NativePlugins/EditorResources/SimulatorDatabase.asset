@@ -24,6 +24,6 @@ MonoBehaviour:
     m_value: '{"m_contactsAccessStatus":3}'
   - m_key: GameServices
     m_value: '{"m_achievementDescriptionTable":[{"m_id":"ach1","m_title":"first achievement"},{"m_id":"ach2","m_title":"second
-      achievement"}],"m_achievementTable":[{"m_id":"ach2","m_playerId":"1","m_percentageCompleted":100.0,"m_isCompleted":true}],"m_leaderboardTable":[{"m_id":"lb1","m_title":"first_leaderboard"},{"m_id":"lb2","m_title":"second_leaderboard"}],"m_scoreTable":[{"m_playerId":"1","m_leaderboardId":"lb1","m_value":10},{"m_playerId":"1","m_leaderboardId":"CgkIv4u63aIUEAIQAA","m_value":192360}],"m_playerTable":[{"m_id":"1","m_name":"You"}],"m_localPlayerId":"1"}'
+      achievement"}],"m_achievementTable":[{"m_id":"ach2","m_playerId":"1","m_percentageCompleted":100.0,"m_isCompleted":true}],"m_leaderboardTable":[{"m_id":"lb1","m_title":"first_leaderboard"},{"m_id":"lb2","m_title":"second_leaderboard"}],"m_scoreTable":[{"m_playerId":"1","m_leaderboardId":"lb1","m_value":10},{"m_playerId":"1","m_leaderboardId":"CgkIv4u63aIUEAIQAA","m_value":212690}],"m_playerTable":[{"m_id":"1","m_name":"You"}],"m_localPlayerId":"1"}'
   - m_key: NotificationServices
     m_value: '{"m_accessStatus":2,"m_enabledOptions":39,"m_scheduledNotifications":[],"m_deliveredNotifications":[],"m_isRegistedForRemoteNotifications":false}'

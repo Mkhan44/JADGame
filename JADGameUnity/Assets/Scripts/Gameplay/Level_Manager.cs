@@ -387,6 +387,7 @@ public class Level_Manager : MonoBehaviour
         toggleMute(false);
 
         setMeterRates();
+        powerupMeter.value = 0f;
 
         if (theLevelType != levelType.tutorial)
         {
@@ -875,10 +876,10 @@ public class Level_Manager : MonoBehaviour
 
                   
                             Audio_Manager.Instance.playSFX(burnEnterSound, false, 0.05f);
-
+                            heatMeter.setMeterValExternally(99.9f);
                             if (theLevelType == levelType.tutorial)
                             {
-                                heatMeter.setMeterValExternally(99.9f);
+                                
                             }
                             else
                             {
@@ -930,10 +931,10 @@ public class Level_Manager : MonoBehaviour
                             heatUpButton.gameObject.SetActive(true);
                             disableAlphaOnButtons();
                             playerAnimator.SetBool(IsHanging, false);
-
+                            iceMeter.setMeterValExternally(99.9f);
                             if (theLevelType == levelType.tutorial)
                             {
-                                iceMeter.setMeterValExternally(99.9f);
+                                
                             }
                             else
                             {
@@ -1246,7 +1247,7 @@ public class Level_Manager : MonoBehaviour
     {
         iceMeter.setIce(thePlayer.getIceMeterFill());
         heatMeter.setHeat(thePlayer.getHeatMeterFill());
-        powerupMeter.value = 0f;
+       
     }
 
     //Might wanna add a value for each obstacle based on their 'meter increase value'. That way harder obstacles increase it by more later on etc.
@@ -1567,7 +1568,7 @@ public class Level_Manager : MonoBehaviour
         {
             //Add to queue, return for now.
             noticeQueue.Enqueue(message);
-            Debug.Log("lol returning");
+           // Debug.Log("lol returning");
             return;
         }
 

@@ -56,6 +56,7 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] int waveCount;
     [SerializeField] int wavesSinceBonus;
     [SerializeField] int wavesSinceTimeSwap;
+    [SerializeField] int wavesSinceMeterIncrease;
 
     [Tooltip("Rate that enemies will spawn in at. This should decrease with each wave passed.")]
     public float spawnRate;
@@ -339,6 +340,70 @@ public class Wave_Spawner : MonoBehaviour
             }
             else
             {
+                float currentHeatMeterFillRate = Level_Manager.Instance.thePlayer.getHeatMeterFill();
+                float currentIceMeterFillRate = Level_Manager.Instance.thePlayer.getIceMeterFill();
+
+                if (currentHeatMeterFillRate < 0.80f && currentIceMeterFillRate < 0.80f)
+                {
+                    bool changedMeterRates = false;
+
+                    if(currentHeatMeterFillRate < 0.50f)
+                    {
+                        Debug.Log("Hey we're testing less than 0.5!");
+                        if (wavesSinceMeterIncrease >= 0)
+                        {
+                            currentHeatMeterFillRate += 0.05f;
+                            currentIceMeterFillRate += 0.05f;
+                            changedMeterRates = true;
+                        }
+                    }
+                    else if(currentHeatMeterFillRate >= 0.50f && currentHeatMeterFillRate < 0.60f)
+                    {
+                        Debug.Log("Hey we're testing between 0.5 and 0.6!");
+                        if (wavesSinceMeterIncrease > 1)
+                        {
+                            currentHeatMeterFillRate += 0.05f;
+                            currentIceMeterFillRate += 0.05f;
+                            changedMeterRates = true;
+                        }
+                    }
+                    else if (currentHeatMeterFillRate >= 0.60f && currentHeatMeterFillRate < 0.70f)
+                    {
+                        Debug.Log("Hey we're testing between 0.6 and 0.7!");
+                        if (wavesSinceMeterIncrease > 2)
+                        {
+                            currentHeatMeterFillRate += 0.05f;
+                            currentIceMeterFillRate += 0.05f;
+                            changedMeterRates = true;
+                        }
+                    }
+                    else
+                    {
+                        Debug.Log("Hey we're testing between 0.7 and 0.8 (LAST)!");
+                        if (wavesSinceMeterIncrease > 3)
+                        {
+                            currentHeatMeterFillRate += 0.05f;
+                            currentIceMeterFillRate += 0.05f;
+                            changedMeterRates = true;
+                        }
+                    }
+
+
+                    if(changedMeterRates)
+                    {
+                        Level_Manager.Instance.thePlayer.setHeatMeterFillVal(currentHeatMeterFillRate);
+                        Level_Manager.Instance.thePlayer.setIceMeterFillVal(currentIceMeterFillRate);
+
+                        Level_Manager.Instance.setMeterRates();
+                        Level_Manager.Instance.iceMeter.setFillRate();
+                        Level_Manager.Instance.heatMeter.setFillRate();
+
+                        Level_Manager.Instance.setupNoticeTextAnimation("Temperature's getting more intense!");
+                        wavesSinceMeterIncrease = 0;
+                    }
+                    
+                }
+
                 Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
             }
             
@@ -565,11 +630,13 @@ public class Wave_Spawner : MonoBehaviour
                 spawnRate -= 0.5f;
             }
             
-            enemyCount += 2;
+            enemyCount += 1;
             enemiesLeft = enemyCount;
             waveCount += 1;
+           
             Level_Manager.Instance.setWavesSurvived((waveCount - 1));
             wavesSinceDifficultyChange += 1;
+            wavesSinceMeterIncrease += 1;
             wavesSinceCollectedBolt += 1;
             attemptedToSpawnBoltThisWave = false;
         }

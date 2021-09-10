@@ -146,6 +146,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentHealth: 3
+  outlineMaterialInstance: {fileID: 0}
   isPoweredUp: 0
   gravityScale: 2.2
   jumpHeight: 8

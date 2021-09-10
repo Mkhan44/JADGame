@@ -121,6 +121,16 @@ public class Player : MonoBehaviour
         return iceMeterFillVal;
     }
 
+    public void setHeatMeterFillVal(float newVal)
+    {
+        heatMeterFillVal = newVal;
+    }
+
+    public void setIceMeterFillVal(float newVal)
+    {
+        iceMeterFillVal = newVal;
+    }
+
     public void setPlayerDeath(bool setVal)
     {
         isDead = setVal;

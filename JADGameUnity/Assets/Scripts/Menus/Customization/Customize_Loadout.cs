@@ -348,6 +348,7 @@ public class Customize_Loadout : MonoBehaviour
             {
                 tempObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
             }
+
             tempObj.transform.SetParent(invLayout.transform, false);
             Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
             tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
@@ -386,6 +387,19 @@ public class Customize_Loadout : MonoBehaviour
         ScrollToTop(loadoutScrollRect);
 
 
+    }
+
+    public void scaleLoadout()
+    {
+        int numLayoutItems = invLayout.transform.childCount;
+
+        for(int i = 0; i < numLayoutItems; i++)
+        {
+            if (Application.platform == RuntimePlatform.IPhonePlayer)
+            {
+                invLayout.transform.GetChild(i).localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            }
+        }
     }
 
    
@@ -453,6 +467,8 @@ public class Customize_Loadout : MonoBehaviour
         }
         else
         {
+            Audio_Manager.Instance.playSFX(Collect_Manager.instance.shopErrorSound);
+            return;
             //Don't load anything because we filled all 3 slots.
         }
 
@@ -563,7 +579,7 @@ public class Customize_Loadout : MonoBehaviour
 
     public void ScrollToTop(ScrollRect scrollArea)
     {
-        scrollArea.normalizedPosition = new Vector2(0, 1);
+      //  scrollArea.normalizedPosition = new Vector2(0, 1);
     }
 
 }
