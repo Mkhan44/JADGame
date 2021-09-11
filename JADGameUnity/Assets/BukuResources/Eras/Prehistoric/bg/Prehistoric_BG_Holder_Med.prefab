@@ -73,7 +73,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -6
+  m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 35a3d4e87e41877488c003a5e879e54f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
   rb: {fileID: 0}
-  scrollSpeed: -1.8
+  scrollSpeed: -1.5
 --- !u!61 &4455365494604355044
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -161,7 +161,7 @@ GameObject:
   - component: {fileID: 8010159566111816389}
   - component: {fileID: 8010159566111816410}
   m_Layer: 0
-  m_Name: preshistoricbgcolor
+  m_Name: preshistoricbgcolormed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -540,7 +540,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collider: {fileID: 0}
   rb: {fileID: 0}
-  scrollSpeed: -1.6
+  scrollSpeed: -1.8
 --- !u!61 &8010159567412120743
 BoxCollider2D:
   m_ObjectHideFlags: 0
