@@ -31,6 +31,8 @@ public class Menu_Manager : MonoBehaviour
     [Header("Shop related")]
     public TextMeshProUGUI shopNoticeText;
     public Coroutine shopNoticeAnimateRoutine;
+    public TextMeshProUGUI coinTotalText;
+    public TextMeshProUGUI boltTotalText;
 
     [Header("SFX")]
     [SerializeField] AudioClip startupSound;

@@ -13,8 +13,6 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
     private static IStoreController m_StoreController;
     private static IExtensionProvider m_StoreExtensionProvider;
-    public TextMeshProUGUI coinText;
-    public TextMeshProUGUI boltText;
 
     public GameObject noAdsButton;
     //Step 1 create your products
@@ -139,7 +137,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
             //CHECK IF THIS GETS CALLED EVERYTIME...WE DON'T WANT TO KEEP SPAMMING THE PLAYER WITH 1000...THOUGH THIS IS A CONSUMABLE SO I DON'T THINK IT SHOULD.
             Collect_Manager.instance.totalCoins += 1000;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+            Menu_Manager.instance.coinTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
 
         }
         else
@@ -156,7 +154,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             Collect_Manager.instance.totalCoins += 11000;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+            Menu_Manager.instance.coinTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
 
         }
         else
@@ -173,7 +171,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             Collect_Manager.instance.totalCoins += 110000;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            coinText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
+            Menu_Manager.instance.coinTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
 
         }
         else
@@ -190,7 +188,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             Collect_Manager.instance.totalBolts += 100;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+            Menu_Manager.instance.boltTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
         }
         else
@@ -207,7 +205,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             Collect_Manager.instance.totalBolts += 600;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+            Menu_Manager.instance.boltTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
         }
         else
@@ -225,7 +223,7 @@ public class IAPManager : MonoBehaviour, IStoreListener
 
             Collect_Manager.instance.totalBolts += 1500;
             Save_System.SaveCollectables(Collect_Manager.instance);
-            boltText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
+            Menu_Manager.instance.boltTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
 
         }
         else
