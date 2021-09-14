@@ -77,9 +77,8 @@ public class Object_Pooler : MonoBehaviour
     {
         ObjToAdd.SetActive(false);
         string nameToAdd = ObjToAdd.name.Replace("(Clone)", "");
-        poolDictionary[nameToAdd].Enqueue(ObjToAdd);
-
-
+       // Debug.Log(nameToAdd + "s in the pool are now: " + poolDictionary[nameToAdd].Count);
+        
     }
 
     //Wave spawner will pass in the position and rotation of these objects.

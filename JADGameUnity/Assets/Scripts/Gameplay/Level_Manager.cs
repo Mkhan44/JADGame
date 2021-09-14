@@ -375,7 +375,7 @@ public class Level_Manager : MonoBehaviour
         noticeText.text = "";
 
         useDurationText.text = "No item in use.";
-        scoreText.text = "Score: 0";
+        scoreText.text = "RP: 0";
 
         pointMultiplier = 1;
         multiplierText.text = pointMultiplier.ToString() + "x";

@@ -628,6 +628,9 @@ public class Wave_Spawner : MonoBehaviour
             if(spawnRate > 1.5f)
             {
                 spawnRate -= 0.5f;
+
+                //DEBUG
+                spawnRate = 1.5f;
             }
             
             enemyCount += 1;

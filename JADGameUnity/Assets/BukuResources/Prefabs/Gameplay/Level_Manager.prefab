@@ -86,6 +86,7 @@ MonoBehaviour:
   unmutedSprite: {fileID: 0}
   muteButtonSprite: {fileID: 0}
   pausePanel: {fileID: 0}
+  noticeText: {fileID: 0}
   itemsThisRun:
   - {fileID: 0}
   - {fileID: 0}
@@ -137,6 +138,7 @@ MonoBehaviour:
   waveCount: 0
   wavesSinceBonus: 0
   wavesSinceTimeSwap: 0
+  wavesSinceMeterIncrease: 0
   spawnRate: 1
   timeBetweenWaves: 3
   enemies: []
@@ -171,6 +173,9 @@ MonoBehaviour:
   wavesSinceCollectedBolt: 0
   itemRouletteSound: {fileID: 0}
   itemGetSound: {fileID: 0}
+  warpInSound: {fileID: 0}
+  countdownSound: {fileID: 0}
+  startSound: {fileID: 0}
 --- !u!114 &8248098668222182069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -435,9 +440,9 @@ MonoBehaviour:
   - listName: Treasure
     wrappedList:
     - prefab: {fileID: 6894734349349987309, guid: ca65564f3f33d4a43b29a44e5a39314e, type: 3}
-      size: 100
+      size: 10
     - prefab: {fileID: 6894734349349987309, guid: 991c1fe1233af6742ad15596ab5c2790, type: 3}
-      size: 100
+      size: 10
   - listName: Tutorial
     wrappedList:
     - prefab: {fileID: 4158279202637467101, guid: 44064960154c54b4b9530a91a50ac523, type: 3}
