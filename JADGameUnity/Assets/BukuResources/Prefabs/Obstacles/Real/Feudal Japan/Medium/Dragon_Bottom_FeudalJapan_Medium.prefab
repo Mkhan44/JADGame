@@ -101,10 +101,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 5.5
   spawnPoint: 1
   extraCollider: {fileID: 0}
-  objectElement: 1
+  objectElement: 2
   thisObstacleDiff: 1
   thisType: 0
   scoreValue: 200
@@ -113,6 +113,7 @@ MonoBehaviour:
   willLoop: 0
   playOnStart: 1
   volumeOverride: 0.2
+  extraAudioClips: []
   ogCollider: {fileID: 8160921082443146840}
   endCollision: {fileID: 7739306957846548187}
   despawnerCollider: {fileID: 0}

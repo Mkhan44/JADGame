@@ -811,7 +811,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.0386946, y: 0.29886326}
   m_AnchorMax: {x: 0.9386411, y: 0.5218633}
-  m_AnchoredPosition: {x: -0.51953125, y: 0.036010742}
+  m_AnchoredPosition: {x: -0.5194702, y: 0.036010742}
   m_SizeDelta: {x: -4, y: -0.5299988}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &115540801
@@ -2118,7 +2118,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.014612261, y: 0.32569656}
   m_AnchorMax: {x: 0.49300003, y: 0.46256554}
-  m_AnchoredPosition: {x: 0.40039062, y: -44.12864}
+  m_AnchoredPosition: {x: 0.40039062, y: -44.128643}
   m_SizeDelta: {x: 0.099998474, y: -12.759796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409316503
@@ -15180,7 +15180,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: deathSound

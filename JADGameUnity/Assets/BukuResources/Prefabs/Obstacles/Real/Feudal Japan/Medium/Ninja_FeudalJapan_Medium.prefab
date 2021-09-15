@@ -103,7 +103,7 @@ MonoBehaviour:
   maxSpeed: 5
   spawnPoint: 1
   extraCollider: {fileID: 0}
-  objectElement: 2
+  objectElement: 1
   thisObstacleDiff: 1
   thisType: 0
   scoreValue: 200
@@ -112,6 +112,7 @@ MonoBehaviour:
   willLoop: 0
   playOnStart: 0
   volumeOverride: 0
+  extraAudioClips: []
   ninjaAnimator: {fileID: 5857835583463249108}
   elapsedTime: 0
   teleportRate: 0.5

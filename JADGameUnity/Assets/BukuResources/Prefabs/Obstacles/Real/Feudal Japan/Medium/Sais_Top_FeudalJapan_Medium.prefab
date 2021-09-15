@@ -230,7 +230,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5.5
+  maxSpeed: 6
   spawnPoint: 0
   extraCollider: {fileID: 0}
   objectElement: 0

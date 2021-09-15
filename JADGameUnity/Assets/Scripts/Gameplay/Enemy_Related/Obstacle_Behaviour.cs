@@ -345,8 +345,6 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         }
 
         Audio_Manager.Instance.playSFX(soundToPlay, false, volumeOverride);
-        
-
        
     }
 
