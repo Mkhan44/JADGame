@@ -90,7 +90,22 @@ public class Cowboy : Obstacle_Behaviour
         //Duration of the animation.
         float animDuration = 0;
 
-        yield return new WaitForSeconds(2f);
+
+        //Change based on difficulty.
+
+        if(thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(1.5f);
+        }
+        else if(thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(0.8f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        //yield return new WaitForSeconds(2f);
 
         
         //Shoot up.
@@ -110,7 +125,7 @@ public class Cowboy : Obstacle_Behaviour
                     tempBullet.transform.parent = null;
 
                     //Change the speed based on difficulty!
-                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, horizontalBulletSpeed, verticalBulletSpeed, this.gameObject);
+                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, this.gameObject);
                     bulletCollider = tempBullet.GetComponent<BoxCollider2D>();
                 }
                 yield return null;
@@ -128,11 +143,11 @@ public class Cowboy : Obstacle_Behaviour
                     yield return new WaitForSeconds(0.2f);
                     animDone = true;
                     cowboyAnimator.SetInteger(ShootDirection, 3);
-                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.gameObject.transform);
+                    GameObject tempBullet = Instantiate(bulletPrefab, gunHitbox.transform);
                     tempBullet.transform.parent = null;
 
                     //Change the speed based on difficulty!
-                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, horizontalBulletSpeed, verticalBulletSpeed, this.gameObject);
+                    tempBullet.GetComponent<Revolver_Bullet>().initializeBullet(randNum, this.gameObject);
                     bulletCollider = tempBullet.GetComponent<BoxCollider2D>();
                 }
                 yield return null;
@@ -197,7 +212,7 @@ public class Cowboy : Obstacle_Behaviour
             if (collision.gameObject.tag == "On_screen_Vicinity_Collider")
             {
                 onScreenIndicator = true;
-                Debug.Log(gameObject.name + " Is now on screen!");
+                //Debug.Log(gameObject.name + " Is now on screen!");
             }
           
             if (!hasShot)

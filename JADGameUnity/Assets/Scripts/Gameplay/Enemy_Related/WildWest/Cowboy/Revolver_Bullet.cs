@@ -20,11 +20,17 @@ public class Revolver_Bullet : MonoBehaviour
     [Tooltip("If shot up, then this is 1, if shot down then it should be 2.")]
     [SerializeField] int shootDirection;
     [SerializeField] float shotSpeedHorizontal;
+    float minShotSpeedHorizontalModifier;
+    float maxShotSpeedHorizontalModifier;
     [SerializeField] float shotSpeedVertical;
+    float minShotSpeedVerticalModifier;
+    float maxShotSpeedVerticalModifier;
     [SerializeField] Vector3 ogRot;
     [SerializeField] BoxCollider2D playerCollider;
 
     [SerializeField] AudioClip ricochetSound;
+
+    bool bouncedYet;
 
     const string Bounce = "Bounce";
 
@@ -35,6 +41,7 @@ public class Revolver_Bullet : MonoBehaviour
         ogRot = this.transform.rotation.eulerAngles;
         thisRigid = this.GetComponent<Rigidbody2D>();
         thisAnimator = this.GetComponent<Animator>();
+        bouncedYet = false;
     }
 
     private void Update()
@@ -53,7 +60,7 @@ public class Revolver_Bullet : MonoBehaviour
     }
 
     //Initialization.
-    public void initializeBullet(int setDir, float theHorSpeed, float theVertSpeed, GameObject theCowboy)
+    public void initializeBullet(int setDir, GameObject theCowboy)
     {
         shootDirection = setDir;
         Vector3 rot = new Vector3(ogRot.x, ogRot.y, ogRot.z);
@@ -67,10 +74,27 @@ public class Revolver_Bullet : MonoBehaviour
             rot = new Vector3(ogRot.x, ogRot.y, ogRot.z + 50);
             this.transform.rotation = Quaternion.Euler(rot);
         }
-        shotSpeedHorizontal = theHorSpeed;
-        shotSpeedVertical = theVertSpeed;
+        //shotSpeedHorizontal = theHorSpeed;
+        //shotSpeedVertical = theVertSpeed;
         cowboyParent = theCowboy;
         cowboyScript = theCowboy.GetComponent<Cowboy>();
+
+        if (cowboyScript.thisObstacleDiff == Obstacle_Behaviour.obstacleDiff.easy)
+        {
+            minShotSpeedHorizontalModifier = 3.6f;
+            minShotSpeedVerticalModifier = 6.0f;
+        }
+        else if (cowboyScript.thisObstacleDiff == Obstacle_Behaviour.obstacleDiff.medium)
+        {
+            minShotSpeedHorizontalModifier = 4.1f;
+            minShotSpeedVerticalModifier = 6.9f;
+        }
+        else
+        {
+            minShotSpeedHorizontalModifier = 4.5f;
+            minShotSpeedVerticalModifier = 7.5f;
+        }
+        setShotSpeed(minShotSpeedHorizontalModifier, minShotSpeedVerticalModifier);
     }
 
     public void setShootDirection(int setDir)
@@ -147,6 +171,8 @@ public class Revolver_Bullet : MonoBehaviour
             shootDirection = 2;
             rot = new Vector3(ogRot.x, ogRot.y, ogRot.z + 50);
             this.transform.rotation = Quaternion.Euler(rot);
+
+
             Audio_Manager.Instance.playSFX(ricochetSound, false, 0.3f);
             // thisAnimator.SetBool(Bounce, true);
 
@@ -182,6 +208,8 @@ public class Revolver_Bullet : MonoBehaviour
             shootDirection = 1;
             rot = new Vector3(ogRot.x, ogRot.y, ogRot.z - 50);
             this.transform.rotation = Quaternion.Euler(rot);
+
+
             Audio_Manager.Instance.playSFX(ricochetSound,false,0.3f);
             //  thisAnimator.SetBool(Bounce, true);
 
@@ -200,7 +228,10 @@ public class Revolver_Bullet : MonoBehaviour
 
     IEnumerator waitBounce()
     {
-        thisRigid.velocity = Vector2.zero;
+        //thisRigid.velocity = Vector2.zero;
+        thisRigid.velocity = Vector2.left * 4.0f;
+        Debug.Log("Velocity of the bullet is: " + thisRigid.velocity);
+
         bool animDone = false;
 
 
