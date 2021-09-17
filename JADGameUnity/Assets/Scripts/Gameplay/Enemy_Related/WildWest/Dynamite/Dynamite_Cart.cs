@@ -16,6 +16,8 @@ public class Dynamite_Cart : Obstacle_Behaviour
     GameObject currentParticleInstance;
     [SerializeField] Animator dynaAnimator;
 
+    [SerializeField] Material dynaMaterial;
+
     const string dynamitefadeName = "dynamitefade";
     const string dynamiteidleName = "dynamiteidle";
     const string dynaBool = "Explode";
@@ -44,6 +46,8 @@ public class Dynamite_Cart : Obstacle_Behaviour
             Color iceColor = new Color(70, 219, 213, 255);
             outlineMat.SetColor("_OutlineColor", Color.cyan);
         }
+
+        dynaMaterial = this.transform.GetChild(0).GetComponent<SpriteRenderer>().material;
     }
 
     // Update is called once per frame
@@ -58,6 +62,16 @@ public class Dynamite_Cart : Obstacle_Behaviour
         Destroy(currentParticleInstance);
         Destroy(currentComicEffectParticleInstance);
         dynaAnimator.SetBool(dynaBool, false);
+        if (objectElement == ElementType.fire)
+        {
+            dynaMaterial.SetColor("_OutlineColor", Color.red);
+
+        }
+        else if (objectElement == ElementType.ice)
+        {
+            dynaMaterial.SetColor("_OutlineColor", Color.red);
+        }
+
     }
 
     protected override void Movement()
@@ -80,14 +94,15 @@ public class Dynamite_Cart : Obstacle_Behaviour
     {
         AnimationClip dynaClip;
 
-        dynaClip = dynaAnimator.runtimeAnimatorController.animationClips[0];
+        dynaClip = dynaAnimator.runtimeAnimatorController.animationClips[1];
+      //  Debug.LogWarning(dynaClip.name);
 
         float aniTime = dynaClip.length;
 
-
         dynaAnimator.SetBool(dynaBool, true);
 
-       // yield return new WaitForSeconds(aniTime - 0.1f);
+        dynaMaterial.SetColor("_OutlineColor", Color.white);
+        // yield return new WaitForSeconds(aniTime - 0.1f);
 
         //Vector2 particlePos = new Vector2(dynaAnimator.gameObject.transform.position.x, dynaAnimator.gameObject.transform.position.y + 0.2f);
         Vector2 particlePos = new Vector2(dynaAnimator.gameObject.transform.position.x, dynaAnimator.gameObject.transform.position.y + 0.35f);

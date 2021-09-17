@@ -100,10 +100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 3.7
+  maxSpeed: 4.3
   spawnPoint: 1
   extraCollider: {fileID: 0}
-  objectElement: 2
+  objectElement: 0
   thisObstacleDiff: 0
   thisType: 0
   scoreValue: 100

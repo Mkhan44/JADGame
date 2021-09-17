@@ -36,7 +36,9 @@ public class Ninja : Obstacle_Behaviour
 
     public override void OnObjectSpawn()
     {
-        numTeleportsLeft = maxNumTeleports;
+        //numTeleportsLeft = maxNumTeleports;
+
+        numTeleportsLeft = Random.Range(2, maxNumTeleports + 1);
         inCoroutine = false;
         isFlipped = false;
         Vector3 rot = this.transform.rotation.eulerAngles;
@@ -158,7 +160,9 @@ public class Ninja : Obstacle_Behaviour
             yield return null;
         }
         */
-        speed = maxSpeed-1f;
+        //speed = maxSpeed-1f;
+
+        speed = 3f;
 
         ninjaAnimator.SetInteger(teleportVar, 0);
 

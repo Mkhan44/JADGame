@@ -203,7 +203,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 4.5
+  maxSpeed: 6
   spawnPoint: 1
   extraCollider: {fileID: 0}
   objectElement: 1
@@ -220,6 +220,7 @@ MonoBehaviour:
   boomParticlePrefab: {fileID: 3126646067317863400, guid: 4aee42b607e7c784c8d1b000e845cb35, type: 3}
   bangParticlePrefab: {fileID: 3126646067317863400, guid: 70de7f6981506c3409f6994a463c1ed0, type: 3}
   dynaAnimator: {fileID: 4457354529941002274}
+  dynaMaterial: {fileID: 0}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

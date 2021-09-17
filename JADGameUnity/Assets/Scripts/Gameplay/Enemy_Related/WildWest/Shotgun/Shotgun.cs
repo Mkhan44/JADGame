@@ -93,8 +93,22 @@ public class Shotgun : Obstacle_Behaviour
 
         if(smallShell1 != null && smallShell2 != null)
         {
-            smallShellRigid1.velocity = Vector2.left * 2.8f;
-            smallShellRigid2.velocity = Vector2.left * 3.0f;
+            if (thisObstacleDiff == obstacleDiff.easy)
+            {
+                smallShellRigid1.velocity = Vector2.left * 2.8f;
+                smallShellRigid2.velocity = Vector2.left * 3.0f;
+            }
+            else if (thisObstacleDiff == obstacleDiff.medium)
+            {
+                smallShellRigid1.velocity = Vector2.left * 3.5f;
+                smallShellRigid2.velocity = Vector2.left * 3.7f;
+            }
+            else
+            {
+                smallShellRigid1.velocity = Vector2.left * 3.8f;
+                smallShellRigid2.velocity = Vector2.left * 4.0f;
+            }
+
         }
 
         
@@ -111,21 +125,57 @@ public class Shotgun : Obstacle_Behaviour
         AnimationClip shottyClip;
         //Since there is only 1 animation , this should be the clip for cocking and shooting the shotgun.
         shottyClip = shotgunAnimator.runtimeAnimatorController.animationClips[0];
+        if (thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
 
-        yield return new WaitForSeconds(0.5f);
+
+
 
         shotgunAnimator.Play(shootShot);
 
        // Debug.Log("The animation length of: " + shottyClip.name + " is: " + shottyClip.length);
 
-        yield return new WaitForSeconds(shottyClip.length - 0.6f);
+        if(thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(shottyClip.length - 0.6f);
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(shottyClip.length - 0.4f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(shottyClip.length - 0.2f);
+        }
+
 
         Vector3 tempPos = new Vector3(shellCollider.gameObject.transform.position.x - 0.5f, shellCollider.gameObject.transform.position.y, shellCollider.gameObject.transform.position.z);
         // shellCollider.offset = new Vector2(-0.3811183f, 0.02361713f);
         shotgunShellInstance = Instantiate(shotgunShellPrefab, shellCollider.transform);
         bigShellRigid = shotgunShellInstance.GetComponent<Rigidbody2D>();
 
-        yield return new WaitForSeconds(1.0f);
+        if (thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(1.0f);
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
 
         hasShot = true;
 

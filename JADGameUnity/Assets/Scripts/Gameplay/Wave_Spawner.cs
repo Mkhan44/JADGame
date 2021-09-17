@@ -340,16 +340,18 @@ public class Wave_Spawner : MonoBehaviour
             }
             else
             {
+                Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
+
                 float currentHeatMeterFillRate = Level_Manager.Instance.thePlayer.getHeatMeterFill();
                 float currentIceMeterFillRate = Level_Manager.Instance.thePlayer.getIceMeterFill();
 
-                if (currentHeatMeterFillRate < 0.80f && currentIceMeterFillRate < 0.80f)
+                if (currentHeatMeterFillRate < 0.90f && currentIceMeterFillRate < 0.90f)
                 {
                     bool changedMeterRates = false;
 
                     if(currentHeatMeterFillRate < 0.50f)
                     {
-                        Debug.Log("Hey we're testing less than 0.5!");
+                      //  Debug.Log("Hey we're testing less than 0.5!");
                         if (wavesSinceMeterIncrease >= 0)
                         {
                             currentHeatMeterFillRate += 0.05f;
@@ -359,7 +361,7 @@ public class Wave_Spawner : MonoBehaviour
                     }
                     else if(currentHeatMeterFillRate >= 0.50f && currentHeatMeterFillRate < 0.60f)
                     {
-                        Debug.Log("Hey we're testing between 0.5 and 0.6!");
+                      //  Debug.Log("Hey we're testing between 0.5 and 0.6!");
                         if (wavesSinceMeterIncrease > 1)
                         {
                             currentHeatMeterFillRate += 0.05f;
@@ -367,9 +369,9 @@ public class Wave_Spawner : MonoBehaviour
                             changedMeterRates = true;
                         }
                     }
-                    else if (currentHeatMeterFillRate >= 0.60f && currentHeatMeterFillRate < 0.70f)
+                    else if (currentHeatMeterFillRate >= 0.60f && currentHeatMeterFillRate < 0.85f)
                     {
-                        Debug.Log("Hey we're testing between 0.6 and 0.7!");
+                      //  Debug.Log("Hey we're testing between 0.6 and 0.85!");
                         if (wavesSinceMeterIncrease > 2)
                         {
                             currentHeatMeterFillRate += 0.05f;
@@ -379,7 +381,7 @@ public class Wave_Spawner : MonoBehaviour
                     }
                     else
                     {
-                        Debug.Log("Hey we're testing between 0.7 and 0.8 (LAST)!");
+                       // Debug.Log("Hey we're testing between 0.85 and 0.9 (LAST)!");
                         if (wavesSinceMeterIncrease > 3)
                         {
                             currentHeatMeterFillRate += 0.05f;
@@ -404,7 +406,7 @@ public class Wave_Spawner : MonoBehaviour
                     
                 }
 
-                Level_Manager.Instance.setupNoticeTextAnimation("Wave " + waveCount + " start!");
+               
             }
             
 

@@ -230,7 +230,7 @@ public class Revolver_Bullet : MonoBehaviour
     {
         //thisRigid.velocity = Vector2.zero;
         thisRigid.velocity = Vector2.left * 4.0f;
-        Debug.Log("Velocity of the bullet is: " + thisRigid.velocity);
+      //  Debug.Log("Velocity of the bullet is: " + thisRigid.velocity);
 
         bool animDone = false;
 

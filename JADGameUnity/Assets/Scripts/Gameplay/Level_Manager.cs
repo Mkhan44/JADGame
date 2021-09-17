@@ -1412,6 +1412,7 @@ public class Level_Manager : MonoBehaviour
             gameOverAdP.SetActive(false);
             gameOverTally();
         }
+        Time.timeScale = 1f;
     }
 
     public void setGameoverSkin()
