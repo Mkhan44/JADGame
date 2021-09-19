@@ -101,7 +101,7 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 0affb777592a1954dbac44929131cb61, type: 3}
   - {fileID: 8300000, guid: 4e50236c3cae0994fa00163574b603ba, type: 3}
   - {fileID: 8300000, guid: ef45b29174644db4a8dc86df167f3908, type: 3}
-  tutorialMusic: {fileID: 8300000, guid: 2de0af4ac5441a7408692cd4976aeb53, type: 3}
+  tutorialMusic: {fileID: 8300000, guid: 5c7a272c408a4924489d1f5579581a50, type: 3}
   bonusSource: {fileID: 8074029813665998367}
   easySource: {fileID: 8074029814056993848}
   mediumSource: {fileID: 8074029813526272878}

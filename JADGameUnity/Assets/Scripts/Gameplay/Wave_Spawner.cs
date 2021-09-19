@@ -345,7 +345,7 @@ public class Wave_Spawner : MonoBehaviour
                 float currentHeatMeterFillRate = Level_Manager.Instance.thePlayer.getHeatMeterFill();
                 float currentIceMeterFillRate = Level_Manager.Instance.thePlayer.getIceMeterFill();
 
-                if (currentHeatMeterFillRate < 0.90f && currentIceMeterFillRate < 0.90f)
+                if (currentHeatMeterFillRate < 1.10f && currentIceMeterFillRate < 1.10f)
                 {
                     bool changedMeterRates = false;
 
@@ -359,7 +359,7 @@ public class Wave_Spawner : MonoBehaviour
                             changedMeterRates = true;
                         }
                     }
-                    else if(currentHeatMeterFillRate >= 0.50f && currentHeatMeterFillRate < 0.60f)
+                    else if(currentHeatMeterFillRate >= 0.50f && currentHeatMeterFillRate < 1.10f)
                     {
                       //  Debug.Log("Hey we're testing between 0.5 and 0.6!");
                         if (wavesSinceMeterIncrease > 1)
@@ -369,6 +369,7 @@ public class Wave_Spawner : MonoBehaviour
                             changedMeterRates = true;
                         }
                     }
+                    /*
                     else if (currentHeatMeterFillRate >= 0.60f && currentHeatMeterFillRate < 0.85f)
                     {
                       //  Debug.Log("Hey we're testing between 0.6 and 0.85!");
@@ -389,7 +390,7 @@ public class Wave_Spawner : MonoBehaviour
                             changedMeterRates = true;
                         }
                     }
-
+                    */
 
                     if(changedMeterRates)
                     {

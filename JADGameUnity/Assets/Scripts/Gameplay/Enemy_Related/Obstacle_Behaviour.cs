@@ -37,6 +37,9 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
     protected Material outlineMat;
     protected List<Material> outlineChildList = new List<Material>();
 
+    [Tooltip("Used for morningstar. If there is an extra material that is more than 1 child deep, use this to assign correctly for the Material.")]
+    [SerializeField] protected SpriteRenderer extMaterial;
+
     [Tooltip("If there is a hitbox we don't want to count when despawning the object, assign it here.")]
     [SerializeField] protected BoxCollider2D extraCollider;
 
@@ -187,6 +190,23 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
                 // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
                 Color iceColor = new Color(70, 219, 213, 255);
                 outlineMat.SetColor("_OutlineColor", Color.cyan);
+            }
+        }
+
+        if(extMaterial != null)
+        {
+            Material theMat = extMaterial.material;
+            if (objectElement == ElementType.fire)
+            {
+                // Debug.Log("SPAWNED FIRE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color fireColor = new Color(212, 139, 57, 255);
+                theMat.SetColor("_OutlineColor", Color.red);
+            }
+            else if (objectElement == ElementType.ice)
+            {
+                // Debug.Log("SPAWNED ICE ELEMENTAL ITEM, CHANGING SHADER.");
+                Color iceColor = new Color(70, 219, 213, 255);
+                theMat.SetColor("_OutlineColor", Color.cyan);
             }
         }
 

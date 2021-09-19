@@ -100,8 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 5.15
   spawnPoint: 0
+  extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
   objectElement: 0
   thisObstacleDiff: 0
@@ -112,6 +113,7 @@ MonoBehaviour:
   willLoop: 0
   playOnStart: 1
   volumeOverride: 0.3
+  extraAudioClips: []
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

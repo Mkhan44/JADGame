@@ -101,15 +101,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 5
+  maxSpeed: 4.5
   spawnPoint: 0
+  extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
-  objectElement: 1
+  objectElement: 2
   thisObstacleDiff: 1
   thisType: 0
   scoreValue: 300
   theEra: 0
+  soundToPlay: {fileID: 0}
+  willLoop: 0
+  playOnStart: 0
+  volumeOverride: 0
+  extraAudioClips: []
   arrowAnimator: {fileID: 0}
+  arrowPullbackSound: {fileID: 8300000, guid: abfc6185e66842c4ea4b789bb634472a, type: 3}
+  arrowReleaseSound: {fileID: 8300000, guid: f1aabcf4bcbf583489bbbab205b84c69, type: 3}
 --- !u!61 &8160921082443146840
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -43,6 +43,14 @@ public class Wizard : Obstacle_Behaviour
     [SerializeField] AudioClip fireBeamSound;
     [SerializeField] AudioClip iceBeamSound;
 
+    const string topCastIdleName = "wizardtopcastidle";
+    const string botCastIdleName = "wizardbotcastidle";
+    const string teleInName = "wizardtele";
+    const string teleOutName = "wizardteleout";
+    const string idleName = "wizardidle";
+    const string topCastName = "wizardtopcast";
+    const string botCastName = "wizardbotcast";
+
 
     protected override void Awake()
     {
@@ -125,7 +133,7 @@ public class Wizard : Obstacle_Behaviour
             //Teleport Wizard in.
             teleAni = wizardAnimator.runtimeAnimatorController.animationClips[0];
            // Debug.Log(teleAni.name);
-            wizardAnimator.Play("wizardtele");
+            wizardAnimator.Play(teleInName);
             this.transform.GetChild(0).GetComponent<SpriteRenderer>().color = regularColor;
             hasTeledIn = true;
         }
@@ -134,7 +142,7 @@ public class Wizard : Obstacle_Behaviour
             //Teleport wizard out.
             teleAni = wizardAnimator.runtimeAnimatorController.animationClips[4];
            // Debug.Log(teleAni.name);
-            wizardAnimator.Play("wizardteleout");
+            wizardAnimator.Play(teleOutName);
             lengthOfAni = teleAni.length;
             yield return new WaitForSeconds(lengthOfAni);
             this.transform.position = new Vector2(this.transform.position.x + 2, this.transform.position.y);
@@ -145,10 +153,23 @@ public class Wizard : Obstacle_Behaviour
         yield return new WaitForSeconds(lengthOfAni);
 
         //Have wizard in looping idle state.
-        wizardAnimator.Play("wizardidle");
+        wizardAnimator.Play(idleName);
 
         //May change this depending on difficulty so there is less of a tell for harder difficulties.
-        yield return new WaitForSeconds(0.5f);
+
+        if(thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(0.5f);
+        }
+        else if(thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(0.3f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+       
 
         StartCoroutine(castSpell());
 
@@ -158,6 +179,20 @@ public class Wizard : Obstacle_Behaviour
     //Spawn tell on top or bottom, wait for x amount of seconds, then fire beam.
     IEnumerator castSpell()
     {
+        float waitTime;
+        if (thisObstacleDiff == obstacleDiff.easy)
+        {
+            waitTime = 1.0f;
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            waitTime = 0.8f;
+        }
+        else
+        {
+            waitTime = 0.65f;
+        }
+
         randCast = Random.Range(1, 3);
         float castAniWait = 0f;
         float beamAniWait = 0f;
@@ -165,25 +200,45 @@ public class Wizard : Obstacle_Behaviour
         if (randCast == 1)
         {
             fireTellParticleInstance = Instantiate(fireTellParticlePrefab);
-            castUpAni = wizardAnimator.runtimeAnimatorController.animationClips[1];
+            castUpAni = wizardAnimator.runtimeAnimatorController.animationClips[2];
             castAniWait = castUpAni.length;
-            yield return new WaitForSeconds(1.3f);
 
-            wizardAnimator.Play("wizardtopcast");
-          
+            yield return new WaitForSeconds(waitTime);
+           // Debug.LogWarning(wizardAnimator.runtimeAnimatorController.animationClips[2].name);
+
+            wizardAnimator.Play(topCastName);
+            yield return new WaitForSeconds(castAniWait);
+
+            wizardAnimator.Play(topCastIdleName);
+
         }
         else
         {
             iceTellParticleInstance = Instantiate(iceTellParticlePrefab);
-            castDownAni = wizardAnimator.runtimeAnimatorController.animationClips[2];
+            castDownAni = wizardAnimator.runtimeAnimatorController.animationClips[3];
+           
             castAniWait = castDownAni.length;
-            yield return new WaitForSeconds(1.3f);
+            yield return new WaitForSeconds(waitTime);
+           // Debug.LogWarning(wizardAnimator.runtimeAnimatorController.animationClips[3].name);
 
-            wizardAnimator.Play("wizardbotcast");
-            
+            wizardAnimator.Play(botCastName);
+            yield return new WaitForSeconds(castAniWait);
+
+            wizardAnimator.Play(botCastIdleName);
         }
 
-        yield return new WaitForSeconds(castAniWait - 0.6f);
+        //Code to figure out all names of animation clips in an animator controller so we know what index to use.
+
+        /*
+        int numClips = wizardAnimator.runtimeAnimatorController.animationClips.Length;
+
+        for(int i = 0; i < numClips; i++)
+        {
+            Debug.LogWarning(i + " animation clip's name is: " + wizardAnimator.runtimeAnimatorController.animationClips[i].name);
+        }
+        */
+
+        //Code to figure out all names of animation clips in an animator controller so we know what index to use.
 
         Destroy(fireTellParticleInstance);
         Destroy(iceTellParticleInstance);
@@ -205,8 +260,7 @@ public class Wizard : Obstacle_Behaviour
 
         beamAniWait = beamAni.length;
 
-        //This will probably change based on difficulty or be randomized slightly.
-        yield return new WaitForSeconds(beamAniWait - 0.5f);
+        yield return new WaitForSeconds(beamAniWait - 0.45f);
 
         Destroy(fireBeamInstance);
         Destroy(iceBeamInstance);

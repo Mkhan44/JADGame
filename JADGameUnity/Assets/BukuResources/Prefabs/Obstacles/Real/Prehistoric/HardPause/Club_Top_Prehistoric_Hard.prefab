@@ -100,8 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5
-  maxSpeed: 6.7
+  maxSpeed: 7
   spawnPoint: 0
+  extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
   objectElement: 2
   thisObstacleDiff: 2
