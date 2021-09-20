@@ -6693,7 +6693,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1756786340
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7501,10 +7501,10 @@ RectTransform:
   m_Father: {fileID: 1597012567}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.0066944445, y: 0.9263907}
-  m_AnchorMax: {x: 0.12361111, y: 0.9908281}
-  m_AnchoredPosition: {x: 0.099853516, y: 0.60009766}
-  m_SizeDelta: {x: -0.23199463, y: 0.76794434}
+  m_AnchorMin: {x: 0.873, y: 0.92560923}
+  m_AnchorMax: {x: 0.98958886, y: 0.9908281}
+  m_AnchoredPosition: {x: -1, y: 0}
+  m_SizeDelta: {x: 0.7680664, y: -0.23205566}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &1919421453
 MonoBehaviour:
@@ -9239,9 +9239,9 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 758844355}
     m_Modifications:
-    - target: {fileID: 82019641, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0.8874512
+    - target: {fileID: 82019642, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: m_text
+      value: Choose the way you would like to pay for this test subject.
       objectReference: {fileID: 0}
     - target: {fileID: 176900951, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_AnchorMax.y
@@ -9310,6 +9310,10 @@ PrefabInstance:
     - target: {fileID: 1164590931, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -83.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1173875471, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: m_Softness.y
+      value: 61
       objectReference: {fileID: 0}
     - target: {fileID: 1301010084, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -9531,6 +9535,18 @@ PrefabInstance:
       propertyPath: errorSound
       value: 
       objectReference: {fileID: 8300000, guid: f93ab6f74d6434240bf78aa9c91c8610, type: 3}
+    - target: {fileID: 3176456881916126212, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: itemsForSale.Array.size
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3176456881916126212, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: itemsForSale.Array.data[5]
+      value: 
+      objectReference: {fileID: 11400000, guid: ea1992becb1fa1c47acae0a1eacc47b5, type: 2}
+    - target: {fileID: 3850755976236136851, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
+      propertyPath: m_Softness.y
+      value: 61
+      objectReference: {fileID: 0}
     - target: {fileID: 4110214695243413477, guid: f9c2e47880be7a949b25cca72ce94ab6, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1
@@ -10835,7 +10851,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7981402997613539353
 RectTransform:
   m_ObjectHideFlags: 0

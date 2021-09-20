@@ -15,9 +15,9 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 6a609f466e7259a4e8aef915e69280c7, type: 3}
   theName: Kitsune
   description: Swift as a Fox, cunning akin to a ninja.
-  coinPrice: 5000
+  coinPrice: 2500
   theItem: 5
-  boltPrice: 500
+  boltPrice: 250
   thisSkinType: 4
   currencyUSD: 0
   hasDuration: 0

@@ -15,9 +15,9 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: c32130d3ca4823a4f93440f5da963aec, type: 3}
   theName: Crek
   description: '"Crek want food!"'
-  coinPrice: 5000
+  coinPrice: 2500
   theItem: 5
-  boltPrice: 500
+  boltPrice: 250
   thisSkinType: 3
   currencyUSD: 0
   hasDuration: 0

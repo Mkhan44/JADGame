@@ -15,9 +15,9 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 9cbb6dd5dd50e5d44b1a35c3e0768b75, type: 3}
   theName: BUKU-1000M
   description: This state of the art robot can make your daily chores seem nonexistent!
-  coinPrice: 5000
+  coinPrice: 10000
   theItem: 5
-  boltPrice: 500
+  boltPrice: 1000
   thisSkinType: 6
   currencyUSD: 0
   hasDuration: 0

@@ -14499,6 +14499,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 8074029812853974448, guid: d58cd32a755220a46af726bf021877e5, type: 3}
+      propertyPath: futureMusic.Array.data[3]
+      value: 
+      objectReference: {fileID: 8300000, guid: 116db9eed8717ea46904ef489bee4cd0, type: 3}
     - target: {fileID: 8074029812853974450, guid: d58cd32a755220a46af726bf021877e5, type: 3}
       propertyPath: m_Name
       value: Audio_Manager
@@ -15180,7 +15184,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: deathSound

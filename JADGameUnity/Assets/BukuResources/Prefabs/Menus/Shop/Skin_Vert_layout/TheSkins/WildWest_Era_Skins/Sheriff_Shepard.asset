@@ -15,9 +15,9 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: 4c96386447de5734ca03c879aa5d8fec, type: 3}
   theName: Sheriff Shepard
   description: He's pretty good.
-  coinPrice: 5000
+  coinPrice: 4500
   theItem: 5
-  boltPrice: 500
+  boltPrice: 450
   thisSkinType: 5
   currencyUSD: 0
   hasDuration: 0

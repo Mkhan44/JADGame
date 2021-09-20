@@ -15,9 +15,9 @@ MonoBehaviour:
   itemImage: {fileID: 21300000, guid: c0ecd3ef6fec61548a2dc15622adc3e7, type: 3}
   theName: Elincia
   description: An elven archer who is very acrobatic.
-  coinPrice: 5000
+  coinPrice: 6500
   theItem: 5
-  boltPrice: 500
+  boltPrice: 650
   thisSkinType: 2
   currencyUSD: 0
   hasDuration: 0

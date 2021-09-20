@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: DummySkin
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: 1f484c7b4a790464b90af7fa69788965, type: 3}
-  theName: Mystery Skin
-  description: This skin is a mystery!
-  coinPrice: 10000
+  theName: Mystery Subject
+  description: A mysterious test subject who knows the time-twister machine all too
+    well.
+  coinPrice: 100000
   theItem: 5
-  boltPrice: 1000
-  thisSkinType: 5
+  boltPrice: 10000
+  thisSkinType: 7
   currencyUSD: 0
   hasDuration: 0
   duration: 0

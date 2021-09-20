@@ -318,7 +318,15 @@ public class Collect_Manager : MonoBehaviour
             Audio_Manager.Instance.playSFX(shopErrorSound);
             int tempDifference = cost - playerCoins;
             Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
-            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this item.");
+            if(cost - totalCoins == 1)
+            {
+                Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coin to purchase this item.");
+            }
+            else
+            {
+                Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this item.");
+            }
+            
         }
 
     }
@@ -350,7 +358,15 @@ public class Collect_Manager : MonoBehaviour
                         Audio_Manager.Instance.playSFX(shopErrorSound);
                         int tempDifference = coinCost - totalCoins;
                         Debug.LogWarning("You don't have enough coins to purchase this item.");
-                        Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this test subject.");
+                        if(totalCoins - coinCost == 1)
+                        {
+                            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coin to purchase this test subject.");
+                        }
+                        else
+                        {
+                            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coins to purchase this test subject.");
+                        }
+                       
                     }
                 }
                 else
@@ -370,7 +386,15 @@ public class Collect_Manager : MonoBehaviour
                         Audio_Manager.Instance.playSFX(shopErrorSound);
                         int tempDifference = boltCost - totalBolts;
                         Debug.LogWarning("You don't have enough bolts to purchase this item.");
-                        Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more bolts to purchase this test subject.");
+                        if (totalBolts - boltCost == 1)
+                        {
+                            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more bolt to purchase this test subject.");
+                        }
+                        else
+                        {
+                            Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more bolts to purchase this test subject.");
+                        }
+                       
                     }
                 }
                 break;
