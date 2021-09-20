@@ -140,10 +140,17 @@ public class Rover : Obstacle_Behaviour
 
         randNum = Random.Range(0, 2);
 
-        if(randNum == 0 && this.transform.position.x >= 0 && this.transform.position.x <= 1.75f)
+        if(this.transform.position.x >= 0 && this.transform.position.x <= 1.75f)
         { 
+          
+            
             stopping = true;
             float timeToWait = 0;
+
+            if (randNum == 0)
+            {
+                yield return new WaitForSeconds(0.1f);
+            }
 
             //test
             timeToWait = 0.15f;

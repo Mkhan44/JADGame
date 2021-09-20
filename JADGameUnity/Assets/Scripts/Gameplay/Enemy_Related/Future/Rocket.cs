@@ -129,7 +129,7 @@ public class Rocket : Obstacle_Behaviour
         //See if we will turn or not.
         float randomNum = Random.Range(0, switchRate);
 
-        if (this.transform.position.x <= 1.8f && this.transform.position.x >= -0.4f &&!justFinishedTurning)
+        if (this.transform.position.x <= 1.8f && this.transform.position.x >= -0.6f &&!justFinishedTurning)
         {
           //  Debug.Log("Rocket will turn!");
             thisRigid.velocity = Vector2.zero;
