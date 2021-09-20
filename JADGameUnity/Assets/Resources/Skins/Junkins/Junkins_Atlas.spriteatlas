@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Junkins_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 088c26ecdf6b4b242a2b6580d5e0a336, type: 3}
+    - {fileID: 2800000, guid: 7273a28158310e84b984f5d822fe086f, type: 3}
+    - {fileID: 2800000, guid: 0884a0d8c1a3e6e41b728517c1bb3bd1, type: 3}
+    - {fileID: 2800000, guid: 57dc4d3831a2de744a40e1426a97d70f, type: 3}
+    - {fileID: 2800000, guid: 33962bf4cdb6e214dadceea194bbdda9, type: 3}
+    - {fileID: 2800000, guid: 1bb39c4dd2f8c824eb3d949d3beeae18, type: 3}
+    - {fileID: 2800000, guid: ce325a5ebbe40664e881e119f86dea8c, type: 3}
+    - {fileID: 2800000, guid: dbd03390d3e9ced4d8966971c846668d, type: 3}
+    - {fileID: 2800000, guid: aaf69c885267e5748957bc4b8d9aebde, type: 3}
+    - {fileID: 2800000, guid: bd6d956a61da97b4495ae243112bc756, type: 3}
+    - {fileID: 2800000, guid: cf9a43b5985b1e14b8b6bc18374c48bb, type: 3}
+    - {fileID: 2800000, guid: 11922cd29cea5bf48b87ad1b9d60c7fb, type: 3}
+    - {fileID: 2800000, guid: 1d9a7264b639f544a91f7938b6b7bb3e, type: 3}
+    - {fileID: 2800000, guid: bba3b9db44ef71248a6c4058fa24fcee, type: 3}
+    - {fileID: 2800000, guid: 235eb7ac9993d6c46b4dcc12606e91f5, type: 3}
+    - {fileID: 2800000, guid: fc76e68d90a8d934a8fb9017fdee5487, type: 3}
+    - {fileID: 2800000, guid: e73e1d187a0ace44ba92fffa3db49d0f, type: 3}
+    - {fileID: 2800000, guid: a6b91a724e5cdf048b43fdf06cf38694, type: 3}
+    - {fileID: 2800000, guid: ab228a7b2d5b4004ab6470b6c6c07350, type: 3}
+    - {fileID: 2800000, guid: 5c206e9ce4b648e43837ea5773a52c57, type: 3}
+    - {fileID: 2800000, guid: c20445a5c90b44b4c873fe32531182db, type: 3}
+    - {fileID: 2800000, guid: 6228cd047f643114a960aded752c82d2, type: 3}
+    - {fileID: 2800000, guid: 0dfb311bfe10bc044913284dd2c42baf, type: 3}
+    - {fileID: 2800000, guid: 501075e5c30c1364cbe34d78b6c641bb, type: 3}
+    - {fileID: 2800000, guid: d0b3b364eb488d44282854ac309757c9, type: 3}
+    - {fileID: 2800000, guid: 2ddcbc8d7974ef44495beef280aebf8b, type: 3}
+    - {fileID: 2800000, guid: aa66e6c769e277346a5ec23b6ba859ae, type: 3}
+    - {fileID: 2800000, guid: ddd10879671301244a9b4a688c69c7f9, type: 3}
+    - {fileID: 2800000, guid: c6f86999384cb1a40a14ba1f3cec034b, type: 3}
+    - {fileID: 2800000, guid: 73bf90437ec12124a9ab5fa383d7b738, type: 3}
+    - {fileID: 2800000, guid: 2f91c70c0ad7ab647b40c7ee96ab4d11, type: 3}
+    totalSpriteSurfaceArea: 1224900
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: dbd03390d3e9ced4d8966971c846668d, type: 3}
+  - {fileID: 21300000, guid: 7273a28158310e84b984f5d822fe086f, type: 3}
+  - {fileID: 21300000, guid: a6b91a724e5cdf048b43fdf06cf38694, type: 3}
+  - {fileID: 21300000, guid: 11922cd29cea5bf48b87ad1b9d60c7fb, type: 3}
+  - {fileID: 21300000, guid: 73bf90437ec12124a9ab5fa383d7b738, type: 3}
+  - {fileID: 21300000, guid: 6228cd047f643114a960aded752c82d2, type: 3}
+  - {fileID: 21300000, guid: 1d9a7264b639f544a91f7938b6b7bb3e, type: 3}
+  - {fileID: 21300000, guid: d0b3b364eb488d44282854ac309757c9, type: 3}
+  - {fileID: 21300000, guid: 33962bf4cdb6e214dadceea194bbdda9, type: 3}
+  - {fileID: 21300000, guid: c20445a5c90b44b4c873fe32531182db, type: 3}
+  - {fileID: 21300000, guid: cf9a43b5985b1e14b8b6bc18374c48bb, type: 3}
+  - {fileID: 21300000, guid: 501075e5c30c1364cbe34d78b6c641bb, type: 3}
+  - {fileID: 21300000, guid: aa66e6c769e277346a5ec23b6ba859ae, type: 3}
+  - {fileID: 21300000, guid: e73e1d187a0ace44ba92fffa3db49d0f, type: 3}
+  - {fileID: 21300000, guid: 57dc4d3831a2de744a40e1426a97d70f, type: 3}
+  - {fileID: 21300000, guid: aaf69c885267e5748957bc4b8d9aebde, type: 3}
+  - {fileID: 21300000, guid: 0884a0d8c1a3e6e41b728517c1bb3bd1, type: 3}
+  - {fileID: 21300000, guid: ddd10879671301244a9b4a688c69c7f9, type: 3}
+  - {fileID: 21300000, guid: c6f86999384cb1a40a14ba1f3cec034b, type: 3}
+  - {fileID: 21300000, guid: bd6d956a61da97b4495ae243112bc756, type: 3}
+  - {fileID: 21300000, guid: 0dfb311bfe10bc044913284dd2c42baf, type: 3}
+  - {fileID: 21300000, guid: ab228a7b2d5b4004ab6470b6c6c07350, type: 3}
+  - {fileID: 21300000, guid: bba3b9db44ef71248a6c4058fa24fcee, type: 3}
+  - {fileID: 21300000, guid: 2f91c70c0ad7ab647b40c7ee96ab4d11, type: 3}
+  - {fileID: 21300000, guid: 5c206e9ce4b648e43837ea5773a52c57, type: 3}
+  - {fileID: 21300000, guid: 235eb7ac9993d6c46b4dcc12606e91f5, type: 3}
+  - {fileID: 21300000, guid: 088c26ecdf6b4b242a2b6580d5e0a336, type: 3}
+  - {fileID: 21300000, guid: 1bb39c4dd2f8c824eb3d949d3beeae18, type: 3}
+  - {fileID: 21300000, guid: fc76e68d90a8d934a8fb9017fdee5487, type: 3}
+  - {fileID: 21300000, guid: 2ddcbc8d7974ef44495beef280aebf8b, type: 3}
+  - {fileID: 21300000, guid: ce325a5ebbe40664e881e119f86dea8c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - junkinsduckhurt1
+  - junkinsburning2
+  - junkinshang2
+  - junkinsfall2
+  - junkinsjump4
+  - junkinshurt3
+  - junkinsfall3
+  - junkinsidle3
+  - junkinsduck1
+  - junkinshurt2
+  - junkinsfall1
+  - junkinsidle2
+  - junkinsjump1
+  - junkinshang1
+  - junkinsburning4
+  - junkinsduckhurt2
+  - junkinsburning3
+  - junkinsjump2
+  - junkinsjump3
+  - junkinsduckhurt3
+  - junkinsidle1
+  - junkinshang3
+  - junkinsfall4
+  - junkinsportrait
+  - junkinshurt1
+  - junkinsfrozen1
+  - junkinsburning1
+  - junkinsduck2
+  - junkinsfrozen2
+  - junkinsidle4
+  - junkinsduck3
+  m_RenderDataMap: {}
+  m_Tag: Junkins_Atlas
+  m_IsVariant: 0
