@@ -177,7 +177,19 @@ public class Player : MonoBehaviour
         else if(theTrigger.gameObject.tag == "Coin")
         {
             // Debug.Log("Collected the coin!");
-            Level_Manager.Instance.collectCoin(1);
+            if(Wave_Spawner.Instance.getWaveDiff() == Wave_Spawner.waveDiff.easy)
+            {
+                Level_Manager.Instance.collectCoin(1);
+            }
+            else if(Wave_Spawner.Instance.getWaveDiff() == Wave_Spawner.waveDiff.medium)
+            {
+                Level_Manager.Instance.collectCoin(2);
+            }
+            else
+            {
+                Level_Manager.Instance.collectCoin(3);
+            }
+            
             // Debug.Log("Adding coin to pool since it collided with the PLAYER!");
          //   theTrigger.gameObject.transform.position = new Vector2(theTrigger.gameObject.transform.position.x + 10, theTrigger.gameObject.transform.position.y);
            // theTrigger.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;

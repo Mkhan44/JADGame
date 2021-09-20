@@ -102,6 +102,7 @@ MonoBehaviour:
   increaseRate: 5.5
   maxSpeed: 6.5
   spawnPoint: 2
+  extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
   objectElement: 1
   thisObstacleDiff: 2
@@ -128,7 +129,7 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 5bcaea9810adb8e4f8da430e2c2f045b, type: 3}
   numberSprite: {fileID: 2424100589432118134}
   switchRate: 3
-  maxNumSwitches: 4
+  maxNumSwitches: 3
   rotationRate: 10
 --- !u!61 &8160921082443146840
 BoxCollider2D:
@@ -379,7 +380,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: f77b4a22ea33456468cf479477c4cfc4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

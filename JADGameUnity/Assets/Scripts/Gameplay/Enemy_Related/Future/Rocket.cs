@@ -37,17 +37,20 @@ public class Rocket : Obstacle_Behaviour
     public override void OnObjectSpawn()
     {
         base.OnObjectSpawn();
+        //Bottom spawn.
         if(spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
         {
             botOrTop = true;
+            numSwitchesLeft = Random.Range(1, maxNumSwitches);
         }
         else
         {
             botOrTop = false;
+            numSwitchesLeft = maxNumSwitches;
         }
         turning = false;
         inCoroutine = false;
-        numSwitchesLeft = maxNumSwitches;
+       
         setNumberSprite();
         justFinishedTurning = false;
         this.transform.eulerAngles = new Vector3(0, 0, 0);
@@ -94,8 +97,6 @@ public class Rocket : Obstacle_Behaviour
 
     void setNumberSprite()
     {
-    
-
         if (numSwitchesLeft > 0)
         {
             numberSprite.sprite = numbersList[numSwitchesLeft];
@@ -128,28 +129,20 @@ public class Rocket : Obstacle_Behaviour
         //See if we will turn or not.
         float randomNum = Random.Range(0, switchRate);
 
-        if (randomNum > 1 && !justFinishedTurning)
+        if (this.transform.position.x <= 1.8f && this.transform.position.x >= -0.4f &&!justFinishedTurning)
         {
           //  Debug.Log("Rocket will turn!");
             thisRigid.velocity = Vector2.zero;
             turning = true;
             numSwitchesLeft -= 1;
             setNumberSprite();
-            yield return new WaitForSeconds(0.2f);
-
-            if(numSwitchesLeft == maxNumSwitches)
-            {
-                //Wait a bit before turning the first time so rocket = fully on screen.
-                yield return new WaitForSeconds(0.5f);
-            }
+           // yield return new WaitForSeconds(0.2f);
         }
         else
         {
-           // Debug.Log("Not gonna turn the rocket.");
-            yield return new WaitForSeconds(0.2f);
             if(justFinishedTurning)
             {
-                yield return new WaitForSeconds(0.4f);
+                yield return new WaitForSeconds(0.12f);
             }
             justFinishedTurning = false;
             inCoroutine = false;
@@ -183,7 +176,7 @@ public class Rocket : Obstacle_Behaviour
             }
             else
             {
-                thisRigid.velocity = Vector2.down * 5;
+                thisRigid.velocity = Vector2.down * 6;
             }
 
 
@@ -222,7 +215,7 @@ public class Rocket : Obstacle_Behaviour
 
             if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
             {
-                thisRigid.velocity = Vector2.up * 5;
+                thisRigid.velocity = Vector2.up * 6;
             }
             else
             {

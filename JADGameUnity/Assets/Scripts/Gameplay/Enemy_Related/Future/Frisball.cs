@@ -67,9 +67,6 @@ public class Frisball : Obstacle_Behaviour
             activeSound = frisballRollSound;
             botOrMid = true;
         }
-
-       
-
     }
 
     protected override void Movement()
@@ -97,7 +94,7 @@ public class Frisball : Obstacle_Behaviour
 
         randNum = Random.Range(0, 2);
 
-        if(randNum == 0)
+        if(randNum == 0 && this.transform.position.x >= 0)
         {
             //Go forward.
             thisRigid.velocity = Vector2.zero;
@@ -106,7 +103,7 @@ public class Frisball : Obstacle_Behaviour
         else
         {
             //Don't do anything.
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             inCoroutine = false;
             yield break;
         }

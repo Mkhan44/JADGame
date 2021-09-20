@@ -100,8 +100,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 0
   increaseRate: 5.5
-  maxSpeed: 6
+  maxSpeed: 6.3
   spawnPoint: 1
+  extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
   objectElement: 2
   thisObstacleDiff: 2
@@ -114,7 +115,7 @@ MonoBehaviour:
   volumeOverride: 0
   extraAudioClips: []
   randNum: 0
-  maxTransforms: 3
+  maxTransforms: 1
   frisballAnimator: {fileID: 8450968950121189932}
   frisballRollSound: {fileID: 8300000, guid: 536ff2505630d2c4d9dbf823632cebf8, type: 3}
   frisballSpinSound: {fileID: 8300000, guid: 0c0b588bdba6b96409865db16f10a45f, type: 3}

@@ -417,14 +417,14 @@ public class Wave_Spawner : MonoBehaviour
             //Test values for changing difficulty. Will need some formula later on.
             //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!
-            if (wavesSinceDifficultyChange == 1)
+            if (wavesSinceDifficultyChange == 3)
             {
                 theWaveDiff = waveDiff.medium;
                 setBGs(theWaveDiff);
                 Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
                 Debug.Log("The difficulty of the wave is: " + theWaveDiff);
             }
-            if (wavesSinceDifficultyChange == 2)
+            if (wavesSinceDifficultyChange == 5)
             //if (wavesSinceDifficultyChange == 5)
             {
                 theWaveDiff = waveDiff.hardPause;
@@ -983,15 +983,50 @@ public class Wave_Spawner : MonoBehaviour
 
         if (isAnItem)
         {
-            Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-            Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
-            Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
+            if (theWaveDiff == waveDiff.easy)
+            {
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
+            }
+            else if(theWaveDiff == waveDiff.medium)
+            {
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: x2 " + itemToGive.ToString() + "!");
+            }
+            else
+            {
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: x3 " + itemToGive.ToString() + "!");
+            }
+            
         }
         else
         {
-            Level_Manager.Instance.collectCoin(50);
-            Debug.Log("Received: 50 coins from the treasure chest!");
-            Level_Manager.Instance.setupNoticeTextAnimation("You just got: 50 coins!");
+            if(theWaveDiff == waveDiff.easy)
+            {
+                Level_Manager.Instance.collectCoin(50);
+                //Debug.Log("Received: 50 coins from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: 50 coins!");
+            }
+            else if(theWaveDiff == waveDiff.medium)
+            {
+                Level_Manager.Instance.collectCoin(100);
+                //Debug.Log("Received: 100 coins from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: 100 coins!");
+            }
+            else
+            {
+                Level_Manager.Instance.collectCoin(150);
+                //Debug.Log("Received: 150 coins from the treasure chest!");
+                Level_Manager.Instance.setupNoticeTextAnimation("You just got: 150 coins!");
+            }
+            
         }
 
         Destroy(chest1);
@@ -1093,6 +1128,11 @@ public class Wave_Spawner : MonoBehaviour
     public typeOfWave getWaveType()
     {
         return waveType;
+    }
+
+    public waveDiff getWaveDiff()
+    {
+        return theWaveDiff;
     }
 
     //Fill in the current enemy list with enemies that are appropriate to the current time period we are in.

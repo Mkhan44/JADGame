@@ -77,7 +77,19 @@ public class Rover : Obstacle_Behaviour
         if(!inCoroutine && didStop)
         {
          
-            speed = maxSpeed * 1.3f;
+            if(thisObstacleDiff == obstacleDiff.easy)
+            {
+                speed = maxSpeed * 1.1f;
+            }
+            else if (thisObstacleDiff == obstacleDiff.medium)
+            {
+                speed = maxSpeed * 1.3f;
+            }
+            else
+            {
+                speed = maxSpeed * 1.4f;
+            }
+           
             if (thisRigid != null)
             {
                 thisRigid.velocity = Vector2.left * speed;
@@ -128,17 +140,8 @@ public class Rover : Obstacle_Behaviour
 
         randNum = Random.Range(0, 2);
 
-        if(randNum == 0)
-        {
-
-            yield return new WaitForSeconds(0.3f);
-
-            if(inPlayerVicinity)
-            {
-                inCoroutine = false;
-                didStop = true;
-                yield break;
-            }
+        if(randNum == 0 && this.transform.position.x >= 0 && this.transform.position.x <= 1.75f)
+        { 
             stopping = true;
             float timeToWait = 0;
 
@@ -203,7 +206,7 @@ public class Rover : Obstacle_Behaviour
         else
         {
             //Don't stop.
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.25f);
             inCoroutine = false;
             yield break;
         }

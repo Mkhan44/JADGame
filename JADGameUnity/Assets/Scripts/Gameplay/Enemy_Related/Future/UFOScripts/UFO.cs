@@ -54,7 +54,7 @@ public class UFO : Obstacle_Behaviour
         lightOn = UFOAnimator.runtimeAnimatorController.animationClips[0];
         lightRetract = UFOAnimator.runtimeAnimatorController.animationClips[1];
         lightSpriteRend.color = new Color(255, 255, 255, 0);
-        adjustedDropRate = dropRate - (lightOn.length + lightRetract.length);
+        adjustedDropRate = (lightOn.length + lightRetract.length);
 
         if(adjustedDropRate < 0f)
         {
@@ -85,7 +85,7 @@ public class UFO : Obstacle_Behaviour
             yield break;
         }
 
-        if(randNum > 1 || timesSinceLastDrop > 3)
+        if(this.transform.position.x <= 2 && this.transform.position.x >= -0.6f)
         {
             //Spawn enemy.
             //UFOAnimator.play...
@@ -93,9 +93,6 @@ public class UFO : Obstacle_Behaviour
         }
         else
         {
-            Debug.Log("Not dropping an enemy.");
-            timesSinceLastDrop += 1;
-            yield return new WaitForSeconds(0.5f);
             inCoroutine = false;
             yield break;
         }
@@ -133,6 +130,19 @@ public class UFO : Obstacle_Behaviour
 
      
         yield return new WaitForSeconds(adjustedDropRate);
+
+        if(thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(0.2f);
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(0.1f);
+        }
+        else
+        {
+
+        }
 
         inCoroutine = false;
 

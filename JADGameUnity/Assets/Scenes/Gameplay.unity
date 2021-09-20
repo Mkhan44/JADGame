@@ -1145,10 +1145,10 @@ RectTransform:
   m_Father: {fileID: 239041424}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18400002, y: 0.05657143}
-  m_AnchorMax: {x: 0.79600006, y: 0.33578575}
-  m_AnchoredPosition: {x: 0.44091797, y: 0}
-  m_SizeDelta: {x: 4, y: 1}
+  m_AnchorMin: {x: 0.17717028, y: 0.04752554}
+  m_AnchorMax: {x: 0.8028298, y: 0.328158}
+  m_AnchoredPosition: {x: -0.000015258789, y: 0.2999878}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &160158095
 MonoBehaviour:
@@ -5359,10 +5359,10 @@ RectTransform:
   m_Father: {fileID: 239041424}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18400002, y: 0.3481787}
-  m_AnchorMax: {x: 0.79600006, y: 0.62514293}
-  m_AnchoredPosition: {x: 0.44091797, y: 4.0999756}
-  m_SizeDelta: {x: 4, y: 2}
+  m_AnchorMin: {x: 0.17717028, y: 0.34665316}
+  m_AnchorMax: {x: 0.8028298, y: 0.62666845}
+  m_AnchoredPosition: {x: 0.0000076293945, y: 0.000022888184}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &910152576
 MonoBehaviour:
@@ -5496,7 +5496,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.19662906, y: 0.18325002}
   m_AnchorMax: {x: 0.437, y: 0.30675}
-  m_AnchoredPosition: {x: -4.999878, y: -0.16015625}
+  m_AnchoredPosition: {x: -4.999939, y: -0.16015625}
   m_SizeDelta: {x: -0.269989, y: 2.8099976}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &934951145
@@ -13151,10 +13151,10 @@ RectTransform:
   m_Father: {fileID: 239041424}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.18400002, y: 0.66085726}
-  m_AnchorMax: {x: 0.79600006, y: 0.93035716}
-  m_AnchoredPosition: {x: 0.44091797, y: 1.5}
-  m_SizeDelta: {x: 4, y: 6}
+  m_AnchorMin: {x: 0.18400002, y: 0.6562807}
+  m_AnchorMax: {x: 0.813, y: 0.93500006}
+  m_AnchoredPosition: {x: 0.42839813, y: -0.000030517578}
+  m_SizeDelta: {x: -1, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2124784580
 MonoBehaviour:
@@ -15180,7 +15180,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: deathSound

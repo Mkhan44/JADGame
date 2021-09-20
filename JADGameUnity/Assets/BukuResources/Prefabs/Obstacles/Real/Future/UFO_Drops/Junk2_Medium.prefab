@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a85d12b6ffa36dc478688ccd161687f4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  increaseRate: 10
+  increaseRate: 15
   maxSpeed: 7
   onGround: 0
 --- !u!61 &8160921082443146840
