@@ -201,7 +201,21 @@ public class Player : MonoBehaviour
         {
             //Give the player bolts based on the current multiplier.
             int multiplier = Level_Manager.Instance.getMultiplier();
-            Level_Manager.Instance.collectBolt(multiplier);
+            if (Wave_Spawner.Instance.getWaveDiff() == Wave_Spawner.waveDiff.easy)
+            {
+                Level_Manager.Instance.collectBolt(multiplier * 1);
+            }
+            else if (Wave_Spawner.Instance.getWaveDiff() == Wave_Spawner.waveDiff.medium)
+            {
+                Level_Manager.Instance.collectBolt(multiplier * 2);
+            }
+            else
+            {
+                Level_Manager.Instance.collectBolt(multiplier * 3);
+            }
+
+            
+           
          //   theTrigger.gameObject.transform.position = new Vector2(theTrigger.gameObject.transform.position.x + 10, theTrigger.gameObject.transform.position.y);
           //  theTrigger.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
             theTrigger.gameObject.GetComponent<Obstacle_Behaviour>().playSoundExternally();

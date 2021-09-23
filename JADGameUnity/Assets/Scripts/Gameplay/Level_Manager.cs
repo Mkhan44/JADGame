@@ -722,7 +722,7 @@ public class Level_Manager : MonoBehaviour
         duckButton.interactable = false;
         while (heatMeter.getMeterVal() > 0 && thePlayer.GetState() == Player.playerState.burning)
         {
-            yield return new WaitForSeconds(0.1f);
+           // yield return new WaitForSeconds(0.1f);
             if(onGround)
             {
                 burningJump();
@@ -1120,6 +1120,15 @@ public class Level_Manager : MonoBehaviour
             {
                 //TURN ON WHEN WE ARE READY TO POOL.
                 Object_Pooler.Instance.AddToPool(coins[i]);
+                // Destroy(coins[i]);
+
+            }
+
+            GameObject[] bolts = GameObject.FindGameObjectsWithTag("Bolt");
+            for (int i = 0; i < bolts.Length; i++)
+            {
+                //TURN ON WHEN WE ARE READY TO POOL.
+                Object_Pooler.Instance.AddToPool(bolts[i]);
                 // Destroy(coins[i]);
 
             }

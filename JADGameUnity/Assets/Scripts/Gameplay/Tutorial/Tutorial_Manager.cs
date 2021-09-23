@@ -24,6 +24,13 @@ public class Tutorial_Manager : MonoBehaviour
     public GameObject duckButtonBlocker;
     public GameObject HUCDButtonBlocker;
     public GameObject itemHolderBLocker;
+    public GameObject tutorialArrowPrefab;
+    [SerializeField] Transform canvasParent;
+
+    const string arrowDownAnimName = "Arrow_Down";
+    const string arrowUpAnimName = "Arrow_Up";
+    const string arrowLeftAnimName = "Arrow_Left";
+    const string arrowRightAnimName = "Arrow_Right";
 
     [Tooltip("Text that the steps actually say in game. stepText will display this.")]
     [TextArea]  public List<string> phrases = new List<string>();
@@ -55,8 +62,9 @@ public class Tutorial_Manager : MonoBehaviour
 
     public void nextStep()
     {
+        cleanupArrows();
         //We're done, don't go any further.
-        if(currentStep == numSteps)
+        if (currentStep == numSteps)
         {
             Debug.Log("Hey we cleared everything!");
           //  tutPanel.SetActive(false);
@@ -77,6 +85,7 @@ public class Tutorial_Manager : MonoBehaviour
    
         if (currentStep <= numSteps && conditionMet != false)
         {
+            doStep();
             stepText.text = phrases[currentStep];
             Debug.Log("We are on step " + currentStep);
             //If we need to meet a condition before getting to the next step after.
@@ -85,7 +94,6 @@ public class Tutorial_Manager : MonoBehaviour
             {
                 nextButton.gameObject.SetActive(false);
                 bottomUIPanelBlocker.SetActive(false);
-                doStep();
                 conditionMet = false;
                 Debug.Log("This step requires a condition to be met.");
                 //Player needs to complete the next step before being able to move onto the next instruction.
@@ -256,7 +264,60 @@ public class Tutorial_Manager : MonoBehaviour
                     itemHolderBLocker.SetActive(true);
                     break;
                 }
+            default:
+                {
+                   
+                    break;
+                }
 
+        }
+
+ 
+        if (conditionCheck[currentStep].arrowAnimationPositions.Count != 0)
+        {
+            if(conditionCheck[currentStep].arrowAnimationPositions[0] == Tutorial_Step.arrowAnim.None)
+            {
+                return;
+            }
+    
+            if (conditionCheck[currentStep].objsInSceneRef.Count > 0)
+            {
+                for (int i = 0; i < conditionCheck[currentStep].objsInSceneRef.Count; i++)
+                {
+                    GameObject refObj = GameObject.Find(conditionCheck[currentStep].objsInSceneRef[i]);
+
+                    GameObject tempArrow = Instantiate(tutorialArrowPrefab, refObj.transform);
+                    Animator tempArrowAnim = tempArrow.transform.GetChild(0).GetComponent<Animator>();
+
+                    switch (conditionCheck[currentStep].arrowAnimationPositions[i])
+                    {
+                        case Tutorial_Step.arrowAnim.Right:
+                            {
+                                tempArrowAnim.Play(arrowRightAnimName);
+                                break;
+                            }
+                        case Tutorial_Step.arrowAnim.Left:
+                            {
+                                tempArrowAnim.Play(arrowLeftAnimName);
+                                break;
+                            }
+                        case Tutorial_Step.arrowAnim.Up:
+                            {
+                                tempArrowAnim.Play(arrowUpAnimName);
+                                break;
+                            }
+                        case Tutorial_Step.arrowAnim.Down:
+                            {
+                                tempArrowAnim.Play(arrowDownAnimName);
+                                break;
+                            }
+                    }
+                    Vector3 tempAnchored = refObj.GetComponent<RectTransform>().anchoredPosition;
+                    tempAnchored += conditionCheck[currentStep].arrowOffsets[i];
+                    tempArrow.GetComponent<RectTransform>().anchoredPosition = tempAnchored;
+
+                }
+            }
         }
     }
 
@@ -266,6 +327,15 @@ public class Tutorial_Manager : MonoBehaviour
         nextButton.gameObject.SetActive(false);
         StartCoroutine(waitText(conditionCheck[currentStep+1].waitTime));
 
+    }
+
+    void cleanupArrows()
+    {
+        GameObject[] acitveArrows = GameObject.FindGameObjectsWithTag("Tut_Arrow");
+        for (int i = 0; i < acitveArrows.Length; i++)
+        {
+           Destroy(acitveArrows[i]);
+        }
     }
 
     public void incrementCurrentStepExternally()
@@ -301,17 +371,17 @@ public class Tutorial_Manager : MonoBehaviour
         switch(currentStep)
         {
             //Spawn enemy.
+            case 10:
+                {
+                    Wave_Spawner.Instance.tutorialSpawn();
+                    break;
+                }
             case 12:
                 {
                     Wave_Spawner.Instance.tutorialSpawn();
                     break;
                 }
-            case 14:
-                {
-                    Wave_Spawner.Instance.tutorialSpawn();
-                    break;
-                }
-            case 35:
+            case 30:
                 {
                     Wave_Spawner.Instance.tutorialSpawn();
                     textPanelHolder.SetActive(true);
@@ -333,7 +403,7 @@ public class Tutorial_Manager : MonoBehaviour
         }
 
        // yield return new WaitForSecondsRealtime(waitTime);
-       if(currentStep != 35)
+       if(currentStep != 30)
         {
             Time.timeScale = 0f;
         }

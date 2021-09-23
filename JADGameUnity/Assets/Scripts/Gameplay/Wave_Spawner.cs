@@ -291,6 +291,14 @@ public class Wave_Spawner : MonoBehaviour
             //  yield return new WaitForSeconds(0.001f);
         }
 
+        if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+        {
+            fadePanel.transform.parent.gameObject.SetActive(false);
+            fadePanel.gameObject.SetActive(false);
+            introTransitionFinished = true;
+            yield break;
+        }
+
       //  yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(countdownSound);
         Level_Manager.Instance.setupNoticeTextAnimation("3", true);
@@ -349,7 +357,14 @@ public class Wave_Spawner : MonoBehaviour
                 {
                     bool changedMeterRates = false;
 
-                    if(currentHeatMeterFillRate < 0.50f)
+                    if (wavesSinceMeterIncrease >= 0)
+                    {
+                        currentHeatMeterFillRate += 0.05f;
+                        currentIceMeterFillRate += 0.05f;
+                        changedMeterRates = true;
+                    }
+                    /*
+                    if (currentHeatMeterFillRate < 0.50f)
                     {
                       //  Debug.Log("Hey we're testing less than 0.5!");
                         if (wavesSinceMeterIncrease >= 0)
@@ -369,6 +384,7 @@ public class Wave_Spawner : MonoBehaviour
                             changedMeterRates = true;
                         }
                     }
+                    */
                     /*
                     else if (currentHeatMeterFillRate >= 0.60f && currentHeatMeterFillRate < 0.85f)
                     {
@@ -604,7 +620,7 @@ public class Wave_Spawner : MonoBehaviour
                         //Debug.Log("We're spawning coins! Value of RNG was: "+ spawnCoinRnd.ToString());
 
                         spawnCoinRnd = Random.Range(0, 2);
-                        int amountofCoinsToSpawn = Random.Range(1, 6);
+                        int amountofCoinsToSpawn = Random.Range(1, 5);
                         StartCoroutine(CoinSpawn(spawnCoinRnd, amountofCoinsToSpawn));
                         lastEnemySpawnedCoins = true;
                     }
@@ -761,20 +777,57 @@ public class Wave_Spawner : MonoBehaviour
     public IEnumerator CoinSpawn(int rndSpawn, int amountToSpawn)
     {
         yield return new WaitForSeconds(0.5f);
+        Vector3 tempSpawn;
+        Quaternion tempRot;
+
+        //Mid, so spawn on top or bottom.
+        if (currentSpawn == spawnPointNum.spawnPoint1)
+        {
+            if (rndSpawn == 0)
+            {
+                tempSpawn = spawnPoints[2].transform.position;
+                tempRot = spawnPoints[2].transform.rotation;
+                Vector3 tempSpawnYChange = tempSpawn;
+                tempSpawnYChange.y += 0.5f;
+                tempSpawn = tempSpawnYChange;
+            }
+            else
+            {
+                tempSpawn = spawnPoints[1].transform.position;
+                tempRot = spawnPoints[1].transform.rotation;
+            }
+
+
+        }
+        //Bottom so spawn on mid or top.
+        else if (currentSpawn == spawnPointNum.spawnPoint2)
+        {
+            if (rndSpawn == 0)
+            {
+                tempSpawn = spawnPoints[0].transform.position;
+                tempRot = spawnPoints[0].transform.rotation;
+            }
+            else
+            {
+                tempSpawn = spawnPoints[2].transform.position;
+                tempRot = spawnPoints[2].transform.rotation;
+                Vector3 tempSpawnYChange = tempSpawn;
+                tempSpawnYChange.y += 0.5f;
+                tempSpawn = tempSpawnYChange;
+            }
+        }
+        //Top so spawn on bottom always.
+        else
+        {
+            tempSpawn = spawnPoints[1].transform.position;
+            tempRot = spawnPoints[1].transform.rotation;
+        }
 
         //Spawn X amount of coins based on the RNG.
         Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
         for(int i = 0; i <= (amountToSpawn-1); i++)
         {
-           // Debug.Log("Spawning in coin # " + i);
-            if(rndSpawn == 0)
-            {
-                Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[1].transform.position,spawnPoints[1].transform.rotation);
-            }
-            else
-            {
-                Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
-            }
+            Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, tempSpawn, tempRot); 
             yield return new WaitForSeconds(0.25f);
            
         }
@@ -787,17 +840,40 @@ public class Wave_Spawner : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        if(rndSpawn == 0)
+        //Mid, so spawn on top or bottom.
+        if(currentSpawn == spawnPointNum.spawnPoint1)
         {
-            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
+            if(rndSpawn == 0)
+            {
+                Vector3 tempSpawnYChange = spawnPoints[2].transform.position;
+                tempSpawnYChange.y += 0.1f;
+                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, tempSpawnYChange, spawnPoints[2].transform.rotation);
+            }
+            else
+            {
+                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[1].transform.position, spawnPoints[1].transform.rotation);
+            }
+            
+            
         }
-        else if(rndSpawn == 1)
+        //Bottom so spawn on mid or top.
+        else if(currentSpawn == spawnPointNum.spawnPoint2)
         {
-            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[1].transform.position, spawnPoints[1].transform.rotation);
+            if (rndSpawn == 0)
+            {
+                Vector3 tempSpawnYChange = spawnPoints[2].transform.position;
+                tempSpawnYChange.y += 0.1f;
+                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, tempSpawnYChange, spawnPoints[2].transform.rotation);
+            }
+            else
+            {
+                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
+            }
         }
+        //Top so spawn on bottom always.
         else
         {
-            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[2].transform.position, spawnPoints[2].transform.rotation);
+            Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[1].transform.position, spawnPoints[1].transform.rotation);
         }
          
 
@@ -1251,7 +1327,7 @@ public class Wave_Spawner : MonoBehaviour
         switch(Tutorial_Manager.Instance.getCurrentStep())
         {
             //Spawn boulder.
-            case 12:
+            case 10:
                 {
                     Transform enemySpawnPlacement;
 
@@ -1297,7 +1373,7 @@ public class Wave_Spawner : MonoBehaviour
                     break;
                 }
             //Spawn vine.
-            case 14:
+            case 12:
                 {
                     Transform enemySpawnPlacement;
 
@@ -1342,7 +1418,7 @@ public class Wave_Spawner : MonoBehaviour
                     GameObject enemyClone = Object_Pooler.Instance.SpawnFromPool(enemies[1].name, enemySpawnPlacement.position, enemySpawnPlacement.rotation);
                     break;
                 }
-            case 35:
+            case 30:
                 {
                     Transform enemySpawnPlacement;
 

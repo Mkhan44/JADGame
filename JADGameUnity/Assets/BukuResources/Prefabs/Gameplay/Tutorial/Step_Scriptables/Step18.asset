@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93cb7d0b9793ef540a1c88541453ad66, type: 3}
-  m_Name: Step35
+  m_Name: Step18
   m_EditorClassIdentifier: 
   thisStepType: 0
+  arrowAnimationPositions: 0100000001000000
+  objsInSceneRef:
+  - Heat_Meter
+  - Ice_Meter
+  arrowOffsets:
+  - {x: -100, y: -375, z: 0}
+  - {x: -150, y: -385, z: 0}
   hasStep: 0
-  isSpecial: 1
-  waitTime: 3
+  isSpecial: 0
+  waitTime: 0

@@ -13,6 +13,11 @@ MonoBehaviour:
   m_Name: Step14
   m_EditorClassIdentifier: 
   thisStepType: 0
-  hasStep: 1
-  isSpecial: 1
-  waitTime: 2.65
+  arrowAnimationPositions: 03000000
+  objsInSceneRef:
+  - Heart_Icon(Clone)
+  arrowOffsets:
+  - {x: 350, y: 75, z: 0}
+  hasStep: 0
+  isSpecial: 0
+  waitTime: 0

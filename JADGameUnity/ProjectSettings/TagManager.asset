@@ -17,6 +17,7 @@ TagManager:
   - On_screen_Vicinity_Collider
   - Bullet
   - Bolt
+  - Tut_Arrow
   layers:
   - Default
   - TransparentFX

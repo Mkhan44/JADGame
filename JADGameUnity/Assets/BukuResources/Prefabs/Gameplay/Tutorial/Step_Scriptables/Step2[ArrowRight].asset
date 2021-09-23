@@ -10,9 +10,16 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 93cb7d0b9793ef540a1c88541453ad66, type: 3}
-  m_Name: Step24
+  m_Name: Step2[ArrowRight]
   m_EditorClassIdentifier: 
-  thisStepType: 8
-  hasStep: 1
+  thisStepType: 0
+  arrowAnimationPositions: 0400000004000000
+  objsInSceneRef:
+  - Jump_Button
+  - Duck_Button
+  arrowOffsets:
+  - {x: -450, y: 0, z: 0}
+  - {x: -450, y: 0, z: 0}
+  hasStep: 0
   isSpecial: 0
   waitTime: 0

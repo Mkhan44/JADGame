@@ -12,7 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cb7d0b9793ef540a1c88541453ad66, type: 3}
   m_Name: Step34
   m_EditorClassIdentifier: 
-  thisStepType: 5
-  hasStep: 1
+  thisStepType: 0
+  arrowAnimationPositions: 0300000003000000
+  objsInSceneRef:
+  - Item1_BG
+  - Item2_BG
+  arrowOffsets:
+  - {x: 150, y: 0, z: 0}
+  - {x: 150, y: 0, z: 0}
+  hasStep: 0
   isSpecial: 0
   waitTime: 0

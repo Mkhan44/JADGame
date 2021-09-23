@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93cb7d0b9793ef540a1c88541453ad66, type: 3}
   m_Name: Step13
   m_EditorClassIdentifier: 
-  thisStepType: 1
+  thisStepType: 2
+  arrowAnimationPositions: 04000000
+  objsInSceneRef:
+  - Duck_Button
+  arrowOffsets:
+  - {x: -200, y: 0, z: 0}
   hasStep: 1
   isSpecial: 0
   waitTime: 0

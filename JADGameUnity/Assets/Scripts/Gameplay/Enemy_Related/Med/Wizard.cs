@@ -260,7 +260,19 @@ public class Wizard : Obstacle_Behaviour
 
         beamAniWait = beamAni.length;
 
-        yield return new WaitForSeconds(beamAniWait - 0.45f);
+        if(thisObstacleDiff == obstacleDiff.easy)
+        {
+            yield return new WaitForSeconds(beamAniWait - 0.5f);
+        }
+        else if (thisObstacleDiff == obstacleDiff.medium)
+        {
+            yield return new WaitForSeconds(beamAniWait - 0.55f);
+        }
+        else
+        {
+            yield return new WaitForSeconds(beamAniWait - 0.6f);
+        }
+
 
         Destroy(fireBeamInstance);
         Destroy(iceBeamInstance);
