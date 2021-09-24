@@ -79,7 +79,7 @@ MonoBehaviour:
   coinsGameOverText: {fileID: 0}
   playerGameoverSpin: {fileID: 0}
   playerGameoverSpinAnimator: {fileID: 0}
-  TimePeriod: 1
+  TimePeriod: 0
   coinText: {fileID: 0}
   boltText: {fileID: 0}
   mutedSprite: {fileID: 0}
@@ -165,6 +165,7 @@ MonoBehaviour:
   WildWestBackgrounds: []
   MedBackgrounds: []
   FutureBackgrounds: []
+  tutorialBG: {fileID: 0}
   currentBG1: {fileID: 0}
   currentBG2: {fileID: 0}
   introTransitionFinished: 0

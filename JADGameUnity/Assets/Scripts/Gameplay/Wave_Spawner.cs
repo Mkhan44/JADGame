@@ -98,6 +98,7 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] List<GameObject> WildWestBackgrounds;
     [SerializeField] List<GameObject> MedBackgrounds;
     [SerializeField] List<GameObject> FutureBackgrounds;
+    [SerializeField] GameObject tutorialBG;
 
     [SerializeField] GameObject currentBG1;
     [SerializeField] GameObject currentBG2;
@@ -122,7 +123,7 @@ public class Wave_Spawner : MonoBehaviour
     public int wavesSinceCollectedBolt;
     bool attemptedToSpawnBoltThisWave;
 
-
+    float bgSeperationVal = 16.79999f;
     //Variance on waves related things.
 
     int wavesSinceDifficultyChange;
@@ -153,7 +154,7 @@ public class Wave_Spawner : MonoBehaviour
 
         if(waveType == typeOfWave.normal)
         {
-            waveText.text = waveCount.ToString();
+            
         }
         else if(waveType == typeOfWave.bonus)
         {
@@ -210,7 +211,7 @@ public class Wave_Spawner : MonoBehaviour
         enemiesLeft = enemyCount;
         SetCurrentEnemies();
 
-        List<GameObject> BGsToLoad = prehistoricBackgrounds;
+        List<GameObject> BGsToLoad = new List<GameObject>();
         //Setup the BGs, this will be based on the era from LevelManager!
         //Will also setup music tracks here.
         switch (Level_Manager.Instance.getTimePeriod())
@@ -241,6 +242,12 @@ public class Wave_Spawner : MonoBehaviour
 
                     break;
                 }
+            case Level_Manager.timePeriod.tutorial:
+                {
+                    BGsToLoad.Add(tutorialBG);
+
+                    break;
+                }
             default:
                 {
                     BGsToLoad = prehistoricBackgrounds;
@@ -250,7 +257,7 @@ public class Wave_Spawner : MonoBehaviour
         currentBG1 = Instantiate(BGsToLoad[0]);
         currentBG2 = Instantiate(BGsToLoad[0]);
 
-        currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + +16.8f, BGsToLoad[0].transform.position.y);
+        currentBG2.transform.position = new Vector3(BGsToLoad[0].transform.position.x + bgSeperationVal, BGsToLoad[0].transform.position.y);
 
         //Play intro transition.
         StartCoroutine(introTransition());
@@ -260,11 +267,20 @@ public class Wave_Spawner : MonoBehaviour
     {
 
         fadePanel.gameObject.SetActive(true);
+        waveText.text = waveCount.ToString();
         yield return new WaitForSeconds(0.3f);
 
         Audio_Manager.Instance.playSFX(warpInSound,false,0.3f);
 
-        Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
+        if (Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+        {
+            Level_Manager.Instance.setupNoticeTextAnimation("Tutorial Start!", true);
+        }
+        else
+        {
+            Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
+        }
+        
         Vector3 currentScale = fadePanel.localScale;
         Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
 
@@ -315,6 +331,32 @@ public class Wave_Spawner : MonoBehaviour
         fadePanel.transform.parent.gameObject.SetActive(false);
         fadePanel.gameObject.SetActive(false);
         introTransitionFinished = true;
+        yield return null;
+    }
+
+    public IEnumerator respawnIntroTransition()
+    {
+        introTransitionFinished = false;
+
+        Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
+        yield return new WaitForSeconds(0.5f);
+
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("3", true);
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("2", true);
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(countdownSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("1", true);
+        yield return new WaitForSeconds(1.0f);
+        Audio_Manager.Instance.playSFX(startSound);
+
+        fadePanel.transform.parent.gameObject.SetActive(false);
+        fadePanel.gameObject.SetActive(false);
+        introTransitionFinished = true;
+        stopCo = false;
+        spawnRoutine = StartCoroutine(waveSpawner(waveType));
         yield return null;
     }
 
@@ -425,7 +467,8 @@ public class Wave_Spawner : MonoBehaviour
 
                
             }
-            
+            waveText.text = waveCount.ToString();
+
 
             //Update item cooldowns.
             Level_Manager.Instance.itemCDUpdate();
@@ -1231,7 +1274,7 @@ public class Wave_Spawner : MonoBehaviour
     //If swapping difficulties.
     void setBGs(waveDiff difficulty)
     {
-        List<GameObject> BGsToLoad = FeudalBackgrounds;
+        List<GameObject> BGsToLoad = new List<GameObject>();
 
         switch (Level_Manager.Instance.TimePeriod)
         {
@@ -1291,7 +1334,7 @@ public class Wave_Spawner : MonoBehaviour
         currentBG1 = Instantiate(BGsToLoad[indexInList], bg1Trans.position , this.transform.rotation);
         currentBG2 = Instantiate(BGsToLoad[indexInList], bg1Trans.position, this.transform.rotation);
         currentBG1.transform.position = new Vector2(currentBG1.transform.position.x, currentBG1.transform.position.y);
-        currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + +16.8f, currentBG1.transform.position.y);
+        currentBG2.transform.position = new Vector2(currentBG1.transform.position.x + bgSeperationVal, currentBG1.transform.position.y);
     }
 
     public void updateEnemiesLeft(int num)
@@ -1316,8 +1359,8 @@ public class Wave_Spawner : MonoBehaviour
     //Respawn from LevelManager function
     public void respawnPlayer()
     {
-        stopCo = false;
-        spawnRoutine = StartCoroutine(waveSpawner(waveType));
+        StartCoroutine(respawnIntroTransition());
+
     }
 
     //Tutorial functions.

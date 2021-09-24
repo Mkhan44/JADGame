@@ -21,7 +21,8 @@ public class Audio_Manager : MonoBehaviour
     [SerializeField] List<AudioClip> wildWestMusic;
     [SerializeField] List<AudioClip> futureMusic;
     [SerializeField] List<AudioClip> medMusic;
-    [SerializeField] AudioClip tutorialMusic;
+    [SerializeField] AudioClip tutorialMusicIntro;
+    [SerializeField] AudioClip tutorialMusicLoop;
 
 
     [Header("Gameobject music holders")]
@@ -229,9 +230,8 @@ public class Audio_Manager : MonoBehaviour
                 }
             case Level_Manager.timePeriod.tutorial:
                 {
-                    tutorialSource.clip = tutorialMusic;
-                    tutorialSource.volume = 1f;
-                    tutorialSource.Play();
+                    
+                    StartCoroutine(tutorialPlay());
                     return;
                     break;
                 }
@@ -257,6 +257,26 @@ public class Audio_Manager : MonoBehaviour
         //Have coroutine fade out the current tracks and then play the new ones.
         //Fade out should probably be before the swap above.
    
+    }
+
+    IEnumerator tutorialPlay()
+    {
+       
+        float introLength;
+        introLength = tutorialMusicIntro.length;
+        tutorialSource.clip = tutorialMusicIntro;
+        tutorialSource.volume = 1f;
+        tutorialSource.loop = false;
+        tutorialSource.Play();
+     
+        yield return new WaitForSecondsRealtime(introLength - 0.01f);
+
+        tutorialSource.Stop();
+        tutorialSource.clip = tutorialMusicLoop;
+        tutorialSource.loop = true;
+        tutorialSource.volume = 1f;
+        tutorialSource.Play();
+
     }
 
     //Change the music based on the difficulty we are in. If it's a bonus/timeswap wave, use the Bonus music track.
@@ -350,7 +370,7 @@ public class Audio_Manager : MonoBehaviour
             yield return new WaitForSeconds(0.2f);
         }
 
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.5f);
 
         bonusSource.Play();
         easySource.Play();

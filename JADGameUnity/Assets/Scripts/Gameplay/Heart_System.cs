@@ -42,9 +42,15 @@ public class Heart_System : MonoBehaviour
             theGrid.cellSize = new Vector2(100, 100);
         }
 
-        if(Canvas_Resolution.instance.getReferenceReso() == new Vector2(828, 1792))
+        if(Canvas_Resolution.instance.getReferenceReso() == new Vector2(1920, 1080))
         {
-            theGrid.cellSize = new Vector2(100, 100);
+            theGrid.cellSize = new Vector2(130, 130);
+        }
+
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+
+            theGrid.cellSize = new Vector2(100, 100);  
         }
 
         for (int i = 0; i < maxHealth; i++)

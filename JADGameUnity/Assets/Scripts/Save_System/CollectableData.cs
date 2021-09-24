@@ -41,6 +41,9 @@ public class CollectableData
     //Determines whether game audio should be muted or not.
     public bool isMuted;
 
+    //Determines if player has completed tutorial alreaady or not.
+    public bool tutCompleted;
+
     //Constructor.
     public CollectableData(Collect_Manager collectmanager)
     {
@@ -70,6 +73,7 @@ public class CollectableData
 
         //Extra stuff.
         isMuted = Collect_Manager.instance.isMuted;
+        tutCompleted = Collect_Manager.instance.tutCompleted;
 
         //Loop through and insert every numbered skin that the player has unlocked.
       

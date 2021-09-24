@@ -73,10 +73,11 @@ public class Collect_Manager : MonoBehaviour
     public List<int> skinsUnlocked = new List<int>();
 
     [Header("Things to reference throughout the game.")]
-    [Tooltip("Current skins: AverageJoe,AverageJoanne,Elincia,Crek,Dummy,")]
+    [Tooltip("Current skins: AverageJoe,AverageJoanne,Elincia,Crek, Crek,Kitsune,SheriffShepard,BUKU1000M,Dummy, ")]
     public List<SkinInfo> skinsToPick;
     public List<Shop_Item> itemsToPick;
     public bool isMuted;
+    public bool tutCompleted;
 
     [Header("SFX")]
     public AudioClip shopBuySound;
@@ -138,6 +139,7 @@ public class Collect_Manager : MonoBehaviour
             mostWavesSurvived = collect.mostWavesSurvived;
             totalWavesSurvived = collect.totalWavesSurvived;
             isMuted = collect.isMuted;
+            tutCompleted = collect.tutCompleted;
             for (int i = 0; i < collect.skinsUnlocked.Count; i++)
             {
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
@@ -187,6 +189,7 @@ public class Collect_Manager : MonoBehaviour
             item1 = -1;
             item2 = -1;
             item3 = -1;
+            tutCompleted = false;
 
             //DEBUG STATEMENT, DON'T GIVE THEM 50K AT START LMAO.
             Debug.LogWarning("Collect is null, we probably don't have a save file! Setting skin to default.");
