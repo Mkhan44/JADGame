@@ -55,6 +55,6 @@ public class EXT_Links : MonoBehaviour
 
     public void loadLicenses()
     {
-        Application.OpenURL("https://github.com/Mkhan44/Lifes_A_Drag_Mob/blob/master/Licenses_LAD.txt");
+        Application.OpenURL("https://github.com/Mkhan44/JADGame/blob/main/RPRT_Licenses");
     }
 }
