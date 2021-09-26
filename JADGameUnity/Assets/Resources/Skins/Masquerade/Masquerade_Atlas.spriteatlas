@@ -1,0 +1,148 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Masquerade_Atlas
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 0
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings:
+    - serializedVersion: 3
+      m_BuildTarget: DefaultTexturePlatform
+      m_MaxTextureSize: 2048
+      m_ResizeAlgorithm: 0
+      m_TextureFormat: -1
+      m_TextureCompression: 1
+      m_CompressionQuality: 100
+      m_CrunchedCompression: 1
+      m_AllowsAlphaSplitting: 0
+      m_Overridden: 0
+      m_AndroidETC2FallbackOverride: 0
+      m_ForceMaximumCompressionQuality_BC6H_BC7: 0
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 1
+      enableTightPacking: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 4235bb7968f45964ca461f71e974daf3, type: 3}
+    - {fileID: 2800000, guid: 5ad8c05eb5c4279479bf058f611d29fa, type: 3}
+    - {fileID: 2800000, guid: 126998db52ae3f2418880aaba2afa55e, type: 3}
+    - {fileID: 2800000, guid: 769bfefa16d9c5f42b12101764512707, type: 3}
+    - {fileID: 2800000, guid: bbc2d4b4fb7c2b6438fe719d37e61bfa, type: 3}
+    - {fileID: 2800000, guid: cce8c25e20539b1499cbfcdff2ece4d0, type: 3}
+    - {fileID: 2800000, guid: 01d15a506d986944bb2bc09e1117e459, type: 3}
+    - {fileID: 2800000, guid: fad05599ddd312744b646dbd231bfbec, type: 3}
+    - {fileID: 2800000, guid: 52b0b7826c347144fb33200c67586bff, type: 3}
+    - {fileID: 2800000, guid: 16e88755ac2479e4a947db4fa188f552, type: 3}
+    - {fileID: 2800000, guid: 439fbefe43f122a4193e3454d5095090, type: 3}
+    - {fileID: 2800000, guid: 645570fe42e4c3847a7b889c3afed74d, type: 3}
+    - {fileID: 2800000, guid: c50dca0d425f681409a5cd8f46d6682f, type: 3}
+    - {fileID: 2800000, guid: 84045d64def6d4b4ab019920d813ffac, type: 3}
+    - {fileID: 2800000, guid: 827bfd5b90eefb3498e7e915b7bb19fa, type: 3}
+    - {fileID: 2800000, guid: 84db9d3c262f9924f91d342cddab18b4, type: 3}
+    - {fileID: 2800000, guid: e9d86bab3cb916d48bc77df16e76746c, type: 3}
+    - {fileID: 2800000, guid: a746cf23aae08714b89fab884713f13a, type: 3}
+    - {fileID: 2800000, guid: 5df8bc1865cbbb245bdaa173bada51e3, type: 3}
+    - {fileID: 2800000, guid: dd176c6dfff8e5b42a2977d977665e76, type: 3}
+    - {fileID: 2800000, guid: 5bc8f70b7b3654644a17fa1275ed29cc, type: 3}
+    - {fileID: 2800000, guid: efbc152d0801c4d4ea38cf3869648f43, type: 3}
+    - {fileID: 2800000, guid: 48c9c60a6eab35348ad5d2ea70b374aa, type: 3}
+    - {fileID: 2800000, guid: a98c40d075c29574a9e05b81bba82e26, type: 3}
+    - {fileID: 2800000, guid: 917eb5ab85b28c848a504ba619a5aac6, type: 3}
+    - {fileID: 2800000, guid: 24f1a8dc20abc424fb2eed51d5d6c915, type: 3}
+    - {fileID: 2800000, guid: 448dec2cb359d884086e08fadf472b0a, type: 3}
+    - {fileID: 2800000, guid: 49bf0497858c70945b6ed1b01ce5e3a6, type: 3}
+    - {fileID: 2800000, guid: e30a10ae2246ebc45b265f8ad5a5eb1c, type: 3}
+    - {fileID: 2800000, guid: dad01faa75340194aa34016eda0a5a65, type: 3}
+    - {fileID: 2800000, guid: 60fc70c79582c8744b1fcc700a929c05, type: 3}
+    totalSpriteSurfaceArea: 1160900
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 01d15a506d986944bb2bc09e1117e459, type: 3}
+  - {fileID: 21300000, guid: a98c40d075c29574a9e05b81bba82e26, type: 3}
+  - {fileID: 21300000, guid: 52b0b7826c347144fb33200c67586bff, type: 3}
+  - {fileID: 21300000, guid: a746cf23aae08714b89fab884713f13a, type: 3}
+  - {fileID: 21300000, guid: 84045d64def6d4b4ab019920d813ffac, type: 3}
+  - {fileID: 21300000, guid: bbc2d4b4fb7c2b6438fe719d37e61bfa, type: 3}
+  - {fileID: 21300000, guid: 16e88755ac2479e4a947db4fa188f552, type: 3}
+  - {fileID: 21300000, guid: 49bf0497858c70945b6ed1b01ce5e3a6, type: 3}
+  - {fileID: 21300000, guid: 60fc70c79582c8744b1fcc700a929c05, type: 3}
+  - {fileID: 21300000, guid: 5df8bc1865cbbb245bdaa173bada51e3, type: 3}
+  - {fileID: 21300000, guid: 4235bb7968f45964ca461f71e974daf3, type: 3}
+  - {fileID: 21300000, guid: fad05599ddd312744b646dbd231bfbec, type: 3}
+  - {fileID: 21300000, guid: 48c9c60a6eab35348ad5d2ea70b374aa, type: 3}
+  - {fileID: 21300000, guid: dad01faa75340194aa34016eda0a5a65, type: 3}
+  - {fileID: 21300000, guid: 769bfefa16d9c5f42b12101764512707, type: 3}
+  - {fileID: 21300000, guid: 5bc8f70b7b3654644a17fa1275ed29cc, type: 3}
+  - {fileID: 21300000, guid: 827bfd5b90eefb3498e7e915b7bb19fa, type: 3}
+  - {fileID: 21300000, guid: 917eb5ab85b28c848a504ba619a5aac6, type: 3}
+  - {fileID: 21300000, guid: e9d86bab3cb916d48bc77df16e76746c, type: 3}
+  - {fileID: 21300000, guid: 126998db52ae3f2418880aaba2afa55e, type: 3}
+  - {fileID: 21300000, guid: 448dec2cb359d884086e08fadf472b0a, type: 3}
+  - {fileID: 21300000, guid: 84db9d3c262f9924f91d342cddab18b4, type: 3}
+  - {fileID: 21300000, guid: 24f1a8dc20abc424fb2eed51d5d6c915, type: 3}
+  - {fileID: 21300000, guid: c50dca0d425f681409a5cd8f46d6682f, type: 3}
+  - {fileID: 21300000, guid: efbc152d0801c4d4ea38cf3869648f43, type: 3}
+  - {fileID: 21300000, guid: dd176c6dfff8e5b42a2977d977665e76, type: 3}
+  - {fileID: 21300000, guid: 5ad8c05eb5c4279479bf058f611d29fa, type: 3}
+  - {fileID: 21300000, guid: cce8c25e20539b1499cbfcdff2ece4d0, type: 3}
+  - {fileID: 21300000, guid: e30a10ae2246ebc45b265f8ad5a5eb1c, type: 3}
+  - {fileID: 21300000, guid: 645570fe42e4c3847a7b889c3afed74d, type: 3}
+  - {fileID: 21300000, guid: 439fbefe43f122a4193e3454d5095090, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - masqueradeduck3
+  - masqueradeidle2
+  - masqueradeduckhurt2
+  - masqueradehang2
+  - masqueradefall4
+  - masqueradeduck1
+  - masqueradeduckhurt3
+  - masqueradejump2
+  - masqueradeportrait
+  - masqueradehang3
+  - masqueradeburning1
+  - masqueradeduckhurt1
+  - masqueradeidle1
+  - masqueradejump4
+  - masqueradeburning4
+  - masqueradehurt2
+  - masqueradefrozen1
+  - masqueradeidle3
+  - masqueradehang1
+  - masqueradeburning3
+  - masqueradejump1
+  - masqueradefrozen2
+  - masqueradeidle4
+  - masqueradefall3
+  - masqueradehurt3
+  - masqueradehurt1
+  - masqueradeburning2
+  - masqueradeduck2
+  - masqueradejump3
+  - masqueradefall2
+  - masqueradefall1
+  m_RenderDataMap: {}
+  m_Tag: Masquerade_Atlas
+  m_IsVariant: 0
