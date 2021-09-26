@@ -57,6 +57,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
         {
             if (!Level_Manager.Instance.thePlayer.isPoweredUp)
             {
+                string useMessage = "";
                 //We know this is an item that is used once and it's over. No duration.
                 if (itemDuration == 0)
                 {
@@ -80,13 +81,15 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     
                                     //Item has been used!
                                     disableItem();
-                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
+                                    useMessage = "Recovered from Frozen status!";
+                                    Level_Manager.Instance.setupNoticeTextAnimation(useMessage);
                                 }
                                 else
                                 {
                                     //Play error SFX when we implement sound.
-                                    Debug.Log("Can't use the item, player isn't frozen!");
-                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Frozen!");
+                                   // Debug.Log("Can't use the item, player isn't frozen!");
+                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Frozen!", true);
+                                    Level_Manager.Instance.playErrorSound();
                                 }
 
                                 break;
@@ -98,13 +101,15 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                     Level_Manager.Instance.heatMeter.setMeterValExternally(0);
                                     //Item has been used!
                                     disableItem();
-                                    Level_Manager.Instance.setupNoticeTextAnimation("Used: Liquid Nitrogen Canister");
+                                    useMessage = "Recovered from Burning status!";
+                                    Level_Manager.Instance.setupNoticeTextAnimation(useMessage);
                                 }
                                 else
                                 {
                                     //Play error SFX when we implement sound.
-                                     Debug.Log("Can't use the item, player isn't burning!");
-                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Burning!");
+                                     //Debug.Log("Can't use the item, player isn't burning!");
+                                    Level_Manager.Instance.setupNoticeTextAnimation("You can't use this item unless you're Burning!", true);
+                                    Level_Manager.Instance.playErrorSound();
                                 }
 
                                 break;
@@ -126,6 +131,7 @@ public class Item : MonoBehaviour , IPointerDownHandler
                             case Collect_Manager.typeOfItem.FireVest:
                                 {
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
+                                    useMessage = "Heat meter won't rise for " + itemDuration.ToString() + " seconds!";
                                     //  fireVest();
                                     break;
                                 }
@@ -139,11 +145,13 @@ public class Item : MonoBehaviour , IPointerDownHandler
                                         }
                                     }
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
+                                    useMessage = "Ice meter won't rise for " + itemDuration.ToString() + " seconds!";
                                     break;
                                 }
                             case Collect_Manager.typeOfItem.NeutralTablet:
                                 {
                                     Level_Manager.Instance.setCurrentItem(thisItemType, itemDuration);
+                                    useMessage = "Meter decrease rates increased for " + itemDuration.ToString() + " seconds!";
                                     break;
                                 }
                             default:
@@ -154,7 +162,15 @@ public class Item : MonoBehaviour , IPointerDownHandler
                         }
                         //Item has been used!
                         disableItem();
-                        Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
+                        if(useMessage == "")
+                        {
+                            Level_Manager.Instance.setupNoticeTextAnimation("Used: " + thisItemType.ToString());
+                        }
+                        else
+                        {
+                            Level_Manager.Instance.setupNoticeTextAnimation(useMessage);
+                        }
+                        
                     }
 
 
@@ -169,12 +185,30 @@ public class Item : MonoBehaviour , IPointerDownHandler
             }
             else
             {
-               // Debug.Log("Hey you can't use this power up right now!");
+                // Debug.Log("Hey you can't use this power up right now!");
             }
         }
         else
         {
-           // Debug.Log("Item has already been used!");
+            if(thisItemType == Collect_Manager.typeOfItem.none)
+            {
+                return;
+            }
+
+            // Debug.Log("Item has already been used!");
+            if(Level_Manager.Instance.powerupMeter.value == 0)
+            {
+                if(wavesTillCDDone == 1)
+                {
+                    Level_Manager.Instance.setupNoticeTextAnimation("Item is in cooldown for: " + wavesTillCDDone.ToString() + " wave!", true);
+                }
+                else
+                {
+                    Level_Manager.Instance.setupNoticeTextAnimation("Item is in cooldown for: " + wavesTillCDDone.ToString() + " waves!", true);
+                }
+                Level_Manager.Instance.playErrorSound();
+            }
+           
         }
        
     }
@@ -254,7 +288,15 @@ public class Item : MonoBehaviour , IPointerDownHandler
            
             }
             numTimesUsed += 1;
-            wavesTillCDDone = tempCoolDownCounter;
+            if(tempCoolDownCounter < 9)
+            {
+                wavesTillCDDone = tempCoolDownCounter;
+            }
+            else
+            {
+                wavesTillCDDone = 9;
+            }
+           
             CDText.text = wavesTillCDDone.ToString();
             
         }

@@ -118,6 +118,11 @@ public class Tutorial_Manager : MonoBehaviour
     public void conditionComplete()
     {
         Debug.Log("Condition complete called!");
+        if(currentStep == 10 || currentStep == 12)
+        {
+            Level_Manager.Instance.pauseGame(false);
+            Audio_Manager.Instance.togglePauseSFX();
+        }
         Time.timeScale = 1f;
         conditionMet = true;
         nextButton.gameObject.SetActive(true);
@@ -358,11 +363,15 @@ public class Tutorial_Manager : MonoBehaviour
         incrementCurrentStepExternally();
         stepText.text = phrases[currentStep];
         float elapsedTime = 0f;
-        while(elapsedTime < 2.0f)
+        if(currentStep != 37)
         {
-            elapsedTime += Time.deltaTime;
-            yield return null;
+            while (elapsedTime < 2.0f)
+            {
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
         }
+      
      
       //  yield return new WaitForSecondsRealtime(2.0f);
         //Debug.Log("We have waited 2.0 seconds, shutting off the text box.");
@@ -387,6 +396,25 @@ public class Tutorial_Manager : MonoBehaviour
                     textPanelHolder.SetActive(true);
                     break;
                 }
+            case 37:
+                {
+                    if(Collect_Manager.instance.tutCompleted)
+                    {
+                        textPanelHolder.SetActive(true);
+                        nextButton.gameObject.SetActive(true);
+                        nextStep();
+                        yield break;
+                        break;
+                    }
+                    else
+                    {
+                        Level_Manager.Instance.collectCoin(1000);
+                        Collect_Manager.instance.totalCoins += 1000;
+                        Collect_Manager.instance.tutCompleted = true;
+                        Save_System.SaveCollectables(Collect_Manager.instance);
+                    }
+                    break;
+                }
             default:
                 {
                     Debug.LogWarning("Hey we didn't find a step that has a special condition in the switch statement!");
@@ -394,24 +422,35 @@ public class Tutorial_Manager : MonoBehaviour
                 }
         }
 
-        elapsedTime = 0f;
-        while (elapsedTime < waitTime)
+        if(currentStep != 37)
         {
-            elapsedTime += Time.deltaTime;
-            Debug.Log(elapsedTime);
-            yield return null;
+            elapsedTime = 0f;
+            while (elapsedTime < waitTime)
+            {
+                elapsedTime += Time.deltaTime;
+                Debug.Log(elapsedTime);
+                yield return null;
+            }
         }
+        
 
        // yield return new WaitForSecondsRealtime(waitTime);
-       if(currentStep != 30)
+       if(currentStep == 10 || currentStep == 12)
         {
+            Level_Manager.Instance.pauseGame(false);
+            Audio_Manager.Instance.togglePauseSFX();
             Time.timeScale = 0f;
         }
         
        textPanelHolder.SetActive(true);
        nextButton.gameObject.SetActive(true);
        //incrementCurrentStepExternally();
-       nextStep();
+
+        if(currentStep != 37)
+        {
+            nextStep();
+        }
+      
 
 
     }

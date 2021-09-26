@@ -43,18 +43,15 @@ SpriteAtlas:
     secondaryTextureSettings: {}
     variantMultiplier: 1
     packables:
-    - {fileID: 2800000, guid: 303f50e97cbe71d4bb3d538a455b20b7, type: 3}
     - {fileID: 2800000, guid: 0733a2af7911aa84bb65d0b06bef37e0, type: 3}
-    totalSpriteSurfaceArea: 1447200
+    totalSpriteSurfaceArea: 921600
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
-  - {fileID: 21300000, guid: 303f50e97cbe71d4bb3d538a455b20b7, type: 3}
   - {fileID: 21300000, guid: 0733a2af7911aa84bb65d0b06bef37e0, type: 3}
   m_PackedSpriteNamesToIndex:
-  - logo
   - mainbg
   m_RenderDataMap: {}
   m_Tag: MainMenu_UI_Atlas

@@ -355,7 +355,8 @@ MonoBehaviour:
   - The equipment you're wearing can help regulate your body temperature. However...
   - Hanging or crouching will bring you into contact with the magma filled ceiling
     or liquid nitrogen filled floor.
-  - These are your heat and ice meters. They will gradually decrease over time.
+  - These are your heat and ice meters. They will gradually decrease over time if
+    you stand still.
   - Obstacles that are of heat or ice element can affect these meters.
   - If your heat meter fills completely...
   - You'll enter burning state.  Mash the cooldown button to lower your body heat!
@@ -363,7 +364,7 @@ MonoBehaviour:
   - You'll be met with frozen state. Mash the heat up button to warm yourself up!
   - Watching your meters is the key to lasting longer throughout the time-twister
     machine.
-  - Next, I'll explain how items work.
+  - Next, you'll learn how to use items.
   - Items can help you keep your meters in check. You can buy them in the shop or
     earn them in the simulation.
   - 'The longer you last in this simulation, the more research points you''ll accumulate. '
@@ -381,7 +382,7 @@ MonoBehaviour:
   - 'After using an item: It will enter a cooldown period. Eventually you''ll be
     able to use this item again.'
   - Once the simulation ends you will lose the items you brought in. Use them wisely!
-  - 'For completing the tutorial: You''ve just gained 1000 coins! Congratulations.'
+  - 'Congratulations! For completing the tutorial: You''ve just gained 1000 coins!'
   - Those are the basics of how to use the time-twister machine! You can come back
     and view this tutorial again from the main menu if needed.
   conditionCheck:
@@ -420,9 +421,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
   - {fileID: 11400000, guid: ab7c383c0cf55994abfd47258950f6b6, type: 2}
   - {fileID: 11400000, guid: 627827903c2c62941be2bae74a58239d, type: 2}
+  - {fileID: 11400000, guid: 627827903c2c62941be2bae74a58239d, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
-  - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
+  - {fileID: 11400000, guid: e4be216490350e44294de14214fc774b, type: 2}
   - {fileID: 11400000, guid: 303ecad906fd9c847b73ccbc4d12b729, type: 2}
 --- !u!1 &7560357054488307333
 GameObject:
@@ -1110,7 +1111,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.42745098}
+  m_Color: {r: 0, g: 0, b: 0, a: 0.050980393}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
