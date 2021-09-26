@@ -43,7 +43,7 @@ public class UFO : Obstacle_Behaviour
         base.OnObjectSpawn();
         initializeUFO();
         activeSound = ufoSpinSound;
-        Audio_Manager.Instance.playSFX(activeSound, true, 0.07f);
+        Audio_Manager.Instance.playSFX(activeSound, true, 0.05f);
     }
 
     private void initializeUFO()
@@ -118,7 +118,7 @@ public class UFO : Obstacle_Behaviour
         UFOAnimator.Play(ufoLightRetract);
 
         activeSound = ufoSpinSound;
-        Audio_Manager.Instance.playSFX(activeSound, true, 0.07f);
+        Audio_Manager.Instance.playSFX(activeSound, true, 0.05f);
         // activeSound = beamUpSound;
         //Audio_Manager.Instance.playSFX(activeSound);
 

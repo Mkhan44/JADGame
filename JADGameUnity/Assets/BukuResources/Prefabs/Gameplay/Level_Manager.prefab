@@ -119,6 +119,7 @@ MonoBehaviour:
   frozenBrokenSound: {fileID: 0}
   RPTallySound: {fileID: 0}
   coinTallySound: {fileID: 0}
+  errorSound: {fileID: 0}
 --- !u!114 &8248098668222182074
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,6 +140,7 @@ MonoBehaviour:
   wavesSinceBonus: 0
   wavesSinceTimeSwap: 0
   wavesSinceMeterIncrease: 0
+  hasSwapped: 0
   spawnRate: 1
   timeBetweenWaves: 3
   enemies: []
@@ -155,11 +157,11 @@ MonoBehaviour:
   chestPrefabAir: {fileID: 8492531496662785174, guid: 2b0d3f8ecd2924a4fb3840de7670474e, type: 3}
   coinImg: {fileID: 21300000, guid: 977bfae4e89a98b4bb7fd4bfa2e2134b, type: 3}
   timePortalPrefabs:
-  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
-  - {fileID: 2509886699335351895, guid: b0b697d05fd40fc43a093694d22e7283, type: 3}
-  - {fileID: 2509886699335351895, guid: ed422fb9831629b40a08d6120f658042, type: 3}
   - {fileID: 2509886699335351895, guid: 2fedfac19fd2617458e55cbe1d65d96e, type: 3}
+  - {fileID: 2509886699335351895, guid: b0b697d05fd40fc43a093694d22e7283, type: 3}
+  - {fileID: 2509886699335351895, guid: 30339b83832b0d84fb4ec3235c0bd2c9, type: 3}
   - {fileID: 2509886699335351895, guid: b8cea4818dc5c5046aeaf946203f3a65, type: 3}
+  - {fileID: 2509886699335351895, guid: ed422fb9831629b40a08d6120f658042, type: 3}
   prehistoricBackgrounds: []
   FeudalBackgrounds: []
   WildWestBackgrounds: []

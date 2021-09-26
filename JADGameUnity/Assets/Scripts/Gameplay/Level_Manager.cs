@@ -210,6 +210,9 @@ public class Level_Manager : MonoBehaviour
     [SerializeField] AudioClip RPTallySound;
     [SerializeField] AudioClip coinTallySound;
 
+    [Header("Misc SFX")]
+    [SerializeField] AudioClip errorSound;
+
 
 
     public static Level_Manager Instance;
@@ -242,6 +245,10 @@ public class Level_Manager : MonoBehaviour
             {
                 theLevelType = levelType.tutorial;
                 TimePeriod = timePeriod.tutorial;
+                GameObject pauseButton = GameObject.Find("Pause_Button");
+                GameObject muteButton = GameObject.Find("MuteButton");
+                pauseButton.SetActive(false);
+                muteButton.SetActive(false);
                 item1CDPanel.SetActive(false);
                 item2CDPanel.SetActive(false);
                 item3CDPanel.SetActive(false);
@@ -299,8 +306,9 @@ public class Level_Manager : MonoBehaviour
                 int randomTimePeriodToStart = 0;
                 int numTimePeriods = System.Enum.GetValues(typeof(timePeriod)).Length;
                 //Account for 'none' and 'tutorial'.
+                //Debug.LogWarning(numTimePeriods.ToString());
                 numTimePeriods -= 2;
-                randomTimePeriodToStart = Random.Range(0, numTimePeriods + 1);
+                randomTimePeriodToStart = Random.Range(0, numTimePeriods);
                 if(theLevelType == levelType.tutorial)
                 {
                     randomTimePeriodToStart = 5;
@@ -1183,8 +1191,8 @@ public class Level_Manager : MonoBehaviour
 
     public void collectCoin(int amount)
     {
-        //1 coin = 10 points. Do math to figure out how much to increase the score.
-        int scoreIncrease = (amount * 10);
+        //1 coin = 5 points. Do math to figure out how much to increase the score.
+        int scoreIncrease = (amount * 5);
         if (theLevelType == levelType.tutorial)
         {
             scoreIncrease = 0;
@@ -1371,12 +1379,16 @@ public class Level_Manager : MonoBehaviour
    
         while (useDuration > 0)
         {
-            //powerupMeter.value -= 0.6f;
-            useDuration -= Time.deltaTime;
-           
-            powerupMeter.value = Mathf.Lerp(100, 0, timePassed/fullDuration);
-            timePassed += Time.deltaTime;
-            useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
+            if(Wave_Spawner.Instance.getWaveType() == Wave_Spawner.typeOfWave.normal)
+            {
+                //powerupMeter.value -= 0.6f;
+                useDuration -= Time.deltaTime;
+
+                powerupMeter.value = Mathf.Lerp(100, 0, timePassed / fullDuration);
+                timePassed += Time.deltaTime;
+                useDurationText.text = Mathf.Round(useDuration).ToString() + " Seconds left";
+            }
+         
             yield return null;
         }
         Vector4 regularColor = new Vector4(191, 137, 137, 1.0f);
@@ -2016,7 +2028,7 @@ public class Level_Manager : MonoBehaviour
             //May want to have the threshold as a variable so that we can edit it on the fly for multipliers and stuff?
             if(timePassed >= 2.5f)
             {
-                updateScore(50);
+                updateScore(10);
                 timePassed = 0f;
 
             }
@@ -2233,6 +2245,17 @@ public class Level_Manager : MonoBehaviour
     void stopCoinTallySound()
     {
         Audio_Manager.Instance.stopSFX(coinTallySound.name);
+    }
+
+    public void playErrorSound()
+    {
+        stopErrorSound();
+        Audio_Manager.Instance.playSFX(errorSound);
+    }
+
+    void stopErrorSound()
+    {
+        Audio_Manager.Instance.stopSFX(errorSound.name);
     }
 
 

@@ -22,5 +22,5 @@ MonoBehaviour:
   currencyUSD: 0
   hasDuration: 0
   duration: 0
-  waveCooldown: 0
+  waveCooldown: 3
   useSound: {fileID: 8300000, guid: a999e50b6f74f2947aacfd30a6c5140c, type: 3}

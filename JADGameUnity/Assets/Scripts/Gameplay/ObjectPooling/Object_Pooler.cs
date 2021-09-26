@@ -281,7 +281,7 @@ public class Object_Pooler : MonoBehaviour
                 }
                
         }
-        Debug.Log("The current list has been set.");
+        //Debug.Log("The current list has been set.");
     }
 
     //This function will be used via WaveSpawner to grab the values of Currentlist and make that the current set of prefabs that we are using to spawn in during gameplay.

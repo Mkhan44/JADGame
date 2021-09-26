@@ -55,8 +55,10 @@ public class Wave_Spawner : MonoBehaviour
 
     [SerializeField] int waveCount;
     [SerializeField] int wavesSinceBonus;
+    [SerializeField] int minWavesTillBonus;
     [SerializeField] int wavesSinceTimeSwap;
     [SerializeField] int wavesSinceMeterIncrease;
+    [SerializeField] bool hasSwapped;
 
     [Tooltip("Rate that enemies will spawn in at. This should decrease with each wave passed.")]
     public float spawnRate;
@@ -199,12 +201,14 @@ public class Wave_Spawner : MonoBehaviour
         waveComplete = true;
         waveCount = 1;
         wavesSinceBonus = 0;
+        minWavesTillBonus = 2;
         wavesSinceTimeSwap = 0;
         wavesSinceCollectedBolt = 0;
         attemptedToSpawnBoltThisWave = false;
         stopCo = false;
         lastEnemySpawnedCoins = false;
         theWaveDiff = waveDiff.easy;
+        hasSwapped = false;
         // Level_Manager.Instance = this.GetComponent<Level_Manager>();
         specialWaveOn = false;
         wavesSinceDifficultyChange = 0;
@@ -337,9 +341,11 @@ public class Wave_Spawner : MonoBehaviour
     public IEnumerator respawnIntroTransition()
     {
         introTransitionFinished = false;
+        fadePanel.transform.parent.gameObject.SetActive(true);
+        fadePanel.gameObject.SetActive(true);
 
         Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.8f);
 
         Audio_Manager.Instance.playSFX(countdownSound);
         Level_Manager.Instance.setupNoticeTextAnimation("3", true);
@@ -476,21 +482,44 @@ public class Wave_Spawner : MonoBehaviour
             //Test values for changing difficulty. Will need some formula later on.
             //if (wavesSinceDifficultyChange == 3)
            //DEBUG , USE THE ONE ABOVE FOR REAL!
-            if (wavesSinceDifficultyChange == 3)
+            if(hasSwapped)
             {
-                theWaveDiff = waveDiff.medium;
-                setBGs(theWaveDiff);
-                Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                if (wavesSinceDifficultyChange == 1)
+                {
+                    theWaveDiff = waveDiff.medium;
+                    setBGs(theWaveDiff);
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                }
+                if (wavesSinceDifficultyChange == 2)
+                //if (wavesSinceDifficultyChange == 5)
+                {
+                    theWaveDiff = waveDiff.hardPause;
+                    setBGs(theWaveDiff);
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                }
             }
-            if (wavesSinceDifficultyChange == 5)
-            //if (wavesSinceDifficultyChange == 5)
+            else
             {
-                theWaveDiff = waveDiff.hardPause;
-                setBGs(theWaveDiff);
-                Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                if (wavesSinceDifficultyChange == 3)
+                {
+                    theWaveDiff = waveDiff.medium;
+                    setBGs(theWaveDiff);
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                }
+                if (wavesSinceDifficultyChange == 5)
+                //if (wavesSinceDifficultyChange == 5)
+                {
+                    theWaveDiff = waveDiff.hardPause;
+                    setBGs(theWaveDiff);
+                    Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                }
             }
+
+           
 
             int tempLeftNum = 0;
             tempLeftNum = enemiesLeft;
@@ -544,11 +573,22 @@ public class Wave_Spawner : MonoBehaviour
                         {
                             for (int j = 0; j < maxNum; j++)
                             {
-                                //Just check for not being hardPause because anything else is spawnable.
-                                if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff != Obstacle_Behaviour.obstacleDiff.hardPause)
+                                if(hasSwapped)
                                 {
-                                    diffOptions.Add(enemies[j]);
+                                    if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff == Obstacle_Behaviour.obstacleDiff.medium)
+                                    {
+                                        diffOptions.Add(enemies[j]);
+                                    }
                                 }
+                                else
+                                {
+                                    //Just check for not being hardPause because anything else is spawnable.
+                                    if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff != Obstacle_Behaviour.obstacleDiff.hardPause)
+                                    {
+                                        diffOptions.Add(enemies[j]);
+                                    }
+                                }
+                               
                             }
                             int newMax = diffOptions.Count;
                             randNum = Random.Range(minNum, newMax);
@@ -558,12 +598,24 @@ public class Wave_Spawner : MonoBehaviour
                         {
                             for (int j = 0; j < maxNum; j++)
                             {
-                                //Just check for not being easy because anything else is spawnable.
-                                if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff != Obstacle_Behaviour.obstacleDiff.easy)
+                                //Just check for not being easy because anything else is spawnable. UNLESS we've swapped already.
+                                if(hasSwapped)
                                 {
-                                    diffOptions.Add(enemies[j]);
-                                   // Debug.Log("Added enemy number: " + j + " from the list of enemies since it's not an easy enemy.");
+                                    if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff == Obstacle_Behaviour.obstacleDiff.hardPause)
+                                    {
+                                        diffOptions.Add(enemies[j]);
+                                        // Debug.Log("Added enemy number: " + j + " from the list of enemies since it's not an easy enemy.");
+                                    }
                                 }
+                                else
+                                {
+                                    if (enemies[j].GetComponent<Obstacle_Behaviour>().thisObstacleDiff != Obstacle_Behaviour.obstacleDiff.easy)
+                                    {
+                                        diffOptions.Add(enemies[j]);
+                                        // Debug.Log("Added enemy number: " + j + " from the list of enemies since it's not an easy enemy.");
+                                    }
+                                }
+                               
                             }
                             int newMax = diffOptions.Count;
                             randNum = Random.Range(minNum, newMax);
@@ -675,7 +727,7 @@ public class Wave_Spawner : MonoBehaviour
                     lastEnemySpawnedCoins = false;
                 }
 
-               
+
 
                 //If there are too many enemies on screen maybe have some delay here instead of just static at the spawnRate value???
                 yield return new WaitForSeconds(spawnRate);
@@ -686,16 +738,23 @@ public class Wave_Spawner : MonoBehaviour
                 //Debug.Log("There's still an enemy on screen!");
                 yield return null;
             }
+
+            
             //Only increase spawnrate , enemy count and wavecount after normal waves. Though we may need a hidden waveCount counter for achievements, etc.
-            if(spawnRate > 1.5f)
+            if (spawnRate > 0.4f)
             {
-                spawnRate -= 0.5f;
+                spawnRate -= 0.1f;
 
                 //DEBUG
-                spawnRate = 1.5f;
+              //  spawnRate = 1.5f;
             }
             
+            
             enemyCount += 1;
+            if(enemyCount > 999)
+            {
+                enemyCount = 999;
+            }
             enemiesLeft = enemyCount;
             waveCount += 1;
            
@@ -726,8 +785,48 @@ public class Wave_Spawner : MonoBehaviour
             if(!specialWaveOn)
             {
                 specialWaveOn = true;
-                int random1 = Random.Range(0, (timePortalPrefabs.Count));
-                int random2 = Random.Range(0, (timePortalPrefabs.Count));
+                List<GameObject> tempPortals = new List<GameObject>();
+                for (int f = 0; f < timePortalPrefabs.Count; f++)
+                {
+                    tempPortals.Add(timePortalPrefabs[f]);
+                }
+
+                //These NEED to assosciate with both the timePortalPrefabs on the WaveSpawner & on the LevelManager's timePeriod.
+                switch(Level_Manager.Instance.TimePeriod)
+                {
+                    case Level_Manager.timePeriod.Prehistoric:
+                        {
+                            tempPortals.Remove(tempPortals[0]);
+                            break;
+                        }
+                    case Level_Manager.timePeriod.FeudalJapan:
+                        {
+                            tempPortals.Remove(tempPortals[1]);
+                            break;
+                        }
+                    case Level_Manager.timePeriod.WildWest:
+                        {
+                            tempPortals.Remove(tempPortals[2]);
+                            break;
+                        }
+                    case Level_Manager.timePeriod.Medieval:
+                        {
+                            tempPortals.Remove(tempPortals[3]);
+                            break;
+                        }
+                    case Level_Manager.timePeriod.Future:
+                        {
+                            tempPortals.Remove(tempPortals[4]);
+                            break;
+                        }
+                }
+                //for (int g = 0; g < tempPortals.Count; g++)
+                //{
+                //    Debug.LogWarning("Name " + g + " in the portal list is: " + tempPortals[g]);
+                //}
+
+                int random1 = Random.Range(0, (tempPortals.Count));
+                int random2 = Random.Range(0, (tempPortals.Count));
                //Make sure both are different.
                 if(random1 == random2)
                 {
@@ -735,7 +834,7 @@ public class Wave_Spawner : MonoBehaviour
                     {
                         random2 -= 1;
                     }
-                    else if(random2 != timePortalPrefabs.Count)
+                    else if(random2 != tempPortals.Count)
                     {
                         random2 += 1;
                     }
@@ -744,7 +843,7 @@ public class Wave_Spawner : MonoBehaviour
                 //Debug for testing purposes.
                // random1 = 2;
                 //random2 = 3;
-                timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2));
+                timeRoutine = StartCoroutine(SpawnTimePortal(random1, random2, tempPortals));
             }
             
 
@@ -756,7 +855,7 @@ public class Wave_Spawner : MonoBehaviour
         {   
             wavesSinceBonus++;
             Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
-            if (wavesSinceBonus > 2)
+            if (wavesSinceBonus > minWavesTillBonus)
             {
                 
                 int doWeBonus;
@@ -766,6 +865,12 @@ public class Wave_Spawner : MonoBehaviour
                 if(doWeBonus >= 2)
                 {
                     Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
+                    //Max we can wait should be 9 waves.
+                    if(minWavesTillBonus < 9)
+                    {
+                        minWavesTillBonus += 1;
+                    }
+                    
                     wavesSinceBonus = 0;
                     waveType = typeOfWave.bonus;
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
@@ -779,19 +884,21 @@ public class Wave_Spawner : MonoBehaviour
         //TimerPortal wave spawn.
         if (!specialWaveOn && waveType != typeOfWave.bonus)
         {
-            if(theWaveDiff == waveDiff.hardPause)
+          //  wavesSinceTimeSwap++;
+            if (theWaveDiff == waveDiff.hardPause)
             {
                 wavesSinceTimeSwap++;
                 Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
             }
-           
+
+
             if (wavesSinceTimeSwap > 2 && theWaveDiff == waveDiff.hardPause)
             {
                 
                 int doWeTimeSwap;
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
-                //doWeTimeSwap = 8;
+               // doWeTimeSwap = 8;
                 if (doWeTimeSwap >= 2)
                 {
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
@@ -849,6 +956,9 @@ public class Wave_Spawner : MonoBehaviour
             {
                 tempSpawn = spawnPoints[0].transform.position;
                 tempRot = spawnPoints[0].transform.rotation;
+                Vector3 tempSpawnYChange = tempSpawn;
+                tempSpawnYChange.y -= 0.1f;
+                tempSpawn = tempSpawnYChange;
             }
             else
             {
@@ -867,7 +977,7 @@ public class Wave_Spawner : MonoBehaviour
         }
 
         //Spawn X amount of coins based on the RNG.
-        Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
+      //  Debug.Log("Spawning in: " + amountToSpawn.ToString() + " coins!");
         for(int i = 0; i <= (amountToSpawn-1); i++)
         {
             Object_Pooler.Instance.SpawnFromPool(coinPrefab.name, tempSpawn, tempRot); 
@@ -1102,27 +1212,30 @@ public class Wave_Spawner : MonoBehaviour
 
         if (isAnItem)
         {
-            if (theWaveDiff == waveDiff.easy)
-            {
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
-                Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
-            }
-            else if(theWaveDiff == waveDiff.medium)
-            {
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
-                Level_Manager.Instance.setupNoticeTextAnimation("You just got: x2 " + itemToGive.ToString() + "!");
-            }
-            else
-            {
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                Collect_Manager.instance.purchaseItemConfirm(itemToGive);
-                //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
-                Level_Manager.Instance.setupNoticeTextAnimation("You just got: x3 " + itemToGive.ToString() + "!");
-            }
+            Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
+
+            //if (theWaveDiff == waveDiff.easy)
+            //{
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+            //    Level_Manager.Instance.setupNoticeTextAnimation("You just got: " + itemToGive.ToString() + "!");
+            //}
+            //else if(theWaveDiff == waveDiff.medium)
+            //{
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+            //    Level_Manager.Instance.setupNoticeTextAnimation("You just got: x2 " + itemToGive.ToString() + "!");
+            //}
+            //else
+            //{
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    Collect_Manager.instance.purchaseItemConfirm(itemToGive);
+            //    //Debug.Log("Received: " + itemToGive.ToString() + " from the treasure chest!");
+            //    Level_Manager.Instance.setupNoticeTextAnimation("You just got: x3 " + itemToGive.ToString() + "!");
+            //}
             
         }
         else
@@ -1168,10 +1281,10 @@ public class Wave_Spawner : MonoBehaviour
 
     }
     //Spawn in 2 time era portals at random. Same concept as chest spawn.
-    public IEnumerator SpawnTimePortal(int portalIndex1, int portalIndex2)
+    public IEnumerator SpawnTimePortal(int portalIndex1, int portalIndex2, List<GameObject> theTempPortals)
     {
-        GameObject portal1 = Instantiate(timePortalPrefabs[portalIndex1], spawnPoints[1].transform);
-        GameObject portal2 = Instantiate(timePortalPrefabs[portalIndex2], spawnPoints[2].transform);
+        GameObject portal1 = Instantiate(theTempPortals[portalIndex1], spawnPoints[1].transform);
+        GameObject portal2 = Instantiate(theTempPortals[portalIndex2], spawnPoints[2].transform);
 
 
         //portal2.GetComponent<SpriteRenderer>().flipY = true;
@@ -1232,6 +1345,7 @@ public class Wave_Spawner : MonoBehaviour
 
         //Switch back to easy when we swap waves...But we'll keep the spawn rate quick. Like warioware does kinda.
         theWaveDiff = waveDiff.easy;
+        hasSwapped = true;
         Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
         //Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
         setBGs(theWaveDiff);
@@ -1341,11 +1455,6 @@ public class Wave_Spawner : MonoBehaviour
     {
         enemiesLeft -= num;
         Debug.Log("Enemies left are: " + enemiesLeft);
-    }
-
-    public void resetEnemiesLeft()
-    {
-       
     }
 
     public bool getIntroFinishedStatus()

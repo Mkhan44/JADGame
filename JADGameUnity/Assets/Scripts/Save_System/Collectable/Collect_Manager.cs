@@ -262,32 +262,68 @@ public class Collect_Manager : MonoBehaviour
     //Shop related stuff.
 
     //Function for increasing item when it is purchased.
-    public void purchaseItemConfirm(typeOfItem typePassed)
+    public bool purchaseItemConfirm(typeOfItem typePassed)
     {
+        bool have99OrNah = false;
         switch (typePassed)
         {
             case typeOfItem.HandWarmers:
                 {
+                    if(handWarmers >= 99)
+                    {
+                        Debug.Log("We already have 99 of this item. Can't get anymore!");
+                        have99OrNah = true;
+                        handWarmers = 99;
+                        break;
+                    }
                     handWarmers += 1;
                     break;
                 }
             case typeOfItem.Defroster:
                 {
+                    if (numDefrosters >= 99)
+                    {
+                        Debug.Log("We already have 99 of this item. Can't get anymore!");
+                        have99OrNah = true;
+                        numDefrosters = 99;
+                        break;
+                    }
                     numDefrosters += 1;
                     break;
                 }
             case typeOfItem.FireVest:
                 {
+                    if (numFireVests >= 99)
+                    {
+                        Debug.Log("We already have 99 of this item. Can't get anymore!");
+                        have99OrNah = true;
+                        numFireVests = 99;
+                        break;
+                    }
                     numFireVests += 1;
                     break;
                 }
             case typeOfItem.LiquidNitrogenCanister:
                 {
+                    if (numLiquidNitrogenCanisters >= 99)
+                    {
+                        Debug.Log("We already have 99 of this item. Can't get anymore!");
+                        have99OrNah = true;
+                        numLiquidNitrogenCanisters = 99;
+                        break;
+                    }
                     numLiquidNitrogenCanisters += 1;
                     break;
                 }
             case typeOfItem.NeutralTablet:
                 {
+                    if (numNeutralTablets >= 99)
+                    {
+                        Debug.Log("We already have 99 of this item. Can't get anymore!");
+                        have99OrNah = true;
+                        numNeutralTablets = 99;
+                        break;
+                    }
                     numNeutralTablets += 1;
                     break;
                 }
@@ -298,6 +334,7 @@ public class Collect_Manager : MonoBehaviour
                 }
 
         }
+        return have99OrNah;
     }
 
 
@@ -307,11 +344,21 @@ public class Collect_Manager : MonoBehaviour
 
         if (playerCoins >= cost)
         {
-            Audio_Manager.Instance.playSFX(shopBuySound);
-            totalCoins -= cost;
-            Debug.Log("You just bought: " + typePassed);
-            Menu_Manager.instance.setupShopTextAnimation("You just bought: " + typePassed.ToString() + " x1!");
-            purchaseItemConfirm(typePassed);
+           
+            if(!purchaseItemConfirm(typePassed))
+            {
+                Audio_Manager.Instance.playSFX(shopBuySound);
+                totalCoins -= cost;
+                Debug.Log("You just bought: " + typePassed);
+                Menu_Manager.instance.setupShopTextAnimation("You just bought: " + typePassed.ToString() + " x1!");
+            }
+            else
+            {
+                Audio_Manager.Instance.playSFX(shopErrorSound);
+                Menu_Manager.instance.setupShopTextAnimation("You already have: 99 " + typePassed.ToString() + "!");
+            }
+          
+           // purchaseItemConfirm(typePassed);
 
             //Save the purchase!
             Save_System.SaveCollectables(this);
