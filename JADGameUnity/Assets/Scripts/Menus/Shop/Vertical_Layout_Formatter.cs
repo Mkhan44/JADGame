@@ -35,6 +35,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
 
     public TextMeshProUGUI coinsTotalText;
     public TextMeshProUGUI boltsTotalText;
+    public TextMeshProUGUI boughtAllText;
 
     //Skin related purchase stuff.
     public Button purchaseWithCoinsButton;
@@ -42,13 +43,40 @@ public class Vertical_Layout_Formatter : MonoBehaviour
     public GameObject skinPurchasePanel;
     public Button closeShopButton;
 
-   
+    bool firstTime;
 
-    private void Start()
+
+
+    private void Awake()
     {
+        firstTime = true;
+    }
+    private void OnEnable()
+    {
+        if (firstTime)
+        {
+            firstTime = false;
+        }
+        else
+        {
+            tempTextMeshList.Clear();
+            if (thisTab != WhichTabAreWeOn.Currency)
+            {
+                foreach (Transform child in gameObject.transform)
+                {
+                    Destroy(child.gameObject);
+                }
+                
+            }
+            else
+            {
+                return;
+            }
+            
+        }
         coinsTotalText.text = ": " + Collect_Manager.instance.totalCoins.ToString();
         boltsTotalText.text = ": " + Collect_Manager.instance.totalBolts.ToString();
-
+        int numSkipped = 0;
         for (int i = 0; i < itemsForSale.Count; i++)
         {
             GameObject tempSpawn = Instantiate(itemPrefab, this.transform);
@@ -104,7 +132,7 @@ public class Vertical_Layout_Formatter : MonoBehaviour
                 int tempNum = i;
                 tempButtonAddListener.onClick.AddListener(() => addListenerForSkins(itemsForSale[tempNum], tempButtonAddListener));
                 //tempButtonAddListener.onClick.AddListener(() => changeText(tempNum));
-
+             
                 foreach (int j in System.Enum.GetValues(typeof(Collect_Manager.skinTypes)))
                 {
                     //Cast the enum to an integer to compare it.
@@ -118,14 +146,22 @@ public class Vertical_Layout_Formatter : MonoBehaviour
                                 Debug.Log("Current skin number is: " + j + " Which corresponds to: " + itemsForSale[i].thisSkinType);
                                 Debug.Log("We are skipping putting this skin in the menu. Turn off everything corresponding to this skin since player has it already.");
                                 tempSpawn.SetActive(false);
+                                numSkipped += 1;
                                 break;
                             }
                         }
                        
                         break;
                     }
+                   
                 }
 
+                Debug.LogWarning(numSkipped);
+                Debug.LogWarning(itemsForSale.Count);
+                if (numSkipped == itemsForSale.Count)
+                {
+                    boughtAllText.gameObject.SetActive(true);
+                }
                 tempCurrencyCostText.gameObject.SetActive(false);
                 tempPlayerOwnedText.gameObject.SetActive(false);
             }

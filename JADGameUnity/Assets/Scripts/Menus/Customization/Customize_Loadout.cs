@@ -60,6 +60,8 @@ public class Customize_Loadout : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI descriptionText;
 
+    [SerializeField] AudioClip skinSwapSound;
+
 
     // Start is called before the first frame update
     void Start()
@@ -87,7 +89,8 @@ public class Customize_Loadout : MonoBehaviour
 
             //Loadout related
             resetLoadoutScrollableArea();
-
+            initializeLoadoutCustomization();
+           
 
         }
        
@@ -149,7 +152,8 @@ public class Customize_Loadout : MonoBehaviour
             }
         }
 
-        skinScrollRect.horizontalNormalizedPosition = 0f;
+        //skinScrollRect.horizontalNormalizedPosition = 0f;
+        //ScrollToLeft(skinScrollRect);
 
        // Debug.Log("The skinsToPick list has: " + skinsToPick.Count + " elements in it.");
 
@@ -180,6 +184,7 @@ public class Customize_Loadout : MonoBehaviour
             if((int)theType == currentSkinNum)
             {
                 Collect_Manager.instance.setCurrentSkin(theType);
+                playSkinSwapSound();
                 Debug.Log("Switching skin to: " + theType);
                 break;
             }
@@ -252,6 +257,12 @@ public class Customize_Loadout : MonoBehaviour
         {
             StopCoroutine(animateRoutine);
         }
+    }
+
+    public void playSkinSwapSound()
+    {
+        Audio_Manager.Instance.stopSFX(skinSwapSound.name);
+        Audio_Manager.Instance.playSFX(skinSwapSound);
     }
 
     /*
@@ -384,7 +395,7 @@ public class Customize_Loadout : MonoBehaviour
             tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
         }
 
-        ScrollToTop(loadoutScrollRect);
+        //ScrollToTop(loadoutScrollRect);
 
 
     }
@@ -544,27 +555,95 @@ public class Customize_Loadout : MonoBehaviour
             Destroy(child.gameObject);
         }
 
-        for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
-        {
+        ////ITEM 1
+        //if (Collect_Manager.instance.item1 >= 0)
+        //{
+        //    Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item1);
+        //    for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
+        //    {
+        //        if (tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
+        //        {
+        //            loadoutItem1 = Collect_Manager.instance.itemsToPick[i];
+        //            Image tempImg = itemLoadoutHolders[0].transform.GetChild(0).GetComponent<Image>();
+        //            tempImg.sprite = loadoutItem1.itemImage;
+        //            break;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Button removeButton = itemLoadoutHolders[0].transform.GetChild(1).GetComponent<Button>();
+        //    removeButton.interactable = false;
+        //}
 
-            GameObject tempObj = Instantiate(itemHolderPrefab);
-            tempObj.transform.SetParent(invLayout.transform, false);
-            Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
-            tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
-            TextMeshProUGUI tempName = tempObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
-            tempName.text = Collect_Manager.instance.itemsToPick[i].theName;
-            TextMeshProUGUI tempDesc = tempObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
-            tempDesc.text = Collect_Manager.instance.itemsToPick[i].description;
-            TextMeshProUGUI tempOwnedText = tempObj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
-            tempOwnedText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(Collect_Manager.instance.itemsToPick[i].theItem).ToString();
-            int tempNum = i;
+
+        ////ITEM 2
+        //if (Collect_Manager.instance.item2 >= 0)
+        //{
+        //    Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item2);
+
+        //    for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
+        //    {
+        //        if (tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
+        //        {
+        //            loadoutItem2 = Collect_Manager.instance.itemsToPick[i];
+        //            Image tempImg = itemLoadoutHolders[1].transform.GetChild(0).GetComponent<Image>();
+        //            tempImg.sprite = loadoutItem2.itemImage;
+        //            break;
+        //        }
+        //    }
+        //}
+        //else
+        //{
+        //    Button removeButton = itemLoadoutHolders[1].transform.GetChild(1).GetComponent<Button>();
+        //    removeButton.interactable = false;
+        //}
+
+
+        ////ITEM 3
+        //if (Collect_Manager.instance.item3 >= 0)
+        //{
+        //    Collect_Manager.typeOfItem tempItem = getItemFromList(Collect_Manager.instance.item3);
+
+        //    for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
+        //    {
+        //        if (tempItem == Collect_Manager.instance.itemsToPick[i].theItem)
+        //        {
+        //            loadoutItem3 = Collect_Manager.instance.itemsToPick[i];
+        //            Image tempImg = itemLoadoutHolders[2].transform.GetChild(0).GetComponent<Image>();
+        //            tempImg.sprite = loadoutItem3.itemImage;
+        //            break;
+        //        }
+        //    }
+        //}
+
+        //else
+        //{
+        //    Button removeButton = itemLoadoutHolders[2].transform.GetChild(1).GetComponent<Button>();
+        //    removeButton.interactable = false;
+        //}
+
+        //for (int i = 0; i < Collect_Manager.instance.itemsToPick.Count; i++)
+        //{
+
+        //    GameObject tempObj = Instantiate(itemHolderPrefab);
+        //    tempObj.transform.SetParent(invLayout.transform, false);
+        //    Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
+        //    tempIMG.sprite = Collect_Manager.instance.itemsToPick[i].itemImage;
+        //    TextMeshProUGUI tempName = tempObj.transform.GetChild(1).GetComponent<TextMeshProUGUI>();
+        //    tempName.text = Collect_Manager.instance.itemsToPick[i].theName;
+        //    TextMeshProUGUI tempDesc = tempObj.transform.GetChild(2).GetComponent<TextMeshProUGUI>();
+        //    tempDesc.text = Collect_Manager.instance.itemsToPick[i].description;
+        //    TextMeshProUGUI tempOwnedText = tempObj.transform.GetChild(3).GetComponent<TextMeshProUGUI>();
+        //    tempOwnedText.text = "Owned: \n X " + Collect_Manager.instance.numPlayerOwns(Collect_Manager.instance.itemsToPick[i].theItem).ToString();
+        //    int tempNum = i;
           
 
-            Button tempButton = tempObj.GetComponent<Button>();
-            tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
-        }
+        //    Button tempButton = tempObj.GetComponent<Button>();
+        //    tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
+        //}
 
-        ScrollToTop(loadoutScrollRect);
+        //ScrollToTop(loadoutScrollRect);
     }
 
 
@@ -580,6 +659,11 @@ public class Customize_Loadout : MonoBehaviour
     public void ScrollToTop(ScrollRect scrollArea)
     {
       //  scrollArea.normalizedPosition = new Vector2(0, 1);
+    }
+
+    public void ScrollToLeft(ScrollRect theScrollArea)
+    {
+        theScrollArea.normalizedPosition = new Vector2(1, 0);
     }
 
 }

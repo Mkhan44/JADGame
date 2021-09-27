@@ -108,6 +108,7 @@ public class Wave_Spawner : MonoBehaviour
 
     [SerializeField] bool introTransitionFinished;
     [SerializeField] RectTransform fadePanel;
+    [SerializeField] GameObject loadingIcon;
 
     public Player thePlayer;
     Player.playerState currentPlayerState;
@@ -138,6 +139,8 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] AudioClip warpInSound;
     [SerializeField] AudioClip countdownSound;
     [SerializeField] AudioClip startSound;
+    [SerializeField] AudioClip retryWarpSound;
+    [SerializeField] AudioClip returnToLabSound;
 
     private void Awake()
     {
@@ -269,7 +272,7 @@ public class Wave_Spawner : MonoBehaviour
 
     IEnumerator introTransition()
     {
-
+        loadingIcon.SetActive(true);
         fadePanel.gameObject.SetActive(true);
         waveText.text = waveCount.ToString();
         yield return new WaitForSeconds(0.3f);
@@ -284,7 +287,8 @@ public class Wave_Spawner : MonoBehaviour
         {
             Level_Manager.Instance.setupNoticeTextAnimation("Get ready!", true);
         }
-        
+        loadingIcon.SetActive(false);
+
         Vector3 currentScale = fadePanel.localScale;
         Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
 
@@ -310,8 +314,9 @@ public class Wave_Spawner : MonoBehaviour
 
             //  yield return new WaitForSeconds(0.001f);
         }
+      
 
-        if(Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
+        if (Level_Manager.Instance.getThisLevelType() == Level_Manager.levelType.tutorial)
         {
             fadePanel.transform.parent.gameObject.SetActive(false);
             fadePanel.gameObject.SetActive(false);
@@ -331,7 +336,7 @@ public class Wave_Spawner : MonoBehaviour
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(startSound);
 
-
+       
         fadePanel.transform.parent.gameObject.SetActive(false);
         fadePanel.gameObject.SetActive(false);
         introTransitionFinished = true;
@@ -957,7 +962,7 @@ public class Wave_Spawner : MonoBehaviour
                 tempSpawn = spawnPoints[0].transform.position;
                 tempRot = spawnPoints[0].transform.rotation;
                 Vector3 tempSpawnYChange = tempSpawn;
-                tempSpawnYChange.y -= 0.1f;
+                tempSpawnYChange.y -= 0.2f;
                 tempSpawn = tempSpawnYChange;
             }
             else
@@ -1020,7 +1025,9 @@ public class Wave_Spawner : MonoBehaviour
             }
             else
             {
-                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, spawnPoints[0].transform.position, spawnPoints[0].transform.rotation);
+                Vector3 tempSpawnYChange = spawnPoints[2].transform.position;
+                tempSpawnYChange.y -= 0.2f;
+                Object_Pooler.Instance.SpawnFromPool(boltPrefab.name, tempSpawnYChange, spawnPoints[0].transform.rotation);
             }
         }
         //Top so spawn on bottom always.
@@ -1621,4 +1628,69 @@ public class Wave_Spawner : MonoBehaviour
                 }
         }
     }
+
+    //Gameover functions
+    public void CallTransitionOut(int typeOfTransition)
+    {
+        StartCoroutine(transitionOut(typeOfTransition));
+    }
+
+    IEnumerator transitionOut(int num)
+    {
+        loadingIcon.SetActive(true);
+        fadePanel.transform.parent.gameObject.SetActive(true);
+        fadePanel.gameObject.SetActive(true);
+        introTransitionFinished = false;
+        thePlayer.setHealth(99);
+        Time.timeScale = 1f;
+        Level_Manager.Instance.player.SetActive(false);
+        Audio_Manager.Instance.muteCurrentTrack();
+        Audio_Manager.Instance.togglePauseSFX();
+        if (num == 1)
+        {
+            Audio_Manager.Instance.playSFX(retryWarpSound);
+        }
+        else
+        {
+            Audio_Manager.Instance.playSFX(returnToLabSound);
+        }
+
+       // fadePanel.gameObject.SetActive(true);
+
+        Vector3 currentScale = fadePanel.localScale;
+        Vector3 decreaseScaleRate = new Vector3(1, 1, 1);
+
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 150);
+        Color32 endColor = new Color32(255, 255, 255, 255);
+        Image fadePanelImg = fadePanel.GetComponent<Image>();
+
+        rate = (1.0f / 2.5f) * 1.0f;
+
+
+        while (i < 1.0f)
+        {
+            currentScale += decreaseScaleRate;
+            // fadePanel.localScale = currentScale;
+            i += Time.deltaTime * rate;
+
+            fadePanel.localScale = Vector3.Lerp(fadePanel.localScale, new Vector3(1, 1, 1), (i));
+
+            fadePanelImg.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+
+            //  yield return new WaitForSeconds(0.001f);
+        }
+
+        if (num == 1)
+        {
+            Level_Manager.Instance.retryLevel();
+        }
+        else
+        {
+            Level_Manager.Instance.returnToMenu();
+        }
+    }
+    //Gameover functions
 }

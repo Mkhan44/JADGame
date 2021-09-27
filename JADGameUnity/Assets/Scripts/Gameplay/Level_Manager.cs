@@ -88,6 +88,7 @@ public class Level_Manager : MonoBehaviour
     public TextMeshProUGUI waveBonusText;
     public TextMeshProUGUI RPGameOverText;
     public TextMeshProUGUI coinsGameOverText;
+    public TextMeshProUGUI boltsGameOverText;
     [SerializeField] GameObject playerGameoverSpin;
     [SerializeField] Animator playerGameoverSpinAnimator;
     int totalScore = 0;
@@ -1577,13 +1578,17 @@ public class Level_Manager : MonoBehaviour
     public void returnToMenu()
     {
         //Gonna need to change this later and have the scene number 
+        
+        Time.timeScale = 1f;
+        Save_System.SaveCollectables(Collect_Manager.instance);
         //FOR DEBUG.
-        SceneManager.LoadScene(0);
+        SceneManager.LoadSceneAsync(0);
     }
 
     public void retryLevel()
     {
-        SceneManager.LoadScene(1);
+        Time.timeScale = 1f;
+        SceneManager.LoadSceneAsync(1);
     }
 
     /*Level related functions
@@ -2066,6 +2071,12 @@ public class Level_Manager : MonoBehaviour
 
     }
 
+    public int getScore()
+    {
+        Debug.Log("Score is: " + currentScore);
+        return currentScore;
+    }
+
 
 
     //Game over related score stuff.
@@ -2118,6 +2129,7 @@ public class Level_Manager : MonoBehaviour
         waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + waveBonus.ToString();
         totalScoreText.text = "Total score: " + totalScore;
         coinsGameOverText.text = "X " + finalCoins;
+        boltsGameOverText.text = "X " + boltsCollected;
 
         gameOverButtonsP.SetActive(true);
         Audio_Manager.Instance.stopSFX();
@@ -2128,6 +2140,7 @@ public class Level_Manager : MonoBehaviour
         RPGameOverText.text = "RP: " + currentScore.ToString();
         waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = 0";
         totalScoreText.text = "Total score: 0";
+        boltsGameOverText.text = "X " + boltsCollected;
         coinsGameOverText.text = "X " + incomingCoins;
 
         int currentWaveBonus = 0;
@@ -2199,6 +2212,7 @@ public class Level_Manager : MonoBehaviour
             }
             totalScoreText.text = "Total score: " + tempCurrentScore.ToString();
         }
+        currentScore = tempCurrentScore;
 
         stopScoreTallySound();
 

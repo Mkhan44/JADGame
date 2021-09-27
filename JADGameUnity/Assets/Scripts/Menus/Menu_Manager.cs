@@ -18,6 +18,8 @@ public class Menu_Manager : MonoBehaviour
     [SerializeField] GameObject fadePanel;
     [SerializeField] GameObject loadingIcon;
     [SerializeField] GameObject noInputPanel;
+    [SerializeField] GameObject playPopupMenu;
+    [SerializeField] GameObject customizePlayPopupMenu;
 
     [Header("Mute related stuff.")]
     [SerializeField] Sprite unmutedSprite;
@@ -34,10 +36,19 @@ public class Menu_Manager : MonoBehaviour
     public TextMeshProUGUI coinTotalText;
     public TextMeshProUGUI boltTotalText;
 
+    [Header("Credits related")]
+    public RectTransform mainCreditsLayout;
+    public RectTransform addCreditsLayout;
+
     [Header("SFX")]
     [SerializeField] AudioClip startupSound;
     [SerializeField] AudioClip buttonPressSound;
+    [SerializeField] AudioClip closeButtonSound;
 
+    [Header("Splash screen related")]
+    [SerializeField] GameObject splashScreenParent;
+    [SerializeField] Image splashImg;
+    
 
     Scene gameplayScene;
 
@@ -53,6 +64,43 @@ public class Menu_Manager : MonoBehaviour
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
         shopNoticeText.text = "";
+        if(splashScreenParent.activeInHierarchy)
+        {
+            if (Collect_Manager.instance.getBootupStatus())
+            {
+                splashScreenParent.SetActive(false);
+            }
+            else
+            {
+                StartCoroutine(fadeSplash());
+                //Coroutine.
+            }
+        }
+      
+    }
+
+    IEnumerator fadeSplash()
+    {
+       // Color32 splashScreenGraphic = splashScreenParent.transform.GetChild(0).GetComponent<Image>().color;
+
+        yield return new WaitForSeconds(2.5f);
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 255);
+        Color32 endColor = new Color32(255, 255, 255, 0);
+
+        rate = (1.0f / 4.5f) * 5.0f;
+        while (i < 1.0f)
+        {
+            i += Time.deltaTime * rate;
+            //   Debug.LogWarning(splashScreenGraphic);
+            splashImg.color = Color32.Lerp(startColor, endColor, (i));
+            //splashScreenParent.transform.GetChild(0).GetComponent<Image>().color = splashScreenGraphic;
+            yield return null;
+        }
+
+        splashScreenParent.SetActive(false);
+        Collect_Manager.instance.setBootupStatus(true);
     }
 
     public void setSkin()
@@ -198,4 +246,61 @@ public class Menu_Manager : MonoBehaviour
     //Shop text
 
 
+    //Credits scaling
+    public void scaleCredits()
+    {
+
+
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            mainCreditsLayout.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            addCreditsLayout.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+        }
+    }
+
+    //Credits scaling
+
+    public void ScrollToTop(ScrollRect scrollArea)
+    {
+       scrollArea.normalizedPosition = new Vector2(0, 1);
+    }
+
+
+    //Sound playing.
+
+    public void playCloseButtonSFX()
+    {
+        Audio_Manager.Instance.stopSFX(closeButtonSound.name);
+        Audio_Manager.Instance.playSFX(closeButtonSound);
+    }
+
+    //Sound Playing
+
+    //Play game popup
+    public void checkIfItemsEquipped()
+    {
+        if(Collect_Manager.instance.item1 == -1 && Collect_Manager.instance.item2 == -1 && Collect_Manager.instance.item3 == -1)
+        {
+            playPopupMenu.SetActive(true);
+        }
+        else
+        {
+            tutorialToggle(false);
+            PlayGame();
+        }
+    }
+
+    public void checkIfItemsEquippedCustomizeScreen()
+    {
+        if (Collect_Manager.instance.item1 == -1 && Collect_Manager.instance.item2 == -1 && Collect_Manager.instance.item3 == -1)
+        {
+            customizePlayPopupMenu.SetActive(true);
+        }
+        else
+        {
+            tutorialToggle(false);
+            PlayGame();
+        }
+    }
+    //Play game popup
 }

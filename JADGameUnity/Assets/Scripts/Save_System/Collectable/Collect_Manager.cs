@@ -47,7 +47,9 @@ public class Collect_Manager : MonoBehaviour
         Kitsune,
         SheriffShepard,
         BUKU1000M,
-        Dummy,
+        OldManJunkins,
+        Masquerade,
+        MysterySubject,
     }
 
     [Header("Loadout")]
@@ -87,6 +89,9 @@ public class Collect_Manager : MonoBehaviour
     [Header("DEBUG")]
     [SerializeField] Level_Manager.timePeriod debugPeriod = Level_Manager.timePeriod.None;
 
+    [Header("Non-Saving variables")]
+    [SerializeField] bool firstTimeBootingUp;
+
     [Header("Singleton")]
     public static Collect_Manager instance;
 
@@ -96,6 +101,7 @@ public class Collect_Manager : MonoBehaviour
         if(instance == null)
         {
             instance = this;
+            firstTimeBootingUp = false;
             LoadCollectableData();
             Debug.Log("Save file will be located in: " + Application.persistentDataPath);
         }
@@ -557,4 +563,17 @@ public class Collect_Manager : MonoBehaviour
         return debugPeriod;
     }
     //DEBUG FUNCTIONS
+
+
+    //NON SAVING VARIABLE FUNCTIONS
+    public bool getBootupStatus()
+    {
+        return firstTimeBootingUp;
+    }
+
+    public void setBootupStatus(bool set)
+    {
+        firstTimeBootingUp = set;
+    }
+    //NON SAVING VARIABLE FUNCTIONS
 }
