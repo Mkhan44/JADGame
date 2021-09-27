@@ -2388,7 +2388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.014612261, y: 0.32569656}
   m_AnchorMax: {x: 0.49300003, y: 0.46256554}
-  m_AnchoredPosition: {x: 0.3998413, y: -44.1286}
+  m_AnchoredPosition: {x: 0.39941406, y: -44.1286}
   m_SizeDelta: {x: 0.099998474, y: -12.759796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409316503
@@ -17213,7 +17213,7 @@ PrefabInstance:
       objectReference: {fileID: 418942052}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: TimePeriod
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8248098668222182072, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: deathSound
@@ -17488,6 +17488,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2126716062}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: pauseButton
+      value: 
+      objectReference: {fileID: 638635143}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: theWaveDiff
       value: 0
       objectReference: {fileID: 0}
@@ -17515,6 +17519,14 @@ PrefabInstance:
       propertyPath: itemRouletteSound
       value: 
       objectReference: {fileID: 8300000, guid: a35d515b7d9487c44b72b33db2f52e60, type: 3}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: switchingErasSound
+      value: 
+      objectReference: {fileID: 8300000, guid: dc8b32ce1f451ca4783a8efcad44caa4, type: 3}
+    - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
+      propertyPath: bgTransitionGraphic
+      value: 
+      objectReference: {fileID: 1859665845}
     - target: {fileID: 8248098668222182074, guid: 67ddab8a42e8e5843a18b2c723723be6, type: 3}
       propertyPath: backgrounds.Array.size
       value: 3

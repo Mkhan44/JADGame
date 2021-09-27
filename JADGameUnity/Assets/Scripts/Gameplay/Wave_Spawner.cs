@@ -109,6 +109,8 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] bool introTransitionFinished;
     [SerializeField] RectTransform fadePanel;
     [SerializeField] GameObject loadingIcon;
+    [SerializeField] GameObject bgTransitionGraphic;
+    [SerializeField] Button pauseButton;
 
     public Player thePlayer;
     Player.playerState currentPlayerState;
@@ -141,6 +143,7 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] AudioClip startSound;
     [SerializeField] AudioClip retryWarpSound;
     [SerializeField] AudioClip returnToLabSound;
+    [SerializeField] AudioClip switchingErasSound;
 
     private void Awake()
     {
@@ -889,7 +892,7 @@ public class Wave_Spawner : MonoBehaviour
         //TimerPortal wave spawn.
         if (!specialWaveOn && waveType != typeOfWave.bonus)
         {
-          //  wavesSinceTimeSwap++;
+            //wavesSinceTimeSwap++;
             if (theWaveDiff == waveDiff.hardPause)
             {
                 wavesSinceTimeSwap++;
@@ -897,13 +900,12 @@ public class Wave_Spawner : MonoBehaviour
             }
 
 
-            if (wavesSinceTimeSwap > 2 && theWaveDiff == waveDiff.hardPause)
+            if (wavesSinceTimeSwap > 0 && theWaveDiff == waveDiff.hardPause)
             {
-                
                 int doWeTimeSwap;
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
-               // doWeTimeSwap = 8;
+                //doWeTimeSwap = 8;
                 if (doWeTimeSwap >= 2)
                 {
                     Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
@@ -1354,11 +1356,71 @@ public class Wave_Spawner : MonoBehaviour
         theWaveDiff = waveDiff.easy;
         hasSwapped = true;
         Audio_Manager.Instance.setMusicTracks(Level_Manager.Instance.getTimePeriod());
-        //Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-        setBGs(theWaveDiff);
 
+
+        //Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+        //setBGs(theWaveDiff);
+        StartCoroutine(AnimateToNextBG());
 
         waveComplete = true;
+    }
+
+    IEnumerator AnimateToNextBG()
+    {
+        pauseButton.interactable = false;
+
+        introTransitionFinished = false;
+
+        SpriteRenderer tempRef = bgTransitionGraphic.GetComponent<SpriteRenderer>();
+        bgTransitionGraphic.transform.localScale = new Vector3(0, 0, 0);
+
+        Vector3 currentScale = bgTransitionGraphic.transform.localScale;
+        Vector3 increaseScaleRate = new Vector3(1, 1, 1);
+        float i = 0.0f;
+        float rate = 0.0f;
+        Color32 startColor = new Color32(255, 255, 255, 0);
+        Color32 endColor = new Color32(255, 255, 255, 220);
+
+        Audio_Manager.Instance.playSFX(switchingErasSound);
+        rate = (1.0f / 2.5f) * 2.0f;
+
+        //Animate the scale out to cover the transition.
+        while (i < 1.0f)
+        {
+            currentScale += increaseScaleRate;
+            i += Time.deltaTime * rate;
+
+            bgTransitionGraphic.transform.localScale = Vector3.Lerp(bgTransitionGraphic.transform.localScale, new Vector3(7, 7, 7), (i));
+
+            tempRef.color = Color32.Lerp(startColor, endColor, (i));
+            yield return null;
+
+            //  yield return new WaitForSeconds(0.001f);
+        }
+
+        //220 = alpha at beginning.
+
+        setBGs(theWaveDiff);
+      
+        //Reverse the animation.
+        i = 0;
+
+        while (i < 1.0f)
+        {
+            currentScale += increaseScaleRate;
+            i += Time.deltaTime * rate;
+
+            tempRef.color = Color32.Lerp(endColor, startColor, (i));
+            yield return null;
+
+            //  yield return new WaitForSeconds(0.001f);
+        }
+        bgTransitionGraphic.transform.localScale = new Vector3(0, 0, 0);
+
+        yield return null;
+
+        introTransitionFinished = true;
+        pauseButton.interactable = true;
     }
 
 
