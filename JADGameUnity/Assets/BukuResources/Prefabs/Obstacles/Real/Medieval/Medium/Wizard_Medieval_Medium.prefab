@@ -104,7 +104,7 @@ MonoBehaviour:
   spawnPoint: 1
   extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
-  objectElement: 2
+  objectElement: 0
   thisObstacleDiff: 1
   thisType: 0
   scoreValue: 200

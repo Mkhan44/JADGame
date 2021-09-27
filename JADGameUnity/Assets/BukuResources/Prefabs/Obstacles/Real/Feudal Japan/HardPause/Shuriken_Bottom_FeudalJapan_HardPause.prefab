@@ -99,8 +99,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0
-  increaseRate: 6
-  maxSpeed: 6.6
+  increaseRate: 5.5
+  maxSpeed: 7
   spawnPoint: 1
   extMaterial: {fileID: 0}
   extraCollider: {fileID: 0}
