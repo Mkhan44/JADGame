@@ -56,6 +56,7 @@ public class Wave_Spawner : MonoBehaviour
     [SerializeField] int waveCount;
     [SerializeField] int wavesSinceBonus;
     [SerializeField] int minWavesTillBonus;
+    [SerializeField] int minWavesTillTimeswap;
     [SerializeField] int wavesSinceTimeSwap;
     [SerializeField] int wavesSinceMeterIncrease;
     [SerializeField] bool hasSwapped;
@@ -208,6 +209,7 @@ public class Wave_Spawner : MonoBehaviour
         waveCount = 1;
         wavesSinceBonus = 0;
         minWavesTillBonus = 2;
+        minWavesTillTimeswap = 2;
         wavesSinceTimeSwap = 0;
         wavesSinceCollectedBolt = 0;
         attemptedToSpawnBoltThisWave = false;
@@ -365,6 +367,8 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.setupNoticeTextAnimation("1", true);
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(startSound);
+        Level_Manager.Instance.setupNoticeTextAnimation("Start!", true);
+        Time.timeScale = Level_Manager.Instance.GetTimeScale();
 
         fadePanel.transform.parent.gameObject.SetActive(false);
         fadePanel.gameObject.SetActive(false);
@@ -766,6 +770,12 @@ public class Wave_Spawner : MonoBehaviour
             enemiesLeft = enemyCount;
             waveCount += 1;
            
+            if(Level_Manager.Instance.GetTimeScale() < 1.5f && waveCount >= 20)
+            {
+                Level_Manager.Instance.setupNoticeTextAnimation("Time's speeding up!", true);
+                Level_Manager.Instance.SetTimescale(0.05f);
+              //  Debug.LogWarning("The timescale is now: " + Level_Manager.Instance.GetTimeScale());
+            }
             Level_Manager.Instance.setWavesSurvived((waveCount - 1));
             wavesSinceDifficultyChange += 1;
             wavesSinceMeterIncrease += 1;
@@ -862,7 +872,7 @@ public class Wave_Spawner : MonoBehaviour
         if(!specialWaveOn && waveType != typeOfWave.timeSwap)
         {   
             wavesSinceBonus++;
-            Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
+           // Debug.Log("Waves since bonus is: " + wavesSinceBonus.ToString());
             if (wavesSinceBonus > minWavesTillBonus)
             {
                 
@@ -872,7 +882,7 @@ public class Wave_Spawner : MonoBehaviour
                 //doWeBonus = 8;
                 if(doWeBonus >= 2)
                 {
-                    Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
+                  //  Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
                     //Max we can wait should be 9 waves.
                     if(minWavesTillBonus < 9)
                     {
@@ -896,7 +906,7 @@ public class Wave_Spawner : MonoBehaviour
             if (theWaveDiff == waveDiff.hardPause)
             {
                 wavesSinceTimeSwap++;
-                Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
+             //   Debug.Log("Waves since TimeSwap is: " + wavesSinceTimeSwap.ToString());
             }
 
 
@@ -906,9 +916,14 @@ public class Wave_Spawner : MonoBehaviour
                 doWeTimeSwap = Random.Range(1, 7);
                 //DEBUGGING.
                 //doWeTimeSwap = 8;
-                if (doWeTimeSwap >= 2)
+                if (doWeTimeSwap >= minWavesTillTimeswap)
                 {
-                    Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
+                   // Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
+                    if (minWavesTillTimeswap < 5)
+                    {
+                        minWavesTillTimeswap += 1;
+                    }
+
                     wavesSinceTimeSwap = 0;
                     waveType = typeOfWave.timeSwap;
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
@@ -1045,7 +1060,7 @@ public class Wave_Spawner : MonoBehaviour
     //For bonus wave.
     public IEnumerator chestSpawn()
     {
-
+        Time.timeScale = 1f;
         AnimationClip chestOpenClip;
         float aniTime = 0f;
 
@@ -1285,6 +1300,7 @@ public class Wave_Spawner : MonoBehaviour
 
 
         Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
+        Time.timeScale = Level_Manager.Instance.GetTimeScale();
         waveComplete = true;
 
 
@@ -1292,6 +1308,8 @@ public class Wave_Spawner : MonoBehaviour
     //Spawn in 2 time era portals at random. Same concept as chest spawn.
     public IEnumerator SpawnTimePortal(int portalIndex1, int portalIndex2, List<GameObject> theTempPortals)
     {
+
+        Time.timeScale = 1f;
         GameObject portal1 = Instantiate(theTempPortals[portalIndex1], spawnPoints[1].transform);
         GameObject portal2 = Instantiate(theTempPortals[portalIndex2], spawnPoints[2].transform);
 
@@ -1421,6 +1439,7 @@ public class Wave_Spawner : MonoBehaviour
 
         introTransitionFinished = true;
         pauseButton.interactable = true;
+        Time.timeScale = Level_Manager.Instance.GetTimeScale();
     }
 
 

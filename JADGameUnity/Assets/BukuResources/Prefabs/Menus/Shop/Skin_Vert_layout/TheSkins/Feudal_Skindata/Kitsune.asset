@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemImage: {fileID: 21300000, guid: 6a609f466e7259a4e8aef915e69280c7, type: 3}
   theName: Kitsune
-  description: Swift as a Fox, cunning akin to a ninja.
+  description: She'll do whatever it takes to find out about her past.
   coinPrice: 2500
   theItem: 5
   boltPrice: 250

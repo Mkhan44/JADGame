@@ -60,6 +60,7 @@ public class Level_Manager : MonoBehaviour
     //Time
     [Header("Time related variables")]
     float elapsedTime;
+    float currentTimescale;
 
     [Header("Meters")]
 
@@ -240,7 +241,10 @@ public class Level_Manager : MonoBehaviour
         currentScore = 0;
         wavesSurvived = 0;
 
-        if(Tutorial_Instance_Debug.instance != null)
+        currentTimescale = 1.0f;
+        Time.timeScale = currentTimescale;
+
+        if (Tutorial_Instance_Debug.instance != null)
         {
             if (Tutorial_Instance_Debug.instance.getTutorialVal())
             {
@@ -433,7 +437,15 @@ public class Level_Manager : MonoBehaviour
 
         if(isPaused == true)
         {
-            Time.timeScale = 1f;
+            if(Wave_Spawner.Instance.getWaveType() != Wave_Spawner.typeOfWave.normal)
+            {
+                Time.timeScale = 1f;
+            }
+            else
+            {
+                Time.timeScale = currentTimescale;
+            }
+            
             if(theLevelType != levelType.tutorial)
             {
                 pausePanel.SetActive(false);
@@ -1310,11 +1322,11 @@ public class Level_Manager : MonoBehaviour
             //NEED TO MAKE A FORMULA FOR FILLING!!!!
             if (element == Obstacle_Behaviour.ElementType.fire)
             {
-                heatMeter.fillMeter(20.0f);
+                heatMeter.fillMeter(35.0f);
             }
             else if (element == Obstacle_Behaviour.ElementType.ice)
             {
-                iceMeter.fillMeter(20.0f);
+                iceMeter.fillMeter(35.0f);
             }
         }
 
@@ -1676,6 +1688,25 @@ public class Level_Manager : MonoBehaviour
     }
 
         /*Level related functions
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      //***********************************************************************
+      */
+
+    public void SetTimescale(float increase = 0.1f)
+    {
+        currentTimescale += increase;
+        Time.timeScale = currentTimescale;
+    }
+
+    public float GetTimeScale()
+    {
+        return currentTimescale;
+    }
+
+            /*Level related functions
       //***********************************************************************
       //***********************************************************************
       //***********************************************************************
@@ -2338,6 +2369,16 @@ public class Level_Manager : MonoBehaviour
 //***********************************************************************
 //***********************************************************************
 */
+
+    //Tutorial related functions
+    public void RefreshHealthTutorial()
+    {
+        Debug.LogWarning("Refreshing player health!");
+        currentPlayerHealth = 3;
+        theHeartSystem.updateHealth(currentPlayerHealth);
+    }
+
+    //Tutorial related functions
 
 
 }

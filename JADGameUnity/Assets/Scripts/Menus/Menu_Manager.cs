@@ -48,7 +48,13 @@ public class Menu_Manager : MonoBehaviour
     [Header("Splash screen related")]
     [SerializeField] GameObject splashScreenParent;
     [SerializeField] Image splashImg;
-    
+
+    [Header("IOS Specific")]
+    [SerializeField] GameObject iosDisclaimerButton;
+    [SerializeField] GameObject disclaimerIOSPopup;
+
+    [Header("Extra popups")]
+    [SerializeField] GameObject firstTimeTutorialPopup;
 
     Scene gameplayScene;
 
@@ -64,6 +70,14 @@ public class Menu_Manager : MonoBehaviour
         Input.multiTouchEnabled = false;
         Application.targetFrameRate = 60;
         shopNoticeText.text = "";
+        if(Application.platform == RuntimePlatform.IPhonePlayer)
+        {
+            iosDisclaimerButton.SetActive(true);
+        }
+        else
+        {
+            iosDisclaimerButton.SetActive(false);
+        }
         if(splashScreenParent.activeInHierarchy)
         {
             if (Collect_Manager.instance.getBootupStatus())
@@ -101,6 +115,27 @@ public class Menu_Manager : MonoBehaviour
 
         splashScreenParent.SetActive(false);
         Collect_Manager.instance.setBootupStatus(true);
+
+        //Prompt player for tutorial.
+        if(!Collect_Manager.instance.firstTimePlaying)
+        {
+            firstTimeTutorialPopup.SetActive(true);
+            Collect_Manager.instance.firstTimePlaying = true;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+        }
+
+        //If on IOS, show disclaimer on first bootup.
+        if (Application.platform == RuntimePlatform.IPhonePlayer && !Collect_Manager.instance.disclaimerDisplayIOSDone)
+        {
+            if (!Collect_Manager.instance.disclaimerDisplayIOSDone)
+        {
+            disclaimerIOSPopup.SetActive(true);
+            Collect_Manager.instance.disclaimerDisplayIOSDone = true;
+            Save_System.SaveCollectables(Collect_Manager.instance);
+        }
+       
+        }
+
     }
 
     public void setSkin()
@@ -210,7 +245,7 @@ public class Menu_Manager : MonoBehaviour
           //  yield return new WaitForSeconds(0.001f);
         }
 
-        Debug.Log("Loading the gameplay scene...");
+        //Debug.Log("Loading the gameplay scene...");
         SceneManager.LoadSceneAsync("Gameplay");
 
     }

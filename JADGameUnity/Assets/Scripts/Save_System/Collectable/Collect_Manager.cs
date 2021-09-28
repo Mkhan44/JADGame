@@ -80,6 +80,10 @@ public class Collect_Manager : MonoBehaviour
     public List<Shop_Item> itemsToPick;
     public bool isMuted;
     public bool tutCompleted;
+    public bool firstTimePlaying;
+
+    [Header("External checks")]
+    public bool disclaimerDisplayIOSDone;
 
     [Header("SFX")]
     public AudioClip shopBuySound;
@@ -91,6 +95,8 @@ public class Collect_Manager : MonoBehaviour
 
     [Header("Non-Saving variables")]
     [SerializeField] bool firstTimeBootingUp;
+
+   
 
     [Header("Singleton")]
     public static Collect_Manager instance;
@@ -146,6 +152,8 @@ public class Collect_Manager : MonoBehaviour
             totalWavesSurvived = collect.totalWavesSurvived;
             isMuted = collect.isMuted;
             tutCompleted = collect.tutCompleted;
+            firstTimePlaying = collect.firstTimePlaying;
+            disclaimerDisplayIOSDone = collect.disclaimerDisplayIOSDone;
             for (int i = 0; i < collect.skinsUnlocked.Count; i++)
             {
                 skinsUnlocked.Add(collect.skinsUnlocked[i]);
@@ -355,7 +363,7 @@ public class Collect_Manager : MonoBehaviour
             {
                 Audio_Manager.Instance.playSFX(shopBuySound);
                 totalCoins -= cost;
-                Debug.Log("You just bought: " + typePassed);
+             //   Debug.Log("You just bought: " + typePassed);
                 Menu_Manager.instance.setupShopTextAnimation("You just bought: " + typePassed.ToString() + " x1!");
             }
             else
@@ -373,7 +381,7 @@ public class Collect_Manager : MonoBehaviour
         {
             Audio_Manager.Instance.playSFX(shopErrorSound);
             int tempDifference = cost - playerCoins;
-            Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
+           // Debug.Log("Hey, you don't have enough coins for this! Your total coins are: " + playerCoins.ToString());
             if(cost - totalCoins == 1)
             {
                 Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coin to purchase this item.");
@@ -403,7 +411,7 @@ public class Collect_Manager : MonoBehaviour
                     {
                         Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
-                        Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                     //   Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         Menu_Manager.instance.setupShopTextAnimation("You can now play as: " + theSkin.ToString() + "!");
                         totalCoins -= coinCost;
                         playerCurrencyText.text = ": " + totalCoins;
@@ -413,7 +421,7 @@ public class Collect_Manager : MonoBehaviour
                     {
                         Audio_Manager.Instance.playSFX(shopErrorSound);
                         int tempDifference = coinCost - totalCoins;
-                        Debug.LogWarning("You don't have enough coins to purchase this item.");
+                     //   Debug.LogWarning("You don't have enough coins to purchase this item.");
                         if(totalCoins - coinCost == 1)
                         {
                             Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more coin to purchase this test subject.");
@@ -431,7 +439,7 @@ public class Collect_Manager : MonoBehaviour
                     {
                         Audio_Manager.Instance.playSFX(shopBuySound);
                         skinsUnlocked.Add(i);
-                        Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
+                     //   Debug.Log("You just bought skin number: " + i + " Which corresponds to: " + theSkin);
                         Menu_Manager.instance.setupShopTextAnimation("You can now play as: " + theSkin.ToString() + "!");
                         totalBolts -= boltCost;
                         playerCurrencyText.text = ": " + totalBolts;
@@ -441,7 +449,7 @@ public class Collect_Manager : MonoBehaviour
                     {
                         Audio_Manager.Instance.playSFX(shopErrorSound);
                         int tempDifference = boltCost - totalBolts;
-                        Debug.LogWarning("You don't have enough bolts to purchase this item.");
+                      //  Debug.LogWarning("You don't have enough bolts to purchase this item.");
                         if (totalBolts - boltCost == 1)
                         {
                             Menu_Manager.instance.setupShopTextAnimation("You need " + tempDifference.ToString() + " more bolt to purchase this test subject.");
@@ -576,4 +584,12 @@ public class Collect_Manager : MonoBehaviour
         firstTimeBootingUp = set;
     }
     //NON SAVING VARIABLE FUNCTIONS
+
+    //External checks.
+    public void SetFirstTimePlaying()
+    {
+
+    }
+
+    //External checks
 }

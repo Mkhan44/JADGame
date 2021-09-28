@@ -387,6 +387,7 @@ public class Tutorial_Manager : MonoBehaviour
                 }
             case 12:
                 {
+                    Level_Manager.Instance.RefreshHealthTutorial();
                     Wave_Spawner.Instance.tutorialSpawn();
                     break;
                 }
@@ -398,7 +399,7 @@ public class Tutorial_Manager : MonoBehaviour
                 }
             case 37:
                 {
-                    if(Collect_Manager.instance.tutCompleted)
+                    if (Collect_Manager.instance.tutCompleted)
                     {
                         textPanelHolder.SetActive(true);
                         nextButton.gameObject.SetActive(true);

@@ -142,7 +142,7 @@ public class Rocket : Obstacle_Behaviour
         {
             if(justFinishedTurning)
             {
-                yield return new WaitForSeconds(0.12f);
+                yield return new WaitForSeconds(0.13f);
             }
             justFinishedTurning = false;
             inCoroutine = false;

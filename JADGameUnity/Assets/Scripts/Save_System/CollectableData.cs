@@ -44,6 +44,12 @@ public class CollectableData
     //Determines if player has completed tutorial alreaady or not.
     public bool tutCompleted;
 
+    //For IOS. Determines if the player has seen the disclaimer on their first bootup or not.
+    public bool disclaimerDisplayIOSDone;
+
+    //Basically to check if the player has played the tutorial or not.
+    public bool firstTimePlaying;
+
     //Constructor.
     public CollectableData(Collect_Manager collectmanager)
     {
@@ -74,9 +80,11 @@ public class CollectableData
         //Extra stuff.
         isMuted = Collect_Manager.instance.isMuted;
         tutCompleted = Collect_Manager.instance.tutCompleted;
+        disclaimerDisplayIOSDone = Collect_Manager.instance.disclaimerDisplayIOSDone;
+        firstTimePlaying = Collect_Manager.instance.firstTimePlaying;
 
         //Loop through and insert every numbered skin that the player has unlocked.
-      
+
         for (int i = 0; i < Collect_Manager.instance.skinsUnlocked.Count; i++)
         {
             skinsUnlocked.Add(Collect_Manager.instance.skinsUnlocked[i]);
