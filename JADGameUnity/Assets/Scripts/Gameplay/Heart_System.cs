@@ -37,11 +37,6 @@ public class Heart_System : MonoBehaviour
         maxHealth = healthVal;
         currentHealth = maxHealth;
 
-        if(maxHealth > 8)
-        {
-            theGrid.cellSize = new Vector2(100, 100);
-        }
-
         if(Canvas_Resolution.instance.getReferenceReso() == new Vector2(1920, 1080))
         {
             theGrid.cellSize = new Vector2(130, 130);
@@ -49,8 +44,21 @@ public class Heart_System : MonoBehaviour
 
         if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
+            //Iphone 12 and up.
+            if (Canvas_Resolution.instance.getReferenceReso().x >= 1080)
+            {
+                theGrid.cellSize = new Vector2(130, 130);
+            }
+            else
+            {
+                theGrid.cellSize = new Vector2(100, 100);
+            }
+           
+        }
 
-            theGrid.cellSize = new Vector2(100, 100);  
+        if (maxHealth > 8)
+        {
+            theGrid.cellSize = new Vector2(100, 100);
         }
 
         for (int i = 0; i < maxHealth; i++)

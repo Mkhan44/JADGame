@@ -209,7 +209,7 @@ public class Wave_Spawner : MonoBehaviour
         waveCount = 1;
         wavesSinceBonus = 0;
         minWavesTillBonus = 2;
-        minWavesTillTimeswap = 2;
+        minWavesTillTimeswap = 1;
         wavesSinceTimeSwap = 0;
         wavesSinceCollectedBolt = 0;
         attemptedToSpawnBoltThisWave = false;
@@ -367,7 +367,7 @@ public class Wave_Spawner : MonoBehaviour
         Level_Manager.Instance.setupNoticeTextAnimation("1", true);
         yield return new WaitForSeconds(1.0f);
         Audio_Manager.Instance.playSFX(startSound);
-        Level_Manager.Instance.setupNoticeTextAnimation("Start!", true);
+        Level_Manager.Instance.setupNoticeTextAnimation("Go!", true);
         Time.timeScale = Level_Manager.Instance.GetTimeScale();
 
         fadePanel.transform.parent.gameObject.SetActive(false);
@@ -413,7 +413,7 @@ public class Wave_Spawner : MonoBehaviour
                 float currentHeatMeterFillRate = Level_Manager.Instance.thePlayer.getHeatMeterFill();
                 float currentIceMeterFillRate = Level_Manager.Instance.thePlayer.getIceMeterFill();
 
-                if (currentHeatMeterFillRate < 1.10f && currentIceMeterFillRate < 1.10f)
+                if (currentHeatMeterFillRate < 0.8f && currentIceMeterFillRate < 0.8f)
                 {
                     bool changedMeterRates = false;
 
@@ -501,7 +501,7 @@ public class Wave_Spawner : MonoBehaviour
                     theWaveDiff = waveDiff.medium;
                     setBGs(theWaveDiff);
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                  //  Debug.Log("The difficulty of the wave is: " + theWaveDiff);
                 }
                 if (wavesSinceDifficultyChange == 2)
                 //if (wavesSinceDifficultyChange == 5)
@@ -509,7 +509,7 @@ public class Wave_Spawner : MonoBehaviour
                     theWaveDiff = waveDiff.hardPause;
                     setBGs(theWaveDiff);
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                  //  Debug.Log("The difficulty of the wave is: " + theWaveDiff);
                 }
             }
             else
@@ -519,15 +519,15 @@ public class Wave_Spawner : MonoBehaviour
                     theWaveDiff = waveDiff.medium;
                     setBGs(theWaveDiff);
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                  //  Debug.Log("The difficulty of the wave is: " + theWaveDiff);
                 }
-                if (wavesSinceDifficultyChange == 5)
+                if (wavesSinceDifficultyChange == 6)
                 //if (wavesSinceDifficultyChange == 5)
                 {
                     theWaveDiff = waveDiff.hardPause;
                     setBGs(theWaveDiff);
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, false);
-                    Debug.Log("The difficulty of the wave is: " + theWaveDiff);
+                  //  Debug.Log("The difficulty of the wave is: " + theWaveDiff);
                 }
             }
 
@@ -770,7 +770,7 @@ public class Wave_Spawner : MonoBehaviour
             enemiesLeft = enemyCount;
             waveCount += 1;
            
-            if(Level_Manager.Instance.GetTimeScale() < 1.5f && waveCount >= 20)
+            if(Level_Manager.Instance.GetTimeScale() < 1.5f && waveCount >= 12)
             {
                 Level_Manager.Instance.setupNoticeTextAnimation("Time's speeding up!", true);
                 Level_Manager.Instance.SetTimescale(0.05f);
@@ -876,12 +876,12 @@ public class Wave_Spawner : MonoBehaviour
             if (wavesSinceBonus > minWavesTillBonus)
             {
                 
-                int doWeBonus;
-                doWeBonus = Random.Range(1, 7);
-               //DEBUGGING.
-                //doWeBonus = 8;
-                if(doWeBonus >= 2)
-                {
+               // int doWeBonus;
+               // doWeBonus = Random.Range(1, 7);
+               ////DEBUGGING.
+               // //doWeBonus = 8;
+               // if(doWeBonus >= 2)
+               // {
                   //  Debug.Log("Next wave is a bonus wave! RNG was: " + doWeBonus);
                     //Max we can wait should be 9 waves.
                     if(minWavesTillBonus < 9)
@@ -892,7 +892,7 @@ public class Wave_Spawner : MonoBehaviour
                     wavesSinceBonus = 0;
                     waveType = typeOfWave.bonus;
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
-                }
+               // }
 
             }
         }
@@ -910,14 +910,14 @@ public class Wave_Spawner : MonoBehaviour
             }
 
 
-            if (wavesSinceTimeSwap > 0 && theWaveDiff == waveDiff.hardPause)
+            if (wavesSinceTimeSwap > minWavesTillTimeswap && theWaveDiff == waveDiff.hardPause)
             {
-                int doWeTimeSwap;
-                doWeTimeSwap = Random.Range(1, 7);
-                //DEBUGGING.
-                //doWeTimeSwap = 8;
-                if (doWeTimeSwap >= minWavesTillTimeswap)
-                {
+                //int doWeTimeSwap;
+                //doWeTimeSwap = Random.Range(1, 7);
+                ////DEBUGGING.
+                ////doWeTimeSwap = 8;
+                //if (doWeTimeSwap >= 2)
+                //{
                    // Debug.Log("Next wave is a timeswap wave! RNG was: " + doWeTimeSwap);
                     if (minWavesTillTimeswap < 5)
                     {
@@ -927,7 +927,7 @@ public class Wave_Spawner : MonoBehaviour
                     wavesSinceTimeSwap = 0;
                     waveType = typeOfWave.timeSwap;
                     Audio_Manager.Instance.changeMusicDifficulty(theWaveDiff, true);
-                }
+                //}
 
             }
         }
@@ -1011,7 +1011,7 @@ public class Wave_Spawner : MonoBehaviour
 
     public IEnumerator boltSpawn(int rndSpawn)
     {
-        Debug.Log("Spawning in a bolt!");
+       // Debug.Log("Spawning in a bolt!");
 
         yield return new WaitForSeconds(0.5f);
 
@@ -1151,7 +1151,7 @@ public class Wave_Spawner : MonoBehaviour
                 //Cast the enum to an integer to compare it.
                 if (randPrizeNum == (int)theItem)
                 {
-                    Debug.Log("Current item number is: " + theItem + " Which corresponds to: " + randPrizeNum);
+                  //  Debug.Log("Current item number is: " + theItem + " Which corresponds to: " + randPrizeNum);
                     itemToGive = theItem;
                     break;
                 }

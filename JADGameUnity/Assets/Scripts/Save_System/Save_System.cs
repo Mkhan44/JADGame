@@ -16,7 +16,7 @@ public static class Save_System
     public static void SaveCollectables(Collect_Manager collectmanager)
     {
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Path.Combine(Application.persistentDataPath, "CollectableSave.Rass");
+        string path = Path.Combine(Application.persistentDataPath, "Bukta.Rass");
         FileStream stream = new FileStream(path, FileMode.Create);
 
         CollectableData collectableData = new CollectableData(collectmanager);
@@ -25,8 +25,8 @@ public static class Save_System
         stream.Close();
 
         //test
-        Cloud_Saving.instance.cloudTotalCoinsTest = collectmanager.totalCoins;
-        Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudTotalCoinsTest);
+      //  Cloud_Saving.instance.cloudTotalCoinsTest = collectmanager.totalCoins;
+       // Cloud_Saving.instance.SaveCloudData(Cloud_Saving.instance.cloudTotalCoinsTest);
 
         //test
         /*
@@ -53,7 +53,7 @@ public static class Save_System
 
     public static CollectableData LoadCollectables()
     {
-        string path = Path.Combine(Application.persistentDataPath, "CollectableSave.Rass");
+        string path = Path.Combine(Application.persistentDataPath, "Bukta.Rass");
 
 
         if (File.Exists(path))
@@ -85,7 +85,7 @@ public static class Save_System
     {
 
         BinaryFormatter formatter = new BinaryFormatter();
-        string path = Path.Combine(Application.persistentDataPath, "CollectableSave.Rass");
+        string path = Path.Combine(Application.persistentDataPath, "Bukta.Rass");
 
 
         File.Delete(path);

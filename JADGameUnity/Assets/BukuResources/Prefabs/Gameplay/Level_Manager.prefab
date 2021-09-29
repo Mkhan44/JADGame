@@ -77,6 +77,7 @@ MonoBehaviour:
   waveBonusText: {fileID: 0}
   RPGameOverText: {fileID: 0}
   coinsGameOverText: {fileID: 0}
+  boltsGameOverText: {fileID: 0}
   playerGameoverSpin: {fileID: 0}
   playerGameoverSpinAnimator: {fileID: 0}
   TimePeriod: 0
@@ -138,6 +139,8 @@ MonoBehaviour:
   eraText: {fileID: 0}
   waveCount: 0
   wavesSinceBonus: 0
+  minWavesTillBonus: 0
+  minWavesTillTimeswap: 0
   wavesSinceTimeSwap: 0
   wavesSinceMeterIncrease: 0
   hasSwapped: 0
@@ -172,6 +175,9 @@ MonoBehaviour:
   currentBG2: {fileID: 0}
   introTransitionFinished: 0
   fadePanel: {fileID: 0}
+  loadingIcon: {fileID: 0}
+  bgTransitionGraphic: {fileID: 0}
+  pauseButton: {fileID: 0}
   thePlayer: {fileID: 0}
   wavesSinceCollectedBolt: 0
   itemRouletteSound: {fileID: 0}
@@ -179,6 +185,9 @@ MonoBehaviour:
   warpInSound: {fileID: 0}
   countdownSound: {fileID: 0}
   startSound: {fileID: 0}
+  retryWarpSound: {fileID: 0}
+  returnToLabSound: {fileID: 0}
+  switchingErasSound: {fileID: 0}
 --- !u!114 &8248098668222182069
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -443,9 +452,9 @@ MonoBehaviour:
   - listName: Treasure
     wrappedList:
     - prefab: {fileID: 6894734349349987309, guid: ca65564f3f33d4a43b29a44e5a39314e, type: 3}
-      size: 10
+      size: 11
     - prefab: {fileID: 6894734349349987309, guid: 991c1fe1233af6742ad15596ab5c2790, type: 3}
-      size: 10
+      size: 11
   - listName: Tutorial
     wrappedList:
     - prefab: {fileID: 4158279202637467101, guid: 44064960154c54b4b9530a91a50ac523, type: 3}

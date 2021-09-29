@@ -355,10 +355,10 @@ public class Customize_Loadout : MonoBehaviour
         {
           
             GameObject tempObj = Instantiate(itemHolderPrefab);
-            if(Application.platform == RuntimePlatform.IPhonePlayer)
-            {
-                tempObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
-            }
+            //if(Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
+            //    tempObj.transform.localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            //}
 
             tempObj.transform.SetParent(invLayout.transform, false);
             Image tempIMG = tempObj.transform.GetChild(0).GetComponent<Image>();
@@ -395,6 +395,9 @@ public class Customize_Loadout : MonoBehaviour
             tempButton.onClick.AddListener(() => equipItem(Collect_Manager.instance.itemsToPick[tempNum], tempOwnedText));
         }
 
+        scaleLoadout();
+       
+
         //ScrollToTop(loadoutScrollRect);
 
 
@@ -402,15 +405,35 @@ public class Customize_Loadout : MonoBehaviour
 
     public void scaleLoadout()
     {
+        
         int numLayoutItems = invLayout.transform.childCount;
 
         for(int i = 0; i < numLayoutItems; i++)
         {
             if (Application.platform == RuntimePlatform.IPhonePlayer)
             {
-                invLayout.transform.GetChild(i).localScale = new Vector3(0.8f, 0.8f, 0.8f);
+
+                if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
+                {
+                    invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                }
+                else
+                {
+                    invLayout.transform.GetChild(i).localScale = new Vector3(0.8f, 0.8f, 0.8f);
+                }
             }
+            else
+            {
+                if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
+                {
+                    invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
+                }
+            }
+               
         }
+
+       
+       // loadoutScrollableArea.transform.SetPositionAndRotation(new Vector3(0, loadoutScrollableArea.transform.position.y, loadoutScrollableArea.transform.position.z), loadoutScrollableArea.transform.rotation);
     }
 
    

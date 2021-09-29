@@ -67,8 +67,9 @@ public class Tutorial_Manager : MonoBehaviour
         if (currentStep == numSteps)
         {
             Debug.Log("Hey we cleared everything!");
-          //  tutPanel.SetActive(false);
-            SceneManager.LoadScene(0);
+            Wave_Spawner.Instance.CallTransitionOut(2);
+            //  tutPanel.SetActive(false);
+            // SceneManager.LoadScene(0);
             return;
         }
 
@@ -110,14 +111,15 @@ public class Tutorial_Manager : MonoBehaviour
         else
         {
             Debug.Log("Hey we cleared everything!");
+            Wave_Spawner.Instance.CallTransitionOut(2);
           //  tutPanel.SetActive(false);
-            SceneManager.LoadScene(0);
+            //SceneManager.LoadScene(0);
         }
     }
 
     public void conditionComplete()
     {
-        Debug.Log("Condition complete called!");
+       //Debug.Log("Condition complete called!");
         if(currentStep == 10 || currentStep == 12)
         {
             Level_Manager.Instance.pauseGame(false);

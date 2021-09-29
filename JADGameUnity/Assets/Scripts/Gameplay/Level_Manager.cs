@@ -40,7 +40,7 @@ public class Level_Manager : MonoBehaviour
     Rigidbody2D playerRigid2D;
     Vector2 playerInitialPos;
     bool onGround;
-    int currentPlayerHealth;
+    [SerializeField] int currentPlayerHealth;
     public TextMeshProUGUI healthText;
     [SerializeField] Heart_System theHeartSystem;
 
@@ -1440,18 +1440,23 @@ public class Level_Manager : MonoBehaviour
     {
         meterFilled = false;
         //In this if/elseif , make sure that when we add particle effects that you disable those. Also, get rid of the unfreeze/unheat buttons.
-        if (thePlayer.GetState() == Player.playerState.burning)
-        {
-            heatMeter.setMeterValExternally(0.0f);
-        }
-        else if (thePlayer.GetState() == Player.playerState.frozen)
-        {
-            iceMeter.setMeterValExternally(0.0f);
-        }
+        //if (thePlayer.GetState() == Player.playerState.burning)
+        //{
+        //    heatMeter.setMeterValExternally(0.0f);
+        //}
+        //else if (thePlayer.GetState() == Player.playerState.frozen)
+        //{
+        //    iceMeter.setMeterValExternally(0.0f);
+        //}
+        heatMeter.setMeterValExternally(0.0f);
+        iceMeter.setMeterValExternally(0.0f);
+        useDuration = 0f;
+        thePlayer.isPoweredUp = false;
         heatUpButton.gameObject.SetActive(false);
         coolDownButton.gameObject.SetActive(false);
         jumpButton.interactable = false;
         duckButton.interactable = false;
+        thePlayer.setPlayerDeath(true);
         thePlayer.setState(Player.playerState.dead);
         //  player.SetActive(false);
         healthText.text = "Health: 0";
@@ -1767,17 +1772,17 @@ public class Level_Manager : MonoBehaviour
     {
         if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint3)
         {
-            indicatorArrowTop.color = new Color32(255, 0, 0, 255);
+            indicatorArrowTop.color = new Color32(255, 255, 255, 255);
           //  StartCoroutine(fadeIndicatorArrow(indicatorArrowTop));
         }
         else if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint2)
         {
-            indicatorArrowBot.color = new Color32(255, 0, 0, 255);
+            indicatorArrowBot.color = new Color32(255, 255, 255, 255);
            // StartCoroutine(fadeIndicatorArrow(indicatorArrowBot));
         }
         else
         {
-            indicatorArrowMid.color = new Color32(255, 0, 0, 255);
+            indicatorArrowMid.color = new Color32(255, 255, 255, 255);
           // StartCoroutine(fadeIndicatorArrow(indicatorArrowMid));
         }
     }
@@ -1786,17 +1791,17 @@ public class Level_Manager : MonoBehaviour
     {
         if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint3)
         {
-            indicatorArrowTop.color = new Color32(255, 0, 0, 0);
+            indicatorArrowTop.color = new Color32(255, 255, 255, 0);
             //  StartCoroutine(fadeIndicatorArrow(indicatorArrowTop));
         }
         else if (theSpawn == Wave_Spawner.spawnPointNum.spawnPoint2)
         {
-            indicatorArrowBot.color = new Color32(255, 0, 0, 0);
+            indicatorArrowBot.color = new Color32(255, 255, 255, 0);
             // StartCoroutine(fadeIndicatorArrow(indicatorArrowBot));
         }
         else
         {
-            indicatorArrowMid.color = new Color32(255, 0, 0, 0);
+            indicatorArrowMid.color = new Color32(255, 255, 255, 0);
             // StartCoroutine(fadeIndicatorArrow(indicatorArrowMid));
         }
     }
@@ -2373,7 +2378,7 @@ public class Level_Manager : MonoBehaviour
     //Tutorial related functions
     public void RefreshHealthTutorial()
     {
-        Debug.LogWarning("Refreshing player health!");
+       // Debug.LogWarning("Refreshing player health!");
         currentPlayerHealth = 3;
         theHeartSystem.updateHealth(currentPlayerHealth);
     }

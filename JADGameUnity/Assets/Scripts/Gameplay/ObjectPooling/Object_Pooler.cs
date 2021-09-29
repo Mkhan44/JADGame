@@ -49,6 +49,12 @@ public class Object_Pooler : MonoBehaviour
             foreach (Pool pool in thePools[i].wrappedList)
             {
                 Queue<GameObject> objectPool = new Queue<GameObject>();
+                //Debug to set the size manually.
+                if(pool.size <= 10)
+                {
+                    pool.size = 4;
+                }
+               
 
                 //Fill out the entire pool by instantiating based on size.
                 for (int j = 0; j < pool.size; j++)
@@ -121,6 +127,7 @@ public class Object_Pooler : MonoBehaviour
                     {
                         if(thePools[i].listName == "PrehistoricPools")
                         {
+                            
                             //Essentially what we do here is: Add the items fo 'currentList' 
                             //Once we do that, we break out of this for loop that is checking for the names of the lists of pools.
                             //Finally, the new list is assigned and we can return that list.
