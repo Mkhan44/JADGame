@@ -14,11 +14,11 @@ public class Share_Button : MonoBehaviour
         //WILL NEED TO GET THE LINKS FOR IOS AND ANDROID STORES.
         if(Application.platform == RuntimePlatform.IPhonePlayer)
         {
-            shareMessage = "Sweet! I got " + score + " Research Points (RP) in Right Place Right Time! \n download on the App store: https://play.google.com/store/apps/details?id=com.Bukugames.Lifesadrag";
+            shareMessage = "Sweet! I got " + score + " Research Points (RP) in Right Place Right Time! \n download on the App store:";
         }
         else
         {
-            shareMessage = "Sweet! I got " + score + " Research Points (RP) in Right Place Right Time! \n download on Google Play: https://play.google.com/store/apps/details?id=com.Bukugames.Lifesadrag";
+            shareMessage = "Sweet! I got " + score + " Research Points (RP) in Right Place Right Time! \n download on Google Play:";
         }
         
         StartCoroutine(TakeScreenshotAndShare());

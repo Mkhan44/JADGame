@@ -90,7 +90,7 @@ public class UFO_Dropped_Enemy : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             //Wave_Spawner.Instance.updateEnemiesLeft(1);
-            Level_Manager.Instance.increaseEnemiesDodged();
+            // Level_Manager.Instance.increaseEnemiesDodged();
             Level_Manager.Instance.Damage();
             Object_Pooler.Instance.AddToPool(ufoParent.gameObject);
             Destroy(gameObject);

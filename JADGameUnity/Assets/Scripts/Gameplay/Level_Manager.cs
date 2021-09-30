@@ -1456,6 +1456,8 @@ public class Level_Manager : MonoBehaviour
         coolDownButton.gameObject.SetActive(false);
         jumpButton.interactable = false;
         duckButton.interactable = false;
+        playerAnimator.SetBool(IsHanging, false);
+        playerRigid2D.gravityScale = gravityScale;
         thePlayer.setPlayerDeath(true);
         thePlayer.setState(Player.playerState.dead);
         //  player.SetActive(false);
@@ -2130,7 +2132,7 @@ public class Level_Manager : MonoBehaviour
     
 
         //RPGameOverText.text = "RP: " + currentScore.ToString();
-        waveBonus = wavesSurvived * 50;
+        waveBonus = wavesSurvived * 1000;
         //waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 =" +  waveBonus.ToString();
         totalScore = currentScore + waveBonus;
         //totalScoreText.text = "Total score: " + totalScore.ToString();
@@ -2162,7 +2164,7 @@ public class Level_Manager : MonoBehaviour
 
         int oldCurrentScore = totalScore - waveBonus;
         RPGameOverText.text = "RP: " + oldCurrentScore.ToString();
-        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + waveBonus.ToString();
+        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 1000 = " + waveBonus.ToString();
         totalScoreText.text = "Total score: " + totalScore;
         coinsGameOverText.text = "X " + finalCoins;
         boltsGameOverText.text = "X " + boltsCollected;
@@ -2174,7 +2176,7 @@ public class Level_Manager : MonoBehaviour
     IEnumerator finalTally(int incomingScore, int finalWaveBonus, int incomingCoins, int finalCoins, int finalScore)
     {
         RPGameOverText.text = "RP: " + currentScore.ToString();
-        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = 0";
+        waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 1000 = 0";
         totalScoreText.text = "Total score: 0";
         boltsGameOverText.text = "X " + boltsCollected;
         coinsGameOverText.text = "X " + incomingCoins;
@@ -2222,12 +2224,24 @@ public class Level_Manager : MonoBehaviour
         while (currentWaveBonus < finalWaveBonus)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
-            currentWaveBonus += 5;
+            if (finalWaveBonus > 10000)
+            {
+                currentWaveBonus += 1000;
+            }
+            else if (finalWaveBonus > 100000)
+            {
+                currentWaveBonus += 10000;
+            }
+            else
+            {
+                currentWaveBonus += 100;
+            }
+          //  currentWaveBonus += 100;
             if(currentWaveBonus > finalWaveBonus)
             {
                 currentWaveBonus = finalWaveBonus;
             }
-            waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 50 = " + currentWaveBonus;
+            waveBonusText.text = "Wave Bonus: " + wavesSurvived + " X 1000 = " + currentWaveBonus;
         }
         stopScoreTallySound();
 
@@ -2241,7 +2255,19 @@ public class Level_Manager : MonoBehaviour
         while (tempCurrentScore < tempSum)
         {
             yield return new WaitForSeconds(0.01f * Time.deltaTime);
-            tempCurrentScore += 10;
+            if(tempSum > 10000)
+            {
+                tempCurrentScore += 1000;
+            }
+            else if( tempSum > 100000)
+            {
+                tempCurrentScore += 10000;
+            }
+            else
+            {
+                tempSum += 100;
+            }
+           
             if(tempCurrentScore > tempSum)
             {
                 tempCurrentScore = tempSum;

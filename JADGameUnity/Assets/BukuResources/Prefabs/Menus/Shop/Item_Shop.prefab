@@ -3205,6 +3205,7 @@ MonoBehaviour:
   scrollArea: {fileID: 4944282568586016136}
   coinsTotalText: {fileID: 1164590932}
   boltsTotalText: {fileID: 1012452385}
+  boughtAllText: {fileID: 0}
   purchaseWithCoinsButton: {fileID: 0}
   purchaseWithBoltsButton: {fileID: 0}
   skinPurchasePanel: {fileID: 0}
@@ -4888,7 +4889,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1746858327780679320, guid: 516bc46b7d7530f4d81de8a302dd9c9b, type: 3}
       propertyPath: m_text
-      value: 89.99 USD
+      value: 79.99 USD
       objectReference: {fileID: 0}
     - target: {fileID: 1746858327780679320, guid: 516bc46b7d7530f4d81de8a302dd9c9b, type: 3}
       propertyPath: m_fontSize

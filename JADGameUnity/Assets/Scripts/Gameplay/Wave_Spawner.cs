@@ -770,7 +770,7 @@ public class Wave_Spawner : MonoBehaviour
             enemiesLeft = enemyCount;
             waveCount += 1;
            
-            if(Level_Manager.Instance.GetTimeScale() < 1.5f && waveCount >= 12)
+            if(Level_Manager.Instance.GetTimeScale() < 1.7f && waveCount >= 12)
             {
                 Level_Manager.Instance.setupNoticeTextAnimation("Time's speeding up!", true);
                 Level_Manager.Instance.SetTimescale(0.05f);
