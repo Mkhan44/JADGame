@@ -2388,7 +2388,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.014612261, y: 0.32569656}
   m_AnchorMax: {x: 0.49300003, y: 0.46256554}
-  m_AnchoredPosition: {x: 0.39941406, y: -44.1286}
+  m_AnchoredPosition: {x: 0.39941406, y: -44.128593}
   m_SizeDelta: {x: 0.099998474, y: -12.759796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &409316503
@@ -2438,7 +2438,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 89.2
+  m_fontSize: 89.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2572,7 +2572,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 126.65
+  m_fontSize: 126.75
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -2840,7 +2840,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 132.35
+  m_fontSize: 132.25
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -9350,7 +9350,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 100.1
+  m_fontSize: 100.05
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10358,7 +10358,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 111.15
+  m_fontSize: 111.2
   m_fontSizeBase: 36
   m_fontWeight: 400
   m_enableAutoSizing: 1
@@ -10756,7 +10756,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 4
+  thisItemType: 5
   CDPanel: {fileID: 2083719597425571509}
   CDText: {fileID: 2916813517572362996}
   itemDuration: 1
@@ -12121,7 +12121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 4
+  thisItemType: 5
   CDPanel: {fileID: 2919429196656454537}
   CDText: {fileID: 7087815393927069746}
   itemDuration: 1
@@ -12180,7 +12180,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9c36e7e0e491bd4cab7d30a4156b36f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thisItemType: 4
+  thisItemType: 5
   CDPanel: {fileID: 5868954406858278532}
   CDText: {fileID: 7877150627097606807}
   itemDuration: 1
@@ -15646,11 +15646,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1683804147662464382, guid: eab8afe1ee278a44f9a92ef14e87a06b, type: 3}
       propertyPath: isTestAd
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6134892952541430434, guid: eab8afe1ee278a44f9a92ef14e87a06b, type: 3}
       propertyPath: isTestAd
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6228448186036723434, guid: eab8afe1ee278a44f9a92ef14e87a06b, type: 3}
       propertyPath: m_RootOrder
