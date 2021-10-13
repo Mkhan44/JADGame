@@ -98,9 +98,9 @@ public class DayChecker : MonoBehaviour
         newDate = System.DateTime.Now;
 
         //Checks if the current date is at least 1 higher than previous one we stored.
-        TimeSpan difference = newDate.Subtract(oldDate);
+        difference = newDate.Subtract(oldDate);
 
-       // Debug.Log("The difference is: " + difference.TotalDays);
+        Debug.Log("The difference is: " + difference.TotalDays);
        // Debug.Log("Percentage to wait is: " + percentageToWait + " Which is hrs: " + hoursToWait);
         if(firstTime)
         {
@@ -171,5 +171,10 @@ public class DayChecker : MonoBehaviour
         oldDate = Convert.ToDateTime(newStringDate);
         //Call to make sure that the messages reset.
         canWeClaim();
+    }
+
+    public TimeSpan getDifference()
+    {
+        return difference;
     }
 }
