@@ -17,7 +17,7 @@
             ],
             "m_Values": [
                 "True",
-                "7",
+                "-1",
                 "False",
                 "False",
                 "-1",
@@ -32,11 +32,30 @@
                 "UnityNotificationAndroidCustomActivityString"
             ],
             "m_Values": [
-                "False",
+                "True",
                 "False",
                 "com.unity3d.player.UnityPlayerActivity"
             ]
         },
-        "DrawableResources": []
+        "DrawableResources": [
+            {
+                "Id": "rprt_large_icon",
+                "Type": 1,
+                "Asset": {
+                    "fileID": 2800000,
+                    "guid": "d160e9df722e0e047bf88d765b9e11bd",
+                    "type": 3
+                }
+            },
+            {
+                "Id": "rprt_small_icon",
+                "Type": 0,
+                "Asset": {
+                    "fileID": 2800000,
+                    "guid": "923b39f68bf9792409bfe2d996e9c625",
+                    "type": 3
+                }
+            }
+        ]
     }
 }

@@ -1,8 +1,17 @@
+//Code written by Mohamed Riaz Khan of Bukugames.
+//All code is written by me (Above name) unless otherwise stated via comments below.
+
+//*Note* Documentation from the Unity documentation website was used to assist in writing this code.
+//YouTube tutorials from the official Unity YouTube channel also used to assist in writing this code.
 using System;
 using System.Collections;
 using System.Collections.Generic;
+#if UNITY_ANDROID
 using Unity.Notifications.Android;
+#endif
+#if UNITY_IOS
 using Unity.Notifications.iOS;
+#endif
 using UnityEngine;
 
 
@@ -37,8 +46,11 @@ public class Push_Notifications : MonoBehaviour
         }
         Debug.Log("Time till we can claim is: " + timeTillNotificationFires);
 
-        if(Application.platform == RuntimePlatform.Android)
+#if UNITY_ANDROID
+        if (Application.platform == RuntimePlatform.Android)
         {
+            //Android
+
             //Remove notifications that have already been displayed.
             AndroidNotificationCenter.CancelAllDisplayedNotifications();
 
@@ -55,7 +67,10 @@ public class Push_Notifications : MonoBehaviour
             var notification = new AndroidNotification();
             notification.Title = "Your daily reward is ready!";
             notification.Text = "Collect your free coins now!";
-            notification.FireTime = System.DateTime.Now.AddHours(timeTillNotificationFires);
+            notification.LargeIcon = "rprt_large_icon";
+            notification.SmallIcon = "rprt_small_icon";
+             notification.FireTime = System.DateTime.Now.AddHours(timeTillNotificationFires);
+            //notification.FireTime = System.DateTime.Now.AddSeconds(15);
 
             //Send a notification.
             var id = AndroidNotificationCenter.SendNotification(notification, "channel_id");
@@ -66,13 +81,94 @@ public class Push_Notifications : MonoBehaviour
                 AndroidNotificationCenter.CancelAllNotifications();
                 AndroidNotificationCenter.SendNotification(notification, "channel_id");
             }
+
+            return;
         }
-        else if(Application.platform == RuntimePlatform.IPhonePlayer)
+#endif
+
+#if UNITY_IOS
+
+        if (Application.platform == RuntimePlatform.IPhonePlayer)
         {
             //IOS.
 
+            //Removes notifications that have already been delivered.
+            iOSNotificationCenter.RemoveAllDeliveredNotifications();
+
+            //Request the authorization to send a notification.
+
+            //If not determined, request authorization with popup.
+            if (iOSNotificationCenter.GetNotificationSettings().AuthorizationStatus == AuthorizationStatus.NotDetermined)
+            {
+                StartCoroutine(RequestAuthorization());
+            }
+            //Don't send notifs since they denied access.
+            else if(iOSNotificationCenter.GetNotificationSettings().AuthorizationStatus == AuthorizationStatus.Denied)
+            {
+                if (iOSNotificationCenter.GetScheduledNotifications() != null)
+                {
+                    iOSNotificationCenter.RemoveAllScheduledNotifications();
+                }
+                return;
+            }
+
+            long hoursToWait = (long)Math.Ceiling(timeTillNotificationFires);
+            Debug.LogWarning("HOURS TO WAIT ARE: " + hoursToWait);
+            //Time between notifications.
+            var timeTrigger = new iOSNotificationTimeIntervalTrigger()
+            {
+                //Do some math to figure out hours & minutes & seconds and plug those in from the timeTillNotificationFires variable.
+
+                TimeInterval = new TimeSpan(0, 0, 15),
+                Repeats = false
+            };
+
+            //Setup the content of the notification.
+            iOSNotification iosNotif = new iOSNotification()
+            {
+                Identifier = "RPRT_Daily_Reward_Notification",
+                Title = "RPRT Daily Reward Notification",
+                Subtitle = "Collect your daily reward!",
+                Body = "Collect your free coins now!",
+                ShowInForeground = true,
+                ForegroundPresentationOption = (PresentationOption.Alert | PresentationOption.Sound),
+                CategoryIdentifier = "category_a",
+                ThreadIdentifier = "thread1",
+                Trigger = timeTrigger,
+            };
+
+            //Send the notification after X amount of time has passed, X being the timeTrigger.
+            iOSNotificationCenter.ScheduleNotification(iosNotif);
+
+            //Send the notification after X amount of time has passed, X being the timeTrigger.
+            if (iOSNotificationCenter.GetScheduledNotifications() != null)
+            {
+                iOSNotificationCenter.RemoveAllScheduledNotifications();
+                iOSNotificationCenter.ScheduleNotification(iosNotif);
+            }
+            return;
+           
         }
        
     }
 
+    IEnumerator RequestAuthorization()
+    {
+        var authorizationOption = AuthorizationOption.Alert | AuthorizationOption.Badge;
+        using (var req = new AuthorizationRequest(authorizationOption, true))
+        {
+            while (!req.IsFinished)
+            {
+                yield return null;
+            };
+
+            string res = "\n RequestAuthorization:";
+            res += "\n finished: " + req.IsFinished;
+            res += "\n granted :  " + req.Granted;
+            res += "\n error:  " + req.Error;
+            res += "\n deviceToken:  " + req.DeviceToken;
+            Debug.Log(res);
+        }
+#endif
+    }
 }
