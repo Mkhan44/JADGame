@@ -112,14 +112,14 @@ public class Push_Notifications : MonoBehaviour
                 return;
             }
 
-            long hoursToWait = (long)Math.Ceiling(timeTillNotificationFires);
+            int hoursToWait = (int)Math.Ceiling(timeTillNotificationFires);
             Debug.LogWarning("HOURS TO WAIT ARE: " + hoursToWait);
             //Time between notifications.
             var timeTrigger = new iOSNotificationTimeIntervalTrigger()
             {
                 //Do some math to figure out hours & minutes & seconds and plug those in from the timeTillNotificationFires variable.
 
-                TimeInterval = new TimeSpan(0, 0, 15),
+                TimeInterval = new TimeSpan(hoursToWait, 0, 0),
                 Repeats = false
             };
 
