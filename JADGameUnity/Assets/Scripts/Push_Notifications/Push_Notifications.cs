@@ -22,6 +22,11 @@ public class Push_Notifications : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        SendNotification();
+    }
+
+    public void SendNotification()
+    {
         //Seeing how long to wait until we give the player a notification to claim their rewards.
         TimeSpan theDiff = dailyRewardChecker.getDifference();
         if (theDiff.TotalDays > 0 && theDiff.TotalDays < 1)
@@ -32,7 +37,7 @@ public class Push_Notifications : MonoBehaviour
             //EX: Claimed 6 hours ago. The TotalDays will return 0.25. 0.25*24 = 6. 24-6 = 18. So 18 hours till we can claim.
             double hoursLeftTillClaim = theDiff.TotalDays * 24;
             hoursLeftTillClaim = 24 - hoursLeftTillClaim;
-            timeTillNotificationFires = Math.Round(hoursLeftTillClaim,2);
+            timeTillNotificationFires = Math.Round(hoursLeftTillClaim, 2);
         }
         else if (theDiff.TotalDays < 0)
         {
@@ -69,7 +74,7 @@ public class Push_Notifications : MonoBehaviour
             notification.Text = "Collect your free coins now!";
             notification.LargeIcon = "rprt_large_icon";
             notification.SmallIcon = "rprt_small_icon";
-             notification.FireTime = System.DateTime.Now.AddHours(timeTillNotificationFires);
+            notification.FireTime = System.DateTime.Now.AddHours(timeTillNotificationFires);
             //notification.FireTime = System.DateTime.Now.AddSeconds(15);
 
             //Send a notification.
