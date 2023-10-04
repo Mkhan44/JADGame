@@ -2,7 +2,7 @@
 using UnityEngine.Advertisements;
 using Hellmade.Sound;
 
-public class AdsManager : MonoBehaviour , IUnityAdsListener
+public class AdsManager : MonoBehaviour , IUnityAdsLoadListener, IUnityAdsShowListener, IUnityAdsInitializationListener
 {
     private string noAdsKey = "noAdsKey";
     public int adsPurchasedCheck;
@@ -44,8 +44,8 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
     }
     void Start()
     {
-       
-        Advertisement.AddListener(this);
+
+        // Advertisement.AddListener(this);
         initializeAds();
 
         globalVolumePref = PlayerPrefs.GetFloat(globalVolumeKey);
@@ -57,40 +57,43 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
     {
         if(isTargetPlayStore)
         {
-            Advertisement.Initialize(playStoreID, isTestAd);
+            Advertisement.Initialize(playStoreID, isTestAd, this);
             return;
         }
         else
         {
-            Advertisement.Initialize(appStoreID, isTestAd);
+            Advertisement.Initialize(appStoreID, isTestAd, this);
         }
     }
 
     public void playInterstitialAd()
     {
-        if(!Advertisement.IsReady(interstitialAd))
-        {
-           
-            return;
-        }
-        else
-        {
-            Advertisement.Show(interstitialAd);
-        }
+        Advertisement.Load(interstitialAd, this);
+
+        //if(!Advertisement.IsReady(interstitialAd))
+        //{
+
+        //    return;
+        //}
+        //else
+        //{
+        //    Advertisement.Show(interstitialAd);
+        //}
     }
 
     public void playRewardedVideoAd()
     {
-      //  numHintsLeft = PlayerPrefs.GetInt(numHintsKey);
-        if (!Advertisement.IsReady(rewardedVideoAd))
-        {
+        Advertisement.Load(rewardedVideoAd, this);
 
-            return;
-        }
-        else
-        {
-            Advertisement.Show(rewardedVideoAd);
-        }
+        //if (!Advertisement.IsReady(rewardedVideoAd))
+        //{
+
+        //    return;
+        //}
+        //else
+        //{
+        //    Advertisement.Show(rewardedVideoAd);
+        //}
     }
 
     public void OnUnityAdsDidError(string message)
@@ -100,8 +103,8 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
 
     public void OnUnityAdsDidFinish(string placementId, ShowResult showResult)
     {
-    //    throw new System.NotImplementedException();
-        switch(showResult)
+        //    throw new System.NotImplementedException();
+        switch (showResult)
         {
             case ShowResult.Failed:
                 {
@@ -145,18 +148,90 @@ public class AdsManager : MonoBehaviour , IUnityAdsListener
         //     EazySoundManager.GlobalVolume = globalVolumePref;
     }
 
-    public void OnUnityAdsDidStart(string placementId)
+
+    public void OnUnityAdsAdLoaded(string placementId)
     {
-        //   throw new System.NotImplementedException();
+        if (Audio_Manager.Instance != null)
+        {
+            Audio_Manager.Instance.muteCurrentTrack();
+        }
+        Advertisement.Show(placementId, this);
+    }
+
+    public void OnUnityAdsFailedToLoad(string placementId, UnityAdsLoadError error, string message)
+    {
+        
+    }
+
+    public void OnUnityAdsShowFailure(string placementId, UnityAdsShowError error, string message)
+    {
+        
+    }
+
+    public void OnUnityAdsShowStart(string placementId)
+    {
         if (Audio_Manager.Instance != null)
         {
             Audio_Manager.Instance.muteCurrentTrack();
         }
     }
 
-    public void OnUnityAdsReady(string placementId)
+    public void OnUnityAdsShowClick(string placementId)
     {
-    //    throw new System.NotImplementedException();
+        
     }
 
+    public void OnUnityAdsShowComplete(string placementId, UnityAdsShowCompletionState showCompletionState)
+    {
+        //    throw new System.NotImplementedException();
+        switch (showCompletionState)
+        {
+            case UnityAdsShowCompletionState.UNKNOWN:
+                {
+                    break;
+                }
+            case UnityAdsShowCompletionState.SKIPPED:
+                {
+                    break;
+                }
+            case UnityAdsShowCompletionState.COMPLETED:
+                {
+                    //User watched rewarded video, give them something.
+                    if (placementId == rewardedVideoAd)
+                    {
+                        Debug.Log("Rewarded video!");
+                        //Let player respawn during gameplay.
+                        if (Level_Manager.Instance != null)
+                        {
+                            Level_Manager.Instance.respawnPlayer();
+                        }
+                        else
+                        {
+                            Debug.LogWarning("Hey, the level manager instance is null!!! Are we in gameplay mode?");
+                        }
+
+                    }
+                    else if (placementId == interstitialAd)
+                    {
+                        Debug.Log("Interstitial video!");
+                    }
+                    break;
+                }
+        }
+
+        if (Audio_Manager.Instance != null)
+        {
+            Audio_Manager.Instance.unmuteCurrentTrack();
+        }
+    }
+
+    public void OnInitializationComplete()
+    {
+        
+    }
+
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+    {
+        
+    }
 }

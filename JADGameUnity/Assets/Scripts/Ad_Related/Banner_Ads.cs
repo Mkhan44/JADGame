@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.Advertisements;
 using Hellmade.Sound;
 
-public class Banner_Ads : MonoBehaviour
+public class Banner_Ads : MonoBehaviour, IUnityAdsInitializationListener
 {
 
     private string playStoreID = "3985667";
@@ -33,22 +33,20 @@ public class Banner_Ads : MonoBehaviour
     // Start is called before the first frame update
     IEnumerator Start()
     {
-
+        yield return null;
         if (isTargetPlayStore)
         {
-            Advertisement.Initialize(playStoreID, isTestAd);
+            Advertisement.Initialize(playStoreID, isTestAd, this);
         }
         else
         {
-            Advertisement.Initialize(appStoreID, isTestAd);
+            Advertisement.Initialize(appStoreID, isTestAd, this);
         }
 
-        while(!Advertisement.IsReady(banner))
-        {
-            yield return null;
-        }
-
-        hideBanner();
+        //while(!Advertisement.IsReady(banner))
+        //{
+        //    yield return null;
+        //}
     }
 
     public void hideBanner()
@@ -69,5 +67,15 @@ public class Banner_Ads : MonoBehaviour
     public void setPos()
     {
         Advertisement.Banner.SetPosition(BannerPosition.BOTTOM_CENTER);
+    }
+
+    public void OnInitializationComplete()
+    {
+        hideBanner();
+    }
+
+    public void OnInitializationFailed(UnityAdsInitializationError error, string message)
+    {
+        
     }
 }

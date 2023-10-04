@@ -410,25 +410,25 @@ public class Customize_Loadout : MonoBehaviour
 
         for(int i = 0; i < numLayoutItems; i++)
         {
-            if (Application.platform == RuntimePlatform.IPhonePlayer)
-            {
+            //if (Application.platform == RuntimePlatform.IPhonePlayer)
+            //{
 
-                if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
-                {
-                    invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                }
-                else
-                {
-                    invLayout.transform.GetChild(i).localScale = new Vector3(0.8f, 0.8f, 0.8f);
-                }
-            }
-            else
-            {
-                if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
-                {
-                    invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
-                }
-            }
+            //    if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
+            //    {
+            //        invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            //    }
+            //    else
+            //    {
+            //        invLayout.transform.GetChild(i).localScale = new Vector3(0.8f, 0.8f, 0.8f);
+            //    }
+            //}
+            //else
+            //{
+            //    if (Canvas_Resolution.instance.getReferenceReso().x >= 1200)
+            //    {
+            //        invLayout.transform.GetChild(i).localScale = new Vector3(1.1f, 1.1f, 1.1f);
+            //    }
+            //}
                
         }
 
