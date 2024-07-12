@@ -1,27 +1,26 @@
 <dependencies>
   <packages>
-    <package>androidx.core:core:1.3.2+</package>
-    <package>androidx.exifinterface:exifinterface:1.3.0+</package>
-    <package>com.google.android.gms:play-services-auth:18.1.0+</package>
-    <package>com.google.android.gms:play-services-games:21.0.0+</package>
-    <package>com.google.android.gms:play-services-nearby:17.0.0+</package>
-    <package>com.google.android.play:core:1.9.0</package>
     <package>com.google.games:gpgs-plugin-support:0.10.12</package>
   </packages>
-  <files />
+  <files>
+    <file>Assets/GeneratedLocalRepo/Extensions/GooglePlayGames/Editor/m2repository/com/google/games/gpgs-plugin-support/0.10.12/gpgs-plugin-support-0.10.12.aar</file>
+    <file>Assets/GeneratedLocalRepo/Extensions/GooglePlayGames/Editor/m2repository/com/google/games/gpgs-plugin-support/0.10.12/gpgs-plugin-support-0.10.12.pom</file>
+  </files>
   <settings>
     <setting name="androidAbis" value="arm64-v8a,armeabi-v7a" />
     <setting name="bundleId" value="com.BukuGames.RightPlaceRightTime" />
     <setting name="explodeAars" value="True" />
     <setting name="gradleBuildEnabled" value="True" />
-    <setting name="gradlePropertiesTemplateEnabled" value="False" />
-    <setting name="gradleTemplateEnabled" value="False" />
+    <setting name="gradlePropertiesTemplateEnabled" value="True" />
+    <setting name="gradleTemplateEnabled" value="True" />
     <setting name="installAndroidPackages" value="True" />
     <setting name="localMavenRepoDir" value="Assets/GeneratedLocalRepo" />
     <setting name="packageDir" value="Assets/Plugins/Android" />
     <setting name="patchAndroidManifest" value="True" />
     <setting name="patchMainTemplateGradle" value="True" />
     <setting name="projectExportEnabled" value="False" />
+    <setting name="useFullCustomMavenRepoPathWhenExport" value="True" />
+    <setting name="useFullCustomMavenRepoPathWhenNotExport" value="False" />
     <setting name="useJetifier" value="True" />
   </settings>
 </dependencies>

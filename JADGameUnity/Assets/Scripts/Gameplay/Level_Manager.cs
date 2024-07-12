@@ -2355,15 +2355,15 @@ public class Level_Manager : MonoBehaviour
             Collect_Manager.instance.highScore = currentScore;
 
             //Submit to leaderboard here!
-            if (Essential_GameServices.instance != null)
-            {
-                Essential_GameServices.instance.ReportScoreToLeaderboards("Mostresearchpoints", currentScore);
-                Debug.Log("Submitting your high score to the leaderboard!");
-            }
-            else
-            {
-                Debug.LogWarning("Hey, we could not find the instance of the gameservices. Can't submit your high score!");
-            }
+            //if (Essential_GameServices.instance != null)
+            //{
+            //    Essential_GameServices.instance.ReportScoreToLeaderboards("Mostresearchpoints", currentScore);
+            //    Debug.Log("Submitting your high score to the leaderboard!");
+            //}
+            //else
+            //{
+            //    Debug.LogWarning("Hey, we could not find the instance of the gameservices. Can't submit your high score!");
+            //}
         
 
             /*
