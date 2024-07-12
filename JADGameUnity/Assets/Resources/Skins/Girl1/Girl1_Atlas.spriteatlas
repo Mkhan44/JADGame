@@ -31,6 +31,7 @@ SpriteAtlas:
       m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -78,6 +79,38 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 8d50f2605da5eb74cb3e7728af9e28a4: 21300000
+    - a411bb1166a6d7d40bcb991df2356e1b: 21300000
+    - 2746762163d629d48b495c16e652bebb: 21300000
+    - 1a86de51a4a6d0145a5e350b5c585c52: 21300000
+    - d8f59781b0ce5db4c840435ecf91a4ce: 21300000
+    - c5757fa2b7469a649a67e32c34a33728: 21300000
+    - e26eee2373e9ebc418d167a9a72281c7: 21300000
+    - 2cb07d33c1981e341bec07aabc985c4a: 21300000
+    - 2749f17398217fb41b7f76ffd76fc32e: 21300000
+    - fc081e83fcf1dbf4cb065ad28241a05b: 21300000
+    - 1e180193cebaf6049a595aa2412cb3a1: 21300000
+    - fbf73eb3a2f79494b93dccfea8996e42: 21300000
+    - 3e0e9216c5b850445a418c24cb9bb1d9: 21300000
+    - ab72ad76f838d974a8e41f8af1d20560: 21300000
+    - 8f4fb7b6148373042a8f8c4ea066fe69: 21300000
+    - 254736d60f1f1054fae6f424ab9623ab: 21300000
+    - fa3ce7895cccd6a449aad67b42737a02: 21300000
+    - c089b18a77a12ac45a75e4320f050460: 21300000
+    - af0ad9fa29dafdc4ba5e69b733d15804: 21300000
+    - 11de544bcebff5343aee9157b7cc154e: 21300000
+    - 9d7486bb28024a343b37124c6f0e9529: 21300000
+    - 8a91567c2ce087745bb0f8e563b7d034: 21300000
+    - f07c6a3d196e2b0418044c74cca8b64a: 21300000
+    - 9fa7785d433831c48be614acac6950c3: 21300000
+    - 08f11f7d3eb1221439a4b595484686fe: 21300000
+    - 13e866fd9a9925e42859aef316c1aa25: 21300000
+    - a6b92c8eeec78c84b87a2f73f6647b18: 21300000
+    - 3f230a9ec74aa5b4faf6721072b6f3dc: 21300000
+    - be2b2cde76df374408f10a11073df73b: 21300000
+    - 1dafa52fe8ddfc64a9a44cf1dfaafe32: 21300000
+    - 9c26b09f715bc0c4da60682d0f208d3b: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 8d50f2605da5eb74cb3e7728af9e28a4, type: 3}

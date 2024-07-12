@@ -31,6 +31,7 @@ SpriteAtlas:
       m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -78,6 +79,38 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - dbd03390d3e9ced4d8966971c846668d: 21300000
+    - 7273a28158310e84b984f5d822fe086f: 21300000
+    - a6b91a724e5cdf048b43fdf06cf38694: 21300000
+    - 11922cd29cea5bf48b87ad1b9d60c7fb: 21300000
+    - 73bf90437ec12124a9ab5fa383d7b738: 21300000
+    - 6228cd047f643114a960aded752c82d2: 21300000
+    - 1d9a7264b639f544a91f7938b6b7bb3e: 21300000
+    - d0b3b364eb488d44282854ac309757c9: 21300000
+    - 33962bf4cdb6e214dadceea194bbdda9: 21300000
+    - c20445a5c90b44b4c873fe32531182db: 21300000
+    - cf9a43b5985b1e14b8b6bc18374c48bb: 21300000
+    - 501075e5c30c1364cbe34d78b6c641bb: 21300000
+    - aa66e6c769e277346a5ec23b6ba859ae: 21300000
+    - e73e1d187a0ace44ba92fffa3db49d0f: 21300000
+    - 57dc4d3831a2de744a40e1426a97d70f: 21300000
+    - aaf69c885267e5748957bc4b8d9aebde: 21300000
+    - 0884a0d8c1a3e6e41b728517c1bb3bd1: 21300000
+    - ddd10879671301244a9b4a688c69c7f9: 21300000
+    - c6f86999384cb1a40a14ba1f3cec034b: 21300000
+    - bd6d956a61da97b4495ae243112bc756: 21300000
+    - 0dfb311bfe10bc044913284dd2c42baf: 21300000
+    - ab228a7b2d5b4004ab6470b6c6c07350: 21300000
+    - bba3b9db44ef71248a6c4058fa24fcee: 21300000
+    - 2f91c70c0ad7ab647b40c7ee96ab4d11: 21300000
+    - 5c206e9ce4b648e43837ea5773a52c57: 21300000
+    - 235eb7ac9993d6c46b4dcc12606e91f5: 21300000
+    - 088c26ecdf6b4b242a2b6580d5e0a336: 21300000
+    - 1bb39c4dd2f8c824eb3d949d3beeae18: 21300000
+    - fc76e68d90a8d934a8fb9017fdee5487: 21300000
+    - 2ddcbc8d7974ef44495beef280aebf8b: 21300000
+    - ce325a5ebbe40664e881e119f86dea8c: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: dbd03390d3e9ced4d8966971c846668d, type: 3}

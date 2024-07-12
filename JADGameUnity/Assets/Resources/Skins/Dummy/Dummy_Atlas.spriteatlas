@@ -31,6 +31,7 @@ SpriteAtlas:
       m_CrunchedCompression: 1
       m_AllowsAlphaSplitting: 0
       m_Overridden: 0
+      m_IgnorePlatformSupport: 0
       m_AndroidETC2FallbackOverride: 0
       m_ForceMaximumCompressionQuality_BC6H_BC7: 0
     packingSettings:
@@ -79,6 +80,39 @@ SpriteAtlas:
     bindAsDefault: 1
     isAtlasV2: 0
     cachedData: {fileID: 0}
+    packedSpriteRenderDataKeys:
+    - 48d29ba009c9e1043a7da3ba66007e64: 21300000
+    - 59efbe6178cc75348a1bb99050ce2057: 21300000
+    - 071e9fb15e41927418bb6f8f6e8aafce: 21300000
+    - 144665e1d7d60b94882e9b8aa23d870f: 21300000
+    - 8f8f210281c4e144184790694aba1bde: 21300000
+    - 188a5a02ec1950b4dba02ac198a998be: 21300000
+    - ad4dcc0290c131b45b747607ca51d769: 21300000
+    - 42e6ac42481352845bf496c8cc0ff23b: 21300000
+    - 5d17d253c0020fb4dbb8ede7c1f6735f: 21300000
+    - 40d8ed9386ac40b46a8f16358a3c78b5: 21300000
+    - ad6853a384cc3e24ea64ed61d9839f76: 21300000
+    - 3ecaf9c4c05087c42b41cab22d86627e: 21300000
+    - 3385e2a54d5cb5f4a80033511021b63e: 21300000
+    - fb9dad8648f88ab4c8ea5b123e8679c8: 21300000
+    - 277aa42898dd47f4db0407373e7f8707: 21300000
+    - 91b1c139c588e834b8b524fde7891740: 21300000
+    - 6109d6d9e13c69b4082328bf888613e9: 21300000
+    - 4fc9c5f99046b88478e05ed26b417b50: 21300000
+    - f792e21aa33599549b9966db004da8cc: 21300000
+    - adae838aabbe6df43a96849575210f61: 21300000
+    - 1f484c7b4a790464b90af7fa69788965: 21300000
+    - 04ac01bbbaf096743b2c3bc915a6affe: 21300000
+    - c1defacbdb9de1044b4c590e459e2188: 21300000
+    - 4fee517c69588e14fba427c6fd329897: 21300000
+    - ff1bc33d9c06f5e42938f6d2d71f4f54: 21300000
+    - a7718f4d41fd4374ca47c526ce613607: 21300000
+    - 93517f6d6dcf05443b189becc81eb4c7: 21300000
+    - 4b89a9ed231b7ac408f026c8b044ad84: 21300000
+    - 3812b7feff9d0654eb6efaed357b1f1f: 21300000
+    - f9b5c53f5fc10b14982f8f7da5faaec1: 21300000
+    - 68aec49f47f0eae4792e693fba656f88: 21300000
+    - bb1344fffca3a2d4a8656f1dac912355: 21300000
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: 48d29ba009c9e1043a7da3ba66007e64, type: 3}
