@@ -39,9 +39,9 @@ public class EXT_Links : MonoBehaviour
                     Application.OpenURL("https://www.youtube.com/channel/UCVMp9BDVF6Bh7R8jG2R9Wqg?");
                     break;
                 }
-            case "Merch":
+            case "website":
                 {
-                    Application.OpenURL("https://merch.streamelements.com/bukugames");
+                    Application.OpenURL("https://buku-games.com/");
                     break;
                 }
             default:
