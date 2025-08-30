@@ -118,7 +118,7 @@ public class Wizard : Obstacle_Behaviour
                 }
             }
 
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
         }
         
     }
@@ -315,7 +315,7 @@ public class Wizard : Obstacle_Behaviour
             inPlayerVicinity = false;
 
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             Object_Pooler.Instance.AddToPool(gameObject);
             //Destroy(gameObject);
             return;
@@ -349,7 +349,7 @@ public class Wizard : Obstacle_Behaviour
         {
             if (collision.gameObject.tag == "Despawner")
             {
-                thisRigid.velocity = Vector2.zero;
+                thisRigid.linearVelocity = Vector2.zero;
                 //  Debug.Log("Adding coin to pool since it collided with despawner!");
                 Object_Pooler.Instance.AddToPool(gameObject);
                 return;

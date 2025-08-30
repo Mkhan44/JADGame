@@ -92,7 +92,7 @@ public class Rover : Obstacle_Behaviour
            
             if (thisRigid != null)
             {
-                thisRigid.velocity = Vector2.left * speed;
+                thisRigid.linearVelocity = Vector2.left * speed;
             }
         }
     }
@@ -160,7 +160,7 @@ public class Rover : Obstacle_Behaviour
 
 
             //Stop it.
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             Audio_Manager.Instance.stopSFX(activeSound.name);
 
             while (timePassed < timeToWait)
@@ -168,12 +168,12 @@ public class Rover : Obstacle_Behaviour
                 timePassed += Time.deltaTime;
                 if(toggleStuck)
                 {
-                    thisRigid.velocity = Vector2.right * 3.0f;
+                    thisRigid.linearVelocity = Vector2.right * 3.0f;
                     toggleStuck = false;
                 }
                 else
                 {
-                    thisRigid.velocity = Vector2.left * 3.0f;
+                    thisRigid.linearVelocity = Vector2.left * 3.0f;
                     toggleStuck = true;
                 }
            

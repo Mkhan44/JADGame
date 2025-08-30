@@ -51,11 +51,11 @@ public class Revolver_Bullet : MonoBehaviour
        // thisRigid.velocity = Vector2.up * shotSpeed;
         if(shootDirection == 1)
         {
-            thisRigid.velocity = new Vector2(-shotSpeedHorizontal, shotSpeedVertical);
+            thisRigid.linearVelocity = new Vector2(-shotSpeedHorizontal, shotSpeedVertical);
         }
         else
         {
-            thisRigid.velocity = new Vector2(-shotSpeedHorizontal -1.5f, -shotSpeedVertical);
+            thisRigid.linearVelocity = new Vector2(-shotSpeedHorizontal -1.5f, -shotSpeedVertical);
         }
     }
 
@@ -135,7 +135,7 @@ public class Revolver_Bullet : MonoBehaviour
             }
             
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             Object_Pooler.Instance.AddToPool(cowboyParent.gameObject);
             Destroy(gameObject);
             return;
@@ -229,7 +229,7 @@ public class Revolver_Bullet : MonoBehaviour
     IEnumerator waitBounce()
     {
         //thisRigid.velocity = Vector2.zero;
-        thisRigid.velocity = Vector2.left * 4.0f;
+        thisRigid.linearVelocity = Vector2.left * 4.0f;
       //  Debug.Log("Velocity of the bullet is: " + thisRigid.velocity);
 
         bool animDone = false;

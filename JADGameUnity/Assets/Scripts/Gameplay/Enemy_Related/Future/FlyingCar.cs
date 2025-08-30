@@ -60,7 +60,7 @@ public class FlyingCar : Obstacle_Behaviour
 
             if (thisRigid != null)
             {
-                thisRigid.velocity = Vector2.left * speed;
+                thisRigid.linearVelocity = Vector2.left * speed;
             }
 
             
@@ -97,7 +97,7 @@ public class FlyingCar : Obstacle_Behaviour
         //This value should probably be a rate that fluctuates via rng...So like it won't speed up until x amount of time passes. For now the value = a test.
         yield return new WaitForSeconds(rngReverseTime);
 
-        thisRigid.velocity = Vector2.right * 0.5f;
+        thisRigid.linearVelocity = Vector2.right * 0.5f;
 
         yield return new WaitForSeconds(timeToReverse);
 

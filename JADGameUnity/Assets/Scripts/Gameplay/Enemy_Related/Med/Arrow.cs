@@ -36,7 +36,7 @@ public class Arrow : Obstacle_Behaviour
             if(!hasStopped)
             {
                 StartCoroutine(fireArrow());
-                thisRigid.velocity = Vector2.zero;
+                thisRigid.linearVelocity = Vector2.zero;
                 hasStopped = true;
             }
         }
@@ -129,12 +129,12 @@ public class Arrow : Obstacle_Behaviour
         //Arrow to duck under.
         if (randNum == 1)
         {
-            thisRigid.velocity = new Vector2(xIncreaseRate, yIncreaseRateDuck);
+            thisRigid.linearVelocity = new Vector2(xIncreaseRate, yIncreaseRateDuck);
         }
         //Arrow to Jump over.
         else
         {
-            thisRigid.velocity = new Vector2(xIncreaseRate, yIncreaseRateJump);
+            thisRigid.linearVelocity = new Vector2(xIncreaseRate, yIncreaseRateJump);
         }
 
         thisRotation.z -= 1;
@@ -184,7 +184,7 @@ public class Arrow : Obstacle_Behaviour
         }
         */
 
-        thisRigid.velocity = Vector2.left * speed;
+        thisRigid.linearVelocity = Vector2.left * speed;
 
         while (thisRotation.z < 20)
         {
@@ -218,7 +218,7 @@ public class Arrow : Obstacle_Behaviour
 
         if(collision.gameObject.tag == "Ground")
         {
-            thisRigid.velocity = Vector2.left * speed;
+            thisRigid.linearVelocity = Vector2.left * speed;
             thisRigid.gravityScale = 0f;
         }
     }

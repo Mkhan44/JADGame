@@ -97,7 +97,7 @@ public class Frisball : Obstacle_Behaviour
         if(randNum == 0 && this.transform.position.x >= 0)
         {
             //Go forward.
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             currentTransformsLeft -= 1;
         }
         else
@@ -127,11 +127,11 @@ public class Frisball : Obstacle_Behaviour
             while (this.transform.localPosition.y < targetYValue)
             {
                 tempPos.y += 0.1f;
-                thisRigid.velocity = new Vector2(0f, tempPos.y);
+                thisRigid.linearVelocity = new Vector2(0f, tempPos.y);
 
                 yield return null;
             }
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
 
             //Need to find a way to wait till animation is done but also not be stuck in while loop...
             //frisballAnimator.Play(frisIdleString);
@@ -154,7 +154,7 @@ public class Frisball : Obstacle_Behaviour
             while (this.transform.localPosition.y > targetYValue)
             {
                 tempPos.y -= 0.1f;
-                thisRigid.velocity = new Vector2(0f, tempPos.y);
+                thisRigid.linearVelocity = new Vector2(0f, tempPos.y);
 
                 yield return null;
             }

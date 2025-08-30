@@ -21,7 +21,7 @@ public class BG_Scroller : MonoBehaviour
 
         collider.enabled = false;
 
-        rb.velocity = new Vector2(scrollSpeed, 0);
+        rb.linearVelocity = new Vector2(scrollSpeed, 0);
     }
 
     // Update is called once per frame
@@ -29,11 +29,11 @@ public class BG_Scroller : MonoBehaviour
     {
         if (!Wave_Spawner.Instance.getIntroFinishedStatus())
         {
-            rb.velocity = Vector2.zero;
+            rb.linearVelocity = Vector2.zero;
         }
         else
         {
-            rb.velocity = new Vector2(scrollSpeed, 0);
+            rb.linearVelocity = new Vector2(scrollSpeed, 0);
         }
 
         if (transform.position.x < -width)

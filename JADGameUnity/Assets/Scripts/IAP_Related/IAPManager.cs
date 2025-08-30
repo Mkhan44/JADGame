@@ -296,11 +296,11 @@ public class IAPManager : MonoBehaviour, IStoreListener
             Debug.Log("RestorePurchases started ...");
 
             var apple = m_StoreExtensionProvider.GetExtension<IAppleExtensions>();
-            apple.RestoreTransactions((result) => {
-                Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
-                //Save to the file.
-                Save_System.SaveCollectables(Collect_Manager.instance);
-            });
+            // apple.RestoreTransactions((result) => {
+            //     Debug.Log("RestorePurchases continuing: " + result + ". If no further messages, no purchases available to restore.");
+            //     //Save to the file.
+            //     Save_System.SaveCollectables(Collect_Manager.instance);
+            // });
         }
         else
         {

@@ -659,7 +659,7 @@ public class Level_Manager : MonoBehaviour
         }
 
         //Jump height is based off of the value we set for player jump height.
-        playerRigid2D.velocity = Vector2.up * jumpHeight;
+        playerRigid2D.linearVelocity = Vector2.up * jumpHeight;
 
         //player.transform.position = currentPos;
 
@@ -687,7 +687,7 @@ public class Level_Manager : MonoBehaviour
             StartCoroutine(Tutorial_Manager.Instance.disableJDButtons());
         }
         playerRigid2D.gravityScale = 0f;
-        playerRigid2D.velocity = Vector2.up * jumpHeight;
+        playerRigid2D.linearVelocity = Vector2.up * jumpHeight;
         jumpButton.interactable = false;
         duckButton.interactable = false;
         playerAnimator.SetBool(IsGrounded, false);
@@ -745,7 +745,7 @@ public class Level_Manager : MonoBehaviour
     public void burningJump()
     {
         //We may want to randomize the jump height/gravity to make it seem crazier.
-        playerRigid2D.velocity = Vector2.up * burningJumpHeight;
+        playerRigid2D.linearVelocity = Vector2.up * burningJumpHeight;
         Audio_Manager.Instance.playSFX(jumpSound);
         //playerRigid2D.gravityScale = gravityScale;
     }

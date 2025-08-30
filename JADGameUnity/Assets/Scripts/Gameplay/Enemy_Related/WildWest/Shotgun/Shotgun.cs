@@ -73,7 +73,7 @@ public class Shotgun : Obstacle_Behaviour
                 if (!isStopped)
                 {
                     isStopped = true;
-                    thisRigid.velocity = Vector2.zero;
+                    thisRigid.linearVelocity = Vector2.zero;
                     // Debug.Log("onScreenIndicator in movement function!");
                      StartCoroutine(shootShell());
                 }
@@ -82,12 +82,12 @@ public class Shotgun : Obstacle_Behaviour
         }
         else
         {
-            thisRigid.velocity = Vector2.right * speed;
+            thisRigid.linearVelocity = Vector2.right * speed;
         }
 
         if(shotgunShellInstance != null)
         {
-            bigShellRigid.velocity = Vector2.left * 0.5f;
+            bigShellRigid.linearVelocity = Vector2.left * 0.5f;
         }
 
 
@@ -95,18 +95,18 @@ public class Shotgun : Obstacle_Behaviour
         {
             if (thisObstacleDiff == obstacleDiff.easy)
             {
-                smallShellRigid1.velocity = Vector2.left * 2.8f;
-                smallShellRigid2.velocity = Vector2.left * 3.0f;
+                smallShellRigid1.linearVelocity = Vector2.left * 2.8f;
+                smallShellRigid2.linearVelocity = Vector2.left * 3.0f;
             }
             else if (thisObstacleDiff == obstacleDiff.medium)
             {
-                smallShellRigid1.velocity = Vector2.left * 3.5f;
-                smallShellRigid2.velocity = Vector2.left * 3.7f;
+                smallShellRigid1.linearVelocity = Vector2.left * 3.5f;
+                smallShellRigid2.linearVelocity = Vector2.left * 3.7f;
             }
             else
             {
-                smallShellRigid1.velocity = Vector2.left * 3.8f;
-                smallShellRigid2.velocity = Vector2.left * 4.0f;
+                smallShellRigid1.linearVelocity = Vector2.left * 3.8f;
+                smallShellRigid2.linearVelocity = Vector2.left * 4.0f;
             }
 
         }

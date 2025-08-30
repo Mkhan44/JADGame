@@ -171,7 +171,7 @@ public class UFO : Obstacle_Behaviour
             inPlayerVicinity = false;
 
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
 
             foreach(Transform child in transform)
             {

@@ -65,7 +65,7 @@ public class UFO_Dropped_Enemy : MonoBehaviour
 
         if (thisRigid != null)
         {
-            thisRigid.velocity = Vector2.left * speed;
+            thisRigid.linearVelocity = Vector2.left * speed;
         }
 
     }
@@ -77,7 +77,7 @@ public class UFO_Dropped_Enemy : MonoBehaviour
           
 
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
            
             return;
         }

@@ -132,7 +132,7 @@ public class Rocket : Obstacle_Behaviour
         if (this.transform.position.x <= 1.8f && this.transform.position.x >= -0.7f &&!justFinishedTurning)
         {
           //  Debug.Log("Rocket will turn!");
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             turning = true;
             numSwitchesLeft -= 1;
             setNumberSprite();
@@ -172,17 +172,17 @@ public class Rocket : Obstacle_Behaviour
             //Test.
             if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint3)
             {
-                thisRigid.velocity = Vector2.down * 10;
+                thisRigid.linearVelocity = Vector2.down * 10;
             }
             else
             {
-                thisRigid.velocity = Vector2.down * 6;
+                thisRigid.linearVelocity = Vector2.down * 6;
             }
 
 
             yield return new WaitForSeconds(0.1f);
 
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
 
             while (this.transform.eulerAngles.z != 0)
             {
@@ -215,17 +215,17 @@ public class Rocket : Obstacle_Behaviour
 
             if (spawnPoint == Wave_Spawner.spawnPointNum.spawnPoint2)
             {
-                thisRigid.velocity = Vector2.up * 6;
+                thisRigid.linearVelocity = Vector2.up * 6;
             }
             else
             {
-                thisRigid.velocity = Vector2.up * 10;
+                thisRigid.linearVelocity = Vector2.up * 10;
             }
           
 
             yield return new WaitForSeconds(0.1f);
 
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
 
             while (this.transform.eulerAngles.z != 0)
             {

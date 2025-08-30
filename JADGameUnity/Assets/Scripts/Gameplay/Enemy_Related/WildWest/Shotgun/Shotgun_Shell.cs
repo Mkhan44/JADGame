@@ -55,7 +55,7 @@ public class Shotgun_Shell : MonoBehaviour
             }
 
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             Object_Pooler.Instance.AddToPool(shottyParent.gameObject);
             Destroy(gameObject);
             return;

@@ -295,7 +295,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
 
             if (thisRigid != null)
             {
-                thisRigid.velocity = Vector2.left * speed;
+                thisRigid.linearVelocity = Vector2.left * speed;
             }
 
         }
@@ -308,12 +308,12 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             {
                 if (this.transform.position.x > endPos.x)
                 {
-                    thisRigid.velocity = Vector2.left * speed;
+                    thisRigid.linearVelocity = Vector2.left * speed;
                 }
                 else
                 {
                     this.transform.position = new Vector2(endPos.x, this.transform.position.y);
-                    thisRigid.velocity = Vector2.zero;
+                    thisRigid.linearVelocity = Vector2.zero;
                 }
                    
             }
@@ -408,7 +408,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
             inPlayerVicinity = false;
 
             //TURN ON WHEN WE ARE READY TO POOL
-            thisRigid.velocity = Vector2.zero;
+            thisRigid.linearVelocity = Vector2.zero;
             Object_Pooler.Instance.AddToPool(gameObject);
             //Destroy(gameObject);
             return;
@@ -442,7 +442,7 @@ public class Obstacle_Behaviour : MonoBehaviour , IPooled_Object
         {
             if(collision.gameObject.tag == "Despawner")
             {
-                thisRigid.velocity = Vector2.zero;
+                thisRigid.linearVelocity = Vector2.zero;
               //  Debug.Log("Adding coin to pool since it collided with despawner!");
                 Object_Pooler.Instance.AddToPool(gameObject);
                 return;

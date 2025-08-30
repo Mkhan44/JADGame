@@ -58,7 +58,7 @@ public class Cowboy : Obstacle_Behaviour
             if(!isStoppedBool)
             {
                 isStoppedBool = true;
-                thisRigid.velocity = Vector2.zero;
+                thisRigid.linearVelocity = Vector2.zero;
                // Debug.Log("onScreenIndicator in movement function!");
                 StartCoroutine(shootGun());
             }
@@ -174,7 +174,7 @@ public class Cowboy : Obstacle_Behaviour
 
             if (thisRigid != null)
             {
-                thisRigid.velocity = Vector2.right * speed;
+                thisRigid.linearVelocity = Vector2.right * speed;
             }
 
             if(inIndicatorVicinity)
