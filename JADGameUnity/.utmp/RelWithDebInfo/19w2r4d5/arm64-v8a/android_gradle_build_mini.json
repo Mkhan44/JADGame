@@ -1,0 +1,28 @@
+{
+  "buildFiles": [
+    "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\CMakeLists.txt",
+    "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\src\\main\\cpp\\FramePacing\\CMakeLists.txt"
+  ],
+  "cleanCommandsComponents": [
+    [
+      "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.56f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "-C",
+      "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\.utmp\\RelWithDebInfo\\19w2r4d5\\arm64-v8a",
+      "clean"
+    ]
+  ],
+  "buildTargetsCommandComponents": [
+    "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.56f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "-C",
+    "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\.utmp\\RelWithDebInfo\\19w2r4d5\\arm64-v8a",
+    "{LIST_OF_TARGETS_TO_BUILD}"
+  ],
+  "libraries": {
+    "swappywrapper::@7e25bd1f32ce224db4e9": {
+      "artifactName": "swappywrapper",
+      "abi": "arm64-v8a",
+      "output": "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\Library\\Bee\\Android\\Prj\\IL2CPP\\Gradle\\unityLibrary\\build\\intermediates\\cxx\\RelWithDebInfo\\19w2r4d5\\obj\\arm64-v8a\\libswappywrapper.so",
+      "runtimeFiles": []
+    }
+  }
+}
