@@ -1,6 +1,7 @@
 <dependencies>
   <packages>
     <package>com.google.games:gpgs-plugin-support:2.1.0</package>
+    <package>com.unity3d.ads:unity-ads:[4.16.3,4.17[</package>
   </packages>
   <files>
     <file>Assets/GeneratedLocalRepo/GooglePlayGames/com.google.play.games/Editor/m2repository/com/google/games/gpgs-plugin-support/2.1.0/gpgs-plugin-support-2.1.0.aar</file>

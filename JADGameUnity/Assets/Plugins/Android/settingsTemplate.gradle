@@ -21,6 +21,9 @@ dependencyResolutionManagement {
         maven {
             url (unityProjectPath + "/Assets/GeneratedLocalRepo/GooglePlayGames/com.google.play.games/Editor/m2repository") // Assets/GooglePlayGames/com.google.play.games/Editor/GooglePlayGamesPluginDependencies.xml:11
         }
+        maven {
+            url "https://maven.google.com/" // Packages/com.unity.ads/Editor/Source/Dependencies.xml:7
+        }
         mavenLocal()
 // Android Resolver Repos End
         flatDir {

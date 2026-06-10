@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "swappywrapper::@7e25bd1f32ce224db4e9",
-					"jsonFile" : "target-swappywrapper-RelWithDebInfo-2723010638cf3ef1ec67.json",
+					"jsonFile" : "target-swappywrapper-RelWithDebInfo-780f207b972d8394fac3.json",
 					"name" : "swappywrapper",
 					"projectIndex" : 1
 				}
@@ -76,7 +76,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "E:/Backups/DocumentsRiazComp/Games/JumpOrDuck/Github/JADGame/JADGameUnity/.utmp/RelWithDebInfo/19w2r4d5/arm64-v8a",
+		"build" : "E:/Backups/DocumentsRiazComp/Games/JumpOrDuck/Github/JADGame/JADGameUnity/.utmp/RelWithDebInfo/19w2r4d5/armeabi-v7a",
 		"source" : "E:/Backups/DocumentsRiazComp/Games/JumpOrDuck/Github/JADGame/JADGameUnity/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
 	},
 	"version" : 

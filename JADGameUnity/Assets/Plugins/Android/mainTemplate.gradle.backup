@@ -6,7 +6,6 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
 // Android Resolver Dependencies Start
     implementation 'com.google.games:gpgs-plugin-support:2.1.0' // Assets/GooglePlayGames/com.google.play.games/Editor/GooglePlayGamesPluginDependencies.xml:11
-    implementation 'com.unity3d.ads:unity-ads:[4.16.3,4.17[' // Packages/com.unity.ads/Editor/Source/Dependencies.xml:7
 // Android Resolver Dependencies End
 **DEPS**}
 

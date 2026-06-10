@@ -5,14 +5,14 @@
   ],
   "cleanCommandsComponents": [
     [
-      "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.56f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.59f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
       "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\.utmp\\RelWithDebInfo\\19w2r4d5\\armeabi-v7a",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.56f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "C:\\Program Files\\Unity\\Hub\\Editor\\6000.0.59f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
     "E:\\Backups\\DocumentsRiazComp\\Games\\JumpOrDuck\\Github\\JADGame\\JADGameUnity\\.utmp\\RelWithDebInfo\\19w2r4d5\\armeabi-v7a",
     "{LIST_OF_TARGETS_TO_BUILD}"
